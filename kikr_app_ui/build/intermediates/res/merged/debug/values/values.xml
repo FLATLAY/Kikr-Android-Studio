@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <string-array name="countries">
+        <item>United States of America</item>
+        <item>Canada</item>
+    </string-array>
+    <string-array name="dealcategories">
+        <item>Select</item>
+        <item>Womens Apparel</item>
+        <item>Mens Apparel</item>
+        <item>Jewelry &amp; Watches</item>
+        <item>Health &amp; Beauty</item>
+        <item>Cosmetics &amp; Fragrances</item>
+    </string-array>
+    <string-array name="months">
+        <item>MM</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="statesCanada">
+        <item> </item>
+        <item>Nunavut</item>
+        <item>Quebec</item>
+        <item>Northwest Territories</item>
+        <item>Ontario</item>
+        <item>British Columbia</item>
+        <item>Alberta</item>
+        <item>Saskatchewan</item>
+        <item>Manitoba</item>
+        <item>Yukon</item>
+        <item>Newfoundland and Labrador</item>
+        <item>New Brunswick</item>
+        <item>Nova Scotia</item>
+        <item> Prince Edward Island</item>
+    </string-array>
+    <string-array name="statesUSA">
+        <item> </item>
+        <item>Alabama</item>
+        <item>Alaska</item>
+        <item>Arizona</item>
+        <item>Arkansas</item>
+        <item>California</item>
+        <item>Colorado</item>
+        <item>Connecticut</item>
+        <item>Delaware</item>
+        <item>District Of Columbia</item>
+        <item>Florida</item>
+        <item>Georgia</item>
+        <item>Hawaii</item>
+        <item>Idaho</item>
+        <item>Illinois</item>
+        <item>Indiana</item>
+        <item>Iowa</item>
+        <item>Kansas</item>
+        <item>Kentucky</item>
+        <item>Louisiana</item>
+        <item>Maine</item>
+        <item>Maryland</item>
+        <item>Massachusetts</item>
+        <item>Michigan</item>
+        <item>Minnesota</item>
+        <item>Mississippi</item>
+        <item>Missouri</item>
+        <item>Montana</item>
+        <item>Nebraska</item>
+        <item>Nevada</item>
+        <item>New Hampshire</item>
+        <item>New Jersey</item>
+        <item>New Mexico</item>
+        <item>New York</item>
+        <item>North Carolina</item>
+        <item>North Dakota</item>
+        <item>Ohio</item>
+        <item>Oklahoma</item>
+        <item>Oregon</item>
+        <item>Pennsylvania</item>
+        <item>Rhode Island</item>
+        <item>South Carolina</item>
+        <item>South Dakota</item> 
+        <item>Tennessee</item>
+        <item>Texas</item>
+        <item>Utah</item>
+        <item>Vermont</item>
+        <item>Virginia</item>
+        <item>Washington</item>
+        <item>West Virginia</item>
+        <item>Wisconsin</item>
+        <item>Wyoming</item>
+        <item>American Samoa</item>
+        <item>Guam</item>
+        <item>Northern Mariana Islands</item>
+        <item>Puerto Rico</item>
+        <item>U.S. Virgin Islands</item>
+        <item>Wyoming</item>
+    </string-array>
+    <string-array name="title">
+        <item>Mr.</item>
+        <item>Miss</item>
+        <item>Mrs.</item>
+    </string-array>
+    <string-array name="years">
+        <item>YYYY</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+        <item>2031</item>
+        <item>2032</item>
+        <item>2033</item>
+        <item>2034</item>
+    </string-array>
+    <attr format="boolean" name="centered"/>
+    <attr format="dimension|reference" name="childSize"/>
+    <attr format="reference" name="cropImageStyle"/>
+    <attr format="float|reference" name="fromDegrees"/>
+    <attr format="reference" name="menuDrawerStyle"/>
+    <attr format="color" name="selectedColor"/>
+    <attr format="dimension" name="strokeWidth"/>
+    <attr format="float|reference" name="toDegrees"/>
+    <attr format="color" name="unselectedColor"/>
+    <bool name="default_circle_indicator_centered">true</bool>
+    <bool name="default_circle_indicator_snap">false</bool>
+    <bool name="default_line_indicator_centered">true</bool>
+    <bool name="default_title_indicator_selected_bold">true</bool>
+    <bool name="default_underline_indicator_fades">true</bool>
+    <color name="ColorPrimary">#FF5722</color>
+    <color name="ColorPrimaryDark">#E64A19</color>
+    <color name="antique_white">#8b8378</color>
+    <color name="app_background">#EAE5E2</color>
+    <color name="app_text_color">#777</color>
+    <color name="aquamarine2">#76eec6</color>
+    <color name="bg_gray">#EFEFEF</color>
+    <color name="black">#000000</color>
+    <color name="blue1">#0000ff</color>
+    <color name="btn_gray">#ABABAB</color>
+    <color name="btn_green">#5bbaad</color>
+    <color name="com_facebook_blue">#3B5998</color>
+    <color name="com_facebook_likeboxcountview_border_color">#6a7180</color>
+    <color name="com_facebook_likeboxcountview_text_color">#6a7180</color>
+    <color name="com_facebook_likebutton_text_color">#FFFFFF</color>
+    <color name="com_facebook_likeview_text_color">#6a7180</color>
+    <color name="com_facebook_loginview_text_color">#FFFFFF</color>
+    <color name="com_facebook_picker_search_bar_background">#f5f5f7</color>
+    <color name="com_facebook_picker_search_bar_text">#bcbdc2</color>
+    <color name="com_facebook_usersettingsfragment_connected_shadow_color">#000000</color>
+    <color name="com_facebook_usersettingsfragment_connected_text_color">#FFFFFF</color>
+    <color name="com_facebook_usersettingsfragment_not_connected_text_color">#A6AED7</color>
+    <color name="common_action_bar_splitter">#d2d2d2</color>
+    <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
+    <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
+    <color name="common_google_signin_btn_text_dark_focused">@android:color/black</color>
+    <color name="common_google_signin_btn_text_dark_pressed">@android:color/white</color>
+    <color name="common_google_signin_btn_text_light_default">#90000000</color>
+    <color name="common_google_signin_btn_text_light_disabled">#1F000000</color>
+    <color name="common_google_signin_btn_text_light_focused">#90000000</color>
+    <color name="common_google_signin_btn_text_light_pressed">#DE000000</color>
+    <color name="common_plus_signin_btn_text_dark_default">@android:color/white</color>
+    <color name="common_plus_signin_btn_text_dark_disabled">#FFAAAAAA</color>
+    <color name="common_plus_signin_btn_text_dark_focused">@android:color/white</color>
+    <color name="common_plus_signin_btn_text_dark_pressed">@android:color/white</color>
+    <color name="common_plus_signin_btn_text_light_default">#FF737373</color>
+    <color name="common_plus_signin_btn_text_light_disabled">#FFAAAAAA</color>
+    <color name="common_plus_signin_btn_text_light_focused">#FF737373</color>
+    <color name="common_plus_signin_btn_text_light_pressed">#DE000000</color>
+    <color name="crop__button_bar">#f3f3f3</color>
+    <color name="crop__button_text">#666666</color>
+    <color name="crop__selector_focused">#77000000</color>
+    <color name="crop__selector_pressed">#1a000000</color>
+    <color name="darkgrey">#595959</color>
+    <color name="deeppink2">#ee1289</color>
+    <color name="default_circle_indicator_fill_color">#FFFFFFFF</color>
+    <color name="default_circle_indicator_page_color">#00000000</color>
+    <color name="default_circle_indicator_stroke_color">#FFDDDDDD</color>
+    <color name="default_line_indicator_selected_color">#FF33B5E5</color>
+    <color name="default_line_indicator_unselected_color">#FFBBBBBB</color>
+    <color name="default_title_indicator_footer_color">#FF33B5E5</color>
+    <color name="default_title_indicator_selected_color">#FFFFFFFF</color>
+    <color name="default_title_indicator_text_color">#BBFFFFFF</color>
+    <color name="default_underline_indicator_selected_color">#FF33B5E5</color>
+    <color name="detail_bottom">#FAF9F9</color>
+    <color name="discover_list_item_shadow">#80000000</color>
+    <color name="discover_list_item_shadow2">#50000000</color>
+    <color name="discover_price_color">#bd2a2a</color>
+    <color name="discovr_buttom">#E5E5E5</color>
+    <color name="divider_gray_dark">#EDEDED</color>
+    <color name="gray">#A5A5A5</color>
+    <color name="gray2">#BEBEBE</color>
+    <color name="header_background">#65C6C0</color>
+    <color name="header_background_new">#F7F7F7</color>
+    <color name="header_background_side">#6FC9C3</color>
+    <color name="help_screen_bg_color">#484949</color>
+    <color name="lightshadow">#ee000000</color>
+    <color name="like_count_color">#ffc125</color>
+    <color name="list_background">#F2EEEF</color>
+    <color name="list_background_even">#F7F5F5</color>
+    <color name="md__defaultBackground">#FF555555</color>
+    <color name="menu_background">#CECECE</color>
+    <color name="menu_option_background">#ffffff</color>
+    <color name="menu_option_background_selected">#65C6C0</color>
+    <color name="neongreen">#dcfe74</color>
+    <color name="red">#ff0000</color>
+    <color name="vpi__background_holo_dark">#ff000000</color>
+    <color name="vpi__background_holo_light">#fff3f3f3</color>
+    <color name="vpi__bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
+    <color name="vpi__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+    <color name="vpi__bright_foreground_holo_dark">@color/vpi__background_holo_light</color>
+    <color name="vpi__bright_foreground_holo_light">@color/vpi__background_holo_dark</color>
+    <color name="vpi__bright_foreground_inverse_holo_dark">@color/vpi__bright_foreground_holo_light</color>
+    <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
+    <color name="wallet_bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+    <color name="wallet_bright_foreground_holo_dark">#fff3f3f3</color>
+    <color name="wallet_bright_foreground_holo_light">#ff000000</color>
+    <color name="wallet_dim_foreground_disabled_holo_dark">#80bebebe</color>
+    <color name="wallet_dim_foreground_holo_dark">#bebebe</color>
+    <color name="wallet_dim_foreground_inverse_disabled_holo_dark">#80323232</color>
+    <color name="wallet_dim_foreground_inverse_holo_dark">#323232</color>
+    <color name="wallet_highlighted_text_holo_dark">#6633b5e5</color>
+    <color name="wallet_highlighted_text_holo_light">#6633b5e5</color>
+    <color name="wallet_hint_foreground_holo_dark">#808080</color>
+    <color name="wallet_hint_foreground_holo_light">#808080</color>
+    <color name="wallet_holo_blue_light">#ff33b5e5</color>
+    <color name="wallet_link_text_light">#0000ee</color>
+    <color name="white">#ffffff</color>
+    <color name="yellow1">#ffff00</color>
+    <declare-styleable name="ArcLayout"><attr name="fromDegrees"/><attr name="toDegrees"/><attr name="childSize"/></declare-styleable>
+    <declare-styleable name="ArcMenu"><attr name="fromDegrees"/><attr name="toDegrees"/><attr name="childSize"/></declare-styleable>
+    <declare-styleable name="CirclePageIndicator"><attr name="centered"/><attr format="color" name="fillColor"/><attr format="color" name="pageColor"/><attr name="android:orientation"/><attr format="dimension" name="radius"/><attr format="boolean" name="snap"/><attr format="color" name="strokeColor"/><attr name="strokeWidth"/><attr name="android:background"/></declare-styleable>
+    <declare-styleable name="CropImageView"><attr format="reference|color" name="highlightColor"/><attr format="boolean" name="showThirds"/></declare-styleable>
+    <declare-styleable name="CustomWalletTheme"><attr format="enum" name="windowTransitionStyle"><enum name="slide" value="1"/><enum name="none" value="2"/></attr></declare-styleable>
+    <declare-styleable name="LinePageIndicator"><attr name="centered"/><attr name="unselectedColor"/><attr name="selectedColor"/><attr format="dimension" name="lineWidth"/><attr name="strokeWidth"/><attr format="dimension" name="gapWidth"/><attr name="android:background"/></declare-styleable>
+    <declare-styleable name="LoadingImageView"><attr format="enum" name="imageAspectRatioAdjust"><enum name="none" value="0"/><enum name="adjust_width" value="1"/><enum name="adjust_height" value="2"/></attr><attr format="float" name="imageAspectRatio"/><attr format="boolean" name="circleCrop"/></declare-styleable>
+    <declare-styleable name="MapAttrs"><attr format="enum" name="mapType"><enum name="none" value="0"/><enum name="normal" value="1"/><enum name="satellite" value="2"/><enum name="terrain" value="3"/><enum name="hybrid" value="4"/></attr><attr format="float" name="cameraBearing"/><attr format="float" name="cameraTargetLat"/><attr format="float" name="cameraTargetLng"/><attr format="float" name="cameraTilt"/><attr format="float" name="cameraZoom"/><attr format="boolean" name="liteMode"/><attr format="boolean" name="uiCompass"/><attr format="boolean" name="uiRotateGestures"/><attr format="boolean" name="uiScrollGestures"/><attr format="boolean" name="uiTiltGestures"/><attr format="boolean" name="uiZoomControls"/><attr format="boolean" name="uiZoomGestures"/><attr format="boolean" name="useViewLifecycle"/><attr format="boolean" name="zOrderOnTop"/><attr format="boolean" name="uiMapToolbar"/><attr format="boolean" name="ambientEnabled"/></declare-styleable>
+    <declare-styleable name="MapView"><attr format="string" name="mapid"/><attr format="string" name="accessToken"/><attr format="string" name="centerLat"/><attr format="string" name="centerLng"/><attr format="string" name="zoomLevel"/><attr format="string" name="uiControls"/></declare-styleable>
+    <declare-styleable name="MenuDrawer"><attr format="reference" name="mdContentBackground"/><attr format="reference" name="mdMenuBackground"/><attr format="dimension" name="mdMenuSize"/><attr format="reference" name="mdActiveIndicator"/><attr format="boolean" name="mdDropShadowEnabled"/><attr format="dimension" name="mdDropShadowSize"/><attr format="color" name="mdDropShadowColor"/><attr format="reference" name="mdDropShadow"/><attr format="dimension" name="mdTouchBezelSize"/><attr format="boolean" name="mdAllowIndicatorAnimation"/><attr format="integer" name="mdMaxAnimationDuration"/><attr format="reference" name="mdSlideDrawable"/><attr format="string" name="mdDrawerOpenUpContentDescription"/><attr format="string" name="mdDrawerClosedUpContentDescription"/><attr format="boolean" name="mdDrawOverlay"/><attr format="enum" name="mdPosition"><enum name="left" value="0"/><enum name="top" value="1"/><enum name="right" value="2"/><enum name="bottom" value="3"/><enum name="start" value="4"/><enum name="end" value="5"/></attr></declare-styleable>
+    <declare-styleable name="RayLayout"><attr format="dimension" name="leftHolderWidth"/></declare-styleable>
+    <declare-styleable name="SignInButton"><attr format="reference|enum" name="buttonSize"><enum name="standard" value="0"/><enum name="wide" value="1"/><enum name="icon_only" value="2"/></attr><attr format="reference|enum" name="colorScheme"><enum name="dark" value="0"/><enum name="light" value="1"/><enum name="auto" value="2"/></attr><attr format="reference|string" name="scopeUris"/></declare-styleable>
+    <declare-styleable name="TitlePageIndicator"><attr format="dimension" name="clipPadding"/><attr format="color" name="footerColor"/><attr format="dimension" name="footerLineHeight"/><attr name="footerIndicatorStyle"><enum name="none" value="0"/><enum name="triangle" value="1"/><enum name="underline" value="2"/></attr><attr format="dimension" name="footerIndicatorHeight"/><attr format="dimension" name="footerIndicatorUnderlinePadding"/><attr format="dimension" name="footerPadding"/><attr name="linePosition"><enum name="bottom" value="0"/><enum name="top" value="1"/></attr><attr name="selectedColor"/><attr format="boolean" name="selectedBold"/><attr name="android:textColor"/><attr name="android:textSize"/><attr format="dimension" name="titlePadding"/><attr format="dimension" name="topPadding"/><attr name="android:background"/></declare-styleable>
+    <declare-styleable name="UnderlinePageIndicator"><attr format="boolean" name="fades"/><attr format="integer" name="fadeDelay"/><attr format="integer" name="fadeLength"/><attr name="selectedColor"/><attr name="android:background"/></declare-styleable>
+    <declare-styleable name="ViewPagerIndicator"><attr format="reference" name="vpiCirclePageIndicatorStyle"/><attr format="reference" name="vpiIconPageIndicatorStyle"/><attr format="reference" name="vpiLinePageIndicatorStyle"/><attr format="reference" name="vpiTitlePageIndicatorStyle"/><attr format="reference" name="vpiTabPageIndicatorStyle"/><attr format="reference" name="vpiUnderlinePageIndicatorStyle"/></declare-styleable>
+    <declare-styleable name="WalletFragmentOptions"><attr format="enum" name="appTheme"><enum name="holo_dark" value="0"/><enum name="holo_light" value="1"/></attr><attr format="enum" name="environment"><enum name="production" value="1"/><enum name="test" value="3"/><enum name="sandbox" value="0"/><enum name="strict_sandbox" value="2"/></attr><attr format="reference" name="fragmentStyle"/><attr format="enum" name="fragmentMode"><enum name="buyButton" value="1"/><enum name="selectionDetails" value="2"/></attr></declare-styleable>
+    <declare-styleable name="WalletFragmentStyle"><attr format="dimension" name="buyButtonHeight"><enum name="match_parent" value="-1"/><enum name="wrap_content" value="-2"/></attr><attr format="dimension" name="buyButtonWidth"><enum name="match_parent" value="-1"/><enum name="wrap_content" value="-2"/></attr><attr format="enum" name="buyButtonText"><enum name="buy_with" value="5"/><enum name="logo_only" value="6"/><enum name="donate_with" value="7"/><enum name="buy_with_google" value="1"/><enum name="buy_now" value="2"/><enum name="book_now" value="3"/><enum name="donate_with_google" value="4"/></attr><attr format="enum" name="buyButtonAppearance"><enum name="google_wallet_classic" value="1"/><enum name="google_wallet_grayscale" value="2"/><enum name="google_wallet_monochrome" value="3"/><enum name="android_pay_dark" value="4"/><enum name="android_pay_light" value="5"/><enum name="android_pay_light_with_border" value="6"/><enum name="classic" value="1"/><enum name="grayscale" value="2"/><enum name="monochrome" value="3"/></attr><attr format="reference" name="maskedWalletDetailsTextAppearance"/><attr format="reference" name="maskedWalletDetailsHeaderTextAppearance"/><attr format="reference|color" name="maskedWalletDetailsBackground"/><attr format="reference" name="maskedWalletDetailsButtonTextAppearance"/><attr format="reference|color" name="maskedWalletDetailsButtonBackground"/><attr format="color" name="maskedWalletDetailsLogoTextColor"/><attr format="enum" name="maskedWalletDetailsLogoImageType"><enum name="google_wallet_classic" value="1"/><enum name="google_wallet_monochrome" value="2"/><enum name="android_pay" value="3"/><enum name="classic" value="1"/><enum name="monochrome" value="2"/></attr></declare-styleable>
+    <declare-styleable name="com_facebook_friend_picker_fragment"><attr format="boolean" name="multi_select"/></declare-styleable>
+    <declare-styleable name="com_facebook_like_view"><attr format="color" name="foreground_color"/><attr format="string" name="object_id"/><attr name="style"><enum name="standard" value="0"/><enum name="button" value="1"/><enum name="box_count" value="2"/></attr><attr name="auxiliary_view_position"><enum name="bottom" value="0"/><enum name="inline" value="1"/><enum name="top" value="2"/></attr><attr name="horizontal_alignment"><enum name="center" value="0"/><enum name="left" value="1"/><enum name="right" value="2"/></attr></declare-styleable>
+    <declare-styleable name="com_facebook_login_view"><attr format="boolean" name="confirm_logout"/><attr format="boolean" name="fetch_user_info"/><attr format="string" name="login_text"/><attr format="string" name="logout_text"/></declare-styleable>
+    <declare-styleable name="com_facebook_picker_fragment"><attr format="boolean" name="show_pictures"/><attr format="string" name="extra_fields"/><attr format="boolean" name="show_title_bar"/><attr format="string" name="title_text"/><attr format="string" name="done_button_text"/><attr format="reference" name="title_bar_background"/><attr format="reference" name="done_button_background"/></declare-styleable>
+    <declare-styleable name="com_facebook_place_picker_fragment"><attr format="integer" name="radius_in_meters"/><attr format="integer" name="results_limit"/><attr format="string" name="search_text"/><attr format="boolean" name="show_search_box"/></declare-styleable>
+    <declare-styleable name="com_facebook_profile_picture_view"><attr name="preset_size"><enum name="small" value="-2"/><enum name="normal" value="-3"/><enum name="large" value="-4"/></attr><attr format="boolean" name="is_cropped"/></declare-styleable>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="addBank_ListItem_padding">10dp</dimen>
+    <dimen name="addBank_image_size">90dp</dimen>
+    <dimen name="add_collection_image_height">20dp</dimen>
+    <dimen name="arch_margin">10dp</dimen>
+    <dimen name="brand_image_size">80dp</dimen>
+    <dimen name="button_height">50dp</dimen>
+    <dimen name="buy_option_height">150dp</dimen>
+    <dimen name="cart_product_image_size">50dp</dimen>
+    <dimen name="category_add_icon_height">30dp</dimen>
+    <dimen name="category_image_height">80dp</dimen>
+    <dimen name="category_image_height_grid">150dp</dimen>
+    <dimen name="circle_bottom_margin">2dp</dimen>
+    <dimen name="collection_detail_icon_height">25dp</dimen>
+    <dimen name="collection_list_dialog_dimension">300dp</dimen>
+    <dimen name="collection_list_dialog_dimension2">500dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_border_width">1dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_caret_height">3dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_caret_width">6dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_text_padding">6dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_text_size">11.0sp</dimen>
+    <dimen name="com_facebook_likebutton_compound_drawable_padding">8dp</dimen>
+    <dimen name="com_facebook_likebutton_padding_bottom">0dp</dimen>
+    <dimen name="com_facebook_likebutton_padding_left">8dp</dimen>
+    <dimen name="com_facebook_likebutton_padding_right">8dp</dimen>
+    <dimen name="com_facebook_likebutton_padding_top">0dp</dimen>
+    <dimen name="com_facebook_likebutton_text_size">13.0sp</dimen>
+    <dimen name="com_facebook_likeview_edge_padding">2dp</dimen>
+    <dimen name="com_facebook_likeview_internal_padding">6dp</dimen>
+    <dimen name="com_facebook_likeview_text_size">11.0sp</dimen>
+    <dimen name="com_facebook_loginview_compound_drawable_padding">12dp</dimen>
+    <dimen name="com_facebook_loginview_padding_bottom">12dp</dimen>
+    <dimen name="com_facebook_loginview_padding_left">12dip</dimen>
+    <dimen name="com_facebook_loginview_padding_right">16dp</dimen>
+    <dimen name="com_facebook_loginview_padding_top">12dp</dimen>
+    <dimen name="com_facebook_loginview_text_size">16.0sp</dimen>
+    <dimen name="com_facebook_picker_place_image_size">64dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_large">180dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_normal">100dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_small">50dp</dimen>
+    <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
+    <dimen name="com_facebook_usersettingsfragment_profile_picture_height">64dp</dimen>
+    <dimen name="com_facebook_usersettingsfragment_profile_picture_width">64dp</dimen>
+    <dimen name="credits_edit_text_height">40dp</dimen>
+    <dimen name="credits_heading_width">120dp</dimen>
+    <dimen name="crop__bar_height">48dp</dimen>
+    <dimen name="data_not_found_margin">10dp</dimen>
+    <dimen name="deal_image_height">120dp</dimen>
+    <dimen name="deal_image_width">120dp</dimen>
+    <dimen name="default_circle_indicator_radius">3dp</dimen>
+    <dimen name="default_circle_indicator_stroke_width">1dp</dimen>
+    <dimen name="default_line_indicator_gap_width">4dp</dimen>
+    <dimen name="default_line_indicator_line_width">12dp</dimen>
+    <dimen name="default_line_indicator_stroke_width">1dp</dimen>
+    <dimen name="default_title_indicator_clip_padding">4dp</dimen>
+    <dimen name="default_title_indicator_footer_indicator_height">4dp</dimen>
+    <dimen name="default_title_indicator_footer_indicator_underline_padding">20dp</dimen>
+    <dimen name="default_title_indicator_footer_line_height">2dp</dimen>
+    <dimen name="default_title_indicator_footer_padding">7dp</dimen>
+    <dimen name="default_title_indicator_text_size">15dp</dimen>
+    <dimen name="default_title_indicator_title_padding">5dp</dimen>
+    <dimen name="default_title_indicator_top_padding">7dp</dimen>
+    <dimen name="detail_brand_image">60dp</dimen>
+    <dimen name="devider_height">1dp</dimen>
+    <dimen name="discover_bottom_height">50dp</dimen>
+    <dimen name="discover_follow_btn_height">30dp</dimen>
+    <dimen name="discover_follow_btn_padding">5dp</dimen>
+    <dimen name="discover_header_height">200dp</dimen>
+    <dimen name="discover_icon_side_margin">10dp</dimen>
+    <dimen name="discover_line_space">3dp</dimen>
+    <dimen name="discover_list_item_height">210dp</dimen>
+    <dimen name="discover_list_small_item_height">150dp</dimen>
+    <dimen name="discover_margin_side">10dp</dimen>
+    <dimen name="discover_margin_top">16dp</dimen>
+    <dimen name="discover_product_height">250dp</dimen>
+    <dimen name="discover_view_height">2dp</dimen>
+    <dimen name="discover_view_width">170dp</dimen>
+    <dimen name="edittext_padding">20dp</dimen>
+    <dimen name="element_space">15dp</dimen>
+    <dimen name="follow_btn_height">30dp</dimen>
+    <dimen name="follow_text_height">30dp</dimen>
+    <dimen name="friends_list_header_padding">10dp</dimen>
+    <dimen name="half_devider">0.5dp</dimen>
+    <dimen name="header_height">52dp</dimen>
+    <dimen name="image_thumbnail_size">72dp</dimen>
+    <dimen name="inspiration_image">210dp</dimen>
+    <dimen name="inspiration_list_item_height">350dp</dimen>
+    <dimen name="inspiration_user_image">60dp</dimen>
+    <dimen name="interest_section_btn_height">40dp</dimen>
+    <dimen name="lable_distance">30dp</dimen>
+    <dimen name="landing_button_height">60dp</dimen>
+    <dimen name="landing_margin_bottom">30dp</dimen>
+    <dimen name="landing_margin_or">20dp</dimen>
+    <dimen name="landing_margin_parent_top">20dp</dimen>
+    <dimen name="landing_margin_side">40dp</dimen>
+    <dimen name="landing_margin_top">10dp</dimen>
+    <dimen name="landing_number_height">50dp</dimen>
+    <dimen name="large_text_size">18dp</dimen>
+    <dimen name="login_forgot_pass_padding">10dp</dimen>
+    <dimen name="margin_large">10dp</dimen>
+    <dimen name="margin_xlarge">30dp</dimen>
+    <dimen name="margin_xxlarge">50dp</dimen>
+    <dimen name="margin_xxxlarge">70dp</dimen>
+    <dimen name="medium_text_size">16dp</dimen>
+    <dimen name="menuChildSize">50dp</dimen>
+    <item format="float" name="menuFromDegrees" type="dimen">180.0</item>
+    <item format="float" name="menuToDegrees" type="dimen">360.0</item>
+    <dimen name="menu_connect_image_padding">2dp</dimen>
+    <dimen name="menu_connect_image_size">33dp</dimen>
+    <dimen name="menu_devider_height">0.5dp</dimen>
+    <dimen name="menu_margin_left">10dp</dimen>
+    <dimen name="menu_option_height">52dp</dimen>
+    <dimen name="menu_option_image">35dp</dimen>
+    <dimen name="menu_right_text_margin_left">60dp</dimen>
+    <dimen name="menu_text_margin_left">10dp</dimen>
+    <dimen name="or_height">2dp</dimen>
+    <dimen name="or_width">100dp</dimen>
+    <dimen name="padding_cart_list">20dp</dimen>
+    <dimen name="padding_cart_list_view">40dp</dimen>
+    <dimen name="padding_large">10dp</dimen>
+    <dimen name="padding_small">5dp</dimen>
+    <dimen name="padding_tiny">2dp</dimen>
+    <dimen name="padding_xlarge">16dp</dimen>
+    <dimen name="payment_card_image_height">30dp</dimen>
+    <dimen name="payment_card_image_width">40dp</dimen>
+    <dimen name="phone_margin_side">30dp</dimen>
+    <dimen name="phone_margin_top">100dp</dimen>
+    <dimen name="pincode_text_size">30dp</dimen>
+    <dimen name="product_height">300dp</dimen>
+    <dimen name="profile_img_bg_height">200dp</dimen>
+    <dimen name="profile_img_bg_max_height">200dp</dimen>
+    <dimen name="settings_margin_rignt">25dp</dimen>
+    <dimen name="signup_margin_top">20dp</dimen>
+    <dimen name="small_text_size">14dp</dimen>
+    <dimen name="support_help_height">100dp</dimen>
+    <dimen name="support_text_height">50dp</dimen>
+    <dimen name="tab_text_size">6sp</dimen>
+    <dimen name="very_small_text_size">10dp</dimen>
+    <dimen name="view_margin">20dp</dimen>
+    <dimen name="wallet_card_margin">100dp</dimen>
+    <dimen name="wallet_layout_margin">110dp</dimen>
+    <dimen name="wallet_pin_line_space">20dp</dimen>
+    <dimen name="wallet_pin_margin_side">20dp</dimen>
+    <dimen name="wallet_pocket_margin">200dp</dimen>
+    <dimen name="x_large_text_size">20dp</dimen>
+    <dimen name="xx_large_text_size">22dp</dimen>
+    <dimen name="xxx_large_text_size">28dp</dimen>
+    <drawable name="com_facebook_picker_default_separator_color">#33464c59</drawable>
+    <item name="mdActiveViewPosition" type="id"/>
+    <item name="mdContent" type="id"/>
+    <item name="mdMenu" type="id"/>
+    <item name="md__content" type="id"/>
+    <item name="md__drawer" type="id"/>
+    <item name="md__menu" type="id"/>
+    <item name="md__translationX" type="id"/>
+    <item name="md__translationY" type="id"/>
+    <integer name="alpha_offset">500</integer>
+    <integer name="deeplinkrequestcode">1000</integer>
+    <integer name="default_circle_indicator_orientation">0</integer>
+    <integer name="default_title_indicator_footer_indicator_style">2</integer>
+    <integer name="default_title_indicator_line_position">0</integer>
+    <integer name="default_underline_indicator_fade_delay">300</integer>
+    <integer name="default_underline_indicator_fade_length">400</integer>
+    <integer name="google_play_services_version">8298000</integer>
+    <integer name="in_duration">300</integer>
+    <integer name="middle_rotate_duration">200</integer>
+    <integer name="out_duration">400</integer>
+    <integer name="out_rotate_degree">0</integer>
+    <integer name="rotate_duration">200</integer>
+    <integer name="start_offset">200</integer>
+    <string name="action_settings">Settings</string>
+    <string name="activity">Activity</string>
+    <string name="add_card">+ Add Card</string>
+    <string name="add_collection_text">Add a new Collection</string>
+    <string name="add_description">Add Description</string>
+    <string name="add_favorites">Add To Favorites </string>
+    <string name="add_funds">Add Funds</string>
+    <string name="add_venue">Add Venue</string>
+    <string name="address_format">%1$s\n%2$s\n%3$s%4$s%5$s %6$s %7$s</string>
+    <string name="alert_address_and_card_not_selected_for_card">Please select Shipping Address and Card</string>
+    <string name="alert_address_not_selected_for_card">Please select Shipping Address</string>
+    <string name="alert_address_not_selected_for_paypal">Please select Shipping Address</string>
+    <string name="alert_amount_length">Please enter Amount</string>
+    <string name="alert_amount_less_than_credit">Amount must be less than available credits</string>
+    <string name="alert_amount_not_be_zero">Amount should not be zero</string>
+    <string name="alert_back_disabled">Enter your valid phone number to complete registration</string>
+    <string name="alert_blank_password">Please enter new password</string>
+    <string name="alert_blank_pin">Please enter reset pin</string>
+    <string name="alert_blank_username">Please enter username</string>
+    <string name="alert_brand_followed_successfully">Brand followed successfully</string>
+    <string name="alert_card_invalid_blank">Invalid card number or unsupported</string>
+    <string name="alert_card_not_selected_for_card">Please select Card</string>
+    <string name="alert_cardholdername_blank">Please enter CardHolder Name</string>
+    <string name="alert_cardnumber_blank">Please enter Card Number</string>
+    <string name="alert_cardnumber_short">Invalid Card Number</string>
+    <string name="alert_city_blank">Please enter City</string>
+    <string name="alert_collection_blank">Please enter Collection Name</string>
+    <string name="alert_collection_deleted">Collection deleted sucessfully</string>
+    <string name="alert_collection_length">Collection Name should be 16 digits only</string>
+    <string name="alert_collection_no_product">No product found to share in selected collection</string>
+    <string name="alert_collection_product_deleted">Product deleted from Collection sucessfully</string>
+    <string name="alert_collection_updated">Collection name updated sucessfully</string>
+    <string name="alert_connected_with_fb">Connected with Facebook</string>
+    <string name="alert_connected_with_twitter">Connected with Twitter</string>
+    <string name="alert_countryname_blank">Please enter Country Name</string>
+    <string name="alert_cvv_blank">cvv should be 3 digits</string>
+    <string name="alert_email_has_sent">An email has been sent to reset your password</string>
+    <string name="alert_expirymonth_blank">Please enter Expiry Month</string>
+    <string name="alert_expiryyear_blank">Please enter Expiry Year</string>
+    <string name="alert_fb_friend_not_found">No friend found those installed Kikr app</string>
+    <string name="alert_firstname_blank">Please enter First Name</string>
+    <string name="alert_follow_atleast_one">Follow at least one brand</string>
+    <string name="alert_invalid_zipcode">Invalid Zip Code</string>
+    <string name="alert_lastname_blank">Please enter Last Name</string>
+    <string name="alert_no_comment_entered">Please enter Comment</string>
+    <string name="alert_no_description_entered">Please enter Description</string>
+    <string name="alert_no_image_selected">Please select Image</string>
+    <string name="alert_no_user_selected">Please select User</string>
+    <string name="alert_password_blank">Please enter Password</string>
+    <string name="alert_password_confirm_blank">Please enter confirm new password</string>
+    <string name="alert_password_current_blank">Please enter current password</string>
+    <string name="alert_password_new_blank">Please enter new password</string>
+    <string name="alert_password_not_matched">Password not match</string>
+    <string name="alert_password_reset">Password reset successfully</string>
+    <string name="alert_phone_enter_number">Please enter Phone Number</string>
+    <string name="alert_pin_aut_enter_pin">Please enter PIN</string>
+    <string name="alert_pin_blank">Please enter Pin</string>
+    <string name="alert_pin_confirm_new_blank">Please enter confirm new pin</string>
+    <string name="alert_pin_current_blank">Please enter current pin</string>
+    <string name="alert_pin_new_blank">Please enter new pin</string>
+    <string name="alert_pin_not_matched">Pin not matched</string>
+    <string name="alert_pin_resent">Pin resent successfully</string>
+    <string name="alert_pin_sent">PIN sent to your mobile successfully</string>
+    <string name="alert_register_already_registered">Email address already exists</string>
+    <string name="alert_register_confirm_password">Please enter confirm new password</string>
+    <string name="alert_register_email">Please enter email address</string>
+    <string name="alert_register_email_verification">Please enter a valid email address</string>
+    <string name="alert_register_password">Please enter password</string>
+    <string name="alert_register_password__confirm_length">Confirm password length should be minimum 5 digit</string>
+    <string name="alert_register_password__new_length">New password length should be minimum 5 digit</string>
+    <string name="alert_register_password_current_length">Current password length should be minimum 5 digit</string>
+    <string name="alert_register_password_length">Password length should be minimum 5 digit</string>
+    <string name="alert_register_success">User registerd successfully</string>
+    <string name="alert_signup_error_facebook_data">Error in getting Facebook Profile Data</string>
+    <string name="alert_state_blank">Please enter State</string>
+    <string name="alert_streetname_blank">Please enter Street Address</string>
+    <string name="alert_streetnumber_blank">Please enter Street Number</string>
+    <string name="alert_telephone_blank">Please enter Telephone</string>
+    <string name="alert_twit_friend_not_found">No followers found</string>
+    <string name="alert_twitter_friend_not_found">No followers found</string>
+    <string name="alert_username_length">Username should be 10 digits only</string>
+    <string name="alert_wallent_confirm_pin_length">Confirm new pin length should be 4 digit</string>
+    <string name="alert_wallent_current_pin_length">Current pin length should be 4 digit</string>
+    <string name="alert_wallent_new_pin_length">New pin length should be 4 digit</string>
+    <string name="alert_zip_blank">Please enter Zip Code</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="already_signedup">Already signed up with Email?</string>
+    <string name="app_name">Kikr</string>
+    <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
+    <string name="auth_google_play_services_client_google_display_name">Google</string>
+    <string name="brand_text">Brands</string>
+    <string name="buy_text_heading">Buy</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="card_info_apartment">Apt/Unit No.</string>
+    <string name="card_info_card_name_text">Name on Card</string>
+    <string name="card_info_city_text">City/Town</string>
+    <string name="card_info_country_text">Country</string>
+    <string name="card_info_cvv_text">CVV Code</string>
+    <string name="card_info_expiry_text">Expiration(MM/YY)</string>
+    <string name="card_info_firstname_text">First Name</string>
+    <string name="card_info_lastname_text">Last Name</string>
+    <string name="card_info_number_text">Card Number</string>
+    <string name="card_info_payinfo_text">Payment Info</string>
+    <string name="card_info_shipping_address_text">Shipping Address</string>
+    <string name="card_info_state_text">State</string>
+    <string name="card_info_street_add_text">Street Address</string>
+    <string name="card_info_street_num_text">Street Number </string>
+    <string name="card_info_telephone_text">Telephone</string>
+    <string name="card_info_title_text">Title</string>
+    <string name="card_info_zip_text">Zip Code</string>
+    <string name="cart_color_text">Color</string>
+    <string name="cart_detail_product_text">View Details on Store Site</string>
+    <string name="cart_fit_text">Fit</string>
+    <string name="cart_option_text">Option</string>
+    <string name="cart_quantity_text">Quantity</string>
+    <string name="cart_remove_from_text">Remove From Cart</string>
+    <string name="cart_size_text">Size</string>
+    <string name="change_password_confirmnewpass_text">Confirm New Password</string>
+    <string name="change_password_currentpass_text">Enter Current Password</string>
+    <string name="change_password_newpass_text">Enter New Password</string>
+    <string name="change_walletpin_confirmnewpin_text">Enter Confirm New Pin</string>
+    <string name="change_walletpin_currentpin_text">Enter Current Pin</string>
+    <string name="change_walletpin_newpin_text">Enter New Pin</string>
+    <string name="check_in">Check In</string>
+    <string name="collection_delete_message">Are you sure you want to delete this collection?</string>
+    <string name="collection_delete_product_message">Are you sure you want to delete this product from collection?</string>
+    <string name="collection_text_heading">Collections</string>
+    <string name="color_text">Color: </string>
+    <string name="com_facebook_choose_friends">Choose Friends</string>
+    <string name="com_facebook_dialogloginactivity_ok_button">OK</string>
+    <string name="com_facebook_image_download_unknown_error">Unexpected error while downloading an image.</string>
+    <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
+    <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
+    <string name="com_facebook_like_button_liked">Liked</string>
+    <string name="com_facebook_like_button_not_liked">Like</string>
+    <string name="com_facebook_loading">Loading...</string>
+    <string name="com_facebook_loginview_cancel_action">Cancel</string>
+    <string name="com_facebook_loginview_log_in_button">Log in with Facebook</string>
+    <string name="com_facebook_loginview_log_out_action">Log out</string>
+    <string name="com_facebook_loginview_log_out_button">Log out</string>
+    <string name="com_facebook_loginview_logged_in_as">Logged in as: %1$s</string>
+    <string name="com_facebook_loginview_logged_in_using_facebook">Logged in using Facebook</string>
+    <string name="com_facebook_logo_content_description">Facebook Logo</string>
+    <string name="com_facebook_nearby">Nearby</string>
+    <string name="com_facebook_picker_done_button_text">Done</string>
+    <string name="com_facebook_placepicker_subtitle_catetory_only_format">%1$s</string>
+    <string name="com_facebook_placepicker_subtitle_format">%1$s • %2$,d were here</string>
+    <string name="com_facebook_placepicker_subtitle_were_here_only_format">%1$,d were here</string>
+    <string name="com_facebook_requesterror_password_changed">Your Facebook password has changed. Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_permissions">This app doesn’t have permission to do this. To change permissions, try logging into the app again.</string>
+    <string name="com_facebook_requesterror_reconnect">Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_relogin">Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_web_login">Your Facebook account is locked. Please log into www.facebook.com to continue.</string>
+    <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
+    <string name="com_facebook_usersettingsfragment_log_in_button">Log in…</string>
+    <string name="com_facebook_usersettingsfragment_logged_in">Logged in</string>
+    <string name="com_facebook_usersettingsfragment_not_logged_in">Not logged in</string>
+    <string name="come_join">Come join me on Kikr-The Rewards Card for the Social Generation™</string>
+    <string name="common_android_wear_notification_needs_update_text"><ns1:g id="app_name">%1$s</ns1:g> requires an update to the Android Wear app.</string>
+    <string name="common_android_wear_update_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run unless you update the Android Wear app.</string>
+    <string msgid="6006316683626838685" name="common_android_wear_update_title">Update Android Wear</string>
+    <string name="common_google_play_services_api_unavailable_text"><ns1:g id="app_name">%1$s</ns1:g> requires one or more Google Play services that are not currently available. Please contact the developer for assistance.</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Enable Google Play services</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t work unless you enable Google Play services.</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Enable Google Play services</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">Requested by <ns1:g id="app_name">%1$s</ns1:g></string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Get Google Play services</string>
+    <string msgid="2122112764540849864" name="common_google_play_services_install_text_phone"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are missing from your phone.</string>
+    <string msgid="7351599665250191022" name="common_google_play_services_install_text_tablet"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are missing from your tablet.</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Get Google Play services</string>
+    <string name="common_google_play_services_invalid_account_text">The specified account does not exist on this device. Please choose a different account.</string>
+    <string name="common_google_play_services_invalid_account_title">Invalid Account</string>
+    <string name="common_google_play_services_needs_enabling_title">An application requires Google Play services to be enabled.</string>
+    <string name="common_google_play_services_network_error_text">A data connection is required to connect to Google Play services.</string>
+    <string name="common_google_play_services_network_error_title">Network Error</string>
+    <string name="common_google_play_services_notification_needs_update_title">An application requires an update for Google Play services.</string>
+    <string name="common_google_play_services_notification_ticker">Google Play services error</string>
+    <string name="common_google_play_services_sign_in_failed_text">Error signing in the specified account. Please choose a different account.</string>
+    <string name="common_google_play_services_sign_in_failed_title">Sign in failed</string>
+    <string name="common_google_play_services_unknown_issue">Unknown issue with Google Play services.</string>
+    <string name="common_google_play_services_unsupported_text"><ns1:g id="app_name">%1$s</ns1:g> relies on Google Play services, which is not supported by your device. Contact the manufacturer for assistance.</string>
+    <string name="common_google_play_services_unsupported_title">Google Play services</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">Update</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run unless you update Google Play services.</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Update Google Play services</string>
+    <string name="common_google_play_services_updating_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are currently updating.</string>
+    <string name="common_google_play_services_updating_title">Google Play services are updating</string>
+    <string name="common_open_on_phone">Open on phone</string>
+    <string name="common_signin_button_text">Sign in</string>
+    <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_pin">Confirm Wallet Pin</string>
+    <string name="confirmation_details">Confirmation details</string>
+    <string name="confirmation_text">Your order confirmation number is ABC123.\n\nYour purchase will be shipped within two business days.</string>
+    <string name="connect_with">Connect with</string>
+    <string name="connect_with_facebook">Connect with Facebook</string>
+    <string name="connect_with_instagram">Connect with Instagram</string>
+    <string name="connect_with_twitter">Connect with Twitter</string>
+    <string name="create_pin">Create Wallet Pin</string>
+    <string name="credit_card_text">Credit Card</string>
+    <string name="credits_amount">Amount </string>
+    <string name="credits_available_credits">Available Kikr Credits: </string>
+    <string name="credits_confirm">Confirm </string>
+    <string name="credits_user">User </string>
+    <string name="crop__cancel" ns1:ignore="ButtonCase">CANCEL</string>
+    <string name="crop__done">DONE</string>
+    <string name="crop__pick_error">No image sources available</string>
+    <string name="crop__saving">Saving picture…</string>
+    <string name="crop__wait">Please wait…</string>
+    <string name="customer_support">Customer Support</string>
+    <string name="deals">Deals</string>
+    <string name="delete_citi_account">Delete Citi Account</string>
+    <string name="delete_collection_text">Delete Collection</string>
+    <string name="delete_product_from_collection_text">Delete product from Collection</string>
+    <string name="discover_follow_btn_text">Follow</string>
+    <string name="done">Done</string>
+    <string name="dummy_price">$0</string>
+    <string name="earn_250_credits">Join now to get your first 250 credits!</string>
+    <string name="email">Email</string>
+    <string name="empty_cart_text">Your cart is currently empty.</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="enter_pin">Enter Wallet Pin</string>
+    <string name="error_code">Error code: %d</string>
+    <string name="express_shipping">Express Shipping</string>
+    <string name="facebook">Facebook</string>
+    <string name="facebook_app_id">813043735405822</string>
+    <string name="facebook_friends_header">Facebook Friends</string>
+    <string name="favorite_text">Favorite</string>
+    <string name="female">female</string>
+    <string name="fit_text">Fit: </string>
+    <string name="follow_brands_text">Now follow some brands</string>
+    <string name="follow_categories_text">Follow some categories 0/3</string>
+    <string name="follow_stores_text">Now follow some stores 0/3</string>
+    <string name="forgot_password">forgot password?</string>
+    <string name="get_final_value">Get final value of cart</string>
+    <string name="get_transaction_to_venue">Get Transaction to Venue</string>
+    <string name="google_wallet_unavailable">Google Wallet is unavailable</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="help_card_text">Store Cards\n&amp;\naddresses\nfor easy purchases</string>
+    <string name="help_emptycart_text">Earn an extra 100 credits for your first purchase</string>
+    <string name="help_inspired_text">Post &amp; find outfits,\nproducts you love\n&amp;\nmuch more</string>
+    <string name="help_invitefriends_earnpoints_text">You will earn 25 credits for every sign up</string>
+    <string name="help_invitefriends_text">Invite your friends to Kikr</string>
+    <string name="help_nocollection_text">Create your first collection\n(5 or more items) &amp; share\n\nEarn 100 credits</string>
+    <string name="help_socialmedia_earnpoints_text">Earn 50 credits</string>
+    <string name="help_socialmedia_text">Connect your social media</string>
+    <string name="in_store_deals">InStore Deals</string>
+    <string name="inspiration_add_product_tag_text">Add Product Tags</string>
+    <string name="inspiration_add_tag_text">Add Tag</string>
+    <string name="inspiration_delete_post_text">Delete Post</string>
+    <string name="inspiration_description">Description</string>
+    <string name="inspiration_edit_inspiration_description_text">Edit Description</string>
+    <string name="inspiration_remove_product_tag_text">Remove Product Tags</string>
+    <string name="inspiration_remove_tag_text">Remove Tag</string>
+    <string name="inspiration_tag">Tag</string>
+    <string name="inspiration_tag_brand">Tag Brand</string>
+    <string name="inspiration_tag_products">Tag Products</string>
+    <string name="inspiration_upload">Upload</string>
+    <string name="interest">Interests</string>
+    <string name="invalid_response">Invalid response from server. Please try again later.</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="kikr_credits">Kikr\nCredits</string>
+    <string name="kikr_discount_text">Kikr Discount:</string>
+    <string name="kikr_learn_more">&lt;u>Learn More&lt;/u></string>
+    <string name="kikr_learn_more_desc">Currently Kikr and the products featured within it can only be purchased and shipped to US and Canadian residents.\n\n We are working hard to support international shipments before 2016 however <b>all users</b> have the ability to create and share collections in anticipation of earning credits to be used at a later time. We will store all credits earned for use in the future!!</string>
+    <string name="kikr_outside_us_canada">Outside of the US &amp; Canada?\nEarn credits now and use them later!</string>
+    <string name="kikr_shipping_details_text">Kikr only ships to US &amp; Canada Addresses for now.</string>
+    <string name="kikr_tutorial_text_line_four">100 credits is equivalent to $1 USD</string>
+    <string name="kikr_tutorial_text_line_one">2 credits for every $1 you spend on Kikr\n</string>
+    <string name="kikr_tutorial_text_line_three">If another user shares an item from your collections with their followers, you split credit commissions at 2.5 credits per $1 spent</string>
+    <string name="kikr_tutorial_text_line_two">Earn 5 credits for every $1 spent by another user from one of your collections.</string>
+    <string name="learn_more_text">Learn More</string>
+    <string name="legal">Legal</string>
+    <string name="loading">LOADING...</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="logout_text">Sign Out</string>
+    <string name="loyalty_cards">Loyalty Cards</string>
+    <string name="male">male</string>
+    <string name="malls_text">Malls</string>
+    <string name="map_api_key_debug">AIzaSyC6hKD-SR0mMqT2mmQNgUHW7kMSGDUGm2U</string>
+    <string name="map_api_key_production">AIzaSyC3uVtLGj4yUXwP2ZXOM6YFBD6YI2eu9zE</string>
+    <string name="md__drawerClosedIndicatorDesc">Open drawer</string>
+    <string name="md__drawerOpenIndicatorDesc">Close drawer</string>
+    <string name="mobile_number">mobile number</string>
+    <string name="months_text">MM</string>
+    <string name="my_account_dashboard">My Account Dashboard</string>
+    <string name="my_friends">My Friends</string>
+    <string name="my_profile">My Profile</string>
+    <string name="my_wallet">Wallet</string>
+    <string name="nearby_text">Nearby</string>
+    <string name="need_help">Need Help ?</string>
+    <string name="new_password">New Password</string>
+    <string name="next">Next</string>
+    <string name="no_data_found">Nothing Found</string>
+    <string name="no_friends_found_msg">Friends not found</string>
+    <string name="no_internet">No internet connection&lt;br> &lt;u>Try again&lt;/u></string>
+    <string name="no_users_found_msg">Users not found.</string>
+    <string name="offers_text">My Offers</string>
+    <string name="online_deals">Online Deals</string>
+    <string name="online_text">Online</string>
+    <string name="option_text">Option: </string>
+    <string name="or">or</string>
+    <string name="order_date">Date: </string>
+    <string name="order_fail_text">Failed to get final value of cart. Please try again later.</string>
+    <string name="order_id">Order: </string>
+    <string name="order_items">Items: </string>
+    <string name="order_shipping">Shipping: </string>
+    <string name="order_status">Status: </string>
+    <string name="order_success_text">Purchased Confirmed!&lt;br>You can track the status in Orders next to My Wallet.&lt;br>&lt;br>&lt;b>Happy Shopping&lt;/b> </string>
+    <string name="order_tax">Tax: </string>
+    <string name="order_total">Total: </string>
+    <string name="orders">Orders</string>
+    <string name="other_wallets">Other Wallets</string>
+    <string name="password">Password</string>
+    <string name="payment_fail_text">Payment Failed</string>
+    <string name="payment_success_text">Payment Successful</string>
+    <string name="paypal_text">Paypal</string>
+    <string name="people_text">People</string>
+    <string name="place_order_add_address_text">Add Shipping Address</string>
+    <string name="place_order_add_card_text">Add new Card</string>
+    <string name="place_order_add_payment_method_text">Add Payment Method</string>
+    <string name="place_order_est_handling_text">Handling</string>
+    <string name="place_order_est_shipping_text">Est. Shipping*</string>
+    <string name="place_order_est_tax_text">Est. Tax</string>
+    <string name="place_order_item_text">Items</string>
+    <string name="place_order_learnmore_text">The Kikr Purchase Guarantee</string>
+    <string name="place_order_place_my_order_text">Place My Order</string>
+    <string name="place_order_promo_card_text">Promo Code</string>
+    <string name="place_order_shipping_card_text">Shipping Address</string>
+    <string name="place_order_subtotal_text">Subtotal</string>
+    <string name="place_order_total_text">Total</string>
+    <string name="place_order_us_canada">US &amp; Canada only</string>
+    <string name="place_paypal_text">Pay with Paypal</string>
+    <string name="popular_text">Popular</string>
+    <string name="post">Post</string>
+    <string name="price_format">$%.2f</string>
+    <string name="privacy_statement">Privacy Statement</string>
+    <string name="proceed_order_text">Proceed to Order</string>
+    <string name="product_not_available">Select</string>
+    <string name="profile">Profile</string>
+    <string name="profile_view">My Profile</string>
+    <string name="purchase_guarantee_line1">We at Kikr work tirelessly to bring you name brand products from authentic merchants. You purchase directly from the merchants so you get to take advantage of the same return and exchange policy as those shopping directly on the merchant’s website, but with the benefit of Kikr rewards!</string>
+    <string name="purchase_guarantee_line2">Fulfillment and shipping of all products for sale on Kikr are handled by the merchants, not by Kikr.</string>
+    <string name="purchase_guarantee_line3"><b>Have a question about your order status, shipment, or returns/exchanges?</b></string>
+    <string name="purchase_guarantee_line4">Please contact the merchant directly. We provide a list of contact information for our merchants here.</string>
+    <string name="purchase_guarantee_line5"><b>Have a question a technical question about the app?</b></string>
+    <string name="purchase_guarantee_line6">If you have any trouble contacting a merchant directly, please don’t hesitate to reach out to our team for assistance, but know that direct contact with the merchant is usually the quickest &amp; best way to get something resolved.</string>
+    <string name="quantity_text">Quantity: </string>
+    <string name="read_more">read more</string>
+    <string name="regular_price">Price: </string>
+    <string name="regular_price_text">Price:</string>
+    <string name="rename_collection_text">Rename Collection</string>
+    <string name="resend_pin">resend pin?</string>
+    <string name="reset_pin">Reset Pin</string>
+    <string name="retail_banking">Retail Banking</string>
+    <string name="return_to_shopping">Return to shopping</string>
+    <string name="right_click">rightMenuClick</string>
+    <string name="searchYourBank">Search your bank</string>
+    <string name="searchYourItem">Search</string>
+    <string name="search_deal">Search Deals</string>
+    <string name="search_venue">Search Venue</string>
+    <string name="secured_by">Secured by</string>
+    <string name="settings">Settings</string>
+    <string name="settings_accountinfo_text">Account Info</string>
+    <string name="settings_changepin_text">Change Pin</string>
+    <string name="settings_editaddress_text">Edit Address</string>
+    <string name="settings_facebook_text">Facebook</string>
+    <string name="settings_favorites_text">Favorites</string>
+    <string name="settings_instagram_text">Instagram</string>
+    <string name="settings_itemspurchased_text">Items Purchased</string>
+    <string name="settings_newcomments_text">New Comments</string>
+    <string name="settings_newfollowers_text">New Followers</string>
+    <string name="settings_notifications_text">Notifications</string>
+    <string name="settings_password_text">Password</string>
+    <string name="settings_pinterest_text">Pinterest</string>
+    <string name="settings_socialaccounts_text">Social Accounts</string>
+    <string name="settings_storedcards_text">Stored Cards</string>
+    <string name="settings_twitter_text">Twitter</string>
+    <string name="settings_walletsecurity_text">Wallet Security</string>
+    <string name="share_collection_text">Share Collection</string>
+    <string name="share_product_text">Share Product</string>
+    <string name="shipping">Shipping:</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_up_for_free">Sign up for free!</string>
+    <string name="size_text">Size: </string>
+    <string name="skip">Skip</string>
+    <string name="spending_limit_exceeded">You have exceeded your spending limit</string>
+    <string name="store_text">Stores</string>
+    <string name="stores_text">Stores</string>
+    <string name="submit">Submit</string>
+    <string name="subtotal_text">Subtotal</string>
+    <string name="suggested_friends_text">Suggested Followers</string>
+    <string name="support">Support</string>
+    <string name="tax">Tax:</string>
+    <string name="terms_of_use">Terms of Use</string>
+    <string name="text_join">The Rewards Card for the Social Generation™ Get paid to shop and share, join now &amp; earn up to 250 credits.</string>
+    <string name="thanks_for_your_order">Thanks for your order</string>
+    <string name="toolTipAddress">Address</string>
+    <string name="toolTipDescription">Description</string>
+    <string name="toolTipTitle">Title</string>
+    <string name="topdeals_text">Top Deals</string>
+    <string name="total">Total:</string>
+    <string name="trending_gals_text">Trending Hers</string>
+    <string name="trending_guys_text">Trending His</string>
+    <string name="tutorial_kikr_lines">Welcome to the Retail Rewards Card for the Social Generation™</string>
+    <string name="tutorial_kikr_reward">Here\'s your Kikr card!</string>
+    <string name="twitter">Twitter</string>
+    <string name="twitter_friends_header">Twitter Friends</string>
+    <string name="update_citi_account">Update Citi account</string>
+    <string name="user_followed_successfully">User followed.</string>
+    <string name="username">Username</string>
+    <string name="venue">Venue</string>
+    <string name="view_collection_text">View Collection</string>
+    <string name="view_list_text">View as List</string>
+    <string name="view_map_text">View as Map</string>
+    <string name="wallet_buy_button_place_holder">Buy with Google</string>
+    <string name="years_text">YYYY</string>
+    <string name="your_price">Sale Price: </string>
+    <style name="AdvanceDialogTheme" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:typeface">serif</item>
+    </style>
+    <style name="BikestoreWalletFragmentDetailsHeaderTextAppearance" parent="BikestoreWalletFragmentDetailsTextAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="BikestoreWalletFragmentDetailsTextAppearance">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="Crop"/>
+    <style name="Crop.ActionButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/crop__selectable_background</item>
+    </style>
+    <style name="Crop.ActionButtonText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingRight">20dp</item> <!-- Offsets left drawable -->
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:textColor">@color/crop__button_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+    <style name="Crop.ActionButtonText.Cancel">
+        <item name="android:drawableLeft">@drawable/crop__ic_cancel</item>
+        <item name="android:text">@string/crop__cancel</item>
+    </style>
+    <style name="Crop.ActionButtonText.Done">
+        <item name="android:drawableLeft">@drawable/crop__ic_done</item>
+        <item name="android:text">@string/crop__done</item>
+    </style>
+    <style name="Crop.DoneCancelBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/crop__bar_height</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:divider">@drawable/crop__divider</item>
+        <item name="android:showDividers" ns1:ignore="NewApi">middle</item>
+        <item name="android:dividerPadding" ns1:ignore="NewApi">12dp</item>
+        <item name="android:background">@color/crop__button_bar</item>
+    </style>
+    <style name="NonFloatingDialogTheme" parent="@style/AdvanceDialogTheme">
+        <item name="android:windowIsFloating">false</item>
+    </style>
+    <style name="TextAppearance.TabPageIndicator" parent="Widget">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/vpi__dark_theme</item>
+    </style>
+    <style name="Theme.PageIndicatorDefaults" parent="android:Theme">
+        <item name="vpiIconPageIndicatorStyle">@style/Widget.IconPageIndicator</item>
+        <item name="vpiTabPageIndicatorStyle">@style/Widget.TabPageIndicator</item>
+    </style>
+    <style name="WalletFragmentDefaultButtonTextAppearance">
+        <item name="android:textColor">@color/wallet_primary_text_holo_light</item>
+        <item name="android:textColorHighlight">@color/wallet_highlighted_text_holo_light</item>
+        <item name="android:textColorHint">@color/wallet_hint_foreground_holo_light</item>
+        <item name="android:textColorLink">@color/wallet_link_text_light</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="WalletFragmentDefaultDetailsHeaderTextAppearance" parent="WalletFragmentDefaultDetailsTextAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="WalletFragmentDefaultDetailsTextAppearance">
+        <item name="android:textColor">@color/wallet_secondary_text_holo_dark</item>
+        <item name="android:textColorHighlight">@color/wallet_highlighted_text_holo_dark</item>
+        <item name="android:textColorHint">@color/wallet_hint_foreground_holo_dark</item>
+        <item name="android:textColorLink">@color/wallet_holo_blue_light</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="WalletFragmentDefaultStyle">
+        <item name="buyButtonHeight">48dp</item>
+        <item name="buyButtonWidth">match_parent</item>
+        <item name="buyButtonText">buy_with</item>
+        <item name="buyButtonAppearance">android_pay_dark</item>
+        <item name="maskedWalletDetailsTextAppearance">@style/WalletFragmentDefaultDetailsTextAppearance</item>
+        <item name="maskedWalletDetailsHeaderTextAppearance">@style/WalletFragmentDefaultDetailsHeaderTextAppearance</item>
+        <item name="maskedWalletDetailsBackground">@color/wallet_bright_foreground_holo_light</item>
+        <item name="maskedWalletDetailsButtonBackground">@android:drawable/btn_default</item>
+        <item name="maskedWalletDetailsButtonTextAppearance">@style/WalletFragmentDefaultButtonTextAppearance</item>
+        <item name="maskedWalletDetailsLogoTextColor">@color/wallet_bright_foreground_holo_dark</item>
+        <item name="maskedWalletDetailsLogoImageType">android_pay</item>
+    </style>
+    <style name="Widget"/>
+    <style name="Widget.IconPageIndicator" parent="Widget">
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+    </style>
+    <style name="Widget.MenuDrawer">
+        <item name="mdMenuBackground">@color/md__defaultBackground</item>
+        <item name="mdContentBackground">?android:attr/windowBackground</item>
+        <item name="mdDrawerOpenUpContentDescription">@string/md__drawerOpenIndicatorDesc</item>
+        <item name="mdDrawerClosedUpContentDescription">@string/md__drawerClosedIndicatorDesc</item>
+    </style>
+    <style name="Widget.TabPageIndicator" parent="Widget">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/vpi__tab_indicator</item>
+        <item name="android:paddingLeft">22dip</item>
+        <item name="android:paddingRight">22dip</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.TabPageIndicator</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+    <style name="buttonDealBelowMenuSection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/interest_section_btn_height</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/btn_green</item>
+    </style>
+    <style name="buttonDealSection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@color/btn_green</item>
+    </style>
+    <style name="buttonInterestSection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/interest_section_btn_height</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@color/app_text_color</item>
+    </style>
+    <style name="buttonLanding">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/landing_button_height</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:background">@drawable/bg_btn_landing</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="buttonSignup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/xx_large_text_size</item>
+        <item name="android:background">@color/btn_green</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="cartProductTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:paddingRight">@dimen/padding_large</item>
+        <item name="android:textColor">@color/app_text_color</item>
+    </style>
+    <style name="cartTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="cartViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/app_text_color</item>
+    </style>
+    <style name="com_facebook_loginview_default_style" parent="@android:style/Widget.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/com_facebook_button_blue</item>
+        <item name="android:textColor">@color/com_facebook_loginview_text_color</item>
+        <item name="android:textSize">@dimen/com_facebook_loginview_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/com_facebook_loginview_padding_left</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="com_facebook_loginview_silver_style" parent="@android:style/Widget.Button">
+        <item name="android:width">205dp</item>
+        <item name="android:height">44dp</item>
+        <item name="android:background">@drawable/com_facebook_loginbutton_silver</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#4B5164</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="dataNotFoundTextView">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:layout_marginTop">@dimen/data_not_found_margin</item>
+    </style>
+    <style name="descriptionTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/follow_text_height</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:textColor">@color/app_text_color</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/gray_selecter</item>
+    </style>
+    <style name="editTextSearchYourBank">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:background">@drawable/simple_ract</item>
+        <item name="android:padding">5dp</item>
+    </style>
+    <style name="editTextSignup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:background">@drawable/simple_ract</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+    <style name="linearLayoutOrderScreen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/padding_small</item>
+    </style>
+    <style name="pinTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">50dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="radioBtnStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableLeft">@drawable/radio_btn_selector</item>
+        <item name="android:padding">@dimen/padding_small</item>
+    </style>
+    <style name="supportTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/support_text_height</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:textColor">@color/app_text_color</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/gray_selecter</item>
+    </style>
+    <style name="supportViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/app_text_color</item>
+        <item name="android:layout_marginLeft">@dimen/padding_cart_list_view</item>
+    </style>
+    <style name="textViewLabel">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="textViewOrderScreen">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@color/app_text_color</item>
+    </style>
+    <style name="tooltip_bubble_text">
+	    <item name="android:textColor">@android:color/white</item>
+	    <item name="android:gravity">left</item>
+	    <item name="android:textSize">12sp</item>
+	    <item name="android:shadowDy">-1</item>
+	    <item name="android:shadowRadius">0.25</item>
+	    <item name="android:shadowColor">#40000000</item>
+    </style>
+</resources>

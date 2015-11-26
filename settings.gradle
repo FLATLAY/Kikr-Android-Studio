@@ -1,0 +1,8 @@
+include ':kikr_FacebookSDK', ':libAndroidCrop2'
+include ':kikr_app_services'
+include ':kikr_ibeacon_service'
+include ':kikr_menudrawer_lib'
+include ':instagram_library'
+include ':main'
+include ':kikr_app_ui'
+project(':libAndroidCrop2').projectDir = new File('libAndroidCrop')

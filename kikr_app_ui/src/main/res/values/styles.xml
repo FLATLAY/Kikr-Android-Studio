@@ -1,0 +1,189 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="textViewLabel">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="editTextSignup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:background">@drawable/simple_ract</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+    <style name="buttonSignup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/xx_large_text_size</item>
+        <item name="android:background">@color/btn_green</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="buttonLanding">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/landing_button_height</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:background">@drawable/bg_btn_landing</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="pinTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">50dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="editTextSearchYourBank">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:background">@drawable/simple_ract</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="textViewOrderScreen">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@color/app_text_color</item>
+    </style>
+
+    <style name="linearLayoutOrderScreen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/padding_small</item>
+    </style>
+
+    <style name="dataNotFoundTextView">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:layout_marginTop">@dimen/data_not_found_margin</item>
+    </style>
+
+    <style name="radioBtnStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableLeft">@drawable/radio_btn_selector</item>
+        <item name="android:padding">@dimen/padding_small</item>
+    </style>
+
+    <style name="BikestoreWalletFragmentDetailsTextAppearance">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="BikestoreWalletFragmentDetailsHeaderTextAppearance" parent="BikestoreWalletFragmentDetailsTextAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="buttonInterestSection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/interest_section_btn_height</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@color/app_text_color</item>
+    </style>
+
+    <style name="buttonDealSection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@color/btn_green</item>
+    </style>
+
+    <style name="buttonDealBelowMenuSection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/interest_section_btn_height</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/btn_green</item>
+    </style>
+
+    <style name="cartTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="cartProductTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:paddingRight">@dimen/padding_large</item>
+        <item name="android:textColor">@color/app_text_color</item>
+    </style>
+
+    <style name="cartViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/app_text_color</item>
+    </style>
+
+    <style name="supportTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/support_text_height</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:textColor">@color/app_text_color</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/gray_selecter</item>
+    </style>
+
+    <style name="supportViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/app_text_color</item>
+        <item name="android:layout_marginLeft">@dimen/padding_cart_list_view</item>
+    </style>
+
+    <style name="descriptionTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/follow_text_height</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:textColor">@color/app_text_color</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/gray_selecter</item>
+    </style>
+
+</resources>

@@ -1,0 +1,1810 @@
+[
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_title_bar_stub.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_title_bar_stub.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\list_item.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\list_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_friendpickerfragment.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_friendpickerfragment.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_logout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_logout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\app_text_header.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\app_text_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_size_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_size_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_checkbox.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_checkbox.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_search_bar_layout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_search_bar_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_user_cart.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_user_cart.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_overload_cart.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_overload_cart.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_kikr_user_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_kikr_user_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_follow_category.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_follow_category.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_kikr_user_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_kikr_user_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_reset_password.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_reset_password.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_twitter_friends.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_twitter_friends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_orders.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_orders.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_email.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_email.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_detail.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_detail.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_kikr_credits.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_kikr_credits.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_confirmation.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_confirmation.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_search.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_search.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_discover_detail.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_discover_detail.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_upload.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_upload.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_product_based_on_brand.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_product_based_on_brand.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\app_image_header.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\app_image_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_email.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_email.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_edit_profile.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_edit_profile.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\helpscreen_get_inspired.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\helpscreen_get_inspired.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\layout_load_more.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\layout_load_more.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_size_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_size_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\discover_fragment_new.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\discover_fragment_new.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_gw_login.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_gw_login.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_beacon_message.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_beacon_message.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pin_auth.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_pin_auth.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_phone_number.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_phone_number.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_post.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_post.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_product_based_on_brand.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_product_based_on_brand.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_wallet_pin.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_wallet_pin.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_checkout.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_checkout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_change_wallet_pin.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_change_wallet_pin.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\cart_dialog.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\cart_dialog.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\user_image_view.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\user_image_view.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\list_group.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\list_group.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_orders.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_orders.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\notification_template_lines.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\header_listview_basedproduct.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\header_listview_basedproduct.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_featured_large.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_featured_large.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_comments.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_comments.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\pager_image.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\pager_image.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\menu_right.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\menu_right.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_learn_more_outside_us.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_learn_more_outside_us.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_email.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_email.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_follwer_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_follwer_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_placepickerfragment.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_placepickerfragment.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_tag_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_tag_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_discover_large.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_discover_large.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_upload.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_upload.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_image.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_image.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\collection_detail_header.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\collection_detail_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_settings_payment_cards.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_settings_payment_cards.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_follwer_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_follwer_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_login_activity_layout.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_login_activity_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_interest_section.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_interest_section.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_search.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_search.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_landing.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_landing.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_cart_detail.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_cart_detail.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_color_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_color_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\helpscreen_kikrcards.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\helpscreen_kikrcards.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_quantity.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_quantity.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_buy_options.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_buy_options.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\footer.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\footer.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\list_group.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\list_group.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_discover_header.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_discover_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\instagram_library\\unspecified\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_reset_password.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_reset_password.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_track_order.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_track_order.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_kikr_user_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_kikr_user_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_default_lifestyle_images.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_default_lifestyle_images.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_settings_payment_cards.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_settings_payment_cards.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_tag_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_tag_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_address.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_address.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_add_bank.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_add_bank.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_createaccount.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_createaccount.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_featured.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_featured.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_shipping_info.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_shipping_info.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_track_order.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_track_order.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_payment_cards.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_payment_cards.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\crop__layout_done_cancel.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\libAndroidCrop2\\unspecified\\res\\layout\\crop__layout_done_cancel.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_friendpickerfragment.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_friendpickerfragment.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\edit_product_item.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\edit_product_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_activity_months.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_activity_months.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_payment_cards.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_payment_cards.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\crop__activity_crop.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\libAndroidCrop2\\unspecified\\res\\layout\\crop__activity_crop.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\user_image_view.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\user_image_view.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_buy_options.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_buy_options.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dum_googlewallet.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dum_googlewallet.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_shipping_address.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_shipping_address.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_brand_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_interest_brand_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\helpscreen_openmenu.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\helpscreen_openmenu.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_myfriends.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_myfriends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_activity_collection_detail.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_activity_collection_detail.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_store_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_interest_store_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_video_grid.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_video_grid.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_deals.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_deals.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_user_cart.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_user_cart.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_purchase_guarantee.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_purchase_guarantee.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pin.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_pin.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_overload_cart.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_overload_cart.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_change_wallet_pin.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_change_wallet_pin.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\list_item.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\list_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_progres_bar.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_progres_bar.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_edit_description.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_edit_description.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\help_socialmedia.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\help_socialmedia.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\image_category.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\image_category.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_beacon_main.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_beacon_main.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_product_detail_webview.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_product_detail_webview.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_activity_circle_row.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_activity_circle_row.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_quantity_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_quantity_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_kikr_learn_more.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_kikr_learn_more.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_myfriends.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_myfriends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_fb_login.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_fb_login.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_follow_brands.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_follow_brands.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_inspiration_large.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_inspiration_large.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_kikr_credits.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_kikr_credits.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_post.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_post.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_merchants.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_merchants.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_credit_card.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_credit_card.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_follow_store.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_follow_store.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_order_complete.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_order_complete.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_follow_categories.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_follow_categories.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\help_invite_friends.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\help_invite_friends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_credit_card.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_credit_card.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_follow_categories_new.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_follow_categories_new.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\app_image_header.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\app_image_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\menu_right.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\menu_right.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_deals.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_deals.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_gw_login.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_gw_login.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\mr_media_route_chooser_dialog.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\layout\\mr_media_route_chooser_dialog.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_card_info.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_card_info.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\order_group_item.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\order_group_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_edit_purchase_item.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_edit_purchase_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\tupple_monitoring.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\tupple_monitoring.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_lifestyle_images.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_lifestyle_images.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\edit_product_item.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\edit_product_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_usersettingsfragment.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_usersettingsfragment.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_card.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_card.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\app_normal_header.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\app_normal_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_collection_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_collection_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_delete_comment.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_delete_comment.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\app_text_header.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\app_text_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_learn_more_outside_us.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_learn_more_outside_us.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_change_email.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_change_email.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_merchants.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_merchants.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pin_auth.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_pin_auth.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\help_socialmedia.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\help_socialmedia.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_place_my_order.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_place_my_order.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\header_listview_basedproduct.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\header_listview_basedproduct.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_monitor.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_monitor.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_social_account.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_social_account.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_quantity.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_quantity.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pin.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_pin.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_product_detail_webview.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_product_detail_webview.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_follow_store.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_follow_store.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_splash.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_user.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_user.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_fb_sign_in.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_fb_sign_in.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_landing.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_landing.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\app_discover_header.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\app_discover_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\help_invite_friends.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\help_invite_friends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_tooltip_bubble.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_tooltip_bubble.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_alert.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_alert.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_login_activity_layout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_login_activity_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_follow_categories.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_follow_categories.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_twitter_friends.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_twitter_friends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_activity_collection_detail.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_activity_collection_detail.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_category_list_new.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_interest_category_list_new.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_kikr_credits_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_kikr_credits_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\app_normal_header.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\app_normal_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_activity_page.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_activity_page.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_product_from_cart.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_product_from_cart.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_facebook_friends.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_facebook_friends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_follow_brands.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_follow_brands.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_discover_small.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_discover_small.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_search_box.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_search_box.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_coupon_search.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_coupon_search.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_search_results.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_search_results.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_activity_circle_row.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_activity_circle_row.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_deals.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_deals.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_settings_shipping_address.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_settings_shipping_address.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\app_discover_header.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\app_discover_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_placepickerfragment_list_row.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_placepickerfragment_list_row.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\empty_cart.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\empty_cart.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_edit_inspiration.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_edit_inspiration.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_wallet_pin.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_wallet_pin.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_address.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_address.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\layout_wallet_card.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\layout_wallet_card.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_discover.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_discover.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_list_row.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_list_row.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_detail.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_detail.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_shipping_info.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_shipping_info.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\list_subgroup_item.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\list_subgroup_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_add_collection.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_add_collection.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_people_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_interest_people_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\helpscreen_openmenu.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\helpscreen_openmenu.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_checkbox.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_checkbox.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_signup.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_signup.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_coupon_search.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_coupon_search.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_createaccount.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_createaccount.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_list_row.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_list_row.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_edit_description.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_edit_description.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_inspiration_large.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_inspiration_large.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_title_bar.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_title_bar.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_follow_category.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_follow_category.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\layout_wallet_card.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\layout_wallet_card.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\brand_store_category.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\brand_store_category.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_deals.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_deals.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\instagram_library\\unspecified\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_kikr_credits_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_kikr_credits_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\list_category.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\list_category.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_welcome.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_welcome.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_splash.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_tag_image.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_tag_image.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_placepickerfragment.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_placepickerfragment.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_list_section_header.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_list_section_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_coupon_search.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_coupon_search.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\kikr_card_view.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\kikr_card_view.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_phone_number.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_phone_number.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_old_tag.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_old_tag.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_lifestyle_images.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_lifestyle_images.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\interest_header.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\interest_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\crop__layout_done_cancel.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\libAndroidCrop2\\unspecified\\res\\layout\\crop__layout_done_cancel.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_grid_video.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_grid_video.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_twitter_friends.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_twitter_friends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_color_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_color_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_edit_profile.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_edit_profile.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_section.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_section.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_profile.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_profile.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_twitter_friends.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_twitter_friends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_follow_brands.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_follow_brands.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\layout_kikr_bubbles.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\layout_kikr_bubbles.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_cart_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_cart_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_interest_section.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_interest_section.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_user.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_user.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_featured.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_featured.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_category_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_interest_category_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\category_row.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\category_row.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_discover.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_discover.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_usersettingsfragment.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_usersettingsfragment.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_base.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_base.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\cart_dialog.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\cart_dialog.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_discover_large.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_discover_large.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\discover_fragment_new.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\discover_fragment_new.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_add_collection.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_add_collection.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_purchase_guarantee.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_purchase_guarantee.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_settings_shipping_address.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_settings_shipping_address.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\profile_header_layout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\profile_header_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_fb_friends.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_fb_friends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_list_section_header.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_list_section_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_fb_login.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_fb_login.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_default_lifestyle_images.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_default_lifestyle_images.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_facebook_friends.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_facebook_friends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_collection_option_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_collection_option_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_collection_product.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_collection_product.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_placepickerfragment_list_row.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_placepickerfragment_list_row.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_discover_small.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_discover_small.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_add_bank.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_add_bank.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\tooltip.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\main\\unspecified\\res\\layout\\tooltip.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\mr_media_route_list_item.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\layout\\mr_media_route_list_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_gw_login.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_gw_login.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_tag_image.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_tag_image.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_profile.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_profile.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_title_bar.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_title_bar.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\helpscreen_presshere_menu.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\helpscreen_presshere_menu.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\menu_left.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\menu_left.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_kikr_tutorial.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_kikr_tutorial.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_kikrcreditmonthbreakdown.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_kikrcreditmonthbreakdown.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_comments.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_comments.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_base.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_base.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_product_based_on_brand.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_product_based_on_brand.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_full_wallet_confirmation_button.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_full_wallet_confirmation_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\menu_left.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\menu_left.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_tooltip_bubble.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_tooltip_bubble.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_kikr_user_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_kikr_user_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_search.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_search.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_cart_detail.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_cart_detail.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_settings.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_settings.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_activity_page.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_activity_page.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_video_grid.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_video_grid.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\layout_kikr_bubbles.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\layout_kikr_bubbles.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_old_tag.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_old_tag.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_category_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_interest_category_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dum_googlewallet.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dum_googlewallet.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_store_deals.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_store_deals.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\helpscreen_presshere_menu.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\helpscreen_presshere_menu.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_cart_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_cart_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\layout_load_more.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\layout_load_more.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_add_bank.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_add_bank.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_store_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_interest_store_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\footer.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\footer.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_edit_purchase_item.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_edit_purchase_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\profile_header_layout.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\profile_header_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_profile.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_profile.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\empty_cart.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\empty_cart.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_collection_list_item.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_collection_list_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_activity_page.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_activity_page.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_activity_months.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_activity_months.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_search_results.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_search_results.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_settings.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_settings.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\pager_image.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\pager_image.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_static_page.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_static_page.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_delete_post.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_delete_post.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_monitor.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_monitor.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_search_bar_layout.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_search_bar_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_collection_list_item.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_collection_list_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_product_based_on_brand.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_product_based_on_brand.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_add_bank.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_add_bank.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_profile.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_profile.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_tag.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_tag.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_discover.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_discover.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_section.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_section.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\category_row.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\category_row.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\interest_header.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\interest_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_google_wallet_buy.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_google_wallet_buy.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_activity_page.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_activity_page.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_title_bar_stub.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_title_bar_stub.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_card.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_card.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_brand_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_interest_brand_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_progres_bar.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_progres_bar.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\helpscreen_get_inspired.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\helpscreen_get_inspired.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_search_box.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_search_box.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\filepaths.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\filepaths.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\mr_media_route_controller_material_dialog_b.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\layout\\mr_media_route_controller_material_dialog_b.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_welcome.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_welcome.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_follow_category_new.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_follow_category_new.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\kikr_card_view.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\kikr_card_view.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_email.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_email.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_kikr_credits_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_kikr_credits_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_alert.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_alert.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_support.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_support.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_featured_large.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_featured_large.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_kikrcreditmonthbreakdown.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_kikrcreditmonthbreakdown.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_collection_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_collection_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\layout_item_not_found.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\layout_item_not_found.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\collection_detail_header.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\collection_detail_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_breakdown.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_breakdown.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_kikr_credits_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_kikr_credits_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\kiker_wallet_cards.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\kiker_wallet_cards.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\tupple_monitoring.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\tupple_monitoring.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_delete_post.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_delete_post.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\helpscreen_kikrcards.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\helpscreen_kikrcards.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_discover.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_discover.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_discover_detail.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_discover_detail.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_shipping_address.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_shipping_address.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_category_list_new.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_interest_category_list_new.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_kikr_tutorial.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_kikr_tutorial.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_activity_months.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_activity_months.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\order_group_item.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\order_group_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_collection_option_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_collection_option_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_order_complete.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_order_complete.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_edit_inspiration.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_edit_inspiration.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_google_wallet_buy.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_google_wallet_buy.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\brand_store_category.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\brand_store_category.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_product_from_cart.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_product_from_cart.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_change_password.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_change_password.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_full_wallet_confirmation_button.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_full_wallet_confirmation_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_search.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_search.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_follow_category_new.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_follow_category_new.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\layout_item_not_found.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\layout_item_not_found.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\filepaths.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\filepaths.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_breakdown.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_breakdown.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\list_category.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\list_category.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_image.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\layout\\com_facebook_picker_image.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_follow_store.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_follow_store.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_fb_friends.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_fb_friends.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_social_account.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_social_account.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_people_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_interest_people_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\wallet_card_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\wallet_card_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_follow_store.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_follow_store.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_place_my_order.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_place_my_order.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_store_deals.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_store_deals.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_support.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_support.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_card_info.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_card_info.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_change_email.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_change_email.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_change_password.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_change_password.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_quantity_list.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_quantity_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_logout.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_logout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_static_page.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_static_page.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\image_category.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\image_category.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_checkout.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_checkout.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_gw_login.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_gw_login.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_follow_categories_new.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_follow_categories_new.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_beacon_main.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_beacon_main.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\tooltip.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\main\\unspecified\\res\\layout\\tooltip.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_follow_brands.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_follow_brands.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_coupon_search.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_coupon_search.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\list_subgroup_item.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\list_subgroup_item.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_confirmation.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_confirmation.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_all_orders.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_all_orders.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_beacon_message.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_beacon_message.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_grid_video.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_grid_video.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_signup.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_signup.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_discover_header.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_discover_header.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_fb_sign_in.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_fb_sign_in.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\crop__activity_crop.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\libAndroidCrop2\\unspecified\\res\\layout\\crop__activity_crop.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_simple_dropdown_hint.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\layout\\abc_simple_dropdown_hint.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_collection_product.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\adapter_collection_product.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_activity_months.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_activity_months.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_all_orders.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\fragment_all_orders.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_kikr_learn_more.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\activity_kikr_learn_more.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_remove_tag.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_remove_tag.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\kiker_wallet_cards.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\kiker_wallet_cards.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\wallet_card_list.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\wallet_card_list.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_delete_comment.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\layout\\dialog_delete_comment.xml"
+    }
+]

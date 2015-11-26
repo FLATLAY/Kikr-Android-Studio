@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/user_profile"
+        layout="@layout/profile_header_layout" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/profile_btn_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/follow_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <Button
+                    android:id="@+id/follow_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/follow_btn_height"
+                    android:layout_marginLeft="@dimen/padding_large"
+                    android:background="@drawable/gray_corner_button"
+                    android:text="Follow"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/collection_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="0\nCollections"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="@dimen/small_text_size" />
+
+                <ImageView
+                    android:id="@+id/up_arrow_image_first"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/uparrow_jpeg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/follower_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="0\nfollowers"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="@dimen/small_text_size" />
+
+                <ImageView
+                    android:id="@+id/up_arrow_image_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/uparrow"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/following_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="0\nfollowing"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="@dimen/small_text_size" />
+
+                <ImageView
+                    android:id="@+id/up_arrow_image_third"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/uparrow"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/profile_btn_layout"
+            android:layout_marginTop="-2dp"
+            android:background="@color/btn_gray" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/noCollectionText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/help_nocollection_text"
+        android:textColor="@color/app_text_color"
+        android:textSize="@dimen/large_text_size" />
+
+    <LinearLayout
+        android:id="@+id/layoutPeopleStoreBrand"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@color/app_background" >
+
+        <Button
+            android:id="@+id/interest_people_button"
+            style="@style/buttonInterestSection"
+            android:layout_weight="1"
+            android:background="@drawable/ic_interest_button_bg_active"
+            android:text="@string/people_text" />
+        
+        <Button
+            android:id="@+id/interest_store_button"
+            style="@style/buttonInterestSection"
+            android:layout_weight="1"
+            android:background="@drawable/ic_interest_button_bg_inactive"
+            android:text="@string/store_text" />
+
+        <Button
+            android:id="@+id/interest_brand_button"
+            style="@style/buttonInterestSection"
+            android:layout_weight="1"
+            android:background="@drawable/ic_interest_button_bg_inactive"
+            android:text="@string/brand_text" />
+
+    </LinearLayout>
+    
+    <include
+        android:id="@+id/itemNotFound"
+        layout="@layout/layout_item_not_found"
+        android:visibility="gone" />
+    
+    <ListView
+        android:id="@+id/collection_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" >
+    </ListView>
+
+</LinearLayout>

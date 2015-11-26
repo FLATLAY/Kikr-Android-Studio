@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.7" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/instagram_library" />
+            <option value="$PROJECT_DIR$/kikr_FacebookSDK" />
+            <option value="$PROJECT_DIR$/kikr_app_services" />
+            <option value="$PROJECT_DIR$/kikr_app_ui" />
+            <option value="$PROJECT_DIR$/kikr_ibeacon_service" />
+            <option value="$PROJECT_DIR$/kikr_menudrawer_lib" />
+            <option value="$PROJECT_DIR$/libAndroidCrop" />
+            <option value="$PROJECT_DIR$/main" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

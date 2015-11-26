@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/trendingGalsLinearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="@dimen/addBank_image_size"
+            android:layout_height="@dimen/addBank_image_size"
+            android:scaleType="fitXY"
+            android:src="@drawable/girlsarrow" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="fill_parent"
+            android:background="@color/app_background" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="@string/trending_gals_text"
+            android:textColor="@color/app_text_color"
+            android:textSize="@dimen/xx_large_text_size" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/app_background" />
+
+    <LinearLayout
+        android:id="@+id/trendingGuysLinearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="@dimen/addBank_image_size"
+            android:layout_height="@dimen/addBank_image_size"
+            android:scaleType="fitXY"
+            android:src="@drawable/mensarrow" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="fill_parent"
+            android:background="@color/app_background" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="@string/trending_guys_text"
+            android:textColor="@color/app_text_color"
+            android:textSize="@dimen/xx_large_text_size" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/app_background" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_small"
+        android:text="@string/suggested_friends_text"
+        android:textColor="@color/app_text_color"
+        android:textSize="@dimen/large_text_size" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/app_background" />
+   
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/layoutNoDataGalGuy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/no_data_found"
+        android:clickable="true"
+        android:textSize="@dimen/large_text_size" />
+	
+</LinearLayout>

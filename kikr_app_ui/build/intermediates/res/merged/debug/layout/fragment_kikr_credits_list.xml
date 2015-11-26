@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_background"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/itemNotFound"
+        layout="@layout/layout_item_not_found"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/months_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/list_background"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" >
+    </ListView>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+
+    <LinearLayout
+        android:id="@+id/profile_btn_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/padding_large" >
+
+        <TextView
+            android:id="@+id/total_payout_text"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/follow_btn_height"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="@color/app_text_color"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            android:id="@+id/kikr_commission_text"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/follow_btn_height"
+            android:layout_marginRight="@dimen/margin_large"
+            android:gravity="center_vertical"
+            android:text="Kikr credit details"
+            android:textColor="@color/btn_green"
+            android:textSize="@dimen/very_small_text_size" />
+    </LinearLayout>
+
+</LinearLayout>

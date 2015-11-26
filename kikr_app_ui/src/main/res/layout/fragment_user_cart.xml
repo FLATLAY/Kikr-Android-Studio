@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/emptyCartText"
+        layout="@layout/empty_cart"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/cartItemsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/checkout_layout"
+        android:background="@color/white"
+        android:cacheColorHint="#00000000"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" >
+    </ListView>
+
+    <!-- <LinearLayout
+        android:id="@+id/subtotal_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_above="@+id/checkout_layout"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_small"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/subtotal_text"
+            android:textSize="@dimen/medium_text_size" />
+
+        <TextView
+            android:id="@+id/subtotalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/medium_text_size" />
+    </LinearLayout> -->
+
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/checkout_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/btn_gray"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/proceed_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/proceed_order_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_large_text_size" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/loadingBar"
+	    android:layout_width="match_parent"
+	    android:layout_alignParentBottom="true"
+	    android:layout_height="@dimen/button_height">
+
+	    <ProgressBar
+	        android:id="@+id/progressBarCart"
+	        style="@android:style/Widget.ProgressBar.Horizontal"
+	        android:layout_width="match_parent"
+	        android:progressDrawable="@drawable/progress_bar_teal"
+	        android:layout_height="@dimen/button_height" />
+	
+	    <TextView
+	        android:id="@+id/txtMessageBar"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/button_height"
+	        android:gravity="center_vertical|center_horizontal"
+	        android:text="Contacting Merchants for Availability"
+	        android:textColor="@color/white" 
+	        android:textSize="@dimen/large_text_size"
+	        android:textStyle="bold" />
+  
+	</FrameLayout>  
+    
+  
+</RelativeLayout>

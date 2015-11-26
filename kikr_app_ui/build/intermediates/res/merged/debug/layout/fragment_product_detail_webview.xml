@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/add_favorite_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="@dimen/padding_large"
+            android:text="@string/add_favorites"
+            android:textSize="@dimen/large_text_size" />
+
+        <ImageView
+            android:id="@+id/favorite_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_large"
+            android:src="@drawable/ic_deals_unfavorite" />
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/webview1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/add_favorite_layout" />
+
+    <ProgressBar
+        android:id="@+id/progressBarWebView"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+        
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+
+        <LinearLayout
+            android:id="@+id/overlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/thirdparty"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:background="@color/aquamarine2"
+                android:gravity="center"
+                android:padding="16dp"
+                android:lineSpacingExtra="4dp"
+                android:text="You are currently on a 3rd party site.\nAdd it in the Kikr cart to earn credits!"
+                android:textColor="@color/app_text_color"
+                android:textSize="@dimen/large_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/usekikr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/aquamarine2"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:text="Use your Kikr Pin Button"
+                android:textColor="@color/app_text_color"
+                android:textStyle="bold"
+                android:textSize="@dimen/large_text_size" />
+            <TextView
+                android:id="@+id/usekikrs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/aquamarine2"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:text=""
+                android:textColor="@color/app_text_color"
+                android:textStyle="bold"
+                android:textSize="@dimen/large_text_size" />
+            
+            <TextView
+                android:id="@+id/learnMore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/aquamarine2"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:text="Learn More"
+                android:textColor="@color/app_text_color"
+                android:textSize="@dimen/medium_text_size" />
+
+            <TextView
+                android:id="@+id/dismiss"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background_webviewbuttons"
+                android:gravity="center"
+                android:text="HIDE"
+                android:textColor="@color/app_text_color"
+                android:textSize="@dimen/large_text_size" />
+        </LinearLayout>
+        
+        <ImageButton
+            android:id="@+id/btnBubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="210dp"
+            android:background="@drawable/rounded_button"
+            android:gravity="center"
+            android:padding="16dp"
+            android:src="@drawable/kikrhighlight_small"
+            android:visibility="visible" />
+    </FrameLayout>
+
+</RelativeLayout>

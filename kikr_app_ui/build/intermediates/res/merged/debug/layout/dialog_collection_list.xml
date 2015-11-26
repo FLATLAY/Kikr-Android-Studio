@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/collection_list_dialog_dimension"
+    android:layout_height="@dimen/collection_list_dialog_dimension"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_small"
+        android:layout_marginTop="@dimen/padding_small">
+
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:layout_margin="@dimen/padding_large"
+	        android:text="@string/collection_text_heading"
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/xx_large_text_size" />
+    
+	    <TextView
+        	android:id="@+id/share_collection_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/padding_large"
+            android:text="Share"
+            android:textColor="@color/app_text_color"
+            android:textSize="@dimen/large_text_size" />
+	    
+    </RelativeLayout>
+    
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+
+    <LinearLayout
+        android:id="@+id/add_collection_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_small"
+        android:layout_marginTop="@dimen/padding_small"
+        android:padding="@dimen/padding_large"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_large"
+            android:layout_weight="1"
+            android:text="@string/add_collection_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large_text_size" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/add_collection_image_height"
+            android:layout_marginLeft="@dimen/padding_large"
+            android:layout_weight="1"
+            android:src="@drawable/ic_add_collection" />
+    </LinearLayout>
+   
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+
+    <ProgressBar
+        android:id="@+id/progressBarCollection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/collection_listing"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+    </ListView>
+
+</LinearLayout>

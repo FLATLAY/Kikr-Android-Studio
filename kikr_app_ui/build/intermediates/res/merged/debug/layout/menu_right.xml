@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/menu_background"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/menu_background"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/kikerWalletLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_option_height"
+                android:background="@color/menu_option_background"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_margin_left"
+                    android:contentDescription="@null"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_menu_kikr" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:text="@string/my_wallet"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/large_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/round_ract"
+                    android:text="@string/dummy_price"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/large_text_size" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/devider_height" />
+
+            <LinearLayout
+                android:id="@+id/menuMyCitiAccountLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_option_height"
+                android:background="@color/menu_option_background"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_margin_left"
+                    android:layout_weight="1"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_menu_mycitiaccount" />
+
+                <ImageView
+                    android:id="@+id/menuMyCitiAccArrowImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_margin_left"
+                    android:layout_marginRight="15dp"
+                    android:contentDescription="@null"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_menu_arrow_down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menuMyCityAccountOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/menu_margin_left"
+                        android:layout_marginRight="@dimen/menu_margin_left"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_menu_thank_you_rewords" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/menu_right_text_margin_left"
+                        android:layout_weight="1"
+                        android:text="@string/retail_banking"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/large_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/menu_right_text_margin_left"
+                        android:layout_weight="1"
+                        android:text="@string/my_account_dashboard"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/large_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/menu_right_text_margin_left"
+                        android:layout_weight="1"
+                        android:text="@string/add_funds"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/large_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/menu_right_text_margin_left"
+                        android:layout_weight="1"
+                        android:text="@string/update_citi_account"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/large_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/menu_right_text_margin_left"
+                        android:layout_weight="1"
+                        android:text="@string/delete_citi_account"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/large_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/devider_height" />
+
+            <LinearLayout
+                android:id="@+id/menuOtherWalletsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_option_height"
+                android:background="@color/menu_option_background"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <ImageView
+                    android:layout_width="@dimen/menu_option_image"
+                    android:layout_height="@dimen/menu_option_image"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_margin_left"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_menu_wallets" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_text_margin_left"
+                    android:layout_weight="1"
+                    android:text="@string/other_wallets"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/large_text_size" />
+
+                <ImageView
+                    android:id="@+id/menuOtherWalletsArrowImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_margin_left"
+                    android:layout_marginRight="15dp"
+                    android:contentDescription="@null"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_menu_arrow_down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menuOtherWalletsOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" 
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/menuapplePayOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" 
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/menu_margin_left"
+                        android:layout_marginRight="@dimen/menu_margin_left"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_menu_wallet_passbook" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:id="@+id/menuGoogleWalletOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/menu_margin_left"
+                        android:layout_marginRight="@dimen/menu_margin_left"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_menu_wallet_google" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:id="@+id/menuPaypalOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/menu_margin_left"
+                        android:layout_marginRight="@dimen/menu_margin_left"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_menu_wallet_paypal" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/menuVmeVisaOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/menu_margin_left"
+                        android:layout_marginRight="@dimen/menu_margin_left"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_menu_wallet_visa" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/devider_height" />
+
+            <LinearLayout
+                android:id="@+id/menuLoyaltyCardsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_option_height"
+                android:background="@color/menu_option_background"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:layout_width="@dimen/menu_option_image"
+                    android:layout_height="@dimen/menu_option_image"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_margin_left"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_menu_loyalty" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_text_margin_left"
+                    android:layout_weight="1"
+                    android:text="@string/loyalty_cards"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/large_text_size" />
+
+                <ImageView
+                    android:id="@+id/menuLoyaltyCardsArrowImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_margin_left"
+                    android:layout_marginRight="15dp"
+                    android:contentDescription="@null"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_menu_arrow_down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menuLoyaltyCardsOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:id="@+id/menuTargetOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/menu_margin_left"
+                        android:layout_marginRight="@dimen/menu_margin_left"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_menu_card_target" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:id="@+id/menuPogurtlandOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/menu_margin_left"
+                        android:layout_marginRight="@dimen/menu_margin_left"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_menu_card_yogurtland" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/devider_height" />
+
+                <LinearLayout
+                    android:id="@+id/menuGAPOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/menu_margin_left"
+                        android:layout_marginRight="@dimen/menu_margin_left"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_menu_card_gap" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp" 
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        >
+        
+        <TextView
+            android:id="@+id/categoryNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Men's Fashion"
+            android:layout_centerInParent="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x_large_text_size" />
+        
+        <Button 
+            android:id="@+id/followBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/follow_interest_selector"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:textColor="@color/black"
+            android:padding="8dp"
+            android:text=" Follow "/>
+        
+        
+    </RelativeLayout>
+    
+    <HorizontalScrollView
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+	    android:id="@+id/horizontalScroll"
+	    android:orientation="horizontal" 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" >
+    
+       	<LinearLayout
+           android:id="@+id/linearLayout"
+       	   android:layout_marginRight="4dp"
+       	   android:layout_marginLeft="4dp"
+       	   android:layout_marginBottom="8dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+       
+       	
+       	</LinearLayout>
+        
+    </HorizontalScrollView>
+    
+    
+</LinearLayout>

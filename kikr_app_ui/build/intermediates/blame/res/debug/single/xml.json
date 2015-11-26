@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\xml\\ecommerce_tracker.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\xml\\ecommerce_tracker.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\xml\\global_tracker.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\xml\\global_tracker.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\xml\\global_tracker.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\xml\\global_tracker.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\xml\\ecommerce_tracker.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\xml\\ecommerce_tracker.xml"
+    }
+]

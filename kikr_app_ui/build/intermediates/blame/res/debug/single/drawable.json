@@ -1,0 +1,758 @@
+[
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_check.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_check.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_blue_normal.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_blue_normal.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_pause_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_pause_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\gray_selecter.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\gray_selecter.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_selector_disabled.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_selector_disabled.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_icon.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_icon.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_top_background.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_top_background.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_indicater_unselected.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\tab_indicater_unselected.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\white_image.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\white_image.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_icon_selected.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_icon_selected.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_pressed.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_pressed.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_selector_disabled.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_selector_disabled.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_close.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_close.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\button_activity.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\button_activity.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_usersettingsfragment_background_gradient.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_usersettingsfragment_background_gradient.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_icon_selected.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_icon_selected.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\rounded_button.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\rounded_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_top_background.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_top_background.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_background_selected.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_background_selected.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_bar_background.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\tab_bar_background.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_grey_focused.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_grey_focused.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_top_button.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_top_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_dark.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_grey_pressed.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_grey_pressed.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\gray_selecter.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\gray_selecter.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_settings_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_settings_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\check_selector.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\check_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_selector.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\vpi__tab_indicator.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\fr.avianey.com.viewpagerindicator\\library\\2.4.1\\res\\drawable\\vpi__tab_indicator.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\gray_corner_button.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\gray_corner_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_close.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_close.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_list_section_header_background.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_list_section_header_background.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_list_divider.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_list_divider.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\button_activity.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\button_activity.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\card_selector.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\card_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_mono_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_media_route_mono_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\follow_selector.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\follow_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_dialog_material_background_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\simple_ract.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\simple_ract.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\black_round_ract.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\black_round_ract.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\background_webviewbuttons.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\background_webviewbuttons.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_blue_focused.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_blue_focused.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_grey_pressed.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_grey_pressed.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\applyfilter_selector.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\applyfilter_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\discover_rect.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\discover_rect.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\corner_button.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\corner_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_blue_pressed.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_pressed.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_pressed.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_pause_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_pause_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\selected_ract.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\selected_ract.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_usersettingsfragment_background_gradient.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_usersettingsfragment_background_gradient.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\crop__texture.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\libAndroidCrop2\\unspecified\\res\\drawable\\crop__texture.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_background_selected.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_background_selected.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\radio_btn_selector.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\radio_btn_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_play_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_play_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_profile_picture_blank_portrait.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_profile_picture_blank_portrait.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_notification_connecting.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast\\8.3.0\\res\\drawable\\cast_ic_notification_connecting.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_loginbutton_silver.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_loginbutton_silver.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\round_ract_wide.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\round_ract_wide.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\fabcircle.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\fabcircle.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\card_selector.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\card_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_selected.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_selected.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\black_round_ract.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\black_round_ract.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_edit_text_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_plus_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\follow_brand_store_selector.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\follow_brand_store_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\blue_corner_button.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\blue_corner_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\follow_interest_selector.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\follow_interest_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_plus_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\follow_interest_selector.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\follow_interest_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\gradient_box.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\gradient_box.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_longpressed.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_longpressed.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_profile_default_icon.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_profile_default_icon.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_item_background.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_item_background.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\crop__texture.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\libAndroidCrop2\\unspecified\\res\\drawable\\crop__texture.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_plus_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_top_button.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_top_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_top_button.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_top_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_icon.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_icon.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_inverse_icon.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_inverse_icon.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_longpressed.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_longpressed.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_check_on.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_check_on.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_blue_pressed.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_blue_normal.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_blue_normal.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\blue_corner_button.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\blue_corner_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_grey_normal.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_grey_normal.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_background.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_background.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_light.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_plus_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\selecter_follow_brands.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\selecter_follow_brands.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_pressed.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_pressed.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_grey_focused.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_grey_focused.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_dark.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_plus_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\round_ract.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\round_ract.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\round_ract.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\round_ract.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\simple_ract.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\simple_ract.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_inverse_icon.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_inverse_icon.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_blue_focused.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_blue_focused.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\applyfilter_selector.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\applyfilter_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_bar_background.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\tab_bar_background.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_list_section_header_background.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_list_section_header_background.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_background.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_background.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_dark.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_plus_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_selector_background_transition.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_selector_background_transition.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_logo.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_logo.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\rounded_button.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\rounded_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\progress_bar_teal.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\progress_bar_teal.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_profile_default_icon.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_profile_default_icon.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\circle_icon.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\circle_icon.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_indicater_selected.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\tab_indicater_selected.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\defpin.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\main\\unspecified\\res\\drawable\\defpin.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\check_selector.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\check_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\vpi__tab_indicator.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\fr.avianey.com.viewpagerindicator\\library\\2.4.1\\res\\drawable\\vpi__tab_indicator.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_profile_picture_blank_square.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_profile_picture_blank_square.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_dialog_material_background_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\fabcircle.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\fabcircle.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_btn_check_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_check_off.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_check_off.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like_selected.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like_selected.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_logo.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_logo.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_list_divider.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_list_divider.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_light.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_plus_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_like.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_like.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\discover_rect.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\discover_rect.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\crop__selectable_background.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\libAndroidCrop2\\unspecified\\res\\drawable\\crop__selectable_background.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_settings_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_settings_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\follow_selector.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\follow_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_selector_background_transition.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_selector_background_transition.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_focused.9.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_focused.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\white_image.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\white_image.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\gray_corner_button.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\gray_corner_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_profile_picture_blank_square.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_profile_picture_blank_square.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_profile_picture_blank_portrait.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_profile_picture_blank_portrait.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_pressed.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_pressed.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\crop__selectable_background.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\libAndroidCrop2\\unspecified\\res\\drawable\\crop__selectable_background.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_blue.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_blue.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_place_default_icon.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_place_default_icon.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\progress_bar_teal.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\progress_bar_teal.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_check.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_check.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_full_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_ratingbar_full_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_item_background.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_item_background.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_selector.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\background_webviewbuttons.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\background_webviewbuttons.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_check_on.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_check_on.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_place_default_icon.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_place_default_icon.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_blue.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_blue.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_mono_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_media_route_mono_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_connecting_mono_dark.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_media_route_connecting_mono_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_plus_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\drawable\\abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_media_route_connecting_mono_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_media_route_connecting_mono_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\round_ract_wide.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\round_ract_wide.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_dark.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_list_focused.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_list_focused.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_indicater_selected.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\tab_indicater_selected.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\circle_icon.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\circle_icon.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_loginbutton_silver.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_loginbutton_silver.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\radio_btn_selector.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\radio_btn_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_indicater_unselected.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\tab_indicater_unselected.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\gradient_box.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\gradient_box.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_picker_top_button.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_picker_top_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_play_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\drawable\\mr_ic_play_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\defpin.png",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\main\\unspecified\\res\\drawable\\defpin.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\follow_brand_store_selector.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\follow_brand_store_selector.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\selected_ract.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\selected_ract.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_grey_normal.9.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_grey_normal.9.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_check_off.png",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable\\com_facebook_button_check_off.png"
+    },
+    {
+        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light.xml",
+        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\corner_button.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\corner_button.xml"
+    },
+    {
+        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\selecter_follow_brands.xml",
+        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\src\\main\\res\\drawable\\selecter_follow_brands.xml"
+    }
+]

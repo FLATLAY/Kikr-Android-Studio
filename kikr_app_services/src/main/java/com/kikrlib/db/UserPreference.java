@@ -1,0 +1,288 @@
+package com.kikrlib.db;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+
+import com.kikrlib.AppContext;
+import com.kikrlib.utils.Syso;
+
+public class UserPreference {
+
+	public static String FACEBOOK="facebook";
+	public static String TWIITER="twitter";
+	public static String EMAIL="email";
+	private static String PIC_FILENAME = "Kikr.file_name";
+
+	private String TAG = this.getClass().getSimpleName();
+	private SharedPreferences mPrefs;
+	private Editor mPrefsEditor;
+
+	private final String mUserId = "mUserId";
+	private final String mCartId = "mCartId";
+	private final String mTwotapCartId = "mTwotapCartId";
+	private final String mUserName = "mUserName";
+	private final String mProfilePic = "mProfilePic";
+	private final String mBgImage = "mBgImage";
+	private final String mEmailId = "mEmailId";
+	private final String mPassword = "mPassword";
+
+	private final String mIsCreateWalletPin = "isCreateWalletPin";
+	private final String mConnectedByFB = "mConnectedByFB";
+	private final String mConnectedByTwitter = "mConnectedByTwitter";
+	private final String mCheckedIsConnected = "mCheckedIsConnected";
+	private final String mCurrentScreen = "mCurrentScreen";
+	private final String mIsCheckBluetooth = "mIsCheckBluetooth";
+	private final String mIsRefreshProfile = "mIsRefreshProfile";
+	private final String cartCount = "cartCount";
+	private final String mFinalPrice = "mFinalPrice";
+	private final String mPurchaseId = "mPurchaseId";
+	private final String mNotificationCliked = "mNotificationCliked";
+
+	private static UserPreference INSTANCE;
+
+	public static UserPreference getInstance() {
+
+		if (INSTANCE == null) {
+			INSTANCE = new UserPreference(AppContext.getInstance().getContext());
+		}
+		return INSTANCE;
+	}
+
+	private UserPreference(Context context) {
+		this.mPrefs = context.getSharedPreferences(TAG, Context.MODE_PRIVATE);
+		this.mPrefsEditor = mPrefs.edit();
+	}
+	
+	public void setCartCount(String value) {
+		Syso.debug("setUserID = ", value);
+		if(value!=null){
+			mPrefsEditor.putString(cartCount, value);
+			mPrefsEditor.commit();
+		}
+	}
+	
+	public void incCartCount() {
+		 int count=Integer.parseInt(TextUtils.isEmpty(getCartCount())?"0":getCartCount())+1;
+		 setCartCount(String.valueOf(count));
+	}
+	
+	public void decCartCount() {
+		 int count=Integer.parseInt(TextUtils.isEmpty(getCartCount())?"0":getCartCount())-1;
+		 setCartCount(String.valueOf(count>0?count:0));
+	}
+
+
+	public String getCartCount() {
+		return mPrefs.getString(cartCount, "");
+	}
+
+	public void setUserID(String value) {
+		Syso.debug("setUserID = ", value);
+		if(value!=null){
+			mPrefsEditor.putString(mUserId, value);
+			mPrefsEditor.commit();
+		}
+	}
+
+	public String getCartID() {
+		return mPrefs.getString(mCartId, "");
+	}
+	
+	public void setCartID(String value) {
+		Syso.debug("setUserID = ", value);
+		if(value!=null){
+			mPrefsEditor.putString(mCartId, value);
+			mPrefsEditor.commit();
+		}
+	}
+	
+	public String getTwotapCartID() {
+		return mPrefs.getString(mTwotapCartId, "");
+	}
+	
+	public void setTwotapCartID(String value) {
+		Syso.debug("mTwotapCartId = ", value);
+		if(value!=null){
+			mPrefsEditor.putString(mTwotapCartId, value);
+			mPrefsEditor.commit();
+		}
+	}
+
+	public String getUserID() {
+		return mPrefs.getString(mUserId, "");
+	}
+	
+	public void setCurrentScreen(String value) {
+		Syso.debug("mCurrentScreen = ", value);
+		if(value!=null){
+			mPrefsEditor.putString(mCurrentScreen, value);
+			mPrefsEditor.commit();
+		}
+	}
+
+	public String getCurrentScreen() {
+		return mPrefs.getString(mCurrentScreen, "");
+	}
+	
+	public void setIsCreateWalletPin(boolean value) {
+		Syso.debug("mIsCreateWalletPin = ", value);
+		mPrefsEditor.putBoolean(mIsCreateWalletPin, value);
+		mPrefsEditor.commit();
+	}
+
+	public boolean getIsCreateWalletPin() {
+		return mPrefs.getBoolean(mIsCreateWalletPin,true);
+	}
+	
+	public void setIsTwitterConnected(boolean value) {
+		Syso.debug("mConnectedByTwitter = ", value);
+		mPrefsEditor.putBoolean(mConnectedByTwitter, value);
+		mPrefsEditor.commit();
+	}
+
+	public boolean getIsTwitterConnected() {
+		return mPrefs.getBoolean(mConnectedByTwitter,false);
+	}
+	
+	public boolean getCheckedIsConnected() {
+		return mPrefs.getBoolean(mCheckedIsConnected,false);
+	}
+	
+	public void setIsFbConnected(boolean value) {
+		Syso.debug("mConnectedByFB = ", value);
+		mPrefsEditor.putBoolean(mConnectedByFB, value);
+		mPrefsEditor.commit();
+	}
+	
+	public void setcheckedIsConnected(boolean value) {
+		Syso.debug("mCheckedIsConnected = ", value);
+		mPrefsEditor.putBoolean(mCheckedIsConnected, value);
+		mPrefsEditor.commit();
+	}
+
+	public boolean getIsFbConnected() {
+		return mPrefs.getBoolean(mConnectedByFB,false);
+	}
+	
+	
+	public void setIsCheckBluetooth(boolean value) {
+		Syso.debug("mCheckedIsConnected = ", value);
+		mPrefsEditor.putBoolean(mIsCheckBluetooth, value);
+		mPrefsEditor.commit();
+	}
+	
+	public boolean getIsRefreshProfile() {
+		return mPrefs.getBoolean(mIsRefreshProfile,false);
+	}
+	
+	
+	
+	public void setIsRefreshProfile(boolean value) {
+		Syso.debug("mCheckedIsConnected = ", value);
+		mPrefsEditor.putBoolean(mIsRefreshProfile, value);
+		mPrefsEditor.commit();
+	}
+
+	public boolean getIsNotificationClicked() {
+		return mPrefs.getBoolean(mNotificationCliked,false);
+	}
+	
+	public void setIsNotificationClicked(boolean value) {
+		mPrefsEditor.putBoolean(mNotificationCliked, value);
+		mPrefsEditor.commit();
+	}
+	
+	
+	public boolean getIsCheckBluetooth() {
+		return mPrefs.getBoolean(mIsCheckBluetooth,true);
+	}
+	
+	public void clearAllData() {
+		mPrefsEditor.clear();
+		mPrefsEditor.commit();
+	}
+	
+	public void saveChatImage(String fileName) {
+		mPrefsEditor.putString(PIC_FILENAME, fileName);
+		mPrefsEditor.commit();
+	}
+	
+	public String getChatImage() {
+		return mPrefs.getString(PIC_FILENAME, "");
+	}
+		
+
+	public String getPassword() {
+		return mPrefs.getString(mPassword, "");
+	}
+	
+	public void setPassword() {
+		mPrefsEditor.putString(mPassword, "haspassword");
+		mPrefsEditor.commit();
+	}
+
+	public String getEmail() {
+		return mPrefs.getString(mEmailId, "");
+	}
+	
+	public void setEmail(String value) {
+		if(value!=null){
+			mPrefsEditor.putString(mEmailId, value);
+			mPrefsEditor.commit();
+		}
+	}
+	
+	public void setBgImage(String value) {
+		if(value!=null){
+			mPrefsEditor.putString(mBgImage, value);
+			mPrefsEditor.commit();
+		}
+	}
+
+	public String getBgImage() {
+		return mPrefs.getString(mBgImage, "");
+	}
+	
+	public void setProfilePic(String value) {
+		if(value!=null){
+			mPrefsEditor.putString(mProfilePic, value);
+			mPrefsEditor.commit();
+		}
+	}
+
+	public String getProfilePic() {
+		return mPrefs.getString(mProfilePic, "");
+	}
+	
+	public void setUserName(String value) {
+		if(value!=null){
+			mPrefsEditor.putString(mUserName, value);
+			mPrefsEditor.commit();
+		}
+	}
+
+	public String getUserName() {
+		return mPrefs.getString(mUserName, "");
+	}
+	
+	public void setFinalPrice(String value) {
+			mPrefsEditor.putString(mFinalPrice, value);
+			mPrefsEditor.commit();
+	}
+
+	public String getFinalPrice() {
+		return mPrefs.getString(mFinalPrice, "");
+	}
+	
+	public void setPurchaseId(String value) {
+		mPrefsEditor.putString(mPurchaseId, value);
+		mPrefsEditor.commit();
+	}
+	
+	public String getPurchaseId() {
+		return mPrefs.getString(mPurchaseId, "");
+	}
+	
+}

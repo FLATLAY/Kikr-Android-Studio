@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/dataNotFoundTextView"
+        style="@style/dataNotFoundTextView"
+        android:text="No category found"
+        android:visibility="gone" />
+
+    <FrameLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="@dimen/follow_text_height">
+
+	    <ProgressBar
+	        android:id="@+id/progressBar"
+	        style="@android:style/Widget.ProgressBar.Horizontal"
+	        android:layout_width="match_parent"
+	        android:progressDrawable="@drawable/progress_bar_teal"
+	        android:layout_height="@dimen/follow_text_height" />
+	
+	    <TextView
+	        android:id="@+id/followText"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/follow_text_height"
+	        android:gravity="center_vertical|center_horizontal"
+	        android:text="@string/follow_categories_text"
+	        android:textColor="@color/neongreen"
+	        android:textSize="@dimen/large_text_size"
+	        android:textStyle="bold" />
+	    
+	    
+	</FrameLayout>    
+
+    <GridView
+        android:id="@+id/categoryGridView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="0dp"
+        android:numColumns="2"
+        android:smoothScrollbar="true" />
+
+</LinearLayout>

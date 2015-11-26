@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="map_api_key_production">AIzaSyC3uVtLGj4yUXwP2ZXOM6YFBD6YI2eu9zE</string>
+    <string name="map_api_key_debug">AIzaSyC6hKD-SR0mMqT2mmQNgUHW7kMSGDUGm2U</string>
+    <string name="app_name">Kikr</string>
+    <string name="loading">LOADING...</string>
+    <string name="facebook_app_id">813043735405822</string>
+    <string name="no_internet"><![CDATA[No internet connection<br> <u>Try again</u>]]></string>
+    <string name="no_data_found">Nothing Found</string>
+
+    <!-- landing screen strings -->
+    <string name="sign_up_for_free">Sign up for free!</string>
+    <string name="mobile_number">mobile number</string>
+    <string name="or">or</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="enter_email">Enter Email</string>
+
+    <!-- onbording screen strings -->
+    <string name="follow_categories_text">Follow some categories 0/3</string>
+    <string name="follow_brands_text">Now follow some brands</string>
+    <string name="follow_stores_text">Now follow some stores 0/3</string>
+
+    <!-- signup screen strings -->
+    <string name="sign_up">Sign up</string>
+    <string name="email">Email</string>
+    <string name="skip">Skip</string>
+    <string name="password">Password</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
+    <string name="next">Next</string>
+    <string name="already_signedup">Already signed up with Email?</string>
+
+    <!-- login screen strings -->
+    <string name="forgot_password">forgot password?</string>
+
+    <!-- pin screen strings -->
+    <string name="resend_pin">resend pin?</string>
+
+    <!-- Left Menu screen strings -->
+    <string name="action_settings">Settings</string>
+    <string name="connect_with">Connect with</string>
+    <string name="connect_with_twitter">Connect with Twitter</string>
+    <string name="orders">Orders</string>
+    <string name="connect_with_facebook">Connect with Facebook</string>
+    <string name="connect_with_instagram">Connect with Instagram</string>
+    <string name="kikr_credits">Kikr\nCredits</string>
+    <string name="check_in">Check In</string>
+    <string name="profile">Profile</string>
+    <string name="my_wallet">Wallet</string>
+    <string name="interest">Interests</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="my_friends">My Friends</string>
+    <string name="my_profile">My Profile</string>
+    <string name="activity">Activity</string>
+    <string name="settings">Settings</string>
+    <string name="support">Support</string>
+    <string name="right_click">rightMenuClick</string>
+    <string name="venue">Venue</string>
+    <string name="search_venue">Search Venue</string>
+    <string name="add_venue">Add Venue</string>
+    <string name="get_transaction_to_venue">Get Transaction to Venue</string>
+    <string name="logout">Logout</string>
+    <string name="dummy_price">$0</string>
+    <string name="logout_text">Sign Out</string>
+    <string name="profile_view">My Profile</string>
+    <string name="deals">Deals</string>
+    <string name="done">Done</string>
+    <string name="username">Username</string>
+    <string name="add_card">+ Add Card</string>
+    <string name="post">Post</string>
+
+   <string name="add_description">Add Description</string>
+    
+    <!-- Right Menu screen strings -->
+    <string name="retail_banking">Retail Banking</string>
+    <string name="my_account_dashboard">My Account Dashboard</string>
+    <string name="add_funds">Add Funds</string>
+    <string name="update_citi_account">Update Citi account</string>
+    <string name="delete_citi_account">Delete Citi Account</string>
+    <string name="other_wallets">Other Wallets</string>
+    <string name="loyalty_cards">Loyalty Cards</string>
+
+    <!-- Discover Product Detail -->
+    <string name="regular_price">Price: </string>
+    <string name="your_price">Sale Price: </string>
+    <string name="read_more">read more</string>
+
+    <!-- Discover Product Detail -->
+    <string name="google_wallet_unavailable">Google Wallet is unavailable</string>
+    <string name="error_code">Error code: %d</string>
+
+    <!-- Discover Screen -->
+    <string name="discover_follow_btn_text">Follow</string>
+    <string name="searchYourBank">Search your bank</string>
+
+    <!-- Google Wallet -->
+    <string name="address_format">%1$s\n%2$s\n%3$s%4$s%5$s %6$s %7$s</string>
+    <string name="price_format">$%.2f</string>
+    <string name="spending_limit_exceeded">You have exceeded your spending limit</string>
+    <string name="shipping">Shipping:</string>
+    <string name="tax">Tax:</string>
+    <string name="total">Total:</string>
+    <string name="thanks_for_your_order">Thanks for your order</string>
+    <string name="confirmation_details">Confirmation details</string>
+    <string name="secured_by">Secured by</string>
+    <string name="login">Login</string>
+    <string name="return_to_shopping">Return to shopping</string>
+    <string name="confirmation_text">Your order confirmation number is ABC123.\n\nYour purchase will be shipped within two business days.</string>
+
+    <!-- Tutorial Screen -->
+    <string name="tutorial_kikr_reward">Here\'s your Kikr card!</string>
+    <!-- <string name="tutorial_kikr_lines">Kikr Visa Prepaid Card is issued by Wave Crest Inc. pursuant to a license from Visa U.S.A Inc.and may be used everywhere Visa debit cards are accepted. Weve Crest Inc, Member FDIC.</string> -->
+    <string name="tutorial_kikr_lines">Welcome to the Retail Rewards Card for the Social Generation&#8482;</string>
+    <string name="learn_more_text">Learn More</string>
+    <string name="kikr_tutorial_text_line_one">2 credits for every $1 you spend on Kikr\n</string>
+    <string name="kikr_tutorial_text_line_two">Earn 5 credits for every $1 spent by another user from one of your collections.</string>
+    <string name="kikr_tutorial_text_line_three">If another user shares an item from your collections with their followers, you split credit commissions at 2.5 credits per $1 spent</string>
+    <string name="kikr_tutorial_text_line_four">100 credits is equivalent to $1 USD</string>
+
+    <!-- Wallet Pin -->
+    <string name="enter_pin">Enter Wallet Pin</string>
+    <string name="create_pin">Create Wallet Pin</string>
+    <string name="confirm_pin">Confirm Wallet Pin</string>
+    <string name="facebook_friends_header">Facebook Friends</string>
+    <string name="twitter_friends_header">Twitter Friends</string>
+
+    <!-- Reset Password -->
+    <string name="reset_pin">Reset Pin</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="submit">Submit</string>
+
+    <!-- Collection -->
+    <string name="collection_text_heading">Collections</string>
+    <string name="add_collection_text">Add a new Collection</string>
+    <string name="share_product_text">Share Product</string>
+    <string name="no_friends_found_msg">Friends not found</string>
+    <string name="user_followed_successfully">User followed.</string>
+
+    <!-- Interest Section -->
+    <string name="store_text">Stores</string>
+    <string name="brand_text">Brands</string>
+    <string name="people_text">People</string>
+    <string name="searchYourItem">Search</string>
+    <string name="trending_gals_text">Trending Hers</string>
+    <string name="trending_guys_text">Trending His</string>
+    <string name="suggested_friends_text">Suggested Followers</string>
+
+    <!-- Collection Section -->
+    <string name="months_text">MM</string>
+    <string name="years_text">YYYY</string>
+
+    <string-array name="dealcategories">
+        <item>Select</item>
+        <item>Womens Apparel</item>
+        <item>Mens Apparel</item>
+        <item>Jewelry &amp; Watches</item>
+        <item>Health &amp; Beauty</item>
+        <item>Cosmetics &amp; Fragrances</item>
+    </string-array>
+    <string-array name="countries">
+        <item>United States of America</item>
+        <item>Canada</item>
+    </string-array>
+    <string-array name="title">
+        <item>Mr.</item>
+        <item>Miss</item>
+        <item>Mrs.</item>
+    </string-array>
+    <string-array name="months">
+        <item>MM</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="years">
+        <item>YYYY</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+        <item>2031</item>
+        <item>2032</item>
+        <item>2033</item>
+        <item>2034</item>
+    </string-array>
+    <string-array name="statesUSA">
+        <item> </item>
+        <item>Alabama</item>
+        <item>Alaska</item>
+        <item>Arizona</item>
+        <item>Arkansas</item>
+        <item>California</item>
+        <item>Colorado</item>
+        <item>Connecticut</item>
+        <item>Delaware</item>
+        <item>District Of Columbia</item>
+        <item>Florida</item>
+        <item>Georgia</item>
+        <item>Hawaii</item>
+        <item>Idaho</item>
+        <item>Illinois</item>
+        <item>Indiana</item>
+        <item>Iowa</item>
+        <item>Kansas</item>
+        <item>Kentucky</item>
+        <item>Louisiana</item>
+        <item>Maine</item>
+        <item>Maryland</item>
+        <item>Massachusetts</item>
+        <item>Michigan</item>
+        <item>Minnesota</item>
+        <item>Mississippi</item>
+        <item>Missouri</item>
+        <item>Montana</item>
+        <item>Nebraska</item>
+        <item>Nevada</item>
+        <item>New Hampshire</item>
+        <item>New Jersey</item>
+        <item>New Mexico</item>
+        <item>New York</item>
+        <item>North Carolina</item>
+        <item>North Dakota</item>
+        <item>Ohio</item>
+        <item>Oklahoma</item>
+        <item>Oregon</item>
+        <item>Pennsylvania</item>
+        <item>Rhode Island</item>
+        <item>South Carolina</item>
+        <item>South Dakota</item> 
+        <item>Tennessee</item>
+        <item>Texas</item>
+        <item>Utah</item>
+        <item>Vermont</item>
+        <item>Virginia</item>
+        <item>Washington</item>
+        <item>West Virginia</item>
+        <item>Wisconsin</item>
+        <item>Wyoming</item>
+        <item>American Samoa</item>
+        <item>Guam</item>
+        <item>Northern Mariana Islands</item>
+        <item>Puerto Rico</item>
+        <item>U.S. Virgin Islands</item>
+        <item>Wyoming</item>
+    </string-array>
+    <string-array name="statesCanada">
+        <item> </item>
+        <item>Nunavut</item>
+        <item>Quebec</item>
+        <item>Northwest Territories</item>
+        <item>Ontario</item>
+        <item>British Columbia</item>
+        <item>Alberta</item>
+        <item>Saskatchewan</item>
+        <item>Manitoba</item>
+        <item>Yukon</item>
+        <item>Newfoundland and Labrador</item>
+        <item>New Brunswick</item>
+        <item>Nova Scotia</item>
+        <item> Prince Edward Island</item>
+    </string-array>
+
+    <string name="view_collection_text">View Collection</string>
+    <string name="rename_collection_text">Rename Collection</string>
+    <string name="share_collection_text">Share Collection</string>
+    <string name="delete_product_from_collection_text">Delete product from Collection</string>
+    <string name="delete_collection_text">Delete Collection</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="collection_delete_message">Are you sure you want to delete this collection?</string>
+    <string name="collection_delete_product_message">Are you sure you want to delete this product from collection?</string>
+
+    <!-- Payment Section -->
+    <string name="buy_text_heading">Buy</string>
+    <string name="paypal_text">Paypal</string>
+    <string name="credit_card_text">Credit Card</string>
+    <string name="payment_success_text">Payment Successful</string>
+    <string name="payment_fail_text">Payment Failed</string>
+    <string name="regular_price_text">Price:</string>
+    <string name="kikr_discount_text">Kikr Discount:</string>
+    <string name="quantity_text">Quantity: </string>
+    <string name="express_shipping">Express Shipping</string>
+    <string name="product_not_available">Select</string>
+    <string name="color_text">Color: </string>
+    <string name="size_text">Size: </string>
+    <string name="fit_text">Fit: </string>
+    <string name="option_text">Option: </string>
+    <string name="cart_color_text">Color</string>
+    <string name="cart_option_text">Option</string>
+    <string name="cart_fit_text">Fit</string>
+    <string name="cart_size_text">Size</string>
+    <string name="cart_quantity_text">Quantity</string>
+    <string name="cart_remove_from_text">Remove From Cart</string>
+    <string name="cart_detail_product_text">View Details on Store Site</string>
+    <string name="kikr_shipping_details_text">Kikr only ships to US &amp; Canada Addresses for now.</string>
+    <string name="empty_cart_text">Your cart is currently empty.</string>
+    <string name="proceed_order_text">Proceed to Order</string>
+    <string name="subtotal_text">Subtotal</string>
+
+    <!-- Card Info Section -->
+    <string name="card_info_number_text">Card Number</string>
+    <string name="card_info_card_name_text">Name on Card</string>
+    <string name="card_info_cvv_text">CVV Code</string>
+    <string name="card_info_expiry_text">Expiration(MM/YY)</string>
+    <string name="card_info_payinfo_text">Payment Info</string>
+
+    <!-- Address Info Section -->
+    <string name="card_info_shipping_address_text">Shipping Address</string>
+    <string name="card_info_street_num_text">Street Number </string>
+    <string name="card_info_title_text">Title</string>
+    <string name="card_info_firstname_text">First Name</string>
+    <string name="card_info_lastname_text">Last Name</string>
+    <string name="card_info_street_add_text">Street Address</string>
+    <string name="card_info_apartment">Apt/Unit No.</string>
+    <string name="card_info_city_text">City/Town</string>
+    <string name="card_info_state_text">State</string>
+    <string name="card_info_zip_text">Zip Code</string>
+    <string name="card_info_telephone_text">Telephone</string>
+    <string name="card_info_country_text">Country</string>
+
+    <!-- Place Order Section -->
+    <string name="place_order_item_text">Items</string>
+    <string name="place_order_add_payment_method_text">Add Payment Method</string>
+    <string name="place_order_add_card_text">Add new Card</string>
+    <string name="place_order_shipping_card_text">Shipping Address</string>
+    <string name="place_order_promo_card_text">Promo Code</string>
+    <string name="place_order_subtotal_text">Subtotal</string>
+    <string name="place_order_est_tax_text">Est. Tax</string>
+    <string name="place_order_est_shipping_text">Est. Shipping*</string>
+    <string name="place_order_est_handling_text">Handling</string>
+    <string name="place_order_total_text">Total</string>
+    <string name="place_order_place_my_order_text">Place My Order</string>
+    <string name="get_final_value">Get final value of cart</string>
+    <string name="place_order_learnmore_text">The Kikr Purchase Guarantee</string>
+    <string name="place_order_add_address_text">Add Shipping Address</string>
+    <string name="place_order_us_canada">US &amp; Canada only</string>
+    <string name="need_help">Need Help ?</string>
+    <string name="customer_support">Customer Support</string>
+    <string name="terms_of_use">Terms of Use</string>
+    <string name="privacy_statement">Privacy Statement</string>
+    <string name="legal">Legal</string>
+    <string name="place_paypal_text">Pay with Paypal</string>
+
+    <!-- Settings Section -->
+    <string name="settings_accountinfo_text">Account Info</string>
+    <string name="settings_password_text">Password</string>
+    <string name="settings_notifications_text">Notifications</string>
+    <string name="settings_newfollowers_text">New Followers</string>
+    <string name="settings_newcomments_text">New Comments</string>
+    <string name="settings_favorites_text">Favorites</string>
+    <string name="settings_itemspurchased_text">Items Purchased</string>
+    <string name="settings_socialaccounts_text">Social Accounts</string>
+    <string name="settings_facebook_text">Facebook</string>
+    <string name="settings_twitter_text">Twitter</string>
+    <string name="settings_pinterest_text">Pinterest</string>
+    <string name="settings_instagram_text">Instagram</string>
+    <string name="settings_walletsecurity_text">Wallet Security</string>
+    <string name="settings_changepin_text">Change Pin</string>
+    <string name="settings_editaddress_text">Edit Address</string>
+    <string name="settings_storedcards_text">Stored Cards</string>
+
+    <!-- Change Password Section -->
+    <string name="change_password_currentpass_text">Enter Current Password</string>
+    <string name="change_password_newpass_text">Enter New Password</string>
+    <string name="change_password_confirmnewpass_text">Confirm New Password</string>
+
+    <!-- Change Password Section -->
+    <string name="change_walletpin_currentpin_text">Enter Current Pin</string>
+    <string name="change_walletpin_newpin_text">Enter New Pin</string>
+    <string name="change_walletpin_confirmnewpin_text">Enter Confirm New Pin</string>
+
+     <!-- Deals Section -->
+    <string name="in_store_deals">InStore Deals</string>
+    <string name="online_deals">Online Deals</string>
+    <string name="nearby_text">Nearby</string>
+    <string name="popular_text">Popular</string>
+    <string name="favorite_text">Favorite</string>
+    <string name="online_text">Online</string>
+    <string name="stores_text">Stores</string>
+    <string name="malls_text">Malls</string>
+    <string name="view_list_text">View as List</string>
+    <string name="view_map_text">View as Map</string>
+    <string name="topdeals_text">Top Deals</string>
+    <string name="offers_text">My Offers</string>
+    <string name="search_deal">Search Deals</string>
+
+    <!-- Inspiration Section -->
+    <string name="inspiration_tag">Tag</string>
+    <string name="inspiration_tag_products">Tag Products</string>
+    <string name="inspiration_tag_brand">Tag Brand</string>
+    <string name="inspiration_upload">Upload</string>
+    <string name="inspiration_description">Description</string>
+
+    <!-- Order Tracking Section -->
+    <string name="order_date">Date: </string>
+    <string name="order_id">Order: </string>
+    <string name="order_status">Status: </string>
+    <string name="order_total">Total: </string>
+    <string name="order_shipping">Shipping: </string>
+    <string name="order_tax">Tax: </string>
+    <string name="order_items">Items: </string>
+    <string name="credits_user">User </string>
+    <string name="credits_amount">Amount </string>
+    <string name="credits_available_credits">Available Kikr Credits: </string>
+    <string name="credits_confirm">Confirm </string>
+    <string name="add_favorites">Add To Favorites </string>
+
+    <!-- Help Section -->
+    <string name="help_nocollection_text">Create your first collection\n(5 or more items) &amp; share\n\nEarn 100 credits</string>
+    <string name="help_emptycart_text">Earn an extra 100 credits for your first purchase</string>
+    <string name="help_card_text">Store Cards\n&amp;\naddresses\nfor easy purchases</string>
+    <string name="help_inspired_text">Post &amp; find outfits,\nproducts you love\n&amp;\nmuch more</string>
+    <string name="help_socialmedia_text">Connect your social media</string>
+    <string name="help_socialmedia_earnpoints_text">Earn 50 credits</string>
+    <string name="help_invitefriends_text">Invite your friends to Kikr</string>
+    <string name="help_invitefriends_earnpoints_text">You will earn 25 credits for every sign up</string>
+
+    <!-- Edit Inspiration Section -->
+    <string name="inspiration_edit_inspiration_description_text">Edit Description</string>
+    <string name="inspiration_remove_tag_text">Remove Tag</string>
+    <string name="inspiration_remove_product_tag_text">Remove Product Tags</string>
+    <string name="inspiration_add_tag_text">Add Tag</string>
+    <string name="inspiration_add_product_tag_text">Add Product Tags</string>
+    <string name="inspiration_delete_post_text">Delete Post</string>
+
+    <!-- Edit Profile Section -->
+    <string name="kikr_outside_us_canada">Outside of the US &amp; Canada?\nEarn credits now and use them later!</string>
+    <string name="kikr_learn_more">&lt;u>Learn More&lt;/u></string>
+
+    <!-- Activity Learn More Outside US -->
+    <string name="kikr_learn_more_desc">Currently Kikr and the products featured within it can only be purchased and shipped to US and Canadian residents.\n\n We are working hard to support international shipments before 2016 however <b>all users</b> have the ability to create and share collections in anticipation of earning credits to be used at a later time. We will store all credits earned for use in the future!!</string>
+    <string name="order_success_text"><![CDATA[Purchased Confirmed!<br>You can track the status in Orders next to My Wallet.<br><br><b>Happy Shopping</b> ]]></string>
+	<string name="order_fail_text">Failed to get final value of cart. Please try again later.</string>
+    <string name="come_join">Come join me on Kikr-The Rewards Card for the Social Generation&#8482;</string>
+    <string name="text_join">The Rewards Card for the Social Generation&#8482; Get paid to shop and share, join now &amp; earn up to 250 credits.</string>
+    
+    <string name="earn_250_credits">Join now to get your first 250 credits!</string>
+    
+    <string name="purchase_guarantee_line1">We at Kikr work tirelessly to bring you name brand products from authentic merchants. You purchase directly from the merchants so you get to take advantage of the same return and exchange policy as those shopping directly on the merchant’s website, but with the benefit of Kikr rewards!</string>
+    <string name="purchase_guarantee_line2">Fulfillment and shipping of all products for sale on Kikr are handled by the merchants, not by Kikr.</string>
+	<string name="purchase_guarantee_line3"><b>Have a question about your order status, shipment, or returns/exchanges?</b></string>
+	<string name="purchase_guarantee_line4">Please contact the merchant directly. We provide a list of contact information for our merchants here.</string>
+	<string name="purchase_guarantee_line5"><b>Have a question a technical question about the app?</b></string>
+	<string name="purchase_guarantee_line6">If you have any trouble contacting a merchant directly, please don’t hesitate to reach out to our team for assistance, but know that direct contact with the merchant is usually the quickest &amp; best way to get something resolved.</string>
+
+</resources>

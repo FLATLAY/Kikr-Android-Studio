@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/buy_option_height"
+    android:layout_height="@dimen/buy_option_height"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/padding_large"
+        android:text="@string/buy_text_heading"
+        android:textColor="@color/app_text_color"
+        android:textSize="@dimen/xx_large_text_size" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+
+    <TextView
+        android:id="@+id/paypalText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_large"
+        android:padding="@dimen/padding_large"
+        android:text="@string/paypal_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large_text_size" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+
+    <TextView
+        android:id="@+id/creditCardText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_large"
+        android:padding="@dimen/padding_large"
+        android:text="@string/credit_card_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large_text_size" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+
+</LinearLayout>

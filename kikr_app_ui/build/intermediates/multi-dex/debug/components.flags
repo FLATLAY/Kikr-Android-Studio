@@ -1,0 +1,279 @@
+-injars 'F:\Mobikasa\KikrWorkspace\Kikr-Android-Studio\kikr_app_ui\build\intermediates\transforms\jarMerging\debug\jars\1\1f\combined.jar'
+-outjars 'F:\Mobikasa\KikrWorkspace\Kikr-Android-Studio\kikr_app_ui\build\intermediates\multi-dex\debug\componentClasses.jar'
+
+-libraryjars 'C:\Users\Ujjwal\AppData\Local\Android\sdk\build-tools\23.0.0\lib\shrinkedAndroid.jar'
+
+-forceprocessing
+-dontoptimize
+-dontobfuscate
+-dontusemixedcaseclassnames
+-dontpreverify
+-dontwarn
+-printconfiguration 'F:\Mobikasa\KikrWorkspace\Kikr-Android-Studio\kikr_app_ui\build\intermediates\multi-dex\debug\components.flags'
+
+
+-keep class com.kikr.KikrApp {
+    <init>();
+    void attachBaseContext(android.content.Context);
+}
+
+-keep class net.hockeyapp.android.UpdateActivity {
+    <init>();
+}
+
+-keep class com.soundcloud.android.crop.CropImageActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.SplashActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.LandingActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.SignUpActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.PinActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.HomeActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.PinAuthActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.EditProfileActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.KikrLearnMoreActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.DiscoverDetailActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.PhoneNumberActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.LoginActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.WalletPinActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.DealWebViewActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.FollowCategoriesActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.FollowBrandsActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.FollowStoreActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.EmailActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.FbSignActivity {
+    <init>();
+}
+
+-keep class com.facebook.LoginActivity {
+    <init>();
+}
+
+-keep class com.kikr.twitter.TwitterOAuthActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.AddBankActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.ForgotPassword {
+    <init>();
+}
+
+-keep class com.kikr.googlewallet.CheckoutActivity {
+    <init>();
+}
+
+-keep class com.kikr.googlewallet.ConfirmationActivity {
+    <init>();
+}
+
+-keep class com.kikr.googlewallet.OrderCompleteActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.KikrTutorialActivity {
+    <init>();
+}
+
+-keep class com.kikr.ibeacon.BeaconMainActivity {
+    <init>();
+}
+
+-keep class com.kikr.ibeacon.MonitoringActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.ResetPassword {
+    <init>();
+}
+
+-keep class com.kikr.ibeacon.BeaconMessageActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.ChangePasswordActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.ChangeWalletPinActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.ChangeEmailActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.DefaultLifestyleImagesActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.ImageViewActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.LearnMoreOutsideUSActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.ProductDetailWebViewActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.RegisterEmailOnSkipActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.FollowCategoriesNewActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.InstagramLoginActivity {
+    <init>();
+}
+
+-keep class com.google.android.gcm.GCMBroadcastReceiver {
+    <init>();
+}
+
+-keep class com.kikr.GCMIntentService {
+    <init>();
+}
+
+-keep class com.personagraph.sensor.service.StartupReceiver {
+    <init>();
+}
+
+-keep class com.personagraph.sensor.service.SensorService {
+    <init>();
+}
+
+-keep class com.google.android.gms.wallet.EnableWalletOptimizationReceiver {
+    <init>();
+}
+
+-keep class com.kikr.ibeacon.BeaconMonitorService {
+    <init>();
+}
+
+-keep class com.radiusnetworks.ibeacon.service.IBeaconService {
+    <init>();
+}
+
+-keep class com.radiusnetworks.ibeacon.IBeaconIntentProcessor {
+    <init>();
+}
+
+-keep class com.kikr.ibeacon.BeaconDetactorService {
+    <init>();
+}
+
+-keep class com.paypal.android.sdk.payments.PayPalFuturePaymentActivity {
+    <init>();
+}
+
+-keep class com.paypal.android.sdk.payments.PayPalProfileSharingActivity {
+    <init>();
+}
+
+-keep class com.paypal.android.sdk.payments.ProfileSharingConsentActivity {
+    <init>();
+}
+
+-keep class com.paypal.android.sdk.payments.FuturePaymentInfoActivity {
+    <init>();
+}
+
+-keep class com.paypal.android.sdk.payments.FuturePaymentConsentActivity {
+    <init>();
+}
+
+-keep class com.paypal.android.sdk.payments.LoginActivity {
+    <init>();
+}
+
+-keep class com.paypal.android.sdk.payments.PayPalTouchActivity {
+    <init>();
+}
+
+-keep class com.paypal.android.sdk.payments.PayPalService {
+    <init>();
+}
+
+-keep class com.kikr.AlarmReceiver {
+    <init>();
+}
+
+-keep class com.kikr.GCMAlarmReceiver {
+    <init>();
+}
+
+-keep class com.kikr.DeviceBootReceiver {
+    <init>();
+}
+
+-keep class com.kikr.DealNotificationService {
+    <init>();
+}
+
+-keep public class * extends android.app.backup.BackupAgent {
+    <init>();
+}
+
+-keep public class * extends java.lang.annotation.Annotation {
+    <fields>;
+    <methods>;
+}

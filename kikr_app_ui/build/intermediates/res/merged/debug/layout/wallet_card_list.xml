@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:id="@+id/walletListMainLayout">
+
+
+
+    <RelativeLayout
+        android:id="@+id/kikr_wallet_card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <ImageView
+            android:id="@+id/kikr_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/wallet_card_margin"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_connect_card_kikr"
+            android:tag="0" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/wallet_pocket_margin"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_wallet_pocket_half" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/connect_bank_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/kikr_wallet_card_layout"
+        android:layout_marginTop="@dimen/wallet_layout_margin"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/connect_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/wallet_card_margin"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_connect_bank"
+            android:tag="3" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/wallet_pocket_margin"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_wallet_pocket_half" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/connect_card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/connect_bank_layout"
+        android:layout_marginTop="@dimen/wallet_layout_margin"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/connect_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/wallet_card_margin"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_connect_card"
+            android:tag="1" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/wallet_pocket_margin"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_wallet_pocket_half" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/google_wallet_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/connect_card_layout"
+        android:layout_marginTop="@dimen/wallet_layout_margin"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/google_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/wallet_card_margin"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_card_google"
+            android:tag="2" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/wallet_pocket_margin"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_wallet_pocket_half" />
+    </RelativeLayout>
+   
+
+</RelativeLayout>

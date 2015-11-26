@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_phone_number"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/signUpHeaderRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" 
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/backArrowImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@drawable/ic_back_arrow" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/emailEditText"
+        style="@style/editTextSignup"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/phone_margin_side"
+        android:layout_marginRight="@dimen/phone_margin_side"
+        android:layout_marginTop="@dimen/phone_margin_top"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/enter_email"
+        android:inputType="textEmailAddress" />
+
+</RelativeLayout>

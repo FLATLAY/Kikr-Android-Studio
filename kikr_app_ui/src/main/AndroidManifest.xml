@@ -95,6 +95,12 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="pdk4803833610914245485" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.kikr.activity.PinAuthActivity"

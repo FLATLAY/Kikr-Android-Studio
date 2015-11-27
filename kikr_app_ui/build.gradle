@@ -45,6 +45,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-plus:8.3.0'
     compile 'com.google.android.gms:play-services-wallet:8.3.0'
     compile 'fr.avianey.com.viewpagerindicator:library:2.4.1@aar'
+    compile 'com.mcxiaoke.volley:library:1.0.+'
     compile files('libs/android-query-full.0.25.8-beta.jar')
     compile files('libs/Branch-1.8.11.jar')
     compile files('libs/glide-3.4.0.jar')
@@ -58,4 +59,5 @@ dependencies {
     compile files('libs/urlimageviewhelper-1.0.4.jar')
     compile files('libs/gcm.jar')
     androidTestCompile 'com.android.support:multidex-instrumentation:1.0.1'
+    compile project(':pdk2')
 }

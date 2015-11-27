@@ -66,8 +66,9 @@ public class AppConstants {
 	
 	public static final String INSTAGRAM_CLIENT_ID = "779186c61e7a40f5aa58dffcef56c0b0";
 	public static final String INSTAGRAM_CLIENT_SECRET = "3e4d893da24848de9480d264f73ed41d";
-	public static final String INSTAGRAM_REDIRECT_URI = "http://www.mykikr.com";  
-	
+	public static final String INSTAGRAM_REDIRECT_URI = "http://www.mykikr.com";
+
+	public static final String PINTEREST_APP_ID = "4803833610914245485";
 
 }
 

@@ -18,6 +18,8 @@ import com.pinterest.android.pdk.PDKException;
 import com.pinterest.android.pdk.PDKResponse;
 import com.pinterest.android.pdk.Utils;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +67,13 @@ public class PinterestLoginActivity extends FragmentActivity{
             @Override
             public void onFailure(PDKException exception) {
                 Log.e(getClass().getName(), exception.getDetailMessage());
-                AlertUtils.showToast(context, exception.getDetailMessage());
+                try{
+                    JSONObject jsonObject = new JSONObject(exception.getDetailMessage());
+                    AlertUtils.showToast(context,jsonObject.getString("message"));
+                }catch(Exception e) {
+                    e.printStackTrace();
+                    AlertUtils.showToast(context, exception.getDetailMessage());
+                }
             }
         });
     }
@@ -89,7 +97,13 @@ public class PinterestLoginActivity extends FragmentActivity{
             public void onFailure(PDKException exception) {
                 Log.e(getClass().getName(), exception.getDetailMessage());
                 Syso.info("12345678 >>> output" + exception.getDetailMessage());
-                AlertUtils.showToast(context, exception.getDetailMessage());
+                try{
+                    JSONObject jsonObject = new JSONObject(exception.getDetailMessage());
+                    AlertUtils.showToast(context, jsonObject.getString("message"));
+                }catch(Exception e) {
+                    e.printStackTrace();
+                    AlertUtils.showToast(context, exception.getDetailMessage());
+                }
             }
         });
     }
@@ -110,7 +124,13 @@ public class PinterestLoginActivity extends FragmentActivity{
                 public void onFailure(PDKException exception) {
                     Log.e(getClass().getName(), exception.getDetailMessage());
                     Syso.info("12345678 >>> output" + exception.getDetailMessage());
-                    AlertUtils.showToast(context, exception.getDetailMessage());
+                    try{
+                        JSONObject jsonObject = new JSONObject(exception.getDetailMessage());
+                        AlertUtils.showToast(context,jsonObject.getString("message"));
+                    }catch(Exception e) {
+                        e.printStackTrace();
+                        AlertUtils.showToast(context, exception.getDetailMessage());
+                    }
                     finish();
                 }
             });

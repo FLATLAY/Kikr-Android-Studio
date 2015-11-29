@@ -164,7 +164,6 @@ import com.pinterest.android.pdk.PDKException;
 import com.pinterest.android.pdk.PDKResponse;
 
 public class HomeActivity extends FragmentActivity implements OnClickListener {
-	static boolean isFromPinterest = false;
 	private FragmentActivity context;
 	private MenuDrawer left;
 	private ActionBar actionBar;
@@ -205,10 +204,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if(isFromPinterest) {
-			isFromPinterest = false;
-			finish();
-		}
 		if (homeActivtyList!=null) {
 			homeActivtyList.add(this);
 		}

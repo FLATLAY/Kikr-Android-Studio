@@ -50,6 +50,7 @@ import com.kikr.dialog.FitDialog;
 import com.kikr.dialog.OptionDialog;
 import com.kikr.dialog.QuantityDialog;
 import com.kikr.dialog.RemoveProductsFromCartDialog;
+import com.kikr.dialog.ShareDialog;
 import com.kikr.dialog.SizeDialog;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.ui.RoundImageView;
@@ -837,7 +838,9 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 			}
 			break;
 		case R.id.shareImage:
-			((HomeActivity) mContext).shareProduct(product);
+			ShareDialog dialog = new ShareDialog(mContext,(HomeActivity)mContext,product);
+			dialog.show();
+//			((HomeActivity) mContext).shareProduct(product);
 			break;	
 		case R.id.viewDetailsWebView:
 			addFragment(new FragmentProductDetailWebView(product.getAffiliateurlforsharing(), product));

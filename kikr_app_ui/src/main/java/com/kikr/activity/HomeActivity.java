@@ -69,6 +69,7 @@ import com.kikr.dialog.HelpInviteFriendsDialog;
 import com.kikr.dialog.HelpKikrCardDialog;
 import com.kikr.dialog.HelpSocialMediaDialog;
 import com.kikr.dialog.LogoutDialog;
+import com.kikr.dialog.PinterestBoardDialog;
 import com.kikr.dialog.TwotapMessageDialog;
 import com.kikr.fragment.FragmentActivityCollectionDetail;
 import com.kikr.fragment.FragmentActivityMonths;
@@ -153,6 +154,7 @@ import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.StringUtils;
 import com.kikrlib.utils.Syso;
 import com.personagraph.api.PGAgent;
+import com.pinterest.android.pdk.PDKBoard;
 import com.pinterest.android.pdk.Utils;
 import com.radiusnetworks.ibeacon.IBeaconManager;
 import com.soundcloud.android.crop.Crop;
@@ -162,6 +164,7 @@ import com.pinterest.android.pdk.PDKException;
 import com.pinterest.android.pdk.PDKResponse;
 
 public class HomeActivity extends FragmentActivity implements OnClickListener {
+	static boolean isFromPinterest = false;
 	private FragmentActivity context;
 	private MenuDrawer left;
 	private ActionBar actionBar;
@@ -202,6 +205,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if(isFromPinterest) {
+			isFromPinterest = false;
+			finish();
+		}
 		if (homeActivtyList!=null) {
 			homeActivtyList.add(this);
 		}
@@ -251,8 +258,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 			addFragment(new FragmentProfileView(getIntent().getStringExtra("profile_collection"), "no"));
 		}
 		PGAgent.shareExternalUserId(UserPreference.getInstance().getUserID());
-		PDKClient.configureInstance(this, AppConstants.PINTEREST_APP_ID);
-		PDKClient.getInstance().onConnect(this);
+//		PDKClient.configureInstance(this, AppConstants.PINTEREST_APP_ID);
+//		PDKClient.getInstance().onConnect(this);
 	}
 	
 	private void getKikrCredits() {
@@ -1480,7 +1487,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		startService(intent);
 	}
 
-	public void shareProduct(final Product product) {
+	public void shareProduct(final Product product, final boolean isOther) {
+		AlertUtils.showToast(context,"Please wait...");
 		BranchShortLinkBuilder shortUrlBuilder = new BranchShortLinkBuilder(this)
         .addParameters("id", product.getId())
 		.addParameters("productname", product.getProductname())
@@ -1533,17 +1541,35 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 			            Log.e("Branch Error", "Branch create short url failed. Caused by -" + error.getMessage());
 			            Intent intent = new Intent(Intent.ACTION_SEND);
 			    		intent.setType("image/*");
-			    		intent.putExtra(Intent.EXTRA_TEXT, AppConstants.SHARE_MESSAGE + " "
-			    				 + AppConstants.APP_LINK + "\nItem: " + product.getProducturl());
-			    		startActivity(Intent.createChooser(intent, "Share"));
+					 	String link =  AppConstants.SHARE_MESSAGE + " "+ AppConstants.APP_LINK + "\nItem: " + product.getProducturl();
+					 	intent.putExtra(Intent.EXTRA_TEXT, link);
+						if(isOther)
+			    			startActivity(Intent.createChooser(intent, "Share"));
+					    else {
+//							loginPinterest(link,product.getProducturl(),product.getProductimageurl());
+							Intent i = new Intent(context,PinterestLoginActivity.class);
+							i.putExtra("link",link);
+							i.putExtra("link_url",product.getProducturl());
+							i.putExtra("image_url",product.getProductimageurl());
+							startActivity(i);
+						}
 			        } else {
 			            Log.i("Branch", "Got a Branch URL " + url);
 			            Intent intent = new Intent(Intent.ACTION_SEND);
 			    		intent.setType("text/plain");
 			    		//intent.putExtra(Intent.EXTRA_SUBJECT,  "Check out this " + product.getProductname() + " on Kikr!");
-			    		intent.putExtra(Intent.EXTRA_TEXT,"Check out the " + product.getProductname() + " on #Kikr @myKikr " + url);
-			    		
-			    		startActivity(Intent.createChooser(intent, "Share"));
+					 	String link = "Check out the " + product.getProductname() + " on #Kikr @myKikr " + url;
+			    		intent.putExtra(Intent.EXTRA_TEXT,link);
+			    		if(isOther)
+			    			startActivity(Intent.createChooser(intent, "Share"));
+					 	else {
+//							loginPinterest(link, url, product.getProductimageurl());
+							Intent i = new Intent(context,PinterestLoginActivity.class);
+							i.putExtra("link",link);
+							i.putExtra("link_url",url);
+							i.putExtra("image_url",product.getProductimageurl());
+							startActivity(i);
+						}
 			        }
 			}
 		});
@@ -2285,18 +2311,18 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		Branch branch = Branch.getInstance();
 		branch.initSession(new Branch.BranchReferralInitListener() {
 
-            @Override
-            public void onInitFinished(JSONObject referringParams, BranchError error) {
-                if (error == null) {
-                    Log.e("userid identity", UserPreference.getInstance().getUserID());
-                    Branch.getInstance().setIdentity(UserPreference.getInstance().getUserID());
-                    Log.e("init on start home", "init on start home");
+			@Override
+			public void onInitFinished(JSONObject referringParams, BranchError error) {
+				if (error == null) {
+					Log.e("userid identity", UserPreference.getInstance().getUserID());
+					Branch.getInstance().setIdentity(UserPreference.getInstance().getUserID());
+					Log.e("init on start home", "init on start home");
 
-                } else {
-                    Log.e("MyApp", error.getMessage());
-                }
-            }
-        }, this.getIntent().getData(), this);
+				} else {
+					Log.e("MyApp", error.getMessage());
+				}
+			}
+		}, this.getIntent().getData(), this);
 	}
 	
 	@Override
@@ -2341,69 +2367,76 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		twoTapApi.execute();
 	}
 
-
-    private void loginPinterest(){
-        List scopes = new ArrayList<String>();
-        scopes.add(PDKClient.PDKCLIENT_PERMISSION_READ_PUBLIC);
-        scopes.add(PDKClient.PDKCLIENT_PERMISSION_WRITE_PUBLIC);
-
-        PDKClient.getInstance().login(this, scopes, new PDKCallback() {
-            @Override
-            public void onSuccess(PDKResponse response) {
-                Log.d(getClass().getName(), response.getData().toString());
-                //user logged in, use response.getUser() to get PDKUser object
-                Syso.info("123456789 >>> " + response.getUser().getFirstName() + "," + response.getUser().getUsername());
-                Syso.info("123456789 board UId >>> " + response.getBoard().getUid());
-                getBoardList();
-            }
-
-            @Override
-            public void onFailure(PDKException exception) {
-                Log.e(getClass().getName(), exception.getDetailMessage());
-            }
-        });
-    }
-    private static final String BOARD_FIELDS = "id,name,description,creator,image,counts,created_at";
-    private void getBoardList(){
-        PDKClient.getInstance().getMyBoards(BOARD_FIELDS, new PDKCallback() {
-            @Override
-            public void onSuccess(PDKResponse response) {
-                Syso.info("1234567890  2>>>>>>"+response.getBoardList().get(0).getName());
-                Syso.info("1234567890  2>>>>>>" + response.getBoardList().get(0).getUid());
-                String linkUrl = "http://www.aldoshoes.com/us/en_US/p/38720599-1?cm_mmc=Affiliate-_-LS2-_-15-_-XdSn0e3h3*k&utm_source=affiliate&utm_medium=affiliate&utm_campaign=linkshare&ipcampaign=affiliate&siteID=XdSn0e3h3.k-.8OEb1Cxy2DZuiEBqUVdYg&viewAll=false&dclid=COSXzcitsckCFU2JaAodH3gGsA";
-                String imageUrl = "http://images.prosperentcdn.com//images//500x500//media.aldoshoes.com//product//LILLIANNE//1//LILLIANNE_1_RG.JPG";
-                onSavePin(imageUrl, response.getBoardList().get(0).getUid(), "Testing Pin It", linkUrl);
-            }
-
-            @Override
-            public void onFailure(PDKException exception) {
-                Log.e(getClass().getName(), exception.getDetailMessage());
-                Syso.info("12345678 >>> output" + exception.getDetailMessage());
-            }
-        });
-    }
-
-    private void onSavePin(String imageUrl,String boardId,String text,String linkUrl) {
-
-        if (!Utils.isEmpty(text) &&!Utils.isEmpty(boardId) && !Utils.isEmpty(imageUrl)) {
-            PDKClient.getInstance().createPin(text, boardId, imageUrl, linkUrl, new PDKCallback() {
-                @Override
-                public void onSuccess(PDKResponse response) {
-                    Log.d(getClass().getName(), response.getData().toString());
-                    Syso.info("12345678 >>> output" + response.getData().toString());
-                    AlertUtils.showToast(context,response.getData().toString());
-                }
-
-                @Override
-                public void onFailure(PDKException exception) {
-                    Log.e(getClass().getName(), exception.getDetailMessage());
-                    Syso.info("12345678 >>> output" + exception.getDetailMessage());
-                    AlertUtils.showToast(context, exception.getDetailMessage());
-                }
-            });
-        } else {
-            Toast.makeText(this, "Required fields cannot be empty", Toast.LENGTH_SHORT).show();
-        }
-    }
+//
+//    public void loginPinterest(final String text,final String link,final String imageUrl){
+//        List scopes = new ArrayList<String>();
+//        scopes.add(PDKClient.PDKCLIENT_PERMISSION_READ_PUBLIC);
+//        scopes.add(PDKClient.PDKCLIENT_PERMISSION_WRITE_PUBLIC);
+//		isFromPinterest = true;
+//
+//        PDKClient.getInstance().login(this, scopes, new PDKCallback() {
+//			@Override
+//			public void onSuccess(PDKResponse response) {
+//				Log.d(getClass().getName(), response.getData().toString());
+//				//user logged in, use response.getUser() to get PDKUser object
+//				Syso.info("123456789 >>> " + response.getUser().getFirstName() + "," + response.getUser().getUsername());
+//				Syso.info("123456789 board UId >>> " + response.getBoard().getUid());
+//				getBoardList(text, link, imageUrl);
+//			}
+//
+//			@Override
+//			public void onFailure(PDKException exception) {
+//				Log.e(getClass().getName(), exception.getDetailMessage());
+//				AlertUtils.showToast(context, exception.getDetailMessage());
+//			}
+//		});
+//    }
+//    private static final String BOARD_FIELDS = "id,name,description,creator,image,counts,created_at";
+//    private void getBoardList(final String text,final String link,final String imageUrl){
+//        PDKClient.getInstance().getMyBoards(BOARD_FIELDS, new PDKCallback() {
+//            @Override
+//            public void onSuccess(PDKResponse response) {
+//                Syso.info("1234567890  2>>>>>>" + response.getBoardList().get(0).getName());
+//                Syso.info("1234567890  2>>>>>>" + response.getBoardList().get(0).getUid());
+////               	onSavePin(imageUrl, response.getBoardList().get(0).getUid(), text, link);
+//				if(response.getBoardList()!=null&&response.getBoardList().size()>0) {
+//					Syso.info("1234567890  2>>>>>> inside condition");
+//					PinterestBoardDialog boardDialog = new PinterestBoardDialog(context, response.getBoardList(), imageUrl, text, link);
+//					boardDialog.show();
+//				}else
+//					AlertUtils.showToast(context, "No board found, please create board first");
+//            }
+//
+//            @Override
+//            public void onFailure(PDKException exception) {
+//                Log.e(getClass().getName(), exception.getDetailMessage());
+//                Syso.info("12345678 >>> output" + exception.getDetailMessage());
+//				AlertUtils.showToast(context, exception.getDetailMessage());
+//            }
+//        });
+//    }
+//
+//    public void onSavePin(String imageUrl,String boardId,String text,String linkUrl) {
+//
+//        if (!Utils.isEmpty(text) &&!Utils.isEmpty(boardId) && !Utils.isEmpty(imageUrl)) {
+//            PDKClient.getInstance().createPin(text, boardId, imageUrl, linkUrl, new PDKCallback() {
+//                @Override
+//                public void onSuccess(PDKResponse response) {
+//                    Log.d(getClass().getName(), response.getData().toString());
+//                    Syso.info("12345678 >>> output" + response.getData().toString());
+//                    AlertUtils.showToast(context,"Shared Successfully");
+//                }
+//
+//                @Override
+//                public void onFailure(PDKException exception) {
+//                    Log.e(getClass().getName(), exception.getDetailMessage());
+//                    Syso.info("12345678 >>> output" + exception.getDetailMessage());
+//                    AlertUtils.showToast(context, exception.getDetailMessage());
+//                }
+//            });
+//        } else {
+//            Toast.makeText(this, "Required fields cannot be empty", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 	
 }

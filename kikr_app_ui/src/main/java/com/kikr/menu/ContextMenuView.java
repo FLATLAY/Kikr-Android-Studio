@@ -17,6 +17,7 @@ import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.dialog.CollectionListDialog;
 import com.kikr.dialog.CreateAccountDialog;
+import com.kikr.dialog.ShareDialog;
 import com.kikr.utility.UiUpdate;
 import com.kikrlib.bean.Product;
 import com.kikrlib.db.UserPreference;
@@ -312,7 +313,9 @@ public class ContextMenuView extends FrameLayout{
 			break;
 		case 3:
 //			AlertUtils.showToast(getContext(), "Share option selected");
-			mContext.shareProduct(product);
+			ShareDialog dialog = new ShareDialog(mContext,(HomeActivity)mContext,product);
+			dialog.show();
+//			mContext.shareProduct(product);
 			break;
 		}
 	}

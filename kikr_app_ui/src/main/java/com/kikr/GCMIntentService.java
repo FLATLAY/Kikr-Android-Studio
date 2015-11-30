@@ -14,7 +14,10 @@ import android.util.Log;
 
 import com.google.android.gcm.GCMBaseIntentService;
 import com.kikr.activity.HomeActivity;
+import com.kikr.fragment.FragmentPlaceMyOrder;
 import com.kikr.utility.CommonUtility;
+import com.kikrlib.db.UserPreference;
+import com.kikrlib.utils.StringUtils;
 import com.kikrlib.utils.Syso;
 
 import org.json.JSONException;
@@ -80,20 +83,20 @@ public class GCMIntentService extends GCMBaseIntentService {
 			message = "You received new message";
 		}
 		boolean isShowNotification = true;
-//		if(section.equalsIgnoreCase("placeorder")){
+		if(section.equalsIgnoreCase("placeorder")){
 //			double finalValue = StringUtils.getDoubleValue(getFinalPrice(otherdata.toString()));
-//			double finalValue = getFinalPrice(otherdata.toString());
-//			double savedValue = StringUtils.getDoubleValue(UserPreference.getInstance().getFinalPrice());
-//			double diffrence = finalValue-savedValue;
-//			Syso.info("uuuuuuuuuuuuu >>>>> Final value : "+finalValue+", Saved Final value>>"+savedValue+" Diff>>>"+diffrence);
-//			if(diffrence<=5){
-//				if(!TextUtils.isEmpty(UserPreference.getInstance().getPurchaseId())){
-//					isShowNotification = false;
-//					FragmentPlaceMyOrder myOrder = new FragmentPlaceMyOrder(otherdata, false);
-//					myOrder.confirmPuchase(UserPreference.getInstance().getPurchaseId());
-//				}
-//			}
-//		}
+			double finalValue = getFinalPrice(otherdata.toString());
+			double savedValue = StringUtils.getDoubleValue(UserPreference.getInstance().getFinalPrice());
+			double diffrence = finalValue-savedValue;
+			Syso.info("uuuuuuuuuuuuu >>>>> Final value : "+finalValue+", Saved Final value>>"+savedValue+" Diff>>>"+diffrence);
+			if(diffrence<=5){
+				if(!TextUtils.isEmpty(UserPreference.getInstance().getPurchaseId())){
+					isShowNotification = false;
+					FragmentPlaceMyOrder myOrder = new FragmentPlaceMyOrder(otherdata, false);
+					myOrder.confirmPuchase(UserPreference.getInstance().getPurchaseId());
+				}
+			}
+		}
 		if(isShowNotification)
 			generateNotification(context, message,inspiration_id,section,otherdata);
 	}

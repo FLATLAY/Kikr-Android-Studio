@@ -128,8 +128,7 @@ public class TwoTapProductDetails {
 		return productMainOptionList;
 	}
 
-	public void setProductMainOptionList(
-			List<ProductMainOption> productMainOptionList) {
+	public void setProductMainOptionList(List<ProductMainOption> productMainOptionList) {
 		this.productMainOptionList = productMainOptionList;
 	}
 

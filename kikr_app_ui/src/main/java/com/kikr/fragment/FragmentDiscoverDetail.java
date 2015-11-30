@@ -456,7 +456,7 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 	}
 	
 	private void setNoDetailsProduct() {
-		isProductExist = false;
+		isProductExist = true;
 	}
 
 	private List<ProductMainOption> getMainOptionList(JSONObject optJSONObject) {

@@ -127,6 +127,10 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 		cardAndShippingDetail = new CartProduct();
 		this.productList = productList;
 		this.cartid = cartid;
+		for(int i=0;i<productList.size();i++){
+			productList.get(i).setAffiliateurl(productList.get(i).getAffiliateurl()+"/"+cartid);
+			productList.get(i).setAffiliateurlforsharing(productList.get(i).getAffiliateurlforsharing()+"/"+cartid);
+		}
 	}
 	
 

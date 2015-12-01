@@ -11,7 +11,9 @@
         android:cacheColorHint="#00000000"
         android:listSelector="@android:color/transparent"
         android:scrollbars="none" >
-    </ListView>
+    </ListView>
+
+
     -->
     
     <include
@@ -71,13 +73,13 @@
 	            android:layout_marginBottom="16dp"
 	            android:textColor="@color/white"
 	            android:text="Categories"
-	            android:visibility="gone"/>
+	            android:visibility="visible"/>
         
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:visibility="gone">
+                android:visibility="visible">
                 
                 <RelativeLayout
                     android:id="@+id/checkMenLayout"
@@ -143,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:visibility="gone">
+                android:visibility="visible">
                 
                 <RelativeLayout
                     android:id="@+id/checkAccessoriesLayout"

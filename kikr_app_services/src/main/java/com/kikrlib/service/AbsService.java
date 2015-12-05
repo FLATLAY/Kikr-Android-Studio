@@ -1,5 +1,6 @@
 package com.kikrlib.service;
 
+import org.apache.http.NameValuePair;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 
 import android.content.Context;
@@ -7,6 +8,8 @@ import android.content.Context;
 import com.kikrlib.utils.Constants;
 import com.kikrlib.utils.Constants.WebConstants;
 import com.kikrlib.utils.Syso;
+
+import java.util.List;
 
 /**
  * An Abstract service class which is responsible for service inputs
@@ -111,6 +114,11 @@ public abstract class AbsService implements IService {
 	@Override
 	public String getHeader() {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<NameValuePair> getNameValueRequestForOAuth()
+	{
 		return null;
 	}
 	

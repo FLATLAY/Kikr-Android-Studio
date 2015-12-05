@@ -40,6 +40,10 @@ public class UserPreference {
 	private final String mPurchaseId = "mPurchaseId";
 	private final String mNotificationCliked = "mNotificationCliked";
 
+	private final String mAuthTimeStamp = "mAuthTimeStamp";
+	private final String mAuthExpireTime = "mAuthExpireTime";
+	private final String mAccessToken = "mAccessToken";
+
 	private static UserPreference INSTANCE;
 
 	public static UserPreference getInstance() {
@@ -70,7 +74,7 @@ public class UserPreference {
 	
 	public void decCartCount() {
 		 int count=Integer.parseInt(TextUtils.isEmpty(getCartCount())?"0":getCartCount())-1;
-		 setCartCount(String.valueOf(count>0?count:0));
+		 setCartCount(String.valueOf(count > 0 ? count : 0));
 	}
 
 
@@ -133,7 +137,7 @@ public class UserPreference {
 	}
 
 	public boolean getIsCreateWalletPin() {
-		return mPrefs.getBoolean(mIsCreateWalletPin,true);
+		return mPrefs.getBoolean(mIsCreateWalletPin, true);
 	}
 	
 	public void setIsTwitterConnected(boolean value) {
@@ -284,5 +288,31 @@ public class UserPreference {
 	public String getPurchaseId() {
 		return mPrefs.getString(mPurchaseId, "");
 	}
-	
+
+	public long getAuthTimeStamp(){
+		return mPrefs.getLong(mAuthTimeStamp, 0);
+	}
+
+	public void setTimeStamp(long value){
+		mPrefsEditor.putLong(mAuthTimeStamp, value);
+		mPrefsEditor.commit();
+	}
+	public int getAuthExpireTime(){
+		return mPrefs.getInt(mAuthExpireTime, 0);
+	}
+
+	public void setExpireTime(int value){
+		mPrefsEditor.putInt(mAuthExpireTime, value);
+		mPrefsEditor.commit();
+	}
+
+	public void setAccessToken(String value) {
+		mPrefsEditor.putString(mAccessToken, value);
+		mPrefsEditor.commit();
+	}
+
+	public String getAccessToken() {
+		return mPrefs.getString(mAccessToken, "");
+	}
+
 }

@@ -31,8 +31,17 @@ public class StringUtils {
 		  String authorizationString ="Basic " + Base64.encodeToString(
 		        ("live_bf92e586ac52066021d03ab6ade48ce5227:").getBytes(),
 		        Base64.NO_WRAP);
-		  System.out.println("============ BASE64 string : "+authorizationString);
+		  System.out.println("============ BASE64 string : " + authorizationString);
 		  return authorizationString;
+	}
+
+	public static String getBase64EncodedString(String client_id,String client_secret){
+		// encode data on your side using BASE64
+		String authorizationString ="Basic " + Base64.encodeToString(
+				(client_id + ":" + client_secret).getBytes(),
+				Base64.NO_WRAP);
+		System.out.println("============ BASE64 string : " + authorizationString);
+		return authorizationString;
 	}
 	
 	/**

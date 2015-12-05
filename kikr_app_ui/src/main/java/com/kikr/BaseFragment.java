@@ -14,7 +14,16 @@ import android.widget.TextView;
 
 import com.kikr.activity.HomeActivity;
 import com.kikr.utility.CommonUtility;
+import com.kikrlib.api.OAuthWebService;
+import com.kikrlib.db.AppPreference;
+import com.kikrlib.db.UserPreference;
+import com.kikrlib.service.ServiceCallback;
+import com.kikrlib.service.ServiceException;
+import com.kikrlib.utils.AlertUtils;
+import com.kikrlib.utils.Constants;
 import com.kikrlib.utils.Syso;
+
+import org.json.JSONObject;
 
 
 /**
@@ -198,5 +207,72 @@ public abstract class BaseFragment extends Fragment {
 	
 	public TextView getReloadFotter(){
 		return ((HomeActivity) mContext).getReloadFotter();
+	}
+
+	public void getAuthTocken(){
+		boolean condition1 = UserPreference.getInstance().getAuthTimeStamp() == 0;
+		boolean condition2 = System.currentTimeMillis() > (UserPreference.getInstance().getAuthTimeStamp() + UserPreference.getInstance().getAuthExpireTime());
+		if (condition1||condition2) {
+			if (checkInternet2()) {
+				OAuthWebService authWebService = new OAuthWebService(Constants.WebConstants.PAYPAL_AUTH_URL, new ServiceCallback() {
+					@Override
+					public void handleOnSuccess(Object object) {
+						Syso.info("1234567890 in handleOnSuccess>>"+object);
+						try {
+							JSONObject jsonObj = new JSONObject(object.toString());
+							String access_token = jsonObj.getString("access_token");
+							int expires_in = jsonObj.getInt("expires_in");
+							UserPreference.getInstance().setExpireTime(expires_in * 1000);
+							UserPreference.getInstance().setAccessToken(access_token);
+							UserPreference.getInstance().setTimeStamp(System.currentTimeMillis());
+						}catch(Exception e){
+							e.printStackTrace();
+						}
+					}
+
+					@Override
+					public void handleOnFailure(ServiceException exception, Object object) {
+						Syso.info("1234567890 in handleOnFailure>>"+object);
+						AlertUtils.showToast(mContext,object.toString());
+					}
+				});
+				authWebService.execute();
+			}
+		}
+	}
+
+	public void validateCard(){
+		if (checkInternet2()) {
+			OAuthWebService authWebService = new OAuthWebService(Constants.WebConstants.PAYPAL_PAYMENT_URL, new ServiceCallback() {
+				@Override
+				public void handleOnSuccess(Object object) {
+					Syso.info("1234567890 in handleOnSuccess>>"+object);
+					try {
+						JSONObject jsonObj = new JSONObject(object.toString());
+						if(jsonObj.optString("state").equalsIgnoreCase("approved")){
+							JSONObject jsonObj2 = jsonObj.getJSONArray("transactions").getJSONObject(0);
+							String id = jsonObj2.getJSONArray("related_resources").getJSONObject(0).getJSONObject("authorization").optString("id");
+							Syso.info("12345678 authorization id >>>"+id);
+						}else{
+							AlertUtils.showToast(mContext,"Please enter valid card");
+						}
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+				}
+
+				@Override
+				public void handleOnFailure(ServiceException exception, Object object) {
+					Syso.info("1234567890 in handleOnFailure>>" + object);
+					if(object!=null)
+						AlertUtils.showToast(mContext,object.toString());
+					else
+						AlertUtils.showToast(mContext,"Please enter valid card");
+
+				}
+			});
+			authWebService.setRequest();
+			authWebService.execute();
+		}
 	}
 }

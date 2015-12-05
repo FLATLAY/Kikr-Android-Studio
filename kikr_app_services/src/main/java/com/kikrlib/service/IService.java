@@ -67,4 +67,11 @@ public interface IService {
 
 	public String getHeader();
 
+	/**
+	 * Use this function to create request body for request for Auth
+	 *
+	 * @return
+	 */
+	public List<NameValuePair> getNameValueRequestForOAuth() ;
+
 }

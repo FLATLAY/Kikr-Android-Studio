@@ -44,6 +44,7 @@ import com.google.gson.JsonParseException;
 import com.kikrlib.service.res.CommonRes;
 import com.kikrlib.utils.Constants.WebConstants;
 import com.kikrlib.utils.JsonUtils;
+import com.kikrlib.utils.StringUtils;
 import com.kikrlib.utils.Syso;
 
 /**
@@ -116,6 +117,19 @@ public class ServiceCommunicator {
 						httpPost.setEntity(se);
 						httpPost.setHeader("Accept", "application/json");
 						httpPost.setHeader("Content-type", "application/json");
+						if(service.getHeader()!=null){
+							httpClient= (DefaultHttpClient) getNewHttpClient(httpParameters);
+							httpPost.setHeader("Authorization",service.getHeader());
+						}
+					}else if (service.getNameValueRequestForOAuth() != null) {
+						httpClient= (DefaultHttpClient) getNewHttpClient(httpParameters);
+						httpPost.setHeader("Authorization", StringUtils.getBase64EncodedString(WebConstants.PAYPAL_CLIENT, WebConstants.PAYPAL_SECRET));
+						httpPost.setHeader("Content-Type","application/x-www-form-urlencoded");
+						httpPost.setHeader("Accept","application/json");
+						httpPost.setHeader("Accept-Language","en_US");
+						httpPost.setEntity(new UrlEncodedFormEntity(service.getNameValueRequestForOAuth(),HTTP.UTF_8));
+//						Syso.info("==== request string : "+service.getNameValueRequestForOAuth());
+//						Syso.info("==== response string : "+httpResponse.getStatusLine().getStatusCode()+"====: "+EntityUtils.toString( httpResponse.getEntity()));
 					}
 					httpResponse = httpClient.execute(httpPost);
 				}else if(service.getMethod().equalsIgnoreCase(WebConstants.HTTP_METHOD_PUT)){
@@ -138,7 +152,7 @@ public class ServiceCommunicator {
 				
 				Syso.info(TAG + " Response = ",httpResponse); 
 				Syso.info(TAG + " StatusCode = ",httpResponse.getStatusLine().getStatusCode()); 
-				if(httpResponse.getStatusLine().getStatusCode() == 200){
+				if(httpResponse.getStatusLine().getStatusCode() == 200||(service.getHeader()!=null&&httpResponse.getStatusLine().getStatusCode() == 201)){
 					httpEntity = httpResponse.getEntity();
 					mResponse = EntityUtils.toString(httpEntity);
 				}

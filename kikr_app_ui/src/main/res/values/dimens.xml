@@ -118,6 +118,7 @@
 
     <!-- Interest section -->
     <dimen name="interest_section_btn_height">40dp</dimen>
+    <dimen name="interest_user_profile">70dp</dimen>
 
     <!-- Payment section -->
     <dimen name="buy_option_height">150dp</dimen>

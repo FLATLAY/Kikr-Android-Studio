@@ -22,6 +22,7 @@ import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.fragment.FragmentInterestSection;
 import com.kikr.fragment.FragmentProfileView;
+import com.kikr.ui.RoundImageView;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.InterestSection;
 
@@ -70,7 +71,7 @@ public class InterestPeopleListAdapter extends BaseAdapter{
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.adapter_interest_people_list, null);
 			viewHolder = new ViewHolder();
-			viewHolder.user_image = (ImageView) convertView.findViewById(R.id.user_image);
+			viewHolder.user_image = (RoundImageView) convertView.findViewById(R.id.user_image);
 			viewHolder.user_name = (TextView) convertView.findViewById(R.id.user_name);
 			convertView.setTag(viewHolder);
 		} else {
@@ -94,7 +95,7 @@ public class InterestPeopleListAdapter extends BaseAdapter{
 	}
 
 	public class ViewHolder {
-		ImageView user_image;
+		RoundImageView user_image;
 		TextView user_name;
 	}
 	

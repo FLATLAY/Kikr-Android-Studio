@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:drawableBottom="@drawable/tab_indicater_selected"
             android:gravity="center"
-            android:text="Collections"
+            android:text="Featured"
             android:textColor="@color/btn_green"
             android:textSize="@dimen/large_text_size" />
 
@@ -41,7 +41,7 @@
             android:layout_weight="1"
             android:drawableBottom="@drawable/tab_indicater_unselected"
             android:gravity="center"
-            android:text="Featured"
+            android:text="Collections"
             android:textColor="@color/btn_green"
             android:textSize="@dimen/large_text_size" />
     </LinearLayout>
@@ -62,7 +62,17 @@
             android:background="@color/white"
             android:textColor="@color/btn_green"
             android:paddingTop="@dimen/margin_large"
-            android:paddingBottom="@dimen/margin_large" />
+            android:paddingBottom="@dimen/margin_large" />
+
+
+
+
+
+
+
+
+
+
         -->
 
     </android.support.v4.view.ViewPager>

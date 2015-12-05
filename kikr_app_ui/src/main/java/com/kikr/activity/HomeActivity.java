@@ -190,7 +190,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	private BroadcastReceiver receiver;
 	private View twitterView, fbView;
 	private ScrollView menuScrollView;
-	private FragmentSearch fragmentSearch;
+	private FragmentInterestSection fragmentInterestSection;
 	private ContextMenuView contextMenuBg;
 	private boolean isProfile = false;
 	private boolean firstTime = false;
@@ -411,14 +411,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		case R.id.menuSearchImageView:
 			CommonUtility.hideSoftKeyboard(context);
 			Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-			if (fragment instanceof FragmentSearch || fragment instanceof FragmentSearchResults) {
+			if (fragment instanceof FragmentInterestSection || fragment instanceof FragmentSearch || fragment instanceof FragmentSearchResults) {
 				onBackPressed();
 			} else {
-				if (fragmentSearch == null){
-					fragmentSearch = new FragmentSearch();
-					addFragment(fragmentSearch);
+				if (fragmentInterestSection == null){
+					fragmentInterestSection = new FragmentInterestSection();
+					addFragment(fragmentInterestSection);
 				}else{
-					loadFragment(new FragmentSearch());
+					loadFragment(new FragmentInterestSection());
 				}
 			}
 			break;
@@ -1917,6 +1917,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				|| fragment instanceof FragmentPurchaseGuarantee
 				|| fragment instanceof FragmentLearnMoreOutsideUS
 				|| fragment instanceof FragmentStoreDeals
+				|| fragment instanceof FragmentInterestSection
 				|| fragment instanceof FragmentActivityMonths) {
 			showBackButton();
 		} else {

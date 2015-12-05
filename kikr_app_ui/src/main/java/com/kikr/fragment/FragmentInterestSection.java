@@ -55,7 +55,7 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 	private List<InterestSection> interestList;
 	private int pagenum = 0;
 	private Button interest_store_button, interest_brand_button,interest_people_button;
-	private ImageView interest_category_button;
+	private TextView interest_category_button;
 	private InterestBrandListAdapter interestBrandListAdapter;
 	private InterestCategoryListAdapter interestCategoryListAdapter;
 	private InterestStoreListAdapter interestStoreListAdapter;
@@ -73,6 +73,7 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 	private boolean isSearchActive = true;
 	private GridView categoryGridView;
 	private TextView noDataGalGuy;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		mainView = inflater.inflate(R.layout.fragment_interest_section, null);
@@ -87,7 +88,7 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 		interest_store_button = (Button) mainView.findViewById(R.id.interest_store_button);
 		interest_brand_button = (Button) mainView.findViewById(R.id.interest_brand_button);
 		interest_people_button = (Button) mainView.findViewById(R.id.interest_people_button);
-		interest_category_button = (ImageView) mainView.findViewById(R.id.interest_category_imageview);
+		interest_category_button = (TextView) mainView.findViewById(R.id.interest_category_imageview);
 		trendingGalsLinearLayout = (LinearLayout) peopleHeaderView.findViewById(R.id.trendingGalsLinearLayout);
 		trendingGuysLinearLayout = (LinearLayout) peopleHeaderView.findViewById(R.id.trendingGuysLinearLayout);
 		searchYourItemEditText = (EditText) mainView.findViewById(R.id.searchYourItemEditText);
@@ -283,49 +284,50 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 			}
 			break;
 		case R.id.interest_category_imageview:
-			pagenum = 0;
-			isFirstTime = true;
-			isLoading=false;
-			isSearchActive = false;
-			searchYourItemEditText.setText("");
-			if(interestSectionList.getHeaderViewsCount()!=0)
-				interestSectionList.removeHeaderView(peopleHeaderView);
-			if (!isShown) {
-				isShown = true;
-				interestSectionList.setAdapter(null);
-				searchYourItemEditText.setFocusableInTouchMode(false);
-				searchYourItemEditText.setFocusable(false);
-				isSelected ="category";
-				interest_store_button.setVisibility(View.GONE);
-				interest_brand_button.setVisibility(View.GONE);
-				interest_people_button.setVisibility(View.GONE);
-				if(checkInternet()){
-					categoryGridView.setVisibility(View.VISIBLE);
-					interestSectionList.setVisibility(View.GONE);
-					getCategoryList();
-				}
-				else
-					showReloadOption();
-			} else{
-				isShown = false;
-				interestSectionList.setAdapter(null);
-				searchYourItemEditText.setFocusableInTouchMode(true);
-				searchYourItemEditText.setFocusable(true);
-				isSelected ="store";
-				interest_store_button.setVisibility(View.VISIBLE);
-				interest_brand_button.setVisibility(View.VISIBLE);
-				interest_people_button.setVisibility(View.VISIBLE);
-				interest_store_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_active));
-				interest_brand_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
-				interest_people_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
-				if(checkInternet()){
-					categoryGridView.setVisibility(View.GONE);
-					interestSectionList.setVisibility(View.VISIBLE);
-					getStoreList();
-				}
-				else
-					showReloadOption();
-			}
+//			pagenum = 0;
+//			isFirstTime = true;
+//			isLoading=false;
+//			isSearchActive = false;
+//			searchYourItemEditText.setText("");
+//			if(interestSectionList.getHeaderViewsCount()!=0)
+//				interestSectionList.removeHeaderView(peopleHeaderView);
+//			if (!isShown) {
+//				isShown = true;
+//				interestSectionList.setAdapter(null);
+//				searchYourItemEditText.setFocusableInTouchMode(false);
+//				searchYourItemEditText.setFocusable(false);
+//				isSelected ="category";
+//				interest_store_button.setVisibility(View.GONE);
+//				interest_brand_button.setVisibility(View.GONE);
+//				interest_people_button.setVisibility(View.GONE);
+//				if(checkInternet()){
+//					categoryGridView.setVisibility(View.VISIBLE);
+//					interestSectionList.setVisibility(View.GONE);
+//					getCategoryList();
+//				}
+//				else
+//					showReloadOption();
+//			} else{
+//				isShown = false;
+//				interestSectionList.setAdapter(null);
+//				searchYourItemEditText.setFocusableInTouchMode(true);
+//				searchYourItemEditText.setFocusable(true);
+//				isSelected ="store";
+//				interest_store_button.setVisibility(View.VISIBLE);
+//				interest_brand_button.setVisibility(View.VISIBLE);
+//				interest_people_button.setVisibility(View.VISIBLE);
+//				interest_store_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_active));
+//				interest_brand_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
+//				interest_people_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
+//				if(checkInternet()){
+//					categoryGridView.setVisibility(View.GONE);
+//					interestSectionList.setVisibility(View.VISIBLE);
+//					getStoreList();
+//				}
+//				else
+//					showReloadOption();
+//			}
+			addFragment(new FragmentSearch());
 			break;
 		case R.id.trendingGalsLinearLayout:
 			isFirstTime = true;

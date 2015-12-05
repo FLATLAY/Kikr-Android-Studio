@@ -14,7 +14,7 @@
             android:id="@+id/searchYourItemEditText"
             style="@style/editTextSearchYourBank"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
@@ -23,13 +23,15 @@
             android:hint="@string/searchYourItem"
             android:inputType="textEmailAddress" />
 
-        <ImageView
+        <TextView
             android:id="@+id/interest_category_imageview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/ic_menu" />
+            android:gravity="center"
+            android:textColor="@color/app_text_color"
+            android:layout_marginRight="@dimen/margin_large"
+            android:text="Browse\nBy Category"/>
     </LinearLayout>
 
     <View

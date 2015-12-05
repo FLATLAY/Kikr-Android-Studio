@@ -30,7 +30,7 @@ public class FragmentDiscoverNew extends BaseFragment implements TabListener, On
 
 	 CustomPagerAdapter mCustomPagerAdapter;
 	 ViewPager mViewPager;
-	 String[] titalName = new String[]{"Trending", "Collections","Featured"};
+	 String[] titalName = new String[]{"Trending", "Featured","Collections"};
 	 private ActionBar actionBar;
 	 TextView option1TextView,option2TextVie,option3TextView;
 	 private boolean isInspiration=false;
@@ -57,11 +57,12 @@ public class FragmentDiscoverNew extends BaseFragment implements TabListener, On
 	     option2TextVie = (TextView) view.findViewById(R.id.option2);
 	     option3TextView = (TextView) view.findViewById(R.id.option3);
 	     optionArray = new TextView[]{option1TextView,option2TextVie,option3TextView}; 
-		if (isInspiration) {
-			mViewPager.setCurrentItem(0);
-			changeIndicator(0);
-		} else
-			mViewPager.setCurrentItem(1);
+//		if (isInspiration) {
+//			 mViewPager.setCurrentItem(0);
+//			 changeIndicator(0);
+//		 } else
+			 mViewPager.setCurrentItem(0);
+		 changeIndicator(0);
 		setClickListner();
 //	     actionBar = ((HomeActivity)mContext).getActionBar();
 //	     actionBar.setHomeButtonEnabled(false);
@@ -141,11 +142,11 @@ public class FragmentDiscoverNew extends BaseFragment implements TabListener, On
 			case 0:
 				return new FragmentInspirationSection(true,UserPreference.getInstance().getUserID());
 			case 1:
-				return new FragmentDiscover();
-			case 2:
 				return new FragmentFeatured();
-			default:
+			case 2:
 				return new FragmentDiscover();
+			default:
+				return new FragmentInspirationSection(true,UserPreference.getInstance().getUserID());
 			}
         }
  

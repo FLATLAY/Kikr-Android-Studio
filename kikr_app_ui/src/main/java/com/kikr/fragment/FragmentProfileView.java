@@ -90,7 +90,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 	private InterestStoreListAdapter interestStoreListAdapter;
 	public static String lastUserId;
 
-	private TextView myActivityButton;
+	private TextView myActivityButton,btn_photos;
 	
 	public FragmentProfileView(){
 		try{
@@ -144,6 +144,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		interest_brand_button = (Button) mainView.findViewById(R.id.interest_brand_button);
 		interest_people_button = (Button) mainView.findViewById(R.id.interest_people_button);
 		myActivityButton = (TextView) mainView.findViewById(R.id.btn_activity);
+		btn_photos = (TextView) mainView.findViewById(R.id.btn_photos);
 		myActivityButton.setText("Activity");
 		descriptionTextView = (TextView) mainView.findViewById(R.id.descriptionTextView);
 	}
@@ -165,6 +166,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		interest_brand_button.setOnClickListener(this);
 		interest_people_button.setOnClickListener(this);
 		myActivityButton.setOnClickListener(this);
+		btn_photos.setOnClickListener(this);
 	}
 	
 	@Override
@@ -228,6 +230,9 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		case R.id.btn_activity:
 				addFragment(new FragmentActivityMonths());
 			break;
+		case R.id.btn_photos:
+				addFragment(new FragmentInspirationSection(false,UserPreference.getInstance().getUserID()));
+				break;
 		case R.id.collection_button:
 			if (!HelpPreference.getInstance().getHelpCollection().equals("yes") && collectionLists.size() == 0)
 				showDataNotFound();
@@ -516,14 +521,17 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		}
 		if (userDetails.get(0).getId().equalsIgnoreCase(UserPreference.getInstance().getUserID())) {
 			myActivityButton.setVisibility(View.VISIBLE);
+			btn_photos.setVisibility(View.VISIBLE);
 			follow_btn_layout.setVisibility(View.GONE);
 			editProfileImageView.setVisibility(View.VISIBLE);
 		} else if (isFollowed) {
+			btn_photos.setVisibility(View.GONE);
 			myActivityButton.setVisibility(View.GONE);
 			follow_btn_layout.setVisibility(View.VISIBLE);
 			follow_btn.setText("Following");
 			follow_btn.setBackground(getResources().getDrawable(R.drawable.blue_corner_button));
 		}else{
+			btn_photos.setVisibility(View.GONE);
 			myActivityButton.setVisibility(View.GONE);
 			follow_btn_layout.setVisibility(View.VISIBLE);
 			follow_btn.setText("Follow");

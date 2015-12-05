@@ -47,6 +47,7 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener,Se
 	private FragmentDiscover fragmentDiscover;
 	private int firstVisibleItem=0,visibleItemCount=0,totalItemCount=0;
 	private View loaderView;
+	private TextView loadingTextView;
 	
 	public FragmentDiscover() {
 	}
@@ -68,6 +69,7 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener,Se
 	public void initUI(Bundle savedInstanceState) {
 		discoverList=(ListView) mainView.findViewById(R.id.discoverList);		
 		loaderView = View.inflate(mContext, R.layout.footer, null);
+		loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
 	}
 
 	@Override
@@ -112,7 +114,8 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener,Se
 		if (!isFirstTime) {
 			showFotter();
 		} else {
-			mProgressBarDialog.show();
+			loadingTextView.setVisibility(View.VISIBLE);
+//			mProgressBarDialog.show();
 		}
 		
 		
@@ -135,7 +138,8 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener,Se
 			if (!isFirstTime) {
 				hideFotter();
 			} else {
-				mProgressBarDialog.dismiss();
+				loadingTextView.setVisibility(View.GONE);
+//				mProgressBarDialog.dismiss();
 			}
 			hideDataNotFound();
 			isLoading=!isLoading;
@@ -167,7 +171,8 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener,Se
 		if (!isFirstTime) {
 			discoverList.removeFooterView(loaderView);
 		} else {
-			mProgressBarDialog.dismiss();
+			loadingTextView.setVisibility(View.GONE);
+//			mProgressBarDialog.dismiss();
 		}
 		isLoading=!isLoading;
 		Syso.info("In handleOnFailure>>" + object);

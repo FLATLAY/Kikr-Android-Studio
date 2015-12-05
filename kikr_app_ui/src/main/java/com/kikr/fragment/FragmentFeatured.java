@@ -47,6 +47,7 @@ public class FragmentFeatured extends BaseFragment{
 	private FeaturedTabAdapter featuredTabAdapter;
 	private int firstVisibleItem=0,visibleItemCount=0,totalItemCount=0;
 	private View loaderView;
+	private TextView loadingTextView;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,7 +63,7 @@ public class FragmentFeatured extends BaseFragment{
 	public void initUI(Bundle savedInstanceState) {
 		featuredList=(ListView) mainView.findViewById(R.id.featuredList);		
 		loaderView = View.inflate(mContext, R.layout.footer, null);
-		
+		loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
 	}
 
 	@Override
@@ -99,7 +100,8 @@ public class FragmentFeatured extends BaseFragment{
 		if (!isFirstTime) {
 			showFotter();
 		} else {
-			mProgressBarDialog.show();
+			loadingTextView.setVisibility(View.VISIBLE);
+//			mProgressBarDialog.show();
 		}
 		
 		
@@ -111,7 +113,8 @@ public class FragmentFeatured extends BaseFragment{
 					if (!isFirstTime) {
 						hideFotter();
 					} else {
-						mProgressBarDialog.dismiss();
+						loadingTextView.setVisibility(View.GONE);
+//						mProgressBarDialog.dismiss();
 					}
 					hideDataNotFound();
 					isLoading=!isLoading;
@@ -140,7 +143,8 @@ public class FragmentFeatured extends BaseFragment{
 				if (!isFirstTime) {
 					featuredList.removeFooterView(loaderView);
 				} else {
-					mProgressBarDialog.dismiss();
+					loadingTextView.setVisibility(View.GONE);
+//					mProgressBarDialog.dismiss();
 				}
 				isLoading=!isLoading;
 				Syso.info("In handleOnFailure>>" + object);

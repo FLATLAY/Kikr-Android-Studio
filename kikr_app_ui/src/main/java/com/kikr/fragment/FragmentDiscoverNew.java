@@ -41,6 +41,7 @@ public class FragmentDiscoverNew extends BaseFragment implements TabListener, On
 	 }
 	 
 	 public FragmentDiscoverNew(){
+
 	 }
 	 
 	 @Override
@@ -204,5 +205,10 @@ public class FragmentDiscoverNew extends BaseFragment implements TabListener, On
 //		actionBar.setSelectedNavigationItem(position);
 	}
 
-
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+//		getAuthTocken();
+//		validateCard();
+	}
 }

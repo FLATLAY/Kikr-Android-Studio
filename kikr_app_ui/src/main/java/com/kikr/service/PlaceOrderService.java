@@ -17,6 +17,7 @@ import com.kikr.GCMAlarmReceiver;
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.fragment.FragmentDiscoverNew;
+import com.kikr.fragment.FragmentPlaceMyOrder;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.api.CartApi;
 import com.kikrlib.api.TwoTapApi;
@@ -25,6 +26,7 @@ import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
 import com.kikrlib.service.res.CartRes;
+import com.kikrlib.utils.StringUtils;
 import com.kikrlib.utils.Syso;
 
 import org.json.JSONException;
@@ -48,6 +50,8 @@ public class PlaceOrderService extends IntentService{
     public PlaceOrderService(String name) {
         super(name);
     }
+
+//    'still_processing', 'has_failures', or 'done'.
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -79,10 +83,27 @@ public class PlaceOrderService extends IntentService{
                 try {
                     JSONObject jsonObject = new JSONObject(object.toString());
                     String purchaseId=jsonObject.getString("purchase_id");
+                    String message=jsonObject.getString("purchase_id");
+                    double finalPrice = 0;
+                    if(message.equals("still_processing")){
+                        setNextHandler(purchase_id,cartId);
+                    }else if(message.equals("done")){
+                        //check for auto confirm
+//                        confirmPuchase(purchase_id,cartId);
+                        //ask to user
+//                        generateNotification(purchaseId,finalPrice);
 
-//                    setNextHandler(purchase_id);
-//                    confirmPuchase(purchase_id,cartId);
-//                    generateNotification
+//                        double finalValue = 0;
+//                        double savedValue = StringUtils.getDoubleValue(UserPreference.getInstance().getFinalPrice());
+//                        double diffrence = finalValue-savedValue;
+//                        Syso.info("uuuuuuuuuuuuu >>>>> Final value : " + finalValue + ", Saved Final value>>" + savedValue + " Diff>>>" + diffrence);
+//                        if(diffrence<=5){
+//                            confirmPuchase(purchase_id,cartId);
+//                        }else{
+//                            generateNotification(purchaseId,finalPrice);
+//                        }
+                    }
+//                    generateNotification(purchaseId,finalPrice);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -90,7 +111,7 @@ public class PlaceOrderService extends IntentService{
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-//                setNextHandler(purchase_id);
+                setNextHandler(purchase_id,cartId);
             }
         });
         twoTapApi.purchaseStatus(purchase_id);
@@ -172,7 +193,11 @@ public class PlaceOrderService extends IntentService{
     }
 
 
-    private void generateNotification(Context context, String message, String inspiration_id, String section, String otherdata) {
+    private void generateNotification(String purchaseId,double finalPrice) {
+        String message = "Your cart is ready to confirm.";
+        String section = "placeorder";
+        String otherdata = "{\"confirm_with_user\":false,\"purchase_id\":\""+purchaseId+"\",\"message\":\""+message+"\",\"finalprice\":"+finalPrice+"}";
+        Context context = getApplicationContext();
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
         notificationBuilder.setSmallIcon(R.drawable.ic_app_logo);
         notificationBuilder.setTicker(message);
@@ -184,9 +209,6 @@ public class PlaceOrderService extends IntentService{
         if (!TextUtils.isEmpty(otherdata)) {
             intent.putExtra("otherdata", otherdata);
         }
-        if (!TextUtils.isEmpty(inspiration_id)) {
-            intent.putExtra("inspiration_id", inspiration_id);
-        }
         intent.putExtra("section", section);
         intent.setData(Uri.parse(section));
         PendingIntent pendingIntent = PendingIntent.getActivity(context,1, intent,PendingIntent.FLAG_ONE_SHOT);
@@ -195,10 +217,7 @@ public class PlaceOrderService extends IntentService{
         notification.defaults |= Notification.DEFAULT_SOUND;
         notification.defaults |= Notification.DEFAULT_VIBRATE;
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        if(!TextUtils.isEmpty(section)&&section.equalsIgnoreCase("commission"))
-            notificationManager.notify(100, notification);
-        else
-            notificationManager.notify(1, notification);
+        notificationManager.notify(1, notification);
 
         if(!TextUtils.isEmpty(section)&&section.equalsIgnoreCase("placeorder")){
             setAlarmForNotification();

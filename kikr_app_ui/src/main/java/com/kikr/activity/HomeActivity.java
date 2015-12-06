@@ -418,7 +418,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 					fragmentInterestSection = new FragmentInterestSection();
 					addFragment(fragmentInterestSection);
 				}else{
-					loadFragment(new FragmentInterestSection());
+					loadFragment(new FragmentSearch());
 				}
 			}
 			break;

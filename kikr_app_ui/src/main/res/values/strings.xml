@@ -74,8 +74,8 @@
     <string name="add_card">+ Add Card</string>
     <string name="post">Post</string>
 
-   <string name="add_description">Add Description</string>
-    
+    <string name="add_description">Add Description</string>
+
     <!-- Right Menu screen strings -->
     <string name="retail_banking">Retail Banking</string>
     <string name="my_account_dashboard">My Account Dashboard</string>
@@ -253,7 +253,7 @@
         <item>Pennsylvania</item>
         <item>Rhode Island</item>
         <item>South Carolina</item>
-        <item>South Dakota</item> 
+        <item>South Dakota</item>
         <item>Tennessee</item>
         <item>Texas</item>
         <item>Utah</item>
@@ -286,6 +286,84 @@
         <item>Nova Scotia</item>
         <item> Prince Edward Island</item>
     </string-array>
+    <string-array name="statesCanadaCodes">
+        <item> </item>
+        <item>NU</item>
+        <item>QC</item>
+        <item>NT</item>
+        <item>ON</item>
+        <item>BC</item>
+        <item>AB</item>
+        <item>SK</item>
+        <item>MB</item>
+        <item>YT[A]</item>
+        <item>NL</item>
+        <item>NB</item>
+        <item>NS</item>
+        <item>PE</item>
+    </string-array>
+
+    <string-array name="statesUSACodes">
+        <item> </item>
+        <item>AL</item>
+        <item>AK</item>
+        <item>AZ</item>
+        <item>AR</item>
+        <item>CA</item>
+        <item>CO</item>
+        <item>CT</item>
+        <item>DE</item>
+        <item>DC</item>
+        <item>FL</item>
+        <item>GA</item>
+        <item>HI</item>
+        <item>ID</item>
+        <item>IL</item>
+        <item>IN</item>
+        <item>IA</item>
+        <item>KS</item>
+        <item>KY</item>
+        <item>LA</item>
+        <item>ME</item>
+        <item>MD</item>
+        <item>MA</item>
+        <item>MI</item>
+        <item>MN</item>
+        <item>MS</item>
+        <item>MO</item>
+        <item>MT</item>
+        <item>NE</item>
+        <item>NV</item>
+        <item>NH</item>
+        <item>NJ</item>
+        <item>NM</item>
+        <item>NY</item>
+        <item>NC</item>
+        <item>ND</item>
+        <item>OH</item>
+        <item>OK</item>
+        <item>OR</item>
+        <item>PA</item>
+        <item>RI</item>
+        <item>SC</item>
+        <item>SD</item>
+        <item>TN</item>
+        <item>TX</item>
+        <item>UT</item>
+        <item>VT</item>
+        <item>VA</item>
+        <item>WA</item>
+        <item>WV</item>
+        <item>WI</item>
+        <item>Wyoming</item>
+        <item>AS</item>
+        <item>GU</item>
+        <item>MP</item>
+        <item>PR</item>
+        <item>VI</item>
+        <item>WY</item>
+    </string-array>
+
 
     <string name="view_collection_text">View Collection</string>
     <string name="rename_collection_text">Rename Collection</string>
@@ -397,7 +475,7 @@
     <string name="change_walletpin_newpin_text">Enter New Pin</string>
     <string name="change_walletpin_confirmnewpin_text">Enter Confirm New Pin</string>
 
-     <!-- Deals Section -->
+    <!-- Deals Section -->
     <string name="in_store_deals">InStore Deals</string>
     <string name="online_deals">Online Deals</string>
     <string name="nearby_text">Nearby</string>
@@ -458,17 +536,17 @@
     <!-- Activity Learn More Outside US -->
     <string name="kikr_learn_more_desc">Currently Kikr and the products featured within it can only be purchased and shipped to US and Canadian residents.\n\n We are working hard to support international shipments before 2016 however <b>all users</b> have the ability to create and share collections in anticipation of earning credits to be used at a later time. We will store all credits earned for use in the future!!</string>
     <string name="order_success_text"><![CDATA[Purchased Confirmed!<br>You can track the status in Orders next to My Wallet.<br><br><b>Happy Shopping</b> ]]></string>
-	<string name="order_fail_text">Failed to get final value of cart. Please try again later.</string>
+    <string name="order_fail_text">Failed to get final value of cart. Please try again later.</string>
     <string name="come_join">Come join me on Kikr-The Rewards Card for the Social Generation&#8482;</string>
     <string name="text_join">The Rewards Card for the Social Generation&#8482; Get paid to shop and share, join now &amp; earn up to 250 credits.</string>
-    
+
     <string name="earn_250_credits">Join now to get your first 250 credits!</string>
-    
+
     <string name="purchase_guarantee_line1">We at Kikr work tirelessly to bring you name brand products from authentic merchants. You purchase directly from the merchants so you get to take advantage of the same return and exchange policy as those shopping directly on the merchant’s website, but with the benefit of Kikr rewards!</string>
     <string name="purchase_guarantee_line2">Fulfillment and shipping of all products for sale on Kikr are handled by the merchants, not by Kikr.</string>
-	<string name="purchase_guarantee_line3"><b>Have a question about your order status, shipment, or returns/exchanges?</b></string>
-	<string name="purchase_guarantee_line4">Please contact the merchant directly. We provide a list of contact information for our merchants here.</string>
-	<string name="purchase_guarantee_line5"><b>Have a question a technical question about the app?</b></string>
-	<string name="purchase_guarantee_line6">If you have any trouble contacting a merchant directly, please don’t hesitate to reach out to our team for assistance, but know that direct contact with the merchant is usually the quickest &amp; best way to get something resolved.</string>
+    <string name="purchase_guarantee_line3"><b>Have a question about your order status, shipment, or returns/exchanges?</b></string>
+    <string name="purchase_guarantee_line4">Please contact the merchant directly. We provide a list of contact information for our merchants here.</string>
+    <string name="purchase_guarantee_line5"><b>Have a question a technical question about the app?</b></string>
+    <string name="purchase_guarantee_line6">If you have any trouble contacting a merchant directly, please don’t hesitate to reach out to our team for assistance, but know that direct contact with the merchant is usually the quickest &amp; best way to get something resolved.</string>
 
 </resources>

@@ -132,12 +132,12 @@ public class FragmentSearch extends BaseFragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.txtSearch:
-			if(txtSearch.getText().toString().equalsIgnoreCase("CATEGORIES")) {
-				FragmentInterestSection fragmentInterest = new FragmentInterestSection();
-				addFragment(fragmentInterest);
-			}
-			break;
+//		case R.id.txtSearch:
+//			if(txtSearch.getText().toString().equalsIgnoreCase("CATEGORIES")) {
+//				FragmentInterestSection fragmentInterest = new FragmentInterestSection();
+//				addFragment(fragmentInterest);
+//			}
+//			break;
 		}
 	}
 	

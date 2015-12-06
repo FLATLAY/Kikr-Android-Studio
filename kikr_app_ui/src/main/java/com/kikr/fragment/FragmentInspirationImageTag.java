@@ -19,15 +19,18 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.adapter.AutocompleteCustomArrayAdapter;
+import com.kikr.dialog.InspirationCollectionListDialog;
 import com.kikr.ui.CustomAutoCompleteView;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.ui.TagView;
@@ -50,7 +53,7 @@ import com.kikrlib.service.res.SearchRes;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.Syso;
 
-public class FragmentInspirationImageTag extends BaseFragment {
+public class FragmentInspirationImageTag extends BaseFragment implements View.OnClickListener {
 	private Bitmap bmp;
 	private ImageView uploadImageView;
 	private FrameLayout overlay;
@@ -83,6 +86,8 @@ public class FragmentInspirationImageTag extends BaseFragment {
 	private String url;
 	private ProgressBarDialog mProgressBarDialog;
 	private String imageUrl;
+	private LinearLayout linearEditTextView;
+	private TextView collection_text;
 
 	public FragmentInspirationImageTag(Bitmap bmp, String imageUrl, TaggedItem taggedItem) {
 		this.bmp = bmp;
@@ -146,6 +151,8 @@ public class FragmentInspirationImageTag extends BaseFragment {
 		brandBtn = (RadioButton) getView().findViewById(R.id.brandBtn);
 		overlay = (FrameLayout) getView().findViewById(R.id.overlay);
 		searchUserEditText = (CustomAutoCompleteView) getView().findViewById(R.id.searchUserEditText);
+		linearEditTextView = (LinearLayout) getView().findViewById(R.id.linearEditTextView);
+		collection_text = (TextView) getView().findViewById(R.id.collection_text);
 	}
 
 	@Override
@@ -155,6 +162,7 @@ public class FragmentInspirationImageTag extends BaseFragment {
 
 	@Override
 	public void setClickListener() {
+		collection_text.setOnClickListener(this);
 	}
 
 	
@@ -244,7 +252,7 @@ public class FragmentInspirationImageTag extends BaseFragment {
 
 			@Override
 			public void onCheckedChanged(RadioGroup arg0, int checkedId) {
-				taggedItemLocal=new TaggedItem();
+				taggedItemLocal = new TaggedItem();
 				if (checkedId == R.id.peopleBtn) {
 					isSelected = PEOPLE;
 					//removeTag();
@@ -278,6 +286,7 @@ public class FragmentInspirationImageTag extends BaseFragment {
 				taggedItemLocal.setSelectedItemXY(Float.parseFloat(xy[0])/scaleFactor+","+Float.parseFloat(xy[1])/scaleFactor);
 			}
 			setRadioBtn();
+			linearEditTextView.setVisibility(View.GONE);
 		} else if(taggedProducts!=null){
 			tagRadioGroup.setVisibility(View.GONE);
 			if (!TextUtils.isEmpty(taggedProducts.getSelectedProductsXY())) {
@@ -411,7 +420,7 @@ public class FragmentInspirationImageTag extends BaseFragment {
 						}
 					}
 				});
-		Syso.info("isselected:  "+isSelected);
+		Syso.info("isselected:  " + isSelected);
 		if (isSelected.equalsIgnoreCase(STORE)) {
 			interestSectionApi.searchStore(UserPreference.getInstance()
 					.getUserID(), userInput, "0");
@@ -427,7 +436,7 @@ public class FragmentInspirationImageTag extends BaseFragment {
 
 	protected void addSearchUser(SearchUser searchUser) {
 		boolean isContain = false;
-		Syso.info("111111111111111111111 >"+searchUser.getUserId());
+		Syso.info("111111111111111111111 >" + searchUser.getUserId());
 		for (int i = 0; i < usersList.size(); i++) {
 			if (usersList.get(i).getUserId().equals(searchUser.getUserId())){
 				isContain = true;
@@ -441,6 +450,16 @@ public class FragmentInspirationImageTag extends BaseFragment {
 		}
 		if (!isContain && !TextUtils.isEmpty(searchUser.getUsername()))
 			usersList.add(searchUser);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()){
+			case R.id.collection_text:
+				InspirationCollectionListDialog inspirationCollectionListDialog  =new InspirationCollectionListDialog(mContext);
+				inspirationCollectionListDialog.show();
+				break;
+		}
 	}
 
 	public class CustomAutoCompleteTextChangedListener implements TextWatcher {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/collection_list_dialog_dimension"
+    android:layout_height="@dimen/collection_list_dialog_dimension"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+
+    <ProgressBar
+        android:id="@+id/progressBarCollection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/collection_listing"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+    </ListView>
+
+</LinearLayout>

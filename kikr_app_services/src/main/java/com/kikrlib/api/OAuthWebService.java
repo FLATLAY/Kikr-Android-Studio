@@ -26,7 +26,7 @@ public class OAuthWebService extends AbsService {
 	public void setRequest(Card card,BillingAddress billingAddress){
 		if(card!=null&&billingAddress!=null) {
 			jsonRequest = "{\"intent\":\"authorize\",\"payer\":{\"payment_method\":\"credit_card\",\"funding_instruments\":" +
-					"[{\"credit_card\":{\"number\":\"" + card.getCard_number() + "\",\"type\":\"" + card.getCardtype() + "\"," +
+					"[{\"credit_card\":{\"number\":\"" + card.getCard_number() + "\",\"type\":\"" + card.getCardtype().toLowerCase() + "\"," +
 					"\"expire_month\":" + card.getExpirationMonth() + ",\"expire_year\":" + card.getExpirationYear() + ",\"cvv2\":\"" + card.getCvv()
 					+ "\",\"first_name\":\"" + billingAddress.getFirstName() + "\",\"last_name\":\"" + billingAddress.getLastName() + "\"," +
 					"\"billing_address\":{\"line1\":\"" + billingAddress.getLine1() + "\",\"city\":\"" + billingAddress.getCity() + "\"," +

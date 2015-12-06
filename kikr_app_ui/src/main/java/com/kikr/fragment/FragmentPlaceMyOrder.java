@@ -1101,10 +1101,16 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 		b_zipcode = b_zipEditText.getText().toString().trim();
 		b_country = b_countryEditText.getSelectedItem().toString();
 		b_countryForLob = getCountryForLob();
-		if(b_country.equalsIgnoreCase("United States of America"))
-			b_state = b_stateSpinnerUS.getSelectedItem().toString().trim();
-		else if(b_country.equalsIgnoreCase("Canada"))
-			b_state = b_stateSpinnerCanada.getSelectedItem().toString().trim();
+		if(b_country.equalsIgnoreCase("United States of America")) {
+            int pos = b_stateSpinnerUS.getSelectedItemPosition();
+            b_state = getResources().getStringArray(R.array.statesUSACodes)[pos];
+//            b_state = b_stateSpinnerUS.getSelectedItem().toString().trim();
+        }
+		else if(b_country.equalsIgnoreCase("Canada")) {
+            int pos = b_stateSpinnerCanada.getSelectedItemPosition();
+            b_state = getResources().getStringArray(R.array.statesCanadaCodes)[pos];
+//            b_state = b_stateSpinnerCanada.getSelectedItem().toString().trim();
+        }
 		if (cardNumber.length() == 0) {
 			isValid = false;
 			cardNumberEditText.requestFocus();
@@ -1703,6 +1709,8 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
                             addCard(card.getCard_number(), card.getName_on_card(), card.getExpirationMonth()+"/"+card.getExpirationYear(), card.getCvv(), card.getCardtype());
                             voidAuthorization(id);
                         }else{
+                            if(progressBarDialog!=null)
+                            progressBarDialog.dismiss();
                             AlertUtils.showToast(mContext,"Please enter valid card");
                         }
                     }catch(Exception e){
@@ -1713,9 +1721,9 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
                 @Override
                 public void handleOnFailure(ServiceException exception, Object object) {
                     Syso.info("1234567890 in handleOnFailure>>" + object);
-                    if(progressBarDialog==null) {
+                    if(progressBarDialog!=null)
                         progressBarDialog.dismiss();
-                    }
+
                     if(object!=null)
                         AlertUtils.showToast(mContext,object.toString());
                     else

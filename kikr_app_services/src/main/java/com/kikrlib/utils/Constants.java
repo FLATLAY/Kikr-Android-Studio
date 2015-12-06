@@ -38,6 +38,7 @@ public class Constants {
 		String PAYPAL_URL = isLive ? "https://api.paypal.com" : "https://api.sandbox.paypal.com";
 		String PAYPAL_AUTH_URL = PAYPAL_URL+"/v1/oauth2/token";
 		String PAYPAL_PAYMENT_URL = PAYPAL_URL+"/v1/payments/payment";
+		String PAYPAL_VOID_URL = PAYPAL_URL+"/v1/payments/authorization/";
 
 		String PAYPAL_CLIENT = "ASyMq4Qwa4gDwb_eESSSO5H0x2lJmE6TVOuXbEPbsnCU0cNxOocsO7EINHqOn_kfWdpV_2SB8qaCQh01";
 		String PAYPAL_SECRET = "ENDkPsr014T2sOkMd74TfuwySrBVWGrzbk0UGsmpnC8CZMVWqKzCfXBATz_ARjhj0PuIVeHiAOvkhpQv";

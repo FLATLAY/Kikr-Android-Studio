@@ -1,5 +1,7 @@
 package com.kikrlib.api;
 
+import com.kikrlib.bean.BillingAddress;
+import com.kikrlib.bean.Card;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.AbsService;
 import com.kikrlib.service.ServiceCallback;
@@ -21,7 +23,21 @@ public class OAuthWebService extends AbsService {
 		this.actionUrl = actionUrl;
 	}
 
-	public void setRequest(){
+	public void setRequest(Card card,BillingAddress billingAddress){
+		if(card!=null&&billingAddress!=null) {
+			jsonRequest = "{\"intent\":\"authorize\",\"payer\":{\"payment_method\":\"credit_card\",\"funding_instruments\":" +
+					"[{\"credit_card\":{\"number\":\"" + card.getCard_number() + "\",\"type\":\"" + card.getCardtype() + "\"," +
+					"\"expire_month\":" + card.getExpirationMonth() + ",\"expire_year\":" + card.getExpirationYear() + ",\"cvv2\":\"" + card.getCvv()
+					+ "\",\"first_name\":\"" + billingAddress.getFirstName() + "\",\"last_name\":\"" + billingAddress.getLastName() + "\"," +
+					"\"billing_address\":{\"line1\":\"" + billingAddress.getLine1() + "\",\"city\":\"" + billingAddress.getCity() + "\"," +
+					"\"state\":\"" + billingAddress.getState() + "\",\"postal_code\":\"" + billingAddress.getPostal_code() + "\",\"country_code\":\"" + billingAddress.getCountry_code() + "\"}}}]}," +
+					"\"transactions\":[{\"amount\":{\"total\":\"0.01\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"0.01\",\"tax\":\"0.00\",\"shipping\":\"0.00\"}}}]}";
+		}else{
+			jsonRequest = "";
+		}
+	}
+
+	public void setRequest1(){
 		jsonRequest = "{\"intent\":\"authorize\",\"payer\":{\"payment_method\":\"credit_card\",\"funding_instruments\":[{\"credit_card\":{\"number\":\"4417119669820331\",\"type\":\"visa\",\"expire_month\":11,\"expire_year\":2018,\"cvv2\":\"874\",\"first_name\":\"Betsy\",\"last_name\":\"Buyer\",\"billing_address\":{\"line1\":\"111 First Street\",\"city\":\"Saratoga\",\"state\":\"CA\",\"postal_code\":\"95070\",\"country_code\":\"US\"}}}]},\"transactions\":[{\"amount\":{\"total\":\"0.01\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"0.01\",\"tax\":\"0.00\",\"shipping\":\"0.00\"}}}]}";
 	}
 	@Override

@@ -8,6 +8,8 @@ public class Card {
 	String expiration_date;
 	String cvv;
 	String cardtype;
+	String expirationMonth;
+	String expirationYear;
 	
 	/**
 	 * @return the cardtype
@@ -81,6 +83,20 @@ public class Card {
 	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
-	
-	
+
+	public String getExpirationMonth() {
+		return expirationMonth;
+	}
+
+	public void setExpirationMonth(String expirationMonth) {
+		this.expirationMonth = expirationMonth;
+	}
+
+	public String getExpirationYear() {
+		return expirationYear;
+	}
+
+	public void setExpirationYear(String expirationYear) {
+		this.expirationYear = expirationYear;
+	}
 }

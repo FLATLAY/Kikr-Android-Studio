@@ -50,9 +50,11 @@ import com.kikrlib.api.AddressApi;
 import com.kikrlib.api.CardInfoApi;
 import com.kikrlib.api.CartApi;
 import com.kikrlib.api.LOBApi;
+import com.kikrlib.api.OAuthWebService;
 import com.kikrlib.api.TwoTapApi;
 import com.kikrlib.api.UpdateCartApi;
 import com.kikrlib.bean.Address;
+import com.kikrlib.bean.BillingAddress;
 import com.kikrlib.bean.Card;
 import com.kikrlib.bean.CartProduct;
 import com.kikrlib.bean.CartTotalInfo;
@@ -64,6 +66,7 @@ import com.kikrlib.service.res.AddressRes;
 import com.kikrlib.service.res.CardInfoRes;
 import com.kikrlib.service.res.CartRes;
 import com.kikrlib.utils.AlertUtils;
+import com.kikrlib.utils.Constants;
 import com.kikrlib.utils.StringUtils;
 import com.kikrlib.utils.Syso;
 
@@ -95,11 +98,13 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 	private Spinner monthSpinner,yearSpinner;
 	private Button doneBtn;
 	private ArrayList<String> list = new ArrayList<String>();
-	private EditText  streetNameEditText, cityEditText,
-		zipEditText, firstNameEditText, lastNameEditText,telephoneEditText;
+	private EditText  streetNameEditText, cityEditText,zipEditText, firstNameEditText, lastNameEditText,telephoneEditText;
+	private EditText  b_streetNameEditText, b_cityEditText,b_zipEditText, b_firstNameEditText, b_lastNameEditText;
 	private Spinner countryEditText,titleSpinner, stateSpinnerUS, stateSpinnerCanada;
+	private Spinner b_countryEditText, b_stateSpinnerUS, b_stateSpinnerCanada;
 	private Button doneAddressBtn;
 	private String streetnumber="", streetname, city, zipcode, country,countryForLob, firstname,lastname,state,telephone,title;
+	private String  b_streetname, b_city, b_zipcode, b_country,b_countryForLob, b_firstname,b_lastname,b_state;
 	private List<CartProduct> cartProducts = new ArrayList<CartProduct>();
 	private String cartid;
 	private Runnable runnable;
@@ -192,6 +197,15 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 		loadingBar = (FrameLayout) mainView.findViewById(R.id.loadingBar);
 		txtMessageBar = (TextView) mainView.findViewById(R.id.txtMessageBar);
 		apartmentEditText = (EditText) mainView.findViewById(R.id.apartmentEditText);
+
+		b_streetNameEditText = (EditText) mainView.findViewById(R.id.b_streetNameEditText);
+		b_cityEditText = (EditText) mainView.findViewById(R.id.b_cityEditText);
+		b_zipEditText = (EditText) mainView.findViewById(R.id.b_zipEditText);
+		b_firstNameEditText = (EditText) mainView.findViewById(R.id.b_firstNameEditText);
+		b_lastNameEditText = (EditText) mainView.findViewById(R.id.b_lastNameEditText);
+		b_stateSpinnerUS = (Spinner) mainView.findViewById(R.id.b_stateSpinnerUS);
+		b_stateSpinnerCanada = (Spinner) mainView.findViewById(R.id.b_stateSpinnerCanada);
+		b_countryEditText = (Spinner) mainView.findViewById(R.id.b_countryEditText);
 // 		progressBarPlaceOrder.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.btn_green), android.graphics.PorterDuff.Mode.MULTIPLY);
 //		createAndAddWalletFragment();
 		changePlaceOrderColor();
@@ -263,23 +277,43 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 		doneAddressBtn.setOnClickListener(this);
 		learnmoreText.setOnClickListener(this);
 		countryEditText.setOnItemSelectedListener(new OnItemSelectedListener() {
-		    @Override
-		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-		        if(position == 0) {
-		        	// USA
-		        	stateSpinnerUS.setVisibility(View.VISIBLE);
-		        	stateSpinnerCanada.setVisibility(View.GONE);
-		        } else if(position == 1) {
-		        	// Canada
-		        	stateSpinnerUS.setVisibility(View.GONE);
-		        	stateSpinnerCanada.setVisibility(View.VISIBLE);
-		        }
-		    }
+			@Override
+			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+				if (position == 0) {
+					// USA
+					stateSpinnerUS.setVisibility(View.VISIBLE);
+					stateSpinnerCanada.setVisibility(View.GONE);
+				} else if (position == 1) {
+					// Canada
+					stateSpinnerUS.setVisibility(View.GONE);
+					stateSpinnerCanada.setVisibility(View.VISIBLE);
+				}
+			}
 
-		    @Override
-		    public void onNothingSelected(AdapterView<?> parentView) {
-		        // your code here
-		    }
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView) {
+				// your code here
+			}
+
+		});
+		b_countryEditText.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+				if(position == 0) {
+					// USA
+					b_stateSpinnerUS.setVisibility(View.VISIBLE);
+					b_stateSpinnerCanada.setVisibility(View.GONE);
+				} else if(position == 1) {
+					// Canada
+					b_stateSpinnerUS.setVisibility(View.GONE);
+					b_stateSpinnerCanada.setVisibility(View.VISIBLE);
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView) {
+				// your code here
+			}
 
 		});
 		whyTextView.setOnClickListener(this);
@@ -1011,7 +1045,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 				}
 			}
 		});
-		twoTapApi.updatecarttwotapstatus(UserPreference.getInstance().getUserID(), purchase_id, cartid,finalprice,status);
+		twoTapApi.updatecarttwotapstatus(UserPreference.getInstance().getUserID(), purchase_id, cartid, finalprice, status);
 		twoTapApi.execute();
 	}
 
@@ -1060,6 +1094,17 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 		String expiryMonth = monthSpinner.getSelectedItem().toString();
 		String expiryYear = yearSpinner.getSelectedItem().toString();
 		String cardtype = Luhn.getCardTypeinString(cardNumber);
+		b_firstname = b_firstNameEditText.getText().toString().trim();
+		b_lastname = b_lastNameEditText.getText().toString().trim();
+		b_streetname = b_streetNameEditText.getText().toString().trim();
+		b_city = b_cityEditText.getText().toString().trim();
+		b_zipcode = b_zipEditText.getText().toString().trim();
+		b_country = b_countryEditText.getSelectedItem().toString();
+		b_countryForLob = getCountryForLob();
+		if(b_country.equalsIgnoreCase("United States of America"))
+			b_state = b_stateSpinnerUS.getSelectedItem().toString().trim();
+		else if(b_country.equalsIgnoreCase("Canada"))
+			b_state = b_stateSpinnerCanada.getSelectedItem().toString().trim();
 		if (cardNumber.length() == 0) {
 			isValid = false;
 			cardNumberEditText.requestFocus();
@@ -1085,22 +1130,81 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 		}else if (TextUtils.isEmpty(cardtype)) {
 			isValid = false;
 			AlertUtils.showToast(mContext, R.string.alert_card_invalid_blank);
+		}else if (b_firstname.length() == 0) {
+			isValid = false;
+			b_firstNameEditText.requestFocus();
+			AlertUtils.showToast(mContext, R.string.alert_firstname_blank);
+		}
+		else if (b_lastname.length() == 0) {
+			isValid = false;
+			b_lastNameEditText.requestFocus();
+			AlertUtils.showToast(mContext, R.string.alert_lastname_blank);
+		}
+		else if (b_streetname.length() == 0) {
+			isValid = false;
+			b_streetNameEditText.requestFocus();
+			AlertUtils.showToast(mContext, R.string.alert_streetname_blank);
+		} else if (b_city.length() == 0) {
+			isValid = false;
+			b_cityEditText.requestFocus();
+			AlertUtils.showToast(mContext, R.string.alert_city_blank);
+		} else if (b_state.length() == 0) {
+			isValid = false;
+			if(b_country.equalsIgnoreCase("United States of America"))
+				b_stateSpinnerUS.requestFocus();
+			else if(country.equalsIgnoreCase("Canada"))
+				b_stateSpinnerCanada.requestFocus();
+			AlertUtils.showToast(mContext, R.string.alert_state_blank);
+		}else if (b_zipcode.length() == 0) {
+			isValid = false;
+			b_zipEditText.requestFocus();
+			AlertUtils.showToast(mContext, R.string.alert_zip_blank);
+		} else if (b_country.length() == 0) {
+			isValid = false;
+			b_countryEditText.requestFocus();
+			AlertUtils.showToast(mContext, R.string.alert_countryname_blank);
+		} else if (!checkValidZipCode(b_zipcode)) {
+			isValid = false;
+			b_zipEditText.requestFocus();
+			AlertUtils.showToast(mContext, R.string.alert_invalid_zipcode);
 		}
 		if (isValid&&((HomeActivity)mContext).checkInternet()) {
+            CommonUtility.hideSoftKeyboard(mContext);
 			String expiryDate = monthSpinner.getSelectedItem()+"/"+yearSpinner.getSelectedItem();
-			CommonUtility.hideSoftKeyboard(mContext);
-			addCard(cardNumber,cardHolderName,expiryDate,cvv,cardtype);
+            Card card = new Card();
+            card.setCard_number(cardNumber);
+            card.setCardtype(cardtype);
+            card.setName_on_card(cardHolderName);
+            card.setCvv(cvv);
+            card.setExpirationMonth(monthSpinner.getSelectedItem().toString());
+            card.setExpirationYear(yearSpinner.getSelectedItem().toString());
+
+            BillingAddress address = new BillingAddress();
+            address.setFirstName(b_firstname);
+            address.setLastName(b_lastname);
+            address.setCity(b_city);
+            address.setCountry_code(b_countryForLob);
+            address.setLine1(b_streetname);
+            address.setPostal_code(b_zipcode);
+            address.setState(b_state);
+            getAuthTocken();
+            validateCard(card, address);
+//            addCard(cardNumber, cardHolderName, expiryDate, cvv, cardtype);
 		}
+
 	}
 
 	private void addCard(String cardNumber,String cardHolderName,String expiryDate,String cvv,String cardtype) {
-		progressBarDialog = new ProgressBarDialog(mContext);
-		progressBarDialog.show();
+        if(progressBarDialog==null) {
+            progressBarDialog = new ProgressBarDialog(mContext);
+            progressBarDialog.show();
+        }
 		final CardInfoApi cardInfoApi = new CardInfoApi(new ServiceCallback() {
 			
 			@Override
 			public void handleOnSuccess(Object object) {
-				progressBarDialog.dismiss();
+                if(progressBarDialog!=null)
+			    	progressBarDialog.dismiss();
 				if (object != null) {
 					CardInfoRes cardInfoRes = (CardInfoRes) object;
 					AlertUtils.showToast(mContext, cardInfoRes.getMessage());
@@ -1114,7 +1218,8 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 			
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				progressBarDialog.dismiss();
+                if(progressBarDialog!=null)
+			    	progressBarDialog.dismiss();
 				if(object!=null){
 					CardInfoRes cardInfoRes=(CardInfoRes) object;
 					AlertUtils.showToast(mContext, cardInfoRes.getMessage());
@@ -1123,7 +1228,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 				}
 			}
 		});
-		cardInfoApi.addCard(UserPreference.getInstance().getUserID(),CommonUtility.EncryptCreditCard(cardNumber), cardHolderName, expiryDate, cvv,cardtype);
+		cardInfoApi.addCard(UserPreference.getInstance().getUserID(), CommonUtility.EncryptCreditCard(cardNumber), cardHolderName, expiryDate, cvv, cardtype);
 		cardInfoApi.execute();
 	}
 	
@@ -1133,6 +1238,14 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 		 cvvEditText.setText("");
 		 monthSpinner.setSelection(0);
 		 yearSpinner.setSelection(0);
+        b_streetNameEditText.setText("");
+        b_cityEditText.setText("");
+        b_zipEditText.setText("");
+        b_firstNameEditText.setText("");
+        b_lastNameEditText.setText("");
+        b_countryEditText.setSelection(0);
+        b_stateSpinnerUS.setSelection(0);
+        b_stateSpinnerCanada.setSelection(0);
 	}
 	
 	private void validateUserInputAddress() {
@@ -1187,7 +1300,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 			isValid = false;
 			countryEditText.requestFocus();
 			AlertUtils.showToast(mContext, R.string.alert_countryname_blank);
-		} else if (!checkValidZipCode()) {
+		} else if (!checkValidZipCode(zipcode)) {
 			isValid = false;
 			zipEditText.requestFocus();
 			AlertUtils.showToast(mContext, R.string.alert_invalid_zipcode);
@@ -1247,18 +1360,18 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 				AlertUtils.showToast(mContext, "Address not found or seems to be invalid");	
 			}
 		});
-		addressApi.validateAddress(streetname, apartment,state, city, zipcode, countryForLob);
+		addressApi.validateAddress(streetname, apartment, state, city, zipcode, countryForLob);
 		addressApi.execute();
 
 		progressBarDialog.setOnCancelListener(new OnCancelListener() {
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				addressApi.cancel();
-			}
-		});
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                addressApi.cancel();
+            }
+        });
 	}
 
-	private boolean checkValidZipCode() {
+	private boolean checkValidZipCode(String zipcode) {
 		if (countryEditText.getSelectedItemPosition() == 0) {
 			if (ValidZipcode.isValidPostalUSCode(zipcode)) {
 				return true;
@@ -1535,5 +1648,113 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 		loadingBar.setVisibility(View.GONE);
 		placemyOrderLayout.setVisibility(View.VISIBLE);
 	}
-	
+
+//    ======================================= validate ===============================================
+    public void getAuthTocken(){
+        progressBarDialog = new ProgressBarDialog(mContext);
+        progressBarDialog.show();
+    boolean condition1 = UserPreference.getInstance().getAuthTimeStamp() == 0;
+    boolean condition2 = System.currentTimeMillis() > (UserPreference.getInstance().getAuthTimeStamp() + UserPreference.getInstance().getAuthExpireTime());
+    if (condition1||condition2) {
+        if (checkInternet()) {
+            OAuthWebService authWebService = new OAuthWebService(Constants.WebConstants.PAYPAL_AUTH_URL, new ServiceCallback() {
+                @Override
+                public void handleOnSuccess(Object object) {
+                    Syso.info("1234567890 in handleOnSuccess>>"+object);
+                    try {
+                        JSONObject jsonObj = new JSONObject(object.toString());
+                        String access_token = jsonObj.getString("access_token");
+                        int expires_in = jsonObj.getInt("expires_in");
+                        UserPreference.getInstance().setExpireTime(expires_in * 1000);
+                        UserPreference.getInstance().setAccessToken(access_token);
+                        UserPreference.getInstance().setTimeStamp(System.currentTimeMillis());
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void handleOnFailure(ServiceException exception, Object object) {
+                    Syso.info("1234567890 in handleOnFailure>>"+object);
+                    AlertUtils.showToast(mContext,object.toString());
+                }
+            });
+            authWebService.execute();
+        }
+    }
+}
+
+    public void validateCard(final Card card,BillingAddress address){
+        if(progressBarDialog==null) {
+            progressBarDialog = new ProgressBarDialog(mContext);
+            progressBarDialog.show();
+        }
+        if (checkInternet()) {
+            OAuthWebService authWebService = new OAuthWebService(Constants.WebConstants.PAYPAL_PAYMENT_URL, new ServiceCallback() {
+                @Override
+                public void handleOnSuccess(Object object) {
+                    Syso.info("1234567890 in handleOnSuccess>>"+object);
+                    try {
+                        JSONObject jsonObj = new JSONObject(object.toString());
+                        if(jsonObj.optString("state").equalsIgnoreCase("approved")){
+                            JSONObject jsonObj2 = jsonObj.getJSONArray("transactions").getJSONObject(0);
+                            String id = jsonObj2.getJSONArray("related_resources").getJSONObject(0).getJSONObject("authorization").optString("id");
+                            Syso.info("12345678 authorization id >>>"+id);
+                            addCard(card.getCard_number(), card.getName_on_card(), card.getExpirationMonth()+"/"+card.getExpirationYear(), card.getCvv(), card.getCardtype());
+                            voidAuthorization(id);
+                        }else{
+                            AlertUtils.showToast(mContext,"Please enter valid card");
+                        }
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void handleOnFailure(ServiceException exception, Object object) {
+                    Syso.info("1234567890 in handleOnFailure>>" + object);
+                    if(progressBarDialog==null) {
+                        progressBarDialog.dismiss();
+                    }
+                    if(object!=null)
+                        AlertUtils.showToast(mContext,object.toString());
+                    else
+                        AlertUtils.showToast(mContext,"Please enter valid card");
+
+                }
+            });
+            authWebService.setRequest(card,address);
+            authWebService.execute();
+        }
+    }
+
+    public void voidAuthorization(String authId){
+        if (checkInternet2()) {
+            OAuthWebService authWebService = new OAuthWebService(Constants.WebConstants.PAYPAL_VOID_URL+authId+"/void", new ServiceCallback() {
+                @Override
+                public void handleOnSuccess(Object object) {
+                    Syso.info("1234567890 in handleOnSuccess>>"+object);
+                    try {
+
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void handleOnFailure(ServiceException exception, Object object) {
+                    Syso.info("1234567890 in handleOnFailure>>" + object);
+                    if(object!=null)
+                        AlertUtils.showToast(mContext,object.toString());
+                    else
+                        AlertUtils.showToast(mContext,"Unable to void payment");
+
+                }
+            });
+            authWebService.setRequest(null,null);
+            authWebService.execute();
+        }
+    }
+
+
 }

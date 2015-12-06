@@ -332,6 +332,8 @@
 
     <!-- Address Info Section -->
     <string name="card_info_shipping_address_text">Shipping Address</string>
+    <string name="card_info_billing_address_text">Billing Address</string>
+
     <string name="card_info_street_num_text">Street Number </string>
     <string name="card_info_title_text">Title</string>
     <string name="card_info_firstname_text">First Name</string>

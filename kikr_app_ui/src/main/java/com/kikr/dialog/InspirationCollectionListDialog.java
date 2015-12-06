@@ -5,15 +5,18 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.adapter.CollectionListAdapter;
 import com.kikr.adapter.FragmentProfileCollectionAdapter;
+import com.kikr.utility.CommonUtility;
 import com.kikrlib.api.CollectionApi;
 import com.kikrlib.api.MyProfileApi;
 import com.kikrlib.bean.CollectionList;
@@ -39,6 +42,7 @@ public class InspirationCollectionListDialog extends Dialog implements ServiceCa
 	private ProgressBar progressBarCollection;
 	private TaggedItem taggedItemLocal;
 	private InspirationCollectionListDialog inspirationCollectionListDialog;
+	private RelativeLayout rel_layout;
 
 	public InspirationCollectionListDialog(FragmentActivity context,TaggedItem taggedItemLocal) {
 		super(context, R.style.AdvanceDialogTheme);
@@ -57,6 +61,8 @@ public class InspirationCollectionListDialog extends Dialog implements ServiceCa
 	private void init() {
 		setContentView(R.layout.dialog_inspiration_collection_list);
 		setCancelable(true);
+		rel_layout = (RelativeLayout) findViewById(R.id.rel_layout);
+		rel_layout.setLayoutParams(new FrameLayout.LayoutParams(CommonUtility.getDeviceWidth(mContext),CommonUtility.getDeviceHeight(mContext)*80/100));
 		progressBarCollection= (ProgressBar) findViewById(R.id.progressBarCollection);
 		collection_listing= (ListView) findViewById(R.id.collection_listing);
 		if(((HomeActivity)mContext).checkInternet())

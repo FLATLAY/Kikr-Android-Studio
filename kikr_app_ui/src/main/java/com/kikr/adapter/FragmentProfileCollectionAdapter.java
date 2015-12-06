@@ -139,6 +139,10 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
 						boolean canDeleteProduct = user_id.equals(UserPreference.getInstance().getUserID());
 						addFragment(new FragmentProductBasedOnType(user_id, getItem(position).getId(), true));
 					}
+				}else if(fragmentProfileView==null){
+					taggedItem.setSelectedItem(getItem(position).getId());
+					taggedItem.setSelectedItemName(getItem(position).getName());
+					inspirationCollectionListDialog.dismiss();
 				}
 			}
 		};
@@ -193,6 +197,7 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				if(fragmentProfileView==null){
 					taggedItem.setSelectedItem(getItem(position).getId());
+					taggedItem.setSelectedItemName(getItem(position).getName());
 					inspirationCollectionListDialog.dismiss();
 				}
 			}

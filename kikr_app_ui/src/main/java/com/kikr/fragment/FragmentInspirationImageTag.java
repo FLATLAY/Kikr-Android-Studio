@@ -537,6 +537,8 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 			removeTags();
 		}
 		} else {
+			taggedItemLocal.setSelectedItemXY(x + "," + y);
+			taggedItemLocal.setSelectedItemType(COLLECTION);
 			Syso.info("abcd:  "+taggedItemLocal.getSelectedItemName());
 			Syso.info("abcd:  "+taggedItemLocal.getSelectedItem());
 			Syso.info("abcd:  "+taggedItemLocal.getSelectedItemType());

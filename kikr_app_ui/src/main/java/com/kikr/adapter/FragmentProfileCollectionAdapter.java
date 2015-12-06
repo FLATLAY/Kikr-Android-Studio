@@ -157,6 +157,9 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
 			viewHolder.view_bottom.setVisibility(View.VISIBLE);
 		else
 			viewHolder.view_bottom.setVisibility(View.GONE);
+		if(fragmentProfileView==null){
+			viewHolder.detail_collection_img.setVisibility(View.GONE);
+		}
 		viewHolder.detail_collection_img.setOnClickListener(new OnClickListener() {
 			
 			@Override

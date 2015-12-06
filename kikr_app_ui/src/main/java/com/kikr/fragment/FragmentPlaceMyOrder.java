@@ -848,7 +848,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 						if (((HomeActivity)mContext).checkInternet()) 
 							callServerForConfirmation(purchaseId,"pending");
 						String msg = "We sent the order to the merchants, we will send you a follow up notice once your order status is confirmed.";
-						OrderProcessingDialog orderProcessingDialog = new OrderProcessingDialog(mContext,msg,fragmentPlaceMyOrder,purchaseId);
+						OrderProcessingDialog orderProcessingDialog = new OrderProcessingDialog(mContext,msg,fragmentPlaceMyOrder,purchaseId,cartid);
 						orderProcessingDialog.show();
 					}else{
 						dialog.dismiss();

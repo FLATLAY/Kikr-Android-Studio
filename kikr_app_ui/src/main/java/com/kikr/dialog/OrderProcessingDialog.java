@@ -2,6 +2,7 @@ package com.kikr.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -10,20 +11,23 @@ import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.fragment.FragmentDiscoverNew;
 import com.kikr.fragment.FragmentPlaceMyOrder;
+import com.kikr.service.PlaceOrderService;
 
 public class OrderProcessingDialog extends Dialog{
 	private TextView cancelTextView,okTextView,messageTextView;
 	private Context mContext;
 	private String message;
 	private String purchaseId;
+	private String cartId;
 	private FragmentPlaceMyOrder fragmentPlaceMyOrder;
 
-	public OrderProcessingDialog(Context mContext,String message, FragmentPlaceMyOrder fragmentPlaceMyOrder, String purchaseId) {
+	public OrderProcessingDialog(Context mContext,String message, FragmentPlaceMyOrder fragmentPlaceMyOrder, String purchaseId, String cartId) {
 		super(mContext, R.style.AdvanceDialogTheme);
 		this.mContext=mContext;
 		this.purchaseId = purchaseId;
 		this.message = message;
 		this.fragmentPlaceMyOrder = fragmentPlaceMyOrder;
+		this.cartId = cartId;
 		init();
 	}
 
@@ -34,7 +38,6 @@ public class OrderProcessingDialog extends Dialog{
 
 	private void init() {
 		setContentView(R.layout.dialog_logout);
-		setCancelable(true);
 		WindowManager.LayoutParams lp = getWindow().getAttributes();
 		lp.dimAmount = 0.9f;
 		getWindow().setAttributes(lp);
@@ -55,6 +58,10 @@ public class OrderProcessingDialog extends Dialog{
 			@Override
 			public void onClick(View v) {
 				fragmentPlaceMyOrder.purchaseStatus(purchaseId);
+//				Intent i = new Intent(mContext, PlaceOrderService.class);
+//				i.putExtra("purchase_id",purchaseId);
+//				i.putExtra("cartId",cartId);
+//				mContext.startService(i);
 				dismiss();
 				((HomeActivity)mContext).loadFragment(new FragmentDiscoverNew());
 			}

@@ -1681,8 +1681,9 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 
                 @Override
                 public void handleOnFailure(ServiceException exception, Object object) {
-                    Syso.info("1234567890 in handleOnFailure>>"+object);
-                    AlertUtils.showToast(mContext,object.toString());
+                    Syso.info("1234567890 in handleOnFailure>>" + object);
+                    if(object!=null)
+                      AlertUtils.showToast(mContext,object.toString());
                 }
             });
             authWebService.execute();

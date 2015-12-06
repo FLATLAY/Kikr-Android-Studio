@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -18,6 +19,7 @@ import com.kikrlib.api.MyProfileApi;
 import com.kikrlib.bean.CollectionList;
 import com.kikrlib.bean.Product;
 import com.kikrlib.bean.ProfileCollectionList;
+import com.kikrlib.bean.TaggedItem;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
@@ -35,10 +37,14 @@ public class InspirationCollectionListDialog extends Dialog implements ServiceCa
 	private List<ProfileCollectionList> collectionLists=new ArrayList<ProfileCollectionList>();
 	private FragmentProfileCollectionAdapter collectionListAdapter;
 	private ProgressBar progressBarCollection;
+	private TaggedItem taggedItemLocal;
+	private InspirationCollectionListDialog inspirationCollectionListDialog;
 
-	public InspirationCollectionListDialog(FragmentActivity context) {
+	public InspirationCollectionListDialog(FragmentActivity context,TaggedItem taggedItemLocal) {
 		super(context, R.style.AdvanceDialogTheme);
 		mContext = context;
+		inspirationCollectionListDialog=this;
+		this.taggedItemLocal = taggedItemLocal;
 		init();
 	}
 
@@ -75,10 +81,11 @@ public class InspirationCollectionListDialog extends Dialog implements ServiceCa
 		collectionLists= myProfileRes.getCollection_list();
 		if (collectionLists.size() > 0) {
 			if (collectionListAdapter==null) {
-				collectionListAdapter=new FragmentProfileCollectionAdapter(mContext,collectionLists,  UserPreference.getInstance().getUserID(),null);
+				collectionListAdapter=new FragmentProfileCollectionAdapter(mContext,collectionLists,  UserPreference.getInstance().getUserID(),null,taggedItemLocal,inspirationCollectionListDialog);
 				collection_listing.setAdapter(collectionListAdapter);
 			}
 		}else{
+			AlertUtils.showToast(mContext,R.string.no_data_found);
 			dismiss();
 		}
 	}

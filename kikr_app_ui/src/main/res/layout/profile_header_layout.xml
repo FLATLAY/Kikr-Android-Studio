@@ -79,7 +79,7 @@
             android:maxLines="2"
             android:paddingLeft="@dimen/padding_large"
             android:paddingRight="@dimen/padding_large"
-            android:text="dgbxdgsxdgsdedgbxdgsxdgsdedgbxdgsxdgsdedgbxdgsxdgsdedgbxdgsxdgsdedgbxdgsxdgsdedgbxdgsxdgsde"
+            android:text=""
             android:textColor="@color/white" />
 
         <TextView

@@ -68,10 +68,11 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 	private float x = 0, y = 0;
 	private RadioGroup tagRadioGroup;
 	private RadioButton peopleBtn, storeBtn, brandBtn;
-	private String PEOPLE = "user";
-	private String BRAND = "brand";
-	private String STORE = "store";
+//	private String PEOPLE = "user";
+//	private String BRAND = "brand";
+//	private String STORE = "store";
 	private String PRODUCT = "product";
+	private String COLLECTION = "collection";
 	private String isSelected;
 	private ProgressBar progressBarUserTag;
 	private TaggedItem taggedItemLocal=new TaggedItem(),selectedItem;
@@ -98,7 +99,7 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 		taggedItemLocal.setSelectedItemType(selectedItem.getSelectedItemType());
 		taggedItemLocal.setSelectedItemXY(selectedItem.getSelectedItemXY());
 		isTaggingProduct = false;
-		isSelected = BRAND;
+		isSelected = COLLECTION;
 		this.imageUrl = imageUrl;
 	}
 	
@@ -127,7 +128,7 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 		taggedItemLocal.setSelectedItemType(selectedItem.getSelectedItemType());
 		taggedItemLocal.setSelectedItemXY(selectedItem.getSelectedItemXY());
 		isTaggingProduct = false;
-		isSelected = BRAND;
+		isSelected = COLLECTION;
 	}
 
 	@Override
@@ -248,23 +249,23 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 			}
 		});
 
-		tagRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@Override
-			public void onCheckedChanged(RadioGroup arg0, int checkedId) {
-				taggedItemLocal = new TaggedItem();
-				if (checkedId == R.id.peopleBtn) {
-					isSelected = PEOPLE;
-					//removeTag();
-				} else if (checkedId == R.id.storeBtn) {
-					isSelected = STORE;
-					//removeTag();
-				} else if (checkedId == R.id.brandBtn) {
-					isSelected = BRAND;
-					//removeTag();
-				}
-			}
-		});
+//		tagRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+//
+//			@Override
+//			public void onCheckedChanged(RadioGroup arg0, int checkedId) {
+//				taggedItemLocal = new TaggedItem();
+//				if (checkedId == R.id.peopleBtn) {
+//					isSelected = PEOPLE;
+//					//removeTag();
+//				} else if (checkedId == R.id.storeBtn) {
+//					isSelected = STORE;
+//					//removeTag();
+//				} else if (checkedId == R.id.brandBtn) {
+//					isSelected = BRAND;
+//					//removeTag();
+//				}
+//			}
+//		});
 	}
 
 	
@@ -285,7 +286,7 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 				tagView.setXY(Float.parseFloat(xy[0])/scaleFactor, Float.parseFloat(xy[1])/scaleFactor);
 				taggedItemLocal.setSelectedItemXY(Float.parseFloat(xy[0])/scaleFactor+","+Float.parseFloat(xy[1])/scaleFactor);
 			}
-			setRadioBtn();
+//			setRadioBtn();
 			linearEditTextView.setVisibility(View.GONE);
 		} else if(taggedProducts!=null){
 			tagRadioGroup.setVisibility(View.GONE);
@@ -318,16 +319,16 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 		}
 	}
 
-	private void setRadioBtn() {
-	
-		if (taggedItemLocal.getSelectedItemType().equals(BRAND)) {
-			brandBtn.setChecked(true);
-		}else if (taggedItemLocal.getSelectedItemType().equals(PEOPLE)) {
-			peopleBtn.setChecked(true);
-		}else if (taggedItemLocal.getSelectedItemType().equals(STORE)) {
-			storeBtn.setChecked(true);
-		}
-	}
+//	private void setRadioBtn() {
+//
+//		if (taggedItemLocal.getSelectedItemType().equals(BRAND)) {
+//			brandBtn.setChecked(true);
+//		}else if (taggedItemLocal.getSelectedItemType().equals(PEOPLE)) {
+//			peopleBtn.setChecked(true);
+//		}else if (taggedItemLocal.getSelectedItemType().equals(STORE)) {
+//			storeBtn.setChecked(true);
+//		}
+//	}
 
 	private void removeTag() {
 		if (overlay.getChildCount() > 1) {
@@ -397,10 +398,10 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 							for (int i = 0; i < list.size(); i++) {
 								SearchUser searchUser = new SearchUser();
 								searchUser.setUserId(list.get(i).getId());
-								if (isSelected.equals(PEOPLE)) 
-									searchUser.setUsername(list.get(i).getUsername());
-								else
-									searchUser.setUsername(list.get(i).getName());
+//								if (isSelected.equals(PEOPLE))
+//									searchUser.setUsername(list.get(i).getUsername());
+//								else
+//									searchUser.setUsername(list.get(i).getName());
 								addSearchUser(searchUser);
 							}
 							setAdapter(userInput);
@@ -421,17 +422,17 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 					}
 				});
 		Syso.info("isselected:  " + isSelected);
-		if (isSelected.equalsIgnoreCase(STORE)) {
-			interestSectionApi.searchStore(UserPreference.getInstance()
-					.getUserID(), userInput, "0");
-		} else if (isSelected.equalsIgnoreCase(BRAND)) {
-			interestSectionApi.searchBrand(UserPreference.getInstance()
-					.getUserID(), userInput, "0");
-		} else if (isSelected.equalsIgnoreCase(PEOPLE)) {
-			interestSectionApi.searchUser(UserPreference.getInstance()
-					.getUserID(), userInput, "0");
-		}
-		interestSectionApi.execute();
+//		if (isSelected.equalsIgnoreCase(STORE)) {
+//			interestSectionApi.searchStore(UserPreference.getInstance()
+//					.getUserID(), userInput, "0");
+//		} else if (isSelected.equalsIgnoreCase(BRAND)) {
+//			interestSectionApi.searchBrand(UserPreference.getInstance()
+//					.getUserID(), userInput, "0");
+//		} else if (isSelected.equalsIgnoreCase(PEOPLE)) {
+//			interestSectionApi.searchUser(UserPreference.getInstance()
+//					.getUserID(), userInput, "0");
+//		}
+//		interestSectionApi.execute();
 	}
 
 	protected void addSearchUser(SearchUser searchUser) {
@@ -456,7 +457,7 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 	public void onClick(View v) {
 		switch (v.getId()){
 			case R.id.collection_text:
-				InspirationCollectionListDialog inspirationCollectionListDialog  =new InspirationCollectionListDialog(mContext);
+				InspirationCollectionListDialog inspirationCollectionListDialog  =new InspirationCollectionListDialog(mContext,taggedItemLocal);
 				inspirationCollectionListDialog.show();
 				break;
 		}
@@ -488,7 +489,6 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 		public void onTextChanged(CharSequence userInput, int start,
 				int before, int count) {
 			try {
-				Log.e(TAG, "User input: " + userInput);
 				if (userInput.toString().length() > 1) {
 					if (isSelected.equals(PRODUCT) && checkInternet()) {
 						searchProduct(userInput.toString());

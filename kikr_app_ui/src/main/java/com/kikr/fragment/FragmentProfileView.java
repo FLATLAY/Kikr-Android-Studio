@@ -243,7 +243,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 			}
 			else {
 				hideDataNotFound();
-				collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext,collectionLists,user_id,fragmentProfileView));
+				collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext,collectionLists,user_id,fragmentProfileView,null,null));
 			}
 			up_arrow_image_first.setVisibility(View.VISIBLE);
 			up_arrow_image_second.setVisibility(View.INVISIBLE);
@@ -509,7 +509,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		}else if (collectionLists.size() == 0)
 			showDataNotFound();
 		 else
-		collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext,collectionLists,user_id,fragmentProfileView));
+		collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext,collectionLists,user_id,fragmentProfileView,null,null));
 		
 		collection_button.setText(collectionLists.size()+"\nCollections");
 		follower_button.setText(followersLists.size()+"\nFollowers");

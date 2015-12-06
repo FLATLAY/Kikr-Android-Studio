@@ -14,7 +14,7 @@ public class Constants {
 		String FAIL_CODE = "0001";
 //		String NETWORK_MESSAGE = "Could not establish connection. Please check network settings or contact your mobile operator.";
 		String NETWORK_MESSAGE = "No internet connection found";
-		String INVALID_RESPONSE_MESSAGE = "Invalid reposne from server. Please try again later.";
+		String INVALID_RESPONSE_MESSAGE = "Invalid response from server. Please try again later.";
 
 
 		int CONNECTIONTIMEOUT = 30 * 1000;
@@ -26,8 +26,8 @@ public class Constants {
 
 //		String HOST_API = "http://23.227.167.180/api/"; 
 //		String DEFAULT_IP = "23.227.167.180"; //104.131.58.147
-//		String DEFAULT_IP = "http://api.kikr.io/";
-		String DEFAULT_IP = "http://v1.kikr.io/";
+		String DEFAULT_IP = "http://api.kikr.io/";
+//		String DEFAULT_IP = "http://v1.kikr.io/";
 //		String HOST_API = "http://104.131.58.147/api/"; 
 
 		String HOST_FILE = ""; 

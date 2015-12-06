@@ -14,15 +14,18 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.dialog.CollectionOptionsDialog;
+import com.kikr.dialog.InspirationCollectionListDialog;
 import com.kikr.fragment.FragmentProductBasedOnType;
 import com.kikr.fragment.FragmentProfileView;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.ProfileCollectionList;
+import com.kikrlib.bean.TaggedItem;
 import com.kikrlib.db.UserPreference;
 
 public class FragmentProfileCollectionAdapter extends BaseAdapter {
@@ -32,13 +35,17 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
 	List<ProfileCollectionList> data;
 	private String user_id;
 	private FragmentProfileView fragmentProfileView;
+	private TaggedItem taggedItem;
+	private InspirationCollectionListDialog inspirationCollectionListDialog;
 
-	public FragmentProfileCollectionAdapter(Activity context,List<ProfileCollectionList> data,String user_id, FragmentProfileView fragmentProfileView) {
+	public FragmentProfileCollectionAdapter(Activity context,List<ProfileCollectionList> data,String user_id, FragmentProfileView fragmentProfileView,TaggedItem taggedItem,InspirationCollectionListDialog  inspirationCollectionListDialog) {
 		super();
 		this.mContext = context;
 		this.data = data;
 		this.user_id=user_id;
+		this.taggedItem = taggedItem;
 		this.fragmentProfileView=fragmentProfileView;
+		this.inspirationCollectionListDialog = inspirationCollectionListDialog;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
@@ -83,6 +90,8 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
 			viewHolder.detail_collection_img =  (ImageView) convertView.findViewById(R.id.detail_collection_img);
 			viewHolder.collection_created_at =  (TextView) convertView.findViewById(R.id.collection_created_at);
 			viewHolder.collection_name = (TextView) convertView.findViewById(R.id.collection_name);
+			viewHolder.collection_name_inspiration = (TextView) convertView.findViewById(R.id.collection_name_inspiration);
+			viewHolder.name_layout = (RelativeLayout) convertView.findViewById(R.id.name_layout);
 			viewHolder.collection_image_1.setLayoutParams(layoutParams);
 			viewHolder.collection_image_2.setLayoutParams(layoutParams);
 			viewHolder.collection_image_3.setLayoutParams(layoutParams);
@@ -96,6 +105,7 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		viewHolder.collection_name.setText(getItem(position).getName());
+		viewHolder.collection_name_inspiration.setText(getItem(position).getName());
 		viewHolder.collection_created_at.setText(CommonUtility.setChangeDateFormat(getItem(position).getDate()));
 		List<ImageView> images = new ArrayList<ImageView>();
 		images.add(viewHolder.collection_image_1);
@@ -117,16 +127,18 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
 		views.add(viewHolder.view6);
 		views.add(viewHolder.view7);
 		for(int i=0;i<views.size();i++){
-			views.get(i).setVisibility(View.GONE);
+			views.get(i).setVisibility(View.INVISIBLE);
 		}
 		
 		OnClickListener listener=new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				if(((HomeActivity)mContext).checkInternet()){
-					boolean canDeleteProduct=user_id.equals(UserPreference.getInstance().getUserID());
-					addFragment(new FragmentProductBasedOnType(user_id, getItem(position).getId(),true));
+				if(fragmentProfileView!=null) {
+					if (((HomeActivity) mContext).checkInternet()) {
+						boolean canDeleteProduct = user_id.equals(UserPreference.getInstance().getUserID());
+						addFragment(new FragmentProductBasedOnType(user_id, getItem(position).getId(), true));
+					}
 				}
 			}
 		};
@@ -158,7 +170,8 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
 		else
 			viewHolder.view_bottom.setVisibility(View.GONE);
 		if(fragmentProfileView==null){
-			viewHolder.detail_collection_img.setVisibility(View.GONE);
+			viewHolder.name_layout.setVisibility(View.GONE);
+			viewHolder.collection_name_inspiration.setVisibility(View.VISIBLE);
 		}
 		viewHolder.detail_collection_img.setOnClickListener(new OnClickListener() {
 			
@@ -171,6 +184,16 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
 					}else{
 						addFragment(new FragmentProductBasedOnType(user_id, getItem(position).getId(),true));
 					}
+				}
+			}
+		});
+
+		convertView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(fragmentProfileView==null){
+					taggedItem.setSelectedItem(getItem(position).getId());
+					inspirationCollectionListDialog.dismiss();
 				}
 			}
 		});
@@ -190,12 +213,12 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
 		TextView collection_name;
 		TextView collection_created_at;
 		View view1,view2,view3,view_bottom,view_first_bottom,view5,view6,view7;
+		RelativeLayout name_layout;
+		TextView collection_name_inspiration;
 	}
 
 	private void addFragment(Fragment fragment) {
 		((HomeActivity) mContext).addFragment(fragment);
 	}
-	
-	
-	
+
 }

@@ -36,7 +36,7 @@ public class DefaultLifestyleImagesActivity extends BaseActivity implements OnCl
 	private LifestyleImageAdapter lifestyleImageAdapter;
 //	List<BgImage> bgImages = new ArrayList<BgImage>();
 	List<String> bgImageList = new ArrayList<String>();
-	int count = 50;
+	int count = 120;
 	boolean isLoadDefault = true;
 	
 	@Override

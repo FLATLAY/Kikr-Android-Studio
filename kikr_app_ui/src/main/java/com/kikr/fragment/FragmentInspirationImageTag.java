@@ -135,7 +135,7 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		float aa=getResources().getDisplayMetrics().density;
 		Syso.info("Device width: "+CommonUtility.getDeviceWidth(mContext)+", height: "+CommonUtility.getDeviceHeight(mContext)+", density: "+aa);
-		
+
 		return inflater.inflate(R.layout.fragment_inspiration_tag_image, null);
 	}
 

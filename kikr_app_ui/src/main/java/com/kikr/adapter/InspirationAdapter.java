@@ -125,7 +125,7 @@ public class InspirationAdapter extends BaseAdapter{
 			viewholder.noProductTextView.setVisibility(View.GONE);
 			viewholder.productInflaterLayout.addView(new InspirationProductUI(mContext, getItem(position),convertView).getView());
 		}else{
-			viewholder.noProductTextView.setVisibility(View.VISIBLE);
+//			viewholder.noProductTextView.setVisibility(View.VISIBLE);
 		}
 		viewholder.productLayout.scrollTo(0, 0);
 		convertView.setOnClickListener(new View.OnClickListener() {

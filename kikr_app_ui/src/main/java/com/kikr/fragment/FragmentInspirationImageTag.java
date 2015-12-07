@@ -290,6 +290,7 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 			linearEditTextView.setVisibility(View.GONE);
 		} else if(taggedProducts!=null){
 			tagRadioGroup.setVisibility(View.GONE);
+			collection_text.setVisibility(View.GONE);
 			if (!TextUtils.isEmpty(taggedProducts.getSelectedProductsXY())) {
 				setPoints(taggedProducts.getSelectedProductsXY());
 			}

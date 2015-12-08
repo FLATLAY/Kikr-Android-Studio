@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -29,8 +30,8 @@ import com.kikr.activity.HomeActivity;
 import com.kikr.adapter.FragmentProfileCollectionAdapter;
 import com.kikr.adapter.FragmentProfileFollowersAdapter;
 import com.kikr.adapter.FragmentProfileFollowingAdapter;
+import com.kikr.adapter.InspirationGridAdapter;
 import com.kikr.adapter.InterestBrandListAdapter;
-import com.kikr.adapter.InterestCategoryListAdapter;
 import com.kikr.adapter.InterestStoreListAdapter;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.AppConstants;
@@ -39,10 +40,12 @@ import com.kikrlib.api.BrandListApi;
 import com.kikrlib.api.CheckBrandStoreFollowStatusApi;
 import com.kikrlib.api.CheckPointsStatusApi;
 import com.kikrlib.api.FollowUserApi;
+import com.kikrlib.api.InspirationFeedApi;
 import com.kikrlib.api.InterestSectionApi;
 import com.kikrlib.api.MyProfileApi;
 import com.kikrlib.bean.BrandList;
 import com.kikrlib.bean.FollowerList;
+import com.kikrlib.bean.Inspiration;
 import com.kikrlib.bean.InterestSection;
 import com.kikrlib.bean.ProfileCollectionList;
 import com.kikrlib.bean.UserData;
@@ -54,6 +57,7 @@ import com.kikrlib.service.res.BrandListRes;
 import com.kikrlib.service.res.CheckBrandStoreFollowStatusRes;
 import com.kikrlib.service.res.CheckPointStatusRes;
 import com.kikrlib.service.res.FollowUserRes;
+import com.kikrlib.service.res.InspirationFeedRes;
 import com.kikrlib.service.res.InterestSectionRes;
 import com.kikrlib.service.res.MyProfileRes;
 import com.kikrlib.utils.AlertUtils;
@@ -78,9 +82,6 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 	private FragmentProfileView fragmentProfileView;
 	private TextView noCollectionText;
 	private String status="";
-	
-	private boolean isLoading=false;
-	private boolean isFirstTime = true;
 	private int pagenum = 0;
 	private String isSelected = "people";
 	private LinearLayout layoutPeopleStoreBrand;
@@ -91,7 +92,17 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 	public static String lastUserId;
 
 	private TextView myActivityButton,btn_photos;
-	
+	private GridView imagesList;
+	private LinearLayout profile_btn_layout;
+	private boolean isLoading=false;
+	private boolean isFirstTime = true;
+	int page=0;
+	private int firstVisibleItem=0,visibleItemCount=0,totalItemCount=0;
+	private List<Inspiration> product_list=new ArrayList<Inspiration>();
+	private InspirationGridAdapter inspirationAdapter;
+	private TextView loadingTextView;
+	private View loaderView;
+
 	public FragmentProfileView(){
 		try{
 			if(lastUserId!=null){
@@ -147,12 +158,14 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		btn_photos = (TextView) mainView.findViewById(R.id.btn_photos);
 		myActivityButton.setText("Activity");
 		descriptionTextView = (TextView) mainView.findViewById(R.id.descriptionTextView);
+		imagesList = (GridView) mainView.findViewById(R.id.imagesList);
+		profile_btn_layout = (LinearLayout) mainView.findViewById(R.id.profile_btn_layout);
+		loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
+		loaderView = View.inflate(mContext, R.layout.footer, null);
 	}
-
 
 	@Override
 	public void refreshData(Bundle bundle) {
-		
 	}
 
 	@Override
@@ -173,32 +186,55 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 	public void setData(Bundle bundle) {
 		if(checkInternet()){
 			getUserProfileDetail();
+			getInspirationFeedList();
 		}else
 			showReloadOption(); 
 		
 		collection_list.setOnScrollListener(new OnScrollListener() {
-			   @Override
-			   public void onScrollStateChanged(AbsListView view, 
-			     int scrollState) {
-			    // Do nothing
-			   }
+			@Override
+			public void onScrollStateChanged(AbsListView view,
+											 int scrollState) {
+				// Do nothing
+			}
 
-			   @Override
-			   public void onScroll(AbsListView view, int firstVisibleItem, 
-			     int visibleItemCount, int totalItemCount) {
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+								 int visibleItemCount, int totalItemCount) {
 //				   System.out.println("123456 in onScroll fvi"+firstVisibleItem+", vic"+visibleItemCount+", tic"+totalItemCount);
-			    if(!isLoading&&firstVisibleItem+visibleItemCount == totalItemCount && totalItemCount!=0) {
+				if (!isLoading && firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0) {
 //			    	System.out.println("123456 inside if page"+pagenum+" ,"+isSelected);
-			    	if(checkInternet2()){
-				    	pagenum++;
-				    	isFirstTime = false;
-				    	loadData();
-			    	}else {
+					if (checkInternet2()) {
+						pagenum++;
+						isFirstTime = false;
+						loadData();
+					} else {
 						showReloadFotter();
 					}
-			    }
-			   }
-			  });
+				}
+			}
+		});
+
+		imagesList.setOnScrollListener(new OnScrollListener() {
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			}
+
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+				FragmentProfileView.this.firstVisibleItem = firstVisibleItem;
+				FragmentProfileView.this.visibleItemCount = visibleItemCount;
+				FragmentProfileView.this.totalItemCount = totalItemCount;
+				if (!isLoading && firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0) {
+					if (checkInternet2()) {
+						page++;
+						isFirstTime = false;
+						getInspirationFeedList();
+					} else {
+						showReloadFotter();
+					}
+				}
+			}
+		});
 	}
 	
 	public void loadData(){
@@ -208,30 +244,23 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 			getBrandList();
 		}
 	}
-	
-	protected void showReloadFotter() {
-		TextView textView=getReloadFotter();
-		textView.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				if(checkInternet()){
-					pagenum++;
-			    	isFirstTime = false;
-			    	loadData();
-				}
-			}
-		});
-	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_activity:
+			case R.id.btn_activity:
 				addFragment(new FragmentActivityMonths());
-			break;
-		case R.id.btn_photos:
-				addFragment(new FragmentInspirationSection(false,user_id));
+				break;
+			case R.id.btn_photos:
+				if (imagesList.getVisibility()==View.VISIBLE){
+					profile_btn_layout.setVisibility(View.VISIBLE);
+					imagesList.setVisibility(View.GONE);
+					collection_list.setVisibility(View.VISIBLE);
+				}else{
+					profile_btn_layout.setVisibility(View.GONE);
+					imagesList.setVisibility(View.VISIBLE);
+					collection_list.setVisibility(View.GONE);
+				}
 				break;
 		case R.id.collection_button:
 			if (!HelpPreference.getInstance().getHelpCollection().equals("yes") && collectionLists.size() == 0)
@@ -384,7 +413,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 					}	
 				}
 			});
-			followUserApi.followUser(UserPreference.getInstance().getUserID(),user_id);
+			followUserApi.followUser(UserPreference.getInstance().getUserID(), user_id);
 			followUserApi.execute();
 			
 			mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
@@ -423,7 +452,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 					}	
 				}
 			});
-			followUserApi.unFollowUser(UserPreference.getInstance().getUserID(),user_id);
+			followUserApi.unFollowUser(UserPreference.getInstance().getUserID(), user_id);
 			followUserApi.execute();
 			
 			mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
@@ -440,7 +469,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		mProgressBarDialog.show();
 		
 		final MyProfileApi myProfileApi = new MyProfileApi(this);
-		myProfileApi.getUserProfileDetail(user_id,UserPreference.getInstance().getUserID());
+		myProfileApi.getUserProfileDetail(user_id, UserPreference.getInstance().getUserID());
 		myProfileApi.execute();
 		
 		mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
@@ -486,7 +515,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 	}
 
 	private void setDetails() {
-		System.out.println("userDetails.get(0).getProfile_pic()    "+userDetails.get(0).getProfile_pic());
+		System.out.println("userDetails.get(0).getProfile_pic()    " + userDetails.get(0).getProfile_pic());
 		if(!userDetails.get(0).getProfile_pic().equals(""))
 			CommonUtility.setImage(mContext, userDetails.get(0).getProfile_pic(), user_profile_image, R.drawable.dum_user);
 		if(!userDetails.get(0).getBackground_pic().equals(""))
@@ -511,9 +540,9 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		 else
 		collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext,collectionLists,user_id,fragmentProfileView,null,null));
 		
-		collection_button.setText(collectionLists.size()+"\nCollections");
-		follower_button.setText(followersLists.size()+"\nFollowers");
-		following_button.setText(followingLists.size()+"\nFollowing");
+		collection_button.setText(collectionLists.size() + "\nCollections");
+		follower_button.setText(followersLists.size() + "\nFollowers");
+		following_button.setText(followingLists.size() + "\nFollowing");
 		if(userDetails.get(0).getIs_followed()!=null&&userDetails.get(0).getIs_followed().equals("yes")){
 			this.isFollowed=true;
 		}else{
@@ -572,8 +601,13 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 			textView.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					if(checkInternet())
-						getUserProfileDetail();
+					if (checkInternet()){
+						if (profile_btn_layout.getVisibility()==View.VISIBLE){
+							getUserProfileDetail();
+						}else{
+							getInspirationFeedList();
+						}
+					}
 				}
 			});
 		}
@@ -646,7 +680,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
 			@Override
 			public void onCancel(DialogInterface dialog) {
-				isLoading=!isLoading;
+				isLoading = !isLoading;
 				interestSectionApi.cancel();
 			}
 		});
@@ -680,7 +714,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 				}	
 			}
 		});
-		interestSectionApi.unFollowStore(UserPreference.getInstance().getUserID(),id);
+		interestSectionApi.unFollowStore(UserPreference.getInstance().getUserID(), id);
 		interestSectionApi.execute();
 		
 		mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
@@ -719,7 +753,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 				}	
 			}
 		});
-		interestSectionApi.followStore(UserPreference.getInstance().getUserID(),id);
+		interestSectionApi.followStore(UserPreference.getInstance().getUserID(), id);
 		interestSectionApi.execute();
 		
 		mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
@@ -786,7 +820,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
 			@Override
 			public void onCancel(DialogInterface dialog) {
-				isLoading=!isLoading;
+				isLoading = !isLoading;
 				interestSectionApi.cancel();
 			}
 		});
@@ -857,5 +891,87 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		listApi.addBrands(brand_id);
 		listApi.execute();
 	}
-	
+
+	private void getInspirationFeedList() {
+//		mProgressBarDialog = new ProgressBarDialog(mContext);
+		isLoading = !isLoading;
+		if (!isFirstTime) {
+			showFotter();
+		} else {
+			loadingTextView.setVisibility(View.VISIBLE);
+//			mProgressBarDialog.show();
+		}
+
+		final InspirationFeedApi inspirationFeedApi = new InspirationFeedApi(new ServiceCallback() {
+			@Override
+			public void handleOnSuccess(Object object) {
+				if (!isFirstTime) {
+					hideFotter();
+				} else {
+					loadingTextView.setVisibility(View.GONE);
+//			mProgressBarDialog.dismiss();
+				}
+				hideDataNotFound();
+				isLoading=!isLoading;
+				Syso.info("In handleOnSuccess>>" + object);
+				InspirationFeedRes inspirationFeedRes = (InspirationFeedRes) object;
+				product_list.addAll(inspirationFeedRes.getData());
+				if(inspirationFeedRes.getData().size()<10){
+					isLoading=true;
+				}
+				if(product_list.size()==0&&isFirstTime){
+					showDataNotFound();
+				}if (product_list.size()>0 && isFirstTime) {
+					inspirationAdapter = new InspirationGridAdapter(mContext,product_list);
+					imagesList.setAdapter(inspirationAdapter);
+				}else if(inspirationAdapter!=null){
+					inspirationAdapter.setData(product_list);
+					inspirationAdapter.notifyDataSetChanged();
+				}
+			}
+
+			@Override
+			public void handleOnFailure(ServiceException exception, Object object) {
+				if (!isFirstTime) {
+					imagesList.removeView(loaderView);
+				} else {
+					loadingTextView.setVisibility(View.GONE);
+				}
+				isLoading=!isLoading;
+				Syso.info("In handleOnFailure>>" + object);
+				if (object != null) {
+					InspirationFeedRes response = (InspirationFeedRes) object;
+					AlertUtils.showToast(mContext, response.getMessage());
+				} else {
+					AlertUtils.showToast(mContext, R.string.invalid_response);
+				}
+			}
+		});
+		inspirationFeedApi.getInspirationFeed(user_id, false, String.valueOf(page));
+		inspirationFeedApi.execute();
+
+		mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				showDataNotFound();
+				inspirationFeedApi.cancel();
+			}
+		});
+	}
+
+	protected void showReloadFotter() {
+		TextView textView=getReloadFotter();
+		textView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (checkInternet()) {
+					page++;
+					isFirstTime = false;
+					getInspirationFeedList();
+				}
+			}
+		});
+	}
+
 }

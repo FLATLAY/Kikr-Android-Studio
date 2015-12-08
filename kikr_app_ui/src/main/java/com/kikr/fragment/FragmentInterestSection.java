@@ -694,20 +694,22 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 		listApi.execute();
 	}
 	
-	public void followUser(String id) {
-		mProgressBarDialog = new ProgressBarDialog(mContext);
-		mProgressBarDialog.show();
+	public void followUser(String id,final View v) {
+//		v.findViewById(R.id.checkImageView).setVisibility(View.GONE);
+//		v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.VISIBLE);
 		final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
 			
 			@Override
 			public void handleOnSuccess(Object object) {
-				mProgressBarDialog.dismiss();
 				Syso.info("In handleOnSuccess>>" + object);
+//				v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
+//				v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
 			}
 			
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				mProgressBarDialog.dismiss();
+//				v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
+//				v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
 				Syso.info("In handleOnFailure>>" + object);
 				if (object != null) {
 					FollowUserRes response = (FollowUserRes) object;
@@ -728,19 +730,21 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 		});
 	}
 	
-	public void unFollowUser(String id) {
-		mProgressBarDialog = new ProgressBarDialog(mContext);
-		mProgressBarDialog.show();
+	public void unFollowUser(String id,final View v) {
+//		v.findViewById(R.id.checkImageView).setVisibility(View.GONE);
+//		v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.VISIBLE);
 		final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
 			
 			@Override
 			public void handleOnSuccess(Object object) {
-				mProgressBarDialog.dismiss();
+//				v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
+//				v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
 			}
 			
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				mProgressBarDialog.dismiss();
+//				v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
+//				v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
 				Syso.info("In handleOnFailure>>" + object);
 				if (object != null) {
 					FollowUserRes response = (FollowUserRes) object;

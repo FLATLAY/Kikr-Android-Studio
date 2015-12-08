@@ -98,7 +98,7 @@
         android:textColor="@color/btn_green"
         android:gravity="center"
         android:padding="@dimen/padding_large"
-        android:text="Collections"
+        android:text="My Collections"
         android:textSize="25dp"
         android:layout_alignParentBottom="true"
         android:background="@color/white"/>

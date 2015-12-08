@@ -32,6 +32,12 @@
             android:textColor="@color/app_text_color"
             android:textSize="@dimen/xx_large_text_size" />
 
+        <ProgressBar
+            android:id="@+id/progressBar_follow_brand"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
         <ImageView
             android:id="@+id/checkImageView"
             android:layout_width="50dp"
@@ -39,7 +45,7 @@
             android:padding="10dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_add_collection" 
-            android:visibility="gone"/>
+            android:visibility="visible"/>
     </LinearLayout>
 
     <View

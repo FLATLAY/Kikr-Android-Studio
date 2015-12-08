@@ -79,7 +79,7 @@ public class InterestCategoryListAdapter extends BaseAdapter{
 			viewHolder.checkImageView.setImageResource(R.drawable.ic_add_collection);
 		}
 		convertView.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				if (!TextUtils.isEmpty(getItem(position).getIs_followed())&&fragmentInterestSection.checkInternet()) {

@@ -63,9 +63,9 @@ public class ActivityMonthsAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		if (!TextUtils.isEmpty(getItem(position).getMonth_name())&&!TextUtils.isEmpty(getItem(position).getYear_name())&&!TextUtils.isEmpty(getItem(position).getPayout())) 
-		viewHolder.month_name.setText("Month: "+getItem(position).getMonth_name()+" "+getItem(position).getYear_name()+"\nPayout: $"+CommonUtility.getFormatedNum(getItem(position).getPayout()));
+		viewHolder.month_name.setText("Month: "+getItem(position).getMonth_name()+" "+getItem(position).getYear_name()+"\nPayout: "+CommonUtility.getFormatedNum(getItem(position).getPayout()+" Credits"));
 		else
-		viewHolder.month_name.setText("Unknown\nPayout: $0");
+		viewHolder.month_name.setText("Unknown\nPayout: 0 Credits");
 		if(!TextUtils.isEmpty(getItem(position).getCollection_views())&&!TextUtils.isEmpty(getItem(position).getProduct_views()))
 		viewHolder.views_count.setText("Product Views: "+getItem(position).getProduct_views()+"\nCollection Views: "+getItem(position).getCollection_views());
 		else

@@ -10,10 +10,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <ImageView
+        <com.kikr.ui.RoundImageView
             android:layout_width="@dimen/interest_user_profile"
             android:layout_height="@dimen/interest_user_profile"
-            android:scaleType="fitXY"
             android:src="@drawable/girlsarrow" />
 
         <View
@@ -42,10 +41,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <ImageView
+        <com.kikr.ui.RoundImageView
             android:layout_width="@dimen/interest_user_profile"
             android:layout_height="@dimen/interest_user_profile"
-            android:scaleType="fitXY"
             android:src="@drawable/mensarrow" />
 
         <View

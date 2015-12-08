@@ -2,29 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/userLargeImageView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/discover_list_item_height"
-        android:scaleType="centerCrop"
-        android:src="@drawable/linesplaceholder" />
+        android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/userNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_large"
-        android:text="Large Text"
-        android:textSize="@dimen/large_text_size"
-        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/userLargeImageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/discover_list_item_height"
+            android:scaleType="centerCrop"
+            android:src="@drawable/linesplaceholder" />
+
+        <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:background="@drawable/round_ract_white"
+            android:text="Name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/descriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:padding="@dimen/padding_large"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -42,7 +53,7 @@
     <LinearLayout
         android:id="@+id/imageLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/image1"
@@ -52,6 +63,11 @@
             android:adjustViewBounds="true"
             android:src="@drawable/white_image" />
 
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
         <ImageView
             android:id="@+id/image2"
             android:layout_width="0dp"
@@ -59,6 +75,11 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:src="@drawable/white_image" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
 
         <ImageView
             android:id="@+id/image3"
@@ -72,7 +93,7 @@
     <LinearLayout
         android:id="@+id/imageLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/image4"
@@ -82,6 +103,11 @@
             android:adjustViewBounds="true"
             android:src="@drawable/white_image" />
 
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
         <ImageView
             android:id="@+id/image5"
             android:layout_width="0dp"
@@ -89,6 +115,11 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:src="@drawable/white_image" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
 
         <ImageView
             android:id="@+id/image6"

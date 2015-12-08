@@ -76,6 +76,7 @@ import com.kikr.fragment.FragmentActivityMonths;
 import com.kikr.fragment.FragmentActivityPage;
 import com.kikr.fragment.FragmentAllOrders;
 import com.kikr.fragment.FragmentCardInfo;
+import com.kikr.fragment.FragmentCategories;
 import com.kikr.fragment.FragmentDeals;
 import com.kikr.fragment.FragmentDiscover;
 import com.kikr.fragment.FragmentDiscoverDetail;
@@ -411,7 +412,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		case R.id.menuSearchImageView:
 			CommonUtility.hideSoftKeyboard(context);
 			Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-			if (fragment instanceof FragmentInterestSection || fragment instanceof FragmentSearch || fragment instanceof FragmentSearchResults) {
+			if (fragment instanceof FragmentCategories || fragment instanceof FragmentInterestSection || fragment instanceof FragmentSearch || fragment instanceof FragmentSearchResults) {
 				onBackPressed();
 			} else {
 				if (fragmentInterestSection == null){
@@ -1918,6 +1919,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				|| fragment instanceof FragmentLearnMoreOutsideUS
 				|| fragment instanceof FragmentStoreDeals
 				|| fragment instanceof FragmentInterestSection
+				|| fragment instanceof FragmentCategories
 				|| fragment instanceof FragmentActivityMonths) {
 			showBackButton();
 		} else {

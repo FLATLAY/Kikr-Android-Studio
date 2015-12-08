@@ -103,8 +103,8 @@ public class FragmentSearch extends BaseFragment implements OnClickListener {
 		        mProgressBarDialog.dismiss();
 		        txtSearch.setGravity(Gravity.CENTER);
 		        txtSearch.setTextColor(mContext.getResources().getColor(R.color.aquamarine2));
-		        String txt = "CATEGORIES";
-		        txtSearch.setTypeface(null, Typeface.BOLD);
+		        String txt = "Categories To Follow";
+//		        txtSearch.setTypeface(null, Typeface.BOLD);
 		        txtSearch.setText(txt);
 			}
 			
@@ -132,12 +132,9 @@ public class FragmentSearch extends BaseFragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-//		case R.id.txtSearch:
-//			if(txtSearch.getText().toString().equalsIgnoreCase("CATEGORIES")) {
-//				FragmentInterestSection fragmentInterest = new FragmentInterestSection();
-//				addFragment(fragmentInterest);
-//			}
-//			break;
+		case R.id.txtSearch:
+				addFragment(new FragmentCategories());
+			break;
 		}
 	}
 	

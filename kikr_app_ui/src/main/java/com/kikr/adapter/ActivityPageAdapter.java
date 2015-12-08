@@ -108,9 +108,9 @@ public class ActivityPageAdapter extends BaseAdapter {
 		}
 		viewHolder.collection_name.setText(getItem(position).getCollection_name());
 		if (!TextUtils.isEmpty(getItem(position).getPayout())&&!TextUtils.isEmpty(getItem(position).getCollection_views())) {
-			viewHolder.collection_payout_text.setText("Collection Views: "+getItem(position).getCollection_views()+"\nCollection Payout: $"+CommonUtility.getFormatedNum(getItem(position).getPayout()));
+			viewHolder.collection_payout_text.setText("Collection Views: "+getItem(position).getCollection_views()+"\nCollection Payout: "+CommonUtility.getFormatedNum(getItem(position).getPayout()+" Credits"));
 		} else {
-			viewHolder.collection_payout_text.setText("Collection Views: 0\nCollection Payout: $0");
+			viewHolder.collection_payout_text.setText("Collection Views: 0\nCollection Payout: 0 Credits");
 		}
 		if (!TextUtils.isEmpty(getItem(position).getPayout())&&!TextUtils.isEmpty(getItem(position).getCollection_views())) {
 			viewHolder.collection_views.setText("Product Views: "+getItem(position).getProduct_views()+"\nItem Saves: "+getItem(position).getItems_save());

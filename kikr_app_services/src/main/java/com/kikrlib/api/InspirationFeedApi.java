@@ -31,7 +31,7 @@ public class InspirationFeedApi extends AbsService {
 		requestType = WebConstants.HTTP_METHOD_POST;
 		Map<String, String> comment = new HashMap<String, String>();
 		comment.put("user_id", user_id);
-		comment.put("view_all", viewAll?"no":"yes");
+		comment.put("view_all", viewAll?"yes":"no");
 		comment.put("pagenum", pagenum);
 		Map[] maps = new Map[] { comment };
 		Gson gson = new Gson();

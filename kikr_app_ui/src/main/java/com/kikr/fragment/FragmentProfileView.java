@@ -231,7 +231,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 				addFragment(new FragmentActivityMonths());
 			break;
 		case R.id.btn_photos:
-				addFragment(new FragmentInspirationSection(false,UserPreference.getInstance().getUserID()));
+				addFragment(new FragmentInspirationSection(false,user_id));
 				break;
 		case R.id.collection_button:
 			if (!HelpPreference.getInstance().getHelpCollection().equals("yes") && collectionLists.size() == 0)
@@ -521,17 +521,14 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		}
 		if (userDetails.get(0).getId().equalsIgnoreCase(UserPreference.getInstance().getUserID())) {
 			myActivityButton.setVisibility(View.VISIBLE);
-			btn_photos.setVisibility(View.VISIBLE);
 			follow_btn_layout.setVisibility(View.GONE);
 			editProfileImageView.setVisibility(View.VISIBLE);
 		} else if (isFollowed) {
-			btn_photos.setVisibility(View.GONE);
 			myActivityButton.setVisibility(View.GONE);
 			follow_btn_layout.setVisibility(View.VISIBLE);
 			follow_btn.setText("Following");
 			follow_btn.setBackground(getResources().getDrawable(R.drawable.blue_corner_button));
 		}else{
-			btn_photos.setVisibility(View.GONE);
 			myActivityButton.setVisibility(View.GONE);
 			follow_btn_layout.setVisibility(View.VISIBLE);
 			follow_btn.setText("Follow");

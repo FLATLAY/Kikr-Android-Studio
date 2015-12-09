@@ -26,6 +26,7 @@ import com.kikr.fragment.FragmentProfileView;
 import com.kikr.ui.RoundImageView;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.InterestSection;
+import com.kikrlib.db.UserPreference;
 
 public class InterestPeopleListAdapter extends BaseAdapter{
 	private FragmentActivity mContext;
@@ -80,7 +81,6 @@ public class InterestPeopleListAdapter extends BaseAdapter{
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		
 		if (!TextUtils.isEmpty(getItem(position).getUsername())) {
 			viewHolder.user_name.setText(getItem(position).getUsername());
 		} else {
@@ -92,6 +92,11 @@ public class InterestPeopleListAdapter extends BaseAdapter{
 		}else{
 			viewHolder.checkImageView.setVisibility(View.VISIBLE);
 			viewHolder.checkImageView.setImageResource(R.drawable.ic_add_collection);
+		}
+		if(getItem(position).getId().equals(UserPreference.getInstance().getUserID())){
+			viewHolder.checkImageView.setVisibility(View.GONE);
+		}else{
+			viewHolder.checkImageView.setVisibility(View.VISIBLE);
 		}
 		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.dum_user);
 		convertView.setOnClickListener(new OnClickListener() {

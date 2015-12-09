@@ -123,20 +123,24 @@ public class FeaturedTabAdapter extends BaseAdapter{
 			
 			@Override
 			public void onClick(View v) {
-				if(getItem(position).getType().equals(USER))
-					addFragment(new FragmentProfileView(getItem(position).getItem_id(), "no"));
-				else
-					addFragment(new FragmentProductBasedOnType(getItem(position).getType(), getItem(position).getItem_name(), getItem(position).getItem_id()));
+				if (getItem(position).getType() != null) {
+					if (getItem(position).getType().equals(USER))
+						addFragment(new FragmentProfileView(getItem(position).getItem_id(), "no"));
+					else
+						addFragment(new FragmentProductBasedOnType(getItem(position).getType(), getItem(position).getItem_name(), getItem(position).getItem_id()));
+				}
 			}
 		});
 		viewholder.viewAllTextView.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				if(getItem(position).getType().equals(USER))
-					addFragment(new FragmentInspirationSection(false,getItem(position).getItem_id()));
-				else
-					addFragment(new FragmentProductBasedOnType(getItem(position).getType(), getItem(position).getItem_name(), getItem(position).getItem_id()));
+				if (getItem(position).getType() != null) {
+					if (getItem(position).getType().equals(USER))
+						addFragment(new FragmentInspirationSection(false, getItem(position).getItem_id()));
+					else
+						addFragment(new FragmentProductBasedOnType(getItem(position).getType(), getItem(position).getItem_name(), getItem(position).getItem_id()));
+				}
 			}
 		});
 		String name=getItem(position).getItem_name();

@@ -37,7 +37,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/menu_text_margin_left"
                         android:text="Discover"
-                        android:textColor="@color/btn_green"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/large_text_size" />
                 </LinearLayout>
 
@@ -316,6 +316,7 @@
                     android:src="@drawable/ic_menu_kikr" />
 
                 <TextView
+                    android:id="@+id/kikrCreditTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -361,6 +362,7 @@
                     android:src="@drawable/ic_menu_wallets" />
 
                 <TextView
+                    android:id="@+id/walletTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -393,6 +395,7 @@
                     android:src="@drawable/ic_orders" />
 
                 <TextView
+                    android:id="@+id/orderTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -480,6 +483,7 @@
                         android:src="@drawable/ic_menu_checkin" />
 
                     <TextView
+                        android:id="@+id/checkInTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -563,6 +567,7 @@
                     android:src="@drawable/ic_menu_kikr" />
 
                 <TextView
+                    android:id="@+id/kikrChatTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -600,6 +605,7 @@
                         android:src="@drawable/ic_menu_email" />
 
                     <TextView
+                        android:id="@+id/inviteTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -689,6 +695,7 @@
                         android:src="@drawable/ic_menu_support" />
 
                     <TextView
+                        android:id="@+id/supportTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -719,6 +726,7 @@
                         android:src="@drawable/ic_menu_logout" />
 
                     <TextView
+                        android:id="@+id/logoutTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"

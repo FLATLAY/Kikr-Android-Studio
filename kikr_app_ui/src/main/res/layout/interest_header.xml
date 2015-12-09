@@ -2,23 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/trendingGalsLinearLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <com.kikr.ui.RoundImageView
             android:layout_width="@dimen/interest_user_profile"
             android:layout_height="@dimen/interest_user_profile"
             android:src="@drawable/girlsarrow" />
-
-        <View
-            android:layout_width="2dp"
-            android:layout_height="fill_parent"
-            android:background="@color/app_background" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,23 +28,20 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
+        android:layout_marginLeft="@dimen/margin_xlarge"
         android:background="@color/app_background" />
 
     <LinearLayout
         android:id="@+id/trendingGuysLinearLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <com.kikr.ui.RoundImageView
             android:layout_width="@dimen/interest_user_profile"
             android:layout_height="@dimen/interest_user_profile"
             android:src="@drawable/mensarrow" />
 
-        <View
-            android:layout_width="2dp"
-            android:layout_height="fill_parent"
-            android:background="@color/app_background" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,6 +56,7 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
+        android:layout_marginLeft="@dimen/margin_xlarge"
         android:background="@color/app_background" />
 
     <TextView
@@ -77,18 +70,19 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
+        android:layout_marginLeft="@dimen/margin_xlarge"
         android:background="@color/app_background" />
-   
+
     <TextView
-        android:visibility="gone"
         android:id="@+id/layoutNoDataGalGuy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
         android:gravity="center"
         android:text="@string/no_data_found"
-        android:clickable="true"
-        android:textSize="@dimen/large_text_size" />
-	
+        android:textSize="@dimen/large_text_size"
+        android:visibility="gone" />
+
 </LinearLayout>

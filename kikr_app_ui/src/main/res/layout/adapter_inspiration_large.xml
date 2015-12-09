@@ -2,28 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/user_profile_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:padding="@dimen/padding_small"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <com.kikr.ui.RoundImageView
             android:id="@+id/userImage"
             android:layout_width="@dimen/inspiration_user_image"
             android:layout_height="@dimen/inspiration_user_image"
+            android:layout_margin="@dimen/padding_small"
             android:padding="@dimen/padding_small"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
             android:src="@drawable/dum_user" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/padding_small" >
+            android:padding="@dimen/padding_small">
 
             <TextView
                 android:id="@+id/userName"
@@ -44,25 +45,58 @@
                 android:textColor="@color/app_text_color"
                 android:textSize="@dimen/medium_text_size" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/follower_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/padding_small"
+            android:text="Followers\n0"
+            android:gravity="center"
+            android:textColor="@color/app_text_color"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            android:id="@+id/collection_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/padding_small"
+            android:text="Collections\n0"
+            android:gravity="center"
+            android:textColor="@color/app_text_color"
+            android:textSize="@dimen/small_text_size" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/inspirationImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
                 android:layout_marginTop="8dp"
+                android:adjustViewBounds="true"
                 android:src="@drawable/dum_list_item_product" />
-
+            <Button
+                android:id="@+id/follow_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/follow_btn_height"
+                android:background="@drawable/button_activity_gray"
+                android:text="Follow"
+                android:layout_margin="@dimen/padding_large"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                android:textSize="@dimen/small_text_size" />
             <TextView
                 android:id="@+id/noProductTextView"
                 android:layout_width="wrap_content"
@@ -81,20 +115,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <HorizontalScrollView
             android:id="@+id/productLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none" >
+            android:scrollbars="none">
 
             <LinearLayout
                 android:id="@+id/productInflaterLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" >
-            </LinearLayout>
+                android:layout_weight="1"></LinearLayout>
         </HorizontalScrollView>
 
         <ProgressBar

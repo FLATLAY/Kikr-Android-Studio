@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/follow_btn_height"
                     android:layout_marginLeft="@dimen/padding_large"
-                    android:background="@drawable/gray_corner_button"
+                    android:background="@drawable/button_activity_gray"
                     android:text="Follow"
                     android:textColor="@color/white"
                     android:textSize="@dimen/small_text_size" />
@@ -185,11 +185,12 @@
         android:id="@+id/imagesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_large"
         android:cacheColorHint="#00000000"
+        android:horizontalSpacing="2dp"
         android:listSelector="@android:color/transparent"
         android:numColumns="3"
-        android:verticalSpacing="2dp"
-        android:horizontalSpacing="2dp"
-        android:scrollbars="none"></GridView>
+        android:scrollbars="none"
+        android:verticalSpacing="2dp"></GridView>
 
 </LinearLayout>

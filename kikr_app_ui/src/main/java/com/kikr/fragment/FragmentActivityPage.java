@@ -107,9 +107,9 @@ public class FragmentActivityPage extends BaseFragment implements OnClickListene
 				ActivityRes activityRes = (ActivityRes) object;
 				List<CollectionMonthDetailList> data = activityRes.getCollection_list();
 				if (!TextUtils.isEmpty(activityRes.getMonth_activity())) 
-				total_payout_text.setText(month+" Activity = $"+CommonUtility.getFormatedNum(activityRes.getTotal_payout()));
+				total_payout_text.setText(month+" Activity = "+CommonUtility.getFormatedNum(activityRes.getTotal_payout()+" Credits"));
 				else
-				total_payout_text.setText(month+" Activity = $0.00");
+				total_payout_text.setText(month+" Activity = 0 Credits");
 				if (data.size() == 0)
 					showDataNotFound();
 				else if (data.size() > 0) {

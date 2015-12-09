@@ -201,7 +201,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	private TextView txtShop;
 	private TextView txtFeed;
 	private double kikrCredit = 0;
-	
+	private List<TextView> textViews = new ArrayList<>();
+	private TextView logoutTextView,supportTextView,settingsTextView,inviteTextView,kikrChatTextView,checkInTextView,dealTextview,orderTextView,walletTextView,kikrCreditTextView,viewProfileTextView;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -349,6 +351,18 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		layouts.add(menuOrdersLayout);
 		layouts.add(menuProfileOptionLayout);
 		layouts.add(menuChatLayout);
+		textViews.add(txtShop);
+		textViews.add(logoutTextView);
+		textViews.add(supportTextView);
+		textViews.add(settingsTextView);
+		textViews.add(inviteTextView);
+		textViews.add(kikrChatTextView);
+		textViews.add(checkInTextView);
+		textViews.add(dealTextview);
+		textViews.add(orderTextView);
+		textViews.add(walletTextView);
+		textViews.add(kikrCreditTextView);
+		textViews.add(viewProfileTextView);
 	}
 
 	private void setActionBar() {
@@ -426,13 +440,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		case R.id.menuCheckInLayout:
 			left.closeMenu();
 //            loginPinterest();
-			changeBackground(menuCheckInLayout);
+			changeBackground(menuCheckInLayout,checkInTextView);
 			verifyBluetooth(true);
 			break;
 		case R.id.menuOrdersLayout:
 			if (checkInternet()) {
 				left.closeMenu();
-				changeBackground(menuOrdersLayout);
+				changeBackground(menuOrdersLayout,orderTextView);
 				loadFragment(new FragmentAllOrders());
 			}
 			break;
@@ -441,13 +455,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				openFriendsHelpScreen();
 				if (checkInternet()) {
 					left.closeMenu();
-					changeBackground(menuInviteFriendsLayout);
+					changeBackground(menuInviteFriendsLayout,inviteTextView);
 					inviteFriends();
 				}
 			} else {
 				if (checkInternet()) {
 					left.closeMenu();
-					changeBackground(menuInviteFriendsLayout);
+					changeBackground(menuInviteFriendsLayout,inviteTextView);
 					inviteFriends();
 				}
 			}
@@ -456,14 +470,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		case R.id.menuInterestsLayout:
 			if (checkInternet()) {
 				left.closeMenu();
-				changeBackground(menuInterestsLayout);
+				changeBackground(menuInterestsLayout,null);
 				loadFragment(new FragmentInterestSection());
 			}
 			break;
 		case R.id.menuKikrCreditsLayout:
 			if (checkInternet()) {
 				left.closeMenu();
-				changeBackground(menuKikrCreditsLayout);
+				changeBackground(menuKikrCreditsLayout,kikrCreditTextView);
 				loadFragment(new FragmentKikrCreditsScreen());
 			}
 			break;
@@ -478,7 +492,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 					menuMyFriendsLayoutImageView.setImageResource(R.drawable.ic_menu_arrow);
 				}
 				if (checkInternet()) {
-					changeBackground(menuMyFriendsLayout);
+					changeBackground(menuMyFriendsLayout,null);
 					loadFragment(new FragmentMyFriends());
 
 					left.closeMenu();
@@ -486,7 +500,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 			} else {
 				if (checkInternet()) {
 					left.closeMenu();
-					changeBackground(menuMyFriendsLayout);
+					changeBackground(menuMyFriendsLayout,null);
 					loadFragment(new FragmentMyFriends());
 				}
 			}
@@ -494,19 +508,19 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		case R.id.menuActivityLayout:
 			if (checkInternet()) {
 				left.closeMenu();
-				changeBackground(menuActivityLayout);
+				changeBackground(menuActivityLayout,null);
 				loadFragment(new FragmentActivityMonths());
 			}
 			break;
 		case R.id.discoverLayout:
 			left.closeMenu();
-			changeBackground(discoverLayout);
+			changeBackground(discoverLayout,txtShop);
 			loadFragment(new FragmentDiscoverNew());
 			break;
 		case R.id.inspirationLayout:
 			if (checkInternet()) {
 				left.closeMenu();
-				changeBackground(inspirationLayout);
+				changeBackground(inspirationLayout,null);
 				loadFragment(new FragmentInspirationSection(true,UserPreference.getInstance().getUserID()));
 			}
 			break;
@@ -515,12 +529,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 			 if(firstTime) {
 					openProfileHelpScreen();
 						left.closeMenu();
-						changeBackground(menuProfileLayout);
+						changeBackground(menuProfileLayout,viewProfileTextView);
 						isProfile = true;
 						loadFragment(new FragmentProfileView(UserPreference.getInstance().getUserID(), "yes"));
 			 } else {
 					left.closeMenu();
-					changeBackground(menuProfileLayout);
+					changeBackground(menuProfileLayout,viewProfileTextView);
 					isProfile = true;
 					loadFragment(new FragmentProfileView(UserPreference.getInstance().getUserID(), "yes"));
 			 }
@@ -545,11 +559,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 						handler.postDelayed(runnable, 10);
 					}
 					left.closeMenu();
-					changeBackground(menuSettingsLayout);
+					changeBackground(menuSettingsLayout,settingsTextView);
 					loadFragment(new FragmentSettings());
 				} else {
 						left.closeMenu();
-						changeBackground(menuSettingsLayout);
+						changeBackground(menuSettingsLayout,settingsTextView);
 						loadFragment(new FragmentSettings());
 				}
 			}
@@ -567,13 +581,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 					}
 					left.closeMenu();
 					if (!(mContent instanceof FragmentDeals)) {
-						changeBackground(menuDealLayout);
+						changeBackground(menuDealLayout,dealTextview);
 						loadFragment(new FragmentDeals());
 					}
 				} else {
 					left.closeMenu();
 					if (!(mContent instanceof FragmentDeals)) {
-						changeBackground(menuDealLayout);
+						changeBackground(menuDealLayout,dealTextview);
 						loadFragment(new FragmentDeals());
 					}
 				}
@@ -582,19 +596,19 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 			break;
 		case R.id.menuConnectWithInstagramLayout:
 			left.closeMenu();
-			changeBackground(menuConnectWithTwitterLayout);
+			changeBackground(menuConnectWithTwitterLayout,null);
 			break;
 		case R.id.menuConnectWithTwitterLayout:
 			if (checkInternet()) {
 				left.closeMenu();
-				changeBackground(menuConnectWithTwitterLayout);
+				changeBackground(menuConnectWithTwitterLayout,null);
 				twitterLoogedIn();
 			}
 			break;
 		case R.id.menuConnectWithFacebookLayout:
 			if (checkInternet()) {
 				left.closeMenu();
-				changeBackground(menuConnectWithFacebookLayout);
+				changeBackground(menuConnectWithFacebookLayout,null);
 				Intent i = new Intent(context, FbSignActivity.class);
 				i.putExtra("getFriendList", false);
 				i.putExtra("getProfilePic", false);
@@ -604,14 +618,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		case R.id.menuSupportLayout:
 			if (checkInternet()) {
 				left.closeMenu();
-				changeBackground(menuSupportLayout);
+				changeBackground(menuSupportLayout,supportTextView);
 				loadFragment(new FragmentSupport());
 			}
 			break;
 		case R.id.kikerWalletLayout:
 			if (checkInternet()) {
 				left.closeMenu();
-				changeBackground(kikerWalletLayout);
+				changeBackground(kikerWalletLayout,walletTextView);
 				if( UserPreference.getInstance().getPassword() == "" || UserPreference.getInstance().getEmail() == "" || UserPreference.getInstance().getUserName() == ""){
 						CreateAccountDialog createAccountDialog = new CreateAccountDialog(context);
 						createAccountDialog.show();
@@ -622,7 +636,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 			break;
 		case R.id.menuLogoutoptionLayout:
 			left.closeMenu();
-			changeBackground(menuLogoutoptionLayout);
+			changeBackground(menuLogoutoptionLayout,logoutTextView);
 			LogoutDialog logoutDialog = new LogoutDialog(context, homeActivity);
 			logoutDialog.show();
 			break;
@@ -693,7 +707,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		case R.id.menuChatLayout:
 			if (checkInternet()) {
 				left.closeMenu();
-				changeBackground(menuChatLayout);
+				changeBackground(menuChatLayout,kikrChatTextView);
 				loadFragment(new FragmentProductDetailWebView("https://tlk.io/kikrsocialshopping"));
 			}
 			break;
@@ -711,7 +725,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	
 	public void emailLogIn() {
 		left.closeMenu();
-		changeBackground(menuSettingsLayout);
+		changeBackground(menuSettingsLayout,settingsTextView);
 		loadFragment(new FragmentSettings());
 	}
 	private void openProfileHelpScreen() {
@@ -735,22 +749,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		startActivity(i);
 	}
 
-	protected void changeBackground(View v) {
+	protected void changeBackground(View v,TextView tv) {
 		if(v == menuKikrCreditsLayout)
 			totalCredits.setTextColor(this.getResources().getColor(R.color.white));
 		else
 			totalCredits.setTextColor(this.getResources().getColor(R.color.btn_green));
-		
-		txtShop.setTextColor(this.getResources().getColor(R.color.btn_green));
-		txtFeed.setTextColor(this.getResources().getColor(R.color.btn_green));
-		
-		if(v == discoverLayout) {
-			txtShop.setTextColor(this.getResources().getColor(R.color.white));
-		}
-			
-		if(v == inspirationLayout) {
-			txtFeed.setTextColor(this.getResources().getColor(R.color.white));
-		}
 		for (int i = 0; i < layouts.size(); i++) {
 			if (layouts.get(i) == v) {
 				Syso.info("selected:  "+ v+"  "+layouts.get(i));
@@ -758,6 +761,17 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 			} else {
 				Syso.info(" abcd  " + layouts.get(i));
 				layouts.get(i).setBackgroundColor(getResources().getColor(R.color.menu_option_background));
+			}
+		}
+		if(tv!=null) {
+			for (int i = 0; i < textViews.size(); i++) {
+				if (textViews.get(i) == tv) {
+					Syso.info("selected:  " + tv + "  " + textViews.get(i));
+					textViews.get(i).setTextColor(this.getResources().getColor(R.color.white));
+				} else {
+					Syso.info(" abcd  " + textViews.get(i));
+					textViews.get(i).setTextColor(this.getResources().getColor(R.color.app_text_color));
+				}
 			}
 		}
 	}
@@ -797,6 +811,17 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		totalCredits = (TextView) findViewById(R.id.totalCredits);
 		txtShop = (TextView) findViewById(R.id.txtShop);
 		txtFeed = (TextView) findViewById(R.id.txtFeed);
+		logoutTextView = (TextView) findViewById(R.id.logoutTextView);
+		supportTextView = (TextView) findViewById(R.id.supportTextView);
+		settingsTextView = (TextView) findViewById(R.id.settingsTextView);
+		inviteTextView = (TextView) findViewById(R.id.inviteTextView);
+		kikrChatTextView = (TextView) findViewById(R.id.kikrChatTextView);
+		checkInTextView = (TextView) findViewById(R.id.checkInTextView);
+		dealTextview = (TextView) findViewById(R.id.dealTextview);
+		orderTextView = (TextView) findViewById(R.id.orderTextView);
+		walletTextView = (TextView) findViewById(R.id.walletTextView);
+		kikrCreditTextView = (TextView) findViewById(R.id.kikrCreditTextView);
+		viewProfileTextView = (TextView) findViewById(R.id.viewProfileTextView);
 	}
 
 	public void setupData() {
@@ -1650,14 +1675,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				transaction.addToBackStack(mContent.toString());
 				transaction.commit();
 				if (fragment instanceof FragmentDiscoverNew)
-					changeBackground(discoverLayout);
+					changeBackground(discoverLayout,txtShop);
 			} else {
 				mFragmentStack.add(mContent.toString());
 				transaction.replace(R.id.frame_container, fragment,mContent.toString());
 				transaction.addToBackStack(mContent.toString());
 				transaction.commit();
 				if (fragment instanceof FragmentDiscoverNew)
-					changeBackground(discoverLayout);
+					changeBackground(discoverLayout,txtShop);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

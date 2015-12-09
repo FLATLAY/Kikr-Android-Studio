@@ -556,12 +556,12 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 			myActivityButton.setVisibility(View.GONE);
 			follow_btn_layout.setVisibility(View.VISIBLE);
 			follow_btn.setText("Following");
-			follow_btn.setBackground(getResources().getDrawable(R.drawable.blue_corner_button));
+			follow_btn.setBackground(getResources().getDrawable(R.drawable.button_activity));
 		}else{
 			myActivityButton.setVisibility(View.GONE);
 			follow_btn_layout.setVisibility(View.VISIBLE);
 			follow_btn.setText("Follow");
-			follow_btn.setBackground(getResources().getDrawable(R.drawable.gray_corner_button));
+			follow_btn.setBackground(getResources().getDrawable(R.drawable.button_activity_gray));
 		}
 	}
 

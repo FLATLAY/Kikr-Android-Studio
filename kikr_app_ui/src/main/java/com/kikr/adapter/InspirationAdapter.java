@@ -84,6 +84,9 @@ public class InspirationAdapter extends BaseAdapter{
 			viewholder.user_profile_layout=(LinearLayout) convertView.findViewById(R.id.user_profile_layout);
 			viewholder.progressBar=(ProgressBar) convertView.findViewById(R.id.progressBar);
 			viewholder.noProductTextView=(TextView) convertView.findViewById(R.id.noProductTextView);
+			viewholder.follower_count = (TextView) convertView.findViewById(R.id.follower_count);
+			viewholder.collection_count = (TextView) convertView.findViewById(R.id.collection_count);
+			viewholder.follow_btn = (Button) convertView.findViewById(R.id.follow_btn);
 			convertView.setTag(viewholder);
 		} else {
 			viewholder = (ViewHolder) convertView.getTag();
@@ -96,6 +99,38 @@ public class InspirationAdapter extends BaseAdapter{
 		} else {
 			viewholder.userName.setText("Unknown");
 		}
+		if (!TextUtils.isEmpty(getItem(position).getFollower_count())) {
+			viewholder.follower_count.setText("Followers\n"+getItem(position).getFollower_count());
+		} else {
+			viewholder.follower_count.setText("Followers\n0");
+		}
+		if (!TextUtils.isEmpty(getItem(position).getCollection_count())) {
+			viewholder.collection_count.setText("Collections\n"+getItem(position).getCollection_count());
+		} else {
+			viewholder.collection_count.setText("Collections\n0");
+		}
+		if (!TextUtils.isEmpty(getItem(position).getIs_followed())) {
+			if (getItem(position).getIs_followed().equals("yes")) {
+				viewholder.follow_btn.setText("Following");
+				viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.button_activity));
+			}else{
+				viewholder.follow_btn.setText("Follow");
+				viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.button_activity_gray));
+			}
+		}
+
+//		viewholder.follow_btn.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				if(getItem(position).getIs_followed().equals("no")) {
+//					getItem(position).setIs_followed("yes");
+//					notifyDataSetChanged();
+//				}else{
+//					getItem(position).setIs_followed("no");
+//					notifyDataSetChanged();
+//				}
+//			}
+//		});
 		Calendar calLocal = Calendar.getInstance();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 		df.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -106,7 +141,7 @@ public class InspirationAdapter extends BaseAdapter{
 		try {
 //			Log.e("local",calLocal.getTime().toLocaleString());
 			Log.e("date from server >>>",getItem(position).getDateadded() + "");
-			Log.e("date converted local >>>",df.parse(getItem(position).getDateadded())+ "");
+//			Log.e("date converted local >>>",df.parse(getItem(position).getDateadded())+ "");
 			Date dd = df.parse(getItem(position).getDateadded());
 //			Log.e("date converted local 222 >>>",df2.format(dd)+ "");
 			calServer.setTime(dd);
@@ -142,7 +177,6 @@ public class InspirationAdapter extends BaseAdapter{
 			public void onClick(View arg0) {
 				if (((HomeActivity) mContext).checkInternet()) {
 					addFragment(new FragmentProfileView(getItem(position).getUser_id(), "no"));
-					
 				}
 			}
 		});
@@ -157,6 +191,8 @@ public class InspirationAdapter extends BaseAdapter{
 		private TextView noProductTextView,userName,inspirationTime;
 		private ProgressBar progressBar;
 		private LinearLayout user_profile_layout;
+		private TextView follower_count,collection_count;
+		private Button follow_btn;
 	}
 	
 	private void addFragment(Fragment fragment) {

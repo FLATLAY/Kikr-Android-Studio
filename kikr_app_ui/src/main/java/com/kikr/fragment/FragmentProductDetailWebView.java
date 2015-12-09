@@ -119,6 +119,10 @@ public class FragmentProductDetailWebView extends BaseFragment implements OnClic
 		progressBarWebView = (ProgressBar) mainView.findViewById(R.id.progressBarWebView);
 		setUpWebViewDefaults(webView);
 		webView.getSettings().setJavaScriptEnabled(true);
+		webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
+		webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+		webView.getSettings().setAppCacheEnabled(false);
+		webView.getSettings().setDomStorageEnabled(true);
 		webView.loadUrl(url);
 		webView.setWebViewClient(new MyWebViewClient());
 		btnBubble = (ImageButton) mainView.findViewById(R.id.btnBubble);

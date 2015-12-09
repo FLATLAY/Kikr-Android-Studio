@@ -16,6 +16,7 @@ import com.google.android.gcm.GCMBaseIntentService;
 import com.kikr.activity.HomeActivity;
 import com.kikr.fragment.FragmentPlaceMyOrder;
 import com.kikr.utility.CommonUtility;
+import com.kikrlib.db.AppPreference;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.utils.StringUtils;
 import com.kikrlib.utils.Syso;
@@ -61,6 +62,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 		String message;
 		String otherdata = "";
 		String inspiration_id = null ;
+		String purchase_id = "" ;
 		String section="";
 		if (intent.hasExtra("otherdata")) {
 			try {
@@ -68,6 +70,9 @@ public class GCMIntentService extends GCMBaseIntentService {
 				JSONObject jsonobj = new JSONObject(otherdata);
 				if (jsonobj.has("inspiration_id")) {
 					inspiration_id = jsonobj.getString("inspiration_id");
+				}
+				if (jsonobj.has("purchase_id")) {
+					purchase_id = jsonobj.getString("purchase_id");
 				}
 			} catch (JSONException e1) {
 				e1.printStackTrace();
@@ -78,6 +83,9 @@ public class GCMIntentService extends GCMBaseIntentService {
 			section = intent.getStringExtra("section");
 			if(section.equalsIgnoreCase("follow"))
 				inspiration_id = intent.getStringExtra("user_idsend");
+			if(section.equalsIgnoreCase("twotap")){
+				AppPreference.getInstance().setIsShowNotification(purchase_id,false);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			message = "You received new message";
@@ -85,17 +93,19 @@ public class GCMIntentService extends GCMBaseIntentService {
 		boolean isShowNotification = true;
 		if(section.equalsIgnoreCase("placeorder")){
 //			double finalValue = StringUtils.getDoubleValue(getFinalPrice(otherdata.toString()));
-			double finalValue = getFinalPrice(otherdata.toString());
-			double savedValue = StringUtils.getDoubleValue(UserPreference.getInstance().getFinalPrice());
-			double diffrence = finalValue-savedValue;
-			Syso.info("uuuuuuuuuuuuu >>>>> Final value : "+finalValue+", Saved Final value>>"+savedValue+" Diff>>>"+diffrence);
-			if(diffrence<=5){
-				if(!TextUtils.isEmpty(UserPreference.getInstance().getPurchaseId())){
-					isShowNotification = false;
-					FragmentPlaceMyOrder myOrder = new FragmentPlaceMyOrder(otherdata, false);
-					myOrder.confirmPuchase(UserPreference.getInstance().getPurchaseId());
-				}
-			}
+			 isShowNotification = false;
+
+//			double finalValue = getFinalPrice(otherdata.toString());
+//			double savedValue = StringUtils.getDoubleValue(UserPreference.getInstance().getFinalPrice());
+//			double diffrence = finalValue-savedValue;
+//			Syso.info("uuuuuuuuuuuuu >>>>> Final value : "+finalValue+", Saved Final value>>"+savedValue+" Diff>>>"+diffrence);
+//			if(diffrence<=5){
+//				if(!TextUtils.isEmpty(UserPreference.getInstance().getPurchaseId())){
+//					isShowNotification = false;
+//					FragmentPlaceMyOrder myOrder = new FragmentPlaceMyOrder(otherdata, false);
+//					myOrder.confirmPuchase(UserPreference.getInstance().getPurchaseId());
+//				}
+//			}
 		}
 		if(isShowNotification)
 			generateNotification(context, message,inspiration_id,section,otherdata);

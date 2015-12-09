@@ -33,6 +33,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.Iterator;
 
 
 /**
@@ -40,7 +41,7 @@ import java.util.Calendar;
  */
 public class PlaceOrderService extends IntentService{
 
-    private static int PURCHASE_STATUS_TIME = 30*1000;
+    private static int PURCHASE_STATUS_TIME = 15*1000;
 
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
@@ -52,6 +53,10 @@ public class PlaceOrderService extends IntentService{
     }
 
 //    'still_processing', 'has_failures', or 'done'.
+
+    public PlaceOrderService() {
+        super("PlaceOrderService");
+    }
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -83,27 +88,30 @@ public class PlaceOrderService extends IntentService{
                 try {
                     JSONObject jsonObject = new JSONObject(object.toString());
                     String purchaseId=jsonObject.getString("purchase_id");
-                    String message=jsonObject.getString("purchase_id");
-                    double finalPrice = 0;
+                    String message=jsonObject.getString("message");
                     if(message.equals("still_processing")){
                         setNextHandler(purchase_id,cartId);
-                    }else if(message.equals("done")){
-                        //check for auto confirm
-//                        confirmPuchase(purchase_id,cartId);
-                        //ask to user
-//                        generateNotification(purchaseId,finalPrice);
-
-//                        double finalValue = 0;
-//                        double savedValue = StringUtils.getDoubleValue(UserPreference.getInstance().getFinalPrice());
-//                        double diffrence = finalValue-savedValue;
-//                        Syso.info("uuuuuuuuuuuuu >>>>> Final value : " + finalValue + ", Saved Final value>>" + savedValue + " Diff>>>" + diffrence);
-//                        if(diffrence<=5){
-//                            confirmPuchase(purchase_id,cartId);
-//                        }else{
-//                            generateNotification(purchaseId,finalPrice);
-//                        }
+                    }else {
+                          boolean isOrderSuccess = jsonObject.optBoolean("pending_confirm",false);
+                          if(isOrderSuccess){
+                              double savedValue = StringUtils.getDoubleValue(UserPreference.getInstance().getFinalPrice());
+                              double finalPrice = getFinalPrice(jsonObject);
+                              double difference = finalPrice-savedValue;
+                              if(difference<=1)
+                                  confirmPuchase(purchaseId,cartId);
+                              else {
+                                  String otherdata = "{\"confirm_with_user\":false,\"purchase_id\":\""+purchaseId+"\",\"message\":\""+message+"\",\"finalprice\":"+finalPrice+"}";
+                                  String lMessage = "Your cart is ready to confirm.";
+                                  String section = "placeorder";
+                                  generateNotification(otherdata, lMessage, section);
+                              }
+                          }else{
+                              String otherdata = "{\"message\":\"Your order has been failed\"}";
+                              String lMessage = "Your order has been failed";
+                              String section = "twotap";
+                              generateNotification(otherdata,lMessage,section);
+                          }
                     }
-//                    generateNotification(purchaseId,finalPrice);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -118,6 +126,24 @@ public class PlaceOrderService extends IntentService{
         twoTapApi.execute();
     }
 
+    private double getFinalPrice(JSONObject jsonObject){
+        double finalPrice = 0;
+        try {
+            JSONObject sites = jsonObject.getJSONObject("sites");
+            Iterator keys = sites.keys();
+            while(keys.hasNext()) {
+                String currentDynamicKey = (String) keys.next();
+                JSONObject currentDynamicValue = sites.getJSONObject(currentDynamicKey);
+                JSONObject  prices = currentDynamicValue.getJSONObject("prices");
+                finalPrice+= Double.parseDouble(prices.optString("final_price").replace("$", ""));
+            }
+            return finalPrice;
+        }catch(Exception e){
+            e.printStackTrace();
+            return  finalPrice;
+        }
+    }
+
     public void confirmPuchase(final String purchase_id,final String cartId) {
         Syso.info("UUUUUUUUUUUU >>>>>> in confirmPuchase : "+purchase_id);
         TwoTapApi twoTapApi = new TwoTapApi(new ServiceCallback() {
@@ -130,6 +156,7 @@ public class PlaceOrderService extends IntentService{
                     JSONObject jsonObject = new JSONObject(object.toString());
                     Syso.info("result:  "+jsonObject);
                     callServerForConfirmation(purchase_id,"confirmed",cartId);
+                    GCMAlarmReceiver.setAlarmForOrderNotification(purchase_id,getApplicationContext());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -193,10 +220,7 @@ public class PlaceOrderService extends IntentService{
     }
 
 
-    private void generateNotification(String purchaseId,double finalPrice) {
-        String message = "Your cart is ready to confirm.";
-        String section = "placeorder";
-        String otherdata = "{\"confirm_with_user\":false,\"purchase_id\":\""+purchaseId+"\",\"message\":\""+message+"\",\"finalprice\":"+finalPrice+"}";
+    private void generateNotification(String otherdata,String message,String section) {
         Context context = getApplicationContext();
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
         notificationBuilder.setSmallIcon(R.drawable.ic_app_logo);
@@ -232,4 +256,9 @@ public class PlaceOrderService extends IntentService{
         manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), intent);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Syso.info("============= in service onDestroy");
+    }
 }

@@ -40,4 +40,17 @@ public class AppPreference {
 		return mPrefs.getString(mServerIp, "");
 	}
 
+	public void savePurchaseId(String id){
+		mPrefsEditor.putBoolean(id, true);
+		mPrefsEditor.commit();
+	}
+
+	public boolean isShowNotification(String id){
+		return mPrefs.getBoolean(id,true);
+	}
+
+	public void setIsShowNotification(String id,boolean status){
+		mPrefsEditor.putBoolean(id, status);
+		mPrefsEditor.commit();
+	}
 }

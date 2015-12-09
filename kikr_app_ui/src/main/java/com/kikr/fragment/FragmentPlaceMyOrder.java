@@ -1,10 +1,13 @@
 package com.kikr.fragment;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -31,6 +34,7 @@ import android.widget.TextView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.analytics.ecommerce.ProductAction;
+import com.kikr.GCMAlarmReceiver;
 import com.kikr.KikrApp;
 import com.kikr.KikrApp.TrackerName;
 import com.kikr.R;
@@ -74,6 +78,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -825,7 +830,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 			public void handleOnFailure(ServiceException exception, Object object) {
 			}
 		});
-		cartApi.updateproductPrice(UserPreference.getInstance().getUserID(), productCartId, price,shiping,productTax,md5,siteId);
+		cartApi.updateproductPrice(UserPreference.getInstance().getUserID(), productCartId, price, shiping, productTax, md5, siteId);
 		cartApi.execute();
 	}
 	
@@ -891,6 +896,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 				try {
 					JSONObject jsonObject = new JSONObject(object.toString());
 					Syso.info("result:  "+jsonObject);
+					GCMAlarmReceiver.setAlarmForOrderNotification(purchase_id, mContext);
 					if (isShowAlerts?((HomeActivity)mContext).checkInternet():true){
 						callServerForConfirmation(purchase_id,"confirmed");
 					}
@@ -909,7 +915,9 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 		twoTapApi.confirmPurchase(purchase_id);
 		twoTapApi.execute();
 	}
-	
+
+
+
 	public void purchaseStatus(String purchase_id) {
 		TwoTapApi twoTapApi = new TwoTapApi(new ServiceCallback() {
 

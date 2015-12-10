@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/padding_small"
+        android:layout_margin="@dimen/padding_large"
         android:background="@drawable/round_ract_white"
         android:padding="@dimen/padding_large"
         android:text="Name"
@@ -27,11 +27,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/follow_btn"
-            android:layout_centerVertical="true"
             android:layout_width="@dimen/follow_btn_height"
             android:layout_height="@dimen/follow_btn_height"
             android:layout_margin="@dimen/padding_large"
@@ -41,22 +41,22 @@
             android:id="@+id/descriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
+            android:gravity="center"
             android:padding="@dimen/padding_large"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/gray" />
+
+        <TextView
+            android:id="@+id/viewAllTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
+            android:text="View All"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/viewAllTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:padding="@dimen/padding_small"
-        android:text="View All"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
         android:id="@+id/imageLayout1"

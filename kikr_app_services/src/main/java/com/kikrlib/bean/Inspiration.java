@@ -22,7 +22,34 @@ public class Inspiration {
 	String product_name;
 	String image_width;
 	String image_height;
-	
+	String follower_count;
+	String collection_count;
+	String is_followed;
+
+	public String getFollower_count() {
+		return follower_count;
+	}
+
+	public void setFollower_count(String follower_count) {
+		this.follower_count = follower_count;
+	}
+
+	public String getCollection_count() {
+		return collection_count;
+	}
+
+	public void setCollection_count(String collection_count) {
+		this.collection_count = collection_count;
+	}
+
+	public String getIs_followed() {
+		return is_followed;
+	}
+
+	public void setIs_followed(String is_followed) {
+		this.is_followed = is_followed;
+	}
+
 	/**
 	 * @return the image_width
 	 */

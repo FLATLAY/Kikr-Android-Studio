@@ -67,16 +67,16 @@ public class PlaceOrderService extends IntentService{
         }
     }
 
-    private void setNextHandler(final String purchase_id,final String cartId) {
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                purchaseStatus(purchase_id,cartId);
-            }
-        };
-        Handler handler = new Handler();
-        handler.postDelayed(runnable, PURCHASE_STATUS_TIME);
-    }
+//    private void setNextHandler(final String purchase_id,final String cartId) {
+//        Runnable runnable = new Runnable() {
+//            @Override
+//            public void run() {
+//                purchaseStatus(purchase_id,cartId);
+//            }
+//        };
+//        Handler handler = new Handler();
+//        handler.postDelayed(runnable, PURCHASE_STATUS_TIME);
+//    }
 
     public void purchaseStatus(final String purchase_id,final String cartId) {
         Syso.info("UUUUUUUUUUUU >>>>>> in purchaseStatus : "+purchase_id);
@@ -90,7 +90,8 @@ public class PlaceOrderService extends IntentService{
                     String purchaseId=jsonObject.getString("purchase_id");
                     String message=jsonObject.getString("message");
                     if(message.equals("still_processing")){
-                        setNextHandler(purchase_id,cartId);
+//                        setNextHandler(purchase_id,cartId);
+                        setAlarmForNextLoad(purchase_id,cartId);
                     }else {
                           boolean isOrderSuccess = jsonObject.optBoolean("pending_confirm",false);
                           if(isOrderSuccess){
@@ -119,7 +120,8 @@ public class PlaceOrderService extends IntentService{
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                setNextHandler(purchase_id,cartId);
+//                setNextHandler(purchase_id,cartId);
+                setAlarmForNextLoad(purchase_id,cartId);
             }
         });
         twoTapApi.purchaseStatus(purchase_id);
@@ -254,6 +256,18 @@ public class PlaceOrderService extends IntentService{
         calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) + 2);
         PendingIntent intent = PendingIntent.getBroadcast(getApplicationContext(),0, new Intent(getApplicationContext(), GCMAlarmReceiver.class), 0);
         manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), intent);
+    }
+
+    private void setAlarmForNextLoad(String purchase_id,String cartId) {
+        AlarmManager manager = (AlarmManager) getApplicationContext().getSystemService(ALARM_SERVICE);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.SECOND, calendar.get(Calendar.SECOND) + 15);
+        Intent i = new Intent(getApplicationContext(), GCMAlarmReceiver.class);
+        i.putExtra("purchase_id",purchase_id);
+        i.putExtra("cartId",cartId);
+        PendingIntent intent = PendingIntent.getService(getApplicationContext(), 0, i, 0);
+        manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), intent);
+        stopSelf();
     }
 
     @Override

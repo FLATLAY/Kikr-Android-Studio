@@ -8,11 +8,11 @@
         android:id="@+id/userNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="@dimen/padding_small"
         android:background="@drawable/round_ract_white"
-        android:text="Name"
-        android:layout_gravity="center"
         android:padding="@dimen/padding_large"
+        android:text="Name"
         android:textColor="@color/app_text_color"
         android:textSize="@dimen/large_text_size"
         android:textStyle="bold" />
@@ -24,15 +24,30 @@
         android:scaleType="centerCrop"
         android:src="@drawable/linesplaceholder" />
 
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="@dimen/padding_large"
-        android:text="Description"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/gray" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/follow_btn"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/follow_btn_height"
+            android:layout_height="@dimen/follow_btn_height"
+            android:layout_margin="@dimen/padding_large"
+            android:src="@drawable/ic_add_collection" />
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:padding="@dimen/padding_large"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/gray" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/viewAllTextView"

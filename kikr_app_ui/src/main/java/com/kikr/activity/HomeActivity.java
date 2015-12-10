@@ -124,6 +124,7 @@ import com.kikrlib.api.CartApi;
 import com.kikrlib.api.ConnectWithFacebookApi;
 import com.kikrlib.api.ConnectWithTwitterApi;
 import com.kikrlib.api.FbTwFriendsApi;
+import com.kikrlib.api.FollowUserApi;
 import com.kikrlib.api.GetConnectedWithSocialApi;
 import com.kikrlib.api.GetUUIDApi;
 import com.kikrlib.api.InspirationSectionApi;
@@ -146,6 +147,7 @@ import com.kikrlib.service.res.BraintreePaymentRes;
 import com.kikrlib.service.res.CartRes;
 import com.kikrlib.service.res.ConnectWithFacebookRes;
 import com.kikrlib.service.res.ConnectWithTwitterRes;
+import com.kikrlib.service.res.FollowUserRes;
 import com.kikrlib.service.res.GetConnectedWithSocialRes;
 import com.kikrlib.service.res.GetUUIDRes;
 import com.kikrlib.service.res.InspirationRes;
@@ -2389,6 +2391,77 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		twoTapApi.purchaseStatus(purchase_id);
 		twoTapApi.execute();
 	}
+
+	public void followUser(String user_id) {
+		mProgressBarDialog = new ProgressBarDialog(context);
+		mProgressBarDialog.show();
+
+		final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
+
+			@Override
+			public void handleOnSuccess(Object object) {
+				mProgressBarDialog.dismiss();
+				Syso.info("In handleOnSuccess>>" + object);
+			}
+
+			@Override
+			public void handleOnFailure(ServiceException exception, Object object) {
+				mProgressBarDialog.dismiss();
+				Syso.info("In handleOnFailure>>" + object);
+				if (object != null) {
+					FollowUserRes response = (FollowUserRes) object;
+					AlertUtils.showToast(context, response.getMessage());
+				} else {
+					AlertUtils.showToast(context, R.string.invalid_response);
+				}
+			}
+		});
+		followUserApi.followUser(UserPreference.getInstance().getUserID(), user_id);
+		followUserApi.execute();
+
+		mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				followUserApi.cancel();
+			}
+		});
+	}
+
+	public void unFollowUser(String user_id) {
+		mProgressBarDialog = new ProgressBarDialog(context);
+		mProgressBarDialog.show();
+
+		final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
+
+			@Override
+			public void handleOnSuccess(Object object) {
+				mProgressBarDialog.dismiss();
+				Syso.info("In handleOnSuccess>>" + object);
+			}
+
+			@Override
+			public void handleOnFailure(ServiceException exception, Object object) {
+				mProgressBarDialog.dismiss();
+				Syso.info("In handleOnFailure>>" + object);
+				if (object != null) {
+					FollowUserRes response = (FollowUserRes) object;
+					AlertUtils.showToast(context, response.getMessage());
+				} else {
+					AlertUtils.showToast(context, R.string.invalid_response);
+				}
+			}
+		});
+		followUserApi.unFollowUser(UserPreference.getInstance().getUserID(), user_id);
+		followUserApi.execute();
+
+		mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				followUserApi.cancel();
+			}
+		});
+	}
+
 
 //
 //    public void loginPinterest(final String text,final String link,final String imageUrl){

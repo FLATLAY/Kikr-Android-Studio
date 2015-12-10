@@ -1947,6 +1947,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				|| fragment instanceof FragmentStoreDeals
 				|| fragment instanceof FragmentInterestSection
 				|| fragment instanceof FragmentCategories
+				|| fragment instanceof FragmentInspirationSection
 				|| fragment instanceof FragmentActivityMonths) {
 			showBackButton();
 		} else {

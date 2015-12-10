@@ -262,7 +262,7 @@ public class PlaceOrderService extends IntentService{
         AlarmManager manager = (AlarmManager) getApplicationContext().getSystemService(ALARM_SERVICE);
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.SECOND, calendar.get(Calendar.SECOND) + 15);
-        Intent i = new Intent(getApplicationContext(), GCMAlarmReceiver.class);
+        Intent i = new Intent(getApplicationContext(), PlaceOrderService.class);
         i.putExtra("purchase_id",purchase_id);
         i.putExtra("cartId",cartId);
         PendingIntent intent = PendingIntent.getService(getApplicationContext(), 0, i, 0);

@@ -52,19 +52,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/centerLayout"
         android:layout_alignParentBottom="true"
+        android:layout_below="@+id/centerLayout"
         android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/btn_activity"
+            android:id="@+id/btn_photos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_margin="@dimen/margin_large"
             android:background="@drawable/button_activity"
             android:padding="5dp"
-            android:text="Activity"
+            android:text="Photos"
             android:textColor="@color/white"
             android:textSize="@dimen/small_text_size"
             android:visibility="visible" />
@@ -83,17 +84,17 @@
             android:textColor="@color/white" />
 
         <TextView
-            android:id="@+id/btn_photos"
+            android:id="@+id/btn_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_margin="@dimen/margin_large"
             android:background="@drawable/button_activity"
             android:padding="5dp"
-            android:text="Photos"
+            android:text="Activity"
             android:textColor="@color/white"
             android:textSize="@dimen/small_text_size"
             android:visibility="visible" />
+
 
     </LinearLayout>
 

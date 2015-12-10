@@ -151,7 +151,7 @@ public class FeaturedTabAdapter extends BaseAdapter{
 		if(!TextUtils.isEmpty(getItem(position).getDescription()))
 			viewholder.descriptionTextView.setText(getItem(position).getDescription());
 		else
-			viewholder.descriptionTextView.setVisibility(View.GONE);
+			viewholder.descriptionTextView.setVisibility(View.INVISIBLE);
 //		if(getItem(position).getType().equals(ItemType.user))
 //			CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userLargeImageView, R.drawable.linesplaceholder);
 //		else

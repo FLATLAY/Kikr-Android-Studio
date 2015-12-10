@@ -107,6 +107,7 @@ public class FeaturedTabAdapter extends BaseAdapter{
 			viewholder.image4 = (ImageView) convertView.findViewById(R.id.image4);
 			viewholder.image5 = (ImageView) convertView.findViewById(R.id.image5);
 			viewholder.image6 = (ImageView) convertView.findViewById(R.id.image6);
+			viewholder.follow_btn = (ImageView) convertView.findViewById(R.id.follow_btn_img);
 			viewholder.list.add(viewholder.image1);
 			viewholder.list.add(viewholder.image2);
 			viewholder.list.add(viewholder.image3);
@@ -148,8 +149,8 @@ public class FeaturedTabAdapter extends BaseAdapter{
 			viewholder.userNameTextView.setText(name);
 		else
 			viewholder.userNameTextView.setText("Unknown");
-		if(!TextUtils.isEmpty(getItem(position).getDescription()))
-			viewholder.descriptionTextView.setText(getItem(position).getDescription());
+		if(!TextUtils.isEmpty(getItem(position).getItem_description()))
+			viewholder.descriptionTextView.setText(getItem(position).getItem_description());
 		else
 			viewholder.descriptionTextView.setVisibility(View.INVISIBLE);
 //		if(getItem(position).getType().equals(ItemType.user))
@@ -166,6 +167,27 @@ public class FeaturedTabAdapter extends BaseAdapter{
 		}else if((data!=null&&data.size()<4)||(feed!=null&&feed.size()<4)){
 			viewholder.imageLayout2.setVisibility(View.GONE);
 		}
+		if(getItem(position).getIs_followed()!=null&&getItem(position).getIs_followed().equals("yes")){
+			viewholder.follow_btn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_follow_category_tick));
+		}else{
+			viewholder.follow_btn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_add_collection));
+		}
+		viewholder.follow_btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(getItem(position).getIs_followed()!=null) {
+					if (getItem(position).getIs_followed().equals("no")) {
+						getItem(position).setIs_followed("yes");
+						notifyDataSetChanged();
+						((HomeActivity) mContext).followUser(getItem(position).getItem_id());
+					} else {
+						getItem(position).setIs_followed("no");
+						notifyDataSetChanged();
+						((HomeActivity) mContext).unFollowUser(getItem(position).getItem_id());
+					}
+				}
+			}
+		});
 		for(int j=0;j<viewholder.list.size();j++){
 			if((data!=null&&data.size()>j)||(feed!=null&&feed.size()>j)){
 				if(data!=null)
@@ -212,6 +234,7 @@ public class FeaturedTabAdapter extends BaseAdapter{
 		TextView descriptionTextView;
 		LinearLayout imageLayout1,imageLayout2;
 		List<ImageView> list = new ArrayList<ImageView>();
+		ImageView follow_btn;
 	}
 
 	private void addFragment(Fragment fragment) {

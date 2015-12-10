@@ -27,13 +27,19 @@ import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
+import com.kikr.dialog.CreateAccountDialog;
 import com.kikr.fragment.FragmentInspirationDetail;
 import com.kikr.fragment.FragmentProfileView;
 import com.kikr.ui.InspirationProductUI;
 import com.kikr.ui.RoundImageView;
 import com.kikr.utility.CommonUtility;
+import com.kikrlib.api.InspirationSectionApi;
 import com.kikrlib.bean.Inspiration;
 import com.kikrlib.bean.Product;
+import com.kikrlib.db.UserPreference;
+import com.kikrlib.service.ServiceCallback;
+import com.kikrlib.service.ServiceException;
+import com.kikrlib.service.res.InspirationRes;
 
 public class InspirationAdapter extends BaseAdapter{
 
@@ -41,6 +47,7 @@ public class InspirationAdapter extends BaseAdapter{
 	private LayoutInflater mInflater;
 	private List<Inspiration> inspirations;
 	private boolean isViewAll;
+	String likeId = "";
 
 	public InspirationAdapter(FragmentActivity context, List<Inspiration> inspirations, boolean isViewAll) {
 		super();
@@ -86,7 +93,10 @@ public class InspirationAdapter extends BaseAdapter{
 			viewholder.noProductTextView=(TextView) convertView.findViewById(R.id.noProductTextView);
 			viewholder.follower_count = (TextView) convertView.findViewById(R.id.follower_count);
 			viewholder.collection_count = (TextView) convertView.findViewById(R.id.collection_count);
-			viewholder.follow_btn = (Button) convertView.findViewById(R.id.follow_btn);
+			viewholder.follow_btn = (ImageView) convertView.findViewById(R.id.follow_btn_img);
+			viewholder.descriptionTextView = (TextView) convertView.findViewById(R.id.descriptionTextView);
+			viewholder.likeCount = (TextView) convertView.findViewById(R.id.likeCount);
+			viewholder.commentCount = (TextView) convertView.findViewById(R.id.commentCount);
 			convertView.setTag(viewholder);
 		} else {
 			viewholder = (ViewHolder) convertView.getTag();
@@ -111,26 +121,51 @@ public class InspirationAdapter extends BaseAdapter{
 		}
 		if (!TextUtils.isEmpty(getItem(position).getIs_followed())) {
 			if (getItem(position).getIs_followed().equals("yes")) {
-				viewholder.follow_btn.setText("Following");
-				viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.button_activity));
 			}else{
-				viewholder.follow_btn.setText("Follow");
-				viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.button_activity_gray));
 			}
 		}
-
-//		viewholder.follow_btn.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				if(getItem(position).getIs_followed().equals("no")) {
-//					getItem(position).setIs_followed("yes");
-//					notifyDataSetChanged();
-//				}else{
-//					getItem(position).setIs_followed("no");
-//					notifyDataSetChanged();
-//				}
-//			}
-//		});
+		viewholder.commentCount.setText(getItem(position).getComment_count());
+		viewholder.likeCount.setText(getItem(position).getLike_count());
+		if (!TextUtils.isEmpty(getItem(position).getLike_id()))
+			likeId = getItem(position).getLike_id();
+		if (TextUtils.isEmpty(likeId))
+			viewholder.likeCount.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_flame_logo_36, 0, 0);
+		else
+			viewholder.likeCount.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_flame_logo_36, 0, 0);
+		viewholder.likeCount.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if( UserPreference.getInstance().getPassword() == "" || UserPreference.getInstance().getEmail() == "" || UserPreference.getInstance().getUserName() == ""){
+					CreateAccountDialog createAccountDialog = new CreateAccountDialog(mContext);
+					createAccountDialog.show();
+				}else{
+					if(((HomeActivity)mContext).checkInternet()){
+							likeInspiration(v,getItem(position).getInspiration_id());
+					}
+				}
+			}
+		});
+		if(getItem(position).getIs_followed()!=null&&getItem(position).getIs_followed().equals("yes")){
+			viewholder.follow_btn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_follow_category_tick));
+		}else{
+			viewholder.follow_btn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_add_collection));
+		}
+		viewholder.follow_btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(getItem(position).getIs_followed()!=null) {
+					if (getItem(position).getIs_followed().equals("no")) {
+						getItem(position).setIs_followed("yes");
+						notifyDataSetChanged();
+						((HomeActivity) mContext).followUser(getItem(position).getUser_id());
+					} else {
+						getItem(position).setIs_followed("no");
+						notifyDataSetChanged();
+						((HomeActivity) mContext).unFollowUser(getItem(position).getUser_id());
+					}
+				}
+			}
+		});
 		Calendar calLocal = Calendar.getInstance();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 		df.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -192,11 +227,54 @@ public class InspirationAdapter extends BaseAdapter{
 		private ProgressBar progressBar;
 		private LinearLayout user_profile_layout;
 		private TextView follower_count,collection_count;
-		private Button follow_btn;
+		private ImageView follow_btn;
+		private TextView descriptionTextView,likeCount,commentCount;
 	}
 	
 	private void addFragment(Fragment fragment) {
 		((HomeActivity) mContext).addFragment(fragment);
 	}
-	
+
+
+	private void likeInspiration(View likeCount,final String id) {
+		final TextView v = (TextView) likeCount.findViewById(R.id.likeCount);
+		final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(new ServiceCallback() {
+
+			@Override
+			public void handleOnSuccess(Object object) {
+				InspirationRes inspirationRes=(InspirationRes) object;
+				likeId=inspirationRes.getLike_id();
+
+				if (TextUtils.isEmpty(likeId)){
+					v.setText((getInt(v.getText().toString().trim())-1)+"");
+					v.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_flame_logo_36, 0, 0);
+				}
+				else {
+					v.setText((getInt(v.getText().toString().trim())+1)+"");
+					v.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_flame_logo_36, 0, 0);
+				}
+			}
+
+			@Override
+			public void handleOnFailure(ServiceException exception, Object object) {
+				v.setVisibility(View.VISIBLE);
+			}
+		});
+		if (TextUtils.isEmpty(likeId))
+			inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), id, "inspiration");
+		else
+			inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), likeId);
+		inspirationSectionApi.execute();
+	}
+
+
+	private int getInt(String image_width) {
+		try{
+			return Integer.parseInt(image_width);
+		}catch(Exception e){
+			return 0;
+		}
+	}
+
+
 }

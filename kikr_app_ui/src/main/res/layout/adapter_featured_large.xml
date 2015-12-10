@@ -12,6 +12,7 @@
         android:background="@drawable/round_ract_white"
         android:text="Name"
         android:layout_gravity="center"
+        android:padding="@dimen/padding_large"
         android:textColor="@color/app_text_color"
         android:textSize="@dimen/large_text_size"
         android:textStyle="bold" />

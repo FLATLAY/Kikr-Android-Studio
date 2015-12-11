@@ -25,6 +25,33 @@ public class Inspiration {
 	String follower_count;
 	String collection_count;
 	String is_followed;
+	String like_count;
+	String comment_count;
+	String like_id;
+
+	public String getLike_id() {
+		return like_id;
+	}
+
+	public void setLike_id(String like_id) {
+		this.like_id = like_id;
+	}
+
+	public String getLike_count() {
+		return like_count;
+	}
+
+	public void setLike_count(String like_count) {
+		this.like_count = like_count;
+	}
+
+	public String getComment_count() {
+		return comment_count;
+	}
+
+	public void setComment_count(String comment_count) {
+		this.comment_count = comment_count;
+	}
 
 	public String getFollower_count() {
 		return follower_count;

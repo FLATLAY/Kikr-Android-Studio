@@ -12,18 +12,29 @@ public class FeaturedTabData {
 	String type;
 	List<Product> products;
 	List<Inspiration> inspiration_feed;
-	
+	String is_followed;
+
+	public String getItem_description() {
+		return item_description;
+	}
+
+	public void setItem_description(String item_description) {
+		this.item_description = item_description;
+	}
+
+	public String getIs_followed() {
+		return is_followed;
+	}
+
+	public void setIs_followed(String is_followed) {
+		this.is_followed = is_followed;
+	}
+
 	public String getItem_id() {
 		return item_id;
 	}
 	public void setItem_id(String item_id) {
 		this.item_id = item_id;
-	}
-	public String getDescription() {
-		return item_description;
-	}
-	public void setDescription(String description) {
-		this.item_description = description;
 	}
 	public String getProfile_pic() {
 		return profile_pic;

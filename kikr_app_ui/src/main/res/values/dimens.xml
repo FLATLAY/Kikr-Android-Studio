@@ -56,6 +56,7 @@
     <dimen name="phone_margin_side">30dp</dimen>
 
     <!-- Menu content -->
+    <dimen name="menu_margin_left_small">5dp</dimen>
     <dimen name="menu_margin_left">10dp</dimen>
     <dimen name="menu_text_margin_left">10dp</dimen>
     <dimen name="menu_option_height">52dp</dimen>

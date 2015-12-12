@@ -295,10 +295,15 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		runnable =  new Runnable() {
 			@Override
 			public void run() {
-				totalCredits.setText(localCount+" Cr");
+//				totalCredits.setText(localCount+" Cr");
+                totalCredits.setText(CommonUtility.getFormatedNum(localCount)+" Cr");
 				localCount+=kikrCredit/20;
 				if(localCount<=kikrCredit)
 					handler.postDelayed(runnable, 50);
+                else
+                    totalCredits.setText(CommonUtility.getFormatedNum(kikrCredit) + " Cr");
+                Syso.info("===================== kikrCredit: "+kikrCredit+",localCount:"+localCount);
+
 			}
 		};
 		handler.postDelayed(runnable, 1);

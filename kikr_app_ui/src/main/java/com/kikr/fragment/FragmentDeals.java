@@ -129,7 +129,7 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 	private void setUpMapIfNeeded() {
 		try {
 			if (map == null) {
-				SupportMapFragment supportMapFragment = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map));
+				SupportMapFragment supportMapFragment = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map));
 				if(supportMapFragment!=null) {
 					map = supportMapFragment.getMap();
 					if (map != null) {
@@ -150,19 +150,20 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 	}
 
 	private void addMarkers(List<NearByDeal> nearByDeals) {
-		for (int i = 0; i < nearByDeals.size(); i++) {
-			LatLng latLng = new LatLng(StringUtils.getDoubleValue(nearByDeals.get(i).getLat()),StringUtils.getDoubleValue(nearByDeals.get(i).getLng()));
-			 marker = map.addMarker(new MarkerOptions()
-   	     .position(latLng)
-   	     .title(nearByDeals.get(i).getName()));
-			 markersMap.put(marker, nearByDeals.get(i).getImg());
-            // Locate the first location
-            if(i==0){
-                map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                map.animateCamera(CameraUpdateFactory.zoomTo(12));
-            }
-        }	
-		
+		if(map!=null) {
+			for (int i = 0; i < nearByDeals.size(); i++) {
+				LatLng latLng = new LatLng(StringUtils.getDoubleValue(nearByDeals.get(i).getLat()), StringUtils.getDoubleValue(nearByDeals.get(i).getLng()));
+				marker = map.addMarker(new MarkerOptions()
+						.position(latLng)
+						.title(nearByDeals.get(i).getName()));
+				markersMap.put(marker, nearByDeals.get(i).getImg());
+				// Locate the first location
+				if (i == 0) {
+					map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+					map.animateCamera(CameraUpdateFactory.zoomTo(12));
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -277,9 +278,11 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 				AlertUtils.showToast(mContext, dealsRes.getMessage());
 			}
 		});
-//		api.getNearByDeals(UserPreference.getInstance().getUserID(), "40.748817", "-73.985428", "1");
-		api.getNearByDeals(UserPreference.getInstance().getUserID(), Double.toString(latitude), Double.toString(longitude), "1");
-		api.execute();
+		if(latitude!=0&&longitude!=0)
+			api.getNearByDeals(UserPreference.getInstance().getUserID(), Double.toString(latitude), Double.toString(longitude), "1");
+		else
+			api.getNearByDeals(UserPreference.getInstance().getUserID(), "40.748817", "-73.985428", "1");
+			api.execute();
 	}
 	
 	private void getPopularDeals() {
@@ -376,7 +379,8 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 	        super.onDestroyView(); 
 	        Fragment fragment = (getFragmentManager().findFragmentById(R.id.map));  
 	        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-	        ft.remove(fragment);
+			 if(fragment!=null)
+	      	  ft.remove(fragment);
 	        ft.commit();
 	    }
 

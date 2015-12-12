@@ -302,7 +302,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 					handler.postDelayed(runnable, 50);
                 else
                     totalCredits.setText(CommonUtility.getFormatedNum(kikrCredit) + " Cr");
-                Syso.info("===================== kikrCredit: "+kikrCredit+",localCount:"+localCount);
+//                Syso.info("===================== kikrCredit: "+kikrCredit+",localCount:"+localCount);
 
 			}
 		};

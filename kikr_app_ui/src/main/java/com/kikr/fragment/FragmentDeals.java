@@ -127,20 +127,25 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 	}
 
 	private void setUpMapIfNeeded() {
-		if (map == null) {
-			SupportMapFragment supportMapFragment = ((SupportMapFragment) getFragmentManager()
-					.findFragmentById(R.id.map));
-			map = supportMapFragment.getMap();
-			if (map != null) {
-				map.setMyLocationEnabled(true);
-				map.setOnMarkerClickListener(this);
-				map.setOnCameraChangeListener(new OnCameraChangeListener() {
-					
-					@Override
-					public void onCameraChange(CameraPosition arg0) {
+		try {
+			if (map == null) {
+				SupportMapFragment supportMapFragment = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map));
+				if(supportMapFragment!=null) {
+					map = supportMapFragment.getMap();
+					if (map != null) {
+						map.setMyLocationEnabled(true);
+						map.setOnMarkerClickListener(this);
+						map.setOnCameraChangeListener(new OnCameraChangeListener() {
+
+							@Override
+							public void onCameraChange(CameraPosition arg0) {
+							}
+						});
 					}
-				});
+				}
 			}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 

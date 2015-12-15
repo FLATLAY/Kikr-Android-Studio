@@ -90,6 +90,7 @@ import com.kikr.fragment.FragmentInspirationSection;
 import com.kikr.fragment.FragmentInterestSection;
 import com.kikr.fragment.FragmentKikrCreditMonthBreakdown;
 import com.kikr.fragment.FragmentKikrCreditsScreen;
+import com.kikr.fragment.FragmentKikrGuide;
 import com.kikr.fragment.FragmentKikrWalletCard;
 import com.kikr.fragment.FragmentLearnMore;
 import com.kikr.fragment.FragmentLearnMoreOutsideUS;
@@ -174,7 +175,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	private TextView menuBackTextView, menuRightTextView;
 	public static TextView menuTextCartCount;
 	private ImageView menuLeftImageView, menuRightImageView, homeImageView,menuSearchImageView;
-	private LinearLayout menuProfileLayout, menuConnectWithTwitterLayout,menuConnectWithFacebookLayout, menuKikrCreditsLayout,menuActivityLayout, kikerWalletLayout;
+	private LinearLayout menuProfileLayout, menuConnectWithTwitterLayout,menuConnectWithFacebookLayout, menuKikrCreditsLayout,menuActivityLayout, kikerWalletLayout,kikrGuideLayout;
 	private LinearLayout menuMyFriendsLayout, menuInviteFriendsLayout,menuCheckInLayout, menuSupportLayout, menuSettingsLayout,menuLogoutoptionLayout, menuProfileOptionLayout;
 	private LinearLayout inspirationLayout, discoverLayout, menuDealLayout;
 	private LinearLayout menuMyFriendsOptionLayout,menuOrdersLayout, menuChatLayout;
@@ -205,7 +206,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	private TextView txtFeed;
 	private double kikrCredit = 0;
 	private List<TextView> textViews = new ArrayList<>();
-	private TextView logoutTextView,supportTextView,settingsTextView,inviteTextView,kikrChatTextView,checkInTextView,dealTextview,orderTextView,walletTextView,kikrCreditTextView,viewProfileTextView;
+	private TextView logoutTextView,supportTextView,settingsTextView,inviteTextView,kikrChatTextView,checkInTextView;
+	private TextView dealTextview,orderTextView,walletTextView,kikrCreditTextView,viewProfileTextView,kikrGuideTextView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -297,12 +299,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 			@Override
 			public void run() {
 //				totalCredits.setText(localCount+" Cr");
-                totalCredits.setText(CommonUtility.getFormatedNum(localCount)+" Cr");
+                totalCredits.setText(Math.round(localCount)+" Cr");
 				localCount+=kikrCredit/20;
 				if(localCount<=kikrCredit)
 					handler.postDelayed(runnable, 50);
                 else
-                    totalCredits.setText(CommonUtility.getFormatedNum(kikrCredit) + " Cr");
+                    totalCredits.setText(Math.round(kikrCredit) + " Cr");
 //                Syso.info("===================== kikrCredit: "+kikrCredit+",localCount:"+localCount);
 
 			}
@@ -359,6 +361,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		layouts.add(menuOrdersLayout);
 		layouts.add(menuProfileOptionLayout);
 		layouts.add(menuChatLayout);
+		layouts.add(kikrGuideLayout);
 		textViews.add(txtShop);
 		textViews.add(logoutTextView);
 		textViews.add(supportTextView);
@@ -371,6 +374,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		textViews.add(walletTextView);
 		textViews.add(kikrCreditTextView);
 		textViews.add(viewProfileTextView);
+		textViews.add(kikrGuideTextView);
+
 	}
 
 	private void setActionBar() {
@@ -719,6 +724,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				loadFragment(new FragmentProductDetailWebView("https://tlk.io/kikrsocialshopping"));
 			}
 			break;
+			case R.id.kikrGuideLayout:
+				left.closeMenu();
+				changeBackground(kikrGuideLayout,kikrGuideTextView);
+				loadFragment(new FragmentKikrGuide());
 		default:
 			break;
 		}
@@ -816,6 +825,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		menuMyFriendsOptionLayout = (LinearLayout) findViewById(R.id.menuMyFriendsOptionLayout);
 		menuMyFriendsLayoutImageView = (ImageView) findViewById(R.id.menuMyFriendsLayoutImageView);
 		menuChatLayout = (LinearLayout) findViewById(R.id.menuChatLayout);
+		kikrGuideLayout = (LinearLayout) findViewById(R.id.kikrGuideLayout);
 		totalCredits = (TextView) findViewById(R.id.totalCredits);
 		txtShop = (TextView) findViewById(R.id.txtShop);
 		txtFeed = (TextView) findViewById(R.id.txtFeed);
@@ -830,6 +840,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		walletTextView = (TextView) findViewById(R.id.walletTextView);
 		kikrCreditTextView = (TextView) findViewById(R.id.kikrCreditTextView);
 		viewProfileTextView = (TextView) findViewById(R.id.viewProfileTextView);
+		kikrGuideTextView = (TextView) findViewById(R.id.kikrGuideTextView);
 	}
 
 	public void setupData() {
@@ -949,6 +960,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		menuMyFriendsLayoutImageView.setOnClickListener(this);
 		menuOrdersLayout.setOnClickListener(this);
 		menuChatLayout.setOnClickListener(this);
+		kikrGuideLayout.setOnClickListener(this);
 	}
 
 	public void setUpTextType() {
@@ -1955,7 +1967,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				|| fragment instanceof FragmentCategories
 				|| fragment instanceof FragmentInspirationSection
 				|| fragment instanceof FragmentKikrCreditMonthBreakdown
-				|| fragment instanceof FragmentActivityMonths) {
+				|| fragment instanceof FragmentActivityMonths
+				|| fragment instanceof FragmentKikrGuide) {
 			showBackButton();
 		} else {
 			hideBackButton();

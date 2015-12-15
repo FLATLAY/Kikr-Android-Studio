@@ -113,9 +113,9 @@
     <string name="confirmation_text">Your order confirmation number is ABC123.\n\nYour purchase will be shipped within two business days.</string>
 
     <!-- Tutorial Screen -->
-    <string name="tutorial_kikr_reward">Here\'s your Kikr card!</string>
+    <string name="tutorial_kikr_reward"><![CDATA[<b>Here\'s your Kikr card!</b><br>(Tap on Card to proceed)]]></string>
     <!-- <string name="tutorial_kikr_lines">Kikr Visa Prepaid Card is issued by Wave Crest Inc. pursuant to a license from Visa U.S.A Inc.and may be used everywhere Visa debit cards are accepted. Weve Crest Inc, Member FDIC.</string> -->
-    <string name="tutorial_kikr_lines">Welcome to the Retail Rewards Card for the Social Generation&#8482;</string>
+    <string name="tutorial_kikr_lines">Welcome to\n The Retail Rewards Card for the Social Generation&#8482;</string>
     <string name="learn_more_text">Learn More</string>
     <string name="kikr_tutorial_text_line_one">1 credit for every $1 you spend on Kikr\n</string>
     <string name="kikr_tutorial_text_line_two">Earn 5 credits for every $1 spent by another user from one of your collections.</string>

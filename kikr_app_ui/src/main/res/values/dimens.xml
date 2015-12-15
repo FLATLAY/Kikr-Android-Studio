@@ -24,6 +24,7 @@
     <dimen name="margin_xxlarge">50dp</dimen>
     <dimen name="margin_xlarge">30dp</dimen>
      <dimen name="margin_xxxlarge">70dp</dimen>
+
     <dimen name="data_not_found_margin">10dp</dimen>
     <dimen name="button_height">50dp</dimen>
 

@@ -126,6 +126,17 @@
                     style="@style/buttonLanding"
                     android:layout_marginTop="@dimen/landing_margin_top"
                     android:text="@string/skip" />
+               <TextView
+                   android:clickable="true"
+                   android:id="@+id/kikrIntroductionTextView"
+                   android:layout_width="match_parent"
+                   android:gravity="center"
+                   android:padding="@dimen/padding_large"
+                   android:layout_height="wrap_content"
+                   android:text="What's all the hype about?"
+                   android:textSize="@dimen/large_text_size"
+                   android:textStyle="bold"
+                   android:textColor="@color/neongreen"/>
             </LinearLayout>
             
             <TextView

@@ -88,6 +88,7 @@ public class KikrTutorialActivity extends BaseActivity implements OnClickListene
 		kikrRewordTextView=(TextView) findViewById(R.id.kikrRewordTextView);
 		kikrIconImageView=(ImageView) findViewById(R.id.kikrIconImageView);
 		learnMoreText = (TextView) findViewById(R.id.learnMoreText);
+		kikrRewordTextView.setText(Html.fromHtml(getResources().getString(R.string.tutorial_kikr_reward)));
 	}
 
 	@Override
@@ -212,7 +213,7 @@ public class KikrTutorialActivity extends BaseActivity implements OnClickListene
 			@Override
 			public void onInitFinished(JSONObject referringParams, BranchError error) {
 				if (error == null) {
-					Log.e("Referred and Referrer ID", "Referred id: " + UserPreference.getInstance().getUserID() + ":Referrer id: "+ LandingActivity.referred_userid);
+//					Log.e("Referred and Referrer ID", "Referred id: " + UserPreference.getInstance().getUserID() + ":Referrer id: "+ LandingActivity.referred_userid);
 					
 					if(!LandingActivity.referred_userid.equals("-1") && !LandingActivity.referred_userid.equalsIgnoreCase(UserPreference.getInstance().getUserID())) {
 						addKikrCredits(LandingActivity.referred_userid);
@@ -235,7 +236,7 @@ public class KikrTutorialActivity extends BaseActivity implements OnClickListene
 				Syso.info("In handleOnSuccess>>" + object);
 				final KikrCreditsRes kikrCreditsRes = (KikrCreditsRes) object;
 				//Toast.makeText(context, "Credits sent to referral!", Toast.LENGTH_LONG).show();
-				Log.e("Successfully sent kikr credits to", kikrCreditsRes.getMessage() + user_id);
+//				Log.e("Successfully sent kikr credits to", kikrCreditsRes.getMessage() + user_id);
 			}
 			
 			@Override
@@ -248,7 +249,7 @@ public class KikrTutorialActivity extends BaseActivity implements OnClickListene
 				} else {
 					AlertUtils.showToast(context, R.string.invalid_response);
 				}
-				Log.e("Failed sent kikr credits to", "failed sent kikr credits");
+//				Log.e("Failed sent kikr credits to", "failed sent kikr credits");
 			}
 		});
 		creditsApi.addKikrCredit(user_id);

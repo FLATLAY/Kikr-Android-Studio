@@ -363,6 +363,19 @@ public class CommonUtility {
 		}	
 	}
 
+	public static String getFormatedNum2(double price) {
+		try{
+			//	String value =new DecimalFormat("##.##").format(price);
+			String value  = String.format("%.2f", price);
+			if(!value.contains(".")){
+				return value+".00";
+			}else
+				return value;
+		}catch(Exception exception){
+			return String.valueOf(price);
+		}
+	}
+
 	public static void hideKeypad(FragmentActivity context, EditText editView) {
 		try{
 			InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);

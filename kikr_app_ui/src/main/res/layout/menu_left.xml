@@ -737,6 +737,36 @@
                         android:textSize="@dimen/large_text_size" />
                 </LinearLayout>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_devider_height" />
+
+            <LinearLayout
+                android:id="@+id/kikrGuideLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_option_height"
+                android:background="@color/menu_option_background"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/menu_option_image"
+                    android:layout_height="@dimen/menu_option_image"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_margin_left"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_menu_kikr" />
+
+                <TextView
+                    android:id="@+id/kikrGuideTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_text_margin_left"
+                    android:layout_weight="1"
+                    android:text="Kikr Guide"
+                    android:textColor="@color/menu_background"
+                    android:textSize="@dimen/large_text_size" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

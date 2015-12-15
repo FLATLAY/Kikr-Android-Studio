@@ -82,7 +82,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 	private String referred_username;
 	private String referred_usermail;
 	private String referred_userprofilepic;
-	private TextView earn250;
+	private TextView earn250,kikrIntroductionTextView;
 	
 	
 	@Override
@@ -152,6 +152,9 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 				skip();
 			}
 			break;
+			case R.id.kikrIntroductionTextView:
+				startActivity(IntroductionPagerActivity.class);
+				break;
 		}
 	}
 
@@ -168,6 +171,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 		imgOrFBTwitter = (ImageView) findViewById(R.id.imgOrFBTwitter);
 		imgOr = (ImageView) findViewById(R.id.imgOr);
 		earn250 = (TextView) findViewById(R.id.earn250);
+		kikrIntroductionTextView =(TextView) findViewById(R.id.kikrIntroductionTextView);
 	} 
 
 	@Override
@@ -193,6 +197,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 		mTwitterButton.setOnClickListener(this);
 		mEmailButton.setOnClickListener(this);
 		mSkipButton.setOnClickListener(this);
+		kikrIntroductionTextView.setOnClickListener(this);
 	}
 	
 	@Override

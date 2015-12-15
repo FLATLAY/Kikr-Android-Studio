@@ -116,8 +116,8 @@ public class SplashActivity extends Activity {
 	}
 
 	private void showLoginHome() {
-//		Intent i = new Intent(context,LandingActivity.class);
-		Intent i = new Intent(context,IntroductionPagerActivity.class);
+		Intent i = new Intent(context,LandingActivity.class);
+//		Intent i = new Intent(context,IntroductionPagerActivity.class);
 		startActivity(i);
 		finish();
 	}

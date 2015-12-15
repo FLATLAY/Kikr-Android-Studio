@@ -83,8 +83,12 @@ public class IntroductionPagerActivity extends FragmentActivity{
     }
 
     private void goToNextPage() {
-        Intent ii = new Intent(context, LandingActivity.class);
-        startActivity(ii);
-        finish();
+//        if(getIntent().hasExtra("from")&&getIntent().getStringExtra("from").equals("inside")){
+//            finish();
+//        }else {
+//            Intent ii = new Intent(context, LandingActivity.class);
+//            startActivity(ii);
+            finish();
+//        }
     }
 }

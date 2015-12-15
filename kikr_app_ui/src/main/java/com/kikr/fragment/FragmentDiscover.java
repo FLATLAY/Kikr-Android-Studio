@@ -80,33 +80,45 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener,Se
 			showReloadOption();
 		
 		discoverList.setOnScrollListener(new OnScrollListener() {
-			   @Override
-			   public void onScrollStateChanged(AbsListView view, int scrollState) {}
-			   @Override
-			   public void onScroll(AbsListView view, int firstVisibleItem,  int visibleItemCount, int totalItemCount) {
-				   FragmentDiscover.this.firstVisibleItem=firstVisibleItem;
-				   FragmentDiscover.this.visibleItemCount=visibleItemCount;
-				   FragmentDiscover.this.totalItemCount=totalItemCount;
-			    if(!isLoading&&firstVisibleItem+visibleItemCount == totalItemCount && totalItemCount!=0) {
-			    	if(checkInternet2()){
-				    	page++;
-				    	isFirstTime=false;
-				    	getBrandAndProductList();
-			    	}else{
-			    		showReloadFotter();
-			    	}
-			    }
-			   }
-			  });
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			}
+
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+				FragmentDiscover.this.firstVisibleItem = firstVisibleItem;
+				FragmentDiscover.this.visibleItemCount = visibleItemCount;
+				FragmentDiscover.this.totalItemCount = totalItemCount;
+				if (!isLoading && firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0) {
+					if (checkInternet2()) {
+						page++;
+						isFirstTime = false;
+						getBrandAndProductList();
+					} else {
+						showReloadFotter();
+					}
+				}
+			}
+		});
 		
-		if (HelpPreference.getInstance().getHelpPinMenu().equals("yes")) {
-			HelpPreference.getInstance().setHelpPinMenu("no");
-			HelpPressMenuDialog helpPressMenuDialog = new HelpPressMenuDialog(mContext);
-			helpPressMenuDialog.show();
+//		if (HelpPreference.getInstance().getHelpPinMenu().equals("yes")) {
+//			HelpPreference.getInstance().setHelpPinMenu("no");
+//			HelpPressMenuDialog helpPressMenuDialog = new HelpPressMenuDialog(mContext);
+//			helpPressMenuDialog.show();
+//		}
+	}
+
+	@Override
+	public void setMenuVisibility(boolean menuVisible) {
+		super.setMenuVisibility(menuVisible);
+		if(menuVisible){
+			if (HelpPreference.getInstance().getHelpPinMenu().equals("yes")) {
+				HelpPreference.getInstance().setHelpPinMenu("no");
+				HelpPressMenuDialog helpPressMenuDialog = new HelpPressMenuDialog(mContext);
+				helpPressMenuDialog.show();
+			}
 		}
 	}
-	
-	
 
 	private void getBrandAndProductList() {
 		mProgressBarDialog = new ProgressBarDialog(mContext);

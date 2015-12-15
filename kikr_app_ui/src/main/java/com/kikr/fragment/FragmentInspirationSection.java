@@ -132,26 +132,25 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
 			  });
 		
 		////////////////////////////////
-//		if (HelpPreference.getInstance().getHelpInspiration().equals("yes")) {
-//			HelpPreference.getInstance().setHelpInspiration("no");
-//			HelpInspirationDialog helpInspirationDialog = new HelpInspirationDialog(mContext);
-//			helpInspirationDialog.show();
-//		}
+		if (HelpPreference.getInstance().getHelpInspiration().equals("yes")) {
+			HelpPreference.getInstance().setHelpInspiration("no");
+			HelpInspirationDialog helpInspirationDialog = new HelpInspirationDialog(mContext);
+			helpInspirationDialog.show();
+		}
 		
 	}
 	
-	@Override
-	public void setMenuVisibility(boolean menuVisible) {
-		// TODO Auto-generated method stub
-		super.setMenuVisibility(menuVisible);
-		if(menuVisible){
-			if (HelpPreference.getInstance().getHelpInspiration().equals("yes")) {
-				HelpPreference.getInstance().setHelpInspiration("no");
-				HelpInspirationDialog helpInspirationDialog = new HelpInspirationDialog(mContext);
-				helpInspirationDialog.show();
-			}
-		}
-	}
+//	@Override
+//	public void setMenuVisibility(boolean menuVisible) {
+//		super.setMenuVisibility(menuVisible);
+//		if(menuVisible){
+//			if (HelpPreference.getInstance().getHelpInspiration().equals("yes")) {
+//				HelpPreference.getInstance().setHelpInspiration("no");
+//				HelpInspirationDialog helpInspirationDialog = new HelpInspirationDialog(mContext);
+//				helpInspirationDialog.show();
+//			}
+//		}
+//	}
 	
 	private void getInspirationFeedList() {
 		mProgressBarDialog = new ProgressBarDialog(mContext);

@@ -12,14 +12,14 @@ public class KikrCreditsRes {
 	String amount;
 	List<Credits> activity_month_list;
 	List<Detail> detail;
-	String credit_pending;
+	String total_pending_credit;
 
-	public String getCredit_pending() {
-		return credit_pending;
+	public String getTotal_pending_credit() {
+		return total_pending_credit;
 	}
 
-	public void setCredit_pending(String credit_pending) {
-		this.credit_pending = credit_pending;
+	public void setTotal_pending_credit(String total_pending_credit) {
+		this.total_pending_credit = total_pending_credit;
 	}
 
 	public List<Detail> getDetail() {

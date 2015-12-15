@@ -41,7 +41,7 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 	private TextView total_payout_text;
 	private ProgressBarDialog mProgressBarDialog;
 	private KikrCreditsMonthsAdapter creditsMonthsAdapter;
-	private TextView kikr_commission_text;
+	private TextView kikr_commission_text,pendingCredits;
 
 	public FragmentKikrCreditsScreen() {
 	}
@@ -58,6 +58,7 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 		total_payout_text = (TextView) mainView.findViewById(R.id.total_payout_text);
 		kikr_commission_text = (TextView) mainView.findViewById(R.id.kikr_commission_text);
 		kikr_commission_text.setPaintFlags(kikr_commission_text.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+		pendingCredits = (TextView) mainView.findViewById(R.id.pendingCredits);
 	}
 
 	@Override
@@ -94,6 +95,8 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 					hideDataNotFound();
 					creditsMonthsAdapter = new KikrCreditsMonthsAdapter(mContext,data);
 					months_list.setAdapter(creditsMonthsAdapter);
+					Syso.info("========= total pending credit>>>>"+kikrCreditsRes.getTotal_pending_credit());
+					setPendingCredits(kikrCreditsRes.getTotal_pending_credit());
 				}
 				getKikrCredits();
 			}
@@ -164,6 +167,16 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 		switch (v.getId()) {
 		case R.id.kikr_commission_text:
 			addFragment(new FragmentLearnMore());
+		}
+	}
+
+	private void setPendingCredits(String data){
+		if(TextUtils.isEmpty(data)){
+			pendingCredits.setVisibility(View.VISIBLE);
+			pendingCredits.setText("Pending Credits : 0");
+		}else{
+			pendingCredits.setVisibility(View.VISIBLE);
+			pendingCredits.setText("Pending Credits : "+data);
 		}
 	}
 

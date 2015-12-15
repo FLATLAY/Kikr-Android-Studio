@@ -318,11 +318,18 @@
             android:windowSoftInputMode="stateHidden|adjustPan" >
         </activity>
         <activity
-            android:name="com.kikr.activity.InstagramLoginActivity"
+        android:name="com.kikr.activity.InstagramLoginActivity"
+        android:configChanges="keyboard|keyboardHidden|orientation"
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="stateHidden|adjustPan" >
+         </activity>
+        <activity
+            android:name="com.kikr.activity.IntroductionPagerActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" >
         </activity>
+
         <service android:name="com.kikr.service.PlaceOrderService"/>
         
         <!-- For push notification -->

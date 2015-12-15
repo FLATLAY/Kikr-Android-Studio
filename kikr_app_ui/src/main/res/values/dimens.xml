@@ -32,6 +32,7 @@
     <dimen name="share_dialog_width">250dp</dimen>
     <dimen name="share_dialog_height">400dp</dimen>
 
+    <dimen name="introduction_bottom">50dp</dimen>
 
     <!-- Signup screen dimens -->
     <dimen name="signup_margin_top">20dp</dimen>

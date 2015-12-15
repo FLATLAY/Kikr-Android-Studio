@@ -73,25 +73,25 @@ public class FragmentFeatured extends BaseFragment{
 		else
 			showReloadOption();
 		
-		featuredList.setOnScrollListener(new OnScrollListener() {
-			   @Override
-			   public void onScrollStateChanged(AbsListView view, int scrollState) {}
-			   @Override
-			   public void onScroll(AbsListView view, int firstVisibleItem,  int visibleItemCount, int totalItemCount) {
-				   FragmentFeatured.this.firstVisibleItem=firstVisibleItem;
-				   FragmentFeatured.this.visibleItemCount=visibleItemCount;
-				   FragmentFeatured.this.totalItemCount=totalItemCount;
-			    if(!isLoading&&firstVisibleItem+visibleItemCount == totalItemCount && totalItemCount!=0) {
-			    	if(checkInternet2()){
-				    	page++;
-				    	isFirstTime=false;
-				    	getFeaturedTabData();
-			    	}else{
-			    		showReloadFotter();
-			    	}
-			    }
-			   }
-			  });
+//		featuredList.setOnScrollListener(new OnScrollListener() {
+//			   @Override
+//			   public void onScrollStateChanged(AbsListView view, int scrollState) {}
+//			   @Override
+//			   public void onScroll(AbsListView view, int firstVisibleItem,  int visibleItemCount, int totalItemCount) {
+//				   FragmentFeatured.this.firstVisibleItem=firstVisibleItem;
+//				   FragmentFeatured.this.visibleItemCount=visibleItemCount;
+//				   FragmentFeatured.this.totalItemCount=totalItemCount;
+//			    if(!isLoading&&firstVisibleItem+visibleItemCount == totalItemCount && totalItemCount!=0) {
+//			    	if(checkInternet2()){
+//				    	page++;
+//				    	isFirstTime=false;
+//				    	getFeaturedTabData();
+//			    	}else{
+//			    		showReloadFotter();
+//			    	}
+//			    }
+//			   }
+//			  });
 	}
 	
 	private void getFeaturedTabData() {

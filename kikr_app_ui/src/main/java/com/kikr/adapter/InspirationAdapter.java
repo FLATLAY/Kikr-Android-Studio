@@ -132,15 +132,17 @@ public class InspirationAdapter extends BaseAdapter{
 			viewholder.likeCount.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_flame_logo_36, 0, 0);
 		else
 			viewholder.likeCount.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_flame_logo_36, 0, 0);
+		if (!TextUtils.isEmpty(getItem(position).getDescription()))
+			viewholder.descriptionTextView.setText(getItem(position).getDescription());
 		viewholder.likeCount.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if( UserPreference.getInstance().getPassword() == "" || UserPreference.getInstance().getEmail() == "" || UserPreference.getInstance().getUserName() == ""){
+				if (UserPreference.getInstance().getPassword() == "" || UserPreference.getInstance().getEmail() == "" || UserPreference.getInstance().getUserName() == "") {
 					CreateAccountDialog createAccountDialog = new CreateAccountDialog(mContext);
 					createAccountDialog.show();
-				}else{
-					if(((HomeActivity)mContext).checkInternet()){
-							likeInspiration(v,getItem(position).getInspiration_id());
+				} else {
+					if (((HomeActivity) mContext).checkInternet()) {
+						likeInspiration(v, getItem(position).getInspiration_id());
 					}
 				}
 			}

@@ -6,6 +6,15 @@ public class Detail {
 	String date;
 	String reason;
 	String amount;
+	String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public String getCollection_id_reference() {
 		return collection_id_reference;

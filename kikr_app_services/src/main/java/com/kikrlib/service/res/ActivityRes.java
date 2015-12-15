@@ -27,7 +27,6 @@ public class ActivityRes {
 	List<CollectionProduct> product_list;
 	List<ActivityMonthList> activity_month_list;
 	List<CollectionMonthDetailList> collection_list;
-
 	/**
 	 * @return the last_update
 	 */

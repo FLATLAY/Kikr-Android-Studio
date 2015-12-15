@@ -117,7 +117,7 @@
     <!-- <string name="tutorial_kikr_lines">Kikr Visa Prepaid Card is issued by Wave Crest Inc. pursuant to a license from Visa U.S.A Inc.and may be used everywhere Visa debit cards are accepted. Weve Crest Inc, Member FDIC.</string> -->
     <string name="tutorial_kikr_lines">Welcome to the Retail Rewards Card for the Social Generation&#8482;</string>
     <string name="learn_more_text">Learn More</string>
-    <string name="kikr_tutorial_text_line_one">2 credits for every $1 you spend on Kikr\n</string>
+    <string name="kikr_tutorial_text_line_one">1 credit for every $1 you spend on Kikr\n</string>
     <string name="kikr_tutorial_text_line_two">Earn 5 credits for every $1 spent by another user from one of your collections.</string>
     <string name="kikr_tutorial_text_line_three">If another user shares an item from your collections with their followers, you split credit commissions at 2.5 credits per $1 spent</string>
     <string name="kikr_tutorial_text_line_four">100 credits is equivalent to $1 USD</string>

@@ -88,6 +88,7 @@ import com.kikr.fragment.FragmentInspirationImageTag;
 import com.kikr.fragment.FragmentInspirationPost;
 import com.kikr.fragment.FragmentInspirationSection;
 import com.kikr.fragment.FragmentInterestSection;
+import com.kikr.fragment.FragmentKikrCreditMonthBreakdown;
 import com.kikr.fragment.FragmentKikrCreditsScreen;
 import com.kikr.fragment.FragmentKikrWalletCard;
 import com.kikr.fragment.FragmentLearnMore;
@@ -1953,6 +1954,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				|| fragment instanceof FragmentInterestSection
 				|| fragment instanceof FragmentCategories
 				|| fragment instanceof FragmentInspirationSection
+				|| fragment instanceof FragmentKikrCreditMonthBreakdown
 				|| fragment instanceof FragmentActivityMonths) {
 			showBackButton();
 		} else {

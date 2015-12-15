@@ -216,6 +216,7 @@ public class KikrTutorialActivity extends BaseActivity implements OnClickListene
 					
 					if(!LandingActivity.referred_userid.equals("-1") && !LandingActivity.referred_userid.equalsIgnoreCase(UserPreference.getInstance().getUserID())) {
 						addKikrCredits(LandingActivity.referred_userid);
+						Branch.getInstance(getApplicationContext()).userCompletedAction("reffered_event");
 					}
 					
 				}

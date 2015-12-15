@@ -13,7 +13,24 @@ public class CollectionMonthDetailList {
 	String collection_id;
 	String collection_views;
 	String items_save;
-	
+	String payout_pending;
+
+	public String getLast_update() {
+		return last_update;
+	}
+
+	public void setLast_update(String last_update) {
+		this.last_update = last_update;
+	}
+
+	public String getPayout_pending() {
+		return payout_pending;
+	}
+
+	public void setPayout_pending(String payout_pending) {
+		this.payout_pending = payout_pending;
+	}
+
 	/**
 	 * @return the items_save
 	 */
@@ -122,7 +139,5 @@ public class CollectionMonthDetailList {
 	public void setCollection_views(String collection_views) {
 		this.collection_views = collection_views;
 	}
-
-	
 
 }

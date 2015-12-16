@@ -554,6 +554,7 @@
                 android:id="@+id/menuChatLayout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/menu_option_height"
+                android:visibility="gone"
                 android:background="@color/menu_option_background"
                 android:orientation="horizontal"
                 android:paddingRight="3dp">

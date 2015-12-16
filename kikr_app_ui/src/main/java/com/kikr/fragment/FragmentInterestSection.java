@@ -31,6 +31,7 @@ import com.kikr.adapter.InterestCategoryListAdapter;
 import com.kikr.adapter.InterestPeopleListAdapter;
 import com.kikr.adapter.InterestStoreListAdapter;
 import com.kikr.ui.ProgressBarDialog;
+import com.kikr.ui.RoundImageView;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.api.BrandListApi;
 import com.kikrlib.api.CategoryListApi;
@@ -62,7 +63,7 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 	private FragmentInterestSection fragmentInterestSection;
 	private InterestPeopleListAdapter interestPeopleListAdapter;
 	private View peopleHeaderView;
-	private LinearLayout trendingGalsLinearLayout,trendingGuysLinearLayout;
+	private RoundImageView trendingGalsLinearLayout,trendingGuysLinearLayout;
 	private boolean isShown = false;
 	private EditText searchYourItemEditText;
 	private String isSelected = "people";
@@ -89,8 +90,8 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 		interest_brand_button = (Button) mainView.findViewById(R.id.interest_brand_button);
 		interest_people_button = (Button) mainView.findViewById(R.id.interest_people_button);
 		interest_category_button = (TextView) mainView.findViewById(R.id.interest_category_imageview);
-		trendingGalsLinearLayout = (LinearLayout) peopleHeaderView.findViewById(R.id.trendingGalsLinearLayout);
-		trendingGuysLinearLayout = (LinearLayout) peopleHeaderView.findViewById(R.id.trendingGuysLinearLayout);
+		trendingGalsLinearLayout = (RoundImageView) peopleHeaderView.findViewById(R.id.trendingGalsLinearLayout);
+		trendingGuysLinearLayout = (RoundImageView) peopleHeaderView.findViewById(R.id.trendingGuysLinearLayout);
 		searchYourItemEditText = (EditText) mainView.findViewById(R.id.searchYourItemEditText);
 		categoryGridView = (GridView) mainView.findViewById(R.id.categoryGridView);
 		noDataGalGuy= (TextView) peopleHeaderView.findViewById(R.id.layoutNoDataGalGuy);
@@ -260,8 +261,8 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 			interest_store_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
 			interest_brand_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
 			interest_people_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_active));
-			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
-			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
+//			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
+//			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
 			if(searchYourItemEditText.getText().toString().equals(""))
 				if(checkInternet()){
 					categoryGridView.setVisibility(View.GONE);
@@ -340,8 +341,8 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 			searchYourItemEditText.setFocusableInTouchMode(true);
 			searchYourItemEditText.setFocusable(true);
 			interestSectionList.setAdapter(null);
-			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.app_background));
-			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
+//			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.app_background));
+//			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
 			if(checkInternet())
 				getUserList("female");
 			else
@@ -358,8 +359,8 @@ public class FragmentInterestSection extends BaseFragment implements OnClickList
 			searchYourItemEditText.setFocusableInTouchMode(true);
 			searchYourItemEditText.setFocusable(true);
 			interestSectionList.setAdapter(null);
-			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
-			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.app_background));
+//			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
+//			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.app_background));
 			if(checkInternet())
 				getUserList("male");
 			else

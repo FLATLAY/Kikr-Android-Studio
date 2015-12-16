@@ -266,6 +266,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 //		PDKClient.configureInstance(this, AppConstants.PINTEREST_APP_ID);
 //		PDKClient.getInstance().onConnect(this);
 	}
+
+	public double getCredits(){
+		return Math.round(kikrCredit);
+	}
 	
 	private void getKikrCredits() {
 		final KikrCreditsApi creditsApi = new KikrCreditsApi(new ServiceCallback() {

@@ -11,6 +11,7 @@
 
         <com.kikr.ui.RoundImageView
             android:id="@+id/user_image"
+            android:layout_margin="@dimen/padding_small"
             android:layout_width="@dimen/interest_user_profile"
             android:layout_height="@dimen/interest_user_profile"
             android:scaleType="fitXY"
@@ -45,7 +46,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="@dimen/margin_xlarge"
         android:background="@color/app_background" />
 
 </LinearLayout>

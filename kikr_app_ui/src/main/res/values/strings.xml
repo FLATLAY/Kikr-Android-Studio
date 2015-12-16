@@ -149,6 +149,7 @@
     <string name="searchYourItem">Search</string>
     <string name="trending_gals_text">Trending Hers</string>
     <string name="trending_guys_text">Trending His</string>
+    <string name="trending_text">Trending</string>
     <string name="suggested_friends_text">Suggested Followers</string>
 
     <!-- Collection Section -->

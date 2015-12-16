@@ -297,42 +297,42 @@ public class FragmentTagList extends BaseFragment implements OnClickListener, Se
 					showReloadOption();
 			}
 			break;
-		case R.id.trendingGalsLinearLayout:
-			isFirstTime = true;
-			pagenum = 0;
-//			isGuys = false;
-//			isGals = true;
-			isLoading=false;
-			isSearchActive = false;
-			searchYourItemEditText.setText("");
-			searchYourItemEditText.setFocusableInTouchMode(true);
-			searchYourItemEditText.setFocusable(true);
-			interestSectionList.setAdapter(null);
-//			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.app_background));
-//			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
-			if(checkInternet())
-				getUserList("female");
-			else
-				showReloadOption();
-			break;
-		case R.id.trendingGuysLinearLayout:
-			isFirstTime = true;
-			pagenum = 0;
-//			isGuys = true;
-//			isGals = false;
-			isLoading=false;
-			isSearchActive = false;
-			searchYourItemEditText.setText("");
-			searchYourItemEditText.setFocusableInTouchMode(true);
-			searchYourItemEditText.setFocusable(true);
-			interestSectionList.setAdapter(null);
-//			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
-//			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.app_background));
-			if(checkInternet())
-				getUserList("male");
-			else
-				showReloadOption();
-			break;
+//		case R.id.trendingGalsLinearLayout:
+//			isFirstTime = true;
+//			pagenum = 0;
+////			isGuys = false;
+////			isGals = true;
+//			isLoading=false;
+//			isSearchActive = false;
+//			searchYourItemEditText.setText("");
+//			searchYourItemEditText.setFocusableInTouchMode(true);
+//			searchYourItemEditText.setFocusable(true);
+//			interestSectionList.setAdapter(null);
+////			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.app_background));
+////			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
+//			if(checkInternet())
+//				getUserList("female");
+//			else
+//				showReloadOption();
+//			break;
+//		case R.id.trendingGuysLinearLayout:
+//			isFirstTime = true;
+//			pagenum = 0;
+////			isGuys = true;
+////			isGals = false;
+//			isLoading=false;
+//			isSearchActive = false;
+//			searchYourItemEditText.setText("");
+//			searchYourItemEditText.setFocusableInTouchMode(true);
+//			searchYourItemEditText.setFocusable(true);
+//			interestSectionList.setAdapter(null);
+////			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
+////			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.app_background));
+//			if(checkInternet())
+//				getUserList("male");
+//			else
+//				showReloadOption();
+//			break;
 		default:
 			break;
 		}

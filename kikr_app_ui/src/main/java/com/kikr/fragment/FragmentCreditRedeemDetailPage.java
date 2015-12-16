@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
+import com.kikr.activity.HomeActivity;
 
 public class FragmentCreditRedeemDetailPage extends BaseFragment implements OnClickListener {
 	private View mainView;
+	private TextView credit_textview,contact_us;
 	public FragmentCreditRedeemDetailPage() {
 	}
 
@@ -23,6 +26,10 @@ public class FragmentCreditRedeemDetailPage extends BaseFragment implements OnCl
 
 	@Override
 	public void initUI(Bundle savedInstanceState) {
+		credit_textview = (TextView) mainView.findViewById(R.id.credit_textview);
+		contact_us = (TextView) mainView.findViewById(R.id.contact_us);
+		double credits = ((HomeActivity)mContext).getCredits();
+		credit_textview.setText("Your current Kikr Credit Balance :"+ String.valueOf(credits));
 	}
 
 	@Override
@@ -32,6 +39,7 @@ public class FragmentCreditRedeemDetailPage extends BaseFragment implements OnCl
 
 	@Override
 	public void setClickListener() {
+		contact_us.setOnClickListener(this);
 	}
 
 	@Override
@@ -41,7 +49,9 @@ public class FragmentCreditRedeemDetailPage extends BaseFragment implements OnCl
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-
+			case R.id.contact_us:
+				addFragment(new FragmentSupport());
+				break;
 		}
 	}
 

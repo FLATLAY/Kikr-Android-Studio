@@ -59,6 +59,7 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 		kikr_commission_text = (TextView) mainView.findViewById(R.id.kikr_commission_text);
 		kikr_commission_text.setPaintFlags(kikr_commission_text.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		pendingCredits = (TextView) mainView.findViewById(R.id.pendingCredits);
+		pendingCredits.setPaintFlags(pendingCredits.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 	}
 
 	@Override

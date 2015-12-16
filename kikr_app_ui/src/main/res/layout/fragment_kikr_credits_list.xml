@@ -33,8 +33,9 @@
         android:background="@color/white"
         android:gravity="center"
         android:padding="@dimen/padding_large"
-        android:text="Pending Credits : $55"
-        android:visibility="gone"/>
+        android:text="Pending Credits : 0"
+        android:textColor="@color/btn_green"
+        />
 
     <LinearLayout
         android:id="@+id/profile_btn_layout"

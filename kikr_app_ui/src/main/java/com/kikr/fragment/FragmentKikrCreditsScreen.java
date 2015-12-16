@@ -69,6 +69,7 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 	@Override
 	public void setClickListener() {
 		kikr_commission_text.setOnClickListener(this);
+		pendingCredits.setOnClickListener(this);
 	}
 
 	@Override
@@ -167,15 +168,16 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 		switch (v.getId()) {
 		case R.id.kikr_commission_text:
 			addFragment(new FragmentLearnMore());
+		case R.id.pendingCredits:
+			addFragment(new FragmentPendingCreditDetails());
+		break;
 		}
 	}
 
 	private void setPendingCredits(String data){
 		if(TextUtils.isEmpty(data)){
-			pendingCredits.setVisibility(View.VISIBLE);
 			pendingCredits.setText("Pending Credits : 0");
 		}else{
-			pendingCredits.setVisibility(View.VISIBLE);
 			pendingCredits.setText("Pending Credits : "+data);
 		}
 	}

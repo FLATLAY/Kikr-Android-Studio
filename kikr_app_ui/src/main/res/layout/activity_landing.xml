@@ -3,155 +3,159 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_landing_screen"
-    tools:context=".LandingActivity" >
+    tools:context=".LandingActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true" 
+        android:fillViewport="true"
         android:scrollbars="none">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center" >
+            android:gravity="center">
 
             <LinearLayout
                 android:id="@+id/layoutReferred"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_centerHorizontal="true"
-		        android:gravity="center"
-                android:layout_marginBottom="0dp"
-                android:layout_marginTop="16dp"
-		        android:visibility="visible"
-		        android:orientation="vertical" >
-		
-		        <com.kikr.ui.RoundImageView
-		            android:id="@+id/user_profile_image"
-		            android:layout_width="130dp"
-		            android:layout_height="130dp"
-		            android:adjustViewBounds="true"
-		            android:scaleType="fitXY"
-		            android:src="@drawable/dum_user" />
-		
-		        <TextView
-		            android:id="@+id/user_profile_name"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_below="@+id/user_profile_image"
-		            android:layout_centerHorizontal="true"
-		            android:layout_gravity="center"
-		            android:gravity="center"
-		            android:lineSpacingExtra="2dp"
-		            android:textSize="@dimen/xx_large_text_size"
-		            android:textStyle="bold"
-		            android:text="JohnSmith"
-		            android:textColor="@color/white" />
-		        
-		        <TextView
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_below="@+id/user_profile_image"
-		            android:layout_centerHorizontal="true"
-		            android:layout_gravity="center"
-		            android:gravity="center"
-		            android:lineSpacingExtra="2dp"
-		            android:textSize="@dimen/xx_large_text_size"
-		            android:text="has invited you\nto join"
-		            android:textColor="@color/white" />
-		    </LinearLayout>
-            
-            
-            <ImageView
-                android:id="@+id/logoImageView"
-                android:layout_below="@+id/layoutReferred"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_logo_with_punchline"
-                android:onClick="test" />
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
 
-                
-           <LinearLayout
+                <com.kikr.ui.RoundImageView
+                    android:id="@+id/user_profile_image"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dum_user" />
+
+                <TextView
+                    android:id="@+id/user_profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_profile_image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:text="JohnSmith"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/xx_large_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_profile_image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:text="has invited you\nto join"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/xx_large_text_size" />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutReferred"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null"
+                android:onClick="test"
+                android:src="@drawable/ic_logo_with_punchline" />
+
+
+            <LinearLayout
                 android:id="@+id/optionLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/logoImageView"
                 android:layout_marginBottom="@dimen/landing_margin_bottom"
                 android:layout_marginLeft="@dimen/landing_margin_side"
                 android:layout_marginRight="@dimen/landing_margin_side"
                 android:gravity="center_horizontal"
-                android:layout_below="@+id/logoImageView"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/facebookButton"
                     style="@style/buttonLanding"
                     android:text="@string/facebook" />
-                
+
                 <Button
                     android:id="@+id/twitterButton"
                     style="@style/buttonLanding"
                     android:layout_marginTop="@dimen/landing_margin_top"
                     android:text="@string/twitter" />
-                
+
                 <ImageView
                     android:id="@+id/imgOrFBTwitter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/landing_margin_top"
                     android:contentDescription="@null"
-                    android:visibility="visible"
-                    android:src="@drawable/ic_or" />
-                
-                 <Button
+                    android:src="@drawable/ic_or"
+                    android:visibility="visible" />
+
+                <Button
                     android:id="@+id/emailButton"
                     style="@style/buttonLanding"
                     android:layout_marginTop="@dimen/landing_margin_top"
                     android:text="@string/email" />
 
                 <ImageView
-                    android:visibility="gone"
                     android:id="@+id/imgOr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/landing_margin_top"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_or" />
+                    android:src="@drawable/ic_or"
+                    android:visibility="gone" />
 
                 <Button
-                    android:visibility="gone"
                     android:id="@+id/skipButton"
                     style="@style/buttonLanding"
                     android:layout_marginTop="@dimen/landing_margin_top"
-                    android:text="@string/skip" />
-               <TextView
-                   android:clickable="true"
-                   android:id="@+id/kikrIntroductionTextView"
-                   android:layout_width="match_parent"
-                   android:gravity="center"
-                   android:padding="@dimen/padding_large"
-                   android:layout_height="wrap_content"
-                   android:text="What's all the hype about?"
-                   android:textSize="@dimen/large_text_size"
-                   android:textStyle="bold"
-                   android:textColor="@color/neongreen"/>
+                    android:text="@string/skip"
+                    android:visibility="gone" />
+
             </LinearLayout>
-            
+
             <TextView
-                	android:id="@+id/earn250"
-                	android:layout_below="@+id/optionLayout"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_centerHorizontal="true"
-		            android:layout_gravity="center"
-		            android:layout_margin="16dp"
-		            android:gravity="center"
-		            android:textStyle="bold"
-		            android:textSize="@dimen/xx_large_text_size"
-		            android:text="@string/earn_250_credits"
-		            android:textColor="@color/white" />
+                android:id="@+id/kikrIntroductionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/margin_xlarge"
+                android:clickable="true"
+                android:gravity="center"
+                android:padding="@dimen/padding_large"
+                android:text="What's all the hype about?!"
+                android:textColor="@color/neongreen"
+                android:textSize="@dimen/large_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/earn250"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/optionLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:text="@string/earn_250_credits"
+                android:textColor="@color/white"
+                android:textSize="@dimen/xx_large_text_size"
+                android:textStyle="bold" />
         </RelativeLayout>
     </ScrollView>
 

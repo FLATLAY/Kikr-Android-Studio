@@ -538,7 +538,7 @@
     <string name="order_success_text"><![CDATA[Purchased Confirmed!<br>You can track the status in Orders next to My Wallet.<br><br><b>Happy Shopping</b> ]]></string>
     <string name="order_fail_text">Failed to get final value of cart. Please try again later.</string>
     <string name="come_join">Come join me on Kikr-The Rewards Card for the Social Generation&#8482;</string>
-    <string name="text_join">The Rewards Card for the Social Generation&#8482; Get paid to shop and share, join now &amp; earn up to 250 credits.</string>
+    <string name="text_join">The Rewards Card for the Social Generation(&#8482;)  Get paid to shop and share, join now &amp; earn up to 250 credits.</string>
 
     <string name="earn_250_credits">Join now to get your first 250 credits!</string>
 

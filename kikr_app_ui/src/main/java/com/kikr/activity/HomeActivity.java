@@ -77,6 +77,7 @@ import com.kikr.fragment.FragmentActivityPage;
 import com.kikr.fragment.FragmentAllOrders;
 import com.kikr.fragment.FragmentCardInfo;
 import com.kikr.fragment.FragmentCategories;
+import com.kikr.fragment.FragmentCreditRedeemDetailPage;
 import com.kikr.fragment.FragmentDeals;
 import com.kikr.fragment.FragmentDiscover;
 import com.kikr.fragment.FragmentDiscoverDetail;
@@ -95,6 +96,7 @@ import com.kikr.fragment.FragmentKikrWalletCard;
 import com.kikr.fragment.FragmentLearnMore;
 import com.kikr.fragment.FragmentLearnMoreOutsideUS;
 import com.kikr.fragment.FragmentMyFriends;
+import com.kikr.fragment.FragmentPendingCreditDetails;
 import com.kikr.fragment.FragmentPlaceMyOrder;
 import com.kikr.fragment.FragmentProductBasedOnInspiration;
 import com.kikr.fragment.FragmentProductBasedOnType;
@@ -1968,6 +1970,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				|| fragment instanceof FragmentInspirationSection
 				|| fragment instanceof FragmentKikrCreditMonthBreakdown
 				|| fragment instanceof FragmentActivityMonths
+				|| fragment instanceof FragmentPendingCreditDetails
+				|| fragment instanceof FragmentCreditRedeemDetailPage
 				|| fragment instanceof FragmentKikrGuide) {
 			showBackButton();
 		} else {

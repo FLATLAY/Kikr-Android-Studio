@@ -141,6 +141,7 @@ public class FragmentKikrWalletCard extends BaseFragment implements OnClickListe
 		case R.id.google_wallet:
 			break;
 		case R.id.kikr_wallet:
+			addFragment(new FragmentCreditRedeemDetailPage());
 //			cardClick(kikr_wallet);
 			break;
 		case R.id.addCard:

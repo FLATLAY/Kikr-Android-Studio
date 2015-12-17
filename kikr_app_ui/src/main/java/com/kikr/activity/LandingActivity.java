@@ -109,7 +109,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 			earn250.setVisibility(View.VISIBLE);
 		} else {
 			earn250.setVisibility(View.GONE);
-			layoutReferred.setVisibility(View.GONE);
+			layoutReferred.setVisibility(View.INVISIBLE);
 			mEmailButton.setVisibility(View.VISIBLE);
 	//		mSkipButton.setVisibility(View.VISIBLE);
 			imgOrFBTwitter.setVisibility(View.GONE);

@@ -67,7 +67,8 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 {
 	private View mainView;
 	private ListView collection_list;
-	private Button collection_button,follower_button,following_button,follow_btn;
+	private Button collection_button,follower_button,following_button;
+	TextView follow_btn;
 	private ImageView up_arrow_image_first,up_arrow_image_second,up_arrow_image_third,user_profile_image;
 	private ProgressBarDialog mProgressBarDialog;
 	private List<UserData> userDetails;
@@ -140,7 +141,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		following_button = (Button) mainView.findViewById(R.id.following_button);
 		follower_button = (Button) mainView.findViewById(R.id.follower_button);
 		collection_button = (Button) mainView.findViewById(R.id.collection_button);
-		follow_btn = (Button) mainView.findViewById(R.id.follow_btn);
+		follow_btn = (TextView) mainView.findViewById(R.id.follow_btn);
 		up_arrow_image_first = (ImageView) mainView.findViewById(R.id.up_arrow_image_first);
 		up_arrow_image_second = (ImageView) mainView.findViewById(R.id.up_arrow_image_second);
 		up_arrow_image_third = (ImageView) mainView.findViewById(R.id.up_arrow_image_third);

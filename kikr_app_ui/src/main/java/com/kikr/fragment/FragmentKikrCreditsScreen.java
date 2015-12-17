@@ -167,11 +167,12 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.kikr_commission_text:
-			addFragment(new FragmentLearnMore());
-		case R.id.pendingCredits:
-			addFragment(new FragmentPendingCreditDetails());
-		break;
+			case R.id.kikr_commission_text:
+				addFragment(new FragmentLearnMore());
+				break;
+			case R.id.pendingCredits:
+				addFragment(new FragmentPendingCreditDetails());
+				break;
 		}
 	}
 

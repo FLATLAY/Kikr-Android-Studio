@@ -57,6 +57,14 @@ public class FragmentKikrGuide extends BaseFragment{
                 startActivity(i);
             }
         });
+        kikrLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mContext, IntroductionPagerActivity.class);
+                i.putExtra("from","inside");
+                startActivity(i);
+            }
+        });
         kikrVideoTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

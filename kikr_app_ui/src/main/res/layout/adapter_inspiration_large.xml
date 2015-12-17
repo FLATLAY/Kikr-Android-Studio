@@ -8,9 +8,9 @@
         android:id="@+id/user_profile_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_small"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_small">
 
         <com.kikr.ui.RoundImageView
             android:id="@+id/userImage"
@@ -23,8 +23,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_weight="1"
+            android:orientation="vertical"
             android:padding="@dimen/padding_small">
 
             <TextView
@@ -46,24 +46,26 @@
                 android:textColor="@color/app_text_color"
                 android:textSize="@dimen/medium_text_size" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/collection_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            android:gravity="center"
             android:padding="@dimen/padding_small"
             android:text="Collections\n0"
-            android:gravity="center"
             android:textColor="@color/app_text_color"
             android:textSize="@dimen/small_text_size" />
+
         <TextView
             android:id="@+id/follower_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            android:gravity="center"
             android:padding="@dimen/padding_small"
             android:text="Followers\n0"
-            android:gravity="center"
             android:textColor="@color/app_text_color"
             android:textSize="@dimen/small_text_size" />
 
@@ -92,17 +94,19 @@
                 android:layout_marginTop="8dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/dum_list_item_product" />
+
             <Button
                 android:id="@+id/follow_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/follow_btn_height"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/padding_large"
                 android:background="@drawable/button_activity_gray"
                 android:text="Follow"
-                android:layout_margin="@dimen/padding_large"
-                android:layout_alignParentRight="true"
                 android:textColor="@color/white"
-                android:visibility="gone"
-                android:textSize="@dimen/small_text_size" />
+                android:textSize="@dimen/small_text_size"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/noProductTextView"
                 android:layout_width="wrap_content"
@@ -121,8 +125,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/app_background"
         android:layout_height="wrap_content"
+        android:background="@color/app_background"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal">
 
@@ -131,11 +135,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:ellipsize="end"
             android:gravity="center"
             android:padding="@dimen/padding_large"
-            android:text=""
-            android:ellipsize="end"
             android:singleLine="true"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/gray" />
 

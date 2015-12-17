@@ -26,12 +26,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
-                <Button
+                <TextView
                     android:id="@+id/follow_btn"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/follow_btn_height"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:layout_marginLeft="@dimen/padding_large"
                     android:background="@drawable/button_activity_gray"
                     android:text="Follow"

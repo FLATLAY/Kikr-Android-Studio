@@ -29,8 +29,8 @@
 
                 <com.kikr.ui.RoundImageView
                     android:id="@+id/user_profile_image"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
+                    android:layout_width="@dimen/interest_user_profile"
+                    android:layout_height="@dimen/interest_user_profile"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
                     android:src="@drawable/dum_user" />
@@ -46,7 +46,7 @@
                     android:lineSpacingExtra="2dp"
                     android:text="JohnSmith"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/xx_large_text_size"
+                    android:textSize="@dimen/large_text_size"
                     android:textStyle="bold" />
 
                 <TextView
@@ -59,9 +59,8 @@
                     android:lineSpacingExtra="2dp"
                     android:text="has invited you\nto join"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/xx_large_text_size" />
+                    android:textSize="@dimen/large_text_size" />
             </LinearLayout>
-
 
             <ImageView
                 android:id="@+id/logoImageView"

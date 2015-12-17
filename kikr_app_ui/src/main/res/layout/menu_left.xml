@@ -294,10 +294,95 @@
                     android:textSize="@dimen/large_text_size" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/menuDealLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_option_height"
+                android:background="@color/menu_option_background"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/menu_option_image"
+                        android:layout_height="@dimen/menu_option_image"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/menu_margin_left"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_menu_deals" />
+
+                    <TextView
+                        android:id="@+id/dealTextview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/menu_text_margin_left"
+                        android:gravity="center_vertical"
+                        android:text="@string/deals"
+                        android:textColor="@color/menu_background"
+                        android:textSize="@dimen/large_text_size" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/menuDealImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_margin_left"
+                    android:layout_marginRight="15dp"
+                    android:contentDescription="@null"
+                    android:padding="@dimen/padding_large"
+                    android:src="@drawable/ic_menu_arrow_down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menuDealOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_devider_height" />
+
+                <LinearLayout
+                    android:id="@+id/menuCheckInLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_option_height"
+                    android:background="@color/menu_option_background"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/menu_option_image"
+                        android:layout_height="@dimen/menu_option_image"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/menu_margin_left"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_menu_checkin" />
+
+                    <TextView
+                        android:id="@+id/checkInTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/menu_text_margin_left"
+                        android:layout_weight="1"
+                        android:text="@string/check_in"
+                        android:textColor="@color/menu_background"
+                        android:textSize="@dimen/large_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/menu_devider_height"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
 
             <LinearLayout
@@ -408,100 +493,6 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/menu_devider_height" />
-
-            <LinearLayout
-                android:id="@+id/menuDealLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/menu_option_height"
-                android:background="@color/menu_option_background"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/menu_option_image"
-                        android:layout_height="@dimen/menu_option_image"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/menu_margin_left"
-                        android:contentDescription="@null"
-                        android:src="@drawable/ic_menu_deals" />
-
-                    <TextView
-                        android:id="@+id/dealTextview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/menu_text_margin_left"
-                        android:gravity="center_vertical"
-                        android:text="@string/deals"
-                        android:textColor="@color/menu_background"
-                        android:textSize="@dimen/large_text_size" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/menuDealImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/menu_margin_left"
-                    android:layout_marginRight="15dp"
-                    android:contentDescription="@null"
-                    android:padding="@dimen/padding_large"
-                    android:src="@drawable/ic_menu_arrow_down" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/menuDealOptionLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/menu_devider_height" />
-
-                <LinearLayout
-                    android:id="@+id/menuCheckInLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/menu_option_height"
-                    android:background="@color/menu_option_background"
-                    android:orientation="horizontal"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:layout_width="@dimen/menu_option_image"
-                        android:layout_height="@dimen/menu_option_image"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/menu_margin_left"
-                        android:contentDescription="@null"
-                        android:src="@drawable/ic_menu_checkin" />
-
-                    <TextView
-                        android:id="@+id/checkInTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/menu_text_margin_left"
-                        android:layout_weight="1"
-                        android:text="@string/check_in"
-                        android:textColor="@color/menu_background"
-                        android:textSize="@dimen/large_text_size" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/menu_devider_height" />
-
-
-            <View
-                android:layout_width="match_parent"
                 android:layout_height="@dimen/menu_devider_height"
                 android:visibility="gone" />
 
@@ -554,10 +545,10 @@
                 android:id="@+id/menuChatLayout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/menu_option_height"
-                android:visibility="gone"
                 android:background="@color/menu_option_background"
                 android:orientation="horizontal"
-                android:paddingRight="3dp">
+                android:paddingRight="3dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="@dimen/menu_option_image"
@@ -622,6 +613,38 @@
                     android:layout_height="@dimen/menu_devider_height"
                     android:background="@color/menu_background" />
             </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/kikrGuideLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_option_height"
+                android:background="@color/menu_option_background"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/menu_option_image"
+                    android:layout_height="@dimen/menu_option_image"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_margin_left"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_menu_kikr" />
+
+                <TextView
+                    android:id="@+id/kikrGuideTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/menu_text_margin_left"
+                    android:layout_weight="1"
+                    android:text="Kikr Guide"
+                    android:textColor="@color/menu_background"
+                    android:textSize="@dimen/large_text_size" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_devider_height" />
 
             <LinearLayout
                 android:id="@+id/menuSettingsLayout"
@@ -738,36 +761,7 @@
                         android:textSize="@dimen/large_text_size" />
                 </LinearLayout>
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/menu_devider_height" />
 
-            <LinearLayout
-                android:id="@+id/kikrGuideLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/menu_option_height"
-                android:background="@color/menu_option_background"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/menu_option_image"
-                    android:layout_height="@dimen/menu_option_image"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/menu_margin_left"
-                    android:contentDescription="@null"
-                    android:src="@drawable/ic_menu_kikr" />
-
-                <TextView
-                    android:id="@+id/kikrGuideTextView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/menu_text_margin_left"
-                    android:layout_weight="1"
-                    android:text="Kikr Guide"
-                    android:textColor="@color/menu_background"
-                    android:textSize="@dimen/large_text_size" />
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

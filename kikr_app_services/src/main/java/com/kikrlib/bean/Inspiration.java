@@ -22,8 +22,8 @@ public class Inspiration {
 	String product_name;
 	String image_width;
 	String image_height;
-	String follower_count;
-	String collection_count;
+	String followers_count;
+	String collections_count;
 	String is_followed;
 	String like_count;
 	String comment_count;
@@ -54,19 +54,19 @@ public class Inspiration {
 	}
 
 	public String getFollower_count() {
-		return follower_count;
+		return followers_count;
 	}
 
-	public void setFollower_count(String follower_count) {
-		this.follower_count = follower_count;
+	public void setFollower_count(String followers_count) {
+		this.followers_count = followers_count;
 	}
 
 	public String getCollection_count() {
-		return collection_count;
+		return collections_count;
 	}
 
-	public void setCollection_count(String collection_count) {
-		this.collection_count = collection_count;
+	public void setCollection_count(String collections_count) {
+		this.collections_count = collections_count;
 	}
 
 	public String getIs_followed() {

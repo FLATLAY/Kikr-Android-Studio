@@ -53,23 +53,23 @@
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:visibility="gone" />
-                    
-                    
-  
+
+
+
                     <LinearLayout
 					    android:id="@+id/loadingBar"
 					    android:layout_width="match_parent"
 					    android:layout_height="wrap_content"
 					    android:layout_alignParentBottom="true"
 					    android:orientation="horizontal"
-					    android:gravity="center" 
+					    android:gravity="center"
 					    android:visibility="invisible" >
-					
+
 					    <ProgressBar
 					        android:id="@+id/progressBar"
 					        android:layout_width="wrap_content"
 					        android:layout_height="wrap_content" />
-					
+
 					    <TextView
 					        android:id="@+id/txtMessageBar"
 					        android:layout_height="wrap_content"
@@ -77,17 +77,17 @@
 					        android:text="Loading images..."
 					        android:layout_margin="8dp" />
 					</LinearLayout>
-					
+
                 </RelativeLayout>
-                
-                
+
+
                 <com.viewpagerindicator.CirclePageIndicator
                         android:id="@+id/indicator"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/imageLayout"
                         android:padding="4dp"/>
-                
+
 
                 <com.kikr.ui.RoundImageView
                     android:id="@+id/user_profile_image"
@@ -113,14 +113,14 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/app_text_color"
                     android:textSize="@dimen/large_text_size" />
-				<!-- 
+				<!--
 				<View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/half_devider"
                     android:layout_above="@+id/discoverBottomLayout"
                     android:background="@color/app_text_color" />
 				 -->
-                
+
 
                 <RelativeLayout
                     android:id="@+id/discoverBottomLayout"
@@ -135,26 +135,24 @@
 	                    android:layout_height="match_parent"
 	                    android:gravity="center"
 	                    android:weightSum="4">
-                        
+
                         <ImageView
 	                        android:id="@+id/addToCartText"
 	                        android:layout_width="70dp"
 	                        android:layout_height="70dp"
 	                        android:layout_margin="4dp"
-                            android:elevation="@dimen/padding_large"
 	                        android:background="@drawable/round_ract_wide"
 	                        android:src="@drawable/ic_discover_btn_checkout"
 	                        android:adjustViewBounds="true"
 	                        android:scaleType="centerInside"
 	                        android:textColor="@color/app_text_color"
 	                        android:textSize="@dimen/large_text_size" />
-	                    
+
 	                    <TextView
 	                        android:id="@+id/addToCollectionText"
 	                        android:layout_width="70dp"
 	                        android:layout_height="70dp"
 	                        android:layout_margin="4dp"
-                            android:elevation="@dimen/padding_large"
 	                        android:background="@drawable/round_ract_wide"
 	                        android:text="+"
 	                        android:gravity="center"
@@ -162,13 +160,12 @@
 	                        android:textColor="@color/btn_green"
 	                        android:textStyle="bold"
 	                        android:textSize="30dp" />
-	
+
 	                    <TextView
 			                android:id="@+id/viewDetailsWebView"
 			                android:layout_width="70dp"
 	                        android:layout_height="70dp"
 			                android:layout_margin="4dp"
-                            android:elevation="@dimen/padding_large"
 			                android:background="@drawable/round_ract_wide"
 			                android:maxLines="2"
 			                android:text="View on\nStore Site"
@@ -176,13 +173,12 @@
 			                android:gravity="center"
 			                android:textColor="@color/btn_green"
 			                android:textSize="@dimen/very_small_text_size" />
-	                    
+
 	                    <ImageView
 	                        android:id="@+id/shareImage"
 	                        android:layout_width="70dp"
 	                        android:layout_height="70dp"
 	                        android:layout_margin="4dp"
-                            android:elevation="@dimen/padding_large"
 	                        android:adjustViewBounds="true"
 	                        android:scaleType="centerInside"
 	                        android:background="@drawable/round_ract_wide"
@@ -190,8 +186,8 @@
 	                        android:textColor="@color/app_text_color"
 	                        android:textSize="@dimen/large_text_size" />
                         </LinearLayout>
-                    
-                    
+
+
 
                     <ImageView
                         android:id="@+id/addImageView"

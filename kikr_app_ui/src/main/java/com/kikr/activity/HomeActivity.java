@@ -865,7 +865,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				String otherdata = getIntent().getStringExtra("otherdata");
 				addFragment(new FragmentPlaceMyOrder(otherdata,true));
 				cleanActivity();
-			} else if (getIntent().getStringExtra("section").equals("commission")) {
+			} else if (getIntent().getStringExtra("section").equals("commission")|| getIntent().getStringExtra("section").equals("collectionwithfiveproducts")||getIntent().getStringExtra("section").equals("invite")) {
 				addFragment(new FragmentKikrCreditsScreen());
 				cleanActivity();
 			}else if (getIntent().getStringExtra("section").equals("twotap")) {

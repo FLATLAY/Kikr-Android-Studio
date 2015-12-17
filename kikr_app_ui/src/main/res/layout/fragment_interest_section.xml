@@ -8,7 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/app_background" >
+        android:background="@color/btn_green" >
 
         <EditText
             android:id="@+id/searchYourItemEditText"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:textColor="@color/app_text_color"
+            android:textColor="@color/white"
             android:layout_marginRight="@dimen/margin_large"
             android:text="Browse\nBy Category"/>
     </LinearLayout>

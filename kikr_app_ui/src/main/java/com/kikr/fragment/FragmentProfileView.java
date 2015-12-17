@@ -186,8 +186,8 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 	@Override
 	public void setData(Bundle bundle) {
 		if(checkInternet()){
-			getUserProfileDetail();
 			getInspirationFeedList();
+			getUserProfileDetail();
 		}else
 			showReloadOption(); 
 		
@@ -257,10 +257,12 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 					profile_btn_layout.setVisibility(View.VISIBLE);
 					imagesList.setVisibility(View.GONE);
 					collection_list.setVisibility(View.VISIBLE);
+					btn_photos.setText("Photos");
 				}else{
 					profile_btn_layout.setVisibility(View.GONE);
 					imagesList.setVisibility(View.VISIBLE);
 					collection_list.setVisibility(View.GONE);
+					btn_photos.setText("collections");
 				}
 				break;
 		case R.id.collection_button:
@@ -922,7 +924,8 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 				}
 				if(product_list.size()==0&&isFirstTime){
 					showDataNotFound();
-				}if (product_list.size()>0 && isFirstTime) {
+				}
+				if (product_list.size()>0 && isFirstTime) {
 					inspirationAdapter = new InspirationGridAdapter(mContext,product_list);
 					imagesList.setAdapter(inspirationAdapter);
 				}else if(inspirationAdapter!=null){
@@ -951,13 +954,13 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		inspirationFeedApi.getInspirationFeed(user_id, false, String.valueOf(page));
 		inspirationFeedApi.execute();
 
-		mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				showDataNotFound();
-				inspirationFeedApi.cancel();
-			}
-		});
+//		mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//			@Override
+//			public void onCancel(DialogInterface dialog) {
+////				showDataNotFound();
+//				inspirationFeedApi.cancel();
+//			}
+//		});
 	}
 
 	protected void showReloadFotter() {

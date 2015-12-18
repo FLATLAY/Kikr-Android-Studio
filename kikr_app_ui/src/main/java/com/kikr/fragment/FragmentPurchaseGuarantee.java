@@ -38,17 +38,18 @@ public class FragmentPurchaseGuarantee extends BaseFragment implements OnClickLi
 		txtContact.setPaintFlags(txtContact.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		
 		txtHere.setMovementMethod(LinkMovementMethod.getInstance());
-		txtHere.setText("Please contact the merchant directly. We provide a list of contact information for our merchants here.", BufferType.SPANNABLE);
-		Spannable mySpannable = (Spannable)txtHere.getText();
-		ClickableSpan myClickableSpan = new ClickableSpan() {
-			@Override
-			public void onClick(View widget) {
-				addFragment(new FragmentMerchants());
-			}
-		};
-		mySpannable.setSpan(myClickableSpan, 97, 101, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		ForegroundColorSpan fcs = new ForegroundColorSpan(getResources().getColor(R.color.black)); 
-		mySpannable.setSpan(fcs, 97, 101, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+		txtHere.setText("Please contact the merchant directly.");
+//		txtHere.setText("Please contact the merchant directly. We provide a list of contact information for our merchants here.", BufferType.SPANNABLE);
+//		Spannable mySpannable = (Spannable)txtHere.getText();
+//		ClickableSpan myClickableSpan = new ClickableSpan() {
+//			@Override
+//			public void onClick(View widget) {
+//				addFragment(new FragmentMerchants());
+//			}
+//		};
+//		mySpannable.setSpan(myClickableSpan, 97, 101, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//		ForegroundColorSpan fcs = new ForegroundColorSpan(getResources().getColor(R.color.black));
+//		mySpannable.setSpan(fcs, 97, 101, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 	}
 
 	@Override

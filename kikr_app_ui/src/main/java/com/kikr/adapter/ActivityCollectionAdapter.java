@@ -56,7 +56,7 @@ public class ActivityCollectionAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		if (!TextUtils.isEmpty(getItem(position).getProduct_name())) 
+		if (!TextUtils.isEmpty(getItem(position).getProduct_name()))
 			viewHolder.product_name.setText(getItem(position).getProduct_name());
 			if(!TextUtils.isEmpty(getItem(position).getViews()))
 			viewHolder.views_count.setText(getItem(position).getViews()+" views");

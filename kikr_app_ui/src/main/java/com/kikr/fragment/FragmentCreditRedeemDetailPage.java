@@ -29,7 +29,7 @@ public class FragmentCreditRedeemDetailPage extends BaseFragment implements OnCl
 		credit_textview = (TextView) mainView.findViewById(R.id.credit_textview);
 		contact_us = (TextView) mainView.findViewById(R.id.contact_us);
 		double credits = ((HomeActivity)mContext).getCredits();
-		credit_textview.setText("Your current Kikr Credit Balance :"+ String.valueOf(credits));
+		credit_textview.setText("Your current Kikr Credit Balance: "+ Math.round(credits));
 	}
 
 	@Override

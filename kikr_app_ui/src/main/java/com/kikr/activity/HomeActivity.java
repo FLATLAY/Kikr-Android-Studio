@@ -268,7 +268,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	public double getCredits(){
-		return Math.round(kikrCredit);
+		return kikrCredit;
 	}
 	
 	private void getKikrCredits() {
@@ -999,8 +999,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		        .addParameters("userprofilepic",UserPreference.getInstance().getProfilePic())
 		        .addParameters("$og_title", getResources().getString(R.string.come_join))
 		        .addParameters("$og_description",getResources().getString(R.string.text_join) + "#Kikr @myKikr")
-		        .addParameters("$og_image_url", "https://pbs.twimg.com/profile_images/541046285873053696/WmdnfQRo_400x400.png");
-
+//		        .addParameters("$og_image_url", "https://pbs.twimg.com/profile_images/541046285873053696/WmdnfQRo_400x400.png");
+				.addParameters("$og_image_url", UserPreference.getInstance().getProfilePic());
 		// Get URL Asynchronously
 		shortUrlBuilder.generateShortUrl(new Branch.BranchLinkCreateListener() {
 		    @Override

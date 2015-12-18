@@ -428,7 +428,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
 				adapter.notifyDataSetChanged();
 			}
 		});		
-		if(isShowProducts)
+//		if(isShowProducts)
 			productInflaterLayout.addView(new InspirationProductUI(mContext, inspiration,null).getView());
 	}
 

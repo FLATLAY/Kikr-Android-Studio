@@ -279,9 +279,9 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 			}
 		});
 		if(latitude!=0&&longitude!=0)
-			api.getNearByDeals(UserPreference.getInstance().getUserID(), Double.toString(latitude), Double.toString(longitude), "1");
+			api.getNearByDeals(UserPreference.getInstance().getUserID(), Double.toString(latitude), Double.toString(longitude), "3");
 		else
-			api.getNearByDeals(UserPreference.getInstance().getUserID(), "40.748817", "-73.985428", "1");
+			api.getNearByDeals(UserPreference.getInstance().getUserID(), "40.748817", "-73.985428", "3");
 			api.execute();
 	}
 	

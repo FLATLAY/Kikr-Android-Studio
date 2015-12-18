@@ -26,8 +26,10 @@ public class Constants {
 
 //		String HOST_API = "http://23.227.167.180/api/"; 
 //		String DEFAULT_IP = "23.227.167.180"; //104.131.58.147
-		String DEFAULT_IP = "http://api.kikr.io/";
-//		String DEFAULT_IP = "http://v1.kikr.io/";
+//		String DEFAULT_IP = "http://api.kikr.io/";
+		String DEFAULT_IP = "http://v1.kikr.io/";
+
+
 //		String HOST_API = "http://104.131.58.147/api/"; 
 
 		String HOST_FILE = ""; 

@@ -88,7 +88,8 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 	private LinearLayout searchYourDealLayout;
 	private Spinner searchYourDealEditText;
 	private Map<Marker, String> markersMap = new HashMap<Marker, String>();
-	
+	private int count=0;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {		
 		mainView = inflater.inflate(R.layout.fragment_deals, null);
@@ -124,6 +125,21 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private void getLocation() {
+		count++;
+		if (gps.canGetLocation()) {
+			try {
+				latitude = gps.getLatitude();
+				longitude = gps.getLongitude();
+				latlng = latitude+","+longitude;
+				Syso.info("latlng   "+latitude + "      " + longitude);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		getNearByStores();
 	}
 
 	private void setUpMapIfNeeded() {
@@ -172,8 +188,8 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 
 			@Override
 			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				if(checkInternet() && !(searchYourDealEditText.getSelectedItemPosition()==0)){
+									   int arg2, long arg3) {
+				if (checkInternet() && !(searchYourDealEditText.getSelectedItemPosition() == 0)) {
 					topDeals.clear();
 					new searchDeals().execute();
 				}
@@ -183,7 +199,7 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
 		});
-		getNearByStores();
+			getNearByStores();
 	}
 
 	@Override
@@ -278,11 +294,16 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 				AlertUtils.showToast(mContext, dealsRes.getMessage());
 			}
 		});
-		if(latitude!=0&&longitude!=0)
+		if(latitude!=0&&longitude!=0) {
 			api.getNearByDeals(UserPreference.getInstance().getUserID(), Double.toString(latitude), Double.toString(longitude), "3");
-		else
-			api.getNearByDeals(UserPreference.getInstance().getUserID(), "40.748817", "-73.985428", "3");
 			api.execute();
+		}
+		else if(count<2){
+			mProgressBarDialog.dismiss();
+			getLocation();
+		}
+//			api.getNearByDeals(UserPreference.getInstance().getUserID(), "40.748817", "-73.985428", "3");
+
 	}
 	
 	private void getPopularDeals() {

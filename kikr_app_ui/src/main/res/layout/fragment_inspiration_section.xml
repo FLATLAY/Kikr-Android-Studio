@@ -19,6 +19,7 @@
             android:drawableLeft="@drawable/ic_camera"
             android:drawablePadding="5dp"
             android:gravity="center_vertical"
+            android:layout_marginRight="@dimen/margin_large"
             android:text="Upload"
             android:textColor="@color/app_text_color"
             android:textSize="@dimen/large_text_size" />

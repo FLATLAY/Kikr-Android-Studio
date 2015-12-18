@@ -513,7 +513,7 @@
     <string name="add_favorites">Add To Favorites </string>
 
     <!-- Help Section -->
-    <string name="help_nocollection_text">Create your first collection\n(5 or more items) &amp; share\n\nEarn 100 credits</string>
+    <string name="help_nocollection_text">Create a collection of 5 items and get 100 Credits!</string>
     <string name="help_emptycart_text">Earn an extra 100 credits for your first purchase</string>
     <string name="help_card_text">Store Cards\n&amp;\naddresses\nfor easy purchases</string>
     <string name="help_inspired_text">Post &amp; find outfits,\nproducts you love\n&amp;\nmuch more</string>
@@ -535,11 +535,11 @@
     <string name="kikr_learn_more">&lt;u>Learn More&lt;/u></string>
 
     <!-- Activity Learn More Outside US -->
-    <string name="kikr_learn_more_desc">Currently Kikr and the products featured within it can only be purchased and shipped to US and Canadian residents.\n\n We are working hard to support international shipments before 2016 however <b>all users</b> have the ability to create and share collections in anticipation of earning credits to be used at a later time. We will store all credits earned for use in the future!!</string>
+    <string name="kikr_learn_more_desc">Currently Kikr and the products featured within it can only be purchased and shipped to US and Canadian residents.\n\n We are working hard to support international shipments in 2016 however <b>all users</b> have the ability to create and share collections in anticipation of earning credits to be used at a later time. We will store all credits earned for use in the future!!</string>
     <string name="order_success_text"><![CDATA[Purchased Confirmed!<br>You can track the status in Orders next to My Wallet.<br><br><b>Happy Shopping</b> ]]></string>
     <string name="order_fail_text">Failed to get final value of cart. Please try again later.</string>
     <string name="come_join">Come join me on Kikr-The Rewards Card for the Social Generation&#8482;</string>
-    <string name="text_join">The Rewards Card for the Social Generation(&#8482;)  Get paid to shop and share, join now &amp; earn up to 250 credits.</string>
+    <string name="text_join">The Rewards Card for the Social Generation&#8482; Get paid to shop and share, join now &amp; earn up to 250 credits.</string>
 
     <string name="earn_250_credits">Join now to get your first 250 credits!</string>
 

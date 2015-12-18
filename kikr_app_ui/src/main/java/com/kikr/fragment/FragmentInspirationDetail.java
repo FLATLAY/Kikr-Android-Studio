@@ -429,6 +429,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
 			}
 		});		
 //		if(isShowProducts)
+		if(inspiration.getPoducts()!=null && inspiration.getPoducts().size()>0)
 			productInflaterLayout.addView(new InspirationProductUI(mContext, inspiration,null).getView());
 	}
 

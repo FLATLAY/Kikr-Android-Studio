@@ -187,7 +187,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 	public void setData(Bundle bundle) {
 		if(checkInternet()){
 			getInspirationFeedList();
-			getUserProfileDetail();
+			getCollectionStatus();
 		}else
 			showReloadOption(); 
 		
@@ -250,9 +250,11 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.btn_activity:
+				noCollectionText.setVisibility(View.GONE);
 				addFragment(new FragmentActivityMonths());
 				break;
 			case R.id.btn_photos:
+				noCollectionText.setVisibility(View.GONE);
 				if (imagesList.getVisibility()==View.VISIBLE){
 					profile_btn_layout.setVisibility(View.VISIBLE);
 					imagesList.setVisibility(View.GONE);
@@ -268,7 +270,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 		case R.id.collection_button:
 			if (!HelpPreference.getInstance().getHelpCollection().equals("yes") && collectionLists.size() == 0)
 				showDataNotFound();
-			else if (status.equals("no") && collectionLists.size() == 0
+			else if (status.equals("yes") && collectionLists.size() == 0
 					&& user_id.equals(UserPreference.getInstance().getUserID())) {
 				hideDataNotFound();
 				noCollectionText.setVisibility(View.VISIBLE);
@@ -283,6 +285,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 			layoutPeopleStoreBrand.setVisibility(View.GONE);
 			break;
 		case R.id.follower_button:
+			noCollectionText.setVisibility(View.GONE);
 			if (followersLists.size() == 0)
 				showDataNotFound();
 			else{
@@ -295,6 +298,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 			layoutPeopleStoreBrand.setVisibility(View.GONE);
 			break;
 		case R.id.following_button:
+			noCollectionText.setVisibility(View.GONE);
 			if (followingLists.size() == 0)
 				showDataNotFound();
 			else{
@@ -330,6 +334,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 			isSelected ="store";
 			isLoading=false;
 			collection_list.setAdapter(null);
+			noCollectionText.setVisibility(View.GONE);
 			interest_store_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_active));
 			interest_brand_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
 			interest_people_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
@@ -348,6 +353,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 			isSelected ="brand";
 			isLoading=false;
 			collection_list.setAdapter(null);
+			noCollectionText.setVisibility(View.GONE);
 			interest_store_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
 			interest_brand_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_active));
 			interest_people_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
@@ -366,6 +372,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 			isLoading=false;
 			isSelected ="people";
 			collection_list.setAdapter(null);
+			noCollectionText.setVisibility(View.GONE);
 			interest_store_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
 			interest_brand_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
 			interest_people_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_active));
@@ -486,7 +493,6 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 	@Override
 	public void handleOnSuccess(Object object) {
 		mProgressBarDialog.dismiss();
-		getCollectionStatus();
 		hideDataNotFound();
 		UserPreference.getInstance().setIsRefreshProfile(false);
 		Syso.info("In handleOnSuccess>>" + object);
@@ -499,18 +505,23 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 	}
 
 	private void getCollectionStatus() {
+		mProgressBarDialog = new ProgressBarDialog(mContext);
+		mProgressBarDialog.show();
 		CheckPointsStatusApi checkPointsStatusApi = new CheckPointsStatusApi(new ServiceCallback() {
 			
 			@Override
 			public void handleOnSuccess(Object object) {
+				mProgressBarDialog.dismiss();
 				Syso.info("In handleOnSuccess>>" + object);
 				CheckPointStatusRes pointStatusRes = (CheckPointStatusRes) object;
 				status = pointStatusRes.getStatus();
+				getUserProfileDetail();
 			}
 			
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				
+				mProgressBarDialog.dismiss();
+				getUserProfileDetail();
 			}
 		});
 		checkPointsStatusApi.checkcollectionpointstatus(UserPreference.getInstance().getUserID());
@@ -533,7 +544,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 			descriptionTextView.setText(userDetails.get(0).getDescription());
 		}
 		
-		 if (status.equals("no") && 
+		 if (status.equals("yes") &&
 				collectionLists.size() == 0
 				&& user_id.equals(UserPreference.getInstance().getUserID())) {
 			hideDataNotFound();

@@ -27,8 +27,10 @@ import com.kikrlib.utils.Syso;
 public class TwitterOAuthActivity extends Activity implements TwitterOAuthView.Listener
 {
    
-	public static final String CONSUMER_KEY = "vwwCcsMWRvWTh4suZljaxiQji"; 
-	public static final String CONSUMER_SECRET = "g80YSt9Exk3MdDbC52EhRj4dGaV9yU5nfrfyPFiv2afpzSB88s"; 
+//	public static final String CONSUMER_KEY = "vwwCcsMWRvWTh4suZljaxiQji";
+//	public static final String CONSUMER_SECRET = "g80YSt9Exk3MdDbC52EhRj4dGaV9yU5nfrfyPFiv2afpzSB88s";
+	public static final String CONSUMER_KEY = "PgCpftLcv2H7UoX6z6TjNJrUD";
+	public static final String CONSUMER_SECRET = "w2yl8lIgWtj0JnLByfmuJK0ypaCP9BkvIUfppqgUQqS101Ps2G";
 
     private static final String CALLBACK_URL = "";
     private static final boolean DUMMY_CALLBACK_URL = true;

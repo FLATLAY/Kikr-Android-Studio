@@ -14,14 +14,15 @@ import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikrlib.bean.CollectionProduct;
+import com.kikrlib.bean.Product;
 
 public class ActivityCollectionAdapter extends BaseAdapter {
 
 	private Activity mContext;
 	private LayoutInflater mInflater;
-	private List<CollectionProduct> data = new ArrayList<CollectionProduct>();
+	private List<Product> data = new ArrayList<Product>();
 
-	public ActivityCollectionAdapter(Activity context, List<CollectionProduct> data) {
+	public ActivityCollectionAdapter(Activity context, List<Product> data) {
 		super();
 		this.mContext = context;
 		this.data = data;
@@ -34,7 +35,7 @@ public class ActivityCollectionAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public CollectionProduct getItem(int index) {
+	public Product getItem(int index) {
 		return data.get(index);
 	}
 
@@ -56,10 +57,10 @@ public class ActivityCollectionAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		if (!TextUtils.isEmpty(getItem(position).getProduct_name()))
-			viewHolder.product_name.setText(getItem(position).getProduct_name());
+		if (!TextUtils.isEmpty(getItem(position).getProductname()))
+			viewHolder.product_name.setText(getItem(position).getProductname());
 			if(!TextUtils.isEmpty(getItem(position).getViews()))
-			viewHolder.views_count.setText(getItem(position).getViews()+" views");
+			viewHolder.views_count.setText(getItem(position).getViews()+" Views");
 			if(!TextUtils.isEmpty(getItem(position).getBuys()))
 			viewHolder.buys_text.setText(getItem(position).getBuys()+" Buys");
 		return convertView;

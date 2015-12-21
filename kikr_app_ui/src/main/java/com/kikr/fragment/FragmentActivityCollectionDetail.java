@@ -23,7 +23,7 @@ import com.kikr.adapter.ActivityCollectionAdapter;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.api.ActivityApi;
-import com.kikrlib.bean.CollectionProduct;
+import com.kikrlib.bean.Product;
 import com.kikrlib.bean.User;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
@@ -124,7 +124,7 @@ public class FragmentActivityCollectionDetail extends BaseFragment implements On
 				Syso.info("In handleOnSuccess>>" + object);
 				ActivityRes activityRes = (ActivityRes) object;
 				if (activityRes!=null) {
-					List<CollectionProduct> data = activityRes.getProduct_list();
+					List<Product> data = activityRes.getProduct_list();
 					setDetails(activityRes);
 					if (data.size() == 0)
 						showDataNotFound();
@@ -164,10 +164,10 @@ public class FragmentActivityCollectionDetail extends BaseFragment implements On
 		collection_name.setText(activityRes.getCollection_name());
 		month_name_heading.setText(activityRes.getCollection_name());
 		if (!TextUtils.isEmpty(activityRes.getPayout()))
-		total_payout_text.setText("Collection Total= $"+CommonUtility.getFormatedNum(activityRes.getPayout()));
+		total_payout_text.setText("Collection Total= "+CommonUtility.getFormatedNum(activityRes.getPayout()+" Credits"));
 		else
-		total_payout_text.setText("Collection Total= $0");
-		collection_payout_text.setText("Collection Views: "+activityRes.getCollection_view()+"\nCollection Payout: $"+CommonUtility.getFormatedNum(activityRes.getPayout()));
+		total_payout_text.setText("Collection Total= 0 Credits");
+		collection_payout_text.setText("Collection Views: "+activityRes.getCollection_view()+"\nCollection Payout: "+CommonUtility.getFormatedNum(activityRes.getPayout()+" Credits"));
 		collection_created_at.setText(CommonUtility.setChangeDateFormat(activityRes.getLast_update()));
 		collection_views.setText("Product Views: "+activityRes.getProduct_views()+"\nTotal Buys: "+activityRes.getTotal_buys());
 		if (activityRes.getProduct_list()!=null) {
@@ -192,7 +192,7 @@ public class FragmentActivityCollectionDetail extends BaseFragment implements On
 				views.get(i).setVisibility(View.GONE);
 			}
 			for (int i = 0; i < activityRes.getProduct_list().size()&&i<4; i++) {
-				CommonUtility.setImage(mContext, activityRes.getProduct_list().get(i).getProduct_image(), images.get(i), R.drawable.dum_list_item_product);
+				CommonUtility.setImage(mContext, activityRes.getProduct_list().get(i).getProductimageurl(), images.get(i), R.drawable.dum_list_item_product);
 				images.get(i).setVisibility(View.VISIBLE);
 				if (i<=2) {
 					views.get(i).setVisibility(View.VISIBLE);

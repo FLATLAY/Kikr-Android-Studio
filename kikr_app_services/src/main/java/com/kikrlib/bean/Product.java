@@ -61,12 +61,29 @@ public class Product implements Serializable {
 	String md5;
 	String url;
 	String affiliateurlforsharing;
+	String views;
+	String buys;
 
 	List<ProductRequiredOption> selected_values;
 	List<ProductRequiredOption> requiredOptions;
 	List<ProductMainOption> productMainOptionList;
 
-	
+	public String getViews() {
+		return views;
+	}
+
+	public void setViews(String views) {
+		this.views = views;
+	}
+
+	public String getBuys() {
+		return buys;
+	}
+
+	public void setBuys(String buys) {
+		this.buys = buys;
+	}
+
 	public String getAffiliateurlforsharing() {
 		return affiliateurlforsharing;
 	}

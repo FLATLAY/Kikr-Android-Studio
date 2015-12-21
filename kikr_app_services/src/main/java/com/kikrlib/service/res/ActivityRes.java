@@ -5,6 +5,7 @@ import java.util.List;
 import com.kikrlib.bean.ActivityMonthList;
 import com.kikrlib.bean.CollectionMonthDetailList;
 import com.kikrlib.bean.CollectionProduct;
+import com.kikrlib.bean.Product;
 import com.kikrlib.bean.User;
 
 public class ActivityRes {
@@ -24,7 +25,7 @@ public class ActivityRes {
 	String payout;
 	String collection_view;
 	String product_views;
-	List<CollectionProduct> product_list;
+	List<Product> product_list;
 	List<ActivityMonthList> activity_month_list;
 	List<CollectionMonthDetailList> collection_list;
 	/**
@@ -283,7 +284,7 @@ public class ActivityRes {
 	/**
 	 * @return the product_list
 	 */
-	public List<CollectionProduct> getProduct_list() {
+	public List<Product> getProduct_list() {
 		return product_list;
 	}
 
@@ -291,7 +292,7 @@ public class ActivityRes {
 	 * @param product_list
 	 *            the product_list to set
 	 */
-	public void setProduct_list(List<CollectionProduct> product_list) {
+	public void setProduct_list(List<Product> product_list) {
 		this.product_list = product_list;
 	}
 

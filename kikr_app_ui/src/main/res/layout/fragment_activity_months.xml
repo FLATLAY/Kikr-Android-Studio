@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/follow_btn_height"
             android:gravity="center_vertical"
-            android:text="Total Activity = $0.00"
+            android:text="Total Activity = 0 Credits"
             android:textColor="@color/app_text_color"
             android:textSize="@dimen/small_text_size" />
 

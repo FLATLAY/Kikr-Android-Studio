@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:text="Month Name"
+            android:text="Unknown"
             android:textColor="@color/app_text_color" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
-            android:text="$0 Payout"
+            android:text="0 Buys"
             android:textColor="@color/app_text_color" />
     </LinearLayout>
 

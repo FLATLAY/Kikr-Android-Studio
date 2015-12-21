@@ -33,6 +33,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -88,7 +89,6 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 	private LinearLayout searchYourDealLayout;
 	private Spinner searchYourDealEditText;
 	private Map<Marker, String> markersMap = new HashMap<Marker, String>();
-	private int count=0;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {		
@@ -120,6 +120,7 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 				latitude = gps.getLatitude();
 				longitude = gps.getLongitude();
 				latlng = latitude+","+longitude;
+				getNearByStores();
 				Syso.info("latlng   "+latitude + "      " + longitude);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -128,18 +129,17 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 	}
 
 	private void getLocation() {
-		count++;
 		if (gps.canGetLocation()) {
 			try {
 				latitude = gps.getLatitude();
 				longitude = gps.getLongitude();
 				latlng = latitude+","+longitude;
+				getNearByStores();
 				Syso.info("latlng   "+latitude + "      " + longitude);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		getNearByStores();
 	}
 
 	private void setUpMapIfNeeded() {
@@ -171,6 +171,7 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 				LatLng latLng = new LatLng(StringUtils.getDoubleValue(nearByDeals.get(i).getLat()), StringUtils.getDoubleValue(nearByDeals.get(i).getLng()));
 				marker = map.addMarker(new MarkerOptions()
 						.position(latLng)
+						.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker)).draggable(true)
 						.title(nearByDeals.get(i).getName()));
 				markersMap.put(marker, nearByDeals.get(i).getImg());
 				// Locate the first location
@@ -199,7 +200,6 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
 		});
-			getNearByStores();
 	}
 
 	@Override
@@ -297,13 +297,9 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 		if(latitude!=0&&longitude!=0) {
 			api.getNearByDeals(UserPreference.getInstance().getUserID(), Double.toString(latitude), Double.toString(longitude), "3");
 			api.execute();
+		}else {
+			api.getNearByDeals(UserPreference.getInstance().getUserID(), "40.748817", "-73.985428", "3");
 		}
-		else if(count<2){
-			mProgressBarDialog.dismiss();
-			getLocation();
-		}
-//			api.getNearByDeals(UserPreference.getInstance().getUserID(), "40.748817", "-73.985428", "3");
-
 	}
 	
 	private void getPopularDeals() {
@@ -361,10 +357,10 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 		} else if (isOnlineList) {
 			getOnlineDeals();
 		} else{
-			
+
 		}
 	}
-	
+
 	@Override
 	public void onHiddenChanged(boolean hidden) {
 		super.onHiddenChanged(hidden);
@@ -435,7 +431,7 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 		api.getTocken();
 		api.execute();
 	}
-	
+
 	private class searchDeals extends AsyncTask<Void, Void, String> {
 
 		@Override
@@ -485,7 +481,6 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 				searchYourDealEditText.setSelection(0);
 				parseData(result);
 			}
-			
 		}
 	}
 
@@ -601,8 +596,8 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
               address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
               address.getCountryName());
               marker = map.addMarker(new MarkerOptions()
-       	     .position(latLng)
-       	     .title(addressText));
+					  .position(latLng)
+					  .title(addressText));
                 // Locate the first location
                 if(i==0)
                     map.animateCamera(CameraUpdateFactory.newLatLng(latLng));

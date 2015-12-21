@@ -62,7 +62,7 @@
             android:layout_height="@dimen/follow_btn_height"
             android:layout_marginRight="@dimen/margin_large"
             android:gravity="center_vertical"
-            android:text="Kikr credit details"
+            android:text="Kikr Credit Details"
             android:textColor="@color/btn_green"
             android:textSize="@dimen/very_small_text_size" />
     </LinearLayout>

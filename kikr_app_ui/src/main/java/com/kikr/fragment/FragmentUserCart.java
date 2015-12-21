@@ -109,18 +109,22 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener,Se
 	}
 	
 	private void getPointsStatus() {
+		mProgressBarDialog = new ProgressBarDialog(mContext);
+		mProgressBarDialog.show();
 		CheckPointsStatusApi checkPointsStatusApi = new CheckPointsStatusApi(new ServiceCallback() {
 			
 			@Override
 			public void handleOnSuccess(Object object) {
+				mProgressBarDialog.dismiss();
 				Syso.info("In handleOnSuccess>>" + object);
 				CheckPointStatusRes pointStatusRes = (CheckPointStatusRes) object;
 				status = pointStatusRes.getStatus();
+				getCartList();
 			}
 			
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				
+				mProgressBarDialog.dismiss();
 			}
 		});
 		checkPointsStatusApi.checkcartpointstatus(UserPreference.getInstance().getUserID());
@@ -251,7 +255,7 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener,Se
 			cartItemsList.setVisibility(View.GONE);
 			TextView textView=(TextView) getView().findViewById(R.id.noDataFoundTextView);
 			textView.setText(getResources().getString(R.string.empty_cart_text));
-			if (status.equals("no")) {
+			if (status.equals("yes")) {
 				helpEmptyCartText.setVisibility(View.VISIBLE);
 			}else
 				helpEmptyCartText.setVisibility(View.GONE);
@@ -325,7 +329,6 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener,Se
 		    @Override
 		    public void run() {
 		    	if (checkInternet()) {
-					getCartList();
 					getPointsStatus();
 				}
 		    }

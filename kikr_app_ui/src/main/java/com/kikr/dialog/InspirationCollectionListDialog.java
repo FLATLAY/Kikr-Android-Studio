@@ -91,7 +91,7 @@ public class InspirationCollectionListDialog extends Dialog implements ServiceCa
 				collection_listing.setAdapter(collectionListAdapter);
 			}
 		}else{
-			AlertUtils.showToast(mContext,R.string.no_data_found);
+			CommonUtility.showAlert(mContext,"Please create your first collection to tag to your post.");
 			dismiss();
 		}
 	}

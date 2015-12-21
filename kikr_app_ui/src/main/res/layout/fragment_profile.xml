@@ -122,6 +122,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:layout_marginLeft="@dimen/margin_xxlarge"
+        android:layout_marginRight="@dimen/margin_xxlarge"
         android:text="@string/help_nocollection_text"
         android:textColor="@color/app_text_color"
         android:textSize="@dimen/large_text_size"

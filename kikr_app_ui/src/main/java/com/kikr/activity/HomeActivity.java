@@ -716,6 +716,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				hideBackButton();
 				hideRightButton();
 				onBackPressed();
+			} else if (mContent instanceof FragmentCategories) {
+				onBackPressed();
 			} else if (mContent instanceof FragmentInspirationImage) {
 				((FragmentInspirationImage) mContent).goToNext();
             }else if(mContent instanceof FragmentTagList){
@@ -1997,6 +1999,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         } else if(fragment instanceof FragmentTagList){
             showRightButton();
             menuRightTextView.setText("Done");
+		} else if(fragment instanceof FragmentCategories){
+			showRightButton();
+			menuRightTextView.setText("Done");
 		} else {
 			hideRightButton();
 		}
@@ -2491,6 +2496,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		});
 	}
 
+//	public void followButtonStatus(){
+//		if(mContent instanceof FragmentCategories)
+//			((FragmentCategories) mContent).checkFollowAtLeastOne();
+//	}
 
 //
 //    public void loginPinterest(final String text,final String link,final String imageUrl){

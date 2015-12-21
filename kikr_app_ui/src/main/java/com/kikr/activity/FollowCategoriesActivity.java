@@ -4,7 +4,6 @@ import java.util.List;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;

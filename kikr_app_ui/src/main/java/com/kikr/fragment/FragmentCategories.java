@@ -1,6 +1,7 @@
 package com.kikr.fragment;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
+import com.kikr.activity.HomeActivity;
 import com.kikr.activity.KikrTutorialActivity;
+import com.kikr.adapter.CategoryNewAdapter;
 import com.kikr.adapter.FollowCategoryNewAdapter;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikrlib.api.CategoryListApi;
@@ -30,7 +33,7 @@ import java.util.List;
 public class FragmentCategories extends BaseFragment implements OnClickListener,ServiceCallback{
 	private View mainView;
 	private ListView listView;
-	private FollowCategoryNewAdapter categoryAdapter;
+	private CategoryNewAdapter categoryAdapter;
 	public static TextView mRightText;
 	private ProgressBarDialog mProgressBarDialog;
 	private TextView mDataNotFoundTextView;
@@ -38,6 +41,7 @@ public class FragmentCategories extends BaseFragment implements OnClickListener,
 	private boolean isLoading=false;
 	private boolean isFirstTime = true;
 	public static int selectedCount = 0;
+	private FragmentCategories fragmentCategories;
 
 	public FragmentCategories() {
 	}
@@ -46,6 +50,7 @@ public class FragmentCategories extends BaseFragment implements OnClickListener,
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		mainView = inflater.inflate(R.layout.activity_follow_categories_new, null);
+		fragmentCategories=this;
 		return mainView;
 	}
 
@@ -63,6 +68,16 @@ public class FragmentCategories extends BaseFragment implements OnClickListener,
 	@Override
 	public void setClickListener() {
 	}
+
+//	public void checkFollowAtLeastOne() {
+//		if (selectedCount > 0) {
+//			mRightText.setTextColor(Color.parseColor("#5bbaad"));
+//			//	mRightText.setClickable(true);
+//		} else {
+//			mRightText.setTextColor(Color.parseColor("#ABABAB"));
+//			//	mRightText.setClickable(false);
+//		}
+//	}
 
 	@Override
 	public void setData(Bundle bundle) {
@@ -247,7 +262,7 @@ public class FragmentCategories extends BaseFragment implements OnClickListener,
 			imgList.add(entertainmentImage);
 			imgList.add(homeImage);
 
-			categoryAdapter=new FollowCategoryNewAdapter(mContext,reorderedCategories, imgList);
+			categoryAdapter=new CategoryNewAdapter(mContext,reorderedCategories, imgList,fragmentCategories);
 			listView.setAdapter(categoryAdapter);
 
 			for(int i = 0; i < categoryAdapter.getCount(); i++) {
@@ -275,6 +290,12 @@ public class FragmentCategories extends BaseFragment implements OnClickListener,
 		} else {
 			AlertUtils.showToast(mContext, R.string.invalid_response);
 		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		HomeActivity.menuTextCartCount.setVisibility(View.INVISIBLE);
 	}
 
 }

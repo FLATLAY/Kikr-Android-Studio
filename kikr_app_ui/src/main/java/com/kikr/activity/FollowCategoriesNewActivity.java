@@ -11,16 +11,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.kikr.BaseActivity;
 import com.kikr.R;
-import com.kikr.adapter.FollowCategoryAdapter;
 import com.kikr.adapter.FollowCategoryNewAdapter;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.AppConstants.Screen;

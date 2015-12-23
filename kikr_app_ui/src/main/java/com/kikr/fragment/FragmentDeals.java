@@ -89,6 +89,7 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 	private LinearLayout searchYourDealLayout;
 	private Spinner searchYourDealEditText;
 	private Map<Marker, String> markersMap = new HashMap<Marker, String>();
+	private int count=0;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {		
@@ -128,13 +129,28 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 		}
 	}
 
-	private void getLocation() {
+	public void getLocation() {
+		gps=new GPSTracker(mContext);
 		if (gps.canGetLocation()) {
 			try {
 				latitude = gps.getLatitude();
 				longitude = gps.getLongitude();
 				latlng = latitude+","+longitude;
 				getNearByStores();
+				Syso.info("latlng   "+latitude + "      " + longitude);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void getCurrentLocation() {
+		count++;
+		if (gps.canGetLocation()) {
+			try {
+				latitude = gps.getLatitude();
+				longitude = gps.getLongitude();
+				latlng = latitude+","+longitude;
 				Syso.info("latlng   "+latitude + "      " + longitude);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -297,8 +313,8 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 		if(latitude!=0&&longitude!=0) {
 			api.getNearByDeals(UserPreference.getInstance().getUserID(), Double.toString(latitude), Double.toString(longitude), "3");
 			api.execute();
-		}else {
-			api.getNearByDeals(UserPreference.getInstance().getUserID(), "40.748817", "-73.985428", "3");
+		}else if(count<2) {
+			getCurrentLocation();
 		}
 	}
 	

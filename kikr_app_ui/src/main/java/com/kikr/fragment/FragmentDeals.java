@@ -311,10 +311,12 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 			}
 		});
 		if(latitude!=0&&longitude!=0) {
-			api.getNearByDeals(UserPreference.getInstance().getUserID(), Double.toString(latitude), Double.toString(longitude), "3");
+			api.getNearByDeals(UserPreference.getInstance().getUserID(), Double.toString(latitude), Double.toString(longitude), "2");
 			api.execute();
 		}else if(count<2) {
 			getCurrentLocation();
+		}else{
+			AlertUtils.showToast(mContext,"No offers found for your location. Please try again later");
 		}
 	}
 	

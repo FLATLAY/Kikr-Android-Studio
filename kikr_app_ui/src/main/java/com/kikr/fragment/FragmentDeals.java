@@ -43,6 +43,7 @@ import com.kikr.R;
 import com.kikr.adapter.DealListAdapter;
 import com.kikr.adapter.StoreListAdapter;
 import com.kikr.ui.ProgressBarDialog;
+import com.kikr.utility.CommonUtility;
 import com.kikr.utility.GPSTracker;
 import com.kikrlib.api.DealsApi;
 import com.kikrlib.api.GetNearByDealsApi;
@@ -116,17 +117,20 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 		btnsTop.add(dealOnlineBtn);
 		searchYourDealLayout = (LinearLayout) mainView.findViewById(R.id.searchYourDealLayout);
 		searchYourDealEditText = (Spinner) mainView.findViewById(R.id.searchYourDealEditText);
-		if (gps.canGetLocation()) {
-			try {
-				latitude = gps.getLatitude();
-				longitude = gps.getLongitude();
-				latlng = latitude+","+longitude;
-				getNearByStores();
-				Syso.info("latlng   "+latitude + "      " + longitude);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		latitude=34.190246;
+		longitude=-118.605033;
+		getNearByStores();
+//		if (gps.canGetLocation()) {
+//			try {
+//				latitude = gps.getLatitude();
+//				longitude = gps.getLongitude();
+//				latlng = latitude+","+longitude;
+//				getNearByStores();
+//				Syso.info("latlng   "+latitude + "      " + longitude);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 	}
 
 	public void getLocation() {
@@ -197,6 +201,13 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 				}
 			}
 		}
+		map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+
+			@Override
+			public void onInfoWindowClick(Marker mk) {
+				addFragment(new FragmentStoreDeals(mk.getTitle(),markersMap.get(mk)));
+			}
+		});
 	}
 	
 	@Override
@@ -421,7 +432,7 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 
 	@Override
 	public boolean onMarkerClick(Marker marker) {
-		addFragment(new FragmentStoreDeals(marker.getTitle(),markersMap.get(marker)));
+//		addFragment(new FragmentStoreDeals(marker.getTitle(),markersMap.get(marker)));
 		return false;
 	}
 	

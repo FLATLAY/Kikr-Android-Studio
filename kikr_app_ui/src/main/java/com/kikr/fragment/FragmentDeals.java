@@ -117,24 +117,9 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 		btnsTop.add(dealOnlineBtn);
 		searchYourDealLayout = (LinearLayout) mainView.findViewById(R.id.searchYourDealLayout);
 		searchYourDealEditText = (Spinner) mainView.findViewById(R.id.searchYourDealEditText);
-		latitude=34.190246;
-		longitude=-118.605033;
-		getNearByStores();
-//		if (gps.canGetLocation()) {
-//			try {
-//				latitude = gps.getLatitude();
-//				longitude = gps.getLongitude();
-//				latlng = latitude+","+longitude;
-//				getNearByStores();
-//				Syso.info("latlng   "+latitude + "      " + longitude);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-	}
-
-	public void getLocation() {
-		gps=new GPSTracker(mContext);
+//		latitude=34.190246;
+//		longitude=-118.605033;
+//		getNearByStores();
 		if (gps.canGetLocation()) {
 			try {
 				latitude = gps.getLatitude();
@@ -148,13 +133,15 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 		}
 	}
 
-	public void getCurrentLocation() {
+	public void getLocation() {
+		gps=new GPSTracker(mContext);
 		count++;
 		if (gps.canGetLocation()) {
 			try {
 				latitude = gps.getLatitude();
 				longitude = gps.getLongitude();
 				latlng = latitude+","+longitude;
+				getNearByStores();
 				Syso.info("latlng   "+latitude + "      " + longitude);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -324,9 +311,11 @@ public class FragmentDeals extends BaseFragment implements OnClickListener,OnMar
 		if(latitude!=0&&longitude!=0) {
 			api.getNearByDeals(UserPreference.getInstance().getUserID(), Double.toString(latitude), Double.toString(longitude), "2");
 			api.execute();
-		}else if(count<2) {
-			getCurrentLocation();
+		}else if(count<=5) {
+			mProgressBarDialog.dismiss();
+			getLocation();
 		}else{
+			mProgressBarDialog.dismiss();
 			AlertUtils.showToast(mContext,"No offers found for your location. Please try again later");
 		}
 	}

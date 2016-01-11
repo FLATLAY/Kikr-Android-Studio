@@ -42,6 +42,7 @@ import com.kikrlib.api.EditProfileApi;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
+import com.kikrlib.service.res.EditProfileRes;
 import com.kikrlib.utils.AlertUtils;
 
 public class EditProfileActivity extends BaseActivity implements OnClickListener, OnKeyListener{
@@ -71,7 +72,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 	private TextView kikr_learn_more;
 	private TextView textViewOutside,descriptionTextView;
 	private RelativeLayout layoutPictures;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -356,6 +357,10 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 					public void handleOnFailure(ServiceException exception,
 							Object object) {
 						mProgressBarDialog.dismiss();
+						if(object!=null){
+							EditProfileRes editProfileRes = (EditProfileRes) object;
+							AlertUtils.showToast(context,editProfileRes.getMessage());
+						}
 					}
 				});
 			uploadProfileImage.addUsername(UserPreference.getInstance().getUserID(), newUsername);

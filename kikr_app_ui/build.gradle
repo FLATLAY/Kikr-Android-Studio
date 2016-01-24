@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.kikr"
-        minSdkVersion 19
+        minSdkVersion 15
         targetSdkVersion 19
         multiDexEnabled = true
     }

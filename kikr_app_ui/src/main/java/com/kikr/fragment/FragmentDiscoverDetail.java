@@ -79,9 +79,9 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 	private View mainView;
 	private Product product;
 	private ViewPager productImageView;
-	private ImageView addImageView;
+	private ImageView addImageView,viewDetailsText;
 	private TextView productTitleTextView,productRegularPriceTextView,productYourPriceTextView;
-	private TextView descriptionTextView,addToCartTextView,saleTextView, viewDetailsText;
+	private TextView descriptionTextView,addToCartTextView;
 //	private boolean readCondition = true;
 //	private String readLess = "<font color=#5bbaad>...read less</font>";
 //	private String readMore ="<font color=#5bbaad>...read more</font>";
@@ -98,7 +98,6 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 	private String selectedOption="",selectedFit="";
 	private TextView brandNameTextView,addToCollectionText,likeCountText;
 	private ImageView addToCartText,shareImage;
-	private RoundImageView brandImage;
 	private UiUpdate uiUpdate;
 	private String cartid,description ;
 	private List<JSONArray> sizes = new ArrayList<JSONArray>();
@@ -142,7 +141,7 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		productYourPriceTextView = (TextView) mainView.findViewById(R.id.productYourPriceTextView);
 		descriptionTextView = (TextView) mainView.findViewById(R.id.descriptionTextView);
 		progressBarCart = (ProgressBar) mainView.findViewById(R.id.progressBarCart);
-		saleTextView=(TextView) mainView.findViewById(R.id.saleTextView);
+//		saleTextView=(TextView) mainView.findViewById(R.id.saleTextView);
 		colorLayout=(LinearLayout) mainView.findViewById(R.id.colorLayout);
 		sizeLayout=(LinearLayout) mainView.findViewById(R.id.sizeLayout);
 		fitLayout=(LinearLayout) mainView.findViewById(R.id.fitLayout);
@@ -157,7 +156,6 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		likeCountText=(TextView) mainView.findViewById(R.id.likeCountText);
 		addToCartText=(ImageView) mainView.findViewById(R.id.addToCartText);
 		shareImage=(ImageView) mainView.findViewById(R.id.shareImage);
-		brandImage = (RoundImageView) mainView.findViewById(R.id.brandImage);
 		mPager = (ViewPager) mainView.findViewById(R.id.zoom_viewpagerimagepager);
 		mIndicator = (CirclePageIndicator) mainView.findViewById(R.id.indicator);
 		mPager.setOnTouchListener(new View.OnTouchListener() {
@@ -169,7 +167,7 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		});
 		loadingBar = (LinearLayout) mainView.findViewById(R.id.loadingBar);
 		
-		viewDetailsText = (TextView) mainView.findViewById(R.id.viewDetailsWebView);
+		viewDetailsText = (ImageView) mainView.findViewById(R.id.viewDetailsWebView);
 		progressBar = (ProgressBar) mainView.findViewById(R.id.progressBar);
 		progressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.btn_green), android.graphics.PorterDuff.Mode.MULTIPLY);
 		txtMessageBar = (TextView) mainView.findViewById(R.id.txtMessageBar);
@@ -197,9 +195,6 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		optionTextView.setOnClickListener(this);
 		fitTextView.setOnClickListener(this);
 		viewDetailsText.setOnClickListener(this);
-		viewDetailsText.setTypeface(FontUtility.setProximanovaLight(mContext));
-		
-		viewDetailsText.setTypeface(null, Typeface.BOLD);
 		productRegularPriceTextView.setTypeface(null, Typeface.BOLD);
 		productYourPriceTextView.setTypeface(null, Typeface.BOLD);
 	}
@@ -678,7 +673,7 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 	private void setDetails() {
 		productRegularPriceTextView.setText(" $"+CommonUtility.getFormatedNum(product.getRetailprice()));
 		if(!TextUtils.isEmpty(product.getSaleprice())&&!product.getSaleprice().equals("0")&&!product.getSaleprice().equals(product.getRetailprice())){
-			saleTextView.setVisibility(View.VISIBLE);
+//			saleTextView.setVisibility(View.VISIBLE);
 			productYourPriceTextView.setText(" $"+CommonUtility.getFormatedNum(product.getSaleprice()));
 			productRegularPriceTextView.setPaintFlags(productRegularPriceTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 		}
@@ -709,8 +704,8 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 			likeCountText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_flame_logo, 0);
 		else
 			likeCountText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_flame_logo, 0);
-		if(!TextUtils.isEmpty(product.getBrand_image()))
-			CommonUtility.setImage(mContext, product.getBrand_image(), brandImage, R.drawable.dum_list_item_product);
+//		if(!TextUtils.isEmpty(product.getBrand_image()))
+//			CommonUtility.setImage(mContext, product.getBrand_image(), brandImage, R.drawable.dum_list_item_product);
 	}
 
 //	private String getSalePrice(String price) {
@@ -890,9 +885,9 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 //				}
 				if (object != null) {
 					CartRes response = (CartRes) object;
-					if(isFromBuy)
-						addFragment(new FragmentUserCart());
-					else
+//					if(isFromBuy)
+//						addFragment(new FragmentUserCart());
+//					else
 						AlertUtils.showToast(mContext, response.getMessage());
 				}
 				UserPreference.getInstance().incCartCount();
@@ -927,9 +922,9 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 				Syso.info("In handleOnFailure>>" + object);
 				if (object != null) {
 					CartRes response = (CartRes) object;
-					if(isFromBuy)
-						addFragment(new FragmentUserCart());
-					else
+//					if(isFromBuy)
+//						addFragment(new FragmentUserCart());
+//					else
 						AlertUtils.showToast(mContext, response.getMessage());
 				} else {
 					AlertUtils.showToast(mContext, R.string.invalid_response);

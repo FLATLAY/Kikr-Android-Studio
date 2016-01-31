@@ -84,8 +84,8 @@ public class ProductPagerAdapter extends PagerAdapter {
 			
 			@Override
 			public void onClick(View arg0) {
-				if(((HomeActivity) mContext).checkInternet())
-					((HomeActivity) mContext).addFragment(new FragmentProductDetailWebView(url, product));
+//				if(((HomeActivity) mContext).checkInternet())
+//					((HomeActivity) mContext).addFragment(new FragmentProductDetailWebView(url, product));
 			}
 		});
 		return collection;

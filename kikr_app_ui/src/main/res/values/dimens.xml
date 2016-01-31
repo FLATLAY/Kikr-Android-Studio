@@ -157,7 +157,10 @@
     <dimen name="credits_heading_width">120dp</dimen>
     <dimen name="credits_edit_text_height">40dp</dimen>
     <dimen name="product_height">350dp</dimen>
-    
+    <dimen name="description_margin">250dp</dimen>
     <dimen name="arch_margin">10dp</dimen>
+    <dimen name="image_list_size">50dp</dimen>
 
+    <dimen name="image_detail_height">170dp</dimen>
+    <dimen name="description_detail_height">350dp</dimen>
 </resources>

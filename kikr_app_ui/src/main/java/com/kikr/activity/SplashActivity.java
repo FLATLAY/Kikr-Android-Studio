@@ -284,6 +284,7 @@ public class SplashActivity extends Activity {
 				}
 				else {
 					Log.e("MyApp", error.getMessage());
+					handler.postDelayed(runnable, SPLASH_DISPLAY_TIME);
 				}
 			}
 		}, this.getIntent().getData(), this);

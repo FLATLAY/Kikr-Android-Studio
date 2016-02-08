@@ -15,6 +15,7 @@
     <color name="detail_bottom">#FAF9F9</color>
     <color name="black">#000000</color>
     <color name="gray">#A5A5A5</color>
+    <color name="dark_green">#07948c</color>
     <color name="btn_green">#5bbaad</color>
     <color name="btn_gray">#ABABAB</color>
     <color name="discover_list_item_shadow">#80000000</color>

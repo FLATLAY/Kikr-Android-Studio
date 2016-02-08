@@ -27,9 +27,9 @@ public class ImageUI {
 
 	public View getView() {
 		ll =  new LinearLayout(mContext);
-		ll.setOrientation(LinearLayout.VERTICAL);
+		ll.setOrientation(LinearLayout.HORIZONTAL);
 		RelativeLayout.LayoutParams layoutParams =new RelativeLayout.LayoutParams((int) mContext.getResources().getDimension(R.dimen.image_list_size), (int) mContext.getResources().getDimension(R.dimen.image_list_size));
-		layoutParams.setMargins(0,10,0,0);
+		layoutParams.setMargins(0,0,0,0);
 		for (int i=0;i<images.size();i++) {
             RelativeLayout relativeLayout = new RelativeLayout(mContext);
 			ImageView iv = new ImageView(mContext);

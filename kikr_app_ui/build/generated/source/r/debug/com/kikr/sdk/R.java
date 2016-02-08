@@ -8,28 +8,28 @@ package com.kikr.sdk;
 
 public final class R {
 	public static final class dimen {
-		public static final int activity_horizontal_margin = 0x7f080002;
-		public static final int activity_vertical_margin = 0x7f080003;
+		public static final int activity_horizontal_margin = 0x7f08000d;
+		public static final int activity_vertical_margin = 0x7f08002c;
 	}
 	public static final class drawable {
-		public static final int ic_launcher = 0x7f0200fc;
+		public static final int ic_launcher = 0x7f02014c;
 	}
 	public static final class id {
-		public static final int action_settings = 0x7f0d032d;
+		public static final int action_settings = 0x7f0e03a7;
 	}
 	public static final class layout {
-		public static final int activity_main = 0x7f03001b;
+		public static final int activity_main = 0x7f030033;
 	}
 	public static final class menu {
 		public static final int main = 0x7f0f0000;
 	}
 	public static final class string {
-		public static final int action_settings = 0x7f07003b;
-		public static final int app_name = 0x7f070092;
-		public static final int hello_world = 0x7f0700ef;
+		public static final int action_settings = 0x7f07004b;
+		public static final int app_name = 0x7f0700a2;
+		public static final int hello_world = 0x7f070100;
 	}
 	public static final class style {
-		public static final int AppBaseTheme = 0x7f090000;
-		public static final int AppTheme = 0x7f090002;
+		public static final int AppBaseTheme = 0x7f0b0002;
+		public static final int AppTheme = 0x7f0b0067;
 	}
 }

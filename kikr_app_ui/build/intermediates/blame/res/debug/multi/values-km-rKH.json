@@ -1,23 +1,23 @@
 [
     {
-        "outputFile": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\values-km-rKH\\values-km-rKH.xml",
+        "outputFile": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\values-km-rKH\\values-km-rKH.xml",
         "map": [
             {
                 "to": {
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 105,
-                    "endColumn": 200,
-                    "endOffset": 301
+                    "endColumn": 102,
+                    "endOffset": 203
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 491,
-                        "endColumn": 204,
-                        "endOffset": 691
+                        "startOffset": 56,
+                        "endColumn": 102,
+                        "endOffset": 154
                     }
                 }
             },
@@ -25,18 +25,18 @@
                 "to": {
                     "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 306,
-                    "endColumn": 194,
-                    "endOffset": 496
+                    "startOffset": 208,
+                    "endColumn": 107,
+                    "endOffset": 311
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 18,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 2618,
-                        "endColumn": 198,
-                        "endOffset": 2812
+                        "startOffset": 159,
+                        "endColumn": 107,
+                        "endOffset": 262
                     }
                 }
             },
@@ -44,18 +44,18 @@
                 "to": {
                     "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 501,
-                    "endColumn": 123,
-                    "endOffset": 620
+                    "startOffset": 316,
+                    "endColumn": 122,
+                    "endOffset": 434
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 16,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 2288,
-                        "endColumn": 123,
-                        "endOffset": 2407
+                        "startOffset": 267,
+                        "endColumn": 122,
+                        "endOffset": 385
                     }
                 }
             },
@@ -63,18 +63,18 @@
                 "to": {
                     "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 625,
-                    "endColumn": 264,
-                    "endOffset": 885
+                    "startOffset": 439,
+                    "endColumn": 99,
+                    "endOffset": 534
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 30,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 4532,
-                        "endColumn": 268,
-                        "endOffset": 4796
+                        "startOffset": 390,
+                        "endColumn": 99,
+                        "endOffset": 485
                     }
                 }
             },
@@ -82,18 +82,18 @@
                 "to": {
                     "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 890,
-                    "endColumn": 128,
-                    "endOffset": 1014
+                    "startOffset": 539,
+                    "endColumn": 111,
+                    "endOffset": 646
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 2015,
-                        "endColumn": 128,
-                        "endOffset": 2139
+                        "startOffset": 490,
+                        "endColumn": 111,
+                        "endOffset": 597
                     }
                 }
             },
@@ -101,18 +101,18 @@
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 1019,
-                    "endColumn": 186,
-                    "endOffset": 1201
+                    "startOffset": 651,
+                    "endColumn": 86,
+                    "endOffset": 733
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 1824,
-                        "endColumn": 190,
-                        "endOffset": 2010
+                        "startOffset": 602,
+                        "endColumn": 86,
+                        "endOffset": 684
                     }
                 }
             },
@@ -120,18 +120,18 @@
                 "to": {
                     "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 1206,
-                    "endColumn": 126,
-                    "endOffset": 1328
+                    "startOffset": 738,
+                    "endColumn": 103,
+                    "endOffset": 837
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 1697,
-                        "endColumn": 126,
-                        "endOffset": 1819
+                        "startOffset": 689,
+                        "endColumn": 103,
+                        "endOffset": 788
                     }
                 }
             },
@@ -139,18 +139,18 @@
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 1333,
-                    "endColumn": 168,
-                    "endOffset": 1497
+                    "startOffset": 842,
+                    "endColumn": 117,
+                    "endOffset": 955
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 854,
-                        "endColumn": 172,
-                        "endOffset": 1022
+                        "startOffset": 793,
+                        "endColumn": 117,
+                        "endOffset": 906
                     }
                 }
             },
@@ -158,18 +158,18 @@
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 1502,
-                    "endColumn": 130,
-                    "endOffset": 1628
+                    "startOffset": 960,
+                    "endColumn": 103,
+                    "endOffset": 1059
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 1566,
-                        "endColumn": 130,
-                        "endOffset": 1692
+                        "startOffset": 911,
+                        "endColumn": 103,
+                        "endOffset": 1010
                     }
                 }
             },
@@ -177,18 +177,18 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 1633,
-                    "endColumn": 201,
-                    "endOffset": 1830
+                    "startOffset": 1064,
+                    "endColumn": 104,
+                    "endOffset": 1164
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 1155,
-                        "endColumn": 205,
-                        "endOffset": 1356
+                        "startOffset": 1015,
+                        "endColumn": 104,
+                        "endOffset": 1115
                     }
                 }
             },
@@ -196,18 +196,18 @@
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 1835,
-                    "endColumn": 200,
-                    "endOffset": 2031
+                    "startOffset": 1169,
+                    "endColumn": 99,
+                    "endOffset": 1264
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 1361,
-                        "endColumn": 204,
-                        "endOffset": 1561
+                        "startOffset": 1120,
+                        "endColumn": 99,
+                        "endOffset": 1215
                     }
                 }
             },
@@ -215,18 +215,18 @@
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 2036,
-                    "endColumn": 127,
-                    "endOffset": 2159
+                    "startOffset": 1269,
+                    "endColumn": 109,
+                    "endOffset": 1374
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 1027,
-                        "endColumn": 127,
-                        "endOffset": 1150
+                        "startOffset": 1220,
+                        "endColumn": 109,
+                        "endOffset": 1325
                     }
                 }
             },
@@ -234,397 +234,69 @@
                 "to": {
                     "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 2164,
-                    "endColumn": 179,
-                    "endOffset": 2339
+                    "startOffset": 1379,
+                    "endColumn": 106,
+                    "endOffset": 1481
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 24,
-                        "startColumn": 4,
-                        "startOffset": 3606,
-                        "endColumn": 179,
-                        "endOffset": 3781
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 15,
-                    "startColumn": 4,
-                    "startOffset": 2344,
-                    "endColumn": 127,
-                    "endOffset": 2467
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 23,
-                        "startColumn": 4,
-                        "startOffset": 3478,
-                        "endColumn": 127,
-                        "endOffset": 3601
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 16,
-                    "startColumn": 4,
-                    "startOffset": 2472,
-                    "endColumn": 157,
-                    "endOffset": 2625
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 696,
-                        "endColumn": 157,
-                        "endOffset": 849
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 17,
-                    "startColumn": 4,
-                    "startOffset": 2630,
-                    "endColumn": 176,
-                    "endOffset": 2802
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 22,
-                        "startColumn": 4,
-                        "startOffset": 3301,
-                        "endColumn": 176,
-                        "endOffset": 3473
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 18,
-                    "startColumn": 4,
-                    "startOffset": 2807,
-                    "endColumn": 119,
-                    "endOffset": 2922
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 21,
-                        "startColumn": 4,
-                        "startOffset": 3181,
-                        "endColumn": 119,
-                        "endOffset": 3296
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 19,
-                    "startColumn": 4,
-                    "startOffset": 2927,
-                    "endColumn": 181,
-                    "endOffset": 3104
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 309,
-                        "endColumn": 181,
-                        "endOffset": 486
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 20,
-                    "startColumn": 4,
-                    "startOffset": 3109,
-                    "endColumn": 138,
-                    "endOffset": 3243
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 170,
-                        "endColumn": 138,
-                        "endOffset": 304
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 21,
-                    "startColumn": 4,
-                    "startOffset": 3248,
-                    "endColumn": 160,
-                    "endOffset": 3404
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 32,
-                        "startColumn": 4,
-                        "startOffset": 4929,
-                        "endColumn": 160,
-                        "endOffset": 5085
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 22,
-                    "startColumn": 4,
-                    "startOffset": 3409,
-                    "endColumn": 127,
-                    "endOffset": 3532
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 31,
-                        "startColumn": 4,
-                        "startOffset": 4801,
-                        "endColumn": 127,
-                        "endOffset": 4924
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 23,
-                    "startColumn": 4,
-                    "startOffset": 3537,
-                    "endColumn": 149,
-                    "endOffset": 3682
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 25,
-                        "startColumn": 4,
-                        "startOffset": 3786,
-                        "endColumn": 149,
-                        "endOffset": 3931
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 24,
-                    "startColumn": 4,
-                    "startOffset": 3687,
-                    "endColumn": 246,
-                    "endOffset": 3929
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 27,
-                        "startColumn": 4,
-                        "startOffset": 4066,
-                        "endColumn": 250,
-                        "endOffset": 4312
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 25,
-                    "startColumn": 4,
-                    "startOffset": 3934,
-                    "endColumn": 129,
-                    "endOffset": 4059
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 26,
-                        "startColumn": 4,
-                        "startOffset": 3936,
-                        "endColumn": 129,
-                        "endOffset": 4061
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 26,
-                    "startColumn": 4,
-                    "startOffset": 4064,
-                    "endColumn": 119,
-                    "endOffset": 4179
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 28,
-                        "startColumn": 4,
-                        "startOffset": 4317,
-                        "endColumn": 119,
-                        "endOffset": 4432
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 27,
-                    "startColumn": 4,
-                    "startOffset": 4184,
-                    "endColumn": 201,
-                    "endOffset": 4381
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 2412,
-                        "endColumn": 205,
-                        "endOffset": 2613
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 28,
-                    "startColumn": 4,
-                    "startOffset": 4386,
-                    "endColumn": 143,
-                    "endOffset": 4525
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 2144,
-                        "endColumn": 143,
-                        "endOffset": 2283
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 29,
-                    "startColumn": 4,
-                    "startOffset": 4530,
-                    "endColumn": 214,
-                    "endOffset": 4740
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 20,
-                        "startColumn": 4,
-                        "startOffset": 2962,
-                        "endColumn": 218,
-                        "endOffset": 3176
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 30,
-                    "startColumn": 4,
-                    "startOffset": 4745,
-                    "endColumn": 144,
-                    "endOffset": 4885
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 19,
-                        "startColumn": 4,
-                        "startOffset": 2817,
-                        "endColumn": 144,
-                        "endOffset": 2957
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 31,
-                    "startColumn": 4,
-                    "startOffset": 4890,
-                    "endColumn": 94,
-                    "endOffset": 4980
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
-                    "position": {
-                        "startLine": 29,
-                        "startColumn": 4,
-                        "startOffset": 4437,
-                        "endColumn": 94,
-                        "endOffset": 4527
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 32,
-                    "startColumn": 4,
-                    "startOffset": 4985,
-                    "endColumn": 87,
-                    "endOffset": 5068
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\values-km-rKH\\base_strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 170,
-                        "endColumn": 87,
-                        "endOffset": 253
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 33,
-                    "startColumn": 4,
-                    "startOffset": 5073,
-                    "endColumn": 106,
-                    "endOffset": 5175
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\values-km-rKH\\base_strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 258,
+                        "startOffset": 1330,
                         "endColumn": 106,
-                        "endOffset": 360
+                        "endOffset": 1432
                     }
                 }
-            }
-        ]
-    },
-    {
-        "outputFile": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\values-km-rKH\\values-km-rKH.xml",
-        "map": [
+            },
             {
                 "to": {
-                    "startLine": 2,
+                    "startLine": 15,
                     "startColumn": 4,
-                    "startOffset": 105,
-                    "endColumn": 200,
-                    "endOffset": 301
+                    "startOffset": 1486,
+                    "endColumn": 107,
+                    "endOffset": 1589
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1437,
+                        "endColumn": 107,
+                        "endOffset": 1540
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1594,
+                    "endColumn": 122,
+                    "endOffset": 1712
+                },
+                "from": {
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-km-rKH\\values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1545,
+                        "endColumn": 122,
+                        "endOffset": 1663
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1717,
+                    "endColumn": 200,
+                    "endOffset": 1913
+                },
+                "from": {
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -636,14 +308,14 @@
             },
             {
                 "to": {
-                    "startLine": 3,
+                    "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 306,
+                    "startOffset": 1918,
                     "endColumn": 194,
-                    "endOffset": 496
+                    "endOffset": 2108
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -655,14 +327,14 @@
             },
             {
                 "to": {
-                    "startLine": 4,
+                    "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 501,
+                    "startOffset": 2113,
                     "endColumn": 123,
-                    "endOffset": 620
+                    "endOffset": 2232
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -674,14 +346,14 @@
             },
             {
                 "to": {
-                    "startLine": 5,
+                    "startLine": 20,
                     "startColumn": 4,
-                    "startOffset": 625,
+                    "startOffset": 2237,
                     "endColumn": 264,
-                    "endOffset": 885
+                    "endOffset": 2497
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 30,
                         "startColumn": 4,
@@ -693,14 +365,14 @@
             },
             {
                 "to": {
-                    "startLine": 6,
+                    "startLine": 21,
                     "startColumn": 4,
-                    "startOffset": 890,
+                    "startOffset": 2502,
                     "endColumn": 128,
-                    "endOffset": 1014
+                    "endOffset": 2626
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -712,14 +384,14 @@
             },
             {
                 "to": {
-                    "startLine": 7,
+                    "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 1019,
+                    "startOffset": 2631,
                     "endColumn": 186,
-                    "endOffset": 1201
+                    "endOffset": 2813
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -731,14 +403,14 @@
             },
             {
                 "to": {
-                    "startLine": 8,
+                    "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 1206,
+                    "startOffset": 2818,
                     "endColumn": 126,
-                    "endOffset": 1328
+                    "endOffset": 2940
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -750,14 +422,14 @@
             },
             {
                 "to": {
-                    "startLine": 9,
+                    "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 1333,
+                    "startOffset": 2945,
                     "endColumn": 168,
-                    "endOffset": 1497
+                    "endOffset": 3109
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -769,14 +441,14 @@
             },
             {
                 "to": {
-                    "startLine": 10,
+                    "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 1502,
+                    "startOffset": 3114,
                     "endColumn": 130,
-                    "endOffset": 1628
+                    "endOffset": 3240
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -788,14 +460,14 @@
             },
             {
                 "to": {
-                    "startLine": 11,
+                    "startLine": 26,
                     "startColumn": 4,
-                    "startOffset": 1633,
+                    "startOffset": 3245,
                     "endColumn": 201,
-                    "endOffset": 1830
+                    "endOffset": 3442
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -807,14 +479,14 @@
             },
             {
                 "to": {
-                    "startLine": 12,
+                    "startLine": 27,
                     "startColumn": 4,
-                    "startOffset": 1835,
+                    "startOffset": 3447,
                     "endColumn": 200,
-                    "endOffset": 2031
+                    "endOffset": 3643
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -826,14 +498,14 @@
             },
             {
                 "to": {
-                    "startLine": 13,
+                    "startLine": 28,
                     "startColumn": 4,
-                    "startOffset": 2036,
+                    "startOffset": 3648,
                     "endColumn": 127,
-                    "endOffset": 2159
+                    "endOffset": 3771
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -845,14 +517,14 @@
             },
             {
                 "to": {
-                    "startLine": 14,
+                    "startLine": 29,
                     "startColumn": 4,
-                    "startOffset": 2164,
+                    "startOffset": 3776,
                     "endColumn": 179,
-                    "endOffset": 2339
+                    "endOffset": 3951
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
@@ -864,14 +536,14 @@
             },
             {
                 "to": {
-                    "startLine": 15,
+                    "startLine": 30,
                     "startColumn": 4,
-                    "startOffset": 2344,
+                    "startOffset": 3956,
                     "endColumn": 127,
-                    "endOffset": 2467
+                    "endOffset": 4079
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 23,
                         "startColumn": 4,
@@ -883,14 +555,14 @@
             },
             {
                 "to": {
-                    "startLine": 16,
+                    "startLine": 31,
                     "startColumn": 4,
-                    "startOffset": 2472,
+                    "startOffset": 4084,
                     "endColumn": 157,
-                    "endOffset": 2625
+                    "endOffset": 4237
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -902,14 +574,14 @@
             },
             {
                 "to": {
-                    "startLine": 17,
+                    "startLine": 32,
                     "startColumn": 4,
-                    "startOffset": 2630,
+                    "startOffset": 4242,
                     "endColumn": 176,
-                    "endOffset": 2802
+                    "endOffset": 4414
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -921,14 +593,14 @@
             },
             {
                 "to": {
-                    "startLine": 18,
+                    "startLine": 33,
                     "startColumn": 4,
-                    "startOffset": 2807,
+                    "startOffset": 4419,
                     "endColumn": 119,
-                    "endOffset": 2922
+                    "endOffset": 4534
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -940,14 +612,14 @@
             },
             {
                 "to": {
-                    "startLine": 19,
+                    "startLine": 34,
                     "startColumn": 4,
-                    "startOffset": 2927,
+                    "startOffset": 4539,
                     "endColumn": 181,
-                    "endOffset": 3104
+                    "endOffset": 4716
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -959,14 +631,14 @@
             },
             {
                 "to": {
-                    "startLine": 20,
+                    "startLine": 35,
                     "startColumn": 4,
-                    "startOffset": 3109,
+                    "startOffset": 4721,
                     "endColumn": 138,
-                    "endOffset": 3243
+                    "endOffset": 4855
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -978,14 +650,14 @@
             },
             {
                 "to": {
-                    "startLine": 21,
+                    "startLine": 36,
                     "startColumn": 4,
-                    "startOffset": 3248,
+                    "startOffset": 4860,
                     "endColumn": 160,
-                    "endOffset": 3404
+                    "endOffset": 5016
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 32,
                         "startColumn": 4,
@@ -997,14 +669,14 @@
             },
             {
                 "to": {
-                    "startLine": 22,
+                    "startLine": 37,
                     "startColumn": 4,
-                    "startOffset": 3409,
+                    "startOffset": 5021,
                     "endColumn": 127,
-                    "endOffset": 3532
+                    "endOffset": 5144
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 31,
                         "startColumn": 4,
@@ -1016,14 +688,14 @@
             },
             {
                 "to": {
-                    "startLine": 23,
+                    "startLine": 38,
                     "startColumn": 4,
-                    "startOffset": 3537,
+                    "startOffset": 5149,
                     "endColumn": 149,
-                    "endOffset": 3682
+                    "endOffset": 5294
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 25,
                         "startColumn": 4,
@@ -1035,14 +707,14 @@
             },
             {
                 "to": {
-                    "startLine": 24,
+                    "startLine": 39,
                     "startColumn": 4,
-                    "startOffset": 3687,
+                    "startOffset": 5299,
                     "endColumn": 246,
-                    "endOffset": 3929
+                    "endOffset": 5541
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 27,
                         "startColumn": 4,
@@ -1054,14 +726,14 @@
             },
             {
                 "to": {
-                    "startLine": 25,
+                    "startLine": 40,
                     "startColumn": 4,
-                    "startOffset": 3934,
+                    "startOffset": 5546,
                     "endColumn": 129,
-                    "endOffset": 4059
+                    "endOffset": 5671
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 26,
                         "startColumn": 4,
@@ -1073,14 +745,14 @@
             },
             {
                 "to": {
-                    "startLine": 26,
+                    "startLine": 41,
                     "startColumn": 4,
-                    "startOffset": 4064,
+                    "startOffset": 5676,
                     "endColumn": 119,
-                    "endOffset": 4179
+                    "endOffset": 5791
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
@@ -1092,14 +764,14 @@
             },
             {
                 "to": {
-                    "startLine": 27,
+                    "startLine": 42,
                     "startColumn": 4,
-                    "startOffset": 4184,
+                    "startOffset": 5796,
                     "endColumn": 201,
-                    "endOffset": 4381
+                    "endOffset": 5993
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -1111,14 +783,14 @@
             },
             {
                 "to": {
-                    "startLine": 28,
+                    "startLine": 43,
                     "startColumn": 4,
-                    "startOffset": 4386,
+                    "startOffset": 5998,
                     "endColumn": 143,
-                    "endOffset": 4525
+                    "endOffset": 6137
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -1130,14 +802,14 @@
             },
             {
                 "to": {
-                    "startLine": 29,
+                    "startLine": 44,
                     "startColumn": 4,
-                    "startOffset": 4530,
+                    "startOffset": 6142,
                     "endColumn": 214,
-                    "endOffset": 4740
+                    "endOffset": 6352
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -1149,14 +821,14 @@
             },
             {
                 "to": {
-                    "startLine": 30,
+                    "startLine": 45,
                     "startColumn": 4,
-                    "startOffset": 4745,
+                    "startOffset": 6357,
                     "endColumn": 144,
-                    "endOffset": 4885
+                    "endOffset": 6497
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -1168,14 +840,14 @@
             },
             {
                 "to": {
-                    "startLine": 31,
+                    "startLine": 46,
                     "startColumn": 4,
-                    "startOffset": 4890,
+                    "startOffset": 6502,
                     "endColumn": 94,
-                    "endOffset": 4980
+                    "endOffset": 6592
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-km-rKH\\common_strings.xml",
                     "position": {
                         "startLine": 29,
                         "startColumn": 4,
@@ -1187,14 +859,14 @@
             },
             {
                 "to": {
-                    "startLine": 32,
+                    "startLine": 47,
                     "startColumn": 4,
-                    "startOffset": 4985,
+                    "startOffset": 6597,
                     "endColumn": 87,
-                    "endOffset": 5068
+                    "endOffset": 6680
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\values-km-rKH\\base_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\values-km-rKH\\base_strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -1206,14 +878,14 @@
             },
             {
                 "to": {
-                    "startLine": 33,
+                    "startLine": 48,
                     "startColumn": 4,
-                    "startOffset": 5073,
+                    "startOffset": 6685,
                     "endColumn": 106,
-                    "endOffset": 5175
+                    "endOffset": 6787
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\values-km-rKH\\base_strings.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\values-km-rKH\\base_strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

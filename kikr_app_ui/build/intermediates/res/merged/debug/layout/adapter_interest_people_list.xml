@@ -9,17 +9,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <ImageView
+        <com.kikr.ui.RoundImageView
             android:id="@+id/user_image"
-            android:layout_width="@dimen/addBank_image_size"
-            android:layout_height="@dimen/addBank_image_size"
+            android:layout_margin="@dimen/padding_small"
+            android:layout_width="@dimen/interest_user_profile"
+            android:layout_height="@dimen/interest_user_profile"
             android:scaleType="fitXY"
             android:src="@drawable/dum_user" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="fill_parent"
-            android:background="@color/app_background" />
 
         <TextView
             android:id="@+id/user_name"
@@ -27,10 +23,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
-            android:text="CitiBank"
             android:layout_weight="1"
             android:textColor="@color/app_text_color"
             android:textSize="@dimen/xx_large_text_size" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_follow_brand"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/checkImageView"
@@ -39,11 +40,11 @@
             android:padding="10dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_add_collection" 
-            android:visibility="gone"/>
+            android:visibility="visible"/>
     </LinearLayout>
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/app_background" />
 

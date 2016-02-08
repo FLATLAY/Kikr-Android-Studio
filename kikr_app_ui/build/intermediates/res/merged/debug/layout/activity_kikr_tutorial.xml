@@ -21,7 +21,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/margin_large"
-                android:layout_marginTop="@dimen/margin_xxxlarge"
+                android:layout_marginTop="@dimen/margin_xxlarge"
                 android:gravity="center"
                 android:text="@string/tutorial_kikr_reward"
                 android:textSize="@dimen/x_large_text_size" />
@@ -183,5 +183,6 @@
         </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+</RelativeLayout>
+
 -->

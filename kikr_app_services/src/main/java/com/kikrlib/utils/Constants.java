@@ -17,8 +17,8 @@ public class Constants {
 		String INVALID_RESPONSE_MESSAGE = "Invalid response from server. Please try again later.";
 
 
-		int CONNECTIONTIMEOUT = 30 * 1000;
-		int READTIMEOUT = 30 * 1000;
+		int CONNECTIONTIMEOUT = 36 * 1000;
+		int READTIMEOUT = 36 * 1000;
 
 		String HTTP_METHOD_POST = "POST";
 		String HTTP_METHOD_GET = "GET";

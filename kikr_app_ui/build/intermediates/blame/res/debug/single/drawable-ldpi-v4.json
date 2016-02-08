@@ -1,26 +1,14 @@
 [
     {
-        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\location_marker.png",
-        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\main\\unspecified\\res\\drawable-ldpi-v4\\location_marker.png"
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\location_marker.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\main\\unspecified\\res\\drawable-ldpi-v4\\location_marker.png"
     },
     {
-        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\location_marker.png",
-        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\main\\unspecified\\res\\drawable-ldpi-v4\\location_marker.png"
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\com_facebook_close.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-ldpi-v4\\com_facebook_close.png"
     },
     {
-        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\com_facebook_close.png",
-        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable-ldpi-v4\\com_facebook_close.png"
-    },
-    {
-        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\direction_arrow.png",
-        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\main\\unspecified\\res\\drawable-ldpi-v4\\direction_arrow.png"
-    },
-    {
-        "merged": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\direction_arrow.png",
-        "source": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\main\\unspecified\\res\\drawable-ldpi-v4\\direction_arrow.png"
-    },
-    {
-        "merged": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\com_facebook_close.png",
-        "source": "F:\\Mobikasa\\KikrWorkspace\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\Kikr-Android-Studio\\kikr_FacebookSDK\\unspecified\\res\\drawable-ldpi-v4\\com_facebook_close.png"
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\direction_arrow.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\main\\unspecified\\res\\drawable-ldpi-v4\\direction_arrow.png"
     }
 ]

@@ -60,4 +60,6 @@ dependencies {
     compile files('libs/gcm.jar')
     androidTestCompile 'com.android.support:multidex-instrumentation:1.0.1'
     compile project(':pdk2')
+    compile 'com.android.support:recyclerview-v7:22.1.1'
+    compile 'com.android.support:cardview-v7:22.1.1'
 }

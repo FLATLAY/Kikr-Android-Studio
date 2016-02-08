@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\Users\zeeshan\Desktop\KikrApp\main\src\main\assets"><file name="test/osm/ballard_relation.osm" path="C:\Users\zeeshan\Desktop\KikrApp\main\src\main\assets\test\osm\ballard_relation.osm"/><file name="test/osm/spatialdev_small.osm" path="C:\Users\zeeshan\Desktop\KikrApp\main\src\main\assets\test\osm\spatialdev_small.osm"/></source></dataSet><dataSet config="debug"><source path="C:\Users\zeeshan\Desktop\KikrApp\main\src\debug\assets"/></dataSet></merger>

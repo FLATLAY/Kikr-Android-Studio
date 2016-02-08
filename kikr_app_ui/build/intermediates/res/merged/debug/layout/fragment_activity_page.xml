@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/follow_btn_height"
             android:gravity="center_vertical"
-            android:text="July Activity"
+            android:text="Unknown"
             android:textColor="@color/app_text_color"
             android:textSize="@dimen/small_text_size"
             android:textStyle="bold" />
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/follow_btn_height"
             android:gravity="center_vertical"
-            android:text="Total Activity = $0"
+            android:text="Total Activity = 0 Credits"
             android:textColor="@color/app_text_color"
             android:textSize="@dimen/small_text_size" />
 

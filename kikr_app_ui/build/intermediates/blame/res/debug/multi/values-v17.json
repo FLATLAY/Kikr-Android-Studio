@@ -1,298 +1,256 @@
 [
     {
-        "outputFile": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\values-v17\\values-v17.xml",
+        "outputFile": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\values-v17\\values-v17.xml",
         "map": [
             {
                 "to": {
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endLine": 4,
+                    "endLine": 5,
                     "endColumn": 12,
-                    "endOffset": 223
+                    "endOffset": 278
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 295,
+                        "startOffset": 56,
                         "endLine": 6,
                         "endColumn": 12,
-                        "endOffset": 463
+                        "endOffset": 279
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 5,
+                    "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 228,
-                    "endLine": 8,
+                    "startOffset": 283,
+                    "endLine": 9,
                     "endColumn": 12,
-                    "endOffset": 451
+                    "endOffset": 526
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 468,
-                        "endLine": 10,
+                        "startOffset": 285,
+                        "endLine": 11,
                         "endColumn": 12,
-                        "endOffset": 691
+                        "endOffset": 528
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 9,
+                    "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 456,
-                    "endLine": 12,
+                    "startOffset": 531,
+                    "endLine": 13,
                     "endColumn": 12,
-                    "endOffset": 788
+                    "endOffset": 766
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 696,
-                        "endLine": 14,
+                        "startOffset": 534,
+                        "endLine": 16,
                         "endColumn": 12,
-                        "endOffset": 1028
+                        "endOffset": 769
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 13,
+                    "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 793,
-                    "endLine": 15,
+                    "startOffset": 771,
+                    "endLine": 16,
                     "endColumn": 12,
-                    "endOffset": 946
+                    "endOffset": 916
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
-                    "position": {
-                        "startLine": 15,
-                        "startColumn": 4,
-                        "startOffset": 1033,
-                        "endLine": 17,
-                        "endColumn": 12,
-                        "endOffset": 1186
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 16,
-                    "startColumn": 4,
-                    "startOffset": 951,
-                    "endLine": 18,
-                    "endColumn": 12,
-                    "endOffset": 1096
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
-                        "startOffset": 1191,
+                        "startOffset": 775,
                         "endLine": 20,
                         "endColumn": 12,
-                        "endOffset": 1336
+                        "endOffset": 920
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 19,
+                    "startLine": 17,
                     "startColumn": 4,
-                    "startOffset": 1101,
-                    "endLine": 21,
+                    "startOffset": 921,
+                    "endLine": 19,
                     "endColumn": 12,
-                    "endOffset": 1268
+                    "endOffset": 1088
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
-                        "startLine": 21,
+                        "startLine": 22,
                         "startColumn": 4,
-                        "startOffset": 1341,
-                        "endLine": 23,
+                        "startOffset": 926,
+                        "endLine": 24,
                         "endColumn": 12,
-                        "endOffset": 1508
+                        "endOffset": 1093
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 22,
+                    "startLine": 20,
                     "startColumn": 4,
-                    "startOffset": 1273,
-                    "endLine": 25,
+                    "startOffset": 1093,
+                    "endLine": 23,
                     "endColumn": 12,
-                    "endOffset": 1496
+                    "endOffset": 1316
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
-                        "startLine": 24,
+                        "startLine": 26,
                         "startColumn": 4,
-                        "startOffset": 1513,
-                        "endLine": 27,
+                        "startOffset": 1099,
+                        "endLine": 29,
                         "endColumn": 12,
-                        "endOffset": 1736
+                        "endOffset": 1322
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 26,
+                    "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 1501,
-                    "endLine": 29,
+                    "startOffset": 1321,
+                    "endLine": 27,
                     "endColumn": 12,
-                    "endOffset": 1738
+                    "endOffset": 1558
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
-                        "startLine": 28,
+                        "startLine": 31,
                         "startColumn": 4,
-                        "startOffset": 1741,
-                        "endLine": 31,
-                        "endColumn": 12,
-                        "endOffset": 1978
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 30,
-                    "startColumn": 4,
-                    "startOffset": 1743,
-                    "endLine": 32,
-                    "endColumn": 12,
-                    "endOffset": 1909
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
-                    "position": {
-                        "startLine": 32,
-                        "startColumn": 4,
-                        "startOffset": 1983,
+                        "startOffset": 1328,
                         "endLine": 34,
                         "endColumn": 12,
-                        "endOffset": 2149
+                        "endOffset": 1565
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 33,
+                    "startLine": 28,
                     "startColumn": 4,
-                    "startOffset": 1914,
-                    "endLine": 35,
+                    "startOffset": 1563,
+                    "endLine": 30,
                     "endColumn": 12,
-                    "endOffset": 2083
+                    "endOffset": 1729
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
-                        "startLine": 35,
+                        "startLine": 36,
                         "startColumn": 4,
-                        "startOffset": 2154,
-                        "endLine": 37,
+                        "startOffset": 1571,
+                        "endLine": 38,
                         "endColumn": 12,
-                        "endOffset": 2323
+                        "endOffset": 1737
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 36,
+                    "startLine": 31,
                     "startColumn": 4,
-                    "startOffset": 2088,
-                    "endLine": 38,
+                    "startOffset": 1734,
+                    "endLine": 33,
                     "endColumn": 12,
-                    "endOffset": 2252
+                    "endOffset": 1903
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
-                        "startLine": 38,
+                        "startLine": 40,
                         "startColumn": 4,
-                        "startOffset": 2328,
-                        "endLine": 40,
+                        "startOffset": 1743,
+                        "endLine": 42,
                         "endColumn": 12,
-                        "endOffset": 2492
+                        "endOffset": 1912
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 39,
+                    "startLine": 34,
                     "startColumn": 4,
-                    "startOffset": 2257,
-                    "endLine": 42,
+                    "startOffset": 1908,
+                    "endLine": 36,
                     "endColumn": 12,
-                    "endOffset": 2525
+                    "endOffset": 2072
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
-                        "startLine": 41,
+                        "startLine": 44,
                         "startColumn": 4,
-                        "startOffset": 2497,
-                        "endLine": 44,
+                        "startOffset": 1918,
+                        "endLine": 46,
                         "endColumn": 12,
-                        "endOffset": 2765
+                        "endOffset": 2082
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 43,
+                    "startLine": 37,
                     "startColumn": 4,
-                    "startOffset": 2530,
-                    "endLine": 45,
+                    "startOffset": 2077,
+                    "endLine": 40,
                     "endColumn": 12,
-                    "endOffset": 2725
+                    "endOffset": 2345
                 },
                 "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
-                    "position": {
-                        "startLine": 45,
-                        "startColumn": 4,
-                        "startOffset": 2770,
-                        "endLine": 47,
-                        "endColumn": 12,
-                        "endOffset": 2965
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 46,
-                    "startColumn": 4,
-                    "startOffset": 2730,
-                    "endLine": 48,
-                    "endColumn": 12,
-                    "endOffset": 2973
-                },
-                "from": {
-                    "file": "F:\\Mobikasa\\Kikr Android Studio\\Kikr-Android-Studio\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
                     "position": {
                         "startLine": 48,
                         "startColumn": 4,
-                        "startOffset": 2970,
-                        "endLine": 50,
+                        "startOffset": 2088,
+                        "endLine": 51,
                         "endColumn": 12,
-                        "endOffset": 3213
+                        "endOffset": 2356
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 2350,
+                    "endLine": 43,
+                    "endColumn": 12,
+                    "endOffset": 2545
+                },
+                "from": {
+                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-v17\\values.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 2362,
+                        "endLine": 55,
+                        "endColumn": 12,
+                        "endOffset": 2557
                     }
                 }
             }

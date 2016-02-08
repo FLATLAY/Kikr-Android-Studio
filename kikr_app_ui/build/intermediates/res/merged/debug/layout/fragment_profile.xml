@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include
         android:id="@+id/user_profile"
@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/profile_btn_layout"
@@ -18,34 +18,36 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:id="@+id/follow_btn_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:visibility="gone" >
+                android:visibility="visible">
 
-                <Button
+                <TextView
                     android:id="@+id/follow_btn"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/follow_btn_height"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:layout_marginLeft="@dimen/padding_large"
-                    android:background="@drawable/gray_corner_button"
+                    android:background="@drawable/button_activity_gray"
                     android:text="Follow"
                     android:textColor="@color/white"
                     android:textSize="@dimen/small_text_size" />
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <Button
+                    android:textStyle="bold"
                     android:id="@+id/collection_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,16 +60,42 @@
                     android:id="@+id/up_arrow_image_first"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/uparrow_jpeg" />
+                    android:src="@drawable/rectangle_tab_selector" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:visibility="visible"
+                android:orientation="vertical">
 
                 <Button
+                    android:textStyle="bold"
+                    android:id="@+id/photos_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="0\nPhotos"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="@dimen/small_text_size" />
+
+                <ImageView
+                    android:id="@+id/up_arrow_image_photos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:src="@drawable/rectangle_tab_selector" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:textStyle="bold"
                     android:id="@+id/follower_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,7 +108,7 @@
                     android:id="@+id/up_arrow_image_second"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/uparrow"
+                    android:src="@drawable/rectangle_tab_selector"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -88,9 +116,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <Button
+                    android:textStyle="bold"
                     android:id="@+id/following_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -103,7 +132,7 @@
                     android:id="@+id/up_arrow_image_third"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/uparrow"
+                    android:src="@drawable/rectangle_tab_selector"
                     android:visibility="invisible" />
             </LinearLayout>
         </LinearLayout>
@@ -115,23 +144,72 @@
             android:layout_marginTop="-2dp"
             android:background="@color/btn_gray" />
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/noCollectionText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+    <LinearLayout
         android:visibility="gone"
-        android:text="@string/help_nocollection_text"
-        android:textColor="@color/app_text_color"
-        android:textSize="@dimen/large_text_size" />
+        android:id="@+id/noCollectionText"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/noDataFoundTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/no_data_found"
+            android:textSize="@dimen/large_text_size" />
+        <ImageView
+            android:layout_width="150dp"
+
+            android:layout_height="132dp"
+            android:src="@drawable/bg_nocollection"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+            android:text="Earn 100 credits for creating your first collection of 5+ products "
+            android:textColor="@color/app_text_color"
+            android:textSize="@dimen/large_text_size"
+            android:visibility="visible" />
+        <Button
+            android:id="@+id/btnCreateCollection"
+            android:layout_marginTop="7dp"
+            android:drawablePadding="5dp"
+            android:drawableLeft="@drawable/ic_add_follow"
+            android:layout_width="wrap_content"
+            android:textColor="#ffffff"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textStyle="bold"
+            android:text="Create new Collection"
+            android:background="@drawable/createcollection_btnbg"
+            android:layout_height="35dp" />
+    </LinearLayout>
+    <!--  <TextView
+          android:id="@+id/noCollectionText"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:layout_marginLeft="@dimen/margin_xxlarge"
+          android:layout_marginRight="@dimen/margin_xxlarge"
+          android:text="@string/help_nocollection_text"
+          android:textColor="@color/app_text_color"
+          android:textSize="@dimen/large_text_size"
+          android:visibility="gone" />-->
 
     <LinearLayout
         android:id="@+id/layoutPeopleStoreBrand"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:background="@color/app_background" >
+        android:background="@color/app_background"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/interest_people_button"
@@ -139,7 +217,7 @@
             android:layout_weight="1"
             android:background="@drawable/ic_interest_button_bg_active"
             android:text="@string/people_text" />
-        
+
         <Button
             android:id="@+id/interest_store_button"
             style="@style/buttonInterestSection"
@@ -155,12 +233,16 @@
             android:text="@string/brand_text" />
 
     </LinearLayout>
-    
+
     <include
         android:id="@+id/itemNotFound"
         layout="@layout/layout_item_not_found"
         android:visibility="gone" />
-    
+    <include
+        android:id="@+id/photosNotFound"
+        layout="@layout/layout_photos_not_found"
+        android:visibility="gone" />
+
     <ListView
         android:id="@+id/collection_list"
         android:layout_width="match_parent"
@@ -169,7 +251,28 @@
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:listSelector="@android:color/transparent"
-        android:scrollbars="none" >
-    </ListView>
+        android:scrollbars="none"></ListView>
+
+    <TextView
+        android:id="@+id/loadingTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Loading...\nPlease Wait"
+        android:textColor="@color/btn_green"
+        android:visibility="visible" />
+
+    <GridView
+        android:id="@+id/imagesList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_large"
+        android:cacheColorHint="#00000000"
+        android:horizontalSpacing="2dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="2dp"></GridView>
 
 </LinearLayout>

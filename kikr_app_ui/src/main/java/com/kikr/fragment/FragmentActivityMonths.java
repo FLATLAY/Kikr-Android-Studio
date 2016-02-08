@@ -59,6 +59,8 @@ public class FragmentActivityMonths extends BaseFragment implements OnClickListe
 		kikr_commission_text = (TextView) mainView.findViewById(R.id.kikr_commission_text);
 		kikr_commission_text.setPaintFlags(kikr_commission_text.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		myActivityButton = (TextView) mainView.findViewById(R.id.btn_activity);
+		myActivityButton.setBackgroundResource(R.drawable.button_activity);
+		myActivityButton.setPadding(5,5,5,5);
 		myActivityButton.setText("My Collections");
 		myActivityButton.setVisibility(View.VISIBLE);
 	}

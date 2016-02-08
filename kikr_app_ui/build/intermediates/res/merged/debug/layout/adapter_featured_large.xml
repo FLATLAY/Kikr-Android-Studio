@@ -2,7 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/userNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/padding_large"
+        android:background="@drawable/round_ract_white"
+        android:padding="@dimen/padding_large"
+        android:text="Name"
+        android:textColor="@color/app_text_color"
+        android:textSize="@dimen/large_text_size"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/userLargeImageView"
@@ -11,38 +24,44 @@
         android:scaleType="centerCrop"
         android:src="@drawable/linesplaceholder" />
 
-    <TextView
-        android:id="@+id/userNameTextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_large"
-        android:text="Large Text"
-        android:textSize="@dimen/large_text_size"
-        android:textStyle="bold" />
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding_large"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/gray" />
+        <ImageView
+            android:id="@+id/follow_btn_img"
+            android:layout_width="@dimen/follow_btn_height"
+            android:layout_height="@dimen/follow_btn_height"
+            android:layout_margin="@dimen/padding_large"
+            android:src="@drawable/ic_add_collection" />
 
-    <TextView
-        android:id="@+id/viewAllTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:padding="@dimen/padding_small"
-        android:text="View All"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/padding_large"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/gray" />
+
+        <TextView
+            android:id="@+id/viewAllTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
+            android:text="View All"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/imageLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/image1"
@@ -52,6 +71,11 @@
             android:adjustViewBounds="true"
             android:src="@drawable/white_image" />
 
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
         <ImageView
             android:id="@+id/image2"
             android:layout_width="0dp"
@@ -59,6 +83,11 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:src="@drawable/white_image" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
 
         <ImageView
             android:id="@+id/image3"
@@ -72,7 +101,7 @@
     <LinearLayout
         android:id="@+id/imageLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/image4"
@@ -82,6 +111,11 @@
             android:adjustViewBounds="true"
             android:src="@drawable/white_image" />
 
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
         <ImageView
             android:id="@+id/image5"
             android:layout_width="0dp"
@@ -89,6 +123,11 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:src="@drawable/white_image" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
 
         <ImageView
             android:id="@+id/image6"

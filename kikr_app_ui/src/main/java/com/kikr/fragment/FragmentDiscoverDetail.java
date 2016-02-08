@@ -82,6 +82,7 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 	private List<Product> productLists = new ArrayList<Product>();
 	boolean isLoadingData = true, isSelectOptionRequired = false, isProductExist = true; 
 	private ScrollView descriptionScrollView;
+	LinearLayout descriptionLayout;
 	private ImageView descriptionArrow;
 	private boolean isDescriptionUp = false;
 	private LinearLayout imageListLayout;
@@ -111,15 +112,23 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		likeCountTextImage = (ImageView) mainView.findViewById(R.id.likeCountTextImage);
 		descriptionArrow= (ImageView) mainView.findViewById(R.id.descriptionArrow);
 		descriptionScrollView= (ScrollView) mainView.findViewById(R.id.descriptionScrollView);
+		descriptionLayout=(LinearLayout)mainView.findViewById(R.id.descriptionLayout);
 		imageListLayout= (LinearLayout) mainView.findViewById(R.id.imageListLayout);
 		imageLayout = (RelativeLayout) mainView.findViewById(R.id.imageLayout);
 		RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,CommonUtility.getDeviceHeight(mContext)-(int)mContext.getResources().getDimension(R.dimen.image_detail_height));
 		imageLayout.setLayoutParams(layoutParams);
-
-		RelativeLayout.LayoutParams layoutParams2 = (RelativeLayout.LayoutParams) descriptionScrollView.getLayoutParams();
-		layoutParams2.setMargins(0, CommonUtility.getDeviceHeight(mContext)-(int)mContext.getResources().getDimension(R.dimen.image_detail_height), 0, 0);
-		descriptionScrollView.setLayoutParams(layoutParams2);
+		RelativeLayout.LayoutParams layoutParams2 = (RelativeLayout.LayoutParams) descriptionLayout.getLayoutParams();
+		layoutParams2.setMargins(0, CommonUtility.getDeviceHeight(mContext) - (int) mContext.getResources().getDimension(R.dimen.image_detail_height), 0, 0);
+		descriptionLayout.setLayoutParams(layoutParams2);
 		descriptionArrow.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_up_gray_arrow));
+		descriptionLayout.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				return true;
+			}
+		});
+
+
 
 		productImageView.setOnTouchListener(new View.OnTouchListener() {
 				@Override
@@ -472,10 +481,15 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		descriptionTextView.setText(getDescription());
 		brandNameTextView.setText(product.getMerchantname());
 		likeCountText.setText(CommonUtility.getInt(product.getLike_info().getLike_count())+"");
-		if(TextUtils.isEmpty(product.getLike_info().getLike_id()))
+		if(TextUtils.isEmpty(product.getLike_info().getLike_id())) {
 			likeCountTextImage.setBackground(mContext.getResources().getDrawable(R.drawable.round_ract_wide));
-		else
-			likeCountTextImage.setBackground(mContext.getResources().getDrawable(R.drawable.round_ract_teal));
+			likeCountTextImage.setImageResource(R.drawable.ic_singleproductspage_like);
+		}else {
+			likeCountTextImage.setBackground(mContext.getResources().getDrawable(R.drawable.round_ract_white));
+			likeCountTextImage.setImageResource(R.drawable.ic_flame_logo);
+
+		}
+
 	}
 
 	private CharSequence getDescription() {
@@ -498,16 +512,20 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 			break;
 		case R.id.descriptionArrow:
 			if (isDescriptionUp) {
+
 				isDescriptionUp=false;
-				RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) descriptionScrollView.getLayoutParams();
+				RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) descriptionLayout.getLayoutParams();
 				layoutParams.setMargins(0,CommonUtility.getDeviceHeight(mContext)-(int)mContext.getResources().getDimension(R.dimen.image_detail_height), 0, 0);
-				descriptionScrollView.setLayoutParams(layoutParams);
+				descriptionLayout.setLayoutParams(layoutParams);
 				descriptionArrow.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_up_gray_arrow));
+				descriptionLayout.setOnTouchListener(null);
 			}else{
 				isDescriptionUp=true;
-				RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) descriptionScrollView.getLayoutParams();
-				layoutParams.setMargins(0, CommonUtility.getDeviceHeight(mContext)-(int)mContext.getResources().getDimension(R.dimen.description_detail_height), 0, 0);
-				descriptionScrollView.setLayoutParams(layoutParams);
+				descriptionLayout.setOnTouchListener(null);
+
+				RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) descriptionLayout.getLayoutParams();
+				layoutParams.setMargins(0, CommonUtility.getDeviceHeight(mContext) - (int) mContext.getResources().getDimension(R.dimen.description_detail_height), 0, 0);
+				descriptionLayout.setLayoutParams(layoutParams);
 				descriptionArrow.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_down_gray_arrow));
 			}
 			break;
@@ -529,10 +547,14 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 					public void updateUi() {
 						try{
 							likeCountText.setText(CommonUtility.getInt(product.getLike_info().getLike_count()) + "");
-							if(TextUtils.isEmpty(product.getLike_info().getLike_id()))
+							if(TextUtils.isEmpty(product.getLike_info().getLike_id())) {
 								likeCountTextImage.setBackground(mContext.getResources().getDrawable(R.drawable.round_ract_wide));
-							else
-								likeCountTextImage.setBackground(mContext.getResources().getDrawable(R.drawable.round_ract_teal));
+								likeCountTextImage.setImageResource(R.drawable.ic_singleproductspage_like);
+							}
+							else {
+								likeCountTextImage.setBackground(mContext.getResources().getDrawable(R.drawable.round_ract_white));
+								likeCountTextImage.setImageResource(R.drawable.ic_flame_logo);
+							}
 							if(uiUpdate!=null){
 								uiUpdate.updateUi();
 							}

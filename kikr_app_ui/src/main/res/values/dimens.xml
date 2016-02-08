@@ -163,4 +163,14 @@
 
     <dimen name="image_detail_height">170dp</dimen>
     <dimen name="description_detail_height">350dp</dimen>
+
+    <dimen name="app_width">500dp</dimen>
+    <dimen name="app_height">200dp</dimen>
+
+
+    <dimen name="app_margin">0dp</dimen>
+    <dimen name="grid_icon_width">46dp</dimen>
+    <dimen name="grid_icon_height">46dp</dimen>
+
+    <dimen name="textbox_height_small">16dp</dimen>
 </resources>

@@ -7,7 +7,7 @@
     <string name="loading">LOADING...</string>
     <string name="facebook_app_id">813043735405822</string>
     <string name="no_internet"><![CDATA[No internet connection<br> <u>Try again</u>]]></string>
-    <string name="no_data_found">Nothing Found</string>
+    <string name="no_data_found">No Collections Yet </string>
 
     <!-- landing screen strings -->
     <string name="sign_up_for_free">Sign up for free!</string>

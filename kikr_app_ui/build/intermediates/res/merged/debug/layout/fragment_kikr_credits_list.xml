@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/list_background"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include
         android:id="@+id/itemNotFound"
@@ -19,22 +19,32 @@
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:listSelector="@android:color/transparent"
-        android:scrollbars="none" >
-    </ListView>
+        android:scrollbars="none"/>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
         android:background="@color/app_text_color" />
 
+    <TextView
+        android:id="@+id/pendingCredits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="@dimen/padding_large"
+        android:text="Pending Credits : 0"
+        android:textColor="@color/btn_green"
+        />
+
     <LinearLayout
         android:id="@+id/profile_btn_layout"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:background="@color/white"
         android:orientation="horizontal"
-        android:paddingLeft="@dimen/padding_large" >
+        android:paddingLeft="@dimen/padding_large">
 
         <TextView
             android:id="@+id/total_payout_text"
@@ -52,7 +62,7 @@
             android:layout_height="@dimen/follow_btn_height"
             android:layout_marginRight="@dimen/margin_large"
             android:gravity="center_vertical"
-            android:text="Kikr credit details"
+            android:text="Kikr Credit Details"
             android:textColor="@color/btn_green"
             android:textSize="@dimen/very_small_text_size" />
     </LinearLayout>

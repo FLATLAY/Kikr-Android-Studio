@@ -606,6 +606,7 @@
                 <View
                     style="@style/cartViewStyle"
                     android:layout_marginTop="@dimen/padding_large" />
+                <include layout="@layout/billing_layout"/>
 
                 <Button
                     android:id="@+id/doneBtn"

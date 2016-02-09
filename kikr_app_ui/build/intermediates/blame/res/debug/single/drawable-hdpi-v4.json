@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mens1.jpg",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\mens1.jpg"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_share_selected.png",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_share_selected.png"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mens1.jpg",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\mens1.jpg"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\kikrhighlight_small.png",
@@ -64,6 +64,10 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\home2.jpg"
     },
     {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\line_shadow.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\line_shadow.png"
+    },
+    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\dum_refresh.png",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\dum_refresh.png"
     },
@@ -104,12 +108,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_circle.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_menu.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_menu.png"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\wallet_logo.png",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\wallet_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_menu.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_menu.png"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\unisex1.jpg",
@@ -244,12 +248,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\bg_login.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-hdpi\\common_plus_signin_btn_icon_light_pressed.9.png"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_green_up_arrow.png",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_green_up_arrow.png"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-hdpi\\common_plus_signin_btn_icon_light_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\womens1.jpg",
@@ -432,12 +436,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_next_gray_arrow.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_discover_btn_checkout.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_discover_btn_checkout.png"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\sports3.jpg",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\sports3.jpg"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_discover_btn_checkout.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_discover_btn_checkout.png"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_check_following.png",
@@ -620,12 +624,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\womens2.jpg"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_signal.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_signal.png"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_signup.png",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\bg_signup.png"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_signal.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_signal.png"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\shadow.png",
@@ -652,12 +656,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_flame_logo.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tick_unselected.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\tick_unselected.png"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\girlsarrow.png",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\girlsarrow.png"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tick_unselected.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\tick_unselected.png"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\common_plus_signin_btn_icon_light_focused.9.png",
@@ -752,12 +756,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-hdpi\\common_plus_signin_btn_icon_dark_disabled.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_add_collection_selected.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_add_collection_selected.png"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_search_api_mtrl_alpha.png",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-hdpi\\abc_ic_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_add_collection_selected.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\ic_add_collection_selected.png"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\com_facebook_tooltip_blue_topnub.png",
@@ -800,12 +804,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-hdpi\\common_plus_signin_btn_text_dark_pressed.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-hdpi\\abc_textfield_activated_mtrl_alpha.9.png"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\accessories3.jpg",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-hdpi\\accessories3.jpg"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-hdpi\\abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\common_plus_signin_btn_icon_dark_normal.9.png",

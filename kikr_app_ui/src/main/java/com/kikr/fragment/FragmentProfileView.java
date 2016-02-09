@@ -103,7 +103,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     private InspirationGridAdapter inspirationAdapter;
     private TextView loadingTextView;
     private View loaderView;
-    private Button photos_button, btnCreateCollection,btnUpload;
+    private Button photos_button, btnCreateCollection, btnUpload;
     RelativeLayout photo_not_found;
 
     public FragmentProfileView() {
@@ -169,7 +169,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
         loaderView = View.inflate(mContext, R.layout.footer, null);
         btnCreateCollection = (Button) mainView.findViewById(R.id.btnCreateCollection);
-        btnUpload=(Button)mainView.findViewById(R.id.btnUpload);
+        btnUpload = (Button) mainView.findViewById(R.id.btnUpload);
     }
 
     @Override
@@ -298,6 +298,14 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 noCollectionText.setVisibility(View.GONE);
 
                 if (product_list.size() == 0) {
+                    if (user_id.equals(UserPreference.getInstance().getUserID())) {
+
+                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have yet to upload any post, Create one now !");
+                        ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.VISIBLE);
+                    } else {
+                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " hasn't uploaded any photos.");
+                        ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
+                    }
                     photo_not_found.setVisibility(View.VISIBLE);
                     hideDataNotFound();
                 } else {
@@ -637,7 +645,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         if (status.equals("yes") &&
                 collectionLists.size() == 0
                 && user_id.equals(UserPreference.getInstance().getUserID())) {
-           // hideDataNotFound();
+            // hideDataNotFound();
             noCollectionText.setVisibility(View.VISIBLE);
 
         } else if (collectionLists.size() == 0)

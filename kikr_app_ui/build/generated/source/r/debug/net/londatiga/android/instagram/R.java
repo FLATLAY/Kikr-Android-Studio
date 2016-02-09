@@ -16,12 +16,12 @@ public final class R {
 		public static final int icon = 0x7f02019f;
 	}
 	public static final class id {
-		public static final int action_settings = 0x7f0e03a7;
-		public static final int btn_connect = 0x7f0e00dc;
+		public static final int action_settings = 0x7f0e03ae;
+		public static final int btn_connect = 0x7f0e00e2;
 		public static final int textView1 = 0x7f0e008a;
 	}
 	public static final class layout {
-		public static final int activity_main = 0x7f030033;
+		public static final int activity_main = 0x7f030034;
 	}
 	public static final class menu {
 		public static final int main = 0x7f0f0000;

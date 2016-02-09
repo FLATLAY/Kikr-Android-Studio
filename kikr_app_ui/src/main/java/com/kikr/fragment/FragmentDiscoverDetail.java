@@ -82,11 +82,12 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 	private List<Product> productLists = new ArrayList<Product>();
 	boolean isLoadingData = true, isSelectOptionRequired = false, isProductExist = true; 
 	private ScrollView descriptionScrollView;
-	LinearLayout descriptionLayout;
+	RelativeLayout descriptionLayout;
 	private ImageView descriptionArrow;
 	private boolean isDescriptionUp = false;
 	private LinearLayout imageListLayout;
 	private RelativeLayout imageLayout;
+	LinearLayout descriptionContainer;
 
 	public FragmentDiscoverDetail(UiUpdate uiUpdate) {
 		this.uiUpdate=uiUpdate;
@@ -94,12 +95,13 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-		mainView = inflater.inflate(R.layout.activity_discover_detail, null);
+		mainView = inflater.inflate(R.layout.activity_discover_details, null);
 		return mainView;
 	}
 
 	@Override
 	public void initUI(Bundle savedInstanceState) {
+		descriptionContainer=(LinearLayout)mainView.findViewById(R.id.descriptionContainer);
 		mCheckoutButton = (Button) mainView.findViewById(R.id.checkoutButton);
 		productImageView = (ViewPager) mainView.findViewById(R.id.productImageView);
 		productTitleTextView = (TextView) mainView.findViewById(R.id.productTitleTextView);
@@ -112,15 +114,15 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		likeCountTextImage = (ImageView) mainView.findViewById(R.id.likeCountTextImage);
 		descriptionArrow= (ImageView) mainView.findViewById(R.id.descriptionArrow);
 		descriptionScrollView= (ScrollView) mainView.findViewById(R.id.descriptionScrollView);
-		descriptionLayout=(LinearLayout)mainView.findViewById(R.id.descriptionLayout);
+		descriptionLayout=(RelativeLayout)mainView.findViewById(R.id.descriptionLayout);
 		imageListLayout= (LinearLayout) mainView.findViewById(R.id.imageListLayout);
 		imageLayout = (RelativeLayout) mainView.findViewById(R.id.imageLayout);
 		RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,CommonUtility.getDeviceHeight(mContext)-(int)mContext.getResources().getDimension(R.dimen.image_detail_height));
 		imageLayout.setLayoutParams(layoutParams);
-		RelativeLayout.LayoutParams layoutParams2 = (RelativeLayout.LayoutParams) descriptionLayout.getLayoutParams();
-		layoutParams2.setMargins(0, CommonUtility.getDeviceHeight(mContext) - (int) mContext.getResources().getDimension(R.dimen.image_detail_height), 0, 0);
-		descriptionLayout.setLayoutParams(layoutParams2);
-		descriptionArrow.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_up_gray_arrow));
+//		RelativeLayout.LayoutParams layoutParams2 = (RelativeLayout.LayoutParams) descriptionLayout.getLayoutParams();
+//		layoutParams2.setMargins(0, CommonUtility.getDeviceHeight(mContext) - (int) mContext.getResources().getDimension(R.dimen.image_detail_height), 0, 0);
+//		descriptionLayout.setLayoutParams(layoutParams2);
+//		descriptionArrow.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_up_gray_arrow));
 		descriptionLayout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -515,9 +517,11 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 
 				isDescriptionUp=false;
 				RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) descriptionLayout.getLayoutParams();
-				layoutParams.setMargins(0,CommonUtility.getDeviceHeight(mContext)-(int)mContext.getResources().getDimension(R.dimen.image_detail_height), 0, 0);
+				layoutParams.setMargins(0, CommonUtility.getDeviceHeight(mContext) - (int) mContext.getResources().getDimension(R.dimen.image_detail_height), 0, 0);
 				descriptionLayout.setLayoutParams(layoutParams);
 				descriptionArrow.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_up_gray_arrow));
+				descriptionContainer.setVisibility(View.GONE);
+
 				descriptionLayout.setOnTouchListener(null);
 			}else{
 				isDescriptionUp=true;
@@ -527,6 +531,8 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 				layoutParams.setMargins(0, CommonUtility.getDeviceHeight(mContext) - (int) mContext.getResources().getDimension(R.dimen.description_detail_height), 0, 0);
 				descriptionLayout.setLayoutParams(layoutParams);
 				descriptionArrow.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_down_gray_arrow));
+
+				descriptionContainer.setVisibility(View.VISIBLE);
 			}
 			break;
 		case R.id.productImageView:

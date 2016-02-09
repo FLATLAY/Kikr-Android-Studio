@@ -20,12 +20,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\dialog_logout.xml"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_size_list.xml",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\adapter_size_list.xml"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_search_sub_categories.xml",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\fragment_search_sub_categories.xml"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_size_list.xml",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\adapter_size_list.xml"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_interest_store_list.xml",
@@ -56,12 +56,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\activity_change_wallet_pin.xml"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_collection_product.xml",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\adapter_collection_product.xml"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_follow_brands.xml",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\activity_follow_brands.xml"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_collection_product.xml",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\adapter_collection_product.xml"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_kikr_credits_list.xml",
@@ -72,12 +72,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\fragment_kikr_credits.xml"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_beacon_message.xml",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\activity_beacon_message.xml"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\order_group_item.xml",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\order_group_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_beacon_message.xml",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\activity_beacon_message.xml"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_activity_collection_detail.xml",
@@ -156,12 +156,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\activity_follow_store.xml"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\layout\\abc_action_bar_title_item.xml"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\adapter_collection_list_item.xml",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\adapter_collection_list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pin_auth.xml",
@@ -232,12 +232,12 @@
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\dialog_welcome.xml"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_section.xml",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_section.xml"
-    },
-    {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_reset_password.xml",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\activity_reset_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_section.xml",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\fragment_inspiration_section.xml"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
@@ -822,6 +822,10 @@
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\helpscreen_get_inspired.xml",
         "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\helpscreen_get_inspired.xml"
+    },
+    {
+        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\activity_discover_details.xml",
+        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\layout\\activity_discover_details.xml"
     },
     {
         "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_inspiration_detail.xml",

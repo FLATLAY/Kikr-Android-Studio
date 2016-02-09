@@ -30,14 +30,14 @@ public final class R {
 		public static final int crop__tile = 0x7f0200be;
 	}
 	public static final class id {
-		public static final int btn_cancel = 0x7f0e01f4;
-		public static final int btn_done = 0x7f0e01f5;
-		public static final int crop_image = 0x7f0e01f3;
-		public static final int done_cancel_bar = 0x7f0e01f2;
+		public static final int btn_cancel = 0x7f0e01fa;
+		public static final int btn_done = 0x7f0e01fb;
+		public static final int crop_image = 0x7f0e01f9;
+		public static final int done_cancel_bar = 0x7f0e01f8;
 	}
 	public static final class layout {
-		public static final int crop__activity_crop = 0x7f030084;
-		public static final int crop__layout_done_cancel = 0x7f030085;
+		public static final int crop__activity_crop = 0x7f030085;
+		public static final int crop__layout_done_cancel = 0x7f030086;
 	}
 	public static final class string {
 		public static final int crop__cancel = 0x7f0700de;

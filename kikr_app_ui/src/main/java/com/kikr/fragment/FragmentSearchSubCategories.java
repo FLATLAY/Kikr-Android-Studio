@@ -66,7 +66,7 @@ public class FragmentSearchSubCategories extends BaseFragment implements OnClick
     private RelativeLayout check50Layout, check100Layout, check200Layout, check500Layout, check750Layout, check750MoreLayout;
     private TextView txtMen, txtWomen, txtAccessories, txtOnSale, tvCategoryName;
     private TextView txtCheck50, txtCheck100, txtCheck200, txtCheck500, txtCheck750, txtCheck750More;
-
+    TextView item_not_found;
 
     private String filterUserID;
     private String filterType;
@@ -100,6 +100,7 @@ public class FragmentSearchSubCategories extends BaseFragment implements OnClick
     @Override
     public void initUI(Bundle savedInstanceState) {
         initGrid();
+        item_not_found=(TextView)mainView.findViewById(R.id.itemNotFound);
         searchResultList = (HeaderGridView) mainView.findViewById(R.id.productBasedOnBrandList);
         imgButtonFilter = (ImageButton) mainView.findViewById(R.id.imgButtonFilter);
         transparentOverlay = (RelativeLayout) mainView.findViewById(R.id.transparentOverlay);
@@ -183,7 +184,7 @@ public class FragmentSearchSubCategories extends BaseFragment implements OnClick
         catImage = (ImageView) mainView.findViewById(R.id.category_image);
         tvCategoryName = (TextView) mainView.findViewById(R.id.tvCategoryName);
         catImage.setImageResource(categoryImage);
-        tvCategoryName.setText(searchString + "-> Accessories");
+        tvCategoryName.setText(searchString + " > Accessories");
     }
 
     @Override
@@ -563,7 +564,7 @@ public class FragmentSearchSubCategories extends BaseFragment implements OnClick
                     mProgressBarDialog.dismiss();
                 else
                     hideFotter();
-                hideDataNotFound();
+               item_not_found.setVisibility(View.GONE);
                 Syso.info("In handleOnSuccess>>" + object);
                 isLoading = !isLoading;
                 SearchRes searchRes = (SearchRes) object;
@@ -572,9 +573,9 @@ public class FragmentSearchSubCategories extends BaseFragment implements OnClick
                     isLoading = true;
                 }
                 if (data2.size() == 0 && isFirstTime)
-                    showDataNotFound();
+                    item_not_found.setVisibility(View.VISIBLE);
                 else if (data2.size() > 0 && isFirstTime) {
-                    hideDataNotFound();
+                    item_not_found.setVisibility(View.GONE);
                     data = data2;
                     searchAdapter = new SearchAdapter(mContext, data);
                     searchResultList.setAdapter(searchAdapter);
@@ -649,7 +650,7 @@ public class FragmentSearchSubCategories extends BaseFragment implements OnClick
                 }
                 System.out.println("1234 data size " + data.size());
                 if (data.size() == 0 && isFirstTime) {
-                    showDataNotFound();
+                    item_not_found.setVisibility(View.VISIBLE);
                 } else if (data.size() > 0 && isFirstTime) {
                     searchAdapter = new SearchAdapter(mContext, data);
                     searchResultList.setAdapter(searchAdapter);

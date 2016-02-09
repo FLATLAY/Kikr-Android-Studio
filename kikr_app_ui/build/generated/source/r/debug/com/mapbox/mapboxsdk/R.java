@@ -23,15 +23,15 @@ public final class R {
 		public static final int clusteri = 0x7f02005c;
 		public static final int defpin = 0x7f0200bf;
 		public static final int direction_arrow = 0x7f0200c0;
-		public static final int location_marker = 0x7f0201ad;
+		public static final int location_marker = 0x7f0201ae;
 	}
 	public static final class id {
-		public static final int tooltip_description = 0x7f0e0391;
-		public static final int tooltip_subdescription = 0x7f0e0392;
-		public static final int tooltip_title = 0x7f0e0390;
+		public static final int tooltip_description = 0x7f0e0398;
+		public static final int tooltip_subdescription = 0x7f0e0399;
+		public static final int tooltip_title = 0x7f0e0397;
 	}
 	public static final class layout {
-		public static final int tooltip = 0x7f0300f3;
+		public static final int tooltip = 0x7f0300f4;
 	}
 	public static final class string {
 		public static final int toolTipAddress = 0x7f0701a3;

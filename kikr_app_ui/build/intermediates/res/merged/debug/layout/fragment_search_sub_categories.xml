@@ -17,24 +17,28 @@
 -->
 
 
-    <include
-        android:id="@+id/itemNotFound"
-        layout="@layout/layout_item_not_found"
-        android:visibility="gone" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/itemNotFound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+
+            android:text="Nothing found . . ."
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/rel_layout"
             android:layout_width="@dimen/app_width"
             android:layout_height="@dimen/app_height"
+            android:background="@color/dark_green"
             android:paddingBottom="5dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:paddingTop="5dp"
-            android:background="@color/dark_green">
+            android:paddingTop="5dp">
 
             <LinearLayout
                 android:id="@+id/llheading"
@@ -55,8 +59,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jewelry->Accessories"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KikrApp.iml" filepath="$PROJECT_DIR$/KikrApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kikr Github.iml" filepath="$PROJECT_DIR$/Kikr Github.iml" />
       <module fileurl="file://$PROJECT_DIR$/instagram_library/instagram_library.iml" filepath="$PROJECT_DIR$/instagram_library/instagram_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/kikr_FacebookSDK/kikr_FacebookSDK.iml" filepath="$PROJECT_DIR$/kikr_FacebookSDK/kikr_FacebookSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/kikr_app_services/kikr_app_services.iml" filepath="$PROJECT_DIR$/kikr_app_services/kikr_app_services.iml" />

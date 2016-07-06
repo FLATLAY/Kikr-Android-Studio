@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -94,7 +95,7 @@ public class PictureUtils {
 				//} else if (pos == 1) {
 			//		PictureUtils.openCamera(context);
 				} else if(pos==1){
-					PictureUtils.openGallery(context);
+					PictureUtils.openGallery(editProfileActivity);
 				}else if(pos==2){
 					editProfileActivity.gotoInstgramList();
 				}
@@ -158,17 +159,19 @@ public class PictureUtils {
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 	    //create resized image and display
 		Log.e("image size bye aray","width: " + bitmap.getWidth() + "height: " + bitmap.getHeight());
-		int newwidth = (int) (bitmap.getWidth() * 0.20);
-		int newheight = (int) (bitmap.getHeight() * 0.20);
+//		int newwidth = (int) (bitmap.getWidth() * 0.20);
+//		int newheight = (int) (bitmap.getHeight() * 0.20);
+		int newwidth=(int)bitmap.getWidth();
+		int newheight=(int)bitmap.getHeight();
 		
-		if(newwidth > 600 || newheight > 600) {
-			newwidth = (int) (bitmap.getWidth() * 0.10);
-			newheight = (int) (bitmap.getHeight() * 0.10);
+		if(newwidth > 400 || newheight > 400) {
+			newwidth = (int) (bitmap.getWidth() * 0.70);
+			newheight = (int) (bitmap.getHeight() * 0.70);
 		}
 		
 		Log.e("image size new byte aray","width: " + newwidth + "height: " + newheight);
 	    Bitmap resizedImage = Bitmap.createScaledBitmap(bitmap, newwidth , newheight, true);
-	    resizedImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
+	    resizedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
 		byte[] byteArray = stream.toByteArray();
 		return byteArray;
 	}
@@ -183,8 +186,16 @@ public class PictureUtils {
 	    Bitmap resizedImage = Bitmap.createScaledBitmap(bitmap,  bitmap.getWidth() , bitmap.getHeight(), true);
 	    resizedImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
 		byte[] byteArray = stream.toByteArray();
+		try {
+			stream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return byteArray;
 	}
+
+
+
 
 	
 	public static Bitmap createScaledImage(File mFile) {

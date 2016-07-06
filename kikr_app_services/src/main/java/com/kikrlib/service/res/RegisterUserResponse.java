@@ -10,6 +10,7 @@ public class RegisterUserResponse {
 	String profile_pic;
 	String background_pic;
 	String cart_id;
+	String token;
 
 	
 	/**
@@ -39,6 +40,24 @@ public class RegisterUserResponse {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
+	/**
+	 * @param token the user_id to set
+	 */
+	public void settoken(String token) {
+		this.token = token;
+	}
+
+	/**
+	 * @return the user_id
+	 */
+	public String gettoken() {
+		return token;
+	}
+
+
+
+
+
 
 	/**
 	 * @return the username

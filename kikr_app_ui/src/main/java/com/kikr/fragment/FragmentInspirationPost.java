@@ -159,7 +159,7 @@ public class FragmentInspirationPost extends BaseFragment implements
 							AlertUtils.showToast(mContext,
 									inspirationRes.getMessage());
 //							((HomeActivity) mContext).loadFragment(new FragmentInspirationSection());
-							((HomeActivity) mContext).loadFragment(new FragmentDiscoverNew(true));
+							((HomeActivity) mContext).loadFragment(new FragmentDiscoverNew(2,false));
 						}
 					}
 

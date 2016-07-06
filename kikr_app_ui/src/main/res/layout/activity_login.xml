@@ -53,7 +53,7 @@
             android:id="@+id/forgotPasswordTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/forgot_password" 
+            android:text="@string/forgot_password"
             android:textSize="@dimen/medium_text_size"
             android:textColor="@color/white"
             android:paddingTop="@dimen/login_forgot_pass_padding"

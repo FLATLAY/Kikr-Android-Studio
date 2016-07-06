@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -22,7 +20,6 @@ import com.kikr.activity.HomeActivity;
 import com.kikr.fragment.FragmentInterestSection;
 import com.kikr.fragment.FragmentProductBasedOnType;
 import com.kikr.fragment.FragmentProfileView;
-import com.kikr.ui.RoundImageView;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.InterestSection;
 

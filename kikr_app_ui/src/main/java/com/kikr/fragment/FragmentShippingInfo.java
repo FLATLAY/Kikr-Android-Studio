@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import com.kikr.BaseFragment;
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
+import com.kikr.dialog.AddressVerificationDialog;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.CommonUtility;
 import com.kikr.utility.ValidZipcode;
@@ -44,7 +45,7 @@ public class FragmentShippingInfo extends BaseFragment implements
 	private BaseFragment baseFragment;
 	private String title;
 	private String apartment;
-
+String address_line1="";
 	public FragmentShippingInfo(Address address, BaseFragment baseFragment) {
 		this.address = address;
 		this.baseFragment = baseFragment;
@@ -183,6 +184,7 @@ public class FragmentShippingInfo extends BaseFragment implements
 			telephoneEditText.requestFocus();
 			AlertUtils.showToast(mContext, R.string.alert_telephone_blank);
 		}
+
 		if (isValid && ((HomeActivity) mContext).checkInternet()) {
 			CommonUtility.hideSoftKeyboard(mContext);
 			validateAddressviaLOB();
@@ -225,14 +227,17 @@ public class FragmentShippingInfo extends BaseFragment implements
 					try {
 						JSONObject addressRes = new JSONObject(object.toString());
 						Log.e("addressre", addressRes.toString());
-						if(addressRes.toString().contains("The address you entered was found but more information is needed (such as an apartment, suite, or box number) to match to a specific address")) {
-							AlertUtils.showToast(mContext, "More information is needed(such as an apartment, suite, or box number)");
-						}
-						else if (addressRes.has("address")) {
+						if (addressRes.toString().contains("The address you entered was found but more information is needed (such as an apartment, suite, or box number) to match to a specific address")) {
+							AddressVerificationDialog verificationDialog = new AddressVerificationDialog(mContext, "More information is needed(such as an apartment, suite, or box number)");
+							verificationDialog.show();
+							//AlertUtils.showToast(mContext, "More information is needed(such as an apartment, suite, or box number)");
+						} else if (addressRes.has("address")) {
 							sendDataToServer();
-						}else if(addressRes.has("error")){
+						} else if (addressRes.has("error")) {
 							String msg = addressRes.getJSONObject("error").getString("message");
-							AlertUtils.showToast(mContext, msg);
+							AddressVerificationDialog verificationDialog = new AddressVerificationDialog(mContext, msg);
+							verificationDialog.show();
+							//AlertUtils.showToast(mContext, msg);
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -245,7 +250,9 @@ public class FragmentShippingInfo extends BaseFragment implements
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
 				mProgressBarDialog.dismiss();
-				AlertUtils.showToast(mContext, "Address not found or seems to be invalid");	
+				AddressVerificationDialog verificationDialog = new AddressVerificationDialog(mContext, "Address not found or seems to be invalid");
+				verificationDialog.show();
+				//AlertUtils.showToast(mContext, "Address not found or seems to be invalid");
 				}
 		});
 		addressApi.validateAddress(streetname,apartment, state, city, zipcode, countryForLob);

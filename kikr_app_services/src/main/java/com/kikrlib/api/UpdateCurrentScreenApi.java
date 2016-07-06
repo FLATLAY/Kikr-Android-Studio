@@ -69,6 +69,11 @@ public class UpdateCurrentScreenApi extends AbsService {
 	}
 
 	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
+	}
+
+	@Override
 	protected void processResponse(String response) {
 		Syso.info("In RegisterUserApi processResponse>>" + response);
 		try {

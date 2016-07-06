@@ -10,37 +10,131 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/uploadphoto"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:textSize="23dp"
+            android:layout_marginTop="10dp"
+
+            android:textColor="#58E3CD"
+            android:text="Upload Photo"
+            />
 
         <ImageView
             android:id="@+id/homeImageView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:contentDescription="@null"
-            android:src="@drawable/ic_logo_header" />
+            android:visibility="visible"
+            android:src="@drawable/flatlay_header_img" />
+
     </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/crossarrow"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="25dp"
+        android:visibility="gone"
+        android:src="@drawable/crossarrow"
+        />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginLeft="50dp"
+        android:padding="10dp"
+        android:layout_marginTop="3dp"
+
+        android:minHeight="40dp"
+        android:id="@+id/mstatus">
+    </Spinner>
+
+
+    <TextView
+        android:id="@+id/gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="Gallery"
+        android:textColor="@color/darkgray"
+        android:textSize="@dimen/xx_large_text_size"
+        android:layout_marginLeft="50dp"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/camera"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="Take Photo"
+        android:layout_marginLeft="50dp"
+        android:textColor="@color/darkgray"
+        android:textSize="@dimen/xx_large_text_size"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/instagram"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="Instagram"
+        android:layout_marginLeft="50dp"
+        android:textColor="@color/darkgray"
+        android:textSize="@dimen/xx_large_text_size"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/leftTextView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
+        android:visibility="gone"
         android:layout_alignParentTop="true"
         android:gravity="center_vertical"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:text="Back"
-        android:textColor="@color/btn_green"
+        android:textColor="#58E3CD"
         android:textSize="@dimen/xx_large_text_size"
-        android:visibility="gone" />
+        />
 
-    <ImageView
-        android:id="@+id/menuLeftImageView"
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:contentDescription="@null"
-        android:padding="10dp"
-        android:src="@drawable/ic_menu"
-        android:visibility="visible" />
+        android:id="@+id/uploadphoto1"
+        android:layout_marginLeft="10dp"
+        android:textSize="23dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#58E3CD"
+        android:text="Back"
+        android:visibility="gone"
+        />
+
+
 
     <ImageView
         android:id="@+id/menuSearchImageView"
@@ -50,7 +144,7 @@
         android:layout_toLeftOf="@+id/menuRightImageView"
         android:contentDescription="@null"
         android:src="@drawable/ic_search"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/menuRightImageView"
@@ -58,21 +152,49 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:paddingRight="5dp"
         android:contentDescription="@null"
+        android:visibility="gone"
         android:src="@drawable/ic_btn_discover_cart"
-        android:visibility="visible" />
-    
+        />
+    <ImageView
+        android:id="@+id/photouploadnext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@null"
+        android:visibility="gone"
+        android:src="@drawable/forwordupload"
+        />
+
+    <ImageView
+        android:id="@+id/postUploadWithTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@null"
+        android:visibility="gone"
+        android:src="@drawable/check_post_upload"
+        />
+
     <TextView
         android:id="@+id/txtCartCount"
         android:layout_width="wrap_content"
-	    android:layout_height="wrap_content" 
-	    android:text="0"
-	    android:textColor="@color/white"
-	    android:layout_alignParentRight="true"
-	    android:textSize="13sp"
-	    android:textStyle="bold"
-	    android:visibility="invisible"
-	    android:background="@drawable/circle_icon"/>
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/white"
+        android:layout_alignParentRight="true"
+        android:textSize="13sp"
+        android:layout_marginRight="5dp"
+
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:background="@drawable/circle_icon"/>
 
     <TextView
         android:id="@+id/menuRightText"
@@ -85,7 +207,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="Done"
-        android:textColor="@color/btn_green"
+        android:textColor="#58E3CD"
         android:textSize="@dimen/xx_large_text_size"
         android:visibility="gone" />
 

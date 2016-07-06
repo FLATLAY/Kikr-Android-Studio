@@ -1,19 +1,10 @@
 package com.kikrlib.api;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.json.JSONArray;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.kikrlib.bean.TaggedItem;
 import com.kikrlib.bean.TaggedProducts;
+import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.AbsService;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.res.InspirationRes;
@@ -21,6 +12,16 @@ import com.kikrlib.utils.Constants.WebConstants;
 import com.kikrlib.utils.JsonUtils;
 import com.kikrlib.utils.StringUtils;
 import com.kikrlib.utils.Syso;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.json.JSONArray;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class InspirationSectionApi extends AbsService {
 
@@ -43,10 +44,10 @@ public class InspirationSectionApi extends AbsService {
 		builder.addTextBody("item_type",taggedItem.getSelectedItemType());
 		builder.addTextBody("item_name",taggedItem.getSelectedItemName());
 		builder.addTextBody("item_id",taggedItem.getSelectedItem());
-		builder.addTextBody("item_xy",taggedItem.getSelectedItemXY());
-		builder.addTextBody("product_id",taggedProducts.getSelectedProductsId());
-		builder.addTextBody("product_xy",taggedProducts.getSelectedProductsXY());
-		builder.addTextBody("product_name",taggedProducts.getSelectedProducts());
+		builder.addTextBody("item_xy","0,0");
+		builder.addTextBody("product_id",taggedItem.getSelectedItem());
+		builder.addTextBody("product_xy","");
+		builder.addTextBody("product_name",taggedItem.getSelectedItemName());
 		builder.addTextBody("is_image",is_image);
 		builder.addTextBody("image_width",image_width);
 		builder.addTextBody("image_height",image_height);
@@ -137,6 +138,11 @@ public class InspirationSectionApi extends AbsService {
 		Map[] maps = new Map[] { comment };
 		Gson gson = new Gson();
 		requestValue = gson.toJson(comment);
+	}
+
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
 	}
 
 	@Override

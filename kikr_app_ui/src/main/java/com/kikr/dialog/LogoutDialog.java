@@ -1,8 +1,5 @@
 package com.kikr.dialog;
 
-import io.branch.referral.Branch;
-import net.londatiga.android.instagram.Instagram;
-import net.londatiga.android.instagram.InstagramSession;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
@@ -22,6 +19,11 @@ import com.kikrlib.db.UserPreference;
 import com.kikrlib.db.dao.FavoriteDealsDAO;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
+
+import net.londatiga.android.instagram.Instagram;
+import net.londatiga.android.instagram.InstagramSession;
+
+import io.branch.referral.Branch;
 
 public class LogoutDialog extends Dialog{
 	private TextView cancelTextView,okTextView;
@@ -69,7 +71,7 @@ public class LogoutDialog extends Dialog{
 					SessionStore.resetTwitterLogin(mContext);
 					FavoriteDealsDAO dao = new FavoriteDealsDAO(DatabaseHelper.getDatabase());
 					dao.delete();
-					
+
 					Instagram mInstagram  = new Instagram(mContext, AppConstants.INSTAGRAM_CLIENT_ID, AppConstants.INSTAGRAM_CLIENT_SECRET, AppConstants.INSTAGRAM_REDIRECT_URI);
 					InstagramSession mInstagramSession	= mInstagram.getSession();
 					if(mInstagramSession.isActive())
@@ -79,7 +81,7 @@ public class LogoutDialog extends Dialog{
 			}
 		});
 	}
-	
+
 	private void logoutUser() {
 		LogoutApi logoutApi = new LogoutApi(new ServiceCallback() {
 			

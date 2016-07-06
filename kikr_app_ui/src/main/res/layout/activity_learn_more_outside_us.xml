@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/btn_green">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,6 +21,7 @@
                 android:layout_marginTop="@dimen/margin_xxxlarge"
                 android:gravity="center"
                 android:lineSpacingExtra="3dp"
+                android:textColor="@color/credittextcolor"
                 android:text="@string/kikr_learn_more_desc"
                 android:textSize="@dimen/x_large_text_size" />
 
@@ -33,7 +35,7 @@
                 android:layout_marginTop="@dimen/margin_xlarge"
                 android:gravity="center"
                 android:text="HAPPY SHOPPING"
-                android:textColor="#777"
+              android:textColor="@color/white"
                 android:textSize="@dimen/xxx_large_text_size"
                 android:textStyle="bold" />
 

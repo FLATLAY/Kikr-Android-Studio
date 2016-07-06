@@ -21,7 +21,7 @@ public class Product implements Serializable {
 	String discounttype;
 	String saleprice;
 	String retailprice;
-	String brand;
+	//String brand;
 	String shippingcost;
 	String keywords;
 	String manufacturename;
@@ -602,17 +602,17 @@ public class Product implements Serializable {
 	/**
 	 * @return the brand
 	 */
-	public String getBrand() {
-		return brand;
-	}
-
-	/**
-	 * @param brand
-	 *            the brand to set
-	 */
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
+//	public String getBrand() {
+//		return brand;
+//	}
+//
+//	/**
+//	 * @param brand
+//	 *            the brand to set
+//	 */
+//	public void setBrand(String brand) {
+//		this.brand = brand;
+//	}
 
 	/**
 	 * @return the shippingcost

@@ -15,7 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.kikr.R;
-import com.kikr.ui.RoundImageView;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.BrandList;
 
@@ -53,7 +52,7 @@ public class FollowBrandsAdapter extends BaseAdapter{
 	public View getView(final int position, View convertView, ViewGroup arg2) {
 		final ViewHolder viewHolder;
 		if(convertView==null){
-			convertView=inflater.inflate(R.layout.adapter_follow_brands, null);
+			convertView=inflater.inflate(R.layout.adapter_follow_brands_customize, null);
 			viewHolder = new ViewHolder();
 			viewHolder.searchImageView=(ImageView) convertView.findViewById(R.id.searchImageView);
 			viewHolder.progressBar_follow_brand=(ProgressBar) convertView.findViewById(R.id.progressBar_follow_brand);

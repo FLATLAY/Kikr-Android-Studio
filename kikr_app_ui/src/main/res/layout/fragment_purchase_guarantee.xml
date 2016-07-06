@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+    android:background="@color/btn_green"
         android:layout_height="wrap_content" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/margin_xlarge"
+            android:padding="@dimen/margin_credit"
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 
@@ -16,66 +17,75 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_xlarge"
                 android:gravity="center"
-                android:text="The Kikr Purchase Guarantee"
-                android:textSize="@dimen/x_large_text_size"
+                android:textColor="@color/white"
+                android:text="the flatlay purchase guarantee"
+                android:textSize="@dimen/xx_large_text_size"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginTop="@dimen/edittext_padding"
+                android:textColor="@color/credittextcolor"
                 android:gravity="center"
                 android:text="@string/purchase_guarantee_line1"
-                android:textSize="@dimen/medium_text_size" />
+                android:textSize="@dimen/large_text_size" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_large"
+                android:textColor="@color/credittextcolor"
                 android:gravity="center"
                 android:text="@string/purchase_guarantee_line2"
-                android:textSize="@dimen/medium_text_size" />
+                android:textSize="@dimen/large_text_size" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_large"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:text="@string/purchase_guarantee_line3"
-                android:textSize="@dimen/medium_text_size" />
+                android:textSize="@dimen/large_text_size" />
             
             <TextView
                 android:id="@+id/txtHere"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/credittextcolor"
                 android:gravity="center"
                 android:text="@string/purchase_guarantee_line4"
-                android:textSize="@dimen/medium_text_size" />
+                android:textSize="@dimen/large_text_size" />
             
             
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_large"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:text="@string/purchase_guarantee_line5"
-                android:textSize="@dimen/medium_text_size" />
+                android:textSize="@dimen/large_text_size" />
             
             <TextView
                 android:id="@+id/txtContact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="@dimen/margin_large"
                 android:text="Contact Us"
+                android:textColor="@color/credittextcolor"
                 android:textSize="@dimen/medium_text_size" />
             
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_large"
+                android:textColor="@color/credittextcolor"
                 android:gravity="center"
                 android:text="@string/purchase_guarantee_line6"
-                android:textSize="@dimen/medium_text_size" />
+                android:textSize="@dimen/large_text_size" />
             
             
 
@@ -85,6 +95,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/happyShopping"
                 android:layout_centerHorizontal="true"
+                android:visibility="gone"
                 android:layout_marginBottom="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_xlarge"
                 android:src="@drawable/kikr_trace_logo" />
@@ -96,6 +107,7 @@
                 android:layout_below="@+id/txtLearnMoreDesc"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="HAPPY SHOPPING"
                 android:textColor="#777"
                 android:textSize="@dimen/xxx_large_text_size"

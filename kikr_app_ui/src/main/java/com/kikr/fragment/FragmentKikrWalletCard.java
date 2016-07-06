@@ -1,7 +1,5 @@
 package com.kikr.fragment;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -29,14 +27,12 @@ import android.widget.TextView;
 import com.kikr.BaseFragment;
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.dialog.HelpKikrCardDialog;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.CardType;
 import com.kikr.utility.CommonUtility;
 import com.kikr.utility.Luhn;
 import com.kikrlib.api.CardInfoApi;
 import com.kikrlib.bean.Card;
-import com.kikrlib.db.HelpPreference;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
@@ -44,6 +40,8 @@ import com.kikrlib.service.res.CardInfoRes;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.Syso;
 import com.personagraph.api.PGAgent;
+
+import java.util.List;
 
 public class FragmentKikrWalletCard extends BaseFragment implements OnClickListener {
 	private ImageView walletImage;
@@ -278,7 +276,7 @@ public class FragmentKikrWalletCard extends BaseFragment implements OnClickListe
 			RelativeLayout layout=(RelativeLayout) inflater.inflate(R.layout.layout_wallet_card, null);
 			LayoutParams params=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 			params.addRule(RelativeLayout.ALIGN_TOP, lastLayout.getId());
-			params.setMargins(0, (int) getResources().getDimension(R.dimen.wallet_layout_margin), 0, 0);
+			params.setMargins(0, 510, 0, 510);
 			ImageView cardImageView= (ImageView) layout.findViewById(R.id.cardImageView);
 			setCardImage(data.get(i).getCard_number(), cardImageView);
 			cardImageView.setTag(i);
@@ -296,11 +294,11 @@ public class FragmentKikrWalletCard extends BaseFragment implements OnClickListe
 			Syso.info("Adding layout : "+layout +" , "+lastLayout.getId());
 		}
 	}
-	/**
-	 * This m
-	 * @param card_number
-	 * @param imageView
-	 */
+//	/**
+//	 * This m
+//	 * @param card_number
+//	 * @param imageView
+//	 */
 	private void setCardImage(String card_number1, ImageView imageView) {
 		String card_number= CommonUtility.DecryptCreditCard(card_number1);
 		if (Luhn.isCardValid(card_number)) {

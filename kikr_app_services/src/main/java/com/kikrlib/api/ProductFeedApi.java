@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 
 import com.google.gson.JsonParseException;
+import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.AbsService;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.res.ProductFeedRes;
@@ -41,8 +42,11 @@ public class ProductFeedApi extends AbsService{
 	public String getMethod() {
 		return WebConstants.HTTP_METHOD_GET;
 	}
-	
-	
+
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
+	}
 	@Override
 	public List<NameValuePair> getNameValueRequest() {
 		return null;

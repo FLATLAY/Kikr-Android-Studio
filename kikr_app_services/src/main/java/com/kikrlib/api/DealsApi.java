@@ -52,5 +52,7 @@ public class DealsApi{
 		String xml = parser.getXmlFromHttpGetUrl(URL);
 		return xml;
 	}
+
+
 	
 }

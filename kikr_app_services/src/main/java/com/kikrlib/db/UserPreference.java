@@ -90,6 +90,8 @@ public class UserPreference {
 		}
 	}
 
+
+
 	public String getCartID() {
 		return mPrefs.getString(mCartId, "");
 	}
@@ -307,13 +309,17 @@ public class UserPreference {
 	}
 
 	public void setAccessToken(String value) {
-		mPrefsEditor.putString(mAccessToken, value);
-		mPrefsEditor.commit();
+		Syso.debug("mAccesstoken = ", value);
+		if(value!=null) {
+			mPrefsEditor.putString(mAccessToken, value);
+			mPrefsEditor.commit();
+		}
 	}
 
 	public String getAccessToken() {
 		return mPrefs.getString(mAccessToken, "");
 	}
+
 
 
 

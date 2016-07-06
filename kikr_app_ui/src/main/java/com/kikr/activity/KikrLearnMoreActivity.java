@@ -29,7 +29,7 @@ public class KikrLearnMoreActivity extends BaseActivity implements OnClickListen
 
 	@Override
 	public void headerView() {
-		getLeftButton().setVisibility(View.GONE);
+
 		getLeftTextView().setVisibility(View.VISIBLE);
 		getLeftTextView().setOnClickListener(this);
 	}

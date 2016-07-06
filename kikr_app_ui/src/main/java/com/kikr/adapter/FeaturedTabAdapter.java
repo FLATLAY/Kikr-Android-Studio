@@ -7,15 +7,14 @@ import java.util.List;
 import org.apache.http.util.TextUtils;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver.OnScrollChangedListener;
 import android.widget.BaseAdapter;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -25,220 +24,215 @@ import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.fragment.FragmentDiscover;
 import com.kikr.fragment.FragmentDiscoverDetail;
 import com.kikr.fragment.FragmentFeatured;
 import com.kikr.fragment.FragmentInspirationDetail;
 import com.kikr.fragment.FragmentInspirationSection;
 import com.kikr.fragment.FragmentProductBasedOnType;
 import com.kikr.fragment.FragmentProfileView;
+import com.kikr.ui.FeaturedTabUi;
 import com.kikr.ui.ProductListUI;
-import com.kikr.ui.ProgressBarDialog;
+import com.kikr.ui.RoundImageView;
 import com.kikr.utility.CommonUtility;
 import com.kikr.utility.UiUpdate;
-import com.kikrlib.api.BrandListApi;
-import com.kikrlib.api.ProductBasedOnBrandApi;
 import com.kikrlib.bean.FeaturedTabData;
 import com.kikrlib.bean.Inspiration;
 import com.kikrlib.bean.Product;
-import com.kikrlib.bean.ProductFeedItem;
-import com.kikrlib.db.UserPreference;
-import com.kikrlib.service.ServiceCallback;
-import com.kikrlib.service.ServiceException;
-import com.kikrlib.service.res.BrandListRes;
-import com.kikrlib.service.res.ProductBasedOnBrandRes;
-import com.kikrlib.utils.AlertUtils;
-import com.kikrlib.utils.Syso;
 
-public class FeaturedTabAdapter extends BaseAdapter{
+public class FeaturedTabAdapter extends BaseAdapter {
 
-	private FragmentActivity mContext;
-	private FragmentFeatured fragmentFeatured;
-	private LayoutInflater mInflater;
-	private List<FeaturedTabData> brandsArray;
-//	List<Product> data;
+    private FragmentActivity mContext;
+    private FragmentFeatured fragmentFeatured;
+    private LayoutInflater mInflater;
+    private List<FeaturedTabData> brandsArray;
+    //	List<Product> data;
 //	enum ItemType{brand,store,user};
-	String BRAND="brand";
-	String STORE="store";
-	String USER="user";
-	
-	public FeaturedTabAdapter(FragmentActivity context, List<FeaturedTabData> brandsArray,FragmentFeatured fragmentFeatured) {
-		super();
-		this.mContext = context;
-		this.fragmentFeatured = fragmentFeatured;
-		this.brandsArray = brandsArray;
-		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	}
-	
-	public void setData(List<FeaturedTabData> data){
-		brandsArray.addAll(data);
-	}
-	
-	@Override
-	public int getCount() {
-		return brandsArray.size();
-	}
+    String BRAND = "brand";
+    String STORE = "store";
+    String USER = "user";
 
-	@Override
-	public FeaturedTabData getItem(int index) {
-		return brandsArray.get(index);
-	}
+    public FeaturedTabAdapter(FragmentActivity context, List<FeaturedTabData> brandsArray, FragmentFeatured fragmentFeatured) {
+        super();
+        this.mContext = context;
+        this.fragmentFeatured = fragmentFeatured;
+        this.brandsArray = brandsArray;
+        this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
 
-	@Override
-	public long getItemId(int position) {
-		return 0;
-	}
+    public void setData(List<FeaturedTabData> data) {
+        brandsArray.addAll(data);
+    }
 
-	@Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
-		final ViewHolder viewholder;
-		if (convertView==null) {
-			convertView = mInflater.inflate(R.layout.adapter_featured_large,null);
-			viewholder = new ViewHolder();
-			viewholder.userNameTextView = (TextView) convertView.findViewById(R.id.userNameTextView);
-			viewholder.userLargeImageView = (ImageView) convertView.findViewById(R.id.userLargeImageView);
-			viewholder.descriptionTextView = (TextView) convertView.findViewById(R.id.descriptionTextView);
-			viewholder.viewAllTextView = (TextView) convertView.findViewById(R.id.viewAllTextView);
-			viewholder.imageLayout1 = (LinearLayout) convertView.findViewById(R.id.imageLayout1);
-			viewholder.imageLayout2 = (LinearLayout) convertView.findViewById(R.id.imageLayout2);
-			viewholder.image1 = (ImageView) convertView.findViewById(R.id.image1);
-			viewholder.image2 = (ImageView) convertView.findViewById(R.id.image2);
-			viewholder.image3 = (ImageView) convertView.findViewById(R.id.image3);
-			viewholder.image4 = (ImageView) convertView.findViewById(R.id.image4);
-			viewholder.image5 = (ImageView) convertView.findViewById(R.id.image5);
-			viewholder.image6 = (ImageView) convertView.findViewById(R.id.image6);
-			viewholder.follow_btn = (ImageView) convertView.findViewById(R.id.follow_btn_img);
-			viewholder.list.add(viewholder.image1);
-			viewholder.list.add(viewholder.image2);
-			viewholder.list.add(viewholder.image3);
-			viewholder.list.add(viewholder.image4);
-			viewholder.list.add(viewholder.image5);
-			viewholder.list.add(viewholder.image6);
-			convertView.setTag(viewholder);
-		} else {
-			viewholder = (ViewHolder) convertView.getTag();
-		}
-		viewholder.imageLayout1.setVisibility(View.VISIBLE);
-		viewholder.imageLayout2.setVisibility(View.VISIBLE);
-		viewholder.userNameTextView.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				if (getItem(position).getType() != null) {
-					if (getItem(position).getType().equals(USER))
-						addFragment(new FragmentProfileView(getItem(position).getItem_id(), "no"));
-					else
-						addFragment(new FragmentProductBasedOnType(getItem(position).getType(), getItem(position).getItem_name(), getItem(position).getItem_id()));
-				}
-			}
-		});
-		viewholder.viewAllTextView.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				if (getItem(position).getType() != null) {
-					if (getItem(position).getType().equals(USER))
-						addFragment(new FragmentInspirationSection(false, getItem(position).getItem_id()));
-					else
-						addFragment(new FragmentProductBasedOnType(getItem(position).getType(), getItem(position).getItem_name(), getItem(position).getItem_id()));
-				}
-			}
-		});
-		String name=getItem(position).getItem_name();
-		if(!TextUtils.isEmpty(name))
-			viewholder.userNameTextView.setText(name);
-		else
-			viewholder.userNameTextView.setText("Unknown");
-		if(!TextUtils.isEmpty(getItem(position).getItem_description()))
-			viewholder.descriptionTextView.setText(getItem(position).getItem_description());
-		else
-			viewholder.descriptionTextView.setVisibility(View.INVISIBLE);
-//		if(getItem(position).getType().equals(ItemType.user))
-//			CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userLargeImageView, R.drawable.linesplaceholder);
-//		else
-			CommonUtility.setImage(mContext, getItem(position).getItem_image(), viewholder.userLargeImageView, R.drawable.linesplaceholder);
+    @Override
+    public int getCount() {
+        return brandsArray.size();
+    }
 
-		final List<Product> data = getItem(position).getProducts();
-		final List<Inspiration> feed = getItem(position).getInspiration_feed();
+    @Override
+    public FeaturedTabData getItem(int index) {
+        return brandsArray.get(index);
+    }
 
-		if((data!=null&&data.size()==0)||(feed!=null&&feed.size()==0)){
-			viewholder.imageLayout1.setVisibility(View.GONE);
-			viewholder.imageLayout2.setVisibility(View.GONE);
-		}else if((data!=null&&data.size()<4)||(feed!=null&&feed.size()<4)){
-			viewholder.imageLayout2.setVisibility(View.GONE);
-		}
-		if(getItem(position).getIs_followed()!=null&&getItem(position).getIs_followed().equals("yes")){
-			viewholder.follow_btn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_follow_category_tick));
-		}else{
-			viewholder.follow_btn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_add_collection));
-		}
-		viewholder.follow_btn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if(getItem(position).getIs_followed()!=null) {
-					if (getItem(position).getIs_followed().equals("no")) {
-						getItem(position).setIs_followed("yes");
-						notifyDataSetChanged();
-						((HomeActivity) mContext).followUser(getItem(position).getItem_id());
-					} else {
-						getItem(position).setIs_followed("no");
-						notifyDataSetChanged();
-						((HomeActivity) mContext).unFollowUser(getItem(position).getItem_id());
-					}
-				}
-			}
-		});
-		for(int j=0;j<viewholder.list.size();j++){
-			if((data!=null&&data.size()>j)||(feed!=null&&feed.size()>j)){
-				if(data!=null)
-			    	CommonUtility.setImage(mContext, data.get(j).getProductimageurl(), viewholder.list.get(j), R.drawable.dum_list_item_product);	
-				else if(feed!=null)
-			    	CommonUtility.setImage(mContext, feed.get(j).getInspiration_image(), viewholder.list.get(j), R.drawable.dum_list_item_product);
-				viewholder.list.get(j).setTag(j);
-				viewholder.list.get(j).setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						int position = (Integer) v.getTag();
-						if(data!=null){
-							if (((HomeActivity) mContext).checkInternet()) {
-								Bundle bundle=new Bundle();
-								bundle.putSerializable("data", data.get(position));
-								FragmentDiscoverDetail detail=new FragmentDiscoverDetail(new UiUpdate(){
-	
-									@Override
-									public void updateUi() {
-	//									TextView likeCountTextView=(TextView) v.findViewById(R.id.likeCountTextView);
-	//									likeCountTextView.setText(TextUtils.isEmpty(data.get((Integer) v.getTag()).getLike_info().getLike_count())?"0":data.get((Integer) v.getTag()).getLike_info().getLike_count());
-									}});
-								detail.setArguments(bundle);
-								addFragment(detail);
-							}
-						}else if(feed!=null){
-							if (((HomeActivity) mContext).checkInternet()) {
-								addFragment(new FragmentInspirationDetail(feed.get(position),false));
-							}
-						}
-					}
-				});
-			}else{
-				viewholder.list.get(j).setImageResource(R.drawable.white_image);
-			}	
-		}
-		return convertView;
-	}
-	
-	public class ViewHolder {
-		TextView userNameTextView,viewAllTextView;
-		ImageView userLargeImageView,image1,image2,image3,image4,image5,image6;
-		TextView descriptionTextView;
-		LinearLayout imageLayout1,imageLayout2;
-		List<ImageView> list = new ArrayList<ImageView>();
-		ImageView follow_btn;
-	}
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
 
-	private void addFragment(Fragment fragment) {
-		((HomeActivity) mContext).addFragment(fragment);
-	}
-	
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final ViewHolder viewholder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.fragment_fetaured_item, null);
+            viewholder = new ViewHolder();
+            viewholder.userNameTextView = (TextView) convertView.findViewById(R.id.userName);
+            viewholder.featuredLargeImage = (ImageView) convertView.findViewById(R.id.featuredImage);
+            viewholder.descriptionTextView = (TextView) convertView.findViewById(R.id.tvDescription);
+
+            viewholder.follow_btn_layout = (LinearLayout) convertView.findViewById(R.id.follow_btn_layout);
+            viewholder.userImage = (RoundImageView) convertView.findViewById(R.id.userImage);
+            viewholder.follow_btn = (TextView) convertView.findViewById(R.id.follow_btn);
+            viewholder.product_layout = (HorizontalScrollView) convertView.findViewById(R.id.productLayout);
+            viewholder.product_inflater_layout = (LinearLayout) convertView.findViewById(R.id.productInflaterLayout);
+            viewholder.collectionCount = (TextView) convertView.findViewById(R.id.collection_count);
+            viewholder.followersCount = (TextView) convertView.findViewById(R.id.follower_count);
+            convertView.setTag(viewholder);
+        } else {
+            viewholder = (ViewHolder) convertView.getTag();
+        }
+
+        FeaturedTabData featuredTabData = getItem(position);
+        viewholder.userNameTextView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+               startProfilePage(position);
+            }
+        });
+        viewholder.userImage.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProfilePage(position);
+            }
+        });
+        viewholder.collectionCount.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProfilePage(position);
+            }
+        });
+        viewholder.followersCount.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProfilePage(position);
+            }
+        });
+
+        String name = getItem(position).getItem_name();
+        if (!TextUtils.isEmpty(name))
+            viewholder.userNameTextView.setText(name);
+        else
+            viewholder.userNameTextView.setText("Unknown");
+        if (!TextUtils.isEmpty(getItem(position).getItem_description())) {
+            viewholder.descriptionTextView.setText(getItem(position).getItem_description());
+            viewholder.descriptionTextView.setVisibility(View.VISIBLE);
+        }
+        else {
+            viewholder.descriptionTextView.setVisibility(View.GONE);
+        }
+        viewholder.followersCount.setText(getItem(position).getFollowers_count() + " Followers");
+        viewholder.collectionCount.setText(getItem(position).getCollections_count() + " Collections");
+
+		if(getItem(position).getType().equals(USER))
+			CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);
+//        else
+//            CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);
+
+        CommonUtility.setImage(mContext, getItem(position).getItem_image(), viewholder.featuredLargeImage,  R.drawable.profile_bg);
+
+        final List<Product> data = getItem(position).getProducts();
+        final List<Inspiration> feed = getItem(position).getInspiration_feed();
+
+
+        if (getItem(position).getIs_followed() != null && getItem(position).getIs_followed().equals("yes")) {
+            viewholder.follow_btn.setText("FOLLOWED");
+            viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_whitebg));
+            int imgResource = R.drawable.ic_check_following;
+            viewholder.follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
+            viewholder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.menu_option_background_selected));
+
+        } else {
+            viewholder.follow_btn.setText("  FOLLOW   ");
+            viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_borderbg));
+            int imgResource = R.drawable.ic_add_follow;
+            viewholder.follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
+            viewholder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
+        }
+        viewholder.follow_btn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getItem(position).getIs_followed() != null) {
+                    if (getItem(position).getIs_followed().equals("no")) {
+                        getItem(position).setIs_followed("yes");
+                        notifyDataSetChanged();
+                        ((HomeActivity) mContext).followUser(getItem(position).getItem_id());
+                    } else {
+                        getItem(position).setIs_followed("no");
+                        notifyDataSetChanged();
+                        ((HomeActivity) mContext).unFollowUser(getItem(position).getItem_id());
+                    }
+                }
+            }
+        });
+        viewholder.product_inflater_layout.removeAllViews();
+
+/*if(getItem(position).getProducts()==null){
+   LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+    layoutParams2.setMargins(0, 0, 0, 15);
+    convertView.setLayoutParams(layoutParams2);
+}*/
+        viewholder.product_inflater_layout.addView(new FeaturedTabUi(mContext, getItem(position), fragmentFeatured, convertView).getView());
+
+
+        viewholder.product_layout.post(new Runnable() {
+            @Override
+            public void run() {
+                viewholder.product_layout.scrollTo(150, 0);
+            }
+        });
+
+
+        viewholder.product_layout.scrollTo(0, 0);
+
+
+        return convertView;
+    }
+
+   public void startProfilePage(int pos)
+   {
+       if (getItem(pos).getType() != null) {
+           if (getItem(pos).getType().equals(USER))
+               addFragment(new FragmentProfileView(getItem(pos).getItem_id(), "no"));
+           else
+               addFragment(new FragmentProductBasedOnType(getItem(pos).getType(), getItem(pos).getItem_name(), getItem(pos).getItem_id()));
+       }
+   }
+
+    public class ViewHolder {
+        TextView userNameTextView, viewAllTextView;
+        ImageView featuredLargeImage;
+        RoundImageView userImage;
+        TextView descriptionTextView;
+        LinearLayout imageLayout1, imageLayout2;
+        List<ImageView> list = new ArrayList<ImageView>();
+        TextView collectionCount, followersCount;
+        ProgressBar progressBar_follow_brand;
+        TextView follow_btn;
+        HorizontalScrollView product_layout;
+        LinearLayout product_inflater_layout, follow_btn_layout;
+    }
+
+    private void addFragment(Fragment fragment) {
+        ((HomeActivity) mContext).addFragment(fragment);
+    }
+
 }

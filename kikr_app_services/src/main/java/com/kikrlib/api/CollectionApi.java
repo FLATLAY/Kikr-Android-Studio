@@ -90,6 +90,11 @@ public class CollectionApi extends AbsService {
 	}
 
 	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
+	}
+
+	@Override
 	public String getActionName() {
 		return METHOD_NAME;
 	}

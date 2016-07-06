@@ -76,6 +76,9 @@ public class FragmentCardInfo extends BaseFragment implements OnClickListener {
 		doneBtn.setOnClickListener(this);
 	}
 
+
+
+
 	@Override
 	public void setData(Bundle bundle) {
 		list.add("YYYY");
@@ -87,7 +90,7 @@ public class FragmentCardInfo extends BaseFragment implements OnClickListener {
 		adapter2.setDropDownViewResource(android.R.layout.simple_list_item_1);
 		yearSpinner.setAdapter(adapter2);
 		if (card != null) {
-			cardNumberEditText.setText(CommonUtility.DecryptCreditCard(card.getCard_number()));
+			cardNumberEditText.setText(CommonUtility.maskCCNumberCommons(CommonUtility.DecryptCreditCard(card.getCard_number())));
 			cardHolderNameEditText.setText(card.getName_on_card());
 			cvvEditText.setText(card.getCvv());
 			String[] expiry = card.getExpiration_date().split("/");

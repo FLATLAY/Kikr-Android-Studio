@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.google.gson.JsonParseException;
+import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.AbsService;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.res.ProductBasedOnBrandRes;
@@ -71,6 +72,11 @@ public class FilterProductApi extends AbsService {
 	public List<NameValuePair> getNameValueRequest() {
 
 		return null;
+	}
+
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
 	}
 
 	@Override

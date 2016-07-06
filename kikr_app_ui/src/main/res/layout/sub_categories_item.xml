@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.kikr"
     android:id="@+id/app_grid_item"
     android:layout_width="wrap_content"
     android:layout_height="40dp"
-    android:background="@color/dark_green"
+    android:background="#19a391"
     android:gravity="center"
     android:padding="@dimen/app_margin">
+
     <TextView
         android:id="@+id/sub_category_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:minWidth="20dp"
         android:ellipsize="end"
+        android:gravity="center"
         android:singleLine="true"
-        android:textColor="@color/white"
         android:text="Hello"
-        android:padding="4dp"
-        android:textSize="16sp" />
+        android:textColor="@color/white"
+        android:textSize="12dp"
+         />
 
 </RelativeLayout>

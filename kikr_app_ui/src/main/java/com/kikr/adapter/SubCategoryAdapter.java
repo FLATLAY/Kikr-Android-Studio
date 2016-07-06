@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.kikr.R;
+import com.kikr.utility.AutoTextSize;
 
 import java.util.ArrayList;
 
@@ -52,21 +53,37 @@ public class SubCategoryAdapter extends BaseAdapter {
             View appView = inflater.inflate(R.layout.sub_categories_item, parent, false);
 
             String str = items.get(position);
+            //int cols = 1;
+
+//            AutoTextSize text = (AutoTextSize) appView.findViewById(R.id.sub_category_name);
+//
+//            if (items.size() > 8 && items.size() < 12) {
+//                text.setWidth(300);
+//            } else if (items.size() < 9) {
+//                text.setWidth(320);
+//            }
+//            if (items.size() < 5) {
+//                text.setWidth(320);
+//            } else {
+//                text.setWidth(220);
+//
+//            }
+//            if(str.length()<10)
+               // text.setWidth(150);
             ((TextView) appView.findViewById(R.id.sub_category_name)).setText(str);
             return appView;
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             Log.e("", ex.getMessage());
         }
 
         return null;
     }
+
     private StringBuilder capitalizeEachWord(String s) {
         StringBuilder result = new StringBuilder(s.length());
         String[] words = s.split("\\s");
-        for(int i=0,l=words.length;i<l;++i) {
-            if(i>0) result.append(" ");
+        for (int i = 0, l = words.length; i < l; ++i) {
+            if (i > 0) result.append(" ");
             result.append(Character.toUpperCase(words[i].charAt(0)))
                     .append(words[i].substring(1));
 

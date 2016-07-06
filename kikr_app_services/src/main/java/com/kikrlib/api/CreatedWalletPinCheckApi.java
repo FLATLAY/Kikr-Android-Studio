@@ -53,6 +53,10 @@ public class CreatedWalletPinCheckApi extends AbsService{
 		
 		return null;
 	}
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
+	}
 	
 	@Override
 	public String getJsonRequest() {

@@ -1,8 +1,8 @@
 package com.kikr.activity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -16,8 +16,8 @@ import android.widget.TextView;
 import com.kikr.BaseActivity;
 import com.kikr.R;
 import com.kikr.ui.ProgressBarDialog;
-import com.kikr.utility.CommonUtility;
 import com.kikr.utility.AppConstants.Screen;
+import com.kikr.utility.CommonUtility;
 import com.kikrlib.api.LoginUserApi;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
@@ -25,8 +25,8 @@ import com.kikrlib.service.ServiceException;
 import com.kikrlib.service.res.RegisterUserResponse;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.DeviceUtils;
-import com.kikrlib.utils.Syso;
 import com.kikrlib.utils.StringUtils;
+import com.kikrlib.utils.Syso;
 
 public class LoginActivity extends BaseActivity implements OnClickListener, OnKeyListener, ServiceCallback{
 	
@@ -154,6 +154,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener, OnKe
 			UserPreference.getInstance().setcheckedIsConnected(true);
 			
 			UserPreference.getInstance().setEmail(response.getEmail());
+			UserPreference.getInstance().setAccessToken(response.gettoken());
 			UserPreference.getInstance().setUserName(response.getUsername());
 			UserPreference.getInstance().setCartID(response.getCart_id());
 			UserPreference.getInstance().setProfilePic(response.getProfile_pic());
@@ -182,7 +183,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener, OnKe
 	}
 	
 	private void goBack() {
-		startActivity(SignUpActivity.class);
+		startActivity(LandingActivity.class);
 		finish();
 	}
 	

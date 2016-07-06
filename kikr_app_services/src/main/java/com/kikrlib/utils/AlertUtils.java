@@ -14,4 +14,6 @@ public class AlertUtils {
 		if(context!=null)
 			Toast.makeText(context, resID, Toast.LENGTH_SHORT).show();
 	}
+
+
 }

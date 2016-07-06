@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:gravity="center_horizontal|center_vertical"
     android:layout_height="match_parent"
+    android:padding="@dimen/margin_credit"
+    android:id="@+id/pendingcreditdetail"
+    android:background="@color/btn_green"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView7"
         android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_marginTop="@dimen/margin_xxlarge"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginRight="@dimen/margin_large"
+
+        android:textColor="@color/credittextcolor"
         android:lineSpacingExtra="3dp"
+        android:textSize="@dimen/x_large_text_size"
         android:layout_height="wrap_content"
-        android:text="Pending credits are payouts that are currently awaiting final confirmation from various merchants and vendors based upon purchases that are made from your collections, posts and/or special offers redeemed. These credits will become permanent once they are cleared within a 60 day period to accommodate for any returns and/or exchanges"
+        android:text="pending credits are payouts that are currently awaiting final confirmation from various merchants and vendors based upon purchases that are made from your collections, posts and/or special offers redeemed. These credits will become permanent once they are cleared within a 60 day period to accommodate for any returns and/or exchanges"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView6"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/kikrhighlight"
-        android:layout_gravity="center_horizontal" />
-</RelativeLayout>
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/imageView6"-->
+        <!--android:layout_marginBottom="@dimen/margin_large"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:src="@drawable/kikrhighlight"-->
+        <!--android:layout_gravity="center_horizontal" />-->
+</LinearLayout>

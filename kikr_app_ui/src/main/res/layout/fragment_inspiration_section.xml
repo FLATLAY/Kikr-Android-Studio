@@ -2,26 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical" >
+    android:background="@color/app_text_color"
+    android:orientation="vertical">
+
 
     <LinearLayout
         android:id="@+id/uploadButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#2777"
+        android:background="#34BDC0"
         android:gravity="center"
-        android:padding="@dimen/padding_small" >
+        android:padding="@dimen/padding_large">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_camera"
+            android:layout_marginRight="@dimen/margin_large"
+
             android:drawablePadding="5dp"
             android:gravity="center_vertical"
-            android:layout_marginRight="@dimen/margin_large"
-            android:text="Upload"
-            android:textColor="@color/app_text_color"
+            android:text="@string/invite_friends"
+            android:textColor="@color/white"
             android:textSize="@dimen/large_text_size" />
     </LinearLayout>
 
@@ -38,20 +39,117 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:visibility="gone"
         android:text="Loading...\nPlease Wait"
-        android:textColor="@color/btn_green" />
+        android:textColor="@color/btn_green"
+        android:visibility="gone" />
 
     <ListView
         android:id="@+id/inspirationList"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@color/white"
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:listSelector="@android:color/transparent"
-        android:scrollbars="none" >
-    </ListView>
+        android:scrollbarSize="1dp"
+        android:scrollbars="vertical"></ListView>
+
+    <FrameLayout
+        android:id="@+id/createcollection_alert"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CC000000"
+        android:visibility="gone">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#CC000000"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imgDelete"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="right"
+
+                android:padding="5dp"
+                android:src="@drawable/delete" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/imgDelete"
+                android:layout_marginTop="15dp"
+                android:background="#CC000000"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="7dp"
+                    android:text="Collections are used to tag your photos. Without them, your photos won't influence purchases."
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/netural" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/square_linear_layout"
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="To upload your first post" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:text="you have to have a collection to tag it with" />
+
+                    <Button
+                        android:id="@+id/btnCreateMyCollection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/createcollection_btnbg"
+                        android:drawableLeft="@drawable/ic_add_follow"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="Create A Collection"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+
 
 </LinearLayout>

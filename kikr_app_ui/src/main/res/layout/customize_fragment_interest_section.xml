@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical">
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/searchYourItemEditText"
+            style="@style/editTextSearchYourBank"
+
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:textCursorDrawable="@null"
+            android:drawableLeft="@drawable/ic_search_white"
+            android:gravity="center_vertical"
+            android:hint="Search for People, Stores, Brands."
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:drawablePadding="5dp"
+            android:layout_marginLeft="18dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_text_color"
+            android:textSize="16dp"
+            android:textStyle="italic" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="25dp"
+            android:background="@color/gray" />
+        <!--    <TextView
+                android:id="@+id/interest_category_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/margin_large"
+                android:gravity="center"
+                android:text="Browse\nBy Category"
+                android:textColor="@color/white"
+                android:visibility="gone" />-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#BF000000"
+        android:orientation="horizontal">
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/all_button"
+                style="@style/buttonInterestSection"
+                android:background="#80000000"
+                android:text="All" />
+
+            <View
+                android:id="@+id/all_button_active"
+                android:layout_width="wrap_content"
+                android:layout_height="5dp"
+                android:background="@color/white" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/interest_store_button"
+                style="@style/buttonInterestSection"
+
+                android:background="#80000000"
+                android:text="@string/store_text" />
+
+            <View
+                android:id="@+id/interest_store_button_active"
+                android:layout_width="wrap_content"
+                android:layout_height="5dp"
+                android:background="@color/white"
+                android:visibility="invisible" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/interest_brand_button"
+                style="@style/buttonInterestSection"
+
+                android:background="#80000000"
+                android:text="@string/brand_text" />
+
+            <View
+                android:id="@+id/interest_brand_button_active"
+                android:layout_width="wrap_content"
+                android:layout_height="5dp"
+                android:background="@color/white"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/interest_people_button"
+                style="@style/buttonInterestSection"
+                android:background="#80000000"
+
+                android:text="@string/people_text" />
+
+            <View
+                android:id="@+id/interest_people_button_active"
+                android:layout_width="wrap_content"
+                android:layout_height="5dp"
+                android:background="@color/white"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="@color/app_text_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutPeopleStoreBrand"
+        android:visibility="gone"
+        android:background="#BF000000"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="Trending Users"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+           >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/people_all_button"
+                    style="@style/buttonInterestSection"
+                    android:background="#80000000"
+
+                    android:text="All" />
+
+                <View
+                    android:id="@+id/people_all_button_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="5dp"
+                    android:background="@color/white"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/people_guys_button"
+                    style="@style/buttonInterestSection"
+
+                    android:background="#80000000"
+                    android:text="Guys" />
+
+                <View
+                    android:id="@+id/people_guys_button_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="5dp"
+                    android:background="@color/white"
+                    android:visibility="invisible" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/people_gals_button"
+                    style="@style/buttonInterestSection"
+
+                    android:background="#80000000"
+                    android:text="Gals" />
+
+                <View
+                    android:id="@+id/people_gals_button_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="5dp"
+                    android:background="@color/white"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:background="@color/app_text_color" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/itemNotFound"
+        layout="@layout/no_result_found_for_search_product"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/interestSectionList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:headerDividersEnabled="false"
+
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="vertical"></ListView>
+
+    <GridView
+        android:id="@+id/categoryGridView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="0dp"
+        android:numColumns="2"
+        android:smoothScrollbar="true"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/footer"
+        layout="@layout/footer"
+        android:visibility="visible" />
+
+</LinearLayout>

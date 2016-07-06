@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
@@ -20,6 +19,7 @@ public class FragmentLearnMore extends BaseFragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
 		mainView = inflater.inflate(R.layout.activity_kikr_learn_more, null);
 		return mainView;
 	}

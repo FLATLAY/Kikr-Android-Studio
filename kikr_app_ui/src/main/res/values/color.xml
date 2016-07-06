@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="switchselect">#3fc3bc</color>
+    <color name="pink">#ffc0cb</color>
+    <color name="grey">#bebebe</color>
+    <color name="credittextcolor">#C9EAEB</color>
+
+
+    <color name="tab_selected_new">#4A4A4A</color>
+    <color name="tab_bg_new">#1B1818</color>
+    <color name="ultra_dark">#29303F</color>
+    <color name="dark">#696E79</color>
+    <color name="ultra_dark_overlay">#0D29303F</color>
+    <color name="grid_state_pressed">#1Affffff</color>
+    <color name="grid_state_focused">#80000000</color>
+
+    <color name="postuploadlistcolor">#D4D4D4</color>
+    <color name="darkgray">#727272</color>
+    <color name="tab_color">#089b87</color>
+    <color name="transparent">#80000000</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
     <color name="header_background">#65C6C0</color>
     <color name="header_background_new">#F7F7F7</color>
     <color name="header_background_side">#6FC9C3</color>

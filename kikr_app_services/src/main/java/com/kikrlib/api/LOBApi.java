@@ -19,63 +19,70 @@ import com.kikrlib.utils.Syso;
 
 public class LOBApi extends AbsService {
 
-	private String requestValue;
-	private String requestType;
-	private List<NameValuePair> list = new ArrayList<NameValuePair>();
+    private String requestValue;
+    private String requestType;
+    private List<NameValuePair> list = new ArrayList<NameValuePair>();
 
-	public LOBApi(ServiceCallback serviceCallback) {
-		super();
-		this.mServiceCallback = serviceCallback;
-	}
+    public LOBApi(ServiceCallback serviceCallback) {
+        super();
+        this.mServiceCallback = serviceCallback;
+    }
 
-	public void validateAddress(String address_line1,String address_line2,String address_state,String address_city, String address_zip,String address_country) {
-		this.METHOD_NAME = "https://api.lob.com/v1/verify";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		list.add(new BasicNameValuePair("address_line1", address_line1));
-		list.add(new BasicNameValuePair("address_line2", address_line2));
-		list.add(new BasicNameValuePair("address_state", address_state));
-		list.add(new BasicNameValuePair("address_city", address_city));
-		list.add(new BasicNameValuePair("address_zip", address_zip));
-		list.add(new BasicNameValuePair("address_country", address_country));
-	}
+    public void validateAddress(String address_line1, String address_line2, String address_state, String address_city, String address_zip, String address_country) {
+        this.METHOD_NAME = "https://api.lob.com/v1/verify";
+        requestType = WebConstants.HTTP_METHOD_POST;
+        String address = "";
+        if (address_line2.length() > 0) {
+            address = "#" + address_line2 + " " + address_line1;
+        } else {
+            address = address_line1;
+        }
 
-	@Override
-	public String getActionName() {
-		return METHOD_NAME;
-	}
+        list.add(new BasicNameValuePair("address_line1", address));
+        list.add(new BasicNameValuePair("address_line2", address_line2));
+        list.add(new BasicNameValuePair("address_state", address_state));
+        list.add(new BasicNameValuePair("address_city", address_city));
+        list.add(new BasicNameValuePair("address_zip", address_zip));
+        list.add(new BasicNameValuePair("address_country", address_country));
+    }
 
-	@Override
-	public String getMethod() {
-		return requestType;
-	}
-	
-	@Override
-	public String getHost() {
-		return "";
-	}
+    @Override
+    public String getActionName() {
+        return METHOD_NAME;
+    }
 
-	@Override
-	public List<NameValuePair> getNameValueRequest() {
-		return list;
-	}
-	
-	@Override
-	public String getHeader() {
-		return StringUtils.getBase64EncodedString();
-	}
+    @Override
+    public String getMethod() {
+        return requestType;
+    }
 
-	@Override
-	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
-		try {
-			isValidResponse = true;
-			serviceResponse = response;
-		} catch (JsonParseException e) {
-			Syso.error(e);
-			isValidResponse = false;
-		} catch (NullPointerException e) {
-			Syso.error(e);
-			isValidResponse = false;
-		}
-	}
+    @Override
+    public String getHost() {
+        return "";
+    }
+
+    @Override
+    public List<NameValuePair> getNameValueRequest() {
+        return list;
+    }
+
+    @Override
+    public String getHeader() {
+        return StringUtils.getBase64EncodedString();
+    }
+
+    @Override
+    protected void processResponse(String response) {
+        Syso.info("In RegisterUserApi processResponse>>" + response);
+        try {
+            isValidResponse = true;
+            serviceResponse = response;
+        } catch (JsonParseException e) {
+            Syso.error(e);
+            isValidResponse = false;
+        } catch (NullPointerException e) {
+            Syso.error(e);
+            isValidResponse = false;
+        }
+    }
 }

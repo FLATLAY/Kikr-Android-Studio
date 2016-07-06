@@ -10,16 +10,18 @@
         android:id="@+id/kikr_wallet_card_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp">
 
         <ImageView
             android:id="@+id/kikr_wallet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/wallet_card_margin"
+            android:layout_marginTop="1dp"
             android:contentDescription="@null"
             android:src="@drawable/ic_connect_card_kikr"
             android:tag="0" />
+
 
         <ImageView
             android:id="@+id/imageView2"
@@ -27,8 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/wallet_pocket_margin"
             android:contentDescription="@null"
-            android:src="@drawable/ic_wallet_pocket_half" />
+           />
     </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/connect_bank_layout"

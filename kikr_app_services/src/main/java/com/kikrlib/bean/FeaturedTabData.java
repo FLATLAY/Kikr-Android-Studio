@@ -13,6 +13,24 @@ public class FeaturedTabData {
 	List<Product> products;
 	List<Inspiration> inspiration_feed;
 	String is_followed;
+	String followers_count;
+	String collections_count;
+
+	public String getFollowers_count() {
+		return followers_count;
+	}
+
+	public void setFollowers_count(String followers_count) {
+		this.followers_count = followers_count;
+	}
+
+	public String getCollections_count() {
+		return collections_count;
+	}
+
+	public void setCollections_count(String collections_count) {
+		this.collections_count = collections_count;
+	}
 
 	public String getItem_description() {
 		return item_description;

@@ -2,16 +2,12 @@ package com.kikr.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.adapter.CartListAdapter;
-import com.kikr.fragment.FragmentEditPurchaseItem;
 import com.kikr.fragment.FragmentUserCart;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.CallBack;
@@ -73,12 +69,13 @@ public class RemoveProductFromCartDialog extends Dialog{
 				if(((HomeActivity)mContext).checkInternet()){
 					fragmentUserCart.removeFromCart(id);
 //				removeFromCart();
+					//((HomeActivity) mContext).onBackPressed();
 				dismiss();
 				}
 			}
 		});
 	}
-	
+
 	public void removeFromCart(){
 		mProgressBarDialog = new ProgressBarDialog(mContext);
 		mProgressBarDialog.show();

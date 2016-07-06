@@ -52,9 +52,9 @@
             android:id="@+id/kikr_commission_text"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/follow_btn_height"
-            android:layout_marginLeft="@dimen/padding_large"
+            android:layout_marginLeft="5dp"
             android:gravity="center_vertical"
-            android:text="based on standard Kikr commission"
+            android:text="based on standard FLATLAY commission"
             android:textColor="@color/btn_green"
             android:textSize="@dimen/very_small_text_size" />
     </LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/mLlayoutBottomButtons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="12dip"
+        android:layout_marginBottom="120dp"
+        android:textColor="#65E5CC"
+        android:lineSpacingExtra="3dp"
+        android:textSize="@dimen/x_large_text_size"
+        android:text=" Earn 1 Credit for every \n dollar you spend "/>
+
+</LinearLayout>
+    </RelativeLayout>

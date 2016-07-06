@@ -5,17 +5,11 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.activity.PinterestLoginActivity;
-import com.kikr.adapter.CollectionListAdapter;
 import com.kikr.adapter.PinterestBoardAdapter;
-import com.kikrlib.bean.Product;
 import com.kikrlib.utils.Syso;
 import com.pinterest.android.pdk.PDKBoard;
 
@@ -28,7 +22,7 @@ public class PinterestBoardDialog extends Dialog {
 	private String imageUrl, text, link;
 
 
-//	onSavePin(imageUrl, response.getBoardList().get(0).getUid(), text, link);
+	//	onSavePin(imageUrl, response.getBoardList().get(0).getUid(), text, link);
 	public PinterestBoardDialog(FragmentActivity context, List<PDKBoard> bgImages,String imageUrl,String text,String link) {
 		super(context, R.style.AdvanceDialogTheme);
 		mContext = context;
@@ -36,8 +30,8 @@ public class PinterestBoardDialog extends Dialog {
 		this.imageUrl = imageUrl;
 		this.text = text;
 		this.link = link;
-        Syso.info("1234567890  2>>>>>> inside PinterestBoardDialog");
-        init();
+		Syso.info("1234567890  2>>>>>> inside PinterestBoardDialog");
+		init();
 	}
 
 	public PinterestBoardDialog(FragmentActivity context, int theme) {
@@ -45,7 +39,7 @@ public class PinterestBoardDialog extends Dialog {
 		mContext = context;
 		init();
 	}
-	
+
 	private void init() {
 		setContentView(R.layout.dialog_pinterest_board);
 		setCancelable(true);
@@ -57,17 +51,13 @@ public class PinterestBoardDialog extends Dialog {
 		PinterestBoardAdapter pinterestBoardAdapter = new PinterestBoardAdapter(mContext,bgImages);
 		boardListView.setAdapter(pinterestBoardAdapter);
 		boardListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String boardId = bgImages.get(position).getUid();
-                ((PinterestLoginActivity) mContext).onSavePin(imageUrl, boardId, text, link);
-                dismiss();
-            }
-        });
-        Syso.info("1234567890  2>>>>>> inside init completed");
-    }
-	
-
-
-
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				String boardId = bgImages.get(position).getUid();
+				((HomeActivity) mContext).onSavePin("https://s32.postimg.org/8flhbj29x/Companies_House_penalties.jpg", boardId, text, "https://s32.postimg.org/8flhbj29x/Companies_House_penalties.jpg");
+				dismiss();
+			}
+		});
+		Syso.info("1234567890  2>>>>>> inside init completed");
+	}
 }

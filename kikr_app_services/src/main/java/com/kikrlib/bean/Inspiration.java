@@ -1,8 +1,9 @@
 package com.kikrlib.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Inspiration {
+public class Inspiration implements Serializable{
 	
 	String inspiration_id;
 	List<Product> poducts;

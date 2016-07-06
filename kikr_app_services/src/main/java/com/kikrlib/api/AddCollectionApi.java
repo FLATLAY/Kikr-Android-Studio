@@ -49,8 +49,11 @@ public class AddCollectionApi extends AbsService {
 	public String getMethod() {
 		return requestType;
 	}
-	
-	
+
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
+	}
 	@Override
 	public List<NameValuePair> getNameValueRequest() {
 		return null;

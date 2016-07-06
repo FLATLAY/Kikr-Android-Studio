@@ -1,11 +1,6 @@
 package com.kikr.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -13,23 +8,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.dialog.CartOverLoadDialog;
-import com.kikr.dialog.RemoveProductFromCartDialog;
 import com.kikr.fragment.FragmentEditPurchaseItem;
 import com.kikr.fragment.FragmentUserCart;
-import com.kikr.utility.CallBack;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.Product;
 import com.kikrlib.bean.TwoTapProductDetails;
-import com.kikrlib.db.UserPreference;
-import com.kikrlib.utils.Syso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CartListAdapter extends BaseAdapter {
 
@@ -38,6 +30,7 @@ public class CartListAdapter extends BaseAdapter {
 	private ArrayList<Product> data;
 	private boolean isPopup = false;
 	private FragmentUserCart fragmentUserCart;
+	public int count = 1;
 	private List<TwoTapProductDetails> productDetails = new ArrayList<TwoTapProductDetails>();
 
 	public CartListAdapter(FragmentActivity context, List<Product> data, FragmentUserCart fragmentUserCart,boolean isPopup, List<TwoTapProductDetails> productDetails) {
@@ -71,33 +64,39 @@ public class CartListAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.adapter_cart_list, null);
 			viewHolder = new ViewHolder();
 			viewHolder.cartProductImage = (ImageView) convertView.findViewById(R.id.cartProductImage);
-			viewHolder.deleteCartProductImage = (ImageView) convertView.findViewById(R.id.deleteCartProductImage);
-			viewHolder.brandName = (TextView) convertView.findViewById(R.id.brandName);
+			//viewHolder.deleteCartProductImage = (ImageView) convertView.findViewById(R.id.deleteCartProductImage);
+		//	viewHolder.brandName = (TextView) convertView.findViewById(R.id.brandName);
+
+			viewHolder.upper_Arrow = (TextView) convertView.findViewById(R.id.upper_Arrow);
+			viewHolder.bottomarrow = (TextView) convertView.findViewById(R.id.bottom_Arrow);
 			viewHolder.productName = (TextView) convertView.findViewById(R.id.productName);
 			viewHolder.regularPriceText = (TextView) convertView.findViewById(R.id.regularPriceText);
 			viewHolder.quantityText = (TextView) convertView.findViewById(R.id.quantityText);
 			viewHolder.colorText = (TextView) convertView.findViewById(R.id.colorText);
 			viewHolder.kikrDiscountText = (TextView) convertView.findViewById(R.id.kikrDiscountText);
-			viewHolder.sizeText = (TextView) convertView.findViewById(R.id.sizeText);
+			//viewHolder.sizeText = (TextView) convertView.findViewById(R.id.sizeText);
 			viewHolder.selectProductOption = (TextView) convertView.findViewById(R.id.selectProductOption);
 			viewHolder.colorLayout=(LinearLayout) convertView.findViewById(R.id.colorLayout);
 			viewHolder.discountLayout=(LinearLayout) convertView.findViewById(R.id.discountLayout);
-			viewHolder.sizeLayout=(LinearLayout) convertView.findViewById(R.id.sizeLayout);
+		//	viewHolder.sizeLayout=(LinearLayout) convertView.findViewById(R.id.sizeLayout);
 			viewHolder.quantityLayout=(LinearLayout) convertView.findViewById(R.id.quantityLayout);
 			viewHolder.priceLayout=(LinearLayout) convertView.findViewById(R.id.priceLayout);
-			viewHolder.shipping_status = (ImageView) convertView.findViewById(R.id.shipping_status);
-			viewHolder.shippingLayout = (LinearLayout) convertView.findViewById(R.id.shippingLayout);
+
+			//viewHolder.shipping_status = (ImageView) convertView.findViewById(R.id.shipping_status);
+			//viewHolder.shippingLayout = (LinearLayout) convertView.findViewById(R.id.shippingLayout);
 			
-			viewHolder.btnStandard = (Button) convertView.findViewById(R.id.btnStandard);
-			viewHolder.btnExpress = (Button) convertView.findViewById(R.id.btnExpress);
-			viewHolder.shippingTxt = (TextView) convertView.findViewById(R.id.shippingText);
-			viewHolder.shipLayout = (LinearLayout) convertView.findViewById(R.id.shipLayout);
+			//viewHolder.btnStandard = (Button) convertView.findViewById(R.id.btnStandard);
+			//viewHolder.btnExpress = (Button) convertView.findViewById(R.id.btnExpress);
+			//viewHolder.shippingTxt = (TextView) convertView.findViewById(R.id.shippingText);
+		//	viewHolder.shipLayout = (LinearLayout) convertView.findViewById(R.id.shipLayout);
 			convertView.setTag(viewHolder);
+
+
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		CommonUtility.setImage(mContext, getItem(position).getProductimageurl(), viewHolder.cartProductImage, R.drawable.dum_list_item_product);
-		viewHolder.brandName.setText(getItem(position).getMerchantname());
+		//viewHolder.brandName.setText(getItem(position).getMerchantname());
 		viewHolder.productName.setText(getItem(position).getProductname());
 		if(!TextUtils.isEmpty(getItem(position).getSaleprice()) || getItem(position).getSaleprice().equals("0")){
 			viewHolder.regularPriceText.setText(" $"+CommonUtility.getFormatedNum(getItem(position).getSaleprice()));
@@ -122,11 +121,11 @@ public class CartListAdapter extends BaseAdapter {
 //			viewHolder.sizeLayout.setVisibility(View.GONE);
 //		}
 		if (getItem(position).isSelectdetails()) {
-			viewHolder.selectProductOption.setVisibility(View.VISIBLE);
-//			viewHolder.quantityLayout.setVisibility(View.GONE);
+			viewHolder.selectProductOption.setVisibility(View.GONE);
+			viewHolder.quantityLayout.setVisibility(View.GONE);
 			//viewHolder.sizeLayout.setVisibility(View.GONE);
-//			viewHolder.colorLayout.setVisibility(View.GONE);
-//			viewHolder.priceLayout.setVisibility(View.GONE);
+			viewHolder.colorLayout.setVisibility(View.GONE);
+			viewHolder.priceLayout.setVisibility(View.VISIBLE);
 		}else if(getItem(position).isNoDetails()){
 			viewHolder.selectProductOption.setVisibility(View.GONE);
 //			viewHolder.quantityLayout.setVisibility(View.VISIBLE);
@@ -140,6 +139,10 @@ public class CartListAdapter extends BaseAdapter {
 //			viewHolder.priceLayout.setVisibility(View.GONE);
 		} else if (!getItem(position).isSelectdetails()) {
 			viewHolder.selectProductOption.setVisibility(View.GONE);
+			viewHolder.quantityLayout.setVisibility(View.VISIBLE);
+//			viewHolder.sizeLayout.setVisibility(View.VISIBLE);
+//			viewHolder.colorLayout.setVisibility(View.VISIBLE);
+			viewHolder.priceLayout.setVisibility(View.VISIBLE);
 //			if (!TextUtils.isEmpty(getItem(position).getQuantity())) {
 ////				viewHolder.quantityLayout.setVisibility(View.VISIBLE);
 //				viewHolder.quantityText.setText(" "+getItem(position).getQuantity());
@@ -161,19 +164,19 @@ public class CartListAdapter extends BaseAdapter {
 //			}
 		}
 		if (isPopup) {
-			viewHolder.shipLayout.setVisibility(View.GONE);
+//			viewHolder.shipLayout.setVisibility(View.GONE);
 			viewHolder.selectProductOption.setVisibility(View.GONE);
 			viewHolder.quantityLayout.setVisibility(View.GONE);
 			//viewHolder.sizeLayout.setVisibility(View.GONE);
 			//viewHolder.colorLayout.setVisibility(View.GONE);
 			viewHolder.priceLayout.setVisibility(View.GONE);
-			viewHolder.deleteCartProductImage.setVisibility(View.GONE);
+		//	viewHolder.deleteCartProductImage.setVisibility(View.GONE);
 			if (getItem(position).getProductname().equals("Not Loaded") ) {
 				viewHolder.productName.setText(getItem(position).getProductname());
 			}
 		}
 		if (getItem(position).getProductname().equals("Not Loaded") && !isPopup) {
-			viewHolder.shipLayout.setVisibility(View.GONE);
+			//viewHolder.shipLayout.setVisibility(View.GONE);
 			viewHolder.selectProductOption.setVisibility(View.GONE);
 			viewHolder.quantityLayout.setVisibility(View.GONE);
 			//viewHolder.sizeLayout.setVisibility(View.GONE);
@@ -181,35 +184,35 @@ public class CartListAdapter extends BaseAdapter {
 			viewHolder.priceLayout.setVisibility(View.GONE);
 			viewHolder.productName.setText(getItem(position).getProductname());
 		}
-		if(getItem(position).getShipping_option().equals("fastest")) {
-			viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
-			viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
-		}
-			//viewHolder.shipping_status.setImageResource(R.drawable.hdpi_on);
-		else {
-			viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
-			viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
-		}
-		
-		viewHolder.btnStandard.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
-				viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
-				getItem(position).setShipping_option("cheapest");
-			}
-		});
-		
-		viewHolder.btnExpress.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
-				viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
-				getItem(position).setShipping_option("fastest");
-			}
-		});
+//		if(getItem(position).getShipping_option().equals("fastest")) {
+//			viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
+//			viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
+//		}
+//			//viewHolder.shipping_status.setImageResource(R.drawable.hdpi_on);
+//		else {
+//			viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
+//			viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
+//		}
+//
+//		viewHolder.btnStandard.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
+//				viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
+//				getItem(position).setShipping_option("cheapest");
+//			}
+//		});
+//
+//		viewHolder.btnExpress.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
+//				viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
+//				getItem(position).setShipping_option("fastest");
+//			}
+//		});
 		
 		//	viewHolder.shipping_status.setImageResource(R.drawable.hdpi_off);
 		convertView.setOnClickListener(new OnClickListener() {
@@ -229,34 +232,56 @@ public class CartListAdapter extends BaseAdapter {
 				}
 			}
 		});
-		viewHolder.deleteCartProductImage.setOnClickListener(new OnClickListener() {
+//		viewHolder.deleteCartProductImage.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View arg0) {
+//				RemoveProductFromCartDialog removeProductFromCartDialog = new RemoveProductFromCartDialog(mContext,getItem(position).getProductcart_id(),fragmentUserCart,new CallBack() {
+//
+//					@Override
+//					public void onSuccess() {
+//						data.remove(position);
+//						if (data.size()>10) {
+//							CartOverLoadDialog cartOverLoadDialog = new CartOverLoadDialog(mContext);
+//							cartOverLoadDialog.show();
+//						}
+//						notifyDataSetChanged();
+//						if(data.size()==0){
+//							fragmentUserCart.showEmptyCart();
+//						}
+//						UserPreference.getInstance().decCartCount();
+//						((HomeActivity)mContext).refreshCartCount();
+//					}
+//
+//					@Override
+//					public void onFail() {
+//
+//					}
+//				});
+//				removeProductFromCartDialog.show();
+//			}
+//		});
+
+		viewHolder.bottomarrow.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View arg0) {
-				RemoveProductFromCartDialog removeProductFromCartDialog = new RemoveProductFromCartDialog(mContext,getItem(position).getProductcart_id(),fragmentUserCart,new CallBack() {
-					
-					@Override
-					public void onSuccess() {
-						data.remove(position);
-						if (data.size()>10) {
-							CartOverLoadDialog cartOverLoadDialog = new CartOverLoadDialog(mContext);
-							cartOverLoadDialog.show();
-						}
-						notifyDataSetChanged();
-						if(data.size()==0){
-							fragmentUserCart.showEmptyCart();
-						}
-						UserPreference.getInstance().decCartCount();
-						((HomeActivity)mContext).refreshCartCount();
-					}
-					
-					@Override
-					public void onFail() {
-						
-					}
-				});
-				removeProductFromCartDialog.show();
+			public void onClick(View v) {
+				count = Integer.parseInt(getItem(position).getQuantity());
+				count++;
+				viewHolder.quantityText.setText("" + count);
 			}
 		});
+		viewHolder.upper_Arrow.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (count > 0) {
+					count =  Integer.parseInt(getItem(position).getQuantity());
+					count--;
+					viewHolder.quantityText.setText("" + count);
+				}
+
+			}
+		});
+
+
 		return convertView;
 	}
 
@@ -277,12 +302,12 @@ public class CartListAdapter extends BaseAdapter {
 
 	public class ViewHolder {
 		private ImageView cartProductImage,deleteCartProductImage,shipping_status;
-		private TextView brandName,productName,regularPriceText,quantityText,colorText;
-		private TextView kikrDiscountText,sizeText,selectProductOption;
-		private LinearLayout colorLayout,discountLayout,sizeLayout,quantityLayout,priceLayout,shippingLayout;
-		private Button btnStandard, btnExpress;
+		private TextView brandName,productName,regularPriceText,quantityText,colorText,upper_Arrow, bottomarrow;
+		private TextView kikrDiscountText,selectProductOption;
+		private LinearLayout colorLayout,discountLayout,quantityLayout,priceLayout,shippingLayout;
+	//	private Button btnStandard, btnExpress;
 		private TextView shippingTxt;
-		private LinearLayout shipLayout;
+		//private LinearLayout shipLayout;
 	}
 
 }

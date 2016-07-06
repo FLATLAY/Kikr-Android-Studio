@@ -2,8 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/list_background"
-    android:orientation="vertical">
+  >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/creditlist"
+        android:background="@color/list_background"
+        android:orientation="vertical">
 
     <include
         android:id="@+id/itemNotFound"
@@ -15,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@color/list_background"
+        android:background="@color/btn_green"
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:listSelector="@android:color/transparent"
@@ -30,19 +35,20 @@
         android:id="@+id/pendingCredits"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/btn_green"
         android:gravity="center"
+        android:textSize="@dimen/large_text_size"
         android:padding="@dimen/padding_large"
         android:text="Pending Credits : 0"
-        android:textColor="@color/btn_green"
+        android:textColor="@color/white"
         />
 
     <LinearLayout
         android:id="@+id/profile_btn_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:background="@color/white"
+        android:layout_marginTop="0dp"
+        android:background="@color/btn_green"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/padding_large">
 
@@ -54,7 +60,7 @@
             android:gravity="center_vertical"
             android:text=""
             android:textColor="@color/app_text_color"
-            android:textSize="@dimen/small_text_size" />
+            android:textSize="@dimen/large_text_size" />
 
         <TextView
             android:id="@+id/kikr_commission_text"
@@ -62,9 +68,13 @@
             android:layout_height="@dimen/follow_btn_height"
             android:layout_marginRight="@dimen/margin_large"
             android:gravity="center_vertical"
-            android:text="Kikr Credit Details"
-            android:textColor="@color/btn_green"
-            android:textSize="@dimen/very_small_text_size" />
+            android:text="Flatlay Credit Details"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
     </LinearLayout>
+    </LinearLayout>
+
+
+
 
 </LinearLayout>

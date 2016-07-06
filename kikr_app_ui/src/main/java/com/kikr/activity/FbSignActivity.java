@@ -24,6 +24,7 @@ import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
+import com.facebook.android.Facebook;
 import com.facebook.model.GraphLocation;
 import com.facebook.model.GraphMultiResult;
 import com.facebook.model.GraphObject;
@@ -303,6 +304,7 @@ public class FbSignActivity extends BaseActivity {
 	}
 		
 	private void sendRequestDialog() {
+
 	    Bundle params = new Bundle();
 	    params.putString("message", "Learn how to make your Android apps social");
 

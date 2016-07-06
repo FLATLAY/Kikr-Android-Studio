@@ -6,7 +6,7 @@
 
     <include
         android:id="@+id/itemNotFound"
-        layout="@layout/layout_item_not_found"
+        layout="@layout/layout_order_not_found"
         android:visibility="gone" />
 
     <ExpandableListView

@@ -7,8 +7,10 @@
         android:id="@+id/noPhotosText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
         android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="50dp"
         android:orientation="vertical"
         android:visibility="visible">
 
@@ -27,7 +29,7 @@
             android:id="@+id/btnUpload"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/createcollection_btnbg"
             android:drawableLeft="@drawable/ic_add_follow"
             android:drawablePadding="5dp"

@@ -7,6 +7,7 @@ import org.json.JSONArray;
 
 import com.google.gson.JsonParseException;
 import com.kikrlib.bean.ProductRequiredOption;
+import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.AbsService;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.res.CommonRes;
@@ -66,6 +67,11 @@ public class UpdateCartProductApi extends AbsService {
 			JSONArray array = new JSONArray();
 			return array.toString();
 		}
+	}
+
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
 	}
 
 	@Override

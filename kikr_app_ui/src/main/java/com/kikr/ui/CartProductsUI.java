@@ -1,8 +1,5 @@
 package com.kikr.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -22,28 +19,31 @@ import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.Product;
 import com.kikrlib.utils.Syso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CartProductsUI {
 	FragmentActivity mContext;
 	List<Product> data;
 	LayoutInflater mInflater;
-	
+
 	public CartProductsUI(FragmentActivity context,List<Product> data) {
 		super();
 		this.mContext = context;
 		this.data = (ArrayList<Product>) data;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
-	
+
 	public View getView() {
 		LinearLayout ll =  new LinearLayout(mContext);
 		ll.setOrientation(LinearLayout.VERTICAL);
-		LayoutParams layoutParams =new LinearLayout.LayoutParams(CommonUtility.getDeviceWidth(mContext), LinearLayout.LayoutParams.WRAP_CONTENT);
-		for (int i = 0; i < data.size(); i++) {	
+		LayoutParams layoutParams =new LayoutParams(CommonUtility.getDeviceWidth(mContext), LayoutParams.WRAP_CONTENT);
+		for (int i = 0; i < data.size(); i++) {
 			Syso.info("in getview");
 			View convertView = mInflater.inflate(R.layout.adapter_cart_list, null);
 			ImageView cartProductImage = (ImageView) convertView.findViewById(R.id.cartProductImage);
 			ImageView deleteCartProductImage = (ImageView) convertView.findViewById(R.id.deleteCartProductImage);
-			TextView brandName = (TextView) convertView.findViewById(R.id.brandName);
+		//	TextView brandName = (TextView) convertView.findViewById(R.id.brandName);
 			TextView productName = (TextView) convertView.findViewById(R.id.productName);
 			TextView regularPriceText = (TextView) convertView.findViewById(R.id.regularPriceText);
 			TextView quantityText = (TextView) convertView.findViewById(R.id.quantityText);
@@ -66,7 +66,7 @@ public class CartProductsUI {
 			ll.addView(convertView);
 			convertView.setTag(i);
 			CommonUtility.setImage(mContext, data.get(i).getProductimageurl(), cartProductImage, R.drawable.dum_list_item_product);
-			brandName.setText(data.get(i).getMerchantname());
+			//brandName.setText(data.get(i).getMerchantname());
 			productName.setText(data.get(i).getProductname());
 			if (data.get(i).isFreeShipping()) {
 				freeShippingText.setVisibility(View.VISIBLE);
@@ -87,7 +87,7 @@ public class CartProductsUI {
 			}else{
 				colorLayout.setVisibility(View.GONE);
 			}
-			
+
 			if(!TextUtils.isEmpty(data.get(i).getSelected_size())){
 				sizeText.setText(" "+data.get(i).getSelected_size());
 			}else{
@@ -125,7 +125,7 @@ public class CartProductsUI {
 				}else{
 					colorLayout.setVisibility(View.GONE);
 				}
-				
+
 				if(!TextUtils.isEmpty(data.get(i).getSelected_size())){
 					sizeLayout.setVisibility(View.VISIBLE);
 					sizeText.setText(" "+data.get(i).getSelected_size());
@@ -133,41 +133,41 @@ public class CartProductsUI {
 					sizeLayout.setVisibility(View.GONE);
 				}
 			}
-		if(data.get(i).getShipping_option().equals("fastest"))
-			shipping_status.setImageResource(R.drawable.hdpi_on);
-		else
-			shipping_status.setImageResource(R.drawable.hdpi_off);
-		
-		if(data.get(i).getShipping_option().equals("fastest")) {
-			btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
-			btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
-		}
-			//viewHolder.shipping_status.setImageResource(R.drawable.hdpi_on);
-		else {
-			btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
-			btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
-		}
-		
-		
-		shipping_status.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				int i = (Integer) v.getTag();
-				if(data.get(i).getShipping_option().equals("fastest")){
-					((ImageView)v).setImageResource(R.drawable.hdpi_off);
-					data.get(i).setShipping_option("cheapest");
-				}
-				else{
-					data.get(i).setShipping_option("fastest");
-					((ImageView)v).setImageResource(R.drawable.hdpi_on);
-				}
+			if(data.get(i).getShipping_option().equals("fastest"))
+				shipping_status.setImageResource(R.drawable.hdpi_on);
+			else
+				shipping_status.setImageResource(R.drawable.hdpi_off);
+
+			if(data.get(i).getShipping_option().equals("fastest")) {
+				btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
+				btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
 			}
-		});
+			//viewHolder.shipping_status.setImageResource(R.drawable.hdpi_on);
+			else {
+				btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
+				btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
+			}
+
+
+			shipping_status.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					int i = (Integer) v.getTag();
+					if(data.get(i).getShipping_option().equals("fastest")){
+						((ImageView)v).setImageResource(R.drawable.hdpi_off);
+						data.get(i).setShipping_option("cheapest");
+					}
+					else{
+						data.get(i).setShipping_option("fastest");
+						((ImageView)v).setImageResource(R.drawable.hdpi_on);
+					}
+				}
+			});
 		}
 		return ll;
 	}
-	
+
 //	 private void initArcMenu(final ArcMenu menu, int[] itemDrawables, final View v) {
 //	        final int itemCount = itemDrawables.length;
 //	        for (int i = 0; i < itemCount; i++) {
@@ -202,13 +202,13 @@ public class CartProductsUI {
 //	            });
 //	        }
 //	    }
-	
-	
+
+
 	private void addFragment(Fragment fragment) {
 		// TODO Auto-generated method stub
 		((HomeActivity) mContext).addFragment(fragment);
 	}
-	
-	
+
+
 
 }

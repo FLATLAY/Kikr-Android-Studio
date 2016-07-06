@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.kikr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -18,6 +20,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/head"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -32,44 +35,66 @@
 
         <RelativeLayout
             android:id="@+id/rel_layout"
-            android:layout_width="@dimen/app_width"
-            android:layout_height="@dimen/app_height"
-            android:background="@color/dark_green"
-            android:paddingBottom="5dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="5dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-            <LinearLayout
+            android:paddingBottom="2dp">
+
+            <RelativeLayout
+
                 android:id="@+id/llheading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:background="#19a391"
+                android:orientation="horizontal"
+                android:padding="5dp">
 
-                <ImageView
-                    android:id="@+id/category_image"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/kikrhighlight" />
+                <LinearLayout
 
-                <TextView
-                    android:id="@+id/tvCategoryName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jewelry->Accessories"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
 
-            </LinearLayout>
+                    android:layout_centerHorizontal="true"
+
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/category_image"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="fitXY"
+
+                        android:src="@drawable/kikrhighlight" />
+
+
+                    <com.kikr.utility.AutoTextSize
+                        android:id="@+id/tvCategoryName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="Jewelry"
+                        android:textColor="@color/white"
+                        android:textSize="18dp"
+                        app:minTextSize="8dp" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
 
             <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="165dp"
                 android:layout_below="@+id/llheading"
                 android:layout_margin="0dp"
-                android:padding="0dp">
+                android:background="#19a391"
+                android:padding="0dp"
+                android:scrollbarSize="3dp"
+                android:scrollbarThumbHorizontal="@drawable/horizontal_scroll_color"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -83,20 +108,23 @@
                         android:id="@+id/gridSubCategories"
                         android:layout_width="700dp"
                         android:layout_height="165dp"
+                        android:layout_gravity="left"
+                        android:gravity="left|center_vertical"
                         android:scrollbars="horizontal"></GridView>
                 </LinearLayout>
             </HorizontalScrollView>
 
+            <com.kikr.ui.HeaderGridView
+                android:id="@+id/productBasedOnBrandList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/horizontalScrollView"
+                android:longClickable="true"
+                android:numColumns="3" />
 
         </RelativeLayout>
 
-        <com.kikr.ui.HeaderGridView
-            android:id="@+id/productBasedOnBrandList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/rel_layout"
-            android:longClickable="true"
-            android:numColumns="3" />
+
     </RelativeLayout>
 
 
@@ -116,8 +144,10 @@
             android:layout_alignParentTop="true"
             android:layout_marginBottom="32dp"
             android:background="@color/aquamarine2"
+            android:capitalize="words"
             android:gravity="center"
             android:padding="16dp"
+            android:singleLine="true"
             android:text="FILTERS"
             android:textColor="@color/white"
             android:textSize="@dimen/xxx_large_text_size" />
@@ -576,6 +606,6 @@
         android:layout_margin="15dp"
         android:background="@drawable/fabcircle"
         android:src="@drawable/filter"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
 </FrameLayout>

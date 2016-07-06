@@ -1,30 +1,24 @@
 package com.kikr.activity;
 
-import io.branch.referral.Branch;
-import io.branch.referral.BranchError;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONObject;
-
-import twitter4j.User;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.kikr.BaseActivity;
 import com.kikr.R;
@@ -55,9 +49,14 @@ import com.kikrlib.utils.DeviceUtils;
 import com.kikrlib.utils.Syso;
 import com.personagraph.api.PGAgent;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import twitter4j.User;
+
 public class LandingActivity extends BaseActivity implements OnClickListener,ServiceCallback{
 	private ProgressBarDialog progressBarDialog;
-	private Button mFacebookButton,mTwitterButton,mEmailButton,mSkipButton;
+	private Button mFacebookButton,mTwitterButton,mEmailButton,mSkipButton,mLoginButton;
 	private final int REQUEST_CODE_FB_LOGIN = 1000;
 	private final int REQUEST_CODE_TWIT_LOGIN = 1001;
 	private final String DEFAULT_GENDER = "male";
@@ -66,6 +65,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 	private String mProfilePic ;
 	private String mUsername ;
 	private String name;
+	private VideoView vedio;
 	private String birthday;
 	private String location;
 	private String gender;
@@ -89,6 +89,8 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		CommonUtility.noTitleActivity(context);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_landing); 
 		
 		
@@ -115,12 +117,14 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 			imgOrFBTwitter.setVisibility(View.GONE);
 	//		imgOr.setVisibility(View.VISIBLE);
 		}
+
 	}	
 
 	@Override
 	public void onClick(View v) {
 		switch(v.getId()){
 		case R.id.emailButton:
+
 			if(CommonUtility.isOnline(context))
 			PGAgent.logEvent("SIGNUP_VIA_EMAIL_CLICKED");
 			startActivity(SignUpActivity.class);
@@ -147,6 +151,11 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 				twitterLoogedIn();
 			}
 			break;
+			case R.id.loginButton:
+				CommonUtility.hideSoftKeyboard(context);
+				startActivity(LoginActivity.class);
+				finish();
+				break;
 		case R.id.skipButton:
 			if(checkInternet()){
 				skip();
@@ -156,6 +165,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 				startActivity(IntroductionPagerActivity.class);
 				break;
 		}
+
 	}
 
 	@Override
@@ -171,13 +181,42 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 		imgOrFBTwitter = (ImageView) findViewById(R.id.imgOrFBTwitter);
 		imgOr = (ImageView) findViewById(R.id.imgOr);
 		earn250 = (TextView) findViewById(R.id.earn250);
+		mLoginButton=(Button) findViewById(R.id.loginButton);
 		kikrIntroductionTextView =(TextView) findViewById(R.id.kikrIntroductionTextView);
+		vedio = (VideoView) findViewById(R.id.vedio);
 	} 
 
 	@Override
 	public void setupData() {
+
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		videostart();
+	}
+
+	public void videostart()
+	{
+
+		try {
+			String uriPath = "android.resource://com.kikr/"+R.raw.flatlay_guide;
+			vedio.setVideoPath(
+					uriPath);
+			MediaController mediaController = new
+					MediaController(this);
+			mediaController.setAnchorView(vedio);
+			Uri uri = Uri.parse(uriPath);
+			vedio.setVideoURI(uri);
+			vedio.requestFocus();
+			vedio.start();
+		}
+		catch (Exception e)
+		{
+
+		}
+	}
 	@Override
 	public void headerView() {
 		hideHeader();
@@ -198,6 +237,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener,Ser
 		mEmailButton.setOnClickListener(this);
 		mSkipButton.setOnClickListener(this);
 		kikrIntroductionTextView.setOnClickListener(this);
+		mLoginButton.setOnClickListener(this);
 	}
 	
 	@Override

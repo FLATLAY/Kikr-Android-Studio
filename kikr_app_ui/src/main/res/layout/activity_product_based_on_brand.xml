@@ -18,7 +18,7 @@
     
     <include
         android:id="@+id/itemNotFound"
-        layout="@layout/layout_item_not_found"
+        layout="@layout/no_result_found_for_search_product"
         android:visibility="gone" />
 
     <com.kikr.ui.HeaderGridView

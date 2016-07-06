@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.app.Activity;
@@ -45,6 +46,7 @@ import com.google.android.gcm.GCMRegistrar;
 import com.kikr.R;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.Constants.WebConstants;
+import com.kikrlib.utils.StringUtils;
 import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
 
 public class CommonUtility {
@@ -481,5 +483,28 @@ public class CommonUtility {
 		String decrytrecard = CardCrypto.decryptCreditCard(cardNumber, AppConstants.CREDIT_CARD_NO_ENCRYPT_DECRYPT_KEY);
 		return decrytrecard;
 	}
+	public static String maskCCNumberCommons(String ccnum){
+		Pattern PATTERN = Pattern.compile("[0-9]+");
+
+		String message = ccnum;
+		Matcher matcher = PATTERN.matcher(message);
+		String maskingChar = "x";
+		StringBuilder finalMask = new StringBuilder(maskingChar);
+
+		while (matcher.find()) {
+			String group = matcher.group();
+			int groupLen = group.length();
+
+			if(groupLen>4){
+				for(int i=0; i<=group.length()-4; i++){
+					finalMask.append(maskingChar);
+				}
+				finalMask.append(group.substring(groupLen-4));
+			}
+			message = message.replace(group, finalMask);
+		}
+		return message;
+	}
+
 
 }

@@ -1,9 +1,9 @@
 package com.kikrlib.service;
 
-import java.util.List;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+
+import java.util.List;
 
 
 /**
@@ -20,6 +20,7 @@ public interface IService {
 	 * @return "POST" or "GET" 
 	 */
 	public String getMethod();
+	public String getServiceName();
 	
 	
 	public String getHost();
@@ -66,6 +67,10 @@ public interface IService {
 	public void handleException(ServiceException exception);
 
 	public String getHeader();
+
+//	public String getuserid();
+//
+//	public String getdevice_token();
 
 	/**
 	 * Use this function to create request body for request for Auth

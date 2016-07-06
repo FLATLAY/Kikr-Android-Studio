@@ -18,7 +18,8 @@
             android:layout_weight="1"
             android:padding="@dimen/padding_small"
             android:text="text"
-            android:textColor="@color/app_text_color"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/app_background"
             android:textSize="@dimen/large_text_size" />
 
         <LinearLayout

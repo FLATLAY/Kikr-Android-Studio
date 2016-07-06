@@ -84,20 +84,20 @@ public class RoundImageView extends ImageView {
 
 		return output;
 	}
-	
+
 	public Bitmap getBitmap(Drawable icon){
-	Bitmap APKicon;
-	if(icon instanceof BitmapDrawable) {
-	  APKicon  = ((BitmapDrawable)icon).getBitmap();
-	}else{
-	     Bitmap bitmap = Bitmap.createBitmap(icon.getIntrinsicWidth(),icon.getIntrinsicHeight(), Config.ARGB_8888);
-	     Canvas canvas = new Canvas(bitmap); 
-	     icon.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-	     icon.draw(canvas);
-	     APKicon = bitmap;
+		Bitmap APKicon;
+		if(icon instanceof BitmapDrawable) {
+			APKicon  = ((BitmapDrawable)icon).getBitmap();
+		}else{
+			Bitmap bitmap = Bitmap.createBitmap(icon.getIntrinsicWidth(),icon.getIntrinsicHeight(), Config.ARGB_8888);
+			Canvas canvas = new Canvas(bitmap);
+			icon.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+			icon.draw(canvas);
+			APKicon = bitmap;
+		}
+		return APKicon;
 	}
-	return APKicon;
-	}
-	
+
 
 }

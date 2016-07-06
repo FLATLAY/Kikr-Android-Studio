@@ -1,26 +1,5 @@
 package com.kikr.activity;
 
-import io.branch.referral.Branch;
-import io.branch.referral.BranchError;
-import io.branch.referral.BranchShortLinkBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import net.hockeyapp.android.CrashManager;
-import net.hockeyapp.android.UpdateManager;
-import net.simonvt.menudrawer.MenuDrawer;
-import net.simonvt.menudrawer.MenuDrawer.OnDrawerStateChangeListener;
-import net.simonvt.menudrawer.Position;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import twitter4j.User;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -33,9 +12,12 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -48,17 +30,16 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.braintreepayments.api.Braintree;
+import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -70,8 +51,9 @@ import com.kikr.dialog.HelpInviteFriendsDialog;
 import com.kikr.dialog.HelpKikrCardDialog;
 import com.kikr.dialog.HelpSocialMediaDialog;
 import com.kikr.dialog.LogoutDialog;
-import com.kikr.dialog.PinterestBoardDialog;
+import com.kikr.dialog.LogoutDialogWithTab;
 import com.kikr.dialog.TwotapMessageDialog;
+import com.kikr.fragment.CartFragmentTab;
 import com.kikr.fragment.FragmentActivityCollectionDetail;
 import com.kikr.fragment.FragmentActivityMonths;
 import com.kikr.fragment.FragmentActivityPage;
@@ -82,7 +64,6 @@ import com.kikr.fragment.FragmentCreditRedeemDetailPage;
 import com.kikr.fragment.FragmentDeals;
 import com.kikr.fragment.FragmentDiscover;
 import com.kikr.fragment.FragmentDiscoverDetail;
-import com.kikr.fragment.FragmentDiscoverNew;
 import com.kikr.fragment.FragmentEditPurchaseItem;
 import com.kikr.fragment.FragmentInspirationDetail;
 import com.kikr.fragment.FragmentInspirationImage;
@@ -96,15 +77,18 @@ import com.kikr.fragment.FragmentKikrGuide;
 import com.kikr.fragment.FragmentKikrWalletCard;
 import com.kikr.fragment.FragmentLearnMore;
 import com.kikr.fragment.FragmentLearnMoreOutsideUS;
+import com.kikr.fragment.FragmentLogout;
 import com.kikr.fragment.FragmentMyFriends;
 import com.kikr.fragment.FragmentPendingCreditDetails;
 import com.kikr.fragment.FragmentPlaceMyOrder;
+import com.kikr.fragment.FragmentPostUploadTab;
 import com.kikr.fragment.FragmentProductBasedOnInspiration;
 import com.kikr.fragment.FragmentProductBasedOnType;
 import com.kikr.fragment.FragmentProductDetailWebView;
 import com.kikr.fragment.FragmentProfileView;
 import com.kikr.fragment.FragmentPurchaseGuarantee;
 import com.kikr.fragment.FragmentSearch;
+import com.kikr.fragment.FragmentSearchAll;
 import com.kikr.fragment.FragmentSearchProduct;
 import com.kikr.fragment.FragmentSearchResults;
 import com.kikr.fragment.FragmentSearchSubCategories;
@@ -115,9 +99,12 @@ import com.kikr.fragment.FragmentSupport;
 import com.kikr.fragment.FragmentTagList;
 import com.kikr.fragment.FragmentTrackOrder;
 import com.kikr.fragment.FragmentUserCart;
+import com.kikr.fragment.MainFragmentContainer;
+import com.kikr.fragment.SettingFragmentTab;
 import com.kikr.ibeacon.BeaconMonitorService;
 import com.kikr.menu.ArcLayout;
 import com.kikr.menu.ContextMenuView;
+import com.kikr.post_upload.FragmentPostUploadTag;
 import com.kikr.sessionstore.SessionStore;
 import com.kikr.twitter.OauthItem;
 import com.kikr.twitter.TwitterOAuthActivity;
@@ -164,22 +151,50 @@ import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.StringUtils;
 import com.kikrlib.utils.Syso;
 import com.personagraph.api.PGAgent;
-import com.pinterest.android.pdk.PDKBoard;
-import com.pinterest.android.pdk.Utils;
-import com.radiusnetworks.ibeacon.IBeaconManager;
-import com.soundcloud.android.crop.Crop;
 import com.pinterest.android.pdk.PDKCallback;
 import com.pinterest.android.pdk.PDKClient;
 import com.pinterest.android.pdk.PDKException;
 import com.pinterest.android.pdk.PDKResponse;
+import com.pinterest.android.pdk.Utils;
+import com.radiusnetworks.ibeacon.IBeaconManager;
+import com.soundcloud.android.crop.Crop;
+import com.yalantis.ucrop.UCrop;
 
-public class HomeActivity extends FragmentActivity implements OnClickListener {
+import net.hockeyapp.android.CrashManager;
+import net.hockeyapp.android.UpdateManager;
+import net.simonvt.menudrawer.MenuDrawer;
+import net.simonvt.menudrawer.MenuDrawer.OnDrawerStateChangeListener;
+import net.simonvt.menudrawer.Position;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+import io.branch.referral.Branch;
+import io.branch.referral.BranchError;
+import io.branch.referral.BranchShortLinkBuilder;
+import twitter4j.User;
+
+public class HomeActivity extends FragmentActivity implements OnClickListener, OnLoginCompleteListener {
+    public static final String SOCIAL_NETWORK_TAG = "SocialIntegrationMain.SOCIAL_NETWORK_TAG";
+    public static int SHARING_CODE = 64206;
+    public static PDKClient pdkClient;
+
+    public static Spinner mstatus;
+    public static TextView uploadphoto, menuBackTextView;
+    public static ImageView photouploadnext, homeImageView, menuRightImageView, crossarrow, postUploadWithTag;
+    public static TextView gallery, camera, instagram;
     private FragmentActivity context;
-    private MenuDrawer left;
+    View viewHeader;
+
     private ActionBar actionBar;
-    private TextView menuBackTextView, menuRightTextView;
+    private TextView menuRightTextView;
     public static TextView menuTextCartCount;
-    private ImageView menuLeftImageView, menuRightImageView, homeImageView, menuSearchImageView;
+    public static ImageView menuSearchImageView;
     private LinearLayout menuSearchLayout, menuProfileLayout, menuConnectWithTwitterLayout, menuConnectWithFacebookLayout, menuKikrCreditsLayout, menuActivityLayout, kikerWalletLayout, kikrGuideLayout;
     private LinearLayout menuMyFriendsLayout, menuInviteFriendsLayout, menuCheckInLayout, menuSupportLayout, menuSettingsLayout, menuLogoutoptionLayout, menuProfileOptionLayout;
     private LinearLayout inspirationLayout, discoverLayout, menuDealLayout;
@@ -217,14 +232,17 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
         if (homeActivtyList != null) {
             homeActivtyList.add(this);
         }
         UserPreference.getInstance().setCurrentScreen(Screen.HomeScreen);
+
         context = this;
         homeActivity = this;
+        //  CommonUtility.printKeyHash(context);
         mFragmentStack = new Stack<String>();
-        setMenuDrawer();
+
         setActionBar();
         if (UserPreference.getInstance().getIsCheckBluetooth())
             verifyBluetooth(false);
@@ -252,7 +270,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
             settings.edit().putBoolean("my_first_time", false).commit();
         }
 
-        getKikrCredits();
+        // getKikrCredits();
         Product prod = (Product) getIntent().getSerializableExtra("productobj");
         if (prod != null) {
             Bundle bundle = new Bundle();
@@ -265,7 +283,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         if (getIntent().getStringExtra("profile_collection") != null) {
             addFragment(new FragmentProfileView(getIntent().getStringExtra("profile_collection"), "no"));
         }
-        PGAgent.shareExternalUserId(UserPreference.getInstance().getUserID());
+        try {
+            PGAgent.shareExternalUserId(UserPreference.getInstance().getUserID());
+        } catch (Exception ex) {
+
+        }
 //		PDKClient.configureInstance(this, AppConstants.PINTEREST_APP_ID);
 //		PDKClient.getInstance().onConnect(this);
     }
@@ -330,25 +352,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         setClickListener();
     }
 
-    private void setMenuDrawer() {
-        left = MenuDrawer.attach(this, MenuDrawer.Type.BEHIND, Position.LEFT, MenuDrawer.MENU_DRAG_WINDOW);
-        left.setContentView(R.layout.activity_home);
-        left.setMenuView(R.layout.menu_left);
-        left.setOnDrawerStateChangeListener(new OnDrawerStateChangeListener() {
-
-            @Override
-            public void onDrawerStateChange(int oldState, int newState) {
-                if (newState == MenuDrawer.STATE_OPEN) {
-                    showKikrCredit();
-                }
-            }
-
-            @Override
-            public void onDrawerSlide(float openRatio, int offsetPixels) {
-
-            }
-        });
-    }
 
     private void addMenuLayouts() {
         layouts.add(menuConnectWithTwitterLayout);
@@ -392,23 +395,33 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 
     private void setActionBar() {
         actionBar = getActionBar();
+        actionBar.hide();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.app_discover_header, null);
-        actionBar.setCustomView(view, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        menuBackTextView = (TextView) view.findViewById(R.id.leftTextView);
-        menuRightTextView = (TextView) view.findViewById(R.id.menuRightText);
-        menuLeftImageView = (ImageView) view.findViewById(R.id.menuLeftImageView);
-        menuRightImageView = (ImageView) view.findViewById(R.id.menuRightImageView);
-        homeImageView = (ImageView) view.findViewById(R.id.homeImageView);
-        menuSearchImageView = (ImageView) view.findViewById(R.id.menuSearchImageView);
-        menuTextCartCount = (TextView) view.findViewById(R.id.txtCartCount);
+        viewHeader = inflater.inflate(R.layout.app_discover_header, null);
+        actionBar.setCustomView(viewHeader, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        crossarrow = (ImageView) findViewById(R.id.crossarrow);
+        postUploadWithTag = (ImageView) viewHeader.findViewById(R.id.postUploadWithTag);
+        mstatus = (Spinner) findViewById(R.id.mstatus);
+        uploadphoto = (TextView) viewHeader.findViewById(R.id.uploadphoto);
+        photouploadnext = (ImageView) viewHeader.findViewById(R.id.photouploadnext);
+        menuBackTextView = (TextView) viewHeader.findViewById(R.id.leftTextView);
+        gallery = (TextView) viewHeader.findViewById(R.id.gallery);
+        camera = (TextView) viewHeader.findViewById(R.id.camera);
+        instagram = (TextView) viewHeader.findViewById(R.id.instagram);
+        menuBackTextView = (TextView) viewHeader.findViewById(R.id.leftTextView);
+        menuRightTextView = (TextView) viewHeader.findViewById(R.id.menuRightText);
+
+        menuRightImageView = (ImageView) viewHeader.findViewById(R.id.menuRightImageView);
+        homeImageView = (ImageView) viewHeader.findViewById(R.id.homeImageView);
+        menuSearchImageView = (ImageView) viewHeader.findViewById(R.id.menuSearchImageView);
+        menuTextCartCount = (TextView) viewHeader.findViewById(R.id.txtCartCount);
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        menuLeftImageView.setOnClickListener(this);
+
         menuRightImageView.setOnClickListener(this);
         homeImageView.setOnClickListener(this);
         menuBackTextView.setOnClickListener(this);
@@ -416,12 +429,26 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         menuRightTextView.setOnClickListener(this);
     }
 
-    private void handleLeftButtonClick() {
-        boolean drawerOpen = left.isSelected();
-        if (drawerOpen)
-            left.closeMenu();
-        else
-            left.openMenu();
+
+    public void showActionBar() {
+        actionBar.show();
+        menuRightImageView.setVisibility(View.GONE);
+        menuTextCartCount.setVisibility(View.GONE);
+    }
+
+    public void hideActionBar() {
+        actionBar.hide();
+    }
+
+    public void hideBackButtonvalue() {
+        menuBackTextView.setVisibility(View.GONE);
+
+        camera.setVisibility(View.GONE);
+        gallery.setVisibility(View.GONE);
+        instagram.setVisibility(View.GONE);
+        mstatus.setVisibility(View.GONE);
+        crossarrow.setVisibility(View.GONE);
+        homeImageView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -429,12 +456,25 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         switch (v.getId()) {
             case R.id.homeImageView:
                 CommonUtility.hideSoftKeyboard(context);
-                loadFragment(new FragmentDiscoverNew());
+                loadFragment(new MainFragmentContainer());
                 break;
-            case R.id.menuLeftImageView:
-                CommonUtility.hideSoftKeyboard(context);
-                handleLeftButtonClick();
+
+            case R.id.crossarrow:
+                //  hideBackButtonvalue();
+                onBackPressed();
+                // ontagBack();
                 break;
+            case R.id.leftTextView:
+                // hideBackButton();
+                onBackPressed();
+                break;
+            case R.id.postUploadWithTag:
+                Fragment fragmentupload = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+                ((FragmentPostUploadTag) fragmentupload).uploadPost();
+
+                break;
+
+
             case R.id.menuRightImageView:
                 CommonUtility.hideSoftKeyboard(context);
                 Fragment fragment2 = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
@@ -462,217 +502,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                     }
                 }
                 break;
-            case R.id.menuCheckInLayout:
-                left.closeMenu();
-//            loginPinterest();
-                changeBackground(menuCheckInLayout, checkInTextView);
-                verifyBluetooth(true);
-                break;
-            case R.id.menuOrdersLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(menuOrdersLayout, orderTextView);
-                    loadFragment(new FragmentAllOrders());
-                }
-                break;
 
-            case R.id.menuSearchLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(menuSearchLayout, viewSearchTextView);
-                    loadFragment(new FragmentSearchProduct());
-                }
-                break;
-            case R.id.menuInviteFriendsLayout:
-                if (firstTime) {
-                    openFriendsHelpScreen();
-                    if (checkInternet()) {
-                        left.closeMenu();
-                        changeBackground(menuInviteFriendsLayout, inviteTextView);
-                        inviteFriends();
-                    }
-                } else {
-                    if (checkInternet()) {
-                        left.closeMenu();
-                        changeBackground(menuInviteFriendsLayout, inviteTextView);
-                        inviteFriends();
-                    }
-                }
 
-                break;
-            case R.id.menuInterestsLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(menuInterestsLayout, null);
-                    loadFragment(new FragmentInterestSection());
-                }
-                break;
-            case R.id.menuKikrCreditsLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(menuKikrCreditsLayout, kikrCreditTextView);
-                    loadFragment(new FragmentKikrCreditsScreen());
-                }
-                break;
-            case R.id.menuMyFriendsLayout:
-                if (firstTime) {
-                    openFriendsHelpScreen();
-                    if (menuMyFriendsOptionLayout.getVisibility() == View.VISIBLE) {
-                        menuMyFriendsOptionLayout.setVisibility(View.GONE);
-                        menuMyFriendsLayoutImageView.setImageResource(R.drawable.ic_menu_arrow_down);
-                    } else {
-                        menuMyFriendsOptionLayout.setVisibility(View.VISIBLE);
-                        menuMyFriendsLayoutImageView.setImageResource(R.drawable.ic_menu_arrow);
-                    }
-                    if (checkInternet()) {
-                        changeBackground(menuMyFriendsLayout, null);
-                        loadFragment(new FragmentMyFriends());
-
-                        left.closeMenu();
-                    }
-                } else {
-                    if (checkInternet()) {
-                        left.closeMenu();
-                        changeBackground(menuMyFriendsLayout, null);
-                        loadFragment(new FragmentMyFriends());
-                    }
-                }
-                break;
-            case R.id.menuActivityLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(menuActivityLayout, null);
-                    loadFragment(new FragmentActivityMonths());
-                }
-                break;
-            case R.id.discoverLayout:
-                left.closeMenu();
-                changeBackground(discoverLayout, txtShop);
-                loadFragment(new FragmentDiscoverNew());
-                break;
-            case R.id.inspirationLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(inspirationLayout, null);
-                    loadFragment(new FragmentInspirationSection(true, UserPreference.getInstance().getUserID()));
-                }
-                break;
-            case R.id.menuProfileLayout:
-                if (checkInternet()) {
-                    if (firstTime) {
-                        openProfileHelpScreen();
-                        left.closeMenu();
-                        changeBackground(menuProfileLayout, viewProfileTextView);
-                        isProfile = true;
-                        loadFragment(new FragmentProfileView(UserPreference.getInstance().getUserID(), "yes"));
-                    } else {
-                        left.closeMenu();
-                        changeBackground(menuProfileLayout, viewProfileTextView);
-                        isProfile = true;
-                        loadFragment(new FragmentProfileView(UserPreference.getInstance().getUserID(), "yes"));
-                    }
-                }
-                break;
-            case R.id.menuSettingsLayout:
-                if (checkInternet()) {
-                    if (firstTime) {
-                        if (menuSettingsOptionLayout.getVisibility() == View.VISIBLE) {
-                            menuSettingsOptionLayout.setVisibility(View.GONE);
-                            menuSettingsLayoutImageView.setImageResource(R.drawable.ic_menu_arrow_down);
-                        } else {
-                            menuSettingsOptionLayout.setVisibility(View.VISIBLE);
-                            menuSettingsLayoutImageView.setImageResource(R.drawable.ic_menu_arrow);
-                            Handler handler = new Handler();
-                            Runnable runnable = new Runnable() {
-                                @Override
-                                public void run() {
-                                    menuScrollView.scrollTo(0, menuScrollView.getBottom());
-                                }
-                            };
-                            handler.postDelayed(runnable, 10);
-                        }
-                        left.closeMenu();
-                        changeBackground(menuSettingsLayout, settingsTextView);
-                        loadFragment(new FragmentSettings());
-                    } else {
-                        left.closeMenu();
-                        changeBackground(menuSettingsLayout, settingsTextView);
-                        loadFragment(new FragmentSettings());
-                    }
-                }
-
-                break;
-            case R.id.menuDealLayout:
-                if (checkInternet()) {
-                    if (firstTime) {
-                        if (menuDealOptionLayout.getVisibility() == View.VISIBLE) {
-                            menuDealOptionLayout.setVisibility(View.GONE);
-                            menuDealImageView.setImageResource(R.drawable.ic_menu_arrow_down);
-                        } else {
-                            menuDealOptionLayout.setVisibility(View.VISIBLE);
-                            menuDealImageView.setImageResource(R.drawable.ic_menu_arrow);
-                        }
-                        left.closeMenu();
-                        if (!(mContent instanceof FragmentDeals)) {
-                            changeBackground(menuDealLayout, dealTextview);
-                            loadFragment(new FragmentDeals());
-                        }
-                    } else {
-                        left.closeMenu();
-                        if (!(mContent instanceof FragmentDeals)) {
-                            changeBackground(menuDealLayout, dealTextview);
-                            loadFragment(new FragmentDeals());
-                        }
-                    }
-
-                }
-                break;
-            case R.id.menuConnectWithInstagramLayout:
-                left.closeMenu();
-                changeBackground(menuConnectWithTwitterLayout, null);
-                break;
-            case R.id.menuConnectWithTwitterLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(menuConnectWithTwitterLayout, null);
-                    twitterLoogedIn();
-                }
-                break;
-            case R.id.menuConnectWithFacebookLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(menuConnectWithFacebookLayout, null);
-                    Intent i = new Intent(context, FbSignActivity.class);
-                    i.putExtra("getFriendList", false);
-                    i.putExtra("getProfilePic", false);
-                    startActivityForResult(i, AppConstants.REQUEST_CODE_FB_LOGIN);
-                }
-                break;
-            case R.id.menuSupportLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(menuSupportLayout, supportTextView);
-                    loadFragment(new FragmentSupport());
-                }
-                break;
-            case R.id.kikerWalletLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(kikerWalletLayout, walletTextView);
-                    if (UserPreference.getInstance().getPassword() == "" || UserPreference.getInstance().getEmail() == "" || UserPreference.getInstance().getUserName() == "") {
-                        CreateAccountDialog createAccountDialog = new CreateAccountDialog(context);
-                        createAccountDialog.show();
-                    } else {
-                        openWalletList();
-                    }
-                }
-                break;
-            case R.id.menuLogoutoptionLayout:
-                left.closeMenu();
-                changeBackground(menuLogoutoptionLayout, logoutTextView);
-                LogoutDialog logoutDialog = new LogoutDialog(context, homeActivity);
-                logoutDialog.show();
-                break;
             case R.id.menuProfileLayoutImageView:
                 openProfileHelpScreen();
                 if (menuProfileOptionLayout.getVisibility() == View.VISIBLE) {
@@ -719,10 +550,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                     menuDealImageView.setImageResource(R.drawable.ic_menu_arrow);
                 }
                 break;
-            case R.id.leftTextView:
-                hideBackButton();
-                onBackPressed();
-                break;
+
             case R.id.menuRightText:
                 CommonUtility.hideSoftKeyboard(context);
                 if (mContent instanceof FragmentInspirationImageTag) {
@@ -739,17 +567,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                     onBackPressed();
                 }
                 break;
-            case R.id.menuChatLayout:
-                if (checkInternet()) {
-                    left.closeMenu();
-                    changeBackground(menuChatLayout, kikrChatTextView);
-                    loadFragment(new FragmentProductDetailWebView("https://tlk.io/kikrsocialshopping"));
-                }
-                break;
-            case R.id.kikrGuideLayout:
-                left.closeMenu();
-                changeBackground(kikrGuideLayout, kikrGuideTextView);
-                loadFragment(new FragmentKikrGuide());
+
             default:
                 break;
         }
@@ -762,11 +580,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         startActivityForResult(i, AppConstants.REQUEST_CODE_FB_LOGIN);
     }
 
-    public void emailLogIn() {
-        left.closeMenu();
-        changeBackground(menuSettingsLayout, settingsTextView);
-        loadFragment(new FragmentSettings());
-    }
 
     private void openProfileHelpScreen() {
         if (HelpPreference.getInstance().getHelpSideMenu().equals("yes")) {
@@ -789,34 +602,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         startActivity(i);
     }
 
-    protected void changeBackground(View v, TextView tv) {
-        if (v == menuKikrCreditsLayout)
-            totalCredits.setTextColor(this.getResources().getColor(R.color.white));
-        else
-            totalCredits.setTextColor(this.getResources().getColor(R.color.btn_green));
-        for (int i = 0; i < layouts.size(); i++) {
-            if (layouts.get(i) == v) {
-                Syso.info("selected:  " + v + "  " + layouts.get(i));
-                layouts.get(i).setBackgroundColor(getResources().getColor(R.color.menu_option_background_selected));
-            } else {
-                Syso.info(" abcd  " + layouts.get(i));
-                layouts.get(i).setBackgroundColor(getResources().getColor(R.color.menu_option_background));
-            }
-        }
-        if (tv != null) {
-            for (int i = 0; i < textViews.size(); i++) {
-                if (textViews.get(i) == tv) {
-                    Syso.info("selected:  " + tv + "  " + textViews.get(i));
-                    textViews.get(i).setTextColor(this.getResources().getColor(R.color.white));
-                } else {
-                    Syso.info(" abcd  " + textViews.get(i));
-                    textViews.get(i).setTextColor(this.getResources().getColor(R.color.app_text_color));
-                }
-            }
-        }
-    }
 
     public void initLayout() {
+
         menuSearchLayout = (LinearLayout) findViewById(R.id.menuSearchLayout);
         menuProfileLayout = (LinearLayout) findViewById(R.id.menuProfileLayout);
         menuConnectWithTwitterLayout = (LinearLayout) findViewById(R.id.menuConnectWithTwitterLayout);
@@ -904,15 +692,15 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                 cleanActivity();
             }
         } else {
-            addFragment(new FragmentDiscoverNew());
-            changeConnectedBy();
+            addFragment(new MainFragmentContainer());
+
             if (UserPreference.getInstance().getCheckedIsConnected()
                     && CommonUtility.isOnline(context)) {
                 checkStatusOFSocial();
             }
         }
         if (checkInternet()) {
-            getCartList();
+            // getCartList();
         }
     }
 
@@ -922,6 +710,16 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
             twotapMessageDialog.show();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(
+                mFragmentStack.peek());
+        if (fragment instanceof FragmentSearchAll) {
+            ((FragmentSearchAll) fragment).onWindowFocusChanged(hasFocus);
         }
     }
 
@@ -963,31 +761,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
     }
 
     public void setClickListener() {
-        menuProfileLayout.setOnClickListener(this);
-        menuSearchLayout.setOnClickListener(this);
-        menuConnectWithTwitterLayout.setOnClickListener(this);
-        menuConnectWithFacebookLayout.setOnClickListener(this);
-        menuKikrCreditsLayout.setOnClickListener(this);
-        menuActivityLayout.setOnClickListener(this);
-        menuMyFriendsLayout.setOnClickListener(this);
-        menuInviteFriendsLayout.setOnClickListener(this);
-        menuCheckInLayout.setOnClickListener(this);
-        menuSupportLayout.setOnClickListener(this);
-        menuSettingsLayout.setOnClickListener(this);
-        menuLogoutoptionLayout.setOnClickListener(this);
-        menuInterestsLayout.setOnClickListener(this);
-        kikerWalletLayout.setOnClickListener(this);
-        menuDealImageView.setOnClickListener(this);
-        menuProfileLayoutImageView.setOnClickListener(this);
-        menuSettingsLayoutImageView.setOnClickListener(this);
-        menuDealLayout.setOnClickListener(this);
-        menuConnectWithInstagramLayout.setOnClickListener(this);
-        discoverLayout.setOnClickListener(this);
-        inspirationLayout.setOnClickListener(this);
-        menuMyFriendsLayoutImageView.setOnClickListener(this);
-        menuOrdersLayout.setOnClickListener(this);
-        menuChatLayout.setOnClickListener(this);
-        kikrGuideLayout.setOnClickListener(this);
+        crossarrow.setOnClickListener(this);
+        postUploadWithTag.setOnClickListener(this);
+
+
     }
 
     public void setUpTextType() {
@@ -1010,7 +787,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         finish();
     }
 
-    private void inviteFriends() {
+    public void inviteFriends() {
+      final String app_title= getResources().getString(R.string.app_name);
 
         BranchShortLinkBuilder shortUrlBuilder = new BranchShortLinkBuilder(this)
                 .addTag("referral")
@@ -1019,7 +797,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                 .addParameters("username", UserPreference.getInstance().getUserName())
                 .addParameters("userprofilepic", UserPreference.getInstance().getProfilePic())
                 .addParameters("$og_title", getResources().getString(R.string.come_join))
-                .addParameters("$og_description", getResources().getString(R.string.text_join) + "#Kikr @myKikr")
+                .addParameters("$og_description", getResources().getString(R.string.text_join) + "#"+app_title +"@MY" + app_title)
 //		        .addParameters("$og_image_url", "https://pbs.twimg.com/profile_images/541046285873053696/WmdnfQRo_400x400.png");
                 .addParameters("$og_image_url", UserPreference.getInstance().getProfilePic());
         // Get URL Asynchronously
@@ -1033,9 +811,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     //	intent.putExtra(Intent.EXTRA_SUBJECT,  context.getResources().getString(R.string.come_join));
-                    intent.putExtra(Intent.EXTRA_TEXT, context.getResources().getString(R.string.text_join) + " #Kikr @MyKikr " + url);
+                    intent.putExtra(Intent.EXTRA_TEXT, context.getResources().getString(R.string.text_join) + " #" + app_title + "@MY"+app_title+ " \n" + url);
 
-                    startActivity(Intent.createChooser(intent, "Earn 25 credits for each Kikr sign up!"));
+                    startActivity(Intent.createChooser(intent, "Earn 25 credits for each "+app_title + " sign up!"));
                     Log.i("Branch", "Got a Branch URL " + url);
                 }
             }
@@ -1073,7 +851,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         Log.e("home act", requestCode + "wefwe" + resultCode);
@@ -1108,7 +886,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                 uploadFbFriends(fbUsers);
             } else {
                 UserPreference.getInstance().setIsFbConnected(true);
-                changeConnectedBy();
+
             }
         } else if (requestCode == AppConstants.REQUEST_CODE_TWIT_FRIEND_LIST) {
             ArrayList<OauthItem> twitUsers = (ArrayList<OauthItem>) data.getSerializableExtra("friend_list");
@@ -1135,15 +913,28 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                     resultCode, data);
         }
 
+        if (requestCode == UCrop.REQUEST_CROP) {
+            handleCropResult(data);
+        }
+        if (requestCode == UCrop.RESULT_ERROR) {
+            handleCropError(data);
+        }
+
+
         if (requestCode == Crop.REQUEST_CROP) {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-            ((FragmentInspirationImage) fragment).onActivityResult(requestCode,
+            ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
 
         if (requestCode == Crop.REQUEST_PICK) {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-            ((FragmentInspirationImage) fragment).onActivityResult(requestCode,
+            ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
+                    resultCode, data);
+        }
+        if (requestCode == AppConstants.REQUEST_CODE_INSTAGRAM) {
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+            ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
 
@@ -1157,6 +948,41 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
             ((FragmentSettings) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
+        if (requestCode == HomeActivity.SHARING_CODE) {
+
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
+            if (fragment != null) {
+                fragment.onActivityResult(requestCode, resultCode, data);
+            }
+        } else {
+
+            if (data != null) {
+                Uri dataUri = data.getData();
+                if (dataUri != null) {
+                    String urlString = dataUri.toString();
+                    if (urlString.contains("oauth://ASNE?oauth_token")) {
+                        Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
+                        if (fragment != null) {
+                            fragment.onActivityResult(requestCode, resultCode, data);
+                        }
+                    } else if (urlString.contains("www.tychotechnologies.in")) {
+                        Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
+                        if (fragment != null) {
+                            fragment.onActivityResult(requestCode, resultCode, data);
+                        }
+                    }
+                }
+            }
+        }
+
+        //PDKCLIENT_REQUEST_CODE
+        if (requestCode == PDKClient.PDKCLIENT_REQUEST_CODE) {
+
+            PDKClient.getInstance().onOauthResponse(requestCode, resultCode, data);
+            System.out.print("ajhsdgfagd fkaj");
+        }
+
+
     }
 
     private void uploadFbFriends(List<FbUser> fbusers) {
@@ -1170,7 +996,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                         progressBarDialog.dismiss();
                         AlertUtils.showToast(context, R.string.alert_connected_with_fb);
                         UserPreference.getInstance().setIsFbConnected(true);
-                        changeConnectedBy();
+
                     }
 
                     @Override
@@ -1212,6 +1038,16 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
             startActivityForResult(intent,
                     AppConstants.REQUEST_CODE_TWIT_FRIEND_LIST);
         }
+    }
+
+    @Override
+    public void onLoginSuccess(int socialNetworkID) {
+
+    }
+
+    @Override
+    public void onError(int socialNetworkID, String requestID, String errorMessage, Object data) {
+
     }
 
     private class GetTwitterInfo extends AsyncTask<Void, Void, User> {
@@ -1343,7 +1179,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                                 UserPreference.getInstance()
                                         .setIsTwitterConnected(false);
                             }
-                            changeConnectedBy();
+
                         } else {
                             AlertUtils.showToast(context,
                                     R.string.invalid_response);
@@ -1413,7 +1249,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                         progressBarDialog.dismiss();
                         AlertUtils.showToast(context, R.string.alert_connected_with_twitter);
                         UserPreference.getInstance().setIsTwitterConnected(true);
-                        changeConnectedBy();
+
                     }
 
                     @Override
@@ -1473,20 +1309,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         });
     }
 
-    private void changeConnectedBy() {
-        if (UserPreference.getInstance().getIsFbConnected()) {
-            menuConnectWithFacebookLayout.setVisibility(View.GONE);
-            fbView.setVisibility(View.GONE);
-        }
-        if (UserPreference.getInstance().getIsTwitterConnected()) {
-            menuConnectWithTwitterLayout.setVisibility(View.GONE);
-            twitterView.setVisibility(View.GONE);
-        }
-        if (UserPreference.getInstance().getIsFbConnected()
-                && UserPreference.getInstance().getIsTwitterConnected()) {
-//			menuProfileLayoutImageView.setVisibility(View.GONE);
-        }
-    }
 
     private void verifyBluetooth(boolean showDialog) {
         try {
@@ -1571,7 +1393,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                 .addParameters("discounttype", product.getDiscounttype())
                 .addParameters("saleprice", product.getSaleprice())
                 .addParameters("retailprice", product.getRetailprice())
-                .addParameters("brand", product.getBrand())
+                //.addParameters("brand", product.getBrand())
                 .addParameters("shippingcost", product.getShippingcost())
                 .addParameters("keywords", product.getKeywords())
                 .addParameters("manufacturename", product.getManufacturename())
@@ -1721,16 +1543,20 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                 transaction.add(R.id.frame_container, fragment, mContent.toString());
                 transaction.addToBackStack(mContent.toString());
                 transaction.commit();
-                if (fragment instanceof FragmentDiscoverNew)
-                    changeBackground(discoverLayout, txtShop);
+
             } else {
                 mFragmentStack.add(mContent.toString());
                 transaction.replace(R.id.frame_container, fragment, mContent.toString());
                 transaction.addToBackStack(mContent.toString());
                 transaction.commit();
-                if (fragment instanceof FragmentDiscoverNew)
-                    changeBackground(discoverLayout, txtShop);
+
+
             }
+
+            if (fragment instanceof MainFragmentContainer)
+                hideActionBar();
+            else
+                showActionBar();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1739,11 +1565,19 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
     @Override
     public void onBackPressed() {
         try {
-            left.closeMenu();
+            Fragment fragment;
+            fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+            if (fragment instanceof FragmentPostUploadTab || fragment instanceof MainFragmentContainer ||
+                    fragment instanceof FragmentActivityMonths)
+                hideActionBar();
+            else
+                showActionBar();
+
             hideFutter();
+            CommonUtility.hideSoftKeyboard(this);
             if (mFragmentStack.size() == 1) {
-                Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-                if (fragment instanceof FragmentDiscoverNew) {
+
+                if (fragment instanceof MainFragmentContainer) {
                     if (backPressedToExitOnce) {
                         finish();
                     } else {
@@ -1758,18 +1592,75 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                     }
                 } else {
                     hideAllFragment();
-                    addFragment(new FragmentDiscoverNew());
+                    addFragment(new MainFragmentContainer());
                 }
             } else {
-                removeFragment();
-                super.onBackPressed();
+
+
+                if (fragment instanceof FragmentPostUploadTag) {
+                    //  gallery.setVisibility(View.VISIBLE);
+                    mstatus.setVisibility(View.VISIBLE);
+                    crossarrow.setVisibility(View.VISIBLE);
+                    menuBackTextView.setVisibility(View.GONE);
+
+                    camera.setVisibility(View.GONE);
+                    instagram.setVisibility(View.GONE);
+                    homeImageView.setVisibility(View.GONE);
+                    menuRightImageView.setVisibility(View.GONE);
+                    uploadphoto.setVisibility(View.GONE);
+                    removeFragment();
+                    super.onBackPressed();
+
+                } else {
+                    removeFragment();
+                    super.onBackPressed();
+
+                }
             }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void removeFragment() {
+
+//    public void ontagBack() {
+//        try {
+//
+//            left.closeMenu();
+//            hideFutter();
+//            if (mFragmentStack.size() == 1) {
+//                Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+//                if (fragment instanceof FragmentPostUploadTab) {
+//                    if (backPressedToExitOnce) {
+//                        finish();
+//                    } else {
+//                        this.backPressedToExitOnce = true;
+//                        AlertUtils.showToast(context, "Press again to exit");
+//                        new Handler().postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                backPressedToExitOnce = false;
+//                            }
+//                        }, 2000);
+//                    }
+//                } else {
+//                   // hideAllFragment();
+//                    addFragment(new FragmentPostUploadTab());
+//                }
+//            } else {
+//               // removeFragment();
+//                super.onBackPressed();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+
+
+    public void removeFragment() {
         try {
             // remove the current fragment from the stack.
             String fold = mFragmentStack.pop();
@@ -1793,11 +1684,58 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                 if (fragment != null)
                     ((FragmentDiscover) fragment).refresh();
                 // loadFragment(new FragmentDiscover());
+            } else if (fragment instanceof FragmentPostUploadTab) {
+                if (FragmentPostUploadTab.tabposition == 0) {
+                    // gallery.setVisibility(View.VISIBLE);
+                    mstatus.setVisibility(View.VISIBLE);
+                    crossarrow.setVisibility(View.VISIBLE);
+                    menuBackTextView.setVisibility(View.GONE);
+
+                    camera.setVisibility(View.GONE);
+                    instagram.setVisibility(View.GONE);
+                    homeImageView.setVisibility(View.GONE);
+                    menuRightImageView.setVisibility(View.GONE);
+                    uploadphoto.setVisibility(View.GONE);
+                    transaction.show(fragment);
+                    transaction.commit();
+                } else if (FragmentPostUploadTab.tabposition == 1) {
+                    gallery.setVisibility(View.GONE);
+                    mstatus.setVisibility(View.GONE);
+                    crossarrow.setVisibility(View.VISIBLE);
+                    menuBackTextView.setVisibility(View.GONE);
+
+                    camera.setVisibility(View.VISIBLE);
+                    instagram.setVisibility(View.GONE);
+                    homeImageView.setVisibility(View.GONE);
+                    menuRightImageView.setVisibility(View.GONE);
+                    uploadphoto.setVisibility(View.GONE);
+                    transaction.show(fragment);
+                    transaction.commit();
+                } else if (FragmentPostUploadTab.tabposition == 2) {
+                    gallery.setVisibility(View.GONE);
+                    mstatus.setVisibility(View.GONE);
+                    crossarrow.setVisibility(View.VISIBLE);
+                    menuBackTextView.setVisibility(View.GONE);
+
+                    camera.setVisibility(View.GONE);
+                    instagram.setVisibility(View.VISIBLE);
+                    homeImageView.setVisibility(View.GONE);
+                    menuRightImageView.setVisibility(View.GONE);
+                    uploadphoto.setVisibility(View.GONE);
+                    transaction.show(fragment);
+                    transaction.commit();
+                }
+
             } else {
                 if (fragment != null)
                     transaction.show(fragment);
                 transaction.commit();
             }
+
+            if (fragment instanceof MainFragmentContainer)
+                hideActionBar();
+            else
+                showActionBar();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1812,7 +1750,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                         .findFragmentByTag(mFragmentStack.peek());
                 // transaction.remove(fragment);
                 if (fragment != null)
-                    transaction.hide(fragment);
+                    transaction.remove(fragment);
                 transaction.commit();
             }
             mFragmentStack.clear();
@@ -1827,7 +1765,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         LinearLayout footerLayout1 = (LinearLayout) findViewById(R.id.footer_layout);
         TextView textView = (TextView) findViewById(R.id.reloadTextView);
         footerLayout1.setVisibility(View.VISIBLE);
-        textView.setVisibility(View.GONE);
+        textView.setVisibility(View.VISIBLE);
     }
 
     public TextView getReloadFotter() {
@@ -1955,12 +1893,27 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 
     public void showBackButton() {
         menuBackTextView.setVisibility(View.VISIBLE);
-        menuLeftImageView.setVisibility(View.GONE);
+
+        uploadphoto.setVisibility(View.GONE);
+        menuTextCartCount.setVisibility(View.GONE);
+        homeImageView.setVisibility(View.VISIBLE);
+        menuRightImageView.setVisibility(View.GONE);
+        photouploadnext.setVisibility(View.GONE);
+        postUploadWithTag.setVisibility(View.GONE);
     }
 
     public void hideBackButton() {
         menuBackTextView.setVisibility(View.GONE);
-        menuLeftImageView.setVisibility(View.VISIBLE);
+
+        camera.setVisibility(View.GONE);
+        gallery.setVisibility(View.GONE);
+        menuTextCartCount.setVisibility(View.VISIBLE);
+        mstatus.setVisibility(View.GONE);
+        photouploadnext.setVisibility(View.GONE);
+        instagram.setVisibility(View.GONE);
+        crossarrow.setVisibility(View.GONE);
+        postUploadWithTag.setVisibility(View.GONE);
+        homeImageView.setVisibility(View.VISIBLE);
     }
 
     private void checkBackButton(Fragment fragment) {
@@ -1999,12 +1952,27 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                 || fragment instanceof FragmentCreditRedeemDetailPage
                 || fragment instanceof FragmentKikrGuide
 
-                || fragment instanceof FragmentSearchSubCategories) {
+                || fragment instanceof FragmentSearchSubCategories
+                || fragment instanceof FragmentSearchAll
+                || fragment instanceof FragmentPostUploadTab
+                || fragment instanceof FragmentPostUploadTag
+                || fragment instanceof SettingFragmentTab
+
+                || fragment instanceof FragmentLogout
+                || fragment instanceof FragmentPurchaseGuarantee
+                || fragment instanceof FragmentSupport
+                || fragment instanceof CartFragmentTab
+                || fragment instanceof FragmentUserCart
+                || fragment instanceof FragmentKikrWalletCard
+                || fragment instanceof FragmentKikrCreditsScreen
+                || fragment instanceof FragmentAllOrders) {
+
             showBackButton();
         } else {
             hideBackButton();
         }
         if (fragment instanceof FragmentProfileView && isProfile) {
+
             isProfile = false;
             hideBackButton();
         }
@@ -2036,7 +2004,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 
     private void hideRightButton() {
         menuRightTextView.setVisibility(View.GONE);
-        menuSearchImageView.setVisibility(View.VISIBLE);
+        menuSearchImageView.setVisibility(View.GONE);
         menuRightImageView.setVisibility(View.VISIBLE);
     }
 
@@ -2050,7 +2018,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                     @Override
                     public void run() {
                         // TODO Auto-generated method stub
-                        loadFragment(new FragmentDiscoverNew());
+                        loadFragment(new MainFragmentContainer());
                     }
                 };
                 handler.postDelayed(runnable, 100);
@@ -2296,7 +2264,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
         });
         String fromUserId = product.getFrom_user_id() == null ? "" : product.getFrom_user_id();
         String fromCollection = product.getFrom_collection_id() == null ? "" : product.getFrom_collection_id();
-        cartApi.addToCart(UserPreference.getInstance().getUserID(), product.getId(), "1", UserPreference.getInstance().getCartID(), fromUserId, fromCollection, "", "", null);
+        cartApi.addToCart(UserPreference.getInstance().getUserID(), product.getId(), "1", UserPreference.getInstance().getCartID(), fromUserId, fromCollection, "", "", product.getSelected_values());
         cartApi.execute();
     }
 
@@ -2433,7 +2401,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
                         UserPreference.getInstance().setPurchaseId("");
                         addFragment(new FragmentUserCart());
                     } else {
-                        AlertUtils.showToast(context, "Your previous order in process, please try again later.");
+                        AlertUtils.showToast(context, "Your previous order is still being processed. You should receive confirmation on the status shortly.");
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -2596,4 +2564,117 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 //        }
 //    }
 
+
+    //  cropping functions
+
+
+    private Uri mDestinationUri;
+
+    public void startCropActivity(@NonNull Uri uri) {
+        mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
+        UCrop uCrop = UCrop.of(uri, mDestinationUri);
+
+        uCrop = basisConfig(uCrop);
+        uCrop = advancedConfig(uCrop);
+
+        uCrop.start(context);
+    }
+
+
+    private UCrop basisConfig(@NonNull UCrop uCrop) {
+
+        //uCrop = uCrop.withAspectRatio(1, 1);
+        try {
+            float ratioX = Float.valueOf(1);
+            float ratioY = Float.valueOf(1);
+            if (ratioX > 0 && ratioY > 0) {
+                uCrop = uCrop.withAspectRatio(ratioX, ratioY);
+            }
+        } catch (NumberFormatException e) {
+            Log.d("UCrop", "Number please");
+
+        }
+
+
+        return uCrop;
+    }
+
+
+    private UCrop advancedConfig(@NonNull UCrop uCrop) {
+        UCrop.Options options = new UCrop.Options();
+
+
+        options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
+
+        options.setCompressionQuality(100);
+
+        options.setHideBottomControls(false);
+        options.setFreeStyleCropEnabled(true);
+
+
+        return uCrop.withOptions(options);
+    }
+
+    private void handleCropResult(@NonNull Intent result) {
+
+        if (result != null) {
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+            ((FragmentPostUploadTab) fragment).onActivityResult(UCrop.REQUEST_CROP, RESULT_OK
+                    , result);
+        } else
+            AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
+//        final Uri resultUri = UCrop.getOutput(result);
+//        if (resultUri != null) {
+//            ResultActivity.startWithUri(SampleActivity.this, resultUri);
+//        } else {
+//            Toast.makeText(SampleActivity.this, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show();
+//        }
+    }
+
+    @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
+    private void handleCropError(@NonNull Intent result) {
+        final Throwable cropError = UCrop.getError(result);
+        if (cropError != null) {
+            Log.e("UCrop Error", "handleCropError: ", cropError);
+            Toast.makeText(HomeActivity.this, cropError.getMessage(), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(HomeActivity.this, R.string.toast_unexpected_error, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onSavePin(String imageUrl, String boardId, String text, String linkUrl) {
+
+        if (!Utils.isEmpty(text) && !Utils.isEmpty(boardId) && !Utils.isEmpty(imageUrl)) {
+            PDKClient.getInstance().createPin(text, boardId, imageUrl, linkUrl, new PDKCallback() {
+                @Override
+                public void onSuccess(PDKResponse response) {
+                    Log.d(getClass().getName(), response.getData().toString());
+                    Syso.info("12345678 >>> output" + response.getData().toString());
+                    AlertUtils.showToast(context, "Shared Successfully");
+                    // finish();
+                }
+
+                @Override
+                public void onFailure(PDKException exception) {
+                    Log.e(getClass().getName(), exception.getDetailMessage());
+                    Syso.info("12345678 >>> output" + exception.getDetailMessage());
+                    try {
+                        JSONObject jsonObject = new JSONObject(exception.getDetailMessage());
+                        AlertUtils.showToast(context, jsonObject.getString("message"));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        AlertUtils.showToast(context, exception.getDetailMessage());
+                    }
+                    finish();
+                }
+            });
+        } else {
+            Toast.makeText(this, "Required fields cannot be empty", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void logoutscreen() {
+        LogoutDialogWithTab logoutDialog = new LogoutDialogWithTab(context, homeActivity);
+        logoutDialog.show();
+    }
 }

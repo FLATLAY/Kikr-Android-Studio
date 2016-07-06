@@ -74,7 +74,7 @@ public class DeletePostDialog extends Dialog{
 				mProgressBarDialog.dismiss();
 				AlertUtils.showToast(mContext, "Post deleted successfully");
 //				((HomeActivity)mContext).loadFragment(new FragmentInspirationSection());
-				((HomeActivity)mContext).loadFragment(new FragmentDiscoverNew(true));
+				((HomeActivity)mContext).loadFragment(new FragmentDiscoverNew(2,false));
 			}
 			
 			@Override

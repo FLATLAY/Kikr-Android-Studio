@@ -1,8 +1,5 @@
 package com.kikr.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -15,14 +12,10 @@ import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.fragment.FragmentActivityPage;
-import com.kikr.fragment.FragmentKikrCreditMonthBreakdown;
-import com.kikr.utility.CommonUtility;
-import com.kikrlib.bean.ActivityMonthList;
-import com.kikrlib.bean.Credits;
 import com.kikrlib.bean.Detail;
-import com.kikrlib.bean.User;
-import com.kikrlib.db.UserPreference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class KikrCreditsMonthsBreakdownAdapter extends BaseAdapter {
 
@@ -65,7 +58,7 @@ public class KikrCreditsMonthsBreakdownAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		if (!TextUtils.isEmpty(getItem(position).getType())) 
-		viewHolder.month_name.setText(getItem(position).getType()+" "+getItem(position).getReason());
+		viewHolder.month_name.setText(getItem(position).getReason());
 		else
 		viewHolder.month_name.setText("Unknown");
 		if(!TextUtils.isEmpty(getItem(position).getAmount()))
@@ -73,7 +66,7 @@ public class KikrCreditsMonthsBreakdownAdapter extends BaseAdapter {
 		else
 		viewHolder.views_count.setText("0 Credits");
 		if (position%2==0) {
-			convertView.setBackgroundColor(mContext.getResources().getColor(R.color.list_background_even));
+			convertView.setBackgroundColor(mContext.getResources().getColor(R.color.header_background));
 		}
 		convertView.setOnClickListener(new View.OnClickListener() {
 

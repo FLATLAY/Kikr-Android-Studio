@@ -1,27 +1,16 @@
 package com.kikr.fragment;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -30,7 +19,6 @@ import android.widget.TextView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.analytics.ecommerce.ProductAction;
-import com.google.gson.JsonArray;
 import com.kikr.BaseFragment;
 import com.kikr.KikrApp;
 import com.kikr.KikrApp.TrackerName;
@@ -38,7 +26,6 @@ import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.adapter.CartListAdapter;
 import com.kikr.dialog.CartOverLoadDialog;
-import com.kikr.dialog.CreateAccountDialog;
 import com.kikr.dialog.RemoveProductsFromCartDialog;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.FontUtility;
@@ -53,7 +40,6 @@ import com.kikrlib.bean.ProductChildOption;
 import com.kikrlib.bean.ProductMainOption;
 import com.kikrlib.bean.ProductRequiredOption;
 import com.kikrlib.bean.TwoTapProductDetails;
-import com.kikrlib.db.HelpPreference;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
@@ -61,6 +47,15 @@ import com.kikrlib.service.res.CartRes;
 import com.kikrlib.service.res.CheckPointStatusRes;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.Syso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
 public class FragmentUserCart extends BaseFragment implements OnClickListener,ServiceCallback,OnItemClickListener {
 
@@ -641,11 +636,12 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener,Se
 				if (productToSelectDetail.get(i).equals(productLists.get(j).getProducturl())) {
 					try{
 						productLists.get(j).setSelectdetails(true);
-						cartListAdapter.notifyDataSetChanged();
+
 					}catch(Exception e){
 						e.printStackTrace();
 					}
 				}
+
 			}
 		}
 		
@@ -663,18 +659,20 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener,Se
 		}
 		for (int z = 0; z < productLists.size(); z++) {
 			if (productLists.get(z).isSelectdetails()) {
-				if(productLists.get(z).getSelected_values()!=null){
+				if(productLists.get(z).getSelected_values()!=null&&productLists.get(z).getSelected_values().size()>0){
 					productLists.get(z).setSelectdetails(false);
 //					productsToSelectDetails.add(productLists.get(z));
 				}else{
 					if(productLists.get(z).getRequiredOptions().size()>1){
 						productsToSelectDetails.add(productLists.get(z));
+						productLists.get(z).setSelectdetails(true);
 					}else{
 						productLists.get(z).setSelectdetails(false);
 					}
 				}
 			}
 		}
+		cartListAdapter.notifyDataSetChanged();
 		if (productsNotAvailable.size()>0 && fragmentUserCart!=null && fragmentUserCart.isVisible()) {
 			RemoveProductsFromCartDialog dialog = new RemoveProductsFromCartDialog(mContext, productsNotAvailable,FragmentUserCart.this);
 			dialog.show();
@@ -762,6 +760,7 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener,Se
 		}
 		}
 	}
+
 	
 	public void removeFromCart(final String id){
 		
@@ -797,5 +796,7 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener,Se
 		});
 		cartApi.removeFromCart(UserPreference.getInstance().getUserID(),id);
 		cartApi.execute();
+		Syso.info("In handleOnFailure>>");
 	}
+
 }

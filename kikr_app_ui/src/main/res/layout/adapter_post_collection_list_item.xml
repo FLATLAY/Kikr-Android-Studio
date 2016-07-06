@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:padding="5dp"
+   >
+
+    <TextView
+        android:id="@+id/tvCollectionName"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="Test"
+        android:textSize="17sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/productLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:padding="5dp"
+        android:layout_toRightOf="@+id/tvCollectionName"
+        android:scrollbarSize="1dp"
+        android:scrollbars="horizontal">
+
+        <LinearLayout
+            android:id="@+id/productInflaterLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</RelativeLayout>
+

@@ -9,6 +9,7 @@ import org.json.JSONArray;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
+import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.AbsService;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.res.CommonRes;
@@ -26,7 +27,7 @@ public class EditInspirationApi extends AbsService {
 		this.mServiceCallback = serviceCallback;
 	}
 
-	public void editDescription(String user_id,String description, String inspiration_id) {
+	public void editDescription(String user_id, String inspiration_id,String description) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "updateinspirationdescription";
 		requestType = WebConstants.HTTP_METHOD_POST;
 		Map<String, String> comment = new HashMap<String, String>();
@@ -98,6 +99,10 @@ public class EditInspirationApi extends AbsService {
 	public List<NameValuePair> getNameValueRequest() {
 
 		return null;
+	}
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
 	}
 
 	@Override

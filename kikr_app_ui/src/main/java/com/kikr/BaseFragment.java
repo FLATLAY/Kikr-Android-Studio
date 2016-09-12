@@ -14,16 +14,7 @@ import android.widget.TextView;
 
 import com.kikr.activity.HomeActivity;
 import com.kikr.utility.CommonUtility;
-import com.kikrlib.api.OAuthWebService;
-import com.kikrlib.db.AppPreference;
-import com.kikrlib.db.UserPreference;
-import com.kikrlib.service.ServiceCallback;
-import com.kikrlib.service.ServiceException;
-import com.kikrlib.utils.AlertUtils;
-import com.kikrlib.utils.Constants;
 import com.kikrlib.utils.Syso;
-
-import org.json.JSONObject;
 
 
 /**
@@ -75,6 +66,7 @@ public abstract class BaseFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
+
 		Syso.debug("BaseFragment - onResume = ", this.getClass().getSimpleName());
 	}
 	
@@ -125,6 +117,10 @@ public abstract class BaseFragment extends Fragment {
 	
 	
 	public abstract void setClickListener();
+
+	public void loginInstagram(){
+
+	}
 	
 	public void startActivity(Class activity){
 		Intent i = new Intent(mContext,activity);
@@ -166,8 +162,19 @@ public abstract class BaseFragment extends Fragment {
 			exception.printStackTrace();
 		}
 	}
-	
-	
+
+
+	public void noFollowingFound(){
+		try{
+			LinearLayout layout=(LinearLayout) getView().findViewById(R.id.FollowingNotFound);
+			layout.setVisibility(View.GONE);
+			TextView textView=(TextView) getView().findViewById(R.id.noFollowingyet);
+			textView.setText(getResources().getString(R.string.no_following));
+			textView.setVisibility(View.GONE);
+		}catch(NullPointerException exception){
+			exception.printStackTrace();
+		}
+	}
 	public void hideDataNotFound(){
 		try{
 			LinearLayout layout=(LinearLayout) getView().findViewById(R.id.itemNotFound);
@@ -208,6 +215,7 @@ public abstract class BaseFragment extends Fragment {
 	public TextView getReloadFotter(){
 		return ((HomeActivity) mContext).getReloadFotter();
 	}
+
 
 
 }

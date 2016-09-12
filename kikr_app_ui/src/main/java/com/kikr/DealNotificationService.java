@@ -1,8 +1,5 @@
 package com.kikr;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -16,6 +13,9 @@ import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.TopDeals;
 import com.kikrlib.db.DatabaseHelper;
 import com.kikrlib.db.dao.FavoriteDealsDAO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DealNotificationService extends Service{
 	
@@ -59,7 +59,7 @@ public class DealNotificationService extends Service{
 			launchIntent.putExtra("data", topDeals.getLink());
 			NotificationManager notificationManager = ((NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE));
 			notificationManager.notify(i, new NotificationCompat.Builder(context).setWhen(System.currentTimeMillis())
-						.setSmallIcon(R.drawable.ic_app_logo).setTicker(message)
+						.setSmallIcon(R.drawable.flatlayhomeimage).setTicker(message)
 						.setContentTitle(context.getString(R.string.app_name)).setContentText(message)
 						.setContentIntent(PendingIntent.getActivity(context, notificationId, launchIntent, 0)).setAutoCancel(true)
 						.build());

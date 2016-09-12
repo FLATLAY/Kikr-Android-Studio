@@ -1,9 +1,7 @@
 package com.kikr.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +16,9 @@ import com.kikr.activity.HomeActivity;
 import com.kikr.fragment.FragmentPlaceMyOrder;
 import com.kikr.fragment.FragmentShippingInfo;
 import com.kikrlib.bean.Address;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShippingAddressList {
 	FragmentActivity mContext;
@@ -56,6 +57,7 @@ public class ShippingAddressList {
 			convertView.setTag(i);
 			editAddress.setTag(i);
 			if(selectedAddress!=null&&selectedAddress.getAddress_id().equals(data.get(i).getAddress_id())){
+				addressRadioButton.setBackgroundColor(Color.WHITE);
 				addressRadioButton.setChecked(true);
 			}
 			addressRadioButton.setOnClickListener(new OnClickListener() {

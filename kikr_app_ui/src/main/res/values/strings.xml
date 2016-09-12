@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    <string name="no_match_found"> No matches found, \n  try again</string>
+
+
+    <string name="splashfirstscreen">FIRSTSCREEN</string>
+    <string name="splashsecondscreen">SECONDSCREEN</string>
+    <string name="splashthirdscreen">THIRDSCREEN</string>
+    <string name="splashfourthscreen">FOURTHSCREEN</string>
+
+
+    <string name="twitter_consumer_key">5tQwAp0Z802BLmdF709OEsnLD</string>
+     
+    <string name="twitter_consumer_secret">1RLaG0VSYdTXHfSRppPvVp3K7cE1T5q4QiUGLxrtbiFgv3t0W8</string>
+    <string name="clear_cache_menu">Clear Caches</string>
+    <string name="clear_cache_complete_toast">Caches have been cleared</string>
+    <string name="imageview_description">Image Thumbnail</string>
+    <string name="no_network_connection_toast">No network connection found</string>
+
+    <string name="title_activity_main2">Main2Activity</string>
+
     <string name="map_api_key_production">AIzaSyC3uVtLGj4yUXwP2ZXOM6YFBD6YI2eu9zE</string>
     <string name="map_api_key_debug">AIzaSyC6hKD-SR0mMqT2mmQNgUHW7kMSGDUGm2U</string>
-    <string name="app_name">Kikr</string>
+    <string name="app_name">FLATLAY</string>
     <string name="loading">LOADING...</string>
-    <string name="facebook_app_id">813043735405822</string>
+    <string name="facebook_app_id">1577144115912726</string>
     <string name="no_internet"><![CDATA[No internet connection<br> <u>Try again</u>]]></string>
     <string name="no_data_found">No Collections Yet </string>
 
@@ -46,9 +66,10 @@
     <string name="connect_with">Connect with</string>
     <string name="connect_with_twitter">Connect with Twitter</string>
     <string name="orders">Orders</string>
+    <string name="no_result_found">No Result Found </string>
     <string name="connect_with_facebook">Connect with Facebook</string>
     <string name="connect_with_instagram">Connect with Instagram</string>
-    <string name="kikr_credits">Kikr\nCredits</string>
+    <string name="kikr_credits">Flatlay\nCredits</string>
     <string name="check_in">Check In</string>
     <string name="profile">Profile</string>
     <string name="my_wallet">Wallet</string>
@@ -113,11 +134,11 @@
     <string name="confirmation_text">Your order confirmation number is ABC123.\n\nYour purchase will be shipped within two business days.</string>
 
     <!-- Tutorial Screen -->
-    <string name="tutorial_kikr_reward"><![CDATA[<b>Here\'s your Kikr card!</b><br>(Tap on Card to proceed)]]></string>
+    <string name="tutorial_kikr_reward"><![CDATA[<b>Here\'s your Flatlay card!</b><br>(Tap on Card to proceed)]]></string>
     <!-- <string name="tutorial_kikr_lines">Kikr Visa Prepaid Card is issued by Wave Crest Inc. pursuant to a license from Visa U.S.A Inc.and may be used everywhere Visa debit cards are accepted. Weve Crest Inc, Member FDIC.</string> -->
     <string name="tutorial_kikr_lines">Welcome to\n The Retail Rewards Card for the Social Generation&#8482;</string>
     <string name="learn_more_text">Learn More</string>
-    <string name="kikr_tutorial_text_line_one">1 credit for every $1 you spend on Kikr\n</string>
+    <string name="kikr_tutorial_text_line_one">1 credit for every $1 you spend on flatlay\n</string>
     <string name="kikr_tutorial_text_line_two">Earn 5 credits for every $1 spent by another user from one of your collections.</string>
     <string name="kikr_tutorial_text_line_three">If another user shares an item from your collections with their followers, you split credit commissions at 2.5 credits per $1 spent</string>
     <string name="kikr_tutorial_text_line_four">100 credits is equivalent to $1 USD</string>
@@ -211,6 +232,8 @@
         <item>2033</item>
         <item>2034</item>
     </string-array>
+
+
     <string-array name="statesUSA">
         <item> </item>
         <item>Alabama</item>
@@ -383,10 +406,11 @@
     <string name="payment_success_text">Payment Successful</string>
     <string name="payment_fail_text">Payment Failed</string>
     <string name="regular_price_text">Price:</string>
-    <string name="kikr_discount_text">Kikr Discount:</string>
+    <string name="kikr_discount_text">Flatlay Discount:</string>
     <string name="quantity_text">Quantity: </string>
     <string name="express_shipping">Express Shipping</string>
     <string name="product_not_available">Select</string>
+    <string name="no_following">No Following Yet</string>
     <string name="color_text">Color: </string>
     <string name="size_text">Size: </string>
     <string name="fit_text">Fit: </string>
@@ -398,7 +422,7 @@
     <string name="cart_quantity_text">Quantity</string>
     <string name="cart_remove_from_text">Remove From Cart</string>
     <string name="cart_detail_product_text">View Details on Store Site</string>
-    <string name="kikr_shipping_details_text">Kikr only ships to US &amp; Canada Addresses for now.</string>
+    <string name="kikr_shipping_details_text">Flatlay only ships to US &amp; Canada Addresses for now.</string>
     <string name="empty_cart_text">Your cart is currently empty.</string>
     <string name="proceed_order_text">Proceed to Order</string>
     <string name="subtotal_text">Subtotal</string>
@@ -439,7 +463,7 @@
     <string name="place_order_total_text">Total</string>
     <string name="place_order_place_my_order_text">Place My Order</string>
     <string name="get_final_value">Get final value of cart</string>
-    <string name="place_order_learnmore_text">The Kikr Purchase Guarantee</string>
+    <string name="place_order_learnmore_text">The Flatlay Purchase Guarantee</string>
     <string name="place_order_add_address_text">Add Shipping Address</string>
     <string name="place_order_us_canada">US &amp; Canada only</string>
     <string name="need_help">Need Help ?</string>
@@ -509,7 +533,7 @@
     <string name="order_items">Items: </string>
     <string name="credits_user">User </string>
     <string name="credits_amount">Amount </string>
-    <string name="credits_available_credits">Available Kikr Credits: </string>
+    <string name="credits_available_credits">Available Flatlay Credits: </string>
     <string name="credits_confirm">Confirm </string>
     <string name="add_favorites">Add To Favorites </string>
 
@@ -520,7 +544,7 @@
     <string name="help_inspired_text">Post &amp; find outfits,\nproducts you love\n&amp;\nmuch more</string>
     <string name="help_socialmedia_text">Connect your social media</string>
     <string name="help_socialmedia_earnpoints_text">Earn 50 credits</string>
-    <string name="help_invitefriends_text">Invite your friends to Kikr</string>
+    <string name="help_invitefriends_text">Invite your friends to Flatlay</string>
     <string name="help_invitefriends_earnpoints_text">You will earn 25 credits for every sign up</string>
 
     <!-- Edit Inspiration Section -->
@@ -536,19 +560,27 @@
     <string name="kikr_learn_more">&lt;u>Learn More&lt;/u></string>
 
     <!-- Activity Learn More Outside US -->
-    <string name="kikr_learn_more_desc">Currently Kikr and the products featured within it can only be purchased and shipped to US and Canadian residents.\n\n We are working hard to support international shipments in 2016 however <b>all users</b> have the ability to create and share collections in anticipation of earning credits to be used at a later time. We will store all credits earned for use in the future!!</string>
+    <string name="kikr_learn_more_desc">Currently Flatlay and the products featured within it can only be purchased and shipped to US and Canadian residents.\n\n We are working hard to support international shipments in 2016 however <b>all users</b> have the ability to create and share collections in anticipation of earning credits to be used at a later time. We will store all credits earned for use in the future!!</string>
     <string name="order_success_text"><![CDATA[Purchased Confirmed!<br>You can track the status in Orders next to My Wallet.<br><br><b>Happy Shopping</b> ]]></string>
     <string name="order_fail_text">Failed to get final value of cart. Please try again later.</string>
-    <string name="come_join">Come join me on Kikr-The Rewards Card for the Social Generation&#8482;</string>
-    <string name="text_join">The Rewards Card for the Social Generation&#8482; Get paid to shop and share, join now &amp; earn up to 250 credits.</string>
+    <string name="come_join">Come join me on FLATLAY - Get Rewarded to Discover &amp; Share Collections&#8482;</string>
+    <string name="text_join">Join now and get your first 250 credits on us!</string>
 
     <string name="earn_250_credits">Join now to get your first 250 credits!</string>
 
-    <string name="purchase_guarantee_line1">We at Kikr work tirelessly to bring you name brand products from authentic merchants. You purchase directly from the merchants so you get to take advantage of the same return and exchange policy as those shopping directly on the merchant’s website, but with the benefit of Kikr rewards!</string>
-    <string name="purchase_guarantee_line2">Fulfillment and shipping of all products for sale on Kikr are handled by the merchants, not by Kikr.</string>
+    <string name="purchase_guarantee_line1">we at flatlay work tirelessly to bring you name brand products from authentic merchants. You purchase directly from the merchants so you get to take advantage of the same return and exchange policy as those shopping directly on the merchant’s website, but with the benefit of Flatlay rewards!</string>
+    <string name="purchase_guarantee_line2">fulfillment and shipping of all products for sale on Flatlay are handled by the merchants, not by flatlay.</string>
     <string name="purchase_guarantee_line3"><b>Have a question about your order status, shipment, or returns/exchanges?</b></string>
-    <string name="purchase_guarantee_line4">Please contact the merchant directly. We provide a list of contact information for our merchants here.</string>
+    <string name="purchase_guarantee_line4">please contact the merchant directly.</string>
     <string name="purchase_guarantee_line5"><b>Have a question a technical question about the app?</b></string>
     <string name="purchase_guarantee_line6">If you have any trouble contacting a merchant directly, please don’t hesitate to reach out to our team for assistance, but know that direct contact with the merchant is usually the quickest &amp; best way to get something resolved.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="toast_cannot_retrieve_selected_image">Cannot retrieve selected image</string>
+    <string name="toast_cannot_retrieve_cropped_image">Cannot retrieve cropped image</string>
+    <string name="toast_unexpected_error">Unexpected error</string>
 
 </resources>

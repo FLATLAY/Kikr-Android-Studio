@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="@color/white">
+    android:background="@color/btn_green">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,8 +17,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/app_background"
+                android:background="@color/btn_green"
                 android:gravity="center_vertical"
+
                 android:orientation="horizontal" >
 
                 <TextView
@@ -145,7 +146,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/padding_large"
-                android:background="@color/btn_green"
+                android:background="@color/grid_state_focused"
                 android:padding="@dimen/padding_large"
                 android:text="@string/done"
                 android:textColor="@color/white" />

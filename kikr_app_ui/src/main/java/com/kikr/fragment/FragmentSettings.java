@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,12 +46,14 @@ import com.kikrlib.utils.AlertUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 //isCreatePassword,isCreatePin
 public class FragmentSettings extends BaseFragment implements OnClickListener {
 	private View mainView;
 	private LinearLayout passwordTextLayout,walletPinChangeLayout,cardListLayout,addressListLayout,emailTextLayout, usernameTextLayout;
 	private ImageView socialFbImage,socialTwitterImage,socialPinterestImage,socialInstagramImage;
-	private ImageView followersImage,commentsImage,favoritesImage,itemsPurchasedImage;
+//	private ImageView followersImage,commentsImage,favoritesImage,itemsPurchasedImage;
+	SwitchCompat switchfollowers,switchcomment,switchfavoritesImage,switchitemsPurchasedImage;
 	private static TextView emailText;
 	private TextView noAddressFound;
 	private TextView noCardFound;
@@ -90,10 +93,14 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		twitterAccountLayout = (LinearLayout) mainView.findViewById(R.id.twitterAccountLayout);
 		instagramAccountLayout = (LinearLayout) mainView.findViewById(R.id.instagramAccountLayout);
 		pinterestAccountLayout = (LinearLayout) mainView.findViewById(R.id.pinterestAccountLayout);
-		followersImage = (ImageView) mainView.findViewById(R.id.followersImage);
-		commentsImage = (ImageView) mainView.findViewById(R.id.commentsImage);
-		favoritesImage = (ImageView) mainView.findViewById(R.id.favoritesImage);
-		itemsPurchasedImage = (ImageView) mainView.findViewById(R.id.itemsPurchasedImage);
+	//	followersImage = (ImageView) mainView.findViewById(followersImage);
+		switchfollowers = (SwitchCompat) mainView.findViewById(R.id.switchfollowers);
+		switchcomment=(SwitchCompat) mainView.findViewById(R.id.switchcomment);
+		switchfavoritesImage=(SwitchCompat) mainView.findViewById(R.id.switchfavoritesImage);
+		switchitemsPurchasedImage=(SwitchCompat) mainView.findViewById(R.id.switchitemsPurchasedImage);
+//		commentsImage = (ImageView) mainView.findViewById(commentsImage);
+//		favoritesImage = (ImageView) mainView.findViewById(favoritesImage);
+//		itemsPurchasedImage = (ImageView) mainView.findViewById(itemsPurchasedImage);
 		noAddressFound= (TextView) mainView.findViewById(R.id.noAddressFound);
 		noCardFound= (TextView) mainView.findViewById(R.id.noCardFound);
 		progressBar_settings_followers = (ProgressBar) mainView.findViewById(R.id.progressBar_settings_followers);
@@ -110,16 +117,20 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 	public void setClickListener() {
 		passwordTextLayout.setOnClickListener(this);
 		walletPinChangeLayout.setOnClickListener(this);
-		commentsImage.setOnClickListener(this);
+		//commentsImage.setOnClickListener(this);
 		emailTextLayout.setOnClickListener(this);
 		usernameTextLayout.setOnClickListener(this);
 		fbAccountLayout.setOnClickListener(this);
 		twitterAccountLayout.setOnClickListener(this);
 		pinterestAccountLayout.setOnClickListener(this);
 		instagramAccountLayout.setOnClickListener(this);
-		followersImage.setOnClickListener(this);
-		itemsPurchasedImage.setOnClickListener(this);
-		favoritesImage.setOnClickListener(this);
+		//followersImage.setOnClickListener(this);
+		switchfollowers.setOnClickListener(this);
+		//itemsPurchasedImage.setOnClickListener(this);
+		//favoritesImage.setOnClickListener(this);
+		switchitemsPurchasedImage.setOnClickListener(this);
+		switchfavoritesImage.setOnClickListener(this);
+		switchcomment.setOnClickListener(this);
 	}
 
 	@Override
@@ -127,7 +138,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		getAddressList(true);
 
 	}
-	
+
 	@Override
 	public void onStart() {
 		// TODO Auto-generated method stub
@@ -143,123 +154,132 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 			emailTextLayout.setBackgroundColor(mContext.getResources().getColor(R.color.aquamarine2));
 		else
 			emailTextLayout.setBackground(null);
-		
+
 		if( UserPreference.getInstance().getPassword() == "")
 			passwordTextLayout.setBackgroundColor(mContext.getResources().getColor(R.color.aquamarine2));
 		else
 			passwordTextLayout.setBackground(null);
-		
+
 		if(cameFromPassword == 1) {
 			WelcomeDialog welcome = new WelcomeDialog(mContext);
 			welcome.show();
 			cameFromPassword = -1;
 			mContext.getSupportFragmentManager().popBackStack();
 		}
-		
+
 	}
-	
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.passwordTextLayout:
+			case R.id.passwordTextLayout:
 //			startActivity(ChangePasswordActivity.class);
-			if(checkInternet()){
-				checkPassword();
-			}
-			break;
-		case R.id.walletPinChangeLayout:
-			if(checkInternet()){
-				if (UserPreference.getInstance().getIsCreateWalletPin()) {
+				if(checkInternet()){
+					checkPassword();
+				}
+				break;
+			case R.id.walletPinChangeLayout:
+				if(checkInternet()){
+					if (UserPreference.getInstance().getIsCreateWalletPin()) {
 						checkKikrWalletPin();
-				} else {
-					Intent i = new Intent(mContext, ChangeWalletPinActivity.class);
-					i.putExtra("isCreatePin", false);
-					startActivity(i);
+					} else {
+						Intent i = new Intent(mContext, ChangeWalletPinActivity.class);
+						i.putExtra("isCreatePin", false);
+						startActivity(i);
+					}
 				}
-			}
-			break;
-		case R.id.emailTextLayout:
-			String email = emailText.getText().toString();
-			Bundle bundle = new Bundle();
-			if (!email.equals("Email")) {
-				bundle.putString("email", email);
-			} else {
-				bundle.putString("email", "");
-			}
-			Intent intent=new Intent(mContext,ChangeEmailActivity.class);
-			intent.putExtras(bundle);
-			startActivityForResult(intent, AppConstants.REQUEST_CODE_EMAIL_CHANGE);
+				break;
+			case R.id.emailTextLayout:
+				String email = emailText.getText().toString();
+				Bundle bundle = new Bundle();
+				if (!email.equals("Email")) {
+					bundle.putString("email", email);
+				} else {
+					bundle.putString("email", "");
+				}
+				Intent intent=new Intent(mContext,ChangeEmailActivity.class);
+				intent.putExtras(bundle);
+				startActivityForResult(intent, AppConstants.REQUEST_CODE_EMAIL_CHANGE);
 //			startActivity(ChangeEmailActivity.class, bundle);
-			break;
-		case R.id.usernameTextLayout:
-			Bundle bundle1=new Bundle();
-			bundle1.putString("username", UserPreference.getInstance().getUserName());
-			bundle1.putBoolean("is_edit_profile", true);
-			bundle1.putString("from", AppConstants.FROM_PROFILE);
-			startActivityForResult(EditProfileActivity.class,bundle1, 1000);
-			break;
-		case R.id.fbAccountLayout:
-			RemoveSocialAccountDialog socialAccountDialog = new RemoveSocialAccountDialog(mContext);
-			socialAccountDialog.show();
-			break;
-		case R.id.twitterAccountLayout:
-			RemoveSocialAccountDialog socialAccountDialog1 = new RemoveSocialAccountDialog(mContext);
-			socialAccountDialog1.show();
-			break;
-		case R.id.pinterestAccountLayout:
-			RemoveSocialAccountDialog socialAccountDialog2 = new RemoveSocialAccountDialog(mContext);
-			socialAccountDialog2.show();
-			break;
-		case R.id.instagramAccountLayout:
-			RemoveSocialAccountDialog socialAccountDialog3 = new RemoveSocialAccountDialog(mContext);
-			socialAccountDialog3.show();
-			break;
-		case R.id.followersImage:
-			if(checkInternet()){
-				if (settingStatus.containsKey(AppConstants.Options.FOLLOWERS)&&settingStatus.get(AppConstants.Options.FOLLOWERS)) {
-					setNotificationStatus(AppConstants.Options.FOLLOWERS, "off",progressBar_settings_followers,followersImage);
-				} else {
-					setNotificationStatus(AppConstants.Options.FOLLOWERS, "on",progressBar_settings_followers,followersImage);
+				break;
+			case R.id.usernameTextLayout:
+				Bundle bundle1=new Bundle();
+				bundle1.putString("username", UserPreference.getInstance().getUserName());
+				bundle1.putBoolean("is_edit_profile", true);
+				bundle1.putString("from", AppConstants.FROM_PROFILE);
+				startActivityForResult(EditProfileActivity.class,bundle1, 1000);
+				break;
+			case R.id.fbAccountLayout:
+				RemoveSocialAccountDialog socialAccountDialog = new RemoveSocialAccountDialog(mContext);
+				socialAccountDialog.show();
+				break;
+			case R.id.twitterAccountLayout:
+				RemoveSocialAccountDialog socialAccountDialog1 = new RemoveSocialAccountDialog(mContext);
+				socialAccountDialog1.show();
+				break;
+			case R.id.pinterestAccountLayout:
+				RemoveSocialAccountDialog socialAccountDialog2 = new RemoveSocialAccountDialog(mContext);
+				socialAccountDialog2.show();
+				break;
+			case R.id.instagramAccountLayout:
+				RemoveSocialAccountDialog socialAccountDialog3 = new RemoveSocialAccountDialog(mContext);
+				socialAccountDialog3.show();
+				break;
+			//case followersImage:
+//				if(checkInternet()){
+//					if (settingStatus.containsKey(AppConstants.Options.FOLLOWERS)&&settingStatus.get(AppConstants.Options.FOLLOWERS)) {
+//						setNotificationStatus(AppConstants.Options.FOLLOWERS, "off",progressBar_settings_followers,followersImage);
+//					} else {
+//						setNotificationStatus(AppConstants.Options.FOLLOWERS, "on",progressBar_settings_followers,followersImage);
+//					}
+//				}
+				//break;
+			case R.id.switchfollowers:
+				if(checkInternet()){
+					if (settingStatus.containsKey(AppConstants.Options.FOLLOWERS)&&settingStatus.get(AppConstants.Options.FOLLOWERS)) {
+						setNotificationStatus(AppConstants.Options.FOLLOWERS, "off",progressBar_settings_followers);
+					} else {
+						setNotificationStatus(AppConstants.Options.FOLLOWERS, "on",progressBar_settings_followers);
+					}
 				}
-			}
-			break;
-		case R.id.commentsImage:
-			if(checkInternet()){
-				if (settingStatus.containsKey(AppConstants.Options.COMMENTS)&&settingStatus.get(AppConstants.Options.COMMENTS)) {
-					setNotificationStatus(AppConstants.Options.COMMENTS, "off",progressBar_settings_comments,commentsImage);
-				} else {
-					setNotificationStatus(AppConstants.Options.COMMENTS, "on",progressBar_settings_comments,commentsImage);
+				break;
+			case R.id.switchcomment:
+				if(checkInternet()){
+					if (settingStatus.containsKey(AppConstants.Options.COMMENTS)&&settingStatus.get(AppConstants.Options.COMMENTS)) {
+						setNotificationStatus(AppConstants.Options.COMMENTS, "off",progressBar_settings_comments);
+					} else {
+						setNotificationStatus(AppConstants.Options.COMMENTS, "on",progressBar_settings_comments);
+					}
 				}
-			}
-			break;
-		case R.id.favoritesImage:
-			if(checkInternet()){
-				if (settingStatus.containsKey(AppConstants.Options.FAVOURITES)&&settingStatus.get(AppConstants.Options.FAVOURITES)) {
-					setNotificationStatus(AppConstants.Options.FAVOURITES, "off",progressBar_settings_favorites,favoritesImage);
-				} else {
-					setNotificationStatus(AppConstants.Options.FAVOURITES, "on",progressBar_settings_favorites,favoritesImage);
+				break;
+			case R.id.switchfavoritesImage:
+				if(checkInternet()){
+					if (settingStatus.containsKey(AppConstants.Options.FAVOURITES)&&settingStatus.get(AppConstants.Options.FAVOURITES)) {
+						setNotificationStatus(AppConstants.Options.FAVOURITES, "off",progressBar_settings_favorites);
+					} else {
+						setNotificationStatus(AppConstants.Options.FAVOURITES, "on",progressBar_settings_favorites);
+					}
 				}
-			}
-			break;
-		case R.id.itemsPurchasedImage:
-			if(checkInternet()){
-				if (settingStatus.containsKey(AppConstants.Options.PURCHASES)&&settingStatus.get(AppConstants.Options.PURCHASES)) {
-					setNotificationStatus(AppConstants.Options.PURCHASES, "off",progressBar_settings_purchases,itemsPurchasedImage);
-				} else {
-					setNotificationStatus(AppConstants.Options.PURCHASES, "on",progressBar_settings_purchases,itemsPurchasedImage);
+				break;
+			case R.id.switchitemsPurchasedImage:
+				if(checkInternet()){
+					if (settingStatus.containsKey(AppConstants.Options.PURCHASES)&&settingStatus.get(AppConstants.Options.PURCHASES)) {
+						setNotificationStatus(AppConstants.Options.PURCHASES, "off",progressBar_settings_purchases);
+					} else {
+						setNotificationStatus(AppConstants.Options.PURCHASES, "on",progressBar_settings_purchases);
+					}
 				}
-			}	
-			break;
-		default:
-			break;
+				break;
+			default:
+				break;
 		}
 	}
-	
+
 	public void getCardList(final boolean isLoadOther) {
 		progressBarDialog = new ProgressBarDialog(mContext);
 		progressBarDialog.show();
 		final CardInfoApi cardInfoApi = new CardInfoApi(new ServiceCallback() {
-			
+
 			@Override
 			public void handleOnSuccess(Object object) {
 				progressBarDialog.dismiss();
@@ -272,14 +292,14 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 						noCardFound.setVisibility(View.GONE);
 					else
 						noCardFound.setVisibility(View.VISIBLE);
-					
+
 					if(isLoadOther)
 						getNotificationStatus();
 				} else {
 					AlertUtils.showToast(mContext, R.string.invalid_response);
 				}
 			}
-			
+
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
 				progressBarDialog.dismiss();
@@ -294,12 +314,12 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		cardInfoApi.getCardList(UserPreference.getInstance().getUserID());
 		cardInfoApi.execute();
 	}
-	
+
 	public void getAddressList(final boolean loadOther) {
 		progressBarDialog = new ProgressBarDialog(mContext);
 		progressBarDialog.show();
 		final AddressApi addressApi = new AddressApi(new ServiceCallback() {
-			
+
 			@Override
 			public void handleOnSuccess(Object object) {
 				progressBarDialog.dismiss();
@@ -318,7 +338,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 					AlertUtils.showToast(mContext, R.string.invalid_response);
 				}
 			}
-			
+
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
 				progressBarDialog.dismiss();
@@ -333,13 +353,13 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		addressApi.getAddressList(UserPreference.getInstance().getUserID());
 		addressApi.execute();
 	}
-	
-	
+
+
 	public void getNotificationStatus() {
 		progressBarDialog = new ProgressBarDialog(mContext);
 		progressBarDialog.show();
 		final NotificationSettingsApi notificationSettingsApi = new NotificationSettingsApi(new ServiceCallback() {
-			
+
 			@Override
 			public void handleOnSuccess(Object object) {
 				progressBarDialog.dismiss();
@@ -354,34 +374,46 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 					data = notificationSettingRes.getData();
 					settingStatus.clear();
 					for (int i = 0; i <data.size(); i++) {
-								settingStatus.put(data.get(i).getOption(), data.get(i).getStatus().equals("on") ? true: false);
-							}
-							if (settingStatus.get(AppConstants.Options.FOLLOWERS)) 
-								followersImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
-							else
-								followersImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
-							if (settingStatus.get(AppConstants.Options.COMMENTS)) 
-								commentsImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
-							else
-								commentsImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
-							if (settingStatus.get(AppConstants.Options.PURCHASES))
-								itemsPurchasedImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
-							else
-								itemsPurchasedImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
-							if (settingStatus.get(AppConstants.Options.FAVOURITES))
-								favoritesImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
-							else
-								favoritesImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
+						settingStatus.put(data.get(i).getOption(), data.get(i).getStatus().equals("on") ? true: false);
+					}
+
+					if (settingStatus.get(AppConstants.Options.COMMENTS))
+						//commentsImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
+					switchcomment.setChecked(true);
+					else
+						switchcomment.setChecked(false);
+					//	commentsImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
+
+
+					if (settingStatus.get(AppConstants.Options.FOLLOWERS))
+						switchfollowers.setChecked(true);
+						//followersImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
+					else
+						switchfollowers.setChecked(false);
+					//followersImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
+
+					if (settingStatus.get(AppConstants.Options.PURCHASES))
+						switchitemsPurchasedImage.setChecked(true);
+						//itemsPurchasedImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
+					else
+						switchitemsPurchasedImage.setChecked(false);
+						//itemsPurchasedImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
+					if (settingStatus.get(AppConstants.Options.FAVOURITES))
+						switchfavoritesImage.setChecked(true);
+						//favoritesImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
+					else
+						switchfavoritesImage.setChecked(false);
+						//favoritesImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
 				} else {
 					AlertUtils.showToast(mContext, R.string.invalid_response);
 				}
 			}
-			
+
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
 				progressBarDialog.dismiss();
 				if(object!=null){
-					NotificationSettingRes notificationSettingRes=(NotificationSettingRes) object;
+					NotificationSettingRes notificationSettingRes = (NotificationSettingRes) object;
 					AlertUtils.showToast(mContext, notificationSettingRes.getMessage());
 				}else{
 					AlertUtils.showToast(mContext, R.string.invalid_response);
@@ -391,33 +423,34 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		notificationSettingsApi.getNotificationStatus(UserPreference.getInstance().getUserID());
 		notificationSettingsApi.execute();
 	}
-	
-	public void setNotificationStatus(final String option,final String status,final ProgressBar progressBar,final ImageView imageView) {
-		progressBar.setVisibility(View.VISIBLE);
-		imageView.setVisibility(View.GONE);
+
+	public void setNotificationStatus(final String option,final String status,final ProgressBar progressBar) {
+	//	progressBar.setVisibility(View.VISIBLE);
+		//imageView.setVisibility(View.GONE);
 		final NotificationSettingsApi notificationSettingsApi = new NotificationSettingsApi(new ServiceCallback() {
-			
+
 			@Override
 			public void handleOnSuccess(Object object) {
 				if (object != null) {
 					NotificationSettingRes notificationSettingRes = (NotificationSettingRes) object;
 					AlertUtils.showToast(mContext, notificationSettingRes.getMessage());
 					settingStatus.put(option, status.equals("on")?true:false);
-					if(settingStatus.get(option))
-						imageView.setImageResource(R.drawable.hdpi_on);
-					else
-						imageView.setImageResource(R.drawable.hdpi_off);
-				} else {
+//					if(settingStatus.get(option))
+//						//switchfollowers.setChecked(true);
+//					else
+//						//switchfollowers.setChecked(false);
+		}
+               else {
 					AlertUtils.showToast(mContext, R.string.invalid_response);
 				}
-				progressBar.setVisibility(View.GONE);
-				imageView.setVisibility(View.VISIBLE);
+				//progressBar.setVisibility(View.GONE);
+				//imageView.setVisibility(View.VISIBLE);
 			}
-			
+
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
 				progressBar.setVisibility(View.GONE);
-				imageView.setVisibility(View.VISIBLE);
+				//imageView.setVisibility(View.VISIBLE);
 				if(object!=null){
 					NotificationSettingRes notificationSettingRes=(NotificationSettingRes) object;
 					AlertUtils.showToast(mContext, notificationSettingRes.getMessage());
@@ -429,7 +462,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		notificationSettingsApi.setNotificationStatus(UserPreference.getInstance().getUserID(),status,option);
 		notificationSettingsApi.execute();
 	}
-	
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
@@ -439,14 +472,14 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 			emailText.setText(email);
 		}
 	}
-	
+
 	private void checkKikrWalletPin() {
 
 		progressBarDialog = new ProgressBarDialog(mContext);
 		progressBarDialog.show();
-		
+
 		final WalletPinApi service = new WalletPinApi(new ServiceCallback() {
-			
+
 			@Override
 			public void handleOnSuccess(Object object) {
 				progressBarDialog.dismiss();
@@ -464,7 +497,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 					}
 				}
 			}
-			
+
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
 				progressBarDialog.dismiss();
@@ -478,7 +511,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		});
 		service.checkKikrWalletPin(UserPreference.getInstance().getUserID());
 		service.execute();
-		
+
 		progressBarDialog.setOnCancelListener(new OnCancelListener() {
 			@Override
 			public void onCancel(DialogInterface dialog) {
@@ -486,15 +519,15 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 			}
 		});
 	}
-	
+
 
 	private void checkPassword() {
 
 		progressBarDialog = new ProgressBarDialog(mContext);
 		progressBarDialog.show();
-		
+
 		final ChangePasswordApi service = new ChangePasswordApi(new ServiceCallback() {
-			
+
 			@Override
 			public void handleOnSuccess(Object object) {
 				progressBarDialog.dismiss();
@@ -511,7 +544,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 					}
 				}
 			}
-			
+
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
 				progressBarDialog.dismiss();
@@ -525,7 +558,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		});
 		service.checkPasswordCreated(UserPreference.getInstance().getUserID());
 		service.execute();
-		
+
 		progressBarDialog.setOnCancelListener(new OnCancelListener() {
 			@Override
 			public void onCancel(DialogInterface dialog) {
@@ -533,6 +566,6 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 			}
 		});
 	}
-	
-	
+
+
 }

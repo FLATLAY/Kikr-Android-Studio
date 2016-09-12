@@ -1,7 +1,5 @@
 package com.kikr.fragment;
 
-import java.util.List;
-
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Paint;
@@ -13,27 +11,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
-import com.kikr.adapter.ActivityMonthsAdapter;
 import com.kikr.adapter.KikrCreditsMonthsAdapter;
 import com.kikr.ui.ProgressBarDialog;
-import com.kikr.utility.CommonUtility;
-import com.kikrlib.api.ActivityApi;
 import com.kikrlib.api.KikrCreditsApi;
-import com.kikrlib.bean.ActivityMonthList;
 import com.kikrlib.bean.Credits;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
-import com.kikrlib.service.res.ActivityRes;
 import com.kikrlib.service.res.KikrCreditsRes;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.StringUtils;
 import com.kikrlib.utils.Syso;
+
+import java.util.List;
 
 public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickListener {
 	private View mainView;
@@ -60,6 +54,7 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 		kikr_commission_text.setPaintFlags(kikr_commission_text.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		pendingCredits = (TextView) mainView.findViewById(R.id.pendingCredits);
 		pendingCredits.setPaintFlags(pendingCredits.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
 	}
 
 	@Override
@@ -75,7 +70,10 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 
 	@Override
 	public void setData(Bundle bundle) {
-		if (checkInternet()) 
+
+	}
+	public void initData() {
+		if (checkInternet())
 			getActivityList();
 	}
 
@@ -168,9 +166,11 @@ public class FragmentKikrCreditsScreen extends BaseFragment implements OnClickLi
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.kikr_commission_text:
+
 				addFragment(new FragmentLearnMore());
 				break;
 			case R.id.pendingCredits:
+
 				addFragment(new FragmentPendingCreditDetails());
 				break;
 		}

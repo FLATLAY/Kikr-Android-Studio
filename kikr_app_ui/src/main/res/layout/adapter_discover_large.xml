@@ -65,6 +65,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_margin="10dp"
+                android:visibility="gone"
                 android:background="@drawable/corner_button"
                 android:gravity="center"
                 android:padding="@dimen/discover_follow_btn_padding" >
@@ -144,7 +145,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="100dp"
+        android:background="@color/btn_green">
 
         <HorizontalScrollView
             android:id="@+id/product_layout"

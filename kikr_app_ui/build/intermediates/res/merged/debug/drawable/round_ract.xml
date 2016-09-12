@@ -14,6 +14,6 @@
 
     <stroke
         android:width="0.8dp"
-        android:color="@color/btn_green" />
+        android:color="@color/tab_selected_new" />
 
 </shape>

@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\anshumaan\\Desktop\\Kikr Github\\kikr_FacebookSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-hdpi-v4\\values-hdpi-v4.xml",
+        "outputFile": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_FacebookSDK/build/intermediates/res/merged/androidTest/debug/values-hdpi-v4/values-hdpi-v4.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 114
                 },
                 "from": {
-                    "file": "C:\\Users\\anshumaan\\Desktop\\Kikr Github\\kikr_FacebookSDK\\build\\intermediates\\bundles\\debug\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_FacebookSDK/build/intermediates/bundles/debug/res/values-hdpi-v4/values-hdpi-v4.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

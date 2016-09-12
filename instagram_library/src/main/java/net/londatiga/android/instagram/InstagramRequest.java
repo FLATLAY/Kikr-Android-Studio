@@ -135,8 +135,11 @@ public class InstagramRequest {
 					params = new ArrayList<NameValuePair>(1);
 					
 					params.add(new BasicNameValuePair("access_token", mAccessToken));
+					//params.add(new BasicNameValuePair("count", "100"));
+
 				} else {
 					params.add(new BasicNameValuePair("access_token", mAccessToken));
+					//params.add(new BasicNameValuePair("count", "100"));
 				}
 			}
 			

@@ -8,54 +8,55 @@ package com.soundcloud.android.crop;
 
 public final class R {
 	public static final class attr {
-		public static final int cropImageStyle = 0x7f010002;
-		public static final int highlightColor = 0x7f010039;
-		public static final int showThirds = 0x7f01003a;
+		public static final int cropImageStyle = 0x7f010003;
+		public static final int highlightColor = 0x7f0100cc;
+		public static final int showThirds = 0x7f0100cd;
 	}
 	public static final class color {
-		public static final int crop__button_bar = 0x7f0d003d;
-		public static final int crop__button_text = 0x7f0d003e;
-		public static final int crop__selector_focused = 0x7f0d003f;
-		public static final int crop__selector_pressed = 0x7f0d0040;
+		public static final int crop__button_bar = 0x7f0d0042;
+		public static final int crop__button_text = 0x7f0d0043;
+		public static final int crop__selector_focused = 0x7f0d0044;
+		public static final int crop__selector_pressed = 0x7f0d0045;
 	}
 	public static final class dimen {
-		public static final int crop__bar_height = 0x7f080006;
+		public static final int crop__bar_height = 0x7f090006;
 	}
 	public static final class drawable {
-		public static final int crop__divider = 0x7f0200b9;
-		public static final int crop__ic_cancel = 0x7f0200ba;
-		public static final int crop__ic_done = 0x7f0200bb;
-		public static final int crop__selectable_background = 0x7f0200bc;
-		public static final int crop__texture = 0x7f0200bd;
-		public static final int crop__tile = 0x7f0200be;
+		public static final int crop__divider = 0x7f0200e9;
+		public static final int crop__ic_cancel = 0x7f0200ea;
+		public static final int crop__ic_done = 0x7f0200eb;
+		public static final int crop__selectable_background = 0x7f0200ec;
+		public static final int crop__texture = 0x7f0200ed;
+		public static final int crop__tile = 0x7f0200ee;
 	}
 	public static final class id {
-		public static final int btn_cancel = 0x7f0e01fa;
-		public static final int btn_done = 0x7f0e01fb;
-		public static final int crop_image = 0x7f0e01f9;
-		public static final int done_cancel_bar = 0x7f0e01f8;
+		public static final int btn_cancel = 0x7f0e024e;
+		public static final int btn_done = 0x7f0e024f;
+		public static final int crop_image = 0x7f0e024b;
+		public static final int done_cancel_bar = 0x7f0e024d;
+		public static final int donelayout = 0x7f0e024c;
 	}
 	public static final class layout {
-		public static final int crop__activity_crop = 0x7f030085;
-		public static final int crop__layout_done_cancel = 0x7f030086;
+		public static final int crop__activity_crop = 0x7f030091;
+		public static final int crop__layout_done_cancel = 0x7f030092;
 	}
 	public static final class string {
-		public static final int crop__cancel = 0x7f0700de;
-		public static final int crop__done = 0x7f0700df;
-		public static final int crop__pick_error = 0x7f0700e0;
-		public static final int crop__saving = 0x7f0700e1;
-		public static final int crop__wait = 0x7f0700e2;
+		public static final int crop__cancel = 0x7f0700ef;
+		public static final int crop__done = 0x7f0700f0;
+		public static final int crop__pick_error = 0x7f0700f1;
+		public static final int crop__saving = 0x7f0700f2;
+		public static final int crop__wait = 0x7f0700f3;
 	}
 	public static final class style {
-		public static final int Crop = 0x7f0b0085;
-		public static final int Crop_ActionButton = 0x7f0b0086;
-		public static final int Crop_ActionButtonText = 0x7f0b0087;
-		public static final int Crop_ActionButtonText_Cancel = 0x7f0b0088;
-		public static final int Crop_ActionButtonText_Done = 0x7f0b0089;
-		public static final int Crop_DoneCancelBar = 0x7f0b008a;
+		public static final int Crop = 0x7f0a00c3;
+		public static final int Crop_ActionButton = 0x7f0a00c4;
+		public static final int Crop_ActionButtonText = 0x7f0a00c5;
+		public static final int Crop_ActionButtonText_Cancel = 0x7f0a00c6;
+		public static final int Crop_ActionButtonText_Done = 0x7f0a00c7;
+		public static final int Crop_DoneCancelBar = 0x7f0a00c8;
 	}
 	public static final class styleable {
-		public static final int[] CropImageView = { 0x7f010039, 0x7f01003a };
+		public static final int[] CropImageView = { 0x7f0100cc, 0x7f0100cd };
 		public static final int CropImageView_highlightColor = 0;
 		public static final int CropImageView_showThirds = 1;
 	}

@@ -5,12 +5,16 @@
 -keep class net.hockeyapp.android.UpdateActivity { <init>(); }
 -keep class com.soundcloud.android.crop.CropImageActivity { <init>(); }
 -keep class com.kikr.activity.SplashActivity { <init>(); }
+-keep class com.kikr.GalleryImagewithSpinner.ImageDetailActivity { <init>(); }
 -keep class com.kikr.activity.LandingActivity { <init>(); }
 -keep class com.kikr.activity.SignUpActivity { <init>(); }
 -keep class com.kikr.activity.PinActivity { <init>(); }
 -keep class com.kikr.activity.HomeActivity { <init>(); }
+-keep class com.yalantis.ucrop.UCropActivity { <init>(); }
+-keep class com.kikr.circle_crop.circle_crop.ImageCropActivity { <init>(); }
 -keep class com.kikr.activity.PinterestLoginActivity { <init>(); }
 -keep class com.kikr.activity.PinAuthActivity { <init>(); }
+-keep class com.kikr.activity.CustomizeFeedActivity { <init>(); }
 -keep class com.kikr.activity.EditProfileActivity { <init>(); }
 -keep class com.kikr.activity.KikrLearnMoreActivity { <init>(); }
 -keep class com.kikr.activity.DiscoverDetailActivity { <init>(); }
@@ -46,6 +50,7 @@
 -keep class com.kikr.activity.FollowCategoriesNewActivity { <init>(); }
 -keep class com.kikr.activity.InstagramLoginActivity { <init>(); }
 -keep class com.kikr.activity.IntroductionPagerActivity { <init>(); }
+-keep class com.kikr.post_upload.ProductSearchTagging { <init>(); }
 -keep class com.kikr.service.PlaceOrderService { <init>(); }
 -keep class com.google.android.gcm.GCMBroadcastReceiver { <init>(); }
 -keep class com.kikr.GCMIntentService { <init>(); }
@@ -68,10 +73,15 @@
 -keep class com.kikr.GCMAlarmReceiver { <init>(); }
 -keep class com.kikr.DeviceBootReceiver { <init>(); }
 -keep class com.kikr.DealNotificationService { <init>(); }
--keep class android.support.v7.widget.TestActivity { <init>(); }
+-keep class com.github.gorbin.asne.core.OAuthActivity { <init>(); }
+-keep class com.vk.sdk.VKOpenAuthActivity { <init>(); }
 -keep public class * extends android.app.backup.BackupAgent {
     <init>();
 }
 -keep public class * extends java.lang.annotation.Annotation {
     *;
 }
+-keep class com.android.tools.fd.** {
+    *;
+}
+-dontnote com.android.tools.fd.**,android.support.multidex.MultiDexExtractor

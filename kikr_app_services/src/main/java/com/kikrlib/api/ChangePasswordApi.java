@@ -10,6 +10,7 @@ import org.json.JSONException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
+import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.AbsService;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.res.CardInfoRes;
@@ -73,6 +74,11 @@ public class ChangePasswordApi extends AbsService {
 	@Override
 	public String getMethod() {
 		return requestType;
+	}
+
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
 	}
 
 	@Override

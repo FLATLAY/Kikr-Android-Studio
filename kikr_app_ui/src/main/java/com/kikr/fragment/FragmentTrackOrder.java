@@ -1,7 +1,5 @@
 package com.kikr.fragment;
 
-import java.util.List;
-
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
@@ -10,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
+import com.kikr.activity.HomeActivity;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.api.OrdersApi;
@@ -27,12 +27,15 @@ import com.kikrlib.service.res.OrderRes;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.Syso;
 
+import java.util.List;
+
 public class FragmentTrackOrder extends BaseFragment implements OnClickListener {
 	private View mainView;
 	private TextView orderItemsTextView,orderTaxTextView,orderShippingTextView,orderTotalTextView,orderStatusTextView;
 	private TextView orderIdTextView;
 	private ProgressBarDialog mProgressBarDialog;
 	private String orderId;
+	private Button back;
 	private ImageView cartProductImage,deleteCartProductImage;
 	private TextView brandName,productName,regularPriceText,quantityText,colorText;
 	private TextView kikrDiscountText,sizeText,productNotAvailable;
@@ -71,6 +74,7 @@ public class FragmentTrackOrder extends BaseFragment implements OnClickListener 
 		sizeLayout=(LinearLayout) mainView.findViewById(R.id.sizeLayout);
 		quantityLayout=(LinearLayout) mainView.findViewById(R.id.quantityLayout);
 		priceLayout=(LinearLayout) mainView.findViewById(R.id.priceLayout);
+		back=(Button)mainView.findViewById(R.id.back);
 	}
 
 	@Override
@@ -80,6 +84,7 @@ public class FragmentTrackOrder extends BaseFragment implements OnClickListener 
 
 	@Override
 	public void setClickListener() {
+		back.setOnClickListener(this);
 	}
 
 	@Override
@@ -183,6 +188,9 @@ public class FragmentTrackOrder extends BaseFragment implements OnClickListener 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+			case R.id.back:
+				((HomeActivity)mContext).onBackPressed();
+				break;
 		}
 	}
 

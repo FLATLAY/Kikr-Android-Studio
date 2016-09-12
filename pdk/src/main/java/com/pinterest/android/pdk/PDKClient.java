@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
@@ -50,7 +51,7 @@ public class PDKClient {
     private static final String PDK_SHARED_PREF_FILE_KEY = "com.pinterest.android.pdk.PREF_FILE_KEY";
     private static final String PDK_SHARED_PREF_TOKEN_KEY = "PDK_SHARED_PREF_TOKEN_KEY";
     private static final String PDK_SHARED_PREF_SCOPES_KEY = "PDK_SHARED_PREF_SCOPES_KEY";
-    private static final int PDKCLIENT_REQUEST_CODE = 8772;
+    public static final int PDKCLIENT_REQUEST_CODE = 8772;
     private static final String VOLLEY_TAG = "volley_tag";
 
     private static final String PROD_BASE_API_URL = "https://api.pinterest.com/v1/";
@@ -185,17 +186,22 @@ public class PDKClient {
         }
     }
 
-    public void onConnect(Context context) {
+    public Boolean onConnect(Context context) {
         if (!(context instanceof Activity)) {
             if (_authCallback != null) _authCallback.onFailure(new PDKException("Please pass Activity context with onConnect request"));
-            return;
+            return false;
         }
-        Activity activity = (Activity) context;
+        boolean alreadyLoggedIn = false;
+        FragmentActivity activity = (FragmentActivity) context;
         if (Intent.ACTION_VIEW.equals(activity.getIntent().getAction())) {
             Uri uri = activity.getIntent().getData();
-            if (uri != null && uri.toString().contains("pdk" + _clientId + "://"))
+            if (uri != null && uri.toString().contains("pdk" + _clientId + "://")) {
                 onOauthResponse(uri.toString());
+                return alreadyLoggedIn;
+            }
         }
+
+        return alreadyLoggedIn;
     }
 
     public void getPath(String path, PDKCallback callback) {

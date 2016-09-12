@@ -31,7 +31,7 @@
             android:textSize="@dimen/large_text_size"
             android:textColor="@color/white"
             android:padding="@dimen/padding_large"
-            android:background="@color/material_deep_teal_200"
+            android:background="@color/btn_green"
             android:text="Pinterest" />
 
         <Button
@@ -43,7 +43,7 @@
             android:textColor="@color/white"
             android:padding="@dimen/padding_large"
             android:textSize="@dimen/large_text_size"
-            android:background="@color/material_deep_teal_200"
+            android:background="@color/btn_green"
             android:text="Other" />
     </LinearLayout>
 

@@ -16,7 +16,7 @@ public class Orders {
 	public String getOrder_date() {
 		return date;
 	}
-	
+
 	/**
 	 * @param order_date the order_date to set
 	 */
@@ -59,7 +59,7 @@ public class Orders {
 	public void setCartId(String cartid) {
 		this.cart_id = cartid;
 	}
-	
+
 	public String getPrice() {
 		return price;
 	}

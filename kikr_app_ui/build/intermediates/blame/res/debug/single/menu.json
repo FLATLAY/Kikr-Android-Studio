@@ -1,6 +1,22 @@
 [
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\menu\\main.xml"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/menu/ucrop_menu_activity.xml",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/ucrop/unspecified/res/menu/ucrop_menu_activity.xml"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/menu/squarecamera__menu_blank.xml",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/squarecamera/unspecified/res/menu/squarecamera__menu_blank.xml"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/menu/contextual_menu.xml",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/menu/contextual_menu.xml"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/menu/squarecamera__menu_main.xml",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/squarecamera/unspecified/res/menu/squarecamera__menu_main.xml"
     }
 ]

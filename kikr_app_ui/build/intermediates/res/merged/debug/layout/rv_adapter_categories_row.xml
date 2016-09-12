@@ -3,25 +3,30 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:layout_marginTop="1dp"
+    android:layout_height="wrap_content"
+    card_view:cardElevation="0dp"
+    card_view:cardMaxElevation="0dp"
+    android:layout_marginBottom="0.5dp"
     >
 
     <RelativeLayout
+
         android:id="@+id/top_layout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/dark_green"
-        android:padding="10dp">
+        android:layout_height="70dp"
+        android:background="@color/btn_green"
+        android:padding="10dp"
+        >
 
         <ImageView
             android:id="@+id/category_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_marginTop="20dp"
             android:gravity="center_vertical"
             android:scaleType="fitXY"
+            android:visibility="gone"
             android:src="@drawable/kikrhighlight" />
 
         <TextView
@@ -48,6 +53,7 @@
             android:layout_marginBottom="15dp"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:text="5000+ items"
+            android:visibility="gone"
             android:textColor="#fff"
             android:textSize="15dp" />
     </RelativeLayout>

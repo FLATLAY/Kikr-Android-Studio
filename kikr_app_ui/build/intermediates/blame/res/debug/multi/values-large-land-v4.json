@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\values-large-land-v4\\values-large-land-v4.xml",
+        "outputFile": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/values-large-land-v4/values-large-land-v4.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 98
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\libAndroidCrop2\\unspecified\\res\\values-large-land-v4\\values-large-land-v4.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/libAndroidCrop2/unspecified/res/values-large-land-v4/values-large-land-v4.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

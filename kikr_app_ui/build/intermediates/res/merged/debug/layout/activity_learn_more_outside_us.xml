@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/btn_green">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/margin_xlarge" >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_credit"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/txtLearnMoreDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_xxxlarge"
                 android:gravity="center"
                 android:lineSpacingExtra="3dp"
+                android:textColor="@color/credittextcolor"
                 android:text="@string/kikr_learn_more_desc"
                 android:textSize="@dimen/x_large_text_size" />
 
@@ -32,19 +36,40 @@
                 android:layout_marginBottom="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_xlarge"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="HAPPY SHOPPING"
-                android:textColor="#777"
+              android:textColor="@color/white"
                 android:textSize="@dimen/xxx_large_text_size"
                 android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/margin_large"
+               android:id="@+id/logo"
                 android:layout_below="@+id/happyShopping"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/kikr_trace_logo" />
-        </RelativeLayout>
+                android:src="@drawable/flatlay_blacktext_logo" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_marginTop="7dp"
+                android:paddingLeft="4dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/logo"
+                android:paddingRight="4dp"
+                android:background="@drawable/rectangle_shape_white"
+                android:id="@+id/back"
+                android:textSize="@dimen/x_large_text_size"
+                android:textColor="@color/white"
+              />
+
+
+    </LinearLayout>
+
     </ScrollView>
 
-</RelativeLayout>
+</LinearLayout>

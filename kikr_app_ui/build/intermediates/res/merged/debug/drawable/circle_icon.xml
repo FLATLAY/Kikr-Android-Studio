@@ -6,7 +6,7 @@
     >
 
     <solid
-        android:color="@color/aquamarine2"
+        android:color="#58E3CD"
         />
 
     <padding

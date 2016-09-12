@@ -31,6 +31,6 @@
     <include
         android:id="@+id/footer"
         layout="@layout/footer"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
 </LinearLayout>

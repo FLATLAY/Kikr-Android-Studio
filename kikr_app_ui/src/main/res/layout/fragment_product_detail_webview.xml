@@ -64,7 +64,7 @@
                 android:gravity="center"
                 android:padding="16dp"
                 android:lineSpacingExtra="4dp"
-                android:text="You are currently on a 3rd party site.\nAdd it in the Kikr cart to earn credits!"
+                android:text="You are currently on a 3rd party site.\nAdd it in the Flatlay cart to earn credits!"
                 android:textColor="@color/app_text_color"
                 android:textSize="@dimen/large_text_size"
                 android:textStyle="bold" />
@@ -76,7 +76,7 @@
                 android:background="@color/aquamarine2"
                 android:gravity="center"
                 android:paddingBottom="8dp"
-                android:text="Use your Kikr Pin Button"
+                android:text="Use your Flatlay Pin Button"
                 android:textColor="@color/app_text_color"
                 android:textStyle="bold"
                 android:textSize="@dimen/large_text_size" />
@@ -121,11 +121,12 @@
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="210dp"
+            android:layout_marginTop="170dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_button"
             android:gravity="center"
             android:padding="16dp"
-            android:src="@drawable/kikrhighlight_small"
+            android:src="@drawable/flatlaystoreview"
             android:visibility="visible" />
     </FrameLayout>
 

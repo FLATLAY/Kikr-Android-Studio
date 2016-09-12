@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_background"
+    android:background="@color/btn_green"
     android:orientation="vertical" >
 
     <View
@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/btn_green"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -29,6 +29,7 @@
 
                 <ImageView
                     android:id="@+id/productImage"
+                    android:layout_marginLeft="6dp"
                     android:layout_width="@dimen/cart_product_image_size"
                     android:layout_height="@dimen/cart_product_image_size"
                     android:src="@drawable/dum_list_item_product" />
@@ -192,9 +193,10 @@
                 android:id="@+id/productQuantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="@dimen/padding_large"
-                android:paddingTop="@dimen/padding_cart_list" >
+                android:paddingTop="17dp" >
 
                 <TextView
                     style="@style/cartProductTextStyle"
@@ -204,15 +206,19 @@
                 <TextView
                     android:id="@+id/quantityText"
                     style="@style/cartProductTextStyle"
+                    android:layout_marginTop="3dp"
                     android:text="1" />
 
                 <ImageView
                     android:id="@+id/colorArrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_small"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
                     android:src="@drawable/ic_next_gray_arrow"
-                    android:visibility="invisible" />
+                    />
             </LinearLayout>
 
             <View
@@ -227,7 +233,7 @@
                 android:paddingLeft="@dimen/padding_large"
                 android:paddingTop="@dimen/padding_cart_list"
                 android:text="@string/cart_detail_product_text"
-                android:textColor="@color/header_background"
+                android:textColor="@color/tab_bg_new"
                 android:textSize="@dimen/large_text_size" />
 
             <View
@@ -269,7 +275,7 @@
         android:layout_marginBottom="@dimen/padding_large"
         android:gravity="center"
         android:text="Learn More"
-        android:textColor="@color/btn_green"
+        android:textColor="@color/tab_bg_new"
         android:textSize="@dimen/small_text_size" />
 
     <LinearLayout
@@ -278,7 +284,7 @@
         android:layout_height="@dimen/button_height"
         android:layout_above="@+id/progressBarCart"
         android:layout_alignParentBottom="true"
-        android:background="@color/btn_gray"
+        android:background="@color/white"
         android:gravity="center" >
 
         <TextView
@@ -286,8 +292,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:background="@color/white"
             android:text="@string/done"
-            android:textColor="@color/white"
+            android:textColor="@color/btn_green"
             android:textSize="@dimen/x_large_text_size" />
     </LinearLayout>
 

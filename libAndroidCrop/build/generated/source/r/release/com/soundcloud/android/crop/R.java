@@ -46,10 +46,11 @@ containing a value of this type.
         public static int crop__tile=0x7f020005;
     }
     public static final class id {
-        public static int btn_cancel=0x7f080002;
-        public static int btn_done=0x7f080003;
-        public static int crop_image=0x7f080001;
-        public static int done_cancel_bar=0x7f080000;
+        public static int btn_cancel=0x7f080003;
+        public static int btn_done=0x7f080004;
+        public static int crop_image=0x7f080000;
+        public static int done_cancel_bar=0x7f080002;
+        public static int donelayout=0x7f080001;
     }
     public static final class layout {
         public static int crop__activity_crop=0x7f030000;

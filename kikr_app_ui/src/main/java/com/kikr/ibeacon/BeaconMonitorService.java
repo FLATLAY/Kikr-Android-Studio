@@ -1,9 +1,5 @@
 package com.kikr.ibeacon;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -35,6 +31,10 @@ import com.radiusnetworks.ibeacon.IBeaconManager;
 import com.radiusnetworks.ibeacon.MonitorNotifier;
 import com.radiusnetworks.ibeacon.RangeNotifier;
 import com.radiusnetworks.ibeacon.Region;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class BeaconMonitorService extends Service implements IBeaconConsumer{
 	Context context;
@@ -181,7 +181,7 @@ public class BeaconMonitorService extends Service implements IBeaconConsumer{
 	 */
 	private void generateNotification(Context context, String message,IbeaconMessage ibeaconMessage) {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
-        notificationBuilder.setSmallIcon(R.drawable.ic_app_logo);
+        notificationBuilder.setSmallIcon(R.drawable.flatlayhomeimage);
         notificationBuilder.setTicker(message);
         notificationBuilder.setContentTitle(context.getString(R.string.app_name));
         notificationBuilder.setContentText(message);

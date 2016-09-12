@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
-        android:text="Welcome to Kikr!"
+        android:text="Welcome to Flatlay!"
         android:gravity="center"
         android:textColor="#000"
         android:textSize="17dp" />    

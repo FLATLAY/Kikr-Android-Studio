@@ -8,13 +8,13 @@ package com.radiusnetworks.ibeacon;
 
 public final class R {
 	public static final class drawable {
-		public static final int ic_launcher = 0x7f02014c;
+		public static final int ic_launcher = 0x7f0201b2;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f0700a2;
+		public static final int app_name = 0x7f0700ae;
 	}
 	public static final class style {
-		public static final int AppBaseTheme = 0x7f0b0002;
-		public static final int AppTheme = 0x7f0b0067;
+		public static final int AppBaseTheme = 0x7f0a000c;
+		public static final int AppTheme = 0x7f0a0090;
 	}
 }

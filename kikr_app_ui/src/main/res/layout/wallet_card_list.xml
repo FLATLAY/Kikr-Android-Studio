@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:id="@+id/walletListMainLayout">
 
 
@@ -10,16 +11,24 @@
         android:id="@+id/kikr_wallet_card_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" >
+
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+       >
 
         <ImageView
             android:id="@+id/kikr_wallet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/wallet_card_margin"
             android:contentDescription="@null"
-            android:src="@drawable/ic_connect_card_kikr"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_card_kikr"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:tag="0" />
+
 
         <ImageView
             android:id="@+id/imageView2"
@@ -27,8 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/wallet_pocket_margin"
             android:contentDescription="@null"
-            android:src="@drawable/ic_wallet_pocket_half" />
+           />
     </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/connect_bank_layout"
@@ -109,4 +119,4 @@
     </RelativeLayout>
    
 
-</RelativeLayout>
+</LinearLayout>

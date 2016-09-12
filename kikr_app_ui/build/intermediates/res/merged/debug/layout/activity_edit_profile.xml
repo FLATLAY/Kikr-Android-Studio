@@ -1,7 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_landing_screen"
+   android:background="@color/btn_green"
     android:fillViewport="true" >
 
     <LinearLayout
@@ -26,8 +26,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:padding="5dp"
                     android:maxHeight="@dimen/profile_img_bg_max_height"
-                    android:src="@drawable/ic_profile_bg" />
+                    android:src="@drawable/flatlay_profile_bg_gradient_rect" />
 
                 <RelativeLayout
                     android:layout_width="@dimen/addBank_image_size"
@@ -39,7 +41,7 @@
                         android:id="@+id/user_profile_image"
                         android:layout_width="@dimen/addBank_image_size"
                         android:layout_height="@dimen/addBank_image_size"
-                        android:scaleType="center"
+                        android:scaleType="fitCenter"
                         android:src="@drawable/dum_user" />
 
                     <ImageView
@@ -49,7 +51,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="5dp"
-                        android:src="@drawable/ic_edit" />
+                        android:src="@drawable/edit_button" />
                 </RelativeLayout>
 
                 <ImageView
@@ -59,7 +61,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_margin="20dp"
-                    android:src="@drawable/ic_edit" />
+                    android:src="@drawable/edit_button" />
             </RelativeLayout>
 
             <LinearLayout
@@ -76,6 +78,7 @@
                     android:layout_margin="@dimen/padding_large"
                     android:ems="10"
                     android:hint="@string/username"
+                    android:imeOptions="actionDone"
                     android:inputType="text" >
                 </EditText>
 
@@ -83,7 +86,7 @@
                     android:id="@+id/descriptionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/ic_edit"
+                    android:drawableEnd="@drawable/edit_button"
                     android:text="@string/add_description"
                     android:gravity="center"
                     android:drawablePadding="@dimen/padding_large"

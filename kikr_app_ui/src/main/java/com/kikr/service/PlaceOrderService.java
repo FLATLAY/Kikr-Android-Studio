@@ -5,20 +5,15 @@ import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 
 import com.kikr.GCMAlarmReceiver;
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.fragment.FragmentDiscoverNew;
-import com.kikr.fragment.FragmentPlaceMyOrder;
-import com.kikr.utility.CommonUtility;
 import com.kikrlib.api.CartApi;
 import com.kikrlib.api.TwoTapApi;
 import com.kikrlib.api.UpdateCartApi;
@@ -225,9 +220,9 @@ public class PlaceOrderService extends IntentService{
     private void generateNotification(String otherdata,String message,String section) {
         Context context = getApplicationContext();
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
-        notificationBuilder.setSmallIcon(R.drawable.ic_app_logo);
+        notificationBuilder.setSmallIcon(R.drawable.flatlayhomeimage);
         notificationBuilder.setTicker(message);
-        notificationBuilder.setContentTitle("Kikr");
+        notificationBuilder.setContentTitle(context.getString(R.string.app_name));
         notificationBuilder.setContentText(message);
         notificationBuilder.setAutoCancel(true);
 

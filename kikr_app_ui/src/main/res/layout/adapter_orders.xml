@@ -33,6 +33,7 @@
              android:visibility="gone"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
+        android:background="@color/btn_green"
              android:orientation="horizontal" >
 
              <LinearLayout
@@ -85,7 +86,7 @@
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text=""
-                         android:textColor="@color/header_background"
+                         android:textColor="@color/tab_bg_new"
                          android:textSize="@dimen/medium_text_size"
                          android:textStyle="bold" />
 
@@ -94,7 +95,7 @@
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text=""
-                         android:textColor="@color/header_background"
+                         android:textColor="@color/tab_selected_new"
                          android:textSize="@dimen/medium_text_size"
                          android:textStyle="bold" />
 

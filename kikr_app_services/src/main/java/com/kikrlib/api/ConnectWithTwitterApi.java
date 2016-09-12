@@ -75,7 +75,10 @@ public class ConnectWithTwitterApi extends AbsService{
 			return array.toString();
 		}
 	}
-
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
+	}
 	
 	@Override
 	protected void processResponse(String response) {

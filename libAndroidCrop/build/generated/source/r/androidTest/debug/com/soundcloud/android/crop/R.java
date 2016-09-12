@@ -30,10 +30,11 @@ public final class R {
 		public static final int crop__tile = 0x7f020005;
 	}
 	public static final class id {
-		public static final int btn_cancel = 0x7f080002;
-		public static final int btn_done = 0x7f080003;
-		public static final int crop_image = 0x7f080001;
-		public static final int done_cancel_bar = 0x7f080000;
+		public static final int btn_cancel = 0x7f080003;
+		public static final int btn_done = 0x7f080004;
+		public static final int crop_image = 0x7f080000;
+		public static final int done_cancel_bar = 0x7f080002;
+		public static final int donelayout = 0x7f080001;
 	}
 	public static final class layout {
 		public static final int crop__activity_crop = 0x7f030000;

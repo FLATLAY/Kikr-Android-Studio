@@ -5,9 +5,9 @@
     android:orientation="vertical" >
 
     <ScrollView
-        
-    android:background="@drawable/bg_leather"
+
         android:layout_width="match_parent"
+        android:background="@drawable/bg_leather"
         android:layout_height="match_parent">
 
         <RelativeLayout
@@ -28,10 +28,14 @@
 
             <ImageView
                 android:id="@+id/kikrCardImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:adjustViewBounds="true"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_below="@+id/kikrRewordTextView"
-                android:layout_centerHorizontal="true"
                 android:src="@drawable/ic_card_kikr" />
 
             <ImageView
@@ -53,32 +57,24 @@
                 android:layout_marginBottom="@dimen/margin_large"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
+
                 android:gravity="center"
                 android:text="@string/tutorial_kikr_lines"
                 android:textSize="@dimen/x_large_text_size" />
 
-            <TextView
-                android:id="@+id/learnMoreText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/kikrInfoTextView"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:gravity="center"
-                android:text="@string/learn_more_text"
-                android:textColor="@color/btn_green"
-                android:textSize="@dimen/large_text_size"
-                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/kikrIconImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_below="@+id/learnMoreText"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_wallet_header" />
+                android:layout_marginLeft="15dp"
+                android:visibility="gone"
+               android:layout_marginRight="15dp"
+                android:src="@drawable/flatlay_icon_text" />
 
             <RelativeLayout
                 android:id="@+id/parentRelativeLayout"
@@ -88,7 +84,18 @@
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
-
+    <TextView
+        android:id="@+id/learnMoreText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/kikrInfoTextView"
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center|bottom"
+        android:layout_marginBottom="5dp"
+        android:text="@string/learn_more_text"
+        android:textSize="@dimen/x_large_text_size"
+        android:textStyle="bold" />
 </RelativeLayout><!--
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"

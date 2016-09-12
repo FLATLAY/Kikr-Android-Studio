@@ -1,13 +1,5 @@
 package com.kikr.fragment;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -56,6 +48,15 @@ import com.kikrlib.service.ServiceException;
 import com.kikrlib.service.res.CartRes;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.Syso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 
 public class FragmentDiscoverDetail extends BaseFragment implements OnClickListener{
 	private Button mCheckoutButton; 
@@ -145,6 +146,9 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		progressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.btn_green), android.graphics.PorterDuff.Mode.MULTIPLY);
 		txtMessageBar = (TextView) mainView.findViewById(R.id.txtMessageBar);
 		txtMessageBar.setTextColor(getResources().getColor(R.color.btn_green));
+
+
+
 	}
 
 	@Override
@@ -177,7 +181,7 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		    .setId(product.getId())
 		    .setName(product.getProductname())
 		    .setCategory(product.getPrimarycategory())
-		    .setBrand(product.getBrand())
+		    //.setBrand(product.getBrand())
 		    .setPrice(productPrice);
 		HitBuilders.ScreenViewBuilder builder = new HitBuilders.ScreenViewBuilder()
 		    .addImpression(prod, "Product Impression");
@@ -484,11 +488,11 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		brandNameTextView.setText(product.getMerchantname());
 		likeCountText.setText(CommonUtility.getInt(product.getLike_info().getLike_count())+"");
 		if(TextUtils.isEmpty(product.getLike_info().getLike_id())) {
-			likeCountTextImage.setBackground(mContext.getResources().getDrawable(R.drawable.round_ract_wide));
-			likeCountTextImage.setImageResource(R.drawable.ic_singleproductspage_like);
+
+			likeCountTextImage.setImageResource(R.drawable.ic_heart_outline_grey);
 		}else {
-			likeCountTextImage.setBackground(mContext.getResources().getDrawable(R.drawable.round_ract_white));
-			likeCountTextImage.setImageResource(R.drawable.ic_flame_logo);
+
+			likeCountTextImage.setImageResource(R.drawable.ic_heart_red);
 
 		}
 
@@ -516,8 +520,10 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 			if (isDescriptionUp) {
 
 				isDescriptionUp=false;
+				productTitleTextView.setSingleLine(true);
 				RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) descriptionLayout.getLayoutParams();
 				layoutParams.setMargins(0, CommonUtility.getDeviceHeight(mContext) - (int) mContext.getResources().getDimension(R.dimen.image_detail_height), 0, 0);
+
 				descriptionLayout.setLayoutParams(layoutParams);
 				descriptionArrow.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_up_gray_arrow));
 				descriptionContainer.setVisibility(View.GONE);
@@ -525,13 +531,13 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 				descriptionLayout.setOnTouchListener(null);
 			}else{
 				isDescriptionUp=true;
+				productTitleTextView.setSingleLine(false);
 				descriptionLayout.setOnTouchListener(null);
 
 				RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) descriptionLayout.getLayoutParams();
 				layoutParams.setMargins(0, CommonUtility.getDeviceHeight(mContext) - (int) mContext.getResources().getDimension(R.dimen.description_detail_height), 0, 0);
 				descriptionLayout.setLayoutParams(layoutParams);
 				descriptionArrow.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_down_gray_arrow));
-
 				descriptionContainer.setVisibility(View.VISIBLE);
 			}
 			break;
@@ -554,12 +560,12 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 						try{
 							likeCountText.setText(CommonUtility.getInt(product.getLike_info().getLike_count()) + "");
 							if(TextUtils.isEmpty(product.getLike_info().getLike_id())) {
-								likeCountTextImage.setBackground(mContext.getResources().getDrawable(R.drawable.round_ract_wide));
-								likeCountTextImage.setImageResource(R.drawable.ic_singleproductspage_like);
+
+								likeCountTextImage.setImageResource(R.drawable.ic_heart_outline_grey);
 							}
 							else {
-								likeCountTextImage.setBackground(mContext.getResources().getDrawable(R.drawable.round_ract_white));
-								likeCountTextImage.setImageResource(R.drawable.ic_flame_logo);
+
+								likeCountTextImage.setImageResource(R.drawable.ic_heart_red);
 							}
 							if(uiUpdate!=null){
 								uiUpdate.updateUi();
@@ -594,6 +600,12 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 			AlertUtils.showToast(mContext, "Product is not available");
 			return;
 		}else if(isSelectOptionRequired){
+			String i,j,k;
+			//  ((HomeActivity) mContext).onBackPressed();
+			i= product.getProductcart_id();
+			j=i;
+			k=j;
+
 			AlertUtils.showToast(mContext, "Please select required values");
 			((HomeActivity)mContext).addFragment(new FragmentEditPurchaseItem(productLists.get(0),this,isFromBuy));
 			return;
@@ -620,7 +632,7 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 				    .setId(product.getId())
 				    .setName(product.getProductname())
 				    .setCategory(product.getPrimarycategory())
-				    .setBrand(product.getBrand())
+				    //.setBrand(product.getBrand())
 			    .setPrice(productPrice);
 				HitBuilders.ScreenViewBuilder builder = new HitBuilders.ScreenViewBuilder()
 				    .addImpression(prod, "Product Added To Cart");

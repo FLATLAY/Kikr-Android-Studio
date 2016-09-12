@@ -8,29 +8,29 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/btn_green"
         android:gravity="center"
         android:orientation="horizontal" >
 
         <TextView
+
             android:id="@+id/month_name_heading"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/follow_btn_height"
+            android:layout_height="@dimen/interest_profile_header_btn"
             android:gravity="center_vertical"
-            android:text=""
-            android:textColor="@color/app_text_color"
-            android:textSize="@dimen/small_text_size"
+            android:textColor="@color/white"
+            android:textSize="@dimen/edittext_padding"
             android:textStyle="bold" />
     </LinearLayout>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
-        android:background="@color/app_text_color" />
+        android:background="@color/credittextcolor" />
 
     <include
         android:id="@+id/itemNotFound"
-        layout="@layout/layout_item_not_found"
+        layout="@layout/no_result_found_for_search_product"
         android:visibility="gone" />
 
     <ListView
@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@color/white"
+        android:background="@color/btn_green"
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:listSelector="@android:color/transparent"

@@ -1,10 +1,5 @@
 package com.kikr.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.util.TextUtils;
-
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -15,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -22,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.AbsListView.OnScrollListener;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
@@ -38,13 +33,11 @@ import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.AppConstants;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.api.BrandListApi;
-import com.kikrlib.api.CheckBrandStoreFollowStatusApi;
 import com.kikrlib.api.CheckPointsStatusApi;
 import com.kikrlib.api.FollowUserApi;
 import com.kikrlib.api.InspirationFeedApi;
 import com.kikrlib.api.InterestSectionApi;
 import com.kikrlib.api.MyProfileApi;
-import com.kikrlib.bean.BrandList;
 import com.kikrlib.bean.FollowerList;
 import com.kikrlib.bean.Inspiration;
 import com.kikrlib.bean.InterestSection;
@@ -55,7 +48,6 @@ import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
 import com.kikrlib.service.res.BrandListRes;
-import com.kikrlib.service.res.CheckBrandStoreFollowStatusRes;
 import com.kikrlib.service.res.CheckPointStatusRes;
 import com.kikrlib.service.res.FollowUserRes;
 import com.kikrlib.service.res.InspirationFeedRes;
@@ -64,11 +56,21 @@ import com.kikrlib.service.res.MyProfileRes;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.Syso;
 
+import org.apache.http.util.TextUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.kikr.R.id.photosNotFound;
+import static com.kikr.R.id.photos_otheruser_not_found;
+
 public class FragmentProfileView extends BaseFragment implements OnClickListener, ServiceCallback {
     private View mainView;
     private ListView collection_list;
-    private Button collection_button, follower_button, following_button;
+    private ImageView collection_button, follower_button, following_button,photo_button;
     TextView follow_btn;
+    Button invite;
+    private LinearLayout follow_btn_layout;
     private ImageView up_arrow_image_first, up_arrow_image_second, up_arrow_image_third, user_profile_image, up_arrow_image_photos;
     private ProgressBarDialog mProgressBarDialog;
     private List<UserData> userDetails;
@@ -76,13 +78,14 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     private List<FollowerList> followersLists = new ArrayList<FollowerList>();
     private List<FollowerList> followingLists = new ArrayList<FollowerList>();
     private TextView user_profile_name, descriptionTextView;
-    private LinearLayout follow_btn_layout;
+    private LinearLayout settings_btn_layout,backarrowlayout;
     private String user_id;
     private boolean isFollowed;
-    private ImageView editProfileImageView, bgProfileLayout;
+    private ImageView editProfileImageView, bgProfileLayout, bg_nocollection;
     private FragmentProfileView fragmentProfileView;
     private LinearLayout noCollectionText;
     private String status = "";
+    RelativeLayout followerNotFound;
     private int pagenum = 0;
     private String isSelected = "people";
     private LinearLayout layoutPeopleStoreBrand;
@@ -101,13 +104,17 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     private int firstVisibleItem = 0, visibleItemCount = 0, totalItemCount = 0;
     private List<Inspiration> product_list = new ArrayList<Inspiration>();
     private InspirationGridAdapter inspirationAdapter;
-    private TextView loadingTextView;
+    private TextView loadingTextView, tvEarnCreditsText;
     private View loaderView;
     private Button photos_button, btnCreateCollection, btnUpload;
-    RelativeLayout photo_not_found;
-
+    RelativeLayout photo_not_found,photosotherusernotfound;
+    TextView otheruserclick;
+    LinearLayout txtfollowers;
+    boolean isFragmentContainer = true;
+    LinearLayout  photolayout,collectionlayout,followinglayout,followerlayout;
     public FragmentProfileView() {
         try {
+
             if (lastUserId != null) {
                 this.user_id = lastUserId;
                 fragmentProfileView = this;
@@ -120,6 +127,19 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     }
 
     public FragmentProfileView(String user_id, String isFollowed) {
+
+        this.user_id = user_id;
+        lastUserId = user_id;
+        fragmentProfileView = this;
+        if (isFollowed != null && isFollowed.equals("yes")) {
+            this.isFollowed = true;
+        } else {
+            this.isFollowed = false;
+        }
+    }
+
+    public FragmentProfileView(String user_id, String isFollowed, boolean isFragmentContainer) {
+
         this.user_id = user_id;
         lastUserId = user_id;
         fragmentProfileView = this;
@@ -139,23 +159,31 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
     @Override
     public void initUI(Bundle savedInstanceState) {
-        photo_not_found = (RelativeLayout) mainView.findViewById(R.id.photosNotFound);
-        photos_button = (Button) mainView.findViewById(R.id.photos_button);
+        photo_not_found = (RelativeLayout) mainView.findViewById(photosNotFound);
+        photosotherusernotfound=(RelativeLayout) mainView.findViewById(photos_otheruser_not_found);
+        otheruserclick =(TextView) mainView.findViewById(R.id.otheruserclick);
+        bg_nocollection = (ImageView) mainView.findViewById(R.id.bg_nocollection);
+        invite=(Button)mainView.findViewById(R.id.invite);
+       // photos_button = (Button) mainView.findViewById(R.id.photos_button);
         collection_list = (ListView) mainView.findViewById(R.id.collection_list);
-        following_button = (Button) mainView.findViewById(R.id.following_button);
-        follower_button = (Button) mainView.findViewById(R.id.follower_button);
-        collection_button = (Button) mainView.findViewById(R.id.collection_button);
+         photo_button  =(ImageView) mainView.findViewById(R.id.photo_button);
+       following_button = (ImageView) mainView.findViewById(R.id.following_button);
+        follower_button = (ImageView) mainView.findViewById(R.id.follower_button);
+        collection_button = (ImageView) mainView.findViewById(R.id.collection_button);
         follow_btn = (TextView) mainView.findViewById(R.id.follow_btn);
+        follow_btn_layout = (LinearLayout) mainView.findViewById(R.id.follow_btn_layout);
         up_arrow_image_first = (ImageView) mainView.findViewById(R.id.up_arrow_image_first);
         up_arrow_image_photos = (ImageView) mainView.findViewById(R.id.up_arrow_image_photos);
         up_arrow_image_second = (ImageView) mainView.findViewById(R.id.up_arrow_image_second);
         up_arrow_image_third = (ImageView) mainView.findViewById(R.id.up_arrow_image_third);
         user_profile_image = (ImageView) mainView.findViewById(R.id.user_profile_image);
         user_profile_name = (TextView) mainView.findViewById(R.id.user_profile_name);
-        follow_btn_layout = (LinearLayout) mainView.findViewById(R.id.follow_btn_layout);
+        settings_btn_layout = (LinearLayout) mainView.findViewById(R.id.settings_btn_layout);
         editProfileImageView = (ImageView) mainView.findViewById(R.id.editProfileImageView);
         bgProfileLayout = (ImageView) mainView.findViewById(R.id.bgProfileLayout);
         noCollectionText = (LinearLayout) mainView.findViewById(R.id.noCollectionText);
+        followerNotFound=(RelativeLayout)mainView.findViewById(R.id.followerNotFound);
+        tvEarnCreditsText = (TextView) mainView.findViewById(R.id.tvEarnCreditText);
         layoutPeopleStoreBrand = (LinearLayout) mainView.findViewById(R.id.layoutPeopleStoreBrand);
         interest_store_button = (Button) mainView.findViewById(R.id.interest_store_button);
         interest_brand_button = (Button) mainView.findViewById(R.id.interest_brand_button);
@@ -170,6 +198,13 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         loaderView = View.inflate(mContext, R.layout.footer, null);
         btnCreateCollection = (Button) mainView.findViewById(R.id.btnCreateCollection);
         btnUpload = (Button) mainView.findViewById(R.id.btnUpload);
+        photolayout=(LinearLayout) mainView.findViewById(R.id.photolayout);
+        collectionlayout=(LinearLayout) mainView.findViewById(R.id.collectionlayout);
+        followinglayout=(LinearLayout) mainView.findViewById(R.id.followinglayout);
+        followerlayout=(LinearLayout) mainView.findViewById(R.id.followerlayout);
+        txtfollowers=(LinearLayout) mainView.findViewById(R.id.txtfollowers);
+        backarrowlayout=(LinearLayout) mainView.findViewById(R.id.backarrowlayout);
+        CommonUtility.hideSoftKeyboard(mContext);
     }
 
     @Override
@@ -179,26 +214,36 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     @Override
     public void setClickListener() {
         btnCreateCollection.setOnClickListener(this);
-        photos_button.setOnClickListener(this);
-        collection_button.setOnClickListener(this);
-        follow_btn.setOnClickListener(this);
-        follower_button.setOnClickListener(this);
-        following_button.setOnClickListener(this);
+        btnUpload.setOnClickListener(this);
+        photolayout.setOnClickListener(this);
+        collectionlayout.setOnClickListener(this);
+        followerlayout.setOnClickListener(this);
+        followinglayout.setOnClickListener(this);
         editProfileImageView.setOnClickListener(this);
         interest_store_button.setOnClickListener(this);
         interest_brand_button.setOnClickListener(this);
         interest_people_button.setOnClickListener(this);
         myActivityButton.setOnClickListener(this);
+        settings_btn_layout.setOnClickListener(this);
+        backarrowlayout.setOnClickListener(this);
+        invite.setOnClickListener(this);
+        follow_btn.setOnClickListener(this);
         //btn_photos.setOnClickListener(this);
+    }
+
+    public void initData() {
+        if (checkInternet()) {
+            getInspirationFeedList();
+           getCollectionStatus();
+        } else
+            showReloadOption();
     }
 
     @Override
     public void setData(Bundle bundle) {
-        if (checkInternet()) {
-            getInspirationFeedList();
-            getCollectionStatus();
-        } else
-            showReloadOption();
+
+            initData();
+
 
         collection_list.setOnScrollListener(new OnScrollListener() {
             @Override
@@ -259,14 +304,25 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnUpload:
-                addFragment(new FragmentDiscoverNew());
+                addFragment(new  FragmentPostUploadTab());
+                break;
+
+
+            case R.id.settings_btn_layout:
+                addFragment(new SettingFragmentTab());
                 break;
             case R.id.btnCreateCollection:
-                addFragment(new FragmentDiscoverNew());
+                addFragment(new FragmentSearchProduct());
                 break;
             case R.id.btn_activity:
                 noCollectionText.setVisibility(View.GONE);
                 addFragment(new FragmentActivityMonths());
+                break;
+            case R.id.backarrowlayout:
+                ((HomeActivity)mContext).onBackPressed();
+                break;
+            case R.id.invite:
+                ((HomeActivity)mContext).inviteFriends();
                 break;
         /*	case R.id.btn_photos:
                 noCollectionText.setVisibility(View.GONE);
@@ -294,13 +350,15 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 				layoutPeopleStoreBrand.setVisibility(View.GONE);
 				break;*/
 
-            case R.id.photos_button:
+            case R.id.photolayout:
+                followerNotFound.setVisibility(View.GONE);
+                txtfollowers.setVisibility(View.GONE);
                 noCollectionText.setVisibility(View.GONE);
 
                 if (product_list.size() == 0) {
                     if (user_id.equals(UserPreference.getInstance().getUserID())) {
 
-                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have yet to upload any post, Create one now !");
+                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have yet to upload any posts, create one now !");
                         ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.VISIBLE);
                     } else {
                         ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " hasn't uploaded any photos.");
@@ -325,89 +383,134 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
                 //btn_photos.setText("collections");
                 // }
-                up_arrow_image_photos.setVisibility(View.VISIBLE);
-                up_arrow_image_first.setVisibility(View.INVISIBLE);
-                up_arrow_image_second.setVisibility(View.INVISIBLE);
-                up_arrow_image_third.setVisibility(View.INVISIBLE);
+
                 layoutPeopleStoreBrand.setVisibility(View.GONE);
                 //collection_list.setVisibility(View.VISIBLE);
-                follower_button.setTextColor(getResources().getColor(R.color.app_text_color));
-                following_button.setTextColor(getResources().getColor(R.color.app_text_color));
-                collection_button.setTextColor(getResources().getColor(R.color.app_text_color));
-                photos_button.setTextColor(getResources().getColor(R.color.menu_option_background_selected));
+                follower_button.setImageResource(R.drawable.followeruser);
+                following_button.setImageResource(R.drawable.followinguser);
+                collection_button.setImageResource(R.drawable.profile_collection_tab);
+                photo_button.setImageResource(R.drawable.photoselected);
+//                followerlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+//                followinglayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+//                collectionlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+//                photolayout.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
                 break;
-            case R.id.collection_button:
+            case R.id.collectionlayout:
+                followerNotFound.setVisibility(View.GONE);
+                txtfollowers.setVisibility(View.GONE);
                 photo_not_found.setVisibility(View.GONE);
-                if (!HelpPreference.getInstance().getHelpCollection().equals("yes") && collectionLists.size() == 0)
-                    showDataNotFound();
+                hideDataNotFound();
+                layoutPeopleStoreBrand.setVisibility(View.GONE);
+                if (!HelpPreference.getInstance().getHelpCollection().equals("yes") && collectionLists.size() == 0) {
+                    noCollectionText.setVisibility(View.VISIBLE);
+                    collection_list.setVisibility(View.GONE);
+                }
                 else if (status.equals("yes") && collectionLists.size() == 0
                         && user_id.equals(UserPreference.getInstance().getUserID())) {
-                    hideDataNotFound();
+                    tvEarnCreditsText.setVisibility(View.VISIBLE);
+                    btnCreateCollection.setVisibility(View.VISIBLE);
                     noCollectionText.setVisibility(View.VISIBLE);
-                } else {
-                    hideDataNotFound();
+                    collection_list.setVisibility(View.GONE);
+                }
+                if (collectionLists.size() == 0 && user_id.equals(UserPreference.getInstance().getUserID())) {
+                    tvEarnCreditsText.setVisibility(View.VISIBLE);
+                    btnCreateCollection.setVisibility(View.VISIBLE);
+                    bg_nocollection.setVisibility(View.VISIBLE);
+                }
+                else {
+                    noCollectionText.setVisibility(View.GONE);
+                    collection_list.setVisibility(View.VISIBLE);
                     collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext, collectionLists, user_id, fragmentProfileView, null, null));
                 }
 
-                up_arrow_image_first.setVisibility(View.VISIBLE);
-                up_arrow_image_photos.setVisibility(View.INVISIBLE);
-                up_arrow_image_second.setVisibility(View.INVISIBLE);
-                up_arrow_image_third.setVisibility(View.INVISIBLE);
-                layoutPeopleStoreBrand.setVisibility(View.GONE);
+
                 imagesList.setVisibility(View.GONE);
-                collection_list.setVisibility(View.VISIBLE);
-                follower_button.setTextColor(getResources().getColor(R.color.app_text_color));
-                following_button.setTextColor(getResources().getColor(R.color.app_text_color));
-                collection_button.setTextColor(getResources().getColor(R.color.menu_option_background_selected));
-                photos_button.setTextColor(getResources().getColor(R.color.app_text_color));
+
+                follower_button.setImageResource(R.drawable.followeruser);
+                following_button.setImageResource(R.drawable.followinguser);
+                collection_button.setImageResource(R.drawable.collectionselected);
+                photo_button.setImageResource(R.drawable.profile_photo_tab);
+//                followerlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+//                followinglayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+//                collectionlayout.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
+//                photolayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
                 break;
-            case R.id.follower_button:
+            case R.id.followerlayout:
+                txtfollowers.setVisibility(View.VISIBLE);
                 noCollectionText.setVisibility(View.GONE);
                 photo_not_found.setVisibility(View.GONE);
-                if (followersLists.size() == 0)
-                    showDataNotFound();
+                if (followersLists.size() == 0 &&(user_id.equals(UserPreference.getInstance().getUserID())))
+                    followerNotFound.setVisibility(View.VISIBLE);
                 else {
                     hideDataNotFound();
                     collection_list.setAdapter(new FragmentProfileFollowersAdapter(mContext, followersLists));
                 }
 
-                up_arrow_image_photos.setVisibility(View.INVISIBLE);
-                up_arrow_image_first.setVisibility(View.INVISIBLE);
-                up_arrow_image_second.setVisibility(View.VISIBLE);
-                up_arrow_image_third.setVisibility(View.INVISIBLE);
+
                 imagesList.setVisibility(View.GONE);
                 layoutPeopleStoreBrand.setVisibility(View.GONE);
                 collection_list.setVisibility(View.VISIBLE);
-                follower_button.setTextColor(getResources().getColor(R.color.menu_option_background_selected));
-                following_button.setTextColor(getResources().getColor(R.color.app_text_color));
-                collection_button.setTextColor(getResources().getColor(R.color.app_text_color));
-                photos_button.setTextColor(getResources().getColor(R.color.app_text_color));
+                follower_button.setImageResource(R.drawable.followerselected);
+                following_button.setImageResource(R.drawable.followinguser);
+                collection_button.setImageResource(R.drawable.profile_collection_tab);
+                photo_button.setImageResource(R.drawable.profile_photo_tab);
+
+//                followerlayout.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
+//                followinglayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+//                collectionlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+//                photolayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
                 break;
-            case R.id.following_button:
+            case R.id.followinglayout:
+                followerNotFound.setVisibility(View.GONE);
+                txtfollowers.setVisibility(View.GONE);
                 noCollectionText.setVisibility(View.GONE);
                 photo_not_found.setVisibility(View.GONE);
-                if (followingLists.size() == 0)
-                    showDataNotFound();
-                else {
+                if (followingLists.size() == 0) {
+                    collection_list.setVisibility(View.GONE);
+                    noFollowingFound();
+                    //showDataNotFound();
+                } else {
                     hideDataNotFound();
+                    collection_list.setVisibility(View.VISIBLE);
                     collection_list.setAdapter(new FragmentProfileFollowingAdapter(mContext, followingLists));
                 }
+                if (isSelected.equalsIgnoreCase("store")) {
+                    collection_list.setAdapter(null);
+                    isFirstTime = true;
+                    pagenum = 0;
+                    isSelected = "store";
+                    isLoading = false;
+                    getStoreList();
+                    collection_list.setVisibility(View.VISIBLE);
+                }
+                if (isSelected.equalsIgnoreCase("brand")) {
+                    collection_list.setAdapter(null);
+                    isFirstTime = true;
+                    pagenum = 0;
+                    isSelected = "brand";
+                    isLoading = false;
+                    getBrandList();
+                    collection_list.setVisibility(View.VISIBLE);
+                }
 
-                up_arrow_image_photos.setVisibility(View.INVISIBLE);
-                up_arrow_image_first.setVisibility(View.INVISIBLE);
-                up_arrow_image_second.setVisibility(View.INVISIBLE);
-                up_arrow_image_third.setVisibility(View.VISIBLE);
+
                 layoutPeopleStoreBrand.setVisibility(View.VISIBLE);
-                collection_list.setVisibility(View.VISIBLE);
+
                 imagesList.setVisibility(View.GONE);
-                follower_button.setTextColor(getResources().getColor(R.color.app_text_color));
-                following_button.setTextColor(getResources().getColor(R.color.menu_option_background_selected));
-                collection_button.setTextColor(getResources().getColor(R.color.app_text_color));
-                photos_button.setTextColor(getResources().getColor(R.color.app_text_color));
+                follower_button.setImageResource(R.drawable.followeruser);
+                following_button.setImageResource(R.drawable.followingselected);
+                collection_button.setImageResource(R.drawable.profile_collection_tab);
+                photo_button.setImageResource(R.drawable.profile_photo_tab);
+
+
+//                followerlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+//                followinglayout.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
+//                collectionlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+//                photolayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
                 break;
             case R.id.follow_btn:
                 if (checkInternet()) {
-                    if (follow_btn.getText().toString().equalsIgnoreCase("Follow"))
+                    if (follow_btn.getText().toString().trim().equalsIgnoreCase("Follow"))
                         followUser();
                     else
                         unFollowUser();
@@ -429,10 +532,11 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 isSelected = "store";
                 isLoading = false;
                 collection_list.setAdapter(null);
+                collection_list.setVisibility(View.VISIBLE);
                 noCollectionText.setVisibility(View.GONE);
-                interest_store_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_active));
-                interest_brand_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
-                interest_people_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
+                interest_store_button.setTextColor(getResources().getColor(R.color.btn_green));
+                interest_brand_button.setTextColor(getResources().getColor(R.color.white));
+                interest_people_button.setTextColor(getResources().getColor(R.color.white));
 
                 if (checkInternet()) {
                     getStoreList();
@@ -446,10 +550,11 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 isSelected = "brand";
                 isLoading = false;
                 collection_list.setAdapter(null);
+                collection_list.setVisibility(View.VISIBLE);
                 noCollectionText.setVisibility(View.GONE);
-                interest_store_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
-                interest_brand_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_active));
-                interest_people_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
+                interest_store_button.setTextColor(getResources().getColor(R.color.white));
+                interest_brand_button.setTextColor(getResources().getColor(R.color.btn_green));
+                interest_people_button.setTextColor(getResources().getColor(R.color.white));
 
                 if (checkInternet()) {
                     getBrandList();
@@ -464,13 +569,12 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 isSelected = "people";
                 collection_list.setAdapter(null);
                 noCollectionText.setVisibility(View.GONE);
-                interest_store_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
-                interest_brand_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
-                interest_people_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_active));
-
+                interest_store_button.setTextColor(getResources().getColor(R.color.white));
+                interest_brand_button.setTextColor(getResources().getColor(R.color.white));
+                interest_people_button.setTextColor(getResources().getColor(R.color.btn_green));
                 if (checkInternet()) {
                     if (followingLists.size() == 0)
-                        showDataNotFound();
+                        noFollowingFound();
                     else {
                         hideDataNotFound();
                         collection_list.setAdapter(new FragmentProfileFollowingAdapter(mContext, followingLists));
@@ -497,10 +601,9 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 AlertUtils.showToast(mContext, R.string.user_followed_successfully);
                 isFollowed = true;
                 follow_btn.setText("FOLLOWING");
-                follow_btn.setBackground(getResources().getDrawable(R.drawable.btn_whitebg));
-                int imgResource = R.drawable.ic_check_following;
-                follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
-                follow_btn.setTextColor(getResources().getColor(R.color.menu_option_background_selected));
+                follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
+
+                follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
                 refreshProfile();
             }
 
@@ -538,13 +641,10 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 mProgressBarDialog.dismiss();
                 Syso.info("In handleOnSuccess>>" + object);
                 isFollowed = false;
-                follow_btn.setText("FOLLOW   ");
-                follow_btn.setBackground(getResources().getDrawable(R.drawable.btn_borderbg));
+                follow_btn.setText("FOLLOW ");
+                follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_borderbg));
                 refreshProfile();
-
-                int imgResource = R.drawable.ic_add_follow;
-                follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
-                follow_btn.setTextColor(getResources().getColor(R.color.white));
+                follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
             }
 
             @Override
@@ -572,25 +672,26 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
 
     private void getUserProfileDetail() {
-        mProgressBarDialog = new ProgressBarDialog(mContext);
-        mProgressBarDialog.show();
+//        mProgressBarDialog = new ProgressBarDialog(mContext);
+//        mProgressBarDialog.show();
 
         final MyProfileApi myProfileApi = new MyProfileApi(this);
         myProfileApi.getUserProfileDetail(user_id, UserPreference.getInstance().getUserID());
         myProfileApi.execute();
 
-        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                myProfileApi.cancel();
-            }
-        });
+//        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                myProfileApi.cancel();
+//            }
+//        });
     }
 
     @Override
     public void handleOnSuccess(Object object) {
-        mProgressBarDialog.dismiss();
-        hideDataNotFound();
+        if (mProgressBarDialog.isShowing())
+            mProgressBarDialog.dismiss();
+        // hideDataNotFound();
         UserPreference.getInstance().setIsRefreshProfile(false);
         Syso.info("In handleOnSuccess>>" + object);
         MyProfileRes myProfileRes = (MyProfileRes) object;
@@ -603,22 +704,22 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     }
 
     private void getCollectionStatus() {
-        mProgressBarDialog = new ProgressBarDialog(mContext);
-        mProgressBarDialog.show();
+      // mProgressBarDialog = new ProgressBarDialog(mContext);
+       //mProgressBarDialog.show();
         CheckPointsStatusApi checkPointsStatusApi = new CheckPointsStatusApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                mProgressBarDialog.dismiss();
+                // mProgressBarDialog.dismiss();
                 Syso.info("In handleOnSuccess>>" + object);
                 CheckPointStatusRes pointStatusRes = (CheckPointStatusRes) object;
                 status = pointStatusRes.getStatus();
-                getUserProfileDetail();
+
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                mProgressBarDialog.dismiss();
+               //   mProgressBarDialog.dismiss();
                 getUserProfileDetail();
             }
         });
@@ -631,7 +732,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         if (!userDetails.get(0).getProfile_pic().equals(""))
             CommonUtility.setImage(mContext, userDetails.get(0).getProfile_pic(), user_profile_image, R.drawable.dum_user);
         if (!userDetails.get(0).getBackground_pic().equals(""))
-            CommonUtility.setImage(mContext, userDetails.get(0).getBackground_pic(), bgProfileLayout, R.drawable.dum_list_item_product);
+            CommonUtility.setImage(mContext, userDetails.get(0).getBackground_pic(), bgProfileLayout, R.drawable.flatlay_profile_bg_gradient_rect);
 
         if (userDetails.get(0).getUsername() != null && !userDetails.get(0).getUsername().equals(""))
             user_profile_name.setText(userDetails.get(0).getUsername());
@@ -642,21 +743,34 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
             descriptionTextView.setText(userDetails.get(0).getDescription());
         }
 
-        if (status.equals("yes") &&
-                collectionLists.size() == 0
-                && user_id.equals(UserPreference.getInstance().getUserID())) {
-            // hideDataNotFound();
-            noCollectionText.setVisibility(View.VISIBLE);
 
-        } else if (collectionLists.size() == 0)
-            showDataNotFound();
+        else if (product_list.size() == 0 && ( user_id.equals(UserPreference.getInstance().getUserID())))
+            photo_not_found.setVisibility(View.VISIBLE);
+
+//        else if (product_list.size() == 0 && !( user_id.equals(UserPreference.getInstance().getUserID()))) {
+//            photo_not_found.setVisibility(View.GONE);
+//            otheruserclick.setText(user_profile_name.getText() + " hasn't uploaded any photos.");
+//            photosotherusernotfound.setVisibility(View.VISIBLE);
+//        }
+
         else
+            // System.out.print("abhishek kumar verma");
             collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext, collectionLists, user_id, fragmentProfileView, null, null));
 
-        collection_button.setText(collectionLists.size() + "\nCollections");
-        follower_button.setText(followersLists.size() + "\nFollowers");
-        following_button.setText(followingLists.size() + "\nFollowing");
-        photos_button.setText(product_list.size() + "\nPhotos");
+
+
+
+
+
+
+
+
+
+
+//        collection_button.setText(collectionLists.size() + "\nCollections");
+//        follower_button.setText(followersLists.size() + "\nFollowers");
+//        following_button.setText(followingLists.size() + "\nFollowing");
+//        photos_button.setText(product_list.size() + "\nPhotos");
         if (userDetails.get(0).getIs_followed() != null && userDetails.get(0).getIs_followed().equals("yes")) {
             this.isFollowed = true;
         } else {
@@ -664,32 +778,41 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         }
         if (userDetails.get(0).getId().equalsIgnoreCase(UserPreference.getInstance().getUserID())) {
             myActivityButton.setVisibility(View.VISIBLE);
+            settings_btn_layout.setVisibility(View.VISIBLE);
             follow_btn_layout.setVisibility(View.GONE);
             editProfileImageView.setVisibility(View.VISIBLE);
+//            photo_not_found.setVisibility(View.VISIBLE);
+//            photosotherusernotfound.setVisibility(View.GONE);
         } else if (isFollowed) {
             myActivityButton.setVisibility(View.INVISIBLE);
             follow_btn_layout.setVisibility(View.VISIBLE);
+            settings_btn_layout.setVisibility(View.GONE);
+            backarrowlayout.setVisibility(View.VISIBLE);
+//            photosotherusernotfound.setVisibility(View.VISIBLE);
+//            photo_not_found.setVisibility(View.GONE);
             editProfileImageView.setVisibility(View.GONE);
             follow_btn.setText("FOLLOWING");
-            follow_btn.setBackground(getResources().getDrawable(R.drawable.btn_whitebg));
-            int imgResource = R.drawable.ic_check_following;
-            follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
-            follow_btn.setTextColor(getResources().getColor(R.color.menu_option_background_selected));
+            follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
+            follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
         } else {
             myActivityButton.setVisibility(View.INVISIBLE);
             follow_btn_layout.setVisibility(View.VISIBLE);
+//            photosotherusernotfound.setVisibility(View.VISIBLE);
+//            photo_not_found.setVisibility(View.GONE);
             editProfileImageView.setVisibility(View.GONE);
-            follow_btn.setText("FOLLOW   ");
-            follow_btn.setBackground(getResources().getDrawable(R.drawable.btn_borderbg));
-            int imgResource = R.drawable.ic_add_follow;
-            follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
-            follow_btn.setTextColor(getResources().getColor(R.color.white));
+            settings_btn_layout.setVisibility(View.GONE);
+            backarrowlayout.setVisibility(View.VISIBLE);
+            follow_btn.setText("FOLLOW ");
+            follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_borderbg));
+            refreshProfile();
+            follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
         }
     }
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
-        mProgressBarDialog.dismiss();
+        if (mProgressBarDialog.isShowing())
+            mProgressBarDialog.dismiss();
         Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             MyProfileRes response = (MyProfileRes) object;
@@ -760,7 +883,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                     mProgressBarDialog.dismiss();
                 else
                     hideFotter();
-                hideDataNotFound();
+                //hideDataNotFound();
                 Syso.info("In handleOnSuccess>>" + object);
                 isLoading = !isLoading;
                 InterestSectionRes interestSectionRes = (InterestSectionRes) object;
@@ -768,10 +891,11 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 if (interestList.size() < 10) {
                     isLoading = true;
                 }
-                if (interestList.size() == 0 && isFirstTime)
-                    showDataNotFound();
+                if (interestList.size() == 0 && isFirstTime) {
+                }
+                //showDataNotFound();
                 else if (interestList.size() > 0 && isFirstTime) {
-                    hideDataNotFound();
+                    // hideDataNotFound();
                     interestStoreListAdapter = new InterestStoreListAdapter(mContext, interestList, fragmentProfileView);
                     collection_list.setAdapter(interestStoreListAdapter);
                 } else {
@@ -909,10 +1033,11 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 if (interestList.size() < 10) {
                     isLoading = true;
                 }
-                if (interestList.size() == 0 && isFirstTime)
-                    showDataNotFound();
+                if (interestList.size() == 0 && isFirstTime) {
+                }
+                //  showDataNotFound();
                 else if (interestList.size() > 0 && isFirstTime) {
-                    hideDataNotFound();
+                    // hideDataNotFound();
                     interestBrandListAdapter = new InterestBrandListAdapter(mContext, interestList, fragmentProfileView);
                     collection_list.setAdapter(interestBrandListAdapter);
                 } else {
@@ -1015,13 +1140,16 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     }
 
     private void getInspirationFeedList() {
-//		mProgressBarDialog = new ProgressBarDialog(mContext);
+        collection_list.setVisibility(View.GONE);
+        imagesList.setVisibility(View.VISIBLE);
+        mProgressBarDialog = new ProgressBarDialog(mContext);
         isLoading = !isLoading;
         if (!isFirstTime) {
             showFotter();
         } else {
             loadingTextView.setVisibility(View.VISIBLE);
-//			mProgressBarDialog.show();
+           mProgressBarDialog.show();
+            getUserProfileDetail();
         }
 
         final InspirationFeedApi inspirationFeedApi = new InspirationFeedApi(new ServiceCallback() {
@@ -1031,9 +1159,9 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                     hideFotter();
                 } else {
                     loadingTextView.setVisibility(View.GONE);
-//			mProgressBarDialog.dismiss();
+                    mProgressBarDialog.dismiss();
                 }
-                hideDataNotFound();
+                // hideDataNotFound();
                 isLoading = !isLoading;
                 Syso.info("In handleOnSuccess>>" + object);
                 InspirationFeedRes inspirationFeedRes = (InspirationFeedRes) object;
@@ -1042,7 +1170,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                     isLoading = true;
                 }
                 if (product_list.size() == 0 && isFirstTime) {
-                    showDataNotFound();
+                    // showDataNotFound();
                 }
                 if (product_list.size() > 0 && isFirstTime) {
                     inspirationAdapter = new InspirationGridAdapter(mContext, product_list);
@@ -1070,7 +1198,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 }
             }
         });
-        inspirationFeedApi.getInspirationFeed(user_id, false, String.valueOf(page));
+        inspirationFeedApi.getInspirationFeed(user_id, false, String.valueOf(page), UserPreference.getInstance().getUserID());
         inspirationFeedApi.execute();
 
 //		mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -1096,5 +1224,6 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
             }
         });
     }
+
 
 }

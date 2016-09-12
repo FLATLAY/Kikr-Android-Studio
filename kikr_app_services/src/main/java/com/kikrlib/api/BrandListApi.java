@@ -78,6 +78,11 @@ public class BrandListApi extends AbsService {
 	}
 
 	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
+	}
+
+	@Override
 	public String getJsonRequest() {
 		try {
 			JSONArray array = new JSONArray(requestValue);

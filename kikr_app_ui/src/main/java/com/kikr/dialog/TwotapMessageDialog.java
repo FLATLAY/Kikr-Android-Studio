@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.fragment.FragmentAllOrders;
+import com.kikr.fragment.CartFragmentTab;
 import com.kikr.fragment.FragmentDiscoverNew;
 
 public class TwotapMessageDialog extends Dialog{
@@ -54,7 +54,7 @@ public class TwotapMessageDialog extends Dialog{
 			@Override
 			public void onClick(View v) {
 				if(isLoadOrderDeatil)
-					((HomeActivity)mContext).addFragment(new FragmentAllOrders());
+					((HomeActivity)mContext).addFragment(new CartFragmentTab(true));
 				else
 					((HomeActivity)mContext).loadFragment(new FragmentDiscoverNew());
 				dismiss();

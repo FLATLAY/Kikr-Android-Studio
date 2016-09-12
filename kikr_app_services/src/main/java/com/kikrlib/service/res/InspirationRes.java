@@ -15,6 +15,25 @@ public class InspirationRes {
 	List<Comment> comments;
 	List<Product> data;
 	Inspiration inspiration;
+	String id;
+	String Image_url;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getImage_url() {
+		return Image_url;
+	}
+
+	public void setImage_url(String image_url) {
+		Image_url = image_url;
+	}
+
 	/**
 	 * @return the comments
 	 */

@@ -5,8 +5,11 @@
     android:versionName="1.6" >
 
     <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="16"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <permission
         android:name="com.kikr.permission.MAPS_RECEIVE"
@@ -32,7 +35,6 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.BATTERY_STATS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- Required for i-beacon -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -59,7 +61,7 @@
     <application
         android:name="com.kikr.KikrApp"
         android:allowBackup="true"
-        android:icon="@drawable/ic_app_logo"
+        android:icon="@drawable/flatlayhomeimage"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme" >
@@ -79,30 +81,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.kikr.GalleryImagewithSpinner.ImageDetailActivity" />
         <activity
             android:name="com.kikr.activity.LandingActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.SignUpActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.PinActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.HomeActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
+            android:windowSoftInputMode="adjustPan" >
         </activity>
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat" />
+        <activity
+            android:name="com.kikr.circle_crop.circle_crop.ImageCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat" />
         <activity
             android:name="com.kikr.activity.PinterestLoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
@@ -119,228 +126,205 @@
             android:name="com.kikr.activity.PinAuthActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kikr.activity.CustomizeFeedActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.EditProfileActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.KikrLearnMoreActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.DiscoverDetailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.PhoneNumberActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.LoginActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.WalletPinActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.DealWebViewActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.FollowCategoriesActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.FollowBrandsActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.FollowStoreActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.EmailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.FbSignActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-        </activity>
-        <activity android:name="com.facebook.LoginActivity" >
-        </activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.kikr.twitter.TwitterOAuthActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.kikr.activity.AddBankActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.ForgotPassword"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.googlewallet.CheckoutActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.googlewallet.ConfirmationActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.googlewallet.OrderCompleteActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.KikrTutorialActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.ibeacon.BeaconMainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <!--
-        <activity
-            android:name="com.kikr.ibeacon.RangingActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+          <activity
+              android:name="com.kikr.ibeacon.RangingActivity"
+              android:configChanges="keyboard|keyboardHidden|orientation"
+              android:screenOrientation="portrait"
+              android:windowSoftInputMode="stateHidden|adjustPan" >
+          </activity>
         -->
         <activity
             android:name="com.kikr.ibeacon.MonitoringActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.ResetPassword"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.ibeacon.BeaconMessageActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <!--
-        <activity
-            android:name="com.kikr.activity.ProductBasedOnBrandActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+         <activity
+             android:name="com.kikr.activity.ProductBasedOnBrandActivity"
+             android:configChanges="keyboard|keyboardHidden|orientation"
+             android:screenOrientation="portrait"
+             android:windowSoftInputMode="stateHidden|adjustPan" >
+         </activity>
         -->
         <activity
             android:name="com.kikr.activity.ChangePasswordActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.ChangeWalletPinActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.ChangeEmailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.DefaultLifestyleImagesActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.ImageViewActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.LearnMoreOutsideUSActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.ProductDetailWebViewActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.RegisterEmailOnSkipActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.FollowCategoriesNewActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.InstagramLoginActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.kikr.activity.IntroductionPagerActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustPan" >
         </activity>
+        <activity
+            android:name="com.kikr.post_upload.ProductSearchTagging"
+            android:screenOrientation="portrait" />
 
         <service android:name="com.kikr.service.PlaceOrderService" />
 
@@ -395,15 +379,13 @@
 
 
         <!-- for IBeacon -->
-        <service android:name="com.kikr.ibeacon.BeaconMonitorService" >
-        </service>
+        <service android:name="com.kikr.ibeacon.BeaconMonitorService" />
         <service
             android:name="com.radiusnetworks.ibeacon.service.IBeaconService"
             android:enabled="true"
             android:exported="true"
             android:isolatedProcess="false"
-            android:label="iBeacon" >
-        </service>
+            android:label="iBeacon" />
         <service
             android:name="com.radiusnetworks.ibeacon.IBeaconIntentProcessor"
             android:enabled="true" >
@@ -489,8 +471,9 @@
         </intent-filter>
 
         <activity
-            android:name="android.support.v7.widget.TestActivity"
-            android:label="RecyclerViewTestActivity" />
+            android:name="com.github.gorbin.asne.core.OAuthActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+        <activity android:name="com.vk.sdk.VKOpenAuthActivity" />
     </application>
 
 </manifest>

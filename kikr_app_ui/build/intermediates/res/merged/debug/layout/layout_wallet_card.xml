@@ -3,24 +3,33 @@
     android:id="@+id/walletCardLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/wallet_layout_margin"
+    android:layout_marginTop="0dp"
     android:visibility="visible" >
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop=".5dp"
+        android:background="@color/btn_gray"></View>
     <ImageView
         android:id="@+id/cardImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/wallet_card_margin"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:contentDescription="@null"
-        android:src="@drawable/ic_connect_card_unknown"
-        android:tag="3" />
+        />
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:layout_below="@id/cardImageView"-->
+    <!--android:background="@color/gray"/>-->
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/wallet_pocket_margin"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_wallet_pocket_half" />
+
 
 </RelativeLayout>

@@ -67,9 +67,9 @@ public class FragmentSupport extends BaseFragment implements OnClickListener{
 	@Override
 	public void setClickListener() {
 		customerSupportTextView.setOnClickListener(this);
-		termsTextView.setOnClickListener(this);
-		privacyTextView.setOnClickListener(this);
-		legalTextView.setOnClickListener(this);
+		//termsTextView.setOnClickListener(this);
+		//privacyTextView.setOnClickListener(this);
+	//	legalTextView.setOnClickListener(this);
 		kikr_learn_more.setOnClickListener(this);
 	}
 
@@ -109,7 +109,7 @@ public class FragmentSupport extends BaseFragment implements OnClickListener{
 	  //    emailIntent.setData(Uri.parse("mailto:"));
 
 	      emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-	      emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Kikr - I need help!!");
+	      emailIntent.putExtra(Intent.EXTRA_SUBJECT, "FLATLAY - I need help!");
 	   //   emailIntent.putExtra(Intent.EXTRA_TEXT, getBody());
 	      
 
@@ -135,7 +135,7 @@ public class FragmentSupport extends BaseFragment implements OnClickListener{
 	            if (info.activityInfo.packageName.toLowerCase().contains("mail") || 
 	                    info.activityInfo.name.toLowerCase().contains("mail") ) {
 	            	share.putExtra(Intent.EXTRA_EMAIL, TO);
-	            	share.putExtra(Intent.EXTRA_SUBJECT, "Kikr - I need help!!");
+	            	share.putExtra(Intent.EXTRA_SUBJECT, "FLATLAY - I need help!");
 	                share.setPackage(info.activityInfo.packageName);
 	                found = true;
 	                break;
@@ -162,7 +162,7 @@ public class FragmentSupport extends BaseFragment implements OnClickListener{
 	            if (info.activityInfo.packageName.toLowerCase().contains("mail") || 
 	                    info.activityInfo.name.toLowerCase().contains("mail")) {
 	            	targetedShare.putExtra(Intent.EXTRA_EMAIL, TO);
-	            	targetedShare.putExtra(Intent.EXTRA_SUBJECT, "Kikr - I need help!!");
+	            	targetedShare.putExtra(Intent.EXTRA_SUBJECT, "FLATLAY - I need help!");
 	            	targetedShare.setPackage(info.activityInfo.packageName);
 	                targetedShareIntents.add(targetedShare);
 	            }

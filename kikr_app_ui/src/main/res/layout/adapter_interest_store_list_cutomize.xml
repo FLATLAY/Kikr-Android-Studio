@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/category_image_height"
+            android:background="@color/discover_list_item_shadow"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center|center_vertical"
+            android:orientation="horizontal">
+            <com.kikr.ui.RoundImageView
+                android:id="@+id/storeImageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                android:src="@drawable/ic_profile_bg" />
+
+            <!--<ImageView-->
+            <!--android:id="@+id/checkImageView1"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:padding="5dp"-->
+            <!--android:src="@drawable/ic_add_collection"-->
+            <!--android:visibility="visible" />-->
+
+            <TextView
+                android:id="@+id/storeNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="4"
+                android:text="exttexttext"
+                android:textColor="@color/white"
+                android:textSize="@dimen/large_text_size" />
+
+
+            <LinearLayout
+                android:id="@+id/follow_btn_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/follow_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_borderbg"
+                    android:gravity="center"
+                    android:paddingLeft="11dp"
+                    android:paddingTop="7dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="7dp"
+                    android:text="FOLLOW"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/very_small_text_size"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar_follow_brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

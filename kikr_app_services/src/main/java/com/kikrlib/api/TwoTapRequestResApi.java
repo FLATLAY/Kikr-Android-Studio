@@ -70,6 +70,10 @@ public class TwoTapRequestResApi extends AbsService {
 	public String getJsonRequest() {
 			return requestValue;
 	}
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
+	}
 
 	@Override
 	protected void processResponse(String response) {

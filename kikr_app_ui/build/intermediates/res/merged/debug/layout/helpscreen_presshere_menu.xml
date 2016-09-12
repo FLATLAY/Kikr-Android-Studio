@@ -33,15 +33,16 @@
 
             <ImageView
                 android:id="@+id/likeIV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_like_unselected" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/likewhite" />
 
             <TextView
                 android:id="@+id/lekeTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="6dp"
                 android:layout_toRightOf="@+id/likeIV"
                 android:padding="5dp"
                 android:text="Like"
@@ -57,12 +58,13 @@
 
             <ImageView
                 android:id="@+id/discoverIV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_add_collection_unselect" />
 
             <TextView
                 android:id="@+id/discoverTV"
+                android:layout_marginLeft="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -81,14 +83,15 @@
 
             <ImageView
                 android:id="@+id/checkoutIV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_cart_unselect" />
 
             <TextView
                 android:id="@+id/checkoutTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/checkoutIV"
                 android:padding="5dp"
@@ -105,14 +108,15 @@
 
             <ImageView
                 android:id="@+id/shareIV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_share_unselect" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/sharewhite" />
 
             <TextView
                 android:id="@+id/shareTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/shareIV"
                 android:padding="5dp"

@@ -3,8 +3,8 @@
     package="com.kikr.test" >
 
     <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="16"
+        android:targetSdkVersion="23" />
 
     <instrumentation
         android:name="com.android.test.runner.MultiDexTestRunner"

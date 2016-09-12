@@ -1,15 +1,16 @@
--injars 'C:\Users\zeeshan\Desktop\KikrApp\kikr_app_ui\build\intermediates\transforms\jarMerging\debug\jars\1\1f\combined.jar'
--outjars 'C:\Users\zeeshan\Desktop\KikrApp\kikr_app_ui\build\intermediates\multi-dex\debug\componentClasses.jar'
+-injars '/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/transforms/jarMerging/debug/jars/1/1f/combined.jar'
+-outjars '/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/multi-dex/debug/componentClasses.jar'
 
--libraryjars 'G:\Android Development\sdk\build-tools\23.0.0\lib\shrinkedAndroid.jar'
+-libraryjars '/Volumes/Work/Android Software/Android SDK/Android/sdk/build-tools/23.0.3/lib/shrinkedAndroid.jar'
 
 -forceprocessing
 -dontoptimize
 -dontobfuscate
 -dontusemixedcaseclassnames
 -dontpreverify
--dontwarn
--printconfiguration 'C:\Users\zeeshan\Desktop\KikrApp\kikr_app_ui\build\intermediates\multi-dex\debug\components.flags'
+-dontnote **,com.android.tools.fd.**,android.support.multidex.MultiDexExtractor
+-dontwarn **
+-printconfiguration '/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/multi-dex/debug/components.flags'
 
 
 -keep class com.kikr.KikrApp {
@@ -29,6 +30,10 @@
     <init>();
 }
 
+-keep class com.kikr.GalleryImagewithSpinner.ImageDetailActivity {
+    <init>();
+}
+
 -keep class com.kikr.activity.LandingActivity {
     <init>();
 }
@@ -45,11 +50,23 @@
     <init>();
 }
 
+-keep class com.yalantis.ucrop.UCropActivity {
+    <init>();
+}
+
+-keep class com.kikr.circle_crop.circle_crop.ImageCropActivity {
+    <init>();
+}
+
 -keep class com.kikr.activity.PinterestLoginActivity {
     <init>();
 }
 
 -keep class com.kikr.activity.PinAuthActivity {
+    <init>();
+}
+
+-keep class com.kikr.activity.CustomizeFeedActivity {
     <init>();
 }
 
@@ -193,6 +210,10 @@
     <init>();
 }
 
+-keep class com.kikr.post_upload.ProductSearchTagging {
+    <init>();
+}
+
 -keep class com.kikr.service.PlaceOrderService {
     <init>();
 }
@@ -281,7 +302,11 @@
     <init>();
 }
 
--keep class android.support.v7.widget.TestActivity {
+-keep class com.github.gorbin.asne.core.OAuthActivity {
+    <init>();
+}
+
+-keep class com.vk.sdk.VKOpenAuthActivity {
     <init>();
 }
 
@@ -290,6 +315,11 @@
 }
 
 -keep public class * extends java.lang.annotation.Annotation {
+    <fields>;
+    <methods>;
+}
+
+-keep class com.android.tools.fd.** {
     <fields>;
     <methods>;
 }

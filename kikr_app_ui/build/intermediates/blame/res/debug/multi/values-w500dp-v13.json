@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
+        "outputFile": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/values-w500dp-v13/values-w500dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,13 +11,13 @@
                     "endOffset": 105
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\values-w500dp\\values.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/values-w500dp-v13/values-w500dp-v13.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 56,
+                        "startOffset": 55,
                         "endColumn": 54,
-                        "endOffset": 106
+                        "endOffset": 105
                     }
                 }
             }

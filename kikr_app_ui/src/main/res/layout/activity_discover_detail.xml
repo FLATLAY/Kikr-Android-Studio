@@ -189,9 +189,10 @@
 
                         <ImageView
                             android:id="@+id/viewDetailsWebView"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
                             android:layout_marginTop="@dimen/padding_large"
+                            android:padding="4dp"
                             android:adjustViewBounds="true"
                             android:background="@drawable/round_ract_wide"
                             android:scaleType="centerInside"
@@ -202,13 +203,12 @@
 
                         <ImageView
                             android:id="@+id/likeCountTextImage"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
                             android:layout_marginTop="@dimen/padding_large"
-                            android:background="@drawable/round_ract_wide"
                             android:gravity="center"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_singleproductspage_like" />
+                            android:padding="4dp"
+                            android:src="@drawable/ic_heart_outline_grey" />
 
                         <TextView
                             android:id="@+id/likeCountText"

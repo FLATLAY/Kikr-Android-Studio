@@ -19,4 +19,25 @@
 	<declare-styleable name="RayLayout">
 		<attr name="leftHolderWidth" format="dimension" />
 	</declare-styleable>
+    <declare-styleable name="ExpandablePanel">
+        <attr name="handle" format="reference" />
+        <attr name="content" format="reference" />
+        <attr name="contentContainer" format="reference" />
+        <attr name="animationDuration" format="integer"/>
+    </declare-styleable>
+    <attr name="autoScaleTextViewStyle" format="reference" />
+    <declare-styleable name="AutoScaleTextView">
+    <attr name="minTextSize" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="TagsEditText">
+        <attr name="allowSpaceInTag" format="boolean"/>
+        <attr name="tagsTextColor" format="color"/>
+        <attr name="tagsTextSize" format="dimension"/>
+        <attr name="tagsBackground" format="integer"/>
+        <attr name="tagsCloseImageLeft" format="integer"/>
+        <attr name="tagsCloseImageRight" format="integer"/>
+        <attr name="tagsCloseImagePadding" format="dimension" />
+    </declare-styleable>
 </resources>

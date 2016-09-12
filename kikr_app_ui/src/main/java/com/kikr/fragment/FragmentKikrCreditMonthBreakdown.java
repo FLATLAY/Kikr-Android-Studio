@@ -1,42 +1,31 @@
 package com.kikr.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.graphics.Paint;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
-import com.kikr.adapter.ActivityPageAdapter;
-import com.kikr.adapter.KikrCreditMonthAdapter;
 import com.kikr.adapter.KikrCreditsMonthsBreakdownAdapter;
 import com.kikr.ui.ProgressBarDialog;
-import com.kikr.utility.CommonUtility;
-import com.kikrlib.api.ActivityApi;
 import com.kikrlib.api.KikrCreditsApi;
-import com.kikrlib.bean.ActivityMonthList;
-import com.kikrlib.bean.CollectionMonthDetailList;
-import com.kikrlib.bean.Credits;
 import com.kikrlib.bean.Detail;
 import com.kikrlib.bean.User;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
-import com.kikrlib.service.res.ActivityRes;
 import com.kikrlib.service.res.KikrCreditsRes;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.Syso;
+
+import java.util.List;
 
 public class FragmentKikrCreditMonthBreakdown extends BaseFragment implements OnClickListener {
 	private View mainView;
@@ -95,15 +84,15 @@ public class FragmentKikrCreditMonthBreakdown extends BaseFragment implements On
 			@Override
 			public void handleOnSuccess(Object object) {
 				mProgressBarDialog.dismiss();
-				hideDataNotFound();
+				hideProductNotFound();
 				Syso.info("In handleOnSuccess>>" + object);
 				KikrCreditsRes kikrRes = (KikrCreditsRes) object;
 				List<Detail> data = kikrRes.getDetail();
 				
 				if (data.size() == 0)
-					showDataNotFound();
+					showProductNotFound();
 				else if (data.size() > 0) {
-					hideDataNotFound();
+					hideProductNotFound();
 					kikrCreditsMonthsBreakdownAdapter = new KikrCreditsMonthsBreakdownAdapter(mContext, data);
 					kikrcreditmonthbreakdown_list.setAdapter(kikrCreditsMonthsBreakdownAdapter);
 				}
@@ -132,7 +121,27 @@ public class FragmentKikrCreditMonthBreakdown extends BaseFragment implements On
 		});
 	
 	}
+	public void showProductNotFound() {
+		try {
+			LinearLayout layout = (LinearLayout) mainView.findViewById(R.id.itemNotFound);
+			layout.setVisibility(View.VISIBLE);
+			TextView textView = (TextView) layout.findViewById(R.id.noDataFoundTextView);
+			textView.setText("Result not found.");
+		} catch (NullPointerException exception) {
+			exception.printStackTrace();
+		}
+	}
 
+	public void hideProductNotFound() {
+		try {
+			LinearLayout layout = (LinearLayout) mainView.findViewById(R.id.itemNotFound);
+			layout.setVisibility(View.GONE);
+			TextView textView = (TextView) layout.findViewById(R.id.noDataFoundTextView);
+			textView.setText("Result not found.");
+		} catch (NullPointerException exception) {
+			exception.printStackTrace();
+		}
+	}
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {

@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\values-he\\values-he.xml",
+        "outputFile": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/values-he/values-he.xml",
         "map": [
             {
                 "to": {
@@ -11,13 +11,13 @@
                     "endOffset": 116
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 2,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 55,
+                        "startOffset": 177,
                         "endColumn": 65,
-                        "endOffset": 116
+                        "endOffset": 238
                     }
                 }
             },
@@ -30,13 +30,13 @@
                     "endOffset": 193
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 121,
+                        "startOffset": 243,
                         "endColumn": 76,
-                        "endOffset": 193
+                        "endOffset": 315
                     }
                 }
             },
@@ -45,17 +45,17 @@
                     "startLine": 4,
                     "startColumn": 4,
                     "startOffset": 198,
-                    "endColumn": 91,
-                    "endOffset": 285
+                    "endColumn": 114,
+                    "endOffset": 308
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 198,
-                        "endColumn": 91,
-                        "endOffset": 285
+                        "startOffset": 320,
+                        "endColumn": 114,
+                        "endOffset": 430
                     }
                 }
             },
@@ -63,18 +63,18 @@
                 "to": {
                     "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 290,
-                    "endColumn": 114,
-                    "endOffset": 400
+                    "startOffset": 313,
+                    "endColumn": 94,
+                    "endOffset": 403
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 290,
-                        "endColumn": 114,
-                        "endOffset": 400
+                        "startOffset": 435,
+                        "endColumn": 94,
+                        "endOffset": 525
                     }
                 }
             },
@@ -82,18 +82,18 @@
                 "to": {
                     "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 405,
-                    "endColumn": 94,
-                    "endOffset": 495
+                    "startOffset": 408,
+                    "endColumn": 55,
+                    "endOffset": 459
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 405,
-                        "endColumn": 94,
-                        "endOffset": 495
+                        "startOffset": 530,
+                        "endColumn": 55,
+                        "endOffset": 581
                     }
                 }
             },
@@ -101,18 +101,18 @@
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 500,
-                    "endColumn": 55,
-                    "endOffset": 551
+                    "startOffset": 464,
+                    "endColumn": 68,
+                    "endOffset": 528
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 500,
-                        "endColumn": 55,
-                        "endOffset": 551
+                        "startOffset": 586,
+                        "endColumn": 68,
+                        "endOffset": 650
                     }
                 }
             },
@@ -120,18 +120,18 @@
                 "to": {
                     "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 556,
-                    "endColumn": 68,
-                    "endOffset": 620
+                    "startOffset": 533,
+                    "endColumn": 79,
+                    "endOffset": 608
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 556,
-                        "endColumn": 68,
-                        "endOffset": 620
+                        "startOffset": 655,
+                        "endColumn": 79,
+                        "endOffset": 730
                     }
                 }
             },
@@ -139,18 +139,18 @@
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 625,
-                    "endColumn": 79,
-                    "endOffset": 700
+                    "startOffset": 613,
+                    "endColumn": 71,
+                    "endOffset": 680
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 625,
-                        "endColumn": 79,
-                        "endOffset": 700
+                        "startOffset": 735,
+                        "endColumn": 71,
+                        "endOffset": 802
                     }
                 }
             },
@@ -158,18 +158,18 @@
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 705,
+                    "startOffset": 685,
                     "endColumn": 71,
-                    "endOffset": 772
+                    "endOffset": 752
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 705,
+                        "startOffset": 807,
                         "endColumn": 71,
-                        "endOffset": 772
+                        "endOffset": 874
                     }
                 }
             },
@@ -177,18 +177,18 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 777,
-                    "endColumn": 71,
-                    "endOffset": 844
+                    "startOffset": 757,
+                    "endColumn": 79,
+                    "endOffset": 832
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 777,
-                        "endColumn": 71,
-                        "endOffset": 844
+                        "startOffset": 879,
+                        "endColumn": 79,
+                        "endOffset": 954
                     }
                 }
             },
@@ -196,18 +196,18 @@
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 849,
-                    "endColumn": 79,
-                    "endOffset": 924
+                    "startOffset": 837,
+                    "endColumn": 97,
+                    "endOffset": 930
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 16,
                         "startColumn": 4,
-                        "startOffset": 849,
-                        "endColumn": 79,
-                        "endOffset": 924
+                        "startOffset": 959,
+                        "endColumn": 97,
+                        "endOffset": 1052
                     }
                 }
             },
@@ -215,18 +215,18 @@
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 929,
-                    "endColumn": 97,
-                    "endOffset": 1022
+                    "startOffset": 935,
+                    "endColumn": 78,
+                    "endOffset": 1009
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 929,
-                        "endColumn": 97,
-                        "endOffset": 1022
+                        "startOffset": 1057,
+                        "endColumn": 78,
+                        "endOffset": 1131
                     }
                 }
             },
@@ -234,18 +234,18 @@
                 "to": {
                     "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 1027,
-                    "endColumn": 78,
-                    "endOffset": 1101
+                    "startOffset": 1014,
+                    "endColumn": 57,
+                    "endOffset": 1067
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 18,
                         "startColumn": 4,
-                        "startOffset": 1027,
-                        "endColumn": 78,
-                        "endOffset": 1101
+                        "startOffset": 1136,
+                        "endColumn": 57,
+                        "endOffset": 1189
                     }
                 }
             },
@@ -253,18 +253,18 @@
                 "to": {
                     "startLine": 15,
                     "startColumn": 4,
-                    "startOffset": 1106,
-                    "endColumn": 57,
-                    "endOffset": 1159
+                    "startOffset": 1072,
+                    "endColumn": 68,
+                    "endOffset": 1136
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 15,
+                        "startLine": 19,
                         "startColumn": 4,
-                        "startOffset": 1106,
-                        "endColumn": 57,
-                        "endOffset": 1159
+                        "startOffset": 1194,
+                        "endColumn": 68,
+                        "endOffset": 1258
                     }
                 }
             },
@@ -272,18 +272,18 @@
                 "to": {
                     "startLine": 16,
                     "startColumn": 4,
-                    "startOffset": 1164,
-                    "endColumn": 68,
-                    "endOffset": 1228
+                    "startOffset": 1141,
+                    "endColumn": 87,
+                    "endOffset": 1224
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 16,
+                        "startLine": 20,
                         "startColumn": 4,
-                        "startOffset": 1164,
-                        "endColumn": 68,
-                        "endOffset": 1228
+                        "startOffset": 1263,
+                        "endColumn": 87,
+                        "endOffset": 1346
                     }
                 }
             },
@@ -291,18 +291,18 @@
                 "to": {
                     "startLine": 17,
                     "startColumn": 4,
-                    "startOffset": 1233,
-                    "endColumn": 87,
-                    "endOffset": 1316
+                    "startOffset": 1229,
+                    "endColumn": 88,
+                    "endOffset": 1313
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 21,
                         "startColumn": 4,
-                        "startOffset": 1233,
-                        "endColumn": 87,
-                        "endOffset": 1316
+                        "startOffset": 1351,
+                        "endColumn": 88,
+                        "endOffset": 1435
                     }
                 }
             },
@@ -310,18 +310,18 @@
                 "to": {
                     "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 1321,
-                    "endColumn": 88,
-                    "endOffset": 1405
+                    "startOffset": 1318,
+                    "endColumn": 96,
+                    "endOffset": 1410
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 18,
+                        "startLine": 22,
                         "startColumn": 4,
-                        "startOffset": 1321,
-                        "endColumn": 88,
-                        "endOffset": 1405
+                        "startOffset": 1440,
+                        "endColumn": 96,
+                        "endOffset": 1532
                     }
                 }
             },
@@ -329,18 +329,18 @@
                 "to": {
                     "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 1410,
-                    "endColumn": 96,
-                    "endOffset": 1502
+                    "startOffset": 1415,
+                    "endColumn": 136,
+                    "endOffset": 1547
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 19,
+                        "startLine": 23,
                         "startColumn": 4,
-                        "startOffset": 1410,
-                        "endColumn": 96,
-                        "endOffset": 1502
+                        "startOffset": 1537,
+                        "endColumn": 136,
+                        "endOffset": 1669
                     }
                 }
             },
@@ -348,18 +348,18 @@
                 "to": {
                     "startLine": 20,
                     "startColumn": 4,
-                    "startOffset": 1507,
-                    "endColumn": 136,
-                    "endOffset": 1639
+                    "startOffset": 1552,
+                    "endColumn": 171,
+                    "endOffset": 1719
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 20,
+                        "startLine": 24,
                         "startColumn": 4,
-                        "startOffset": 1507,
-                        "endColumn": 136,
-                        "endOffset": 1639
+                        "startOffset": 1674,
+                        "endColumn": 171,
+                        "endOffset": 1841
                     }
                 }
             },
@@ -367,18 +367,18 @@
                 "to": {
                     "startLine": 21,
                     "startColumn": 4,
-                    "startOffset": 1644,
-                    "endColumn": 171,
-                    "endOffset": 1811
+                    "startOffset": 1724,
+                    "endColumn": 137,
+                    "endOffset": 1857
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 21,
+                        "startLine": 25,
                         "startColumn": 4,
-                        "startOffset": 1644,
-                        "endColumn": 171,
-                        "endOffset": 1811
+                        "startOffset": 1846,
+                        "endColumn": 137,
+                        "endOffset": 1979
                     }
                 }
             },
@@ -386,18 +386,18 @@
                 "to": {
                     "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 1816,
-                    "endColumn": 137,
-                    "endOffset": 1949
+                    "startOffset": 1862,
+                    "endColumn": 127,
+                    "endOffset": 1985
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 22,
+                        "startLine": 26,
                         "startColumn": 4,
-                        "startOffset": 1816,
-                        "endColumn": 137,
-                        "endOffset": 1949
+                        "startOffset": 1984,
+                        "endColumn": 127,
+                        "endOffset": 2107
                     }
                 }
             },
@@ -405,18 +405,18 @@
                 "to": {
                     "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 1954,
-                    "endColumn": 127,
-                    "endOffset": 2077
+                    "startOffset": 1990,
+                    "endColumn": 172,
+                    "endOffset": 2158
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 23,
+                        "startLine": 27,
                         "startColumn": 4,
-                        "startOffset": 1954,
-                        "endColumn": 127,
-                        "endOffset": 2077
+                        "startOffset": 2112,
+                        "endColumn": 172,
+                        "endOffset": 2280
                     }
                 }
             },
@@ -424,18 +424,18 @@
                 "to": {
                     "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 2082,
-                    "endColumn": 172,
-                    "endOffset": 2250
+                    "startOffset": 2163,
+                    "endColumn": 82,
+                    "endOffset": 2241
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 24,
+                        "startLine": 28,
                         "startColumn": 4,
-                        "startOffset": 2082,
-                        "endColumn": 172,
-                        "endOffset": 2250
+                        "startOffset": 2285,
+                        "endColumn": 82,
+                        "endOffset": 2363
                     }
                 }
             },
@@ -443,18 +443,18 @@
                 "to": {
                     "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 2255,
-                    "endColumn": 82,
-                    "endOffset": 2333
+                    "startOffset": 2246,
+                    "endColumn": 77,
+                    "endOffset": 2319
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 25,
+                        "startLine": 29,
                         "startColumn": 4,
-                        "startOffset": 2255,
-                        "endColumn": 82,
-                        "endOffset": 2333
+                        "startOffset": 2368,
+                        "endColumn": 77,
+                        "endOffset": 2441
                     }
                 }
             },
@@ -462,37 +462,18 @@
                 "to": {
                     "startLine": 26,
                     "startColumn": 4,
-                    "startOffset": 2338,
-                    "endColumn": 77,
-                    "endOffset": 2411
-                },
-                "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
-                    "position": {
-                        "startLine": 26,
-                        "startColumn": 4,
-                        "startOffset": 2338,
-                        "endColumn": 77,
-                        "endOffset": 2411
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 27,
-                    "startColumn": 4,
-                    "startOffset": 2416,
+                    "startOffset": 2324,
                     "endColumn": 84,
-                    "endOffset": 2496
+                    "endOffset": 2404
                 },
                 "from": {
-                    "file": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\values-he\\values-he.xml",
+                    "file": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/values-he/values.xml",
                     "position": {
-                        "startLine": 27,
+                        "startLine": 30,
                         "startColumn": 4,
-                        "startOffset": 2416,
+                        "startOffset": 2446,
                         "endColumn": 84,
-                        "endOffset": 2496
+                        "endOffset": 2526
                     }
                 }
             }

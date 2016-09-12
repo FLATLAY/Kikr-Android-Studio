@@ -1,18 +1,31 @@
 package com.kikr.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageButton;
+import android.widget.MultiAutoCompleteTextView;
+import android.widget.TextView;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.adapter.SearchProductAdapter;
+import com.kikr.bubble.ChipBubbleOnTouchListner;
+import com.kikr.bubble.ChipBubbleText;
 import com.kikr.ui.ProgressBarDialog;
+import com.kikr.utility.CommonUtility;
 import com.kikrlib.api.GetProductsByCategoryApi;
 import com.kikrlib.bean.Categories;
 import com.kikrlib.db.UserPreference;
@@ -22,10 +35,13 @@ import com.kikrlib.service.res.GetProductsByCategoryRes;
 import com.kikrlib.utils.Syso;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
-public class FragmentSearchProduct extends BaseFragment {
+public class FragmentSearchProduct extends BaseFragment{
 
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
@@ -39,11 +55,21 @@ public class FragmentSearchProduct extends BaseFragment {
     private ProgressBarDialog mProgressBarDialog;
     private String category = null;
     List<Categories> dummy;
+    TextView searchTextItems;
+    ImageButton searchButton;
+    static int position = -1;
+    boolean isFragmentContainer = true;
     int[] categoryImages = {R.drawable.ic_category_clothings, R.drawable.ic_category_shoes, R.drawable.ic_category_jewelry,
             R.drawable.ic_category_sports, R.drawable.ic_category_personalcare,
-            R.drawable.ic_category_babyproducts, R.drawable.ic_category_electronics, R.drawable.ic_category_videogames,
-            R.drawable.ic_category_computers, R.drawable.ic_category_pets, R.drawable.ic_category_musicalinstruments};
+            R.drawable.ic_category_babyproducts, R.drawable.ic_category_electronics, R.drawable.toys_icon,
+            R.drawable.ic_category_computers, R.drawable.ic_category_pets, R.drawable.ic_category_musicalinstruments, R.drawable.ic_category_videogames};
+
     public FragmentSearchProduct() {
+        this.isFragmentContainer = true;
+    }
+
+    public FragmentSearchProduct(boolean b) {
+        this.isFragmentContainer = b;
         try {
 
             if (lastUserId != null) {
@@ -67,6 +93,7 @@ public class FragmentSearchProduct extends BaseFragment {
 
     @Override
     public void initUI(Bundle savedInstanceState) {
+        searchTextItems = (TextView) mainView.findViewById(R.id.searchMultiText);
         mRecyclerView = (RecyclerView) mainView.findViewById(R.id.rvCategriesList);
         mRecyclerView.setHasFixedSize(true);
 
@@ -74,29 +101,48 @@ public class FragmentSearchProduct extends BaseFragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new SearchProductAdapter(getActivity(), categoriesName);
         mRecyclerView.setAdapter(mAdapter);
+
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                imm.hideSoftInputFromWindow(mRecyclerView.getWindowToken(), 0);
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
         mAdapter.SetOnItemClickListener(new SearchProductAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 try {
-                    Categories cat = dummy.get(position);
-                    cat.validate();
-                    String str = cat.getDisplayName();
+                    getCategories(position);
 
-
-                    addFragment(new FragmentSearchSubCategories(str, cat,categoryImages[position]));
                 } catch (Exception ex) {
                     Log.e("", ex.getMessage());
                 }
             }
         });
 
-        mProgressBarDialog = new ProgressBarDialog(mContext);
-        mProgressBarDialog.show();
-        getCategories();
+
+
+        initData();
 
     }
 
-    private void getCategories() {
+    public void initData() {
+        getCategories(position);
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
+    }
+
+    private void getCategories(final int position) {
+        mProgressBarDialog = new ProgressBarDialog(mContext);
+        mProgressBarDialog.show();
+        categoriesName.clear();
         GetProductsByCategoryApi checkPointsStatusApi = new GetProductsByCategoryApi(new ServiceCallback() {
 
             @Override
@@ -117,7 +163,8 @@ public class FragmentSearchProduct extends BaseFragment {
                             cat.getCat1().trim().equalsIgnoreCase("pet supplies") ||
                             cat.getCat1().trim().equalsIgnoreCase("shoes") ||
                             cat.getCat1().trim().equalsIgnoreCase("sports & outdoors") ||
-                            cat.getCat1().trim().equalsIgnoreCase("video games")) {
+                            cat.getCat1().trim().equalsIgnoreCase("video games") ||
+                            cat.getCat1().trim().equalsIgnoreCase("toys & games")) {
                         temp.add(cat);
                     }
                 }
@@ -132,11 +179,33 @@ public class FragmentSearchProduct extends BaseFragment {
                 dummy.add(8, temp.get(2));
                 dummy.add(9, temp.get(7));
                 dummy.add(10, temp.get(6));
+                dummy.add(11, temp.get(11));
+
+                Collections.sort(dummy, new Comparator<Categories>() {
+                    @Override
+                    public int compare(Categories lhs, Categories rhs) {
+                        return lhs.getCat1().compareTo(rhs.getCat1());
+                    }
+                });
                 for (int i = 0; i < dummy.size(); i++) {
                     categoriesName.add(dummy.get(i).getCat1());
                 }
+
                 mAdapter.notifyDataSetChanged();
                 mProgressBarDialog.dismiss();
+
+                try {
+                    if (position != -1) {
+                        Categories cat = dummy.get(position);
+                        cat.validate();
+                        String str = cat.getDisplayName();
+
+
+                        addFragment(new FragmentSearchSubCategories(str, cat, categoryImages[position], true));
+                    }
+                } catch (Exception ex) {
+                    Log.e("", ex.getMessage());
+                }
 
             }
 
@@ -160,10 +229,24 @@ public class FragmentSearchProduct extends BaseFragment {
 
     }
 
+
+
     @Override
     public void setClickListener() {
 
+        searchTextItems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFragment(new FragmentSearchAll("..."));
+            }
+        });
+
+
+
     }
+
+
+
 
 
 }

@@ -1,9 +1,5 @@
 package com.kikr.ibeacon;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -38,6 +34,10 @@ import com.radiusnetworks.ibeacon.MonitorNotifier;
 import com.radiusnetworks.ibeacon.RangeNotifier;
 import com.radiusnetworks.ibeacon.Region;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class MonitoringActivity extends Activity implements IBeaconConsumer {
 	private ListView list = null;
 	private BeaconAdapter adapter = null;
@@ -64,6 +64,7 @@ public class MonitoringActivity extends Activity implements IBeaconConsumer {
 	}
 
 	@Override
+
 	protected void onStart() {
 		super.onStart();
 		beaconUtill.onStart(iBeaconManager, this);

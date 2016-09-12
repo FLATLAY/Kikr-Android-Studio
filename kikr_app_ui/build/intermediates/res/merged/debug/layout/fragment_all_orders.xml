@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical" >
 
     <include
         android:id="@+id/itemNotFound"
-        layout="@layout/layout_item_not_found"
+        layout="@layout/layout_order_not_found"
         android:visibility="gone" />
 
     <ExpandableListView

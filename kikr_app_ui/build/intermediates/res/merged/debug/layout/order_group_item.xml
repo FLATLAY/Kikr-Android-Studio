@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/btn_green"
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
@@ -17,7 +18,7 @@
         <TextView
             android:id="@+id/orderDate"
             style="@style/textViewOrderScreen" />
-	    
+
         <LinearLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
@@ -27,12 +28,13 @@
 	        
 		    <TextView
 	            style="@style/textViewOrderScreen"
-	            android:textColor="@color/btn_green"
+
+	            android:textColor="@color/tab_selected_new"
 	            android:text="Total Price: " />
 	
 	        <TextView
 	            android:id="@+id/orderPrice"
-	            android:textColor="@color/btn_green"
+	            android:textColor="@color/tab_selected_new"
 	            style="@style/textViewOrderScreen" />
 		    
 	   </LinearLayout>
@@ -98,6 +100,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/app_text_color" />
+        android:background="@color/credittextcolor" />
 
 </LinearLayout>

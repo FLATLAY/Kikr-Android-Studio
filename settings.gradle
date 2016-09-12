@@ -1,4 +1,4 @@
-include ':kikr_FacebookSDK', ':libAndroidCrop2', ':pdk2'
+include ':kikr_FacebookSDK', ':libAndroidCrop2', ':pdk2', ':ucrop', ':squarecamera', ':photo-crop-library'
 include ':kikr_app_services'
 include ':kikr_ibeacon_service'
 include ':kikr_menudrawer_lib'

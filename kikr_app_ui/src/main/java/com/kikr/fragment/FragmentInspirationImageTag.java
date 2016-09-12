@@ -210,44 +210,7 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 		}else if(imageUrl != null){
 			CommonUtility.setImage(mContext, imageUrl, uploadImageView, R.drawable.dum_list_item_brand);
 		}
-		uploadImageView.setOnTouchListener(new OnTouchListener() {
 
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				searchUserEditText.setVisibility(View.VISIBLE);
-				x = event.getX();
-				y = event.getY();
-				if (!isTaggingProduct || tagView.getText().equals(START_TEXT)) {
-				if (overlay.getChildCount() > 1) 
-					overlay.removeViewAt(overlay.getChildCount() - 1);
-				}else
-					tagView = new TagView(mContext);
-				Syso.info("12345678 >>>>>>> X" + x + ", Y:" + y);
-//				textView.setText("Search");
-//				setText(textView, "Search");
-				
-				if (!isTaggingProduct&&!TextUtils.isEmpty(taggedItemLocal.getSelectedItemName())) {
-					tagView.setTagText(taggedItemLocal.getSelectedItemName());
-				} else {
-					tagView.setTagText(START_TEXT);
-				}
-				
-				
-//				textView.setBackgroundColor(getResources().getColor(R.color.black));
-//				textView.setTextColor(getResources().getColor(R.color.white));
-//				textView.measure(MeasureSpec.UNSPECIFIED,MeasureSpec.UNSPECIFIED);
-//				int widht = textView.getMeasuredWidth();
-//				int height = textView.getMeasuredHeight();
-//				textView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-//				Syso.info("1234567890 : widht:" + widht + ", height:" + height);
-//				float newX = x - widht / 2;
-//				textView.setX(newX);
-//				textView.setY(y);
-				tagView.setXY(x, y);
-				overlay.addView(tagView);
-				return false;
-			}
-		});
 
 //		tagRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 //

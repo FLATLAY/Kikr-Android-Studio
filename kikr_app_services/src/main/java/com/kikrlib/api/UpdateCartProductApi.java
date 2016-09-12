@@ -1,18 +1,19 @@
 package com.kikrlib.api;
 
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.json.JSONArray;
-
 import com.google.gson.JsonParseException;
 import com.kikrlib.bean.ProductRequiredOption;
+import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.AbsService;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.res.CommonRes;
 import com.kikrlib.utils.Constants.WebConstants;
 import com.kikrlib.utils.JsonUtils;
 import com.kikrlib.utils.Syso;
+
+import org.apache.http.NameValuePair;
+import org.json.JSONArray;
+
+import java.util.List;
 
 public class UpdateCartProductApi extends AbsService {
 
@@ -66,6 +67,13 @@ public class UpdateCartProductApi extends AbsService {
 			JSONArray array = new JSONArray();
 			return array.toString();
 		}
+	}
+
+
+	@Override
+	public String getHeader() {
+		String oth="Bearer " + UserPreference.getInstance().getAccessToken();
+		return oth;
 	}
 
 	@Override

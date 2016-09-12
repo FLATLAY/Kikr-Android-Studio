@@ -184,6 +184,10 @@ public class InterestSectionApi extends AbsService {
 	public List<NameValuePair> getNameValueRequest() {
 		return null;
 	}
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
+	}
 
 	@Override
 	public String getJsonRequest() {

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/btn_green"
     android:orientation="vertical" >
 
     <ScrollView
@@ -16,7 +17,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/app_background"
+                android:background="@color/btn_green"
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
@@ -28,7 +29,7 @@
                     android:id="@+id/orderIdTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/btn_green"
+                    android:textColor="@color/tab_selected_new"
                     android:textSize="@dimen/medium_text_size" />
             </LinearLayout>
 
@@ -90,7 +91,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
-                            android:textColor="@color/header_background"
+                            android:textColor="@color/tab_selected_new"
                             android:textSize="@dimen/medium_text_size"
                             android:textStyle="bold" />
 
@@ -99,7 +100,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
-                            android:textColor="@color/header_background"
+                            android:textColor="@color/tab_selected_new"
                             android:textSize="@dimen/medium_text_size"
                             android:textStyle="bold" />
 
@@ -336,7 +337,19 @@
             <View
                 style="@style/cartViewStyle"
                 android:layout_marginTop="@dimen/padding_large" />
-
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_marginTop="40dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:background="@drawable/rectangle_shape_white"
+                android:id="@+id/back"
+                android:gravity="center"
+                android:textSize="@dimen/x_large_text_size"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"/>
             
         </LinearLayout>
     </ScrollView>

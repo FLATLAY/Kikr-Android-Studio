@@ -1,7 +1,5 @@
 package com.kikr.fragment;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -29,14 +27,12 @@ import android.widget.TextView;
 import com.kikr.BaseFragment;
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.dialog.HelpKikrCardDialog;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.CardType;
 import com.kikr.utility.CommonUtility;
 import com.kikr.utility.Luhn;
 import com.kikrlib.api.CardInfoApi;
 import com.kikrlib.bean.Card;
-import com.kikrlib.db.HelpPreference;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
@@ -44,6 +40,11 @@ import com.kikrlib.service.res.CardInfoRes;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.Syso;
 import com.personagraph.api.PGAgent;
+
+import java.util.List;
+
+
+
 
 public class FragmentKikrWalletCard extends BaseFragment implements OnClickListener {
 	private ImageView walletImage;
@@ -59,7 +60,8 @@ public class FragmentKikrWalletCard extends BaseFragment implements OnClickListe
 	private ImageView connect_bank,connect_card,google_wallet,kikr_wallet;
 	private TextView addCard;
 	
-	private RelativeLayout lastLayout,walletListMainLayout,kikr_wallet_card_layout;
+	private RelativeLayout lastLayout,kikr_wallet_card_layout;
+	private LinearLayout walletListMainLayout;
 	private ProgressBarDialog progressBarDialog;
 	
 //	@Override
@@ -93,7 +95,8 @@ public class FragmentKikrWalletCard extends BaseFragment implements OnClickListe
 		layout2 = (RelativeLayout) mainView.findViewById(R.id.layout2);
 		addCard=(TextView) mainView.findViewById(R.id.addCard);
 		kikr_wallet_card_layout= (RelativeLayout) mainView.findViewById(R.id.kikr_wallet_card_layout);
-		walletListMainLayout= (RelativeLayout) mainView.findViewById(R.id.walletListMainLayout);
+		walletListMainLayout= (LinearLayout) mainView.findViewById(R.id.walletListMainLayout);
+		walletListMainLayout.setOrientation(LinearLayout.VERTICAL);
 		horizontalScrollView = (HorizontalScrollView) mainView.findViewById(R.id.horizontalScrollView);
 		horizontalScrollView.setOnTouchListener(new OnTouchListener() {
 
@@ -117,10 +120,12 @@ public class FragmentKikrWalletCard extends BaseFragment implements OnClickListe
 
 	@Override
 	public void setData(Bundle bundle) {
+
+	}
+	public void initData() {
 		if(checkInternet())
 			getCardList();
 	}
-	
 	@Override
 	public void refreshData(Bundle bundle) {
 		
@@ -274,16 +279,18 @@ public class FragmentKikrWalletCard extends BaseFragment implements OnClickListe
 			walletListMainLayout.removeViews(2, walletListMainLayout.getChildCount()-2);
 		lastLayout=kikr_wallet_card_layout;
 		LayoutInflater inflater=(LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutParams params;
 		for(int i=0;i<data.size();i++){
 			RelativeLayout layout=(RelativeLayout) inflater.inflate(R.layout.layout_wallet_card, null);
-			LayoutParams params=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+		//	LayoutParams params=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+			 params= new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 			params.addRule(RelativeLayout.ALIGN_TOP, lastLayout.getId());
-			params.setMargins(0, (int) getResources().getDimension(R.dimen.wallet_layout_margin), 0, 0);
-			ImageView cardImageView= (ImageView) layout.findViewById(R.id.cardImageView);
+		//	params.setMargins(0, 510, 0, 510);
+			ImageView cardImageView = (ImageView) layout.findViewById(R.id.cardImageView);
 			setCardImage(data.get(i).getCard_number(), cardImageView);
 			cardImageView.setTag(i);
 			cardImageView.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					((HomeActivity) mContext).addFragment(new FragmentCardInfo(data.get((Integer) v.getTag()),FragmentKikrWalletCard.this));
@@ -293,14 +300,19 @@ public class FragmentKikrWalletCard extends BaseFragment implements OnClickListe
 			walletListMainLayout.addView(layout, params);
 			lastLayout=layout;
 			lastLayout.setId(i+1);
+			if(i==(data.size()-1)) {
+				params.setMargins(0, 1, 0, 200);
+			}
 			Syso.info("Adding layout : "+layout +" , "+lastLayout.getId());
 		}
+
+
 	}
-	/**
-	 * This m
-	 * @param card_number
-	 * @param imageView
-	 */
+//	/**
+//	 * This m
+//	 * @param card_number
+//	 * @param imageView
+//	 */
 	private void setCardImage(String card_number1, ImageView imageView) {
 		String card_number= CommonUtility.DecryptCreditCard(card_number1);
 		if (Luhn.isCardValid(card_number)) {

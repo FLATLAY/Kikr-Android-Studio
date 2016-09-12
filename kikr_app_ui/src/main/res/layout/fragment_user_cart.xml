@@ -13,11 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/checkout_layout"
-        android:background="@color/white"
         android:cacheColorHint="#00000000"
         android:listSelector="@android:color/transparent"
+        android:divider="@null"
         android:scrollbars="none" >
     </ListView>
+    <TextView
+        android:id="@+id/loadingTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:gravity="center"
+        android:text="Loading...\nPlease Wait"
+        android:textColor="@color/btn_green"
+        />
 
     <!-- <LinearLayout
         android:id="@+id/subtotal_layout"
@@ -48,7 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_alignParentBottom="true"
-        android:background="@color/btn_gray"
+        android:clickable="false"
+        android:background="@color/tab_selected_new"
         android:gravity="center" >
 
         <TextView
@@ -63,28 +74,28 @@
     <FrameLayout
         android:visibility="gone"
         android:id="@+id/loadingBar"
-	    android:layout_width="match_parent"
-	    android:layout_alignParentBottom="true"
-	    android:layout_height="@dimen/button_height">
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="@dimen/button_height">
 
-	    <ProgressBar
-	        android:id="@+id/progressBarCart"
-	        style="@android:style/Widget.ProgressBar.Horizontal"
-	        android:layout_width="match_parent"
-	        android:progressDrawable="@drawable/progress_bar_teal"
-	        android:layout_height="@dimen/button_height" />
-	
-	    <TextView
-	        android:id="@+id/txtMessageBar"
-	        android:layout_width="match_parent"
-	        android:layout_height="@dimen/button_height"
-	        android:gravity="center_vertical|center_horizontal"
-	        android:text="Contacting Merchants for Availability"
-	        android:textColor="@color/white" 
-	        android:textSize="@dimen/large_text_size"
-	        android:textStyle="bold" />
-  
-	</FrameLayout>  
-    
-  
+        <ProgressBar
+            android:id="@+id/progressBarCart"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:progressDrawable="@drawable/progress_bar_teal"
+            android:layout_height="@dimen/button_height" />
+
+        <TextView
+            android:id="@+id/txtMessageBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Contacting Merchants for Availability"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+
 </RelativeLayout>

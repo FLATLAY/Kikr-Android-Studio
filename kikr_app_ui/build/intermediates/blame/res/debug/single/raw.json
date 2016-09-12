@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics\\8.3.0\\res\\raw\\gtm_analytics"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/raw/flatlay_guide.mp4",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/raw/flatlay_guide.mp4"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/raw/gtm_analytics",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.3.0/res/raw/gtm_analytics"
     }
 ]

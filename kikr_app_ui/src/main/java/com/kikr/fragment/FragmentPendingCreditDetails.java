@@ -5,13 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Button;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
+import com.kikr.activity.HomeActivity;
 
 public class FragmentPendingCreditDetails extends BaseFragment implements OnClickListener {
 	private View mainView;
+	private Button back;
 	public FragmentPendingCreditDetails() {
 	}
 
@@ -24,6 +26,7 @@ public class FragmentPendingCreditDetails extends BaseFragment implements OnClic
 
 	@Override
 	public void initUI(Bundle savedInstanceState) {
+		back=(Button)mainView.findViewById(R.id.back);
 	}
 
 	@Override
@@ -33,7 +36,9 @@ public class FragmentPendingCreditDetails extends BaseFragment implements OnClic
 
 	@Override
 	public void setClickListener() {
+		back.setOnClickListener(this);
 	}
+
 
 	@Override
 	public void setData(Bundle bundle) {
@@ -42,7 +47,9 @@ public class FragmentPendingCreditDetails extends BaseFragment implements OnClic
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-
+			case R.id.back:
+				((HomeActivity)mContext).onBackPressed();
+				break;
 		}
 	}
 

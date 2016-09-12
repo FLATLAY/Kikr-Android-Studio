@@ -6,6 +6,7 @@ import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.AbsService;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.utils.Constants;
+import com.kikrlib.utils.StringUtils;
 import com.kikrlib.utils.Syso;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -27,7 +28,7 @@ public class OAuthWebService extends AbsService {
 		if(card!=null&&billingAddress!=null) {
 			jsonRequest = "{\"intent\":\"authorize\",\"payer\":{\"payment_method\":\"credit_card\",\"funding_instruments\":" +
 					"[{\"credit_card\":{\"number\":\"" + card.getCard_number() + "\",\"type\":\"" + card.getCardtype().toLowerCase() + "\"," +
-					"\"expire_month\":" + card.getExpirationMonth() + ",\"expire_year\":" + card.getExpirationYear() + ",\"cvv2\":\"" + card.getCvv()
+					"\"expire_month\":\"" + card.getExpirationMonth() + "\",\"expire_year\":\"" + card.getExpirationYear() + "\",\"cvv2\":\"" + card.getCvv()
 					+ "\",\"first_name\":\"" + billingAddress.getFirstName() + "\",\"last_name\":\"" + billingAddress.getLastName() + "\"," +
 					"\"billing_address\":{\"line1\":\"" + billingAddress.getLine1() + "\",\"city\":\"" + billingAddress.getCity() + "\"," +
 					"\"state\":\"" + billingAddress.getState() + "\",\"postal_code\":\"" + billingAddress.getPostal_code() + "\",\"country_code\":\"" + billingAddress.getCountry_code() + "\"}}}]}," +
@@ -65,8 +66,9 @@ public class OAuthWebService extends AbsService {
 
 	@Override
 	public String getHeader() {
-		String header = "Bearer "+ UserPreference.getInstance().getAccessToken();
-		Syso.info("Header>>>> "+header);
+		String header = "Bearer "+ UserPreference.getInstance().getPaypalAccessToken();
+
+		Syso.info("Header paypal access token>>>> "+header);
 		return header;
 	}
 

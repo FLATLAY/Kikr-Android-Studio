@@ -46,6 +46,10 @@ public class PinAuthenticationApi extends AbsService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public String getHeader() {
+		return "Bearer " + UserPreference.getInstance().getAccessToken();
+	}
 
 	@Override
 	protected void processResponse(String response) {

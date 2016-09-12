@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
+import com.kikr.R;
 import com.kikr.sessionstore.SessionStore;
 import com.kikr.twitter.TwitterOAuthView.Result;
 import com.kikr.utility.AppConstants;
@@ -26,13 +27,11 @@ import com.kikrlib.utils.Syso;
 
 public class TwitterOAuthActivity extends Activity implements TwitterOAuthView.Listener
 {
-   
-//	public static final String CONSUMER_KEY = "vwwCcsMWRvWTh4suZljaxiQji";
-//	public static final String CONSUMER_SECRET = "g80YSt9Exk3MdDbC52EhRj4dGaV9yU5nfrfyPFiv2afpzSB88s";
-	public static final String CONSUMER_KEY = "PgCpftLcv2H7UoX6z6TjNJrUD";
-	public static final String CONSUMER_SECRET = "w2yl8lIgWtj0JnLByfmuJK0ypaCP9BkvIUfppqgUQqS101Ps2G";
 
-    private static final String CALLBACK_URL = "";
+	public static final String CONSUMER_KEY ="5tQwAp0Z802BLmdF709OEsnLD";
+	public static final String CONSUMER_SECRET = "1RLaG0VSYdTXHfSRppPvVp3K7cE1T5q4QiUGLxrtbiFgv3t0W8";
+
+    private static final String CALLBACK_URL = "http://www.flat-lay.com";
     private static final boolean DUMMY_CALLBACK_URL = true;
     private TwitterOAuthView view;
     private boolean oauthStarted;
@@ -47,6 +46,7 @@ public class TwitterOAuthActivity extends Activity implements TwitterOAuthView.L
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
         context = (TwitterOAuthActivity) this;
         CommonUtility.fullScreenActivity(context);
         view = new TwitterOAuthView(this);

@@ -5,18 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
+import com.kikr.activity.HomeActivity;
 import com.kikr.utility.FontUtility;
 
 public class FragmentLearnMoreOutsideUS extends BaseFragment implements OnClickListener {
 	private View mainView;
 
 	private TextView txtLearnMoreDesc;
-	
+	private Button back;
 	public FragmentLearnMoreOutsideUS() {
 	}
 
@@ -30,6 +31,7 @@ public class FragmentLearnMoreOutsideUS extends BaseFragment implements OnClickL
 	@Override
 	public void initUI(Bundle savedInstanceState) {
 		txtLearnMoreDesc = (TextView) mainView.findViewById(R.id.txtLearnMoreDesc);
+		back=(Button) mainView.findViewById(R.id.back);
 	}
 
 	@Override
@@ -40,6 +42,7 @@ public class FragmentLearnMoreOutsideUS extends BaseFragment implements OnClickL
 	@Override
 	public void setClickListener() {
 		txtLearnMoreDesc.setTypeface(FontUtility.setProximanovaLight(mContext));
+		back.setOnClickListener(this);
 	}
 
 	@Override
@@ -49,6 +52,9 @@ public class FragmentLearnMoreOutsideUS extends BaseFragment implements OnClickL
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+			case R.id.back:
+				((HomeActivity)mContext).onBackPressed();
+				break;
 		}
 	}
 

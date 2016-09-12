@@ -1,622 +1,934 @@
 [
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_disabled.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_text_dark_disabled.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_checkin.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_checkin.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/back_icon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/back_icon.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_babyproducts.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_babyproducts.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/check_post_upload.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/check_post_upload.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_menu_paste_mtrl_am_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/collectionselected.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/collectionselected.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_deals_favorite.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_deals_favorite.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_picker_magnifier.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_picker_magnifier.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_dark_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_icon_dark_pressed.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_tooltip_blue_bottomnub.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_bottomnub.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\powered_by_google_light.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-location\\8.3.0\\res\\drawable-xhdpi\\powered_by_google_light.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ucrop_ic_angle.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/ucrop/unspecified/res/drawable-xhdpi-v4/ucrop_ic_angle.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_picker_magnifier.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_picker_magnifier.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_menu_share_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_icon_light_pressed.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_go_search_api_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_go_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_personalcare.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_personalcare.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ucrop_ic_cross.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/ucrop/unspecified/res/drawable-xhdpi-v4/ucrop_ic_cross.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__divider.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\libAndroidCrop2\\unspecified\\res\\drawable-xhdpi-v4\\crop__divider.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_wallet_header_large.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_wallet_header_large.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_friends.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_friends.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_grey_focused.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_grey_focused.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/netural.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/netural.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_disabled.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_icon_light_disabled.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/camera.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/camera.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_textfield_activated_mtrl_alpha.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/hdpi_on.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/hdpi_on.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_light_normal.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_icon_light_normal.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_tooltip_black_topnub.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_tooltip_black_topnub.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_email.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_email.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_checkin.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_checkin.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_spinner_mtrl_am_alpha.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_comment_gray.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_comment_gray.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_text_dark_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_text_dark_pressed.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_shoes.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_shoes.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_delete.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_delete.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_pets.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_pets.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_text_dark_normal.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_text_dark_normal.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_015.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_015.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_jewelry.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_jewelry.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_grey_normal.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_grey_normal.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ab_share_pack_holo_dark.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ab_share_pack_holo_dark.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_like_background_selected.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_like_background_selected.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/instagram_selected.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/instagram_selected.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_topnub.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_topnub.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_text_dark_normal.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_deals_popular.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_deals_popular.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_deals_popular.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_deals_popular.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_dark_focused.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_icon_dark_focused.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_like_icon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_like_icon.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_logout.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_logout.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_black_16dp.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_wallet_header.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_wallet_header.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/instagramthreeicon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/instagramthreeicon.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_full_open_on_phone.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\drawable-xhdpi\\common_full_open_on_phone.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_icon_light_pressed.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_icon_light_pressed.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_xout.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_xout.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/delete_edit_img.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/delete_edit_img.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_menu_cut_mtrl_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/twohand.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/twohand.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_btn_radio_to_on_mtrl_015.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_icon_dark_disabled.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_icon_dark_disabled.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_deals.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_deals.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_like_icon_selected.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_like_icon_selected.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_voice_search_api_mtrl_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_voice_search_api_mtrl_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/crossarrow.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/crossarrow.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_computers.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_computers.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ucrop_ic_rotate.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/ucrop/unspecified/res/drawable-xhdpi-v4/ucrop_ic_rotate.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_activity.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_activity.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_inverse_icon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_inverse_icon.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\direction_arrow.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\main\\unspecified\\res\\drawable-xhdpi-v4\\direction_arrow.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_babyproducts.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_babyproducts.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_pets.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_pets.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_text_light_disabled.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_text_light_disabled.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\clusteri.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\main\\unspecified\\res\\drawable-xhdpi-v4\\clusteri.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/profile_collection_tab.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/profile_collection_tab.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_clothings.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_clothings.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/photoselected.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/photoselected.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_cab_background_top_mtrl_alpha.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_interest.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_interest.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_kikr.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_kikr.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_plusone_medium_off_client.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.3.0/res/drawable-xhdpi/ic_plusone_medium_off_client.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_empty_cart.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_empty_cart.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/powered_by_google_light.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.3.0/res/drawable-xhdpi/powered_by_google_light.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_friends.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_friends.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/forwordupload.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/forwordupload.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_blue_normal.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_blue_normal.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_icon_light_disabled.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_icon_light_disabled.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__tile.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\libAndroidCrop2\\unspecified\\res\\drawable-xhdpi-v4\\crop__tile.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_clothings.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_clothings.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_blue_focused.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_blue_focused.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/crop__divider.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/libAndroidCrop2/unspecified/res/drawable-xhdpi-v4/crop__divider.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_like_icon.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_like_icon.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_switch_track_mtrl_alpha.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/crop__ic_cancel.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/libAndroidCrop2/unspecified/res/drawable-xhdpi-v4/crop__ic_cancel.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_text_light_focused.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_text_light_focused.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_circle.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_circle.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\vpi__tab_selected_holo.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\fr.avianey.com.viewpagerindicator\\library\\2.4.1\\res\\drawable-xhdpi\\vpi__tab_selected_holo.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_plusone_tall_off_client.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.3.0/res/drawable-xhdpi/ic_plusone_tall_off_client.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_tooltip_black_xout.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_xout.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_like_background.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_like_background.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_support.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_support.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_grey_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_grey_pressed.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/gallery_selected.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/gallery_selected.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_dark_disabled.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_icon_dark_disabled.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_pressed.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_icon_dark_pressed.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_popup_background_mtrl_mult.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_popup_background_mtrl_mult.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_text_light_focused.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_text_light_focused.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_menu_copy_mtrl_am_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/collectionuser.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/collectionuser.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_text_dark_focused.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_text_dark_focused.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_pressed_holo_dark.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_list_pressed_holo_dark.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_text_dark_disabled.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_text_dark_disabled.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_background.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_background.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_tooltip_black_xout.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_tooltip_black_xout.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_textfield_default_mtrl_alpha.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_text_dark_focused.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_text_dark_focused.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_text_light_pressed.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_menu_selectall_mtrl_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_wallet_header_large.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_wallet_header_large.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_clear_mtrl_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_clear_mtrl_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_search_menu.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_search_menu.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_sports.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_sports.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/likewhite.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/likewhite.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_grey_normal.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_grey_normal.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_text_light_normal.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_text_light_normal.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_discover.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_discover.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_tooltip_black_background.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_background.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_textfield_default_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_textfield_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_light_focused.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_icon_light_focused.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/camera_selected.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/camera_selected.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\vpi__tab_selected_focused_holo.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\fr.avianey.com.viewpagerindicator\\library\\2.4.1\\res\\drawable-xhdpi\\vpi__tab_selected_focused_holo.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_empty_cart.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_empty_cart.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_btn_switch_to_on_mtrl_00012.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/photouser.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/photouser.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_text_dark_pressed.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/scrollbar_style.xml",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/scrollbar_style.xml"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_btn_switch_to_on_mtrl_00001.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/likegreen.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/likegreen.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\powered_by_google_dark.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-location\\8.3.0\\res\\drawable-xhdpi\\powered_by_google_dark.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_plusone_medium_off_client.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-plus\\8.3.0\\res\\drawable-xhdpi\\ic_plusone_medium_off_client.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_list_divider_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_list_divider_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_inverse_icon.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_inverse_icon.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/delete_bubble.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/delete_bubble.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_ab_back_mtrl_am_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_ab_back_mtrl_am_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/dum_list_item_product.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/dum_list_item_product.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_disabled.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_text_light_disabled.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_down_gray_arrow.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_down_gray_arrow.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_dark_normal.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_icon_dark_normal.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/crop__tile.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/libAndroidCrop2/unspecified/res/drawable-xhdpi-v4/crop__tile.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_normal.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_icon_dark_normal.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/clock_icon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/clock_icon.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_down_gray_arrow.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_down_gray_arrow.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_musicalinstruments.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_musicalinstruments.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_btn_radio_to_on_mtrl_000.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/gallerytab.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/gallerytab.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_circle.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_circle.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_kikr.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_kikr.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_rating_star_off_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_btn_rating_star_off_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_menu_share_mtrl_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_icon_light_pressed.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/vpi__tab_unselected_focused_holo.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/fr.avianey.com.viewpagerindicator/library/2.4.1/res/drawable-xhdpi/vpi__tab_unselected_focused_holo.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_text_dark_disabled.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_text_dark_disabled.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_text_light_pressed.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_text_light_pressed.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_close.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_close.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_spinner_mtrl_am_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_wallets.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_wallets.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/hdpi_off.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/hdpi_off.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_textfield_search_default_mtrl_alpha.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_text_light_focused.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_text_light_focused.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_longpressed_holo.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_list_longpressed_holo.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_customizeyourfeed.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_customizeyourfeed.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_focused.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_text_dark_focused.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_computers.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_computers.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_musicalinstruments.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_musicalinstruments.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_back_arrow_new.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_back_arrow_new.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_focused_holo.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_list_focused_holo.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/icon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/instagram_library/unspecified/res/drawable-xhdpi-v4/icon.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_support.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_support.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_list_selector_disabled_holo_dark.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_tooltip_black_topnub.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_topnub.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_ab_app.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.vk/androidsdk/1.3.3/res/drawable-xhdpi-v4/ic_ab_app.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_textfield_search_activated_mtrl_alpha.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_launcher.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_commit_search_api_mtrl_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_pressed_holo.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\fr.avianey.com.viewpagerindicator\\library\\2.4.1\\res\\drawable-xhdpi\\vpi__tab_unselected_pressed_holo.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/sharegreen.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/sharegreen.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_cancel.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\libAndroidCrop2\\unspecified\\res\\drawable-xhdpi-v4\\crop__ic_cancel.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_tooltip_blue_xout.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_xout.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_done.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\libAndroidCrop2\\unspecified\\res\\drawable-xhdpi-v4\\crop__ic_done.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/flash_icon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/flash_icon.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_plusone_small_off_client.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-plus\\8.3.0\\res\\drawable-xhdpi\\ic_plusone_small_off_client.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_plusone_standard_off_client.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.3.0/res/drawable-xhdpi/ic_plusone_standard_off_client.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_like_icon_selected.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_like_icon_selected.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_profile.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_profile.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_normal.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_text_light_normal.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_discover.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_discover.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_btn_check_to_on_mtrl_015.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_normal.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_text_dark_normal.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/powered_by_google_dark.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.3.0/res/drawable-xhdpi/powered_by_google_dark.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_list_divider_mtrl_alpha.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/vpi__tab_selected_pressed_holo.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/fr.avianey.com.viewpagerindicator/library/2.4.1/res/drawable-xhdpi/vpi__tab_selected_pressed_holo.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_normal.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_icon_light_normal.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_personalcare.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_personalcare.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_plusone_standard_off_client.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-plus\\8.3.0\\res\\drawable-xhdpi\\ic_plusone_standard_off_client.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ucrop_ic_done.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/ucrop/unspecified/res/drawable-xhdpi-v4/ucrop_ic_done.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_light_disabled.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_icon_light_disabled.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_text_dark_normal.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_text_dark_normal.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_plusone_tall_off_client.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-plus\\8.3.0\\res\\drawable-xhdpi\\ic_plusone_tall_off_client.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_close.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_close.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\instagram_library\\unspecified\\res\\drawable-xhdpi-v4\\icon.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_grey_focused.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_grey_focused.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_focused.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_icon_dark_focused.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/round_logo.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/round_logo.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_tab_indicator_mtrl_alpha.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/flatlaystoreview.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/flatlaystoreview.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_light.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_list_selector_disabled_holo_light.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_email.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_email.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_cart_card.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_cart_card.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_deals_nearby.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_deals_nearby.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\scrollbar_style.xml",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\scrollbar_style.xml"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_search_api_mtrl_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_search_api_mtrl_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/clusteri.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/main/unspecified/res/drawable-xhdpi-v4/clusteri.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_inspiration.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_inspiration.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/crop__ic_done.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/libAndroidCrop2/unspecified/res/drawable-xhdpi-v4/crop__ic_done.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_interest.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_interest.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_text_dark_focused.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_text_dark_focused.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_next_green_arrow.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_next_green_arrow.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ucrop_ic_scale.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/ucrop/unspecified/res/drawable-xhdpi-v4/ucrop_ic_scale.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_settings.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_settings.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_deals_favorite.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_deals_favorite.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/search_icon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/search_icon.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ab_share_pack_holo_light.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ab_share_pack_holo_light.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_sports.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_sports.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_bottomnub.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_bottomnub.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/clock_white.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/clock_white.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_videogames.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_videogames.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_wallet_header.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_wallet_header.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\vpi__tab_selected_pressed_holo.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\fr.avianey.com.viewpagerindicator\\library\\2.4.1\\res\\drawable-xhdpi\\vpi__tab_selected_pressed_holo.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ucrop_ic_crop.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/ucrop/unspecified/res/drawable-xhdpi-v4/ucrop_ic_crop.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_text_light_disabled.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_text_light_disabled.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/chat_icon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/chat_icon.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_focused.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_text_light_focused.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_like_background_selected.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_like_background_selected.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_btn_check_to_on_mtrl_000.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_list_pressed_holo_dark.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_list_pressed_holo_dark.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_like_pressed.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_like_pressed.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_cart_card.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_cart_card.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_kikr_circle.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_kikr_circle.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_product_liked.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_product_liked.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_marker.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_marker.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/vpi__tab_selected_holo.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/fr.avianey.com.viewpagerindicator/library/2.4.1/res/drawable-xhdpi/vpi__tab_selected_holo.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_disabled.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_icon_dark_disabled.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_text_dark_disabled.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_text_dark_disabled.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_deals_nearby.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_deals_nearby.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_list_pressed_holo_light.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_list_pressed_holo_light.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_menu_moreoverflow_mtrl_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_menu_moreoverflow_mtrl_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_text_light_normal.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_text_light_normal.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_ab_done.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.vk/androidsdk/1.3.3/res/drawable-xhdpi-v4/ic_ab_done.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_shoes.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_shoes.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_clear_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_clear_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_focused_holo.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\fr.avianey.com.viewpagerindicator\\library\\2.4.1\\res\\drawable-xhdpi\\vpi__tab_unselected_focused_holo.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_grey_pressed.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_grey_pressed.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_focused.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_icon_light_focused.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_activity.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_activity.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_logo.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_logo.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_plusone_small_off_client.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.3.0/res/drawable-xhdpi/ic_plusone_small_off_client.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_deals_online.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_deals_online.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\location_marker.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\main\\unspecified\\res\\drawable-xhdpi-v4\\location_marker.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/sharewhite.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/sharewhite.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_go_search_api_mtrl_alpha.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_ic_go_search_api_mtrl_alpha.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_list_selector_disabled_holo_dark.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_list_selector_disabled_holo_dark.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_blue_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_blue_pressed.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ucrop_ic_reset.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/ucrop/unspecified/res/drawable-xhdpi-v4/ucrop_ic_reset.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_plus_signin_btn_text_light_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_plus_signin_btn_text_light_pressed.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/direction_arrow.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/main/unspecified/res/drawable-xhdpi-v4/direction_arrow.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_holo.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\fr.avianey.com.viewpagerindicator\\library\\2.4.1\\res\\drawable-xhdpi\\vpi__tab_unselected_holo.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/vpi__tab_selected_focused_holo.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/fr.avianey.com.viewpagerindicator/library/2.4.1/res/drawable-xhdpi/vpi__tab_selected_focused_holo.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_menu_profile.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_menu_profile.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_settings.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_settings.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_next_gray_arrow.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_next_gray_arrow.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_blue_normal.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_blue_normal.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_category_electronics.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\src\\main\\res\\drawable-xhdpi\\ic_category_electronics.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_tooltip_black_bottomnub.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\KikrApp\\kikr_FacebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_bottomnub.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_pressed.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.3.0\\res\\drawable-xhdpi\\common_google_signin_btn_icon_dark_pressed.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/flash_icon_gray.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/flash_icon_gray.png"
     },
     {
-        "merged": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_pressed_holo_light.9.png",
-        "source": "C:\\Users\\zeeshan\\Desktop\\KikrApp\\kikr_app_ui\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\21.0.3\\res\\drawable-xhdpi\\abc_list_pressed_holo_light.9.png"
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_icon_light_pressed.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_icon_light_pressed.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_full_open_on_phone.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/drawable-xhdpi/common_full_open_on_phone.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ucrop_ic_next.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/ucrop/unspecified/res/drawable-xhdpi-v4/ucrop_ic_next.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_list_focused_holo.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_wallets.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_wallets.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_000.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_switch_track_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_videogames.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_videogames.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_text_light_pressed.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_text_light_pressed.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_kikr_circle.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_kikr_circle.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/delete.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/delete.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_inspiration.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_inspiration.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/search_gray.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/search_gray.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_search_white.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_search_white.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_icon_dark_focused.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_icon_dark_focused.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_black_36dp.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_disabled.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_icon_dark_disabled.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_icon_dark_normal.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/setting_white.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/setting_white.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_icon_light_focused.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_icon_light_focused.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/deleteediticon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/deleteediticon.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_tooltip_blue_background.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_background.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/captureimage.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/captureimage.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_next_gray_arrow.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_next_gray_arrow.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/flatlay_profile_bg_gradient_rect.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/flatlay_profile_bg_gradient_rect.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_electronics.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_electronics.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/instagrampic.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/instagrampic.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_tooltip_black_bottomnub.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_tooltip_black_bottomnub.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_blue_focused.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_blue_focused.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_follow_gray.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_follow_gray.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/shareclicked.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/shareclicked.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_half_black_36dp.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_star_half_black_36dp.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_text_light_normal.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/flatlayhomeimage.jpg",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/flatlayhomeimage.jpg"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_blue_pressed.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_icon_dark_pressed.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_icon_dark_pressed.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_list_selector_disabled_holo_light.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_icon_light_disabled.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_icon_light_disabled.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_deals.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_deals.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_marker.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_marker.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_icon_light_normal.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_rating_star_on_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_btn_rating_star_on_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_tooltip_blue_topnub.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_topnub.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_logo.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_logo.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_like_pressed.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_like_pressed.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_focused.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_icon_dark_focused.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_text_dark_pressed.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_text_dark_pressed.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/toys_icon.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/toys_icon.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/location_marker.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/trunk/main/unspecified/res/drawable-xhdpi-v4/location_marker.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_icon_dark_normal.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_icon_dark_normal.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_deals_online.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_deals_online.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/camera_refresh.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/camera_refresh.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/small_logo.jpg",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/small_logo.jpg"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/cameratab.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/cameratab.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_scrubber_control_off_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/profile_photo_tab.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/profile_photo_tab.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/camera_btn.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/camera_btn.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_category_jewelry.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_category_jewelry.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_tooltip_black_background.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_tooltip_black_background.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/vpi__tab_unselected_holo.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/fr.avianey.com.viewpagerindicator/library/2.4.1/res/drawable-xhdpi/vpi__tab_unselected_holo.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_next_green_arrow.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_next_green_arrow.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_text_light_disabled.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_text_light_disabled.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/white_android_bg.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/white_android_bg.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_text_dark_pressed.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_text_dark_pressed.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/large_logo.jpg",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/large_logo.jpg"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_list_longpressed_holo.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/gallery.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/gallery.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/com_facebook_button_like_background.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.1/res/drawable-xhdpi-v4/com_facebook_button_like_background.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/vpi__tab_unselected_pressed_holo.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/fr.avianey.com.viewpagerindicator/library/2.4.1/res/drawable-xhdpi/vpi__tab_unselected_pressed_holo.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_plus_signin_btn_icon_light_normal.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_plus_signin_btn_icon_light_normal.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/common_google_signin_btn_icon_light_focused.9.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/drawable-xhdpi/common_google_signin_btn_icon_light_focused.9.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_search_api_mtrl_alpha.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-xhdpi-v4/abc_ic_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_menu_logout.png",
+        "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_app_ui/src/main/res/drawable-xhdpi/ic_menu_logout.png"
     }
 ]

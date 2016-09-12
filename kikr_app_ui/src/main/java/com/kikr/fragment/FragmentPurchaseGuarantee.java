@@ -2,25 +2,25 @@ package com.kikr.fragment;
 
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.text.Spannable;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.TextView.BufferType;
 
 import com.kikr.BaseFragment;
 import com.kikr.R;
+import com.kikr.activity.HomeActivity;
 
 public class FragmentPurchaseGuarantee extends BaseFragment implements OnClickListener {
 	private View mainView;
-	private TextView txtHere;
+	private TextView txtHere,learnflatlay;
 	private TextView txtContact;
-	
+	private LinearLayout learnmorelayout;
+     private Button back;
 	public FragmentPurchaseGuarantee() {
 	}
 
@@ -34,9 +34,12 @@ public class FragmentPurchaseGuarantee extends BaseFragment implements OnClickLi
 	@Override
 	public void initUI(Bundle savedInstanceState) {
 		txtHere = (TextView) mainView.findViewById(R.id.txtHere);
+		back=(Button) mainView.findViewById(R.id.back);
 		txtContact = (TextView) mainView.findViewById(R.id.txtContact);
 		txtContact.setPaintFlags(txtContact.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-		
+		learnmorelayout=(LinearLayout)mainView.findViewById(R.id.learnmorelayout);
+		learnflatlay=(TextView) mainView.findViewById(R.id.learnflatlay);
+		learnflatlay.setPaintFlags(txtContact.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		txtHere.setMovementMethod(LinkMovementMethod.getInstance());
 		txtHere.setText("Please contact the merchant directly.");
 //		txtHere.setText("Please contact the merchant directly. We provide a list of contact information for our merchants here.", BufferType.SPANNABLE);
@@ -60,6 +63,8 @@ public class FragmentPurchaseGuarantee extends BaseFragment implements OnClickLi
 	@Override
 	public void setClickListener() {
 		txtContact.setOnClickListener(this);
+		learnmorelayout.setOnClickListener(this);
+		back.setOnClickListener(this);
 	}
 
 	@Override
@@ -71,6 +76,13 @@ public class FragmentPurchaseGuarantee extends BaseFragment implements OnClickLi
 		switch (v.getId()) {
 		case R.id.txtContact:
 			addFragment(new FragmentSupport());
+			break;
+			case R.id.learnmorelayout:
+				addFragment(new FragmentLearnMoreOutsideUS());
+				break;
+			case R.id.back:
+				((HomeActivity)mContext).onBackPressed();
+				break;
 		}
 	}
 

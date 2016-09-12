@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/btn_green"
     android:orientation="horizontal" >
 
     <LinearLayout
@@ -28,6 +29,7 @@
                     android:id="@+id/cartProductImage"
                     android:layout_width="@dimen/addBank_image_size"
                     android:layout_height="@dimen/addBank_image_size"
+                    android:background="@color/btn_green"
                     android:src="@drawable/dum_list_item_product" />
 
                 <TextView
@@ -60,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CitiBank"
-                    android:textColor="@color/header_background"
+                    android:textColor="@color/tab_selected_new"
                     android:textSize="@dimen/medium_text_size"
                     android:textStyle="bold" />
 
@@ -69,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CitiBank"
-                    android:textColor="@color/header_background"
+                    android:textColor="@color/tab_selected_new"
                     android:textSize="@dimen/medium_text_size"
                     android:textStyle="normal" />
 
@@ -184,28 +186,29 @@
                         android:layout_marginRight="@dimen/padding_large"
                         android:src="@drawable/hdpi_off" />
                 </LinearLayout>
-                
-                
-                
+
+
+
                 <LinearLayout
                     android:id="@+id/shipLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:paddingTop="@dimen/padding_tiny" >
-					<TextView
-	                    android:id="@+id/shippingText"
-	                    style="@style/cartTextStyle"
-	                    android:text="Shipping"
-	                    android:layout_marginRight="16dp"
-	                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/shippingText"
+                        style="@style/cartTextStyle"
+                        android:text="Shipping"
+                        android:layout_marginRight="16dp"
+                        android:textStyle="bold" />
                     <Button
                         android:id="@+id/btnStandard"
                         style="@style/cartTextStyle"
                         android:textColor="@color/white"
                         android:layout_height="18dp"
                         android:text=" Standard "
-                        android:background="@color/btn_green"
+                        android:background="@color/tab_selected_new"
                         android:clickable="true"
                         android:textStyle="bold" />
                     <Button
@@ -217,7 +220,7 @@
                         android:background="@color/gray"
                         android:clickable="true"
                         android:textStyle="bold" />
-                    
+
                 </LinearLayout>
 
                 <TextView
@@ -228,11 +231,12 @@
                     android:gravity="center"
                     android:padding="@dimen/padding_small"
                     android:text="@string/product_not_available"
-                    android:textColor="@color/black"
+
+                    android:textColor="@color/tab_selected_new"
                     android:textSize="@dimen/large_text_size"
                     android:textStyle="bold"
                     android:layout_margin="@dimen/padding_small"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
             </LinearLayout>
         </LinearLayout>
 
@@ -244,5 +248,13 @@
             android:padding="@dimen/padding_small"
             android:src="@drawable/ic_delete" />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="1dp"
+        android:id="@+id/line"
+        android:layout_below="@+id/cartItemLayout"
+        android:background="@color/credittextcolor"
+       ></View>
 
 </RelativeLayout>

@@ -1,8 +1,5 @@
 package com.kikr.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -19,6 +16,9 @@ import com.kikr.activity.HomeActivity;
 import com.kikr.fragment.FragmentProfileView;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.FollowerList;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FragmentProfileFollowingAdapter extends BaseAdapter {
 

@@ -63,7 +63,7 @@ public class InspirationStoreListAdapter extends BaseAdapter{
 	public View getView(final int position, View convertView, ViewGroup arg2) {
 		final ViewHolder viewHolder;
 		if(convertView==null){
-			convertView=inflater.inflate(R.layout.adapter_interest_store_list, null);
+			convertView=inflater.inflate(R.layout.adapter_interest_store_list_cutomize, null);
 			viewHolder=new ViewHolder();
 			viewHolder.storeImageView=(ImageView) convertView.findViewById(R.id.storeImageView);
 			viewHolder.progressBar_follow_brand=(ProgressBar) convertView.findViewById(R.id.progressBar_follow_brand);

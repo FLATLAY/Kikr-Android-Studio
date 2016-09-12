@@ -87,8 +87,8 @@ public class PinterestLoginActivity extends FragmentActivity{
 //               	onSavePin(imageUrl, response.getBoardList().get(0).getUid(), text, link);
                 if(response.getBoardList()!=null&&response.getBoardList().size()>0) {
                     Syso.info("1234567890  2>>>>>> inside condition");
-                    PinterestBoardDialog boardDialog = new PinterestBoardDialog(context, response.getBoardList(), imageUrl, text, link);
-                    boardDialog.show();
+//                    PinterestBoardDialog boardDialog = new PinterestBoardDialog(context, response.getBoardList(), imageUrl, text, link);
+//                    boardDialog.show();
                 }else
                     AlertUtils.showToast(context, "No board found, please create board first");
             }

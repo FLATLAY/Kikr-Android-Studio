@@ -244,7 +244,7 @@ public class SplashActivity extends Activity {
 	                	prod.setDiscounttype(referringParams.optString("discounttype", ""));
 	                	prod.setSaleprice(referringParams.optString("saleprice", ""));
 	                	prod.setRetailprice(referringParams.optString("retailprice", ""));
-	                	prod.setBrand(referringParams.optString("brand", ""));
+	                	//prod.setBrand(referringParams.optString("brand", ""));
 	                	prod.setShippingcost(referringParams.optString("shippingcost", ""));
 	                	prod.setKeywords(referringParams.optString("keywords", ""));
 	                	prod.setManufacturename(referringParams.optString("manufacturename", ""));

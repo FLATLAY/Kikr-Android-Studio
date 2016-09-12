@@ -3,36 +3,20 @@ package com.kikr.adapter;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.fragment.FragmentInspirationDetail;
-import com.kikr.fragment.FragmentProfileView;
-import com.kikr.ui.InspirationProductUI;
-import com.kikr.ui.RoundImageView;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.Inspiration;
-import com.kikrlib.bean.Product;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 public class InspirationGridAdapter extends BaseAdapter{
 

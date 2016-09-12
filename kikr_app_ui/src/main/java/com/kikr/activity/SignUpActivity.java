@@ -243,6 +243,7 @@ public class SignUpActivity extends BaseActivity implements OnClickListener, OnK
 	private void setUserPreferences(RegisterUserResponse response) {
 		UserPreference.getInstance().setUserID(response.getId());
 		UserPreference.getInstance().setCurrentScreen(Screen.UserNameScreen);
+		UserPreference.getInstance().setAccessToken(response.gettoken());
 		UserPreference.getInstance().setIsCreateWalletPin(true);
 		UserPreference.getInstance().setcheckedIsConnected(true);
 		UserPreference.getInstance().setEmail(mEmailEditText.getText().toString().trim());

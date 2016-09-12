@@ -1,11 +1,6 @@
 package com.kikr.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -29,7 +24,9 @@ import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.Product;
 import com.kikrlib.bean.TwoTapProductDetails;
 import com.kikrlib.db.UserPreference;
-import com.kikrlib.utils.Syso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CartListAdapter extends BaseAdapter {
 
@@ -87,7 +84,7 @@ public class CartListAdapter extends BaseAdapter {
 			viewHolder.priceLayout=(LinearLayout) convertView.findViewById(R.id.priceLayout);
 			viewHolder.shipping_status = (ImageView) convertView.findViewById(R.id.shipping_status);
 			viewHolder.shippingLayout = (LinearLayout) convertView.findViewById(R.id.shippingLayout);
-			
+
 			viewHolder.btnStandard = (Button) convertView.findViewById(R.id.btnStandard);
 			viewHolder.btnExpress = (Button) convertView.findViewById(R.id.btnExpress);
 			viewHolder.shippingTxt = (TextView) convertView.findViewById(R.id.shippingText);
@@ -115,7 +112,7 @@ public class CartListAdapter extends BaseAdapter {
 //		}else{
 //			viewHolder.colorLayout.setVisibility(View.GONE);
 //		}
-		
+
 //		if(!TextUtils.isEmpty(getItem(position).getSelected_size())){
 //			viewHolder.sizeText.setText(" "+getItem(position).getSelected_size());
 //		}else{
@@ -123,10 +120,15 @@ public class CartListAdapter extends BaseAdapter {
 //		}
 		if (getItem(position).isSelectdetails()) {
 			viewHolder.selectProductOption.setVisibility(View.VISIBLE);
-//			viewHolder.quantityLayout.setVisibility(View.GONE);
-			//viewHolder.sizeLayout.setVisibility(View.GONE);
-//			viewHolder.colorLayout.setVisibility(View.GONE);
-//			viewHolder.priceLayout.setVisibility(View.GONE);
+
+			viewHolder.selectProductOption.setText("Select");
+
+			viewHolder.selectProductOption.setBackground(mContext.getResources().getDrawable(R.drawable.selectwhite));
+			viewHolder.selectProductOption.setTextColor(mContext.getResources().getColor(R.color.tab_selected_new));
+			viewHolder.quantityLayout.setVisibility(View.GONE);
+			viewHolder.sizeLayout.setVisibility(View.GONE);
+			viewHolder.colorLayout.setVisibility(View.GONE);
+			viewHolder.priceLayout.setVisibility(View.GONE);
 		}else if(getItem(position).isNoDetails()){
 			viewHolder.selectProductOption.setVisibility(View.GONE);
 //			viewHolder.quantityLayout.setVisibility(View.VISIBLE);
@@ -140,6 +142,10 @@ public class CartListAdapter extends BaseAdapter {
 //			viewHolder.priceLayout.setVisibility(View.GONE);
 		} else if (!getItem(position).isSelectdetails()) {
 			viewHolder.selectProductOption.setVisibility(View.GONE);
+			viewHolder.quantityLayout.setVisibility(View.VISIBLE);
+//			viewHolder.sizeLayout.setVisibility(View.VISIBLE);
+//			viewHolder.colorLayout.setVisibility(View.VISIBLE);
+			viewHolder.priceLayout.setVisibility(View.VISIBLE);
 //			if (!TextUtils.isEmpty(getItem(position).getQuantity())) {
 ////				viewHolder.quantityLayout.setVisibility(View.VISIBLE);
 //				viewHolder.quantityText.setText(" "+getItem(position).getQuantity());
@@ -152,7 +158,7 @@ public class CartListAdapter extends BaseAdapter {
 //			}else{
 //				//viewHolder.colorLayout.setVisibility(View.GONE);
 //			}
-//			
+//
 //			if(!TextUtils.isEmpty(getItem(position).getSelected_size())){
 //				//viewHolder.sizeLayout.setVisibility(View.VISIBLE);
 //				viewHolder.sizeText.setText(" "+getItem(position).getSelected_size());
@@ -183,37 +189,37 @@ public class CartListAdapter extends BaseAdapter {
 		}
 		if(getItem(position).getShipping_option().equals("fastest")) {
 			viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
-			viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
+			viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.tab_selected_new));
 		}
-			//viewHolder.shipping_status.setImageResource(R.drawable.hdpi_on);
+		//viewHolder.shipping_status.setImageResource(R.drawable.hdpi_on);
 		else {
-			viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
+			viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.tab_selected_new));
 			viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
 		}
-		
+
 		viewHolder.btnStandard.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
+				viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.tab_selected_new));
 				viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
 				getItem(position).setShipping_option("cheapest");
 			}
 		});
-		
+
 		viewHolder.btnExpress.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				viewHolder.btnStandard.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
-				viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.btn_green));
+				viewHolder.btnExpress.setBackgroundColor(mContext.getResources().getColor(R.color.tab_selected_new));
 				getItem(position).setShipping_option("fastest");
 			}
 		});
-		
+
 		//	viewHolder.shipping_status.setImageResource(R.drawable.hdpi_off);
 		convertView.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				if(!isPopup){
@@ -221,11 +227,12 @@ public class CartListAdapter extends BaseAdapter {
 						for (int i = 0; i <productDetails.size(); i++) {
 							if (getItem(position).getProducturl().equals(productDetails.get(i).getOriginal_url())) {
 								((HomeActivity)mContext).addFragment(new FragmentEditPurchaseItem(fragmentUserCart,productDetails.get(i),getItem(position)));
+
 							}
 						}
-						}else{
-							((HomeActivity)mContext).addFragment(new FragmentEditPurchaseItem(getItem(position),fragmentUserCart));
-						}
+					}else{
+						((HomeActivity)mContext).addFragment(new FragmentEditPurchaseItem(getItem(position),fragmentUserCart));
+					}
 				}
 			}
 		});
@@ -233,7 +240,7 @@ public class CartListAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View arg0) {
 				RemoveProductFromCartDialog removeProductFromCartDialog = new RemoveProductFromCartDialog(mContext,getItem(position).getProductcart_id(),fragmentUserCart,new CallBack() {
-					
+
 					@Override
 					public void onSuccess() {
 						data.remove(position);
@@ -248,10 +255,10 @@ public class CartListAdapter extends BaseAdapter {
 						UserPreference.getInstance().decCartCount();
 						((HomeActivity)mContext).refreshCartCount();
 					}
-					
+
 					@Override
 					public void onFail() {
-						
+
 					}
 				});
 				removeProductFromCartDialog.show();

@@ -11,18 +11,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.adapter.FollowStoreAdapter.ViewHolder;
 import com.kikr.fragment.FragmentInterestSection;
 import com.kikr.fragment.FragmentProductBasedOnType;
 import com.kikr.fragment.FragmentProfileView;
-import com.kikr.ui.RoundImageView;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.bean.InterestSection;
 

@@ -99,7 +99,7 @@ public class KikrTutorialActivity extends BaseActivity implements OnClickListene
 
 	@Override
 	public void headerView() {
-		getLeftButton().setVisibility(View.GONE);
+
 	}
 
 	@Override

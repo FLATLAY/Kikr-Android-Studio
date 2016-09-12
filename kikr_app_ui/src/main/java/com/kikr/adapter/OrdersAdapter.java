@@ -1,22 +1,12 @@
 package com.kikr.adapter;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,15 +15,11 @@ import android.widget.TextView;
 
 import com.kikr.R;
 import com.kikr.activity.HomeActivity;
-import com.kikr.fragment.FragmentActivityPage;
 import com.kikr.fragment.FragmentTrackOrder;
-import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.CommonUtility;
 import com.kikrlib.api.OrdersApi;
-import com.kikrlib.bean.ActivityMonthList;
 import com.kikrlib.bean.Orders;
 import com.kikrlib.bean.Product;
-import com.kikrlib.bean.User;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.service.ServiceCallback;
 import com.kikrlib.service.ServiceException;
@@ -41,6 +27,11 @@ import com.kikrlib.service.res.OrderRes;
 import com.kikrlib.utils.AlertUtils;
 import com.kikrlib.utils.Syso;
 import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class OrdersAdapter extends BaseExpandableListAdapter  {
 
@@ -58,55 +49,55 @@ public class OrdersAdapter extends BaseExpandableListAdapter  {
 		this.cartDataMap = cartDataMap;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
-	
+
 	public void addAll(List<String> cartHeaders, HashMap<String, List<Orders>> dataChild, HashMap<String, String> cartDataMap) {
 		this.cartHeaders.addAll(cartHeaders);
 		this.dataChild.putAll(dataChild);
 		this.cartDataMap.putAll(cartDataMap);
 	}
-	
-	@Override
-    public Object getChild(int groupPosition, int childPosititon) {
-        return this.dataChild.get(this.cartHeaders.get(groupPosition)).get(childPosititon);
-    }
- 
-    @Override
-    public long getChildId(int groupPosition, int childPosition) {
-        return childPosition;
-    }
-	
-    @Override
-    public int getChildrenCount(int groupPosition) {
-        return this.dataChild.get(this.cartHeaders.get(groupPosition)).size();
-    }
- 
-    @Override
-    public Object getGroup(int groupPosition) {
-        return this.cartHeaders.get(groupPosition);
-    }
- 
-    @Override
-    public int getGroupCount() {
-        return this.cartHeaders.size();
-    }
- 
-    @Override
-    public long getGroupId(int groupPosition) {
-        return groupPosition;
-    }
 
-    @Override
-    public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return true;
-    }
-    
-    @Override
-    public View getGroupView(int groupPosition, boolean isExpanded,
-            View convertView, ViewGroup parent) {
-    	
-        String headerTitle = (String) getGroup(groupPosition);
-        
-        final ViewHolder viewHolder;
+	@Override
+	public Object getChild(int groupPosition, int childPosititon) {
+		return this.dataChild.get(this.cartHeaders.get(groupPosition)).get(childPosititon);
+	}
+
+	@Override
+	public long getChildId(int groupPosition, int childPosition) {
+		return childPosition;
+	}
+
+	@Override
+	public int getChildrenCount(int groupPosition) {
+		return this.dataChild.get(this.cartHeaders.get(groupPosition)).size();
+	}
+
+	@Override
+	public Object getGroup(int groupPosition) {
+		return this.cartHeaders.get(groupPosition);
+	}
+
+	@Override
+	public int getGroupCount() {
+		return this.cartHeaders.size();
+	}
+
+	@Override
+	public long getGroupId(int groupPosition) {
+		return groupPosition;
+	}
+
+	@Override
+	public boolean isChildSelectable(int groupPosition, int childPosition) {
+		return true;
+	}
+
+	@Override
+	public View getGroupView(int groupPosition, boolean isExpanded,
+							 View convertView, ViewGroup parent) {
+
+		String headerTitle = (String) getGroup(groupPosition);
+
+		final ViewHolder viewHolder;
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.order_group_item, null);
 			viewHolder = new ViewHolder();
@@ -119,33 +110,33 @@ public class OrdersAdapter extends BaseExpandableListAdapter  {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		
+
 		for (Map.Entry<String, String> entry : cartDataMap.entrySet()) {
-		    String key = entry.getKey();
-		    String value = entry.getValue();
-		    if(key.equalsIgnoreCase(headerTitle)) {
-		    	String[] temp = value.split("#");
-		    	
-		    	viewHolder.orderCartID.setText(temp[0]);
-		    	viewHolder.orderDate.setText(CommonUtility.getDateFormat(temp[1]));
-		    	viewHolder.orderPrice.setText(CommonUtility.getFormatedNum(temp[2]));
-		    	viewHolder.orderShipping.setText(temp[3]);
-		    	viewHolder.orderStatus.setText(temp[4]);
-		    	break;
-		    }
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.equalsIgnoreCase(headerTitle)) {
+				String[] temp = value.split("#");
+
+				viewHolder.orderCartID.setText(temp[0]);
+				viewHolder.orderDate.setText(CommonUtility.getDateFormat(temp[1]));
+				viewHolder.orderPrice.setText(CommonUtility.getFormatedNum(temp[2]));
+				viewHolder.orderShipping.setText(temp[3]);
+				viewHolder.orderStatus.setText(temp[4]);
+				break;
+			}
 		}
- 
- 
-        return convertView;
-    }
-    
-    @Override
-    public View getChildView(int groupPosition, final int childPosition,
-            boolean isLastChild, View convertView, ViewGroup parent) {
- 
-        final Orders childOrder = (Orders) getChild(groupPosition, childPosition);
- 
-        final ViewHolder viewHolder;
+
+
+		return convertView;
+	}
+
+	@Override
+	public View getChildView(int groupPosition, final int childPosition,
+							 boolean isLastChild, View convertView, ViewGroup parent) {
+
+		final Orders childOrder = (Orders) getChild(groupPosition, childPosition);
+
+		final ViewHolder viewHolder;
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.adapter_orders, null);
 			viewHolder = new ViewHolder();
@@ -153,7 +144,7 @@ public class OrdersAdapter extends BaseExpandableListAdapter  {
 			viewHolder.progressBar.getIndeterminateDrawable().setColorFilter(mContext.getResources().getColor(R.color.btn_green), android.graphics.PorterDuff.Mode.MULTIPLY);
 			viewHolder.loadingBar = (LinearLayout) convertView.findViewById(R.id.loadingBar);
 			viewHolder.cartItemLayout = (LinearLayout) convertView.findViewById(R.id.cartItemLayout);
-			
+
 			viewHolder.cartProductImage = (ImageView) convertView.findViewById(R.id.cartProductImage);
 			viewHolder.deleteCartProductImage = (ImageView) convertView.findViewById(R.id.deleteCartProductImage);
 			viewHolder.brandName = (TextView) convertView.findViewById(R.id.brandName);
@@ -175,7 +166,7 @@ public class OrdersAdapter extends BaseExpandableListAdapter  {
 		}
 
 		getOrderDetails(childOrder.getOrder_id(), viewHolder);
-		
+
 		convertView.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -184,12 +175,12 @@ public class OrdersAdapter extends BaseExpandableListAdapter  {
 			}
 		});
 		return convertView;
-    }
-    
-    private void getOrderDetails(String orderId, final ViewHolder viewHolder) {
+	}
+
+	private void getOrderDetails(String orderId, final ViewHolder viewHolder) {
 
 		final OrdersApi ordersApi = new OrdersApi(new ServiceCallback() {
-			
+
 			@Override
 			public void handleOnSuccess(Object object) {
 
@@ -200,9 +191,9 @@ public class OrdersAdapter extends BaseExpandableListAdapter  {
 					viewHolder.loadingBar.setVisibility(View.GONE);
 					viewHolder.cartItemLayout.setVisibility(View.VISIBLE);
 				}
-					
+
 			}
-			
+
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
 				Syso.info("In handleOnFailure>>" + object);
@@ -216,10 +207,10 @@ public class OrdersAdapter extends BaseExpandableListAdapter  {
 		});
 		ordersApi.getOrderDetails(UserPreference.getInstance().getUserID(),orderId);
 		ordersApi.execute();
-	
+
 	}
-    
-    protected void setDetails(OrderRes orderRes, ViewHolder viewHolder) {
+
+	protected void setDetails(OrderRes orderRes, ViewHolder viewHolder) {
 		List<Product> product = orderRes.getProduct();
 		if (product!=null && product.size()>0) {
 			setProductData(product.get(0), viewHolder);
@@ -246,14 +237,14 @@ public class OrdersAdapter extends BaseExpandableListAdapter  {
 		}else{
 			viewHolder.colorLayout.setVisibility(View.GONE);
 		}
-		
+
 		if(!TextUtils.isEmpty(product.getSelected_size())){
 			viewHolder.sizeText.setText(" "+product.getSelected_size());
 		}else{
 			viewHolder.sizeLayout.setVisibility(View.GONE);
 		}
 	}
-    
+
 	public class ViewHolder {
 		private ImageView cartProductImage,deleteCartProductImage;
 		private TextView brandName,productName,regularPriceText,quantityText,colorText;
@@ -261,13 +252,13 @@ public class OrdersAdapter extends BaseExpandableListAdapter  {
 		private LinearLayout colorLayout,discountLayout,sizeLayout,quantityLayout,priceLayout;
 		private ProgressBar progressBar;
 		private LinearLayout loadingBar, cartItemLayout;
-		
-		
+
+
 		//first level viewholder
 		private TextView orderDate, orderCartID, orderPrice, orderShipping, orderStatus;
 
 	}
-	
+
 	public void addFragment(Fragment fragment) {
 		((HomeActivity) mContext).addFragment(fragment);
 	}

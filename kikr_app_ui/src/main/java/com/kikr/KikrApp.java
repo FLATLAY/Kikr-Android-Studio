@@ -39,7 +39,7 @@ public class KikrApp extends BranchApp {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-//		Fabric.with(this, new Crashlytics());
+		//Fabric.with(this, new Crashlytics());
 		AppContext context = AppContext.getInstance();
 		context.setContext(this);
 		mDatabaseHelper = DatabaseHelper.getIntance(this);

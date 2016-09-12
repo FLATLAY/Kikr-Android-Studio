@@ -29,6 +29,7 @@ public class ImageViewActivity extends Activity{
 	}
 
 	private void setImage() {
+
 		view = (ImageView) findViewById(R.id.imageView);
 		FrameLayout frameLayout=(FrameLayout) findViewById(R.id.overlayView);
 //		CommonUtility.setImageNS(this, getIntent().getStringExtra("image"), view, R.drawable.dum_list_item_product);

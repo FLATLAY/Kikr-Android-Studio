@@ -1,12 +1,5 @@
 package com.kikr;
 
-import com.kikr.activity.HomeActivity;
-import com.kikr.fragment.FragmentPlaceMyOrder;
-import com.kikr.service.PlaceOrderService;
-import com.kikrlib.db.AppPreference;
-import com.kikrlib.db.UserPreference;
-import com.kikrlib.utils.Syso;
-
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -17,6 +10,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
+
+import com.kikr.activity.HomeActivity;
+import com.kikrlib.db.AppPreference;
+import com.kikrlib.db.UserPreference;
+import com.kikrlib.utils.Syso;
 
 import java.util.Calendar;
 
@@ -50,9 +48,9 @@ public class GCMAlarmReceiver extends BroadcastReceiver{
 	private void setNotification(Context context,String message,String section,String otherdata) {
 		Syso.info("uuuuuuuuuuuuuu>>>>>>>>> in setNotification");
 		NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
-		notificationBuilder.setSmallIcon(R.drawable.ic_app_logo);
+		notificationBuilder.setSmallIcon(R.drawable.flatlayhomeimage);
 		notificationBuilder.setTicker(message);
-		notificationBuilder.setContentTitle("Kikr");
+		notificationBuilder.setContentTitle(context.getString(R.string.app_name));
 		notificationBuilder.setContentText(message);
 		notificationBuilder.setAutoCancel(true);
 

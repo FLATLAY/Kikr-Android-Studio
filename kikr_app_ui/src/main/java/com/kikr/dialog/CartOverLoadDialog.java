@@ -5,9 +5,7 @@ import java.util.List;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ListView;
@@ -17,15 +15,7 @@ import com.kikr.R;
 import com.kikr.activity.HomeActivity;
 import com.kikr.adapter.CartListAdapter;
 import com.kikr.fragment.FragmentUserCart;
-import com.kikr.ui.ProgressBarDialog;
-import com.kikrlib.api.EditInspirationApi;
-import com.kikrlib.bean.Inspiration;
 import com.kikrlib.bean.Product;
-import com.kikrlib.db.UserPreference;
-import com.kikrlib.service.ServiceCallback;
-import com.kikrlib.service.ServiceException;
-import com.kikrlib.service.res.CommonRes;
-import com.kikrlib.utils.AlertUtils;
 
 public class CartOverLoadDialog extends Dialog{
 	private TextView cancelTextView,okTextView,messageTextView;

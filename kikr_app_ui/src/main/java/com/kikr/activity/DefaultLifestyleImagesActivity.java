@@ -13,6 +13,7 @@ import android.widget.GridView;
 import com.kikr.BaseActivity;
 import com.kikr.R;
 import com.kikr.adapter.LifestyleImageAdapter;
+import com.kikr.model.InstagramImage;
 import com.kikr.ui.ProgressBarDialog;
 import com.kikr.utility.CommonUtility;
 import com.kikr.utility.InstagramCallBack;
@@ -72,6 +73,11 @@ public class DefaultLifestyleImagesActivity extends BaseActivity implements OnCl
 				}else{
 					lifestyleImageAdapter.notifyDataSetChanged();
 				}
+			}
+
+			@Override
+			public void setPictureListPost(ArrayList<InstagramImage> photoList) {
+
 			}
 		});
 		instagramUtility.inItInstgram();

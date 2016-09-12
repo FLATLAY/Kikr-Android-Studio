@@ -2,12 +2,14 @@ package com.kikr.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.kikr.R;
 import com.kikr.adapter.IntroductionPagerAdapter;
@@ -21,11 +23,12 @@ public class IntroductionPagerActivity extends FragmentActivity{
     TextView skipButton,nextButton;
     CirclePageIndicator indicator;
     Context context;
-
+    private VideoView vedio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_introduction_pager);
         context = this;
         inItUI();
@@ -38,9 +41,50 @@ public class IntroductionPagerActivity extends FragmentActivity{
         skipButton = (TextView) findViewById(R.id.skipButton);
         nextButton = (TextView) findViewById(R.id.nextButton);
         indicator = (CirclePageIndicator) findViewById(R.id.indicator);
+        vedio = (VideoView) findViewById(R.id.vedio);
     }
 
     private void setUpData() {
+
+
+        vedio.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
+                mp.setLooping(true);
+                vedio.start(); //need to make transition seamless.
+            }
+        });
+
+        String uriPath = "android.resource://com.kikr/"+R.raw.flatlay_guide;
+        vedio.setVideoPath(uriPath);
+        Uri uri = Uri.parse(uriPath);
+        vedio.setVideoURI(uri);
+        vedio.requestFocus();
+        vedio.start();
+//        MediaController mediaController = new MediaController(this);
+//        mediaController.setAnchorView(vedio);
+   //  Uri uri = Uri.parse(uriPath);
+//        vedio.setVideoURI(uri);
+//    vedio.requestFocus();
+//    vedio.start();
+//   if(!vedio.isPlaying())
+//   {
+//       vedio.resume();
+//   }
+//
+//
+//
+//        Uri uri = Uri.parse("android.resource://com.example/"
+//                + R.raw.video);
+
+
+
+
+
+
+
+
+
+
         IntroductionPagerAdapter pagerActivity =  new IntroductionPagerAdapter(this);
         tutorialImageView.setAdapter(pagerActivity);
         indicator.setViewPager(tutorialImageView);
@@ -84,6 +128,7 @@ public class IntroductionPagerActivity extends FragmentActivity{
 
     private void goToNextPage() {
         if(getIntent().hasExtra("from")&&getIntent().getStringExtra("from").equals("splash")){
+            vedio.stopPlayback();
             Intent ii = new Intent(context, LandingActivity.class);
             startActivity(ii);
             finish();

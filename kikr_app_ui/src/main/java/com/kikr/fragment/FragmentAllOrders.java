@@ -43,6 +43,7 @@ public class FragmentAllOrders extends BaseFragment implements OnClickListener {
 	private boolean isFirstTime = true;
 	private boolean isLoading=false;
 	private Button startshopping;
+	//boolean isordered =false;
 	public FragmentAllOrders() {
 	}
 
@@ -63,16 +64,30 @@ public class FragmentAllOrders extends BaseFragment implements OnClickListener {
 
 	}
 
+
+
+
 	@Override
 	public void setClickListener() {
 		startshopping.setOnClickListener(this);
 	}
-
 	public void initData()
 	{
+		pagenum=0;
+		isFirstTime=true;
 		if (checkInternet())
 			getOrdersList();
 
+
+	}
+
+	@Override
+	public void setData(Bundle bundle) {
+		if(CartFragmentTab.isordered)
+		{
+			initData();
+		}
+		CartFragmentTab.isordered=false;
 		ordersList.setOnScrollListener(new AbsListView.OnScrollListener() {
 			@Override
 			public void onScrollStateChanged(AbsListView view,
@@ -96,10 +111,6 @@ public class FragmentAllOrders extends BaseFragment implements OnClickListener {
 				}
 			}
 		});
-	}
-	@Override
-	public void setData(Bundle bundle) {
-
 	}
 
 	protected void showReloadFotter() {

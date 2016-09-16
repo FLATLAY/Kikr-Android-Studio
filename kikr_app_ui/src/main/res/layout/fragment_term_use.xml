@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/margin_credit"
+        android:paddingRight="@dimen/margin_credit"
+        android:paddingBottom="10dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/icon"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="left"
+                android:textColor="@color/tab_bg_new"
+                android:textStyle="bold"
+                android:lineSpacingExtra="3dp"
+                android:text="Flatlay Card Account Terms of Service"
+                android:textSize="@dimen/medium_text_size" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/lastupdate"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_gravity="left"
+                    android:textColor="@color/tab_bg_new"
+                    android:lineSpacingExtra="3dp"
+                    android:text="Last Updated: "
+                    android:textSize="@dimen/medium_text_size" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                  android:layout_toRightOf="@+id/lastupdate"
+                    android:textColor="@color/tab_selected_new"
+                    android:lineSpacingExtra="3dp"
+                    android:text=" July 1, 2016"
+                    android:textSize="@dimen/medium_text_size" />
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/tab_selected_new"
+                android:lineSpacingExtra="3dp"
+                android:gravity="center"
+                android:text=" PLEASE READ THROUGH THESE TERMS OF SERVICE THOROUGHLY AND CAREFULLY. BY ACCESSING AND/OR USING OUR FLATLAY LOYALY PROGRAM, YOU AGREE TO BE BOUND BY THE TERMS OF THIS AGREEMENT AND ALL TERMS INCORPORATED BY REFERENCE. SHOULD YOU NOT AGREE TO ABIDE BY ALL OF THESE TERMS, DO NOT PARTICIPATE IN THIS PROGRAM AND CONTACT US TO CANCEL YOUR ACCOUNT IF YOU HAVE ALREADY SETUP AN ACCOUNT FOR THE FLATLAY CARD PROGRAM ACCOUNT. OUR CONTACT INFORMATION IS BELOW.
+"
+                android:textSize="@dimen/small_text_size" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:gravity="center"
+                android:lineSpacingExtra="3dp"
+                android:textColor="@color/credittextcolor"
+                android:text="@string/kikr_tutorial_text_line_three"
+                android:textSize="@dimen/x_large_text_size" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:lineSpacingExtra="3dp"
+                android:text="The Flatlay Purchase Guarantee"
+                android:textStyle="bold"
+                android:textSize="@dimen/x_large_text_size" />
+
+            <LinearLayout
+                android:id="@+id/learnmorelayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:src="@drawable/kikrhighlight" />-->
+
+                <TextView
+                    android:id="@+id/learnMoretext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:lineSpacingExtra="3dp"
+                    android:text="Learn More"
+
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x_large_text_size" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/padding_large"
+                android:text="@string/kikr_tutorial_text_line_four"
+                android:textColor="@color/credittextcolor"
+                android:textSize="@dimen/medium_text_size" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_marginTop="7dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:background="@drawable/rectangle_shape_white"
+                android:id="@+id/back"
+                android:gravity="center"
+                android:textSize="@dimen/x_large_text_size"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</ScrollView>

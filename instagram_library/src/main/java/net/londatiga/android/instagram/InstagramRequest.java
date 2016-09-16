@@ -135,11 +135,8 @@ public class InstagramRequest {
 					params = new ArrayList<NameValuePair>(1);
 					
 					params.add(new BasicNameValuePair("access_token", mAccessToken));
-					//params.add(new BasicNameValuePair("count", "100"));
-
 				} else {
 					params.add(new BasicNameValuePair("access_token", mAccessToken));
-					//params.add(new BasicNameValuePair("count", "100"));
 				}
 			}
 			
@@ -192,7 +189,7 @@ public class InstagramRequest {
 	/**
 	 * Create http POST request to an instagram api endpoint. 
 	 * 
-	 * @param requestUri Api url
+	 * @param requestUrl Api url
 	 * @param params Request parameters
 	 * 	 
 	 * @return Api response in json format.

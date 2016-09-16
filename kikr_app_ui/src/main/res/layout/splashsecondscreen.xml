@@ -24,7 +24,7 @@
         android:textStyle="bold"
         android:lineSpacingExtra="3dp"
         android:textSize="@dimen/xx_large_text_size"
-        android:text=" Earn 1 Credit for every \n dollar you spend. "/>
+        android:text=" Earn credit for every \n dollar you spend. "/>
 
 </LinearLayout>
     </RelativeLayout>

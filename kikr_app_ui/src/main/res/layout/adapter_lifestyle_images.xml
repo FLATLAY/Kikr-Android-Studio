@@ -4,12 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
+
+    <com.kikr.utility.SquareImageView
+
         android:id="@+id/lifestyleImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxHeight="@dimen/buy_option_height"
+        android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:src="@drawable/dum_list_item_product" />
+        android:src="@drawable/dum_list_item_product"
+        android:scaleType="centerCrop" />
 
 </LinearLayout>

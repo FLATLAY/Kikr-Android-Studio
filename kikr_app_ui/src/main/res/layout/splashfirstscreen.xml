@@ -27,7 +27,7 @@
             android:lineSpacingExtra="3dp"
             android:textSize="@dimen/xx_large_text_size"
 
-            android:text="Rewards you  with credits for both  making &amp; influencing purchases.  "/>
+            android:text="Rewards you  with \n credits for both  making &amp; influencing purchases.  "/>
 
     </LinearLayout>
 

@@ -1,12 +1,8 @@
 package com.kikr.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.graphics.Paint;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -23,6 +19,9 @@ import com.kikr.utility.AppConstants;
 import com.kikr.utility.FontUtility;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.utils.AlertUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FragmentSupport extends BaseFragment implements OnClickListener{
 	TextView helpTextView,customerSupportTextView,termsTextView,privacyTextView,legalTextView, kikr_learn_more, textViewOutside;
@@ -67,8 +66,8 @@ public class FragmentSupport extends BaseFragment implements OnClickListener{
 	@Override
 	public void setClickListener() {
 		customerSupportTextView.setOnClickListener(this);
-		//termsTextView.setOnClickListener(this);
-		//privacyTextView.setOnClickListener(this);
+		termsTextView.setOnClickListener(this);
+		privacyTextView.setOnClickListener(this);
 	//	legalTextView.setOnClickListener(this);
 		kikr_learn_more.setOnClickListener(this);
 	}
@@ -115,7 +114,7 @@ public class FragmentSupport extends BaseFragment implements OnClickListener{
 
 	      try {
 	         startActivity(Intent.createChooser(emailIntent, "Choose an Email client..."));
-	         Log.i("Finished sending email...", "");
+	         Log.i("Done sending email", "");
 	      } catch (android.content.ActivityNotFoundException ex) {
 	    	  AlertUtils.showToast(mContext, "There is no email client installed");
 	      }

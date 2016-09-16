@@ -61,13 +61,11 @@ import org.apache.http.util.TextUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.kikr.R.id.photosNotFound;
-import static com.kikr.R.id.photos_otheruser_not_found;
 
 public class FragmentProfileView extends BaseFragment implements OnClickListener, ServiceCallback {
     private View mainView;
     private ListView collection_list;
-    private ImageView collection_button, follower_button, following_button,photo_button;
+    private ImageView collection_button, follower_button, following_button, photo_button;
     TextView follow_btn;
     Button invite;
     private LinearLayout follow_btn_layout;
@@ -78,7 +76,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     private List<FollowerList> followersLists = new ArrayList<FollowerList>();
     private List<FollowerList> followingLists = new ArrayList<FollowerList>();
     private TextView user_profile_name, descriptionTextView;
-    private LinearLayout settings_btn_layout,backarrowlayout;
+    private LinearLayout settings_btn_layout, backarrowlayout;
     private String user_id;
     private boolean isFollowed;
     private ImageView editProfileImageView, bgProfileLayout, bg_nocollection;
@@ -107,11 +105,12 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     private TextView loadingTextView, tvEarnCreditsText;
     private View loaderView;
     private Button photos_button, btnCreateCollection, btnUpload;
-    RelativeLayout photo_not_found,photosotherusernotfound;
+    RelativeLayout photo_not_found, photosotherusernotfound;
     TextView otheruserclick;
     LinearLayout txtfollowers;
     boolean isFragmentContainer = true;
-    LinearLayout  photolayout,collectionlayout,followinglayout,followerlayout;
+    LinearLayout photolayout, collectionlayout, followinglayout, followerlayout;
+
     public FragmentProfileView() {
         try {
 
@@ -159,15 +158,15 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
     @Override
     public void initUI(Bundle savedInstanceState) {
-        photo_not_found = (RelativeLayout) mainView.findViewById(photosNotFound);
-        photosotherusernotfound=(RelativeLayout) mainView.findViewById(photos_otheruser_not_found);
-        otheruserclick =(TextView) mainView.findViewById(R.id.otheruserclick);
+        photo_not_found = (RelativeLayout) mainView.findViewById(R.id.photosNotFound);
+        photosotherusernotfound = (RelativeLayout) mainView.findViewById(R.id.photos_otheruser_not_found);
+        otheruserclick = (TextView) mainView.findViewById(R.id.otheruserclick);
         bg_nocollection = (ImageView) mainView.findViewById(R.id.bg_nocollection);
-        invite=(Button)mainView.findViewById(R.id.invite);
-       // photos_button = (Button) mainView.findViewById(R.id.photos_button);
+        invite = (Button) mainView.findViewById(R.id.invite);
+        // photos_button = (Button) mainView.findViewById(R.id.photos_button);
         collection_list = (ListView) mainView.findViewById(R.id.collection_list);
-         photo_button  =(ImageView) mainView.findViewById(R.id.photo_button);
-       following_button = (ImageView) mainView.findViewById(R.id.following_button);
+        photo_button = (ImageView) mainView.findViewById(R.id.photo_button);
+        following_button = (ImageView) mainView.findViewById(R.id.following_button);
         follower_button = (ImageView) mainView.findViewById(R.id.follower_button);
         collection_button = (ImageView) mainView.findViewById(R.id.collection_button);
         follow_btn = (TextView) mainView.findViewById(R.id.follow_btn);
@@ -182,7 +181,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         editProfileImageView = (ImageView) mainView.findViewById(R.id.editProfileImageView);
         bgProfileLayout = (ImageView) mainView.findViewById(R.id.bgProfileLayout);
         noCollectionText = (LinearLayout) mainView.findViewById(R.id.noCollectionText);
-        followerNotFound=(RelativeLayout)mainView.findViewById(R.id.followerNotFound);
+        followerNotFound = (RelativeLayout) mainView.findViewById(R.id.followerNotFound);
         tvEarnCreditsText = (TextView) mainView.findViewById(R.id.tvEarnCreditText);
         layoutPeopleStoreBrand = (LinearLayout) mainView.findViewById(R.id.layoutPeopleStoreBrand);
         interest_store_button = (Button) mainView.findViewById(R.id.interest_store_button);
@@ -198,12 +197,12 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         loaderView = View.inflate(mContext, R.layout.footer, null);
         btnCreateCollection = (Button) mainView.findViewById(R.id.btnCreateCollection);
         btnUpload = (Button) mainView.findViewById(R.id.btnUpload);
-        photolayout=(LinearLayout) mainView.findViewById(R.id.photolayout);
-        collectionlayout=(LinearLayout) mainView.findViewById(R.id.collectionlayout);
-        followinglayout=(LinearLayout) mainView.findViewById(R.id.followinglayout);
-        followerlayout=(LinearLayout) mainView.findViewById(R.id.followerlayout);
-        txtfollowers=(LinearLayout) mainView.findViewById(R.id.txtfollowers);
-        backarrowlayout=(LinearLayout) mainView.findViewById(R.id.backarrowlayout);
+        photolayout = (LinearLayout) mainView.findViewById(R.id.photolayout);
+        collectionlayout = (LinearLayout) mainView.findViewById(R.id.collectionlayout);
+        followinglayout = (LinearLayout) mainView.findViewById(R.id.followinglayout);
+        followerlayout = (LinearLayout) mainView.findViewById(R.id.followerlayout);
+        txtfollowers = (LinearLayout) mainView.findViewById(R.id.txtfollowers);
+        backarrowlayout = (LinearLayout) mainView.findViewById(R.id.backarrowlayout);
         CommonUtility.hideSoftKeyboard(mContext);
     }
 
@@ -234,7 +233,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     public void initData() {
         if (checkInternet()) {
             getInspirationFeedList();
-           getCollectionStatus();
+            getCollectionStatus();
         } else
             showReloadOption();
     }
@@ -242,7 +241,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     @Override
     public void setData(Bundle bundle) {
 
-            initData();
+        initData();
 
 
         collection_list.setOnScrollListener(new OnScrollListener() {
@@ -304,7 +303,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnUpload:
-                addFragment(new  FragmentPostUploadTab());
+                addFragment(new FragmentPostUploadTab());
                 break;
 
 
@@ -319,10 +318,10 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 addFragment(new FragmentActivityMonths());
                 break;
             case R.id.backarrowlayout:
-                ((HomeActivity)mContext).onBackPressed();
+                ((HomeActivity) mContext).onBackPressed();
                 break;
             case R.id.invite:
-                ((HomeActivity)mContext).inviteFriends();
+                ((HomeActivity) mContext).inviteFriends();
                 break;
         /*	case R.id.btn_photos:
                 noCollectionText.setVisibility(View.GONE);
@@ -399,13 +398,13 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 followerNotFound.setVisibility(View.GONE);
                 txtfollowers.setVisibility(View.GONE);
                 photo_not_found.setVisibility(View.GONE);
+                noCollectionText.setVisibility(View.VISIBLE);
                 hideDataNotFound();
                 layoutPeopleStoreBrand.setVisibility(View.GONE);
                 if (!HelpPreference.getInstance().getHelpCollection().equals("yes") && collectionLists.size() == 0) {
                     noCollectionText.setVisibility(View.VISIBLE);
                     collection_list.setVisibility(View.GONE);
-                }
-                else if (status.equals("yes") && collectionLists.size() == 0
+                } else if (status.equals("yes") && collectionLists.size() == 0
                         && user_id.equals(UserPreference.getInstance().getUserID())) {
                     tvEarnCreditsText.setVisibility(View.VISIBLE);
                     btnCreateCollection.setVisibility(View.VISIBLE);
@@ -416,8 +415,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                     tvEarnCreditsText.setVisibility(View.VISIBLE);
                     btnCreateCollection.setVisibility(View.VISIBLE);
                     bg_nocollection.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else if(collectionLists.size()>0){
                     noCollectionText.setVisibility(View.GONE);
                     collection_list.setVisibility(View.VISIBLE);
                     collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext, collectionLists, user_id, fragmentProfileView, null, null));
@@ -439,17 +437,25 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 txtfollowers.setVisibility(View.VISIBLE);
                 noCollectionText.setVisibility(View.GONE);
                 photo_not_found.setVisibility(View.GONE);
-                if (followersLists.size() == 0 &&(user_id.equals(UserPreference.getInstance().getUserID())))
+                if (followersLists.size() == 0 && (user_id.equals(UserPreference.getInstance().getUserID())))
                     followerNotFound.setVisibility(View.VISIBLE);
-                else {
+                else if(followersLists.size()>0) {
                     hideDataNotFound();
                     collection_list.setAdapter(new FragmentProfileFollowersAdapter(mContext, followersLists));
+                    collection_list.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " haven't any followers.");
+                    ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
+                    photo_not_found.setVisibility(View.VISIBLE);
                 }
 
 
                 imagesList.setVisibility(View.GONE);
+                txtfollowers.setVisibility(View.VISIBLE);
                 layoutPeopleStoreBrand.setVisibility(View.GONE);
-                collection_list.setVisibility(View.VISIBLE);
+              //  collection_list.setVisibility(View.VISIBLE);
                 follower_button.setImageResource(R.drawable.followerselected);
                 following_button.setImageResource(R.drawable.followinguser);
                 collection_button.setImageResource(R.drawable.profile_collection_tab);
@@ -469,11 +475,18 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                     collection_list.setVisibility(View.GONE);
                     noFollowingFound();
                     //showDataNotFound();
-                } else {
+                } else if(followingLists.size()>0){
                     hideDataNotFound();
                     collection_list.setVisibility(View.VISIBLE);
                     collection_list.setAdapter(new FragmentProfileFollowingAdapter(mContext, followingLists));
                 }
+                else
+                {
+                    ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " haven't any following list.");
+                    ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
+                    photo_not_found.setVisibility(View.VISIBLE);
+                }
+
                 if (isSelected.equalsIgnoreCase("store")) {
                     collection_list.setAdapter(null);
                     isFirstTime = true;
@@ -704,8 +717,8 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     }
 
     private void getCollectionStatus() {
-      // mProgressBarDialog = new ProgressBarDialog(mContext);
-       //mProgressBarDialog.show();
+        // mProgressBarDialog = new ProgressBarDialog(mContext);
+        //mProgressBarDialog.show();
         CheckPointsStatusApi checkPointsStatusApi = new CheckPointsStatusApi(new ServiceCallback() {
 
             @Override
@@ -719,7 +732,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-               //   mProgressBarDialog.dismiss();
+                //   mProgressBarDialog.dismiss();
                 getUserProfileDetail();
             }
         });
@@ -728,6 +741,8 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     }
 
     private void setDetails() {
+
+
         System.out.println("userDetails.get(0).getProfile_pic()    " + userDetails.get(0).getProfile_pic());
         if (!userDetails.get(0).getProfile_pic().equals(""))
             CommonUtility.setImage(mContext, userDetails.get(0).getProfile_pic(), user_profile_image, R.drawable.dum_user);
@@ -741,32 +756,28 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
         if (!TextUtils.isEmpty(userDetails.get(0).getDescription())) {
             descriptionTextView.setText(userDetails.get(0).getDescription());
-        }
+        } else if (product_list.size() == 0) {
 
+            if (user_id.equals(UserPreference.getInstance().getUserID())) {
 
-        else if (product_list.size() == 0 && ( user_id.equals(UserPreference.getInstance().getUserID())))
+                ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have yet to upload any posts, create one now !");
+                ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.VISIBLE);
+            } else {
+                ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " hasn't uploaded any photos.");
+                ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
+            }
             photo_not_found.setVisibility(View.VISIBLE);
-
-//        else if (product_list.size() == 0 && !( user_id.equals(UserPreference.getInstance().getUserID()))) {
-//            photo_not_found.setVisibility(View.GONE);
-//            otheruserclick.setText(user_profile_name.getText() + " hasn't uploaded any photos.");
-//            photosotherusernotfound.setVisibility(View.VISIBLE);
-//        }
-
-        else
+        } else {
             // System.out.print("abhishek kumar verma");
+
             collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext, collectionLists, user_id, fragmentProfileView, null, null));
 
-
-
-
-
-
-
-
-
-
-
+        }
+        if(product_list.size()>0)
+        {
+           imagesList.setVisibility(View.VISIBLE);
+            photo_not_found.setVisibility(View.GONE);
+        }
 //        collection_button.setText(collectionLists.size() + "\nCollections");
 //        follower_button.setText(followersLists.size() + "\nFollowers");
 //        following_button.setText(followingLists.size() + "\nFollowing");
@@ -804,7 +815,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
             backarrowlayout.setVisibility(View.VISIBLE);
             follow_btn.setText("FOLLOW ");
             follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_borderbg));
-            refreshProfile();
+           // refreshProfile();
             follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
         }
     }
@@ -1140,17 +1151,10 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     }
 
     private void getInspirationFeedList() {
-        collection_list.setVisibility(View.GONE);
-        imagesList.setVisibility(View.VISIBLE);
+
         mProgressBarDialog = new ProgressBarDialog(mContext);
         isLoading = !isLoading;
-        if (!isFirstTime) {
-            showFotter();
-        } else {
-            loadingTextView.setVisibility(View.VISIBLE);
-           mProgressBarDialog.show();
-            getUserProfileDetail();
-        }
+
 
         final InspirationFeedApi inspirationFeedApi = new InspirationFeedApi(new ServiceCallback() {
             @Override
@@ -1175,6 +1179,9 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 if (product_list.size() > 0 && isFirstTime) {
                     inspirationAdapter = new InspirationGridAdapter(mContext, product_list);
                     imagesList.setAdapter(inspirationAdapter);
+                    collection_list.setVisibility(View.GONE);
+                    imagesList.setVisibility(View.VISIBLE);
+                    photo_not_found.setVisibility(View.GONE);
                 } else if (inspirationAdapter != null) {
                     inspirationAdapter.setData(product_list);
                     inspirationAdapter.notifyDataSetChanged();
@@ -1208,6 +1215,14 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 //				inspirationFeedApi.cancel();
 //			}
 //		});
+        if (!isFirstTime) {
+            showFotter();
+        }
+        else {
+            loadingTextView.setVisibility(View.VISIBLE);
+            mProgressBarDialog.show();
+            getUserProfileDetail();
+        }
     }
 
     protected void showReloadFotter() {

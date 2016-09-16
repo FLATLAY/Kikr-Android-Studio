@@ -65,8 +65,8 @@ public class AppConstants {
 
     public static final int GOOGLE_WALLET_ENVIRONMENT = WalletConstants.ENVIRONMENT_SANDBOX;
 
-    public static final String TERMS_OF_USE_URL = Constants.getServerIp() + "terms/terms_of_use/";
-    public static final String PRIVACY_POLICY_URL = Constants.getServerIp() + "terms/privacy/";
+    public static final String TERMS_OF_USE_URL =  "https://flat-lay.com/#/terms";
+    public static final String PRIVACY_POLICY_URL = "https://flat-lay.com/#/privacy";
     public static final String LEGAL_URL = Constants.getServerIp() + "terms/legal/";
 
     public static final String NAME_SEPRATER = "<!!>";

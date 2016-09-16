@@ -25,7 +25,7 @@
             android:padding="12dip"
             android:lineSpacingExtra="3dp"
             android:textSize="@dimen/xx_large_text_size"
-        android:text="  Create a #Flatlay, tag collections &amp; become popular by sharing everywhere."/>
+        android:text="  Create a #Flatlay, tag \n collections &amp; become popular by sharing everywhere."/>
 
 </LinearLayout>
     </RelativeLayout>

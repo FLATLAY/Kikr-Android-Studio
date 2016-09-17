@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Volumes/Work/Vinod Work/Flatlay_Git/instagram_library/build/intermediates/res/merged/androidTest/debug/layout/activity_main.xml",
+        "source": "/Volumes/Work/Vinod Work/Flatlay_Git/instagram_library/build/intermediates/bundles/debug/res/layout/activity_main.xml"
+    },
+    {
         "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/instagram_library/build/intermediates/res/merged/androidTest/debug/layout/activity_main.xml",
         "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/instagram_library/build/intermediates/bundles/debug/res/layout/activity_main.xml"
     }

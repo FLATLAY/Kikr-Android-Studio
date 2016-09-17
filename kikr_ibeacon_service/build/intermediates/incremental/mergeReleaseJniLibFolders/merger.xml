@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_ibeacon_service/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/Volumes/Work/Vinod Work/FlatLay SVN/trunk/kikr_ibeacon_service/src/release/jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Volumes/Work/Vinod Work/Flatlay_Git/kikr_ibeacon_service/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/Volumes/Work/Vinod Work/Flatlay_Git/kikr_ibeacon_service/src/release/jniLibs"/></dataSet></merger>

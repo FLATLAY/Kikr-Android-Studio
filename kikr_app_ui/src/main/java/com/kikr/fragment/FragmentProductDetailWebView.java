@@ -1,19 +1,11 @@
 package com.kikr.fragment;
 
-import java.util.List;
-
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
-import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -22,15 +14,12 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.AbsoluteLayout;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -46,6 +35,11 @@ import com.kikrlib.bean.Product;
 import com.kikrlib.bean.TopDeals;
 import com.kikrlib.db.DatabaseHelper;
 import com.kikrlib.db.dao.FavoriteDealsDAO;
+
+import java.io.File;
+import java.util.List;
+
+import static com.google.android.gcm.GCMBaseIntentService.TAG;
 
 public class FragmentProductDetailWebView extends BaseFragment implements OnClickListener {
 	private View mainView;
@@ -91,7 +85,20 @@ public class FragmentProductDetailWebView extends BaseFragment implements OnClic
 	private class MyWebViewClient extends WebViewClient {
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
-			view.loadUrl(url);
+			if (url.endsWith(".pdf"))
+			{
+				String googleDocs = "https://docs.google.com/viewer?url=";
+				view.loadUrl(googleDocs + url);
+				// Load "url" in google docs
+			}
+			else
+			{
+				// Load all other urls normally.
+				view.loadUrl(url);
+			}
+		//	view.loadUrl(url);
+
+
 			return true;
 		}
 
@@ -118,11 +125,26 @@ public class FragmentProductDetailWebView extends BaseFragment implements OnClic
 		favorite_image = (ImageView) mainView.findViewById(R.id.favorite_image);
 		progressBarWebView = (ProgressBar) mainView.findViewById(R.id.progressBarWebView);
 		setUpWebViewDefaults(webView);
+		if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.JELLY_BEAN) //required for running javascript on android 4.1 or later
+		{
+			webView.getSettings().setAllowFileAccessFromFileURLs(true);
+			webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
+		}
+
 		webView.getSettings().setJavaScriptEnabled(true);
 		webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
 		webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 		webView.getSettings().setAppCacheEnabled(false);
+		webView.getSettings().setJavaScriptEnabled(true);
 		webView.getSettings().setDomStorageEnabled(true);
+
+		File f = new File(url);
+		if (f.exists() == true) {
+			Log.e(TAG, "Valid :" + url);
+		} else {
+			Log.e(TAG, "InValid :" + url);
+		}
+
 		webView.loadUrl(url);
 		webView.setWebViewClient(new MyWebViewClient());
 		btnBubble = (ImageButton) mainView.findViewById(R.id.btnBubble);

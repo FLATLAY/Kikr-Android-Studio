@@ -6,5 +6,13 @@
     {
         "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/libAndroidCrop/build/intermediates/res/merged/androidTest/debug/layout/crop__layout_done_cancel.xml",
         "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/libAndroidCrop/build/intermediates/bundles/debug/res/layout/crop__layout_done_cancel.xml"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/Flatlay_Git/libAndroidCrop/build/intermediates/res/merged/androidTest/debug/layout/crop__layout_done_cancel.xml",
+        "source": "/Volumes/Work/Vinod Work/Flatlay_Git/libAndroidCrop/build/intermediates/bundles/debug/res/layout/crop__layout_done_cancel.xml"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/Flatlay_Git/libAndroidCrop/build/intermediates/res/merged/androidTest/debug/layout/crop__activity_crop.xml",
+        "source": "/Volumes/Work/Vinod Work/Flatlay_Git/libAndroidCrop/build/intermediates/bundles/debug/res/layout/crop__activity_crop.xml"
     }
 ]

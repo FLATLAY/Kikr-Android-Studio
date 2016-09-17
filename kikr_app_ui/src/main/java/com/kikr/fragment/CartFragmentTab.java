@@ -34,11 +34,13 @@ public class CartFragmentTab extends BaseFragment implements ActionBar.TabListen
     public static boolean isCreateCollection;
     HashMap<Integer, String> mFragmentTags = new HashMap<>();
 boolean isFromOutside;
+   public static boolean isordered =false;
 
     public CartFragmentTab() {
         currentTab = 0;
         isCreateCollection = false;
         this.isFromOutside=false;
+        isordered=false;
     }
 
     public CartFragmentTab(int currenttab, boolean isCreateCollection) {
@@ -58,7 +60,7 @@ boolean isFromOutside;
     }
 
     public CartFragmentTab(boolean b) {
-       this.isFromOutside=b;
+       this.isordered=b;
         currentTab=3;
     }
 
@@ -115,7 +117,6 @@ boolean isFromOutside;
                 ((FragmentKikrWalletCard) mCustomPagerAdapter.getFragment(tag)).initData();
             if (tag == 2) {
                 ((FragmentKikrCreditsScreen) mCustomPagerAdapter.getFragment(tag)).initData();
-
                 // FragmentInspirationSection.inspirationSection.initData();
             }
             if (tag == 3)
@@ -188,7 +189,7 @@ boolean isFromOutside;
             Syso.info("uuuuuuuuuuu in getItem");
             switch (position) {
                 case 0:
-                    return Fragment.instantiate(mContext, FragmentUserCart.class.getName(), null);
+                    return Fragment.instantiate(mContext, new FragmentUserCart( true).getClass().getName(), null);
 
                 // return new FragmentFeatured();
 
@@ -199,9 +200,14 @@ boolean isFromOutside;
                     return Fragment.instantiate(mContext, FragmentKikrCreditsScreen.class.getName(), null);
                 case 3:
                     return Fragment.instantiate(mContext, FragmentAllOrders.class.getName(), null);
+                  //  return Fragment.instantiate(mContext, FragmentAllOrders.class.getName(), null);
 
                 default:
                     return Fragment.instantiate(mContext, FragmentAllOrders.class.getName(), null);
+//                    if(isordered==true)
+//                        return Fragment.instantiate(mContext, new FragmentAllOrders(true).getClass().getName(), null);
+//                        else
+//                    return Fragment.instantiate(mContext, FragmentUserCart.class.getName(), null);
                 // return new FragmentInspirationSection(true, UserPreference.getInstance().getUserID());
             }
         }

@@ -81,6 +81,7 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener, S
 	//	private FrameLayout loadingBar;
 	private TextView txtMessageBar;
 	FragmentUserCart fragmentUserCart;
+	boolean isFirstTimeFromMain=true;
 	private List<CartTwotapData> cartTwotapDataList = new ArrayList<CartTwotapData>();
 
 	@Override
@@ -89,6 +90,15 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener, S
 		return mainView;
 	}
 
+	public FragmentUserCart( boolean isFirstTime) {
+		this.isFirstTimeFromMain = true;
+
+
+	}
+public FragmentUserCart()
+{
+
+}
 	@Override
 	public void initUI(Bundle savedInstanceState) {
 		fragmentUserCart = this;
@@ -341,6 +351,9 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener, S
 	@Override
 	public void setData(Bundle bundle) {
 	//	initData();
+		if(isFirstTimeFromMain)
+			initData();
+		isFirstTimeFromMain=false;
 	}
 	public void initData() {
 		Handler handler = new Handler();

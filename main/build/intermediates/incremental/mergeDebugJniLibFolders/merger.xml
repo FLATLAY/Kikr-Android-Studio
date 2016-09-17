@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Volumes/Work/Vinod Work/FlatLay SVN/trunk/main/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/Volumes/Work/Vinod Work/FlatLay SVN/trunk/main/src/debug/jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Volumes/Work/Vinod Work/Flatlay_Git/main/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/Volumes/Work/Vinod Work/Flatlay_Git/main/src/debug/jniLibs"/></dataSet></merger>

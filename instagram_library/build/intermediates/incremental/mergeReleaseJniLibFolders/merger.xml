@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Volumes/Work/Vinod Work/FlatLay SVN/trunk/instagram_library/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/Volumes/Work/Vinod Work/FlatLay SVN/trunk/instagram_library/src/release/jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Volumes/Work/Vinod Work/Flatlay_Git/instagram_library/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/Volumes/Work/Vinod Work/Flatlay_Git/instagram_library/src/release/jniLibs"/></dataSet></merger>

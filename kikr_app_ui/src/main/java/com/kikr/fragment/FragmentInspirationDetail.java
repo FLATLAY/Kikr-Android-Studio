@@ -119,9 +119,17 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
     TextView tvViewAllComments;
     boolean isPostComment = false;
     String user_id;
+    boolean isFromNotification;
     public FragmentInspirationDetail(Inspiration inspiration, boolean isShowProducts) {
         this.inspiration = inspiration;
         this.isShowProducts = isShowProducts;
+        this.isFromNotification=false;
+    }
+
+    public FragmentInspirationDetail(Inspiration inspiration, boolean isShowProducts,boolean isFromNofication) {
+        this.inspiration = inspiration;
+        this.isShowProducts = isShowProducts;
+        this.isFromNotification=isFromNofication;
     }
 
     public FragmentInspirationDetail(String id) {
@@ -536,7 +544,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                     if (list.size() >= 0) {
                         commentList.addView(new InspirationCommentsUI(mContext, list, fragmentInspirationDetail).getView());
                     }
-                    if (inspiration == null) {
+                    if (inspiration == null || isFromNotification) {
                         inspiration = inspirationRes.getInspiration();
                     }
                     setDetails();
@@ -686,7 +694,12 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
 
     private void setDetails(InspirationRes inspirationRes) {
         commentCount.setText(inspirationRes.getComment_count());
-         descriptionText.setText(inspiration.getDescription());
+//        if (!TextUtils.isEmpty(inspiration.getDescription())) {
+//            descriptionText.setText(inspiration.getDescription());
+//        } else {
+//            descriptionText.setText("");
+//        }
+
         likeCount.setText(inspirationRes.getLike_count());
         likeId = "";
         if (!TextUtils.isEmpty(inspirationRes.getLike_id()))

@@ -24,7 +24,7 @@
         android:background="@drawable/socialloginbutton"
         android:lineSpacingExtra="3dp"
         android:textSize="@dimen/xx_large_text_size"
-        android:text="   Earn credits when friends or \n followers purchase items from  collections you create."/>
+        android:text="   Earn credits when friends \n or  followers purchase items from  collections you create."/>
 
 </LinearLayout>
     </RelativeLayout>

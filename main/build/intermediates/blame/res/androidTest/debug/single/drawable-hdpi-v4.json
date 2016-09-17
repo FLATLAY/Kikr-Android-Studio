@@ -1,7 +1,15 @@
 [
     {
+        "merged": "/Volumes/Work/Vinod Work/Flatlay_Git/main/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/direction_arrow.png",
+        "source": "/Volumes/Work/Vinod Work/Flatlay_Git/main/build/intermediates/bundles/debug/res/drawable-hdpi-v4/direction_arrow.png"
+    },
+    {
         "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/main/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/direction_arrow.png",
         "source": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/main/build/intermediates/bundles/debug/res/drawable-hdpi-v4/direction_arrow.png"
+    },
+    {
+        "merged": "/Volumes/Work/Vinod Work/Flatlay_Git/main/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/location_marker.png",
+        "source": "/Volumes/Work/Vinod Work/Flatlay_Git/main/build/intermediates/bundles/debug/res/drawable-hdpi-v4/location_marker.png"
     },
     {
         "merged": "/Volumes/Work/Vinod Work/FlatLay SVN/trunk/main/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/location_marker.png",

@@ -1,12 +1,8 @@
 package com.kikr.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.graphics.Paint;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -23,6 +19,9 @@ import com.kikr.utility.AppConstants;
 import com.kikr.utility.FontUtility;
 import com.kikrlib.db.UserPreference;
 import com.kikrlib.utils.AlertUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FragmentSupport extends BaseFragment implements OnClickListener{
 	TextView helpTextView,customerSupportTextView,termsTextView,privacyTextView,legalTextView, kikr_learn_more, textViewOutside;
@@ -67,9 +66,9 @@ public class FragmentSupport extends BaseFragment implements OnClickListener{
 	@Override
 	public void setClickListener() {
 		customerSupportTextView.setOnClickListener(this);
-		//termsTextView.setOnClickListener(this);
-		//privacyTextView.setOnClickListener(this);
-	//	legalTextView.setOnClickListener(this);
+		termsTextView.setOnClickListener(this);
+		privacyTextView.setOnClickListener(this);
+		legalTextView.setOnClickListener(this);
 		kikr_learn_more.setOnClickListener(this);
 	}
 
@@ -92,7 +91,8 @@ public class FragmentSupport extends BaseFragment implements OnClickListener{
 			break;
 		case R.id.legalTextView:
 			if(((HomeActivity) mContext).checkInternet())
-				addFragment(new FragmentProductDetailWebView(AppConstants.LEGAL_URL));
+			addFragment(new FragmentProductDetailWebView(AppConstants.LEGAL_URL));
+		//	readfile();
 			break;
 		case R.id.kikr_learn_more:
 				addFragment(new FragmentLearnMoreOutsideUS());
@@ -101,6 +101,8 @@ public class FragmentSupport extends BaseFragment implements OnClickListener{
 			break;
 		}
 	}
+
+
 
 	private void sendEmail() {
 		String[] TO = {"support@icetech-inc.com"};

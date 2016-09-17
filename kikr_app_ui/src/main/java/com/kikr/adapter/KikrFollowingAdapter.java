@@ -120,7 +120,7 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
                             inspirationsetvalue.setUser_id(usersend);
                             inspirationsetvalue.setInspiration_id(inspiration_id);
                             inspirationsetvalue.setDateadded(dateadded);
-                            addFragment(new FragmentInspirationDetail(inspirationsetvalue,true));
+                            addFragment(new FragmentInspirationDetail(inspirationsetvalue,false,true));
 
 //                          Map<String,String> map = new HashMap<String,String>();
 //                            Iterator iter = jObject.keys();

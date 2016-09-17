@@ -2,7 +2,6 @@ package com.kikr.utility;
 
 import com.google.android.gms.wallet.WalletConstants;
 import com.kikr.bubble.ChipBubbleText;
-import com.kikrlib.utils.Constants;
 
 public class AppConstants {
 
@@ -65,9 +64,12 @@ public class AppConstants {
 
     public static final int GOOGLE_WALLET_ENVIRONMENT = WalletConstants.ENVIRONMENT_SANDBOX;
 
-    public static final String TERMS_OF_USE_URL = Constants.getServerIp() + "terms/terms_of_use/";
-    public static final String PRIVACY_POLICY_URL = Constants.getServerIp() + "terms/privacy/";
-    public static final String LEGAL_URL = Constants.getServerIp() + "terms/legal/";
+    public static final String TERMS_OF_USE_URL =  "https://flat-lay.com/#/terms";
+    public static final String PRIVACY_POLICY_URL = "https://flat-lay.com/#/privacy";
+
+  //  String uriPath = "android.resource://com.kikr/"+ R.raw.flatlaylegal;
+    public static final String LEGAL_URL = "file:///android_asset/flatlaylegalfile.html";
+
 
     public static final String NAME_SEPRATER = "<!!>";
 

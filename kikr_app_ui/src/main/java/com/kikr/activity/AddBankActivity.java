@@ -42,6 +42,8 @@ public class AddBankActivity extends BaseActivity implements OnClickListener, Se
 		setContentView(R.layout.activity_add_bank);
 		if(checkInternet())
 			getBankList();
+
+		Syso.debug("testing");
 	}
 	
 	

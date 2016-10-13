@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/walletCardLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="0dp"
+    android:visibility="visible" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop=".5dp"
+        android:background="@color/btn_gray"></View>
+    <ImageView
+        android:id="@+id/cardImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@null"
+        />
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:layout_below="@id/cardImageView"-->
+    <!--android:background="@color/gray"/>-->
+
+
+
+</RelativeLayout>

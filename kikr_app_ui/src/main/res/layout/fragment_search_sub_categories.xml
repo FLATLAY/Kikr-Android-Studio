@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.flatlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!--
+    <ListView
+        android:id="@+id/productBasedOnBrandList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" >
+    </ListView>
+
+-->
+
+
+    <RelativeLayout
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/itemNotFound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+
+            android:text="Nothing found . . ."
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/rel_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="2dp">
+
+            <RelativeLayout
+
+                android:id="@+id/llheading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/btn_green"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_centerHorizontal="true"
+
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/category_image"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/kikrhighlight"
+                        android:visibility="gone" />
+
+
+                    <com.flatlay.utility.AutoTextSize
+                        android:id="@+id/tvCategoryName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="Jewelry"
+                        android:textColor="@color/white"
+                        android:textSize="18dp"
+
+                        app:minTextSize="8dp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/llheading"
+                android:background="@color/btn_greendark"></View>
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="165dp"
+                android:layout_below="@+id/line"
+                android:layout_margin="0dp"
+                android:background="@color/btn_green"
+                android:padding="0dp"
+                android:scrollbarSize="3dp"
+                android:scrollbarThumbHorizontal="@drawable/horizontal_scroll_color"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0dp"
+                    android:orientation="horizontal"
+                    android:padding="0dp"
+                    android:scrollbars="none">
+
+                    <GridView
+                        android:id="@+id/gridSubCategories"
+                        android:layout_width="700dp"
+                        android:layout_height="165dp"
+                        android:layout_gravity="left"
+                        android:gravity="left|center_vertical"
+                        android:scrollbars="horizontal"></GridView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <com.flatlay.ui.HeaderGridView
+                android:id="@+id/productBasedOnBrandList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/horizontalScrollView"
+                android:longClickable="true"
+                android:numColumns="3" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/transparentOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D9000000"
+        android:clickable="true"
+        android:gravity="center"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/filters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="32dp"
+            android:background="@color/aquamarine2"
+            android:capitalize="words"
+            android:gravity="center"
+            android:padding="16dp"
+            android:singleLine="true"
+            android:text="FILTERS"
+            android:textColor="@color/white"
+            android:textSize="@dimen/xxx_large_text_size" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/filters">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:text="Categories"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x_large_text_size"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <RelativeLayout
+                        android:id="@+id/checkMenLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/txtMen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:text="Men"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/checkMen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/checkWomenLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <CheckBox
+                            android:id="@+id/checkWomen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                        <TextView
+                            android:id="@+id/txtWomen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="Women"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <RelativeLayout
+                        android:id="@+id/checkAccessoriesLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/txtAccessories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:text="Accessories"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/checkAccessories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/checkOnSaleLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <CheckBox
+                            android:id="@+id/checkOnSale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                        <TextView
+                            android:id="@+id/txtOnSale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="On Sale"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="32dp"
+                    android:text="Price"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x_large_text_size" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:id="@+id/check25Layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/txtCheck25"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:text="$0 - $25"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/check25"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/check50Layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <CheckBox
+                            android:id="@+id/check50"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                        <TextView
+                            android:id="@+id/txtCheck50"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="$25 - $50"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:id="@+id/check100Layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/txtCheck100"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:text="$50 - $100"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/check100"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/check150Layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <CheckBox
+                            android:id="@+id/check150"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                        <TextView
+                            android:id="@+id/txtCheck150"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="$100 - $150"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:id="@+id/check200Layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/txtCheck200"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:text="$150 - $200"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/check200"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/check500Layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <CheckBox
+                            android:id="@+id/check500"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                        <TextView
+                            android:id="@+id/txtCheck500"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="$200 - $500"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:id="@+id/check750Layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/txtCheck750"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:text="$500 - $750"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/check750"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/check750MoreLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <CheckBox
+                            android:id="@+id/check750More"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:button="@drawable/check_selector"
+                            android:clickable="false"
+                            android:text="" />
+
+                        <TextView
+                            android:id="@+id/txtCheck750More"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="$750+"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/applyButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="8dp"
+                    android:text="APPLY"
+                    android:textColor="@color/gray2"
+                    android:textSize="@dimen/large_text_size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/imgButtonFilter"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="15dp"
+        android:background="@drawable/fabcircle"
+        android:src="@drawable/filter"
+        android:visibility="visible" />
+
+</FrameLayout>

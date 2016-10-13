@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Kikr-Android-Studio - Copy.iml" filepath="$PROJECT_DIR$/Kikr-Android-Studio - Copy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/instagram_library/instagram_library.iml" filepath="$PROJECT_DIR$/instagram_library/instagram_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kikr_FacebookSDK/kikr_FacebookSDK.iml" filepath="$PROJECT_DIR$/kikr_FacebookSDK/kikr_FacebookSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kikr_app_services/kikr_app_services.iml" filepath="$PROJECT_DIR$/kikr_app_services/kikr_app_services.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kikr_app_ui/kikr_app_ui.iml" filepath="$PROJECT_DIR$/kikr_app_ui/kikr_app_ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kikr_ibeacon_service/kikr_ibeacon_service.iml" filepath="$PROJECT_DIR$/kikr_ibeacon_service/kikr_ibeacon_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kikr_menudrawer_lib/kikr_menudrawer_lib.iml" filepath="$PROJECT_DIR$/kikr_menudrawer_lib/kikr_menudrawer_lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libAndroidCrop/libAndroidCrop2.iml" filepath="$PROJECT_DIR$/libAndroidCrop/libAndroidCrop2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/main/main.iml" filepath="$PROJECT_DIR$/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pdk/pdk2.iml" filepath="$PROJECT_DIR$/pdk/pdk2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photo-crop-library/photo-crop-library.iml" filepath="$PROJECT_DIR$/photo-crop-library/photo-crop-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/squarecamera/squarecamera.iml" filepath="$PROJECT_DIR$/squarecamera/squarecamera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ucrop/ucrop.iml" filepath="$PROJECT_DIR$/ucrop/ucrop.iml" />
+    </modules>
+  </component>
+</project>

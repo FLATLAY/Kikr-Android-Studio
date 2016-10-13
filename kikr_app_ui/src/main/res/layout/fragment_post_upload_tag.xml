@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:TagsEditText="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <FrameLayout
+        android:id="@+id/product_layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/searchbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgDelete">
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="3dp"
+                android:src="@drawable/search_icon" />
+
+            <com.flatlay.chip.TagsEditText
+                android:id="@+id/searchMultiText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@+id/imgSearch"
+                android:background="@android:color/transparent"
+                android:cursorVisible="true"
+                android:gravity="center_vertical"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                TagsEditText:allowSpaceInTag="true"
+                TagsEditText:tagsCloseImageRight="@drawable/tag_close" />
+
+            <ProgressBar
+                android:id="@+id/progressProductBar"
+                style="?android:attr/progressDrawable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dp"
+
+                android:progressDrawable="@drawable/progress_bar_green"
+
+                android:visibility="gone"></ProgressBar>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/searchMultiText"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/imgSearch"
+                android:background="@color/gray" />
+
+
+        </RelativeLayout>
+
+
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/collectionListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tvTagWithoutTag"
+        android:layout_below="@+id/product_layout_main"
+        android:divider="@color/white"
+        android:dividerHeight="0.5dp"
+        android:paddingBottom="5dp"
+
+        android:scrollbarSize="1dp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tvTagWithoutTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        android:text="Post Without Tag"
+        android:textColor="@color/antique_white"
+        android:textSize="15dp"
+        android:visibility="visible" />
+
+
+    <LinearLayout
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:background="#CC000000"
+        android:orientation="vertical"
+        android:padding="0dp"
+        android:visibility="gone">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <ImageView
+                android:id="@+id/imgDelete"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/twohand"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/square_linear_layout"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/txt1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:text="Almost There!"
+                        android:textColor="#07948c"
+                        android:textSize="22dp" />
+
+                    <TextView
+                        android:id="@+id/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:text="Getting your post ready....."
+                        android:textColor="#07948c"
+                        android:textSize="18dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarCollection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="12dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_ract_white"
+    android:gravity="center"
+
+
+    android:orientation="vertical" >
+
+
+    <TextView
+        android:id="@+id/viewCollectionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/padding_xlarge"
+        android:text="@string/view_collection_text"
+        android:textColor="@color/header_background"
+        android:textStyle="bold"
+        android:textSize="@dimen/large_text_size" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+    <TextView
+        android:id="@+id/shareCollectionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/padding_xlarge"
+        android:text="@string/share_collection_text"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/large_text_size" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+
+    <TextView
+        android:id="@+id/renameCollectionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/padding_xlarge"
+        android:text="@string/rename_collection_text"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/large_text_size" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+
+
+
+    <TextView
+        android:id="@+id/deleteProductFromCollectionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/padding_xlarge"
+        android:text="@string/delete_product_from_collection_text"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/large_text_size" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+
+    <TextView
+        android:id="@+id/deleteCollectionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/padding_xlarge"
+        android:text="@string/delete_collection_text"
+        android:textColor="@color/header_background"
+        android:textStyle="bold"
+
+        android:textSize="@dimen/large_text_size" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+
+
+
+    <TextView
+        android:id="@+id/cancelText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/padding_xlarge"
+        android:text="@string/cancel_text"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:background="@drawable/round_ract_white"
+        android:textSize="@dimen/large_text_size" />
+
+</LinearLayout>

@@ -1,0 +1,544 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Risky Project Location:
+-----------------------
+The tools *should* handle project locations in any directory. However,
+due to bugs, placing projects in directories containing spaces in the
+path, or characters like ", ' and &, have had issues. We're working to
+eliminate these bugs, but to save yourself headaches you may want to
+move your project to a location where this is not a problem.
+F:\Mobikasa\Kikr Android Studio\Kikr-Android-Studio
+                -       -                          
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From Kikr_FacebookSDK:
+* build.gradle
+* build.xml
+From Kikr_app_services:
+* ic_launcher-web.png
+* proguard-project.txt
+From Kikr_app_ui:
+* fabric.properties
+* ic_launcher-web.png
+* kit-libs\
+* kit-libs\com-crashlytics-sdk-android_answers\
+* kit-libs\com-crashlytics-sdk-android_answers\.classpath
+* kit-libs\com-crashlytics-sdk-android_answers\.project
+* kit-libs\com-crashlytics-sdk-android_answers\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_answers\bin\
+* kit-libs\com-crashlytics-sdk-android_answers\bin\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_answers\bin\classes\
+* kit-libs\com-crashlytics-sdk-android_answers\bin\classes\com\
+* kit-libs\com-crashlytics-sdk-android_answers\bin\classes\com\crashlytics\
+* kit-libs\com-crashlytics-sdk-android_answers\bin\classes\com\crashlytics\android\
+* kit-libs\com-crashlytics-sdk-android_answers\bin\classes\com\crashlytics\android\answers\
+* kit-libs\com-crashlytics-sdk-android_answers\bin\classes\com\crashlytics\android\answers\BuildConfig.class
+* kit-libs\com-crashlytics-sdk-android_answers\bin\com-crashlytics-sdk-android_answers.jar
+* kit-libs\com-crashlytics-sdk-android_answers\bin\jarlist.cache
+* kit-libs\com-crashlytics-sdk-android_answers\build.xml
+* kit-libs\com-crashlytics-sdk-android_answers\gen\
+* kit-libs\com-crashlytics-sdk-android_answers\gen\com\
+* kit-libs\com-crashlytics-sdk-android_answers\gen\com\crashlytics\
+* kit-libs\com-crashlytics-sdk-android_answers\gen\com\crashlytics\android\
+* kit-libs\com-crashlytics-sdk-android_answers\gen\com\crashlytics\android\answers\
+* kit-libs\com-crashlytics-sdk-android_answers\gen\com\crashlytics\android\answers\BuildConfig.java
+* kit-libs\com-crashlytics-sdk-android_answers\kit-version.properties
+* kit-libs\com-crashlytics-sdk-android_answers\libs\
+* kit-libs\com-crashlytics-sdk-android_answers\libs\com-crashlytics-sdk-android_answers-classes.jar
+* kit-libs\com-crashlytics-sdk-android_answers\project.properties
+* kit-libs\com-crashlytics-sdk-android_beta\
+* kit-libs\com-crashlytics-sdk-android_beta\.classpath
+* kit-libs\com-crashlytics-sdk-android_beta\.project
+* kit-libs\com-crashlytics-sdk-android_beta\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_beta\aapt\
+* kit-libs\com-crashlytics-sdk-android_beta\aapt\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_beta\bin\
+* kit-libs\com-crashlytics-sdk-android_beta\bin\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_beta\bin\classes\
+* kit-libs\com-crashlytics-sdk-android_beta\bin\classes\com\
+* kit-libs\com-crashlytics-sdk-android_beta\bin\classes\com\crashlytics\
+* kit-libs\com-crashlytics-sdk-android_beta\bin\classes\com\crashlytics\android\
+* kit-libs\com-crashlytics-sdk-android_beta\bin\classes\com\crashlytics\android\beta\
+* kit-libs\com-crashlytics-sdk-android_beta\bin\classes\com\crashlytics\android\beta\BuildConfig.class
+* kit-libs\com-crashlytics-sdk-android_beta\bin\com-crashlytics-sdk-android_beta.jar
+* kit-libs\com-crashlytics-sdk-android_beta\bin\jarlist.cache
+* kit-libs\com-crashlytics-sdk-android_beta\build.xml
+* kit-libs\com-crashlytics-sdk-android_beta\gen\
+* kit-libs\com-crashlytics-sdk-android_beta\gen\com\
+* kit-libs\com-crashlytics-sdk-android_beta\gen\com\crashlytics\
+* kit-libs\com-crashlytics-sdk-android_beta\gen\com\crashlytics\android\
+* kit-libs\com-crashlytics-sdk-android_beta\gen\com\crashlytics\android\beta\
+* kit-libs\com-crashlytics-sdk-android_beta\gen\com\crashlytics\android\beta\BuildConfig.java
+* kit-libs\com-crashlytics-sdk-android_beta\kit-version.properties
+* kit-libs\com-crashlytics-sdk-android_beta\libs\
+* kit-libs\com-crashlytics-sdk-android_beta\libs\com-crashlytics-sdk-android_beta-classes.jar
+* kit-libs\com-crashlytics-sdk-android_beta\project.properties
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\.classpath
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\.project
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\aapt\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\aapt\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\bin\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\bin\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\bin\classes\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\bin\classes\com\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\bin\classes\com\crashlytics\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\bin\classes\com\crashlytics\android\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\bin\classes\com\crashlytics\android\core\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\bin\classes\com\crashlytics\android\core\BuildConfig.class
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\bin\com-crashlytics-sdk-android_crashlytics-core.jar
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\bin\jarlist.cache
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\build.xml
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\gen\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\gen\com\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\gen\com\crashlytics\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\gen\com\crashlytics\android\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\gen\com\crashlytics\android\core\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\gen\com\crashlytics\android\core\BuildConfig.java
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\kit-version.properties
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\libs\
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\libs\com-crashlytics-sdk-android_crashlytics-core-classes.jar
+* kit-libs\com-crashlytics-sdk-android_crashlytics-core\project.properties
+* kit-libs\com-crashlytics-sdk-android_crashlytics\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\.classpath
+* kit-libs\com-crashlytics-sdk-android_crashlytics\.project
+* kit-libs\com-crashlytics-sdk-android_crashlytics\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_crashlytics\aapt\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\aapt\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_crashlytics\bin\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\bin\AndroidManifest.xml
+* kit-libs\com-crashlytics-sdk-android_crashlytics\bin\classes\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\bin\classes\com\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\bin\classes\com\crashlytics\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\bin\classes\com\crashlytics\android\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\bin\classes\com\crashlytics\android\BuildConfig.class
+* kit-libs\com-crashlytics-sdk-android_crashlytics\bin\com-crashlytics-sdk-android_crashlytics.jar
+* kit-libs\com-crashlytics-sdk-android_crashlytics\bin\jarlist.cache
+* kit-libs\com-crashlytics-sdk-android_crashlytics\build.xml
+* kit-libs\com-crashlytics-sdk-android_crashlytics\gen\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\gen\com\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\gen\com\crashlytics\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\gen\com\crashlytics\android\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\gen\com\crashlytics\android\BuildConfig.java
+* kit-libs\com-crashlytics-sdk-android_crashlytics\kit-version.properties
+* kit-libs\com-crashlytics-sdk-android_crashlytics\libs\
+* kit-libs\com-crashlytics-sdk-android_crashlytics\libs\com-crashlytics-sdk-android_crashlytics-classes.jar
+* kit-libs\com-crashlytics-sdk-android_crashlytics\project.properties
+* kit-libs\io-fabric-sdk-android_fabric\
+* kit-libs\io-fabric-sdk-android_fabric\.classpath
+* kit-libs\io-fabric-sdk-android_fabric\.project
+* kit-libs\io-fabric-sdk-android_fabric\AndroidManifest.xml
+* kit-libs\io-fabric-sdk-android_fabric\aapt\
+* kit-libs\io-fabric-sdk-android_fabric\aapt\AndroidManifest.xml
+* kit-libs\io-fabric-sdk-android_fabric\bin\
+* kit-libs\io-fabric-sdk-android_fabric\bin\AndroidManifest.xml
+* kit-libs\io-fabric-sdk-android_fabric\bin\classes\
+* kit-libs\io-fabric-sdk-android_fabric\bin\classes\io\
+* kit-libs\io-fabric-sdk-android_fabric\bin\classes\io\fabric\
+* kit-libs\io-fabric-sdk-android_fabric\bin\classes\io\fabric\sdk\
+* kit-libs\io-fabric-sdk-android_fabric\bin\classes\io\fabric\sdk\android\
+* kit-libs\io-fabric-sdk-android_fabric\bin\classes\io\fabric\sdk\android\BuildConfig.class
+* kit-libs\io-fabric-sdk-android_fabric\bin\io-fabric-sdk-android_fabric.jar
+* kit-libs\io-fabric-sdk-android_fabric\bin\jarlist.cache
+* kit-libs\io-fabric-sdk-android_fabric\build.xml
+* kit-libs\io-fabric-sdk-android_fabric\gen\
+* kit-libs\io-fabric-sdk-android_fabric\gen\io\
+* kit-libs\io-fabric-sdk-android_fabric\gen\io\fabric\
+* kit-libs\io-fabric-sdk-android_fabric\gen\io\fabric\sdk\
+* kit-libs\io-fabric-sdk-android_fabric\gen\io\fabric\sdk\android\
+* kit-libs\io-fabric-sdk-android_fabric\gen\io\fabric\sdk\android\BuildConfig.java
+* kit-libs\io-fabric-sdk-android_fabric\kit-version.properties
+* kit-libs\io-fabric-sdk-android_fabric\libs\
+* kit-libs\io-fabric-sdk-android_fabric\libs\io-fabric-sdk-android_fabric-classes.jar
+* kit-libs\io-fabric-sdk-android_fabric\project.properties
+* kits.properties
+* proguard-project.txt
+From Kikr_ibeacon_service:
+* .gitignore
+* LICENSE
+* NOTICE
+* README.md
+* proguard-project.txt
+* scripts\
+* scripts\generatejavadoc
+From Kikr_menudrawer_lib:
+* .gitignore
+From LibAndroidCrop:
+* proguard-project.txt
+From com-crashlytics-sdk-android_answers:
+* build.xml
+* kit-version.properties
+From com-crashlytics-sdk-android_beta:
+* aapt\
+* aapt\AndroidManifest.xml
+* build.xml
+* kit-version.properties
+From com-crashlytics-sdk-android_crashlytics:
+* aapt\
+* aapt\AndroidManifest.xml
+* build.xml
+* kit-version.properties
+From com-crashlytics-sdk-android_crashlytics-core:
+* aapt\
+* aapt\AndroidManifest.xml
+* build.xml
+* kit-version.properties
+From io-fabric-sdk-android_fabric:
+* aapt\
+* aapt\AndroidManifest.xml
+* build.xml
+* kit-version.properties
+From kikr_lib_circle_page_indicator:
+* pom.xml
+From main:
+* java\
+* java\com\
+* java\com\almeros\
+* java\com\almeros\android\
+* java\com\almeros\android\multitouch\
+* java\com\almeros\android\multitouch\BaseGestureDetector.java
+* java\com\almeros\android\multitouch\MoveGestureDetector.java
+* java\com\almeros\android\multitouch\RotateGestureDetector.java
+* java\com\almeros\android\multitouch\ShoveGestureDetector.java
+* java\com\almeros\android\multitouch\TwoFingerGestureDetector.java
+* java\com\cocoahero\
+* java\com\cocoahero\android\
+* java\com\cocoahero\android\geojson\
+* java\com\cocoahero\android\geojson\Feature.java
+* java\com\cocoahero\android\geojson\FeatureCollection.java
+* java\com\cocoahero\android\geojson\GeoJSON.java
+* java\com\cocoahero\android\geojson\GeoJSONObject.java
+* java\com\cocoahero\android\geojson\Geometry.java
+* java\com\cocoahero\android\geojson\GeometryCollection.java
+* java\com\cocoahero\android\geojson\LineString.java
+* java\com\cocoahero\android\geojson\MultiLineString.java
+* java\com\cocoahero\android\geojson\MultiPoint.java
+* java\com\cocoahero\android\geojson\MultiPolygon.java
+* java\com\cocoahero\android\geojson\Point.java
+* java\com\cocoahero\android\geojson\Polygon.java
+* java\com\cocoahero\android\geojson\Position.java
+* java\com\cocoahero\android\geojson\PositionList.java
+* java\com\cocoahero\android\geojson\Ring.java
+* java\com\cocoahero\android\geojson\util\
+* java\com\cocoahero\android\geojson\util\JSONUtils.java
+* java\com\cocoahero\android\geojson\util\ListUtils.java
+* java\com\cocoahero\android\geojson\util\StreamUtils.java
+* java\com\mapbox\
+* java\com\mapbox\mapboxsdk\
+* java\com\mapbox\mapboxsdk\api\
+* java\com\mapbox\mapboxsdk\api\ILatLng.java
+* java\com\mapbox\mapboxsdk\clustering\
+* java\com\mapbox\mapboxsdk\clustering\Cluster.java
+* java\com\mapbox\mapboxsdk\clustering\ClusterItem.java
+* java\com\mapbox\mapboxsdk\clustering\algo\
+* java\com\mapbox\mapboxsdk\clustering\algo\Algorithm.java
+* java\com\mapbox\mapboxsdk\clustering\algo\NonHierarchicalDistanceBasedAlgorithm.java
+* java\com\mapbox\mapboxsdk\clustering\algo\PreCachingAlgorithmDecorator.java
+* java\com\mapbox\mapboxsdk\clustering\algo\StaticCluster.java
+* java\com\mapbox\mapboxsdk\clustering\geometry\
+* java\com\mapbox\mapboxsdk\clustering\geometry\Bounds.java
+* java\com\mapbox\mapboxsdk\clustering\geometry\Point.java
+* java\com\mapbox\mapboxsdk\clustering\projection\
+* java\com\mapbox\mapboxsdk\clustering\projection\Point.java
+* java\com\mapbox\mapboxsdk\clustering\projection\SphericalMercatorProjection.java
+* java\com\mapbox\mapboxsdk\clustering\quadtree\
+* java\com\mapbox\mapboxsdk\clustering\quadtree\PointQuadTree.java
+* java\com\mapbox\mapboxsdk\constants\
+* java\com\mapbox\mapboxsdk\constants\GeoConstants.java
+* java\com\mapbox\mapboxsdk\constants\MapboxConstants.java
+* java\com\mapbox\mapboxsdk\constants\MathConstants.java
+* java\com\mapbox\mapboxsdk\events\
+* java\com\mapbox\mapboxsdk\events\DelayedMapListener.java
+* java\com\mapbox\mapboxsdk\events\MapEvent.java
+* java\com\mapbox\mapboxsdk\events\MapListener.java
+* java\com\mapbox\mapboxsdk\events\RotateEvent.java
+* java\com\mapbox\mapboxsdk\events\ScrollEvent.java
+* java\com\mapbox\mapboxsdk\events\ZoomEvent.java
+* java\com\mapbox\mapboxsdk\exceptions\
+* java\com\mapbox\mapboxsdk\exceptions\MissingAttributeException.java
+* java\com\mapbox\mapboxsdk\exceptions\MissingTokenException.java
+* java\com\mapbox\mapboxsdk\exceptions\OfflineDatabaseException.java
+* java\com\mapbox\mapboxsdk\geometry\
+* java\com\mapbox\mapboxsdk\geometry\BoundingBox.java
+* java\com\mapbox\mapboxsdk\geometry\CoordinateRegion.java
+* java\com\mapbox\mapboxsdk\geometry\CoordinateSpan.java
+* java\com\mapbox\mapboxsdk\geometry\LatLng.java
+* java\com\mapbox\mapboxsdk\offline\
+* java\com\mapbox\mapboxsdk\offline\OfflineDatabaseHandler.java
+* java\com\mapbox\mapboxsdk\offline\OfflineDatabaseManager.java
+* java\com\mapbox\mapboxsdk\offline\OfflineMapDatabase.java
+* java\com\mapbox\mapboxsdk\offline\OfflineMapDownloader.java
+* java\com\mapbox\mapboxsdk\offline\OfflineMapDownloaderListener.java
+* java\com\mapbox\mapboxsdk\offline\OfflineMapURLGenerator.java
+* java\com\mapbox\mapboxsdk\overlay\
+* java\com\mapbox\mapboxsdk\overlay\ClusterMarker.java
+* java\com\mapbox\mapboxsdk\overlay\GeoJSONPainter.java
+* java\com\mapbox\mapboxsdk\overlay\GpsLocationProvider.java
+* java\com\mapbox\mapboxsdk\overlay\IOverlayMenuProvider.java
+* java\com\mapbox\mapboxsdk\overlay\Icon.java
+* java\com\mapbox\mapboxsdk\overlay\ItemizedIconOverlay.java
+* java\com\mapbox\mapboxsdk\overlay\ItemizedOverlay.java
+* java\com\mapbox\mapboxsdk\overlay\MapEventsOverlay.java
+* java\com\mapbox\mapboxsdk\overlay\MapEventsReceiver.java
+* java\com\mapbox\mapboxsdk\overlay\Marker.java
+* java\com\mapbox\mapboxsdk\overlay\OfflineMapTileProvider.java
+* java\com\mapbox\mapboxsdk\overlay\Overlay.java
+* java\com\mapbox\mapboxsdk\overlay\OverlayManager.java
+* java\com\mapbox\mapboxsdk\overlay\PathOverlay.java
+* java\com\mapbox\mapboxsdk\overlay\SafeDrawOverlay.java
+* java\com\mapbox\mapboxsdk\overlay\TilesOverlay.java
+* java\com\mapbox\mapboxsdk\overlay\UserLocationOverlay.java
+* java\com\mapbox\mapboxsdk\tileprovider\
+* java\com\mapbox\mapboxsdk\tileprovider\IMapTileProviderCallback.java
+* java\com\mapbox\mapboxsdk\tileprovider\IRegisterReceiver.java
+* java\com\mapbox\mapboxsdk\tileprovider\MapTile.java
+* java\com\mapbox\mapboxsdk\tileprovider\MapTileCache.java
+* java\com\mapbox\mapboxsdk\tileprovider\MapTileLayerArray.java
+* java\com\mapbox\mapboxsdk\tileprovider\MapTileLayerBase.java
+* java\com\mapbox\mapboxsdk\tileprovider\MapTileLayerBasic.java
+* java\com\mapbox\mapboxsdk\tileprovider\MapTileRequestState.java
+* java\com\mapbox\mapboxsdk\tileprovider\constants\
+* java\com\mapbox\mapboxsdk\tileprovider\constants\TileLayerConstants.java
+* java\com\mapbox\mapboxsdk\tileprovider\modules\
+* java\com\mapbox\mapboxsdk\tileprovider\modules\ConfigurablePriorityThreadFactory.java
+* java\com\mapbox\mapboxsdk\tileprovider\modules\IArchiveFile.java
+* java\com\mapbox\mapboxsdk\tileprovider\modules\MBTilesFileArchive.java
+* java\com\mapbox\mapboxsdk\tileprovider\modules\MapTileDownloader.java
+* java\com\mapbox\mapboxsdk\tileprovider\modules\MapTileModuleLayerBase.java
+* java\com\mapbox\mapboxsdk\tileprovider\modules\NetworkAvailabilityCheck.java
+* java\com\mapbox\mapboxsdk\tileprovider\tilesource\
+* java\com\mapbox\mapboxsdk\tileprovider\tilesource\BingTileLayer.java
+* java\com\mapbox\mapboxsdk\tileprovider\tilesource\ITileLayer.java
+* java\com\mapbox\mapboxsdk\tileprovider\tilesource\MBTilesLayer.java
+* java\com\mapbox\mapboxsdk\tileprovider\tilesource\MapboxTileLayer.java
+* java\com\mapbox\mapboxsdk\tileprovider\tilesource\TileJsonTileLayer.java
+* java\com\mapbox\mapboxsdk\tileprovider\tilesource\TileLayer.java
+* java\com\mapbox\mapboxsdk\tileprovider\tilesource\TileMillLayer.java
+* java\com\mapbox\mapboxsdk\tileprovider\tilesource\WebSourceTileLayer.java
+* java\com\mapbox\mapboxsdk\tileprovider\util\
+* java\com\mapbox\mapboxsdk\tileprovider\util\LowMemoryException.java
+* java\com\mapbox\mapboxsdk\tileprovider\util\SimpleInvalidationHandler.java
+* java\com\mapbox\mapboxsdk\tileprovider\util\SimpleRegisterReceiver.java
+* java\com\mapbox\mapboxsdk\tileprovider\util\StreamUtils.java
+* java\com\mapbox\mapboxsdk\util\
+* java\com\mapbox\mapboxsdk\util\AppUtils.java
+* java\com\mapbox\mapboxsdk\util\BitmapUtils.java
+* java\com\mapbox\mapboxsdk\util\DataLoadingUtils.java
+* java\com\mapbox\mapboxsdk\util\GeoUtils.java
+* java\com\mapbox\mapboxsdk\util\GeometryMath.java
+* java\com\mapbox\mapboxsdk\util\MapboxUtils.java
+* java\com\mapbox\mapboxsdk\util\MathUtils.java
+* java\com\mapbox\mapboxsdk\util\NetworkLocationIgnorer.java
+* java\com\mapbox\mapboxsdk\util\NetworkUtils.java
+* java\com\mapbox\mapboxsdk\util\TileLooper.java
+* java\com\mapbox\mapboxsdk\util\constants\
+* java\com\mapbox\mapboxsdk\util\constants\UtilConstants.java
+* java\com\mapbox\mapboxsdk\views\
+* java\com\mapbox\mapboxsdk\views\InfoWindow.java
+* java\com\mapbox\mapboxsdk\views\MapController.java
+* java\com\mapbox\mapboxsdk\views\MapView.java
+* java\com\mapbox\mapboxsdk\views\MapViewGestureDetectorListener.java
+* java\com\mapbox\mapboxsdk\views\MapViewListener.java
+* java\com\mapbox\mapboxsdk\views\MapViewRotateGestureDetectorListener.java
+* java\com\mapbox\mapboxsdk\views\MapViewScaleGestureDetectorListener.java
+* java\com\mapbox\mapboxsdk\views\NumberBitmapDrawable.java
+* java\com\mapbox\mapboxsdk\views\TipView.java
+* java\com\mapbox\mapboxsdk\views\safecanvas\
+* java\com\mapbox\mapboxsdk\views\safecanvas\ISafeCanvas.java
+* java\com\mapbox\mapboxsdk\views\safecanvas\SafeBitmapShader.java
+* java\com\mapbox\mapboxsdk\views\safecanvas\SafeDashPathEffect.java
+* java\com\mapbox\mapboxsdk\views\safecanvas\SafePaint.java
+* java\com\mapbox\mapboxsdk\views\safecanvas\SafeTranslatedCanvas.java
+* java\com\mapbox\mapboxsdk\views\safecanvas\SafeTranslatedPath.java
+* java\com\mapbox\mapboxsdk\views\util\
+* java\com\mapbox\mapboxsdk\views\util\OnMapOrientationChangeListener.java
+* java\com\mapbox\mapboxsdk\views\util\Projection.java
+* java\com\mapbox\mapboxsdk\views\util\TileLoadedListener.java
+* java\com\mapbox\mapboxsdk\views\util\TilesLoadedListener.java
+* java\com\mapbox\mapboxsdk\views\util\constants\
+* java\com\mapbox\mapboxsdk\views\util\constants\MapViewConstants.java
+* java\com\mapbox\mapboxsdk\views\util\constants\MapViewLayouts.java
+* java\com\mapbox\mapboxsdk\views\util\constants\OverlayConstants.java
+* java\com\spatialdev\
+* java\com\spatialdev\osm\
+* java\com\spatialdev\osm\OSMMap.java
+* java\com\spatialdev\osm\OSMUtil.java
+* java\com\spatialdev\osm\events\
+* java\com\spatialdev\osm\events\OSMSelectionListener.java
+* java\com\spatialdev\osm\model\
+* java\com\spatialdev\osm\model\JTSModel.java
+* java\com\spatialdev\osm\model\OSMDataSet.java
+* java\com\spatialdev\osm\model\OSMElement.java
+* java\com\spatialdev\osm\model\OSMMeta.java
+* java\com\spatialdev\osm\model\OSMNode.java
+* java\com\spatialdev\osm\model\OSMRelation.java
+* java\com\spatialdev\osm\model\OSMWay.java
+* java\com\spatialdev\osm\model\OSMXmlParser.java
+* java\com\spatialdev\osm\model\OSMXmlWriter.java
+* java\com\spatialdev\osm\renderer\
+* java\com\spatialdev\osm\renderer\OSMLine.java
+* java\com\spatialdev\osm\renderer\OSMOverlay.java
+* java\com\spatialdev\osm\renderer\OSMPath.java
+* java\com\spatialdev\osm\renderer\OSMPolygon.java
+* java\uk\
+* java\uk\co\
+* java\uk\co\senab\
+* java\uk\co\senab\bitmapcache\
+* java\uk\co\senab\bitmapcache\BitmapLruCache.java
+* java\uk\co\senab\bitmapcache\BitmapMemoryLruCache.java
+* java\uk\co\senab\bitmapcache\CacheableBitmapDrawable.java
+* java\uk\co\senab\bitmapcache\CacheableImageView.java
+* java\uk\co\senab\bitmapcache\Constants.java
+* java\uk\co\senab\bitmapcache\IoUtils.java
+* java\uk\co\senab\bitmapcache\Md5.java
+* java\uk\co\senab\bitmapcache\SDK11.java
+* java\uk\co\senab\bitmapcache\SDK12.java
+* java\uk\co\senab\bitmapcache\WeakReferenceRunnable.java
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:19.1.0
+gcm.jar => com.google.android.gms:play-services:+
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+Kikr_google-play-services_lib => [com.google.android.gms:play-services:+]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In Kikr_FacebookSDK:
+* AndroidManifest.xml => kikr_FacebookSDK\src\main\AndroidManifest.xml
+* assets\ => kikr_FacebookSDK\src\main\assets
+* libs\bolts-android-1.1.2.jar => kikr_FacebookSDK\libs\bolts-android-1.1.2.jar
+* res\ => kikr_FacebookSDK\src\main\res\
+* src\ => kikr_FacebookSDK\src\main\java\
+In Kikr_app_services:
+* AndroidManifest.xml => kikr_app_services\src\main\AndroidManifest.xml
+* assets\ => kikr_app_services\src\main\assets
+* libs\braintree-api-1.2.1.jar => kikr_app_services\libs\braintree-api-1.2.1.jar
+* libs\httpcore-4.3.2.jar => kikr_app_services\libs\httpcore-4.3.2.jar
+* libs\httpmime-4.3.5.jar => kikr_app_services\libs\httpmime-4.3.5.jar
+* lint.xml => kikr_app_services\lint.xml
+* res\ => kikr_app_services\src\main\res\
+* src\ => kikr_app_services\src\main\java\
+In Kikr_ibeacon_service:
+* AndroidManifest.xml => kikr_ibeacon_service\src\main\AndroidManifest.xml
+* assets\ => kikr_ibeacon_service\src\main\assets
+* res\ => kikr_ibeacon_service\src\main\res\
+* src\ => kikr_ibeacon_service\src\main\java\
+In Kikr_menudrawer_lib:
+* AndroidManifest.xml => kikr_menudrawer_lib\src\main\AndroidManifest.xml
+* assets\ => kikr_menudrawer_lib\src\main\assets
+* lint.xml => kikr_menudrawer_lib\lint.xml
+* res\ => kikr_menudrawer_lib\src\main\res\
+* src\ => kikr_menudrawer_lib\src\main\java\
+In LibAndroidCrop:
+* AndroidManifest.xml => libAndroidCrop\src\main\AndroidManifest.xml
+* assets\ => libAndroidCrop\src\main\assets
+* res\ => libAndroidCrop\src\main\res\
+* src\ => libAndroidCrop\src\main\java\
+In com-crashlytics-sdk-android_answers:
+* AndroidManifest.xml => comcrashlyticssdkandroid_answers\src\main\AndroidManifest.xml
+* assets\ => comcrashlyticssdkandroid_answers\src\main\assets
+* libs\com-crashlytics-sdk-android_answers-classes.jar => comcrashlyticssdkandroid_answers\libs\com-crashlytics-sdk-android_answers-classes.jar
+* res\ => comcrashlyticssdkandroid_answers\src\main\res
+* src\ => comcrashlyticssdkandroid_answers\src\main\java
+In com-crashlytics-sdk-android_beta:
+* AndroidManifest.xml => comcrashlyticssdkandroid_beta\src\main\AndroidManifest.xml
+* assets\ => comcrashlyticssdkandroid_beta\src\main\assets
+* libs\com-crashlytics-sdk-android_beta-classes.jar => comcrashlyticssdkandroid_beta\libs\com-crashlytics-sdk-android_beta-classes.jar
+* res\ => comcrashlyticssdkandroid_beta\src\main\res
+* src\ => comcrashlyticssdkandroid_beta\src\main\java
+In instagram_library:
+* AndroidManifest.xml => instagram_library\src\main\AndroidManifest.xml
+* assets\ => instagram_library\src\main\assets
+* res\ => instagram_library\src\main\res\
+* src\ => instagram_library\src\main\java\
+In io-fabric-sdk-android_fabric:
+* AndroidManifest.xml => iofabricsdkandroid_fabric\src\main\AndroidManifest.xml
+* assets\ => iofabricsdkandroid_fabric\src\main\assets
+* libs\io-fabric-sdk-android_fabric-classes.jar => iofabricsdkandroid_fabric\libs\io-fabric-sdk-android_fabric-classes.jar
+* res\ => iofabricsdkandroid_fabric\src\main\res
+* src\ => iofabricsdkandroid_fabric\src\main\java
+In com-crashlytics-sdk-android_crashlytics-core:
+* AndroidManifest.xml => comcrashlyticssdkandroid_crashlyticscore\src\main\AndroidManifest.xml
+* assets\ => comcrashlyticssdkandroid_crashlyticscore\src\main\assets
+* libs\com-crashlytics-sdk-android_crashlytics-core-classes.jar => comcrashlyticssdkandroid_crashlyticscore\libs\com-crashlytics-sdk-android_crashlytics-core-classes.jar
+* res\ => comcrashlyticssdkandroid_crashlyticscore\src\main\res
+* src\ => comcrashlyticssdkandroid_crashlyticscore\src\main\java
+In com-crashlytics-sdk-android_crashlytics:
+* AndroidManifest.xml => comcrashlyticssdkandroid_crashlytics\src\main\AndroidManifest.xml
+* assets\ => comcrashlyticssdkandroid_crashlytics\src\main\assets
+* libs\com-crashlytics-sdk-android_crashlytics-classes.jar => comcrashlyticssdkandroid_crashlytics\libs\com-crashlytics-sdk-android_crashlytics-classes.jar
+* res\ => comcrashlyticssdkandroid_crashlytics\src\main\res
+* src\ => comcrashlyticssdkandroid_crashlytics\src\main\java
+In kikr_lib_circle_page_indicator:
+* AndroidManifest.xml => kikr_lib_circle_page_indicator\src\main\AndroidManifest.xml
+* assets\ => kikr_lib_circle_page_indicator\src\main\assets
+* res\ => kikr_lib_circle_page_indicator\src\main\res\
+* src\ => kikr_lib_circle_page_indicator\src\main\java\
+In main:
+* AndroidManifest.xml => main\src\main\AndroidManifest.xml
+* assets\ => main\src\main\assets\
+* lint.xml => main\lint.xml
+* res\ => main\src\main\res\
+* src\ => main\src\main\java
+In Kikr_app_ui:
+* AndroidManifest.xml => kikr_app_ui\src\main\AndroidManifest.xml
+* assets\ => kikr_app_ui\src\main\assets\
+* libs\android-query-full.0.25.8-beta.jar => kikr_app_ui\libs\android-query-full.0.25.8-beta.jar
+* libs\Branch-1.8.11.jar => kikr_app_ui\libs\Branch-1.8.11.jar
+* libs\glide-3.4.0.jar => kikr_app_ui\libs\glide-3.4.0.jar
+* libs\HockeySDK-3.5.0.jar => kikr_app_ui\libs\HockeySDK-3.5.0.jar
+* libs\Personagraph-SDK-1.11.3.jar => kikr_app_ui\libs\Personagraph-SDK-1.11.3.jar
+* libs\twitter4j-async-4.0.2.jar => kikr_app_ui\libs\twitter4j-async-4.0.2.jar
+* libs\twitter4j-core-4.0.2.jar => kikr_app_ui\libs\twitter4j-core-4.0.2.jar
+* libs\twitter4j-media-support-4.0.2.jar => kikr_app_ui\libs\twitter4j-media-support-4.0.2.jar
+* libs\twitter4j-stream-4.0.2.jar => kikr_app_ui\libs\twitter4j-stream-4.0.2.jar
+* libs\universal-image-loader-1.9.4.jar => kikr_app_ui\libs\universal-image-loader-1.9.4.jar
+* libs\urlimageviewhelper-1.0.4.jar => kikr_app_ui\libs\urlimageviewhelper-1.0.4.jar
+* lint.xml => kikr_app_ui\lint.xml
+* res\ => kikr_app_ui\src\main\res\
+* src\ => kikr_app_ui\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

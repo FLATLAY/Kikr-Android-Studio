@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/btn_green"
+    android:orientation="vertical" >
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/placemyOrderLayout"
+       android:layout_marginTop="20dp"
+        android:layout_below="@+id/view1"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/view1"
+            android:background="@color/btn_green"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:background="@color/btn_green"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_order_item_text" />
+
+                <TextView
+                    android:id="@+id/itemsCountText"
+                    style="@style/cartProductTextStyle"
+                    android:layout_marginRight="@dimen/padding_large"
+                    android:background="@android:color/transparent"
+                    android:text="" />
+            </LinearLayout>
+
+            <View
+                style="@style/cartViewStyle"
+                android:layout_marginTop="@dimen/padding_large" />
+
+            <LinearLayout
+                android:id="@+id/shippingAddressLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@color/gray"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_order_shipping_card_text" />
+
+                <ImageView
+                    android:id="@+id/address_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:paddingLeft="@dimen/padding_large"
+                    android:paddingRight="@dimen/padding_large"
+                    android:src="@drawable/ic_green_down_arrow"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <View
+                style="@style/cartViewStyle" />
+
+            <LinearLayout
+                android:id="@+id/addressListLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addAddressLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/padding_large"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:id="@+id/hori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+                    
+                    <TextView
+	                    style="@style/cartProductTextStyle"
+	                    android:layout_weight="1"
+	                    android:text="@string/place_order_add_address_text" />
+                    
+                    <TextView
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:textSize="@dimen/very_small_text_size"
+	                    android:textColor="@color/app_text_color"
+	                    android:gravity="right"
+	                    android:text="@string/place_order_us_canada" />
+                    
+                    <TextView
+                        android:id="@+id/whyTextView"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:textSize="@dimen/very_small_text_size"
+	                    android:textColor="@color/btn_green"
+	                    android:gravity="right"
+	                    android:paddingLeft="5dp"
+	                    android:paddingRight="@dimen/padding_large"
+	                    android:text="(Why?)" />
+                    
+                </LinearLayout>
+                
+                
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view"
+                    android:layout_marginTop="@dimen/padding_large" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addNewAddressLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:visibility="gone" >
+				
+				<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_title_text" />
+
+                    <Spinner
+                        android:id="@+id/titleSpinner"
+                        style="@style/cartProductTextStyle"
+                        android:layout_height="35dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:entries="@array/title"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view" />
+				 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_firstname_text" />
+
+                    <EditText
+                        android:id="@+id/firstNameEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="textNoSuggestions|textCapSentences" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_lastname_text" />
+
+                    <EditText
+                        android:id="@+id/lastNameEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="textNoSuggestions|textCapSentences" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_large"
+                    android:visibility="gone" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_street_num_text" />
+
+                    <EditText
+                        android:id="@+id/streetNumberEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="textNoSuggestions|textCapSentences" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_street_add_text" />
+
+                    <EditText
+                        android:id="@+id/streetNameEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="textNoSuggestions|textCapSentences" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view"
+                    android:layout_marginTop="@dimen/padding_large" />
+                
+                <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="horizontal"
+	                android:paddingTop="@dimen/padding_large" >
+	
+	                <TextView
+	                    style="@style/cartProductTextStyle"
+	                    android:text="@string/card_info_apartment" />
+	
+	                <EditText
+	                    android:id="@+id/apartmentEditText"
+	                    style="@style/cartProductTextStyle"
+	                    android:layout_weight="1"
+	                    android:background="@android:color/transparent"
+	                    android:inputType="textNoSuggestions|textCapSentences" />
+	            </LinearLayout>
+	
+	            <View
+	                style="@style/cartViewStyle"
+	                android:layout_marginLeft="@dimen/padding_cart_list_view"
+	                android:layout_marginTop="@dimen/padding_large" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_city_text" />
+
+                    <EditText
+                        android:id="@+id/cityEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="textNoSuggestions|textCapSentences" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view"
+                    android:layout_marginTop="@dimen/padding_large" />
+
+                <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="horizontal"
+	                android:paddingTop="@dimen/padding_large" >
+	
+	                <TextView
+	                    style="@style/cartProductTextStyle"
+	                    android:text="@string/card_info_state_text" />
+	              
+	                <Spinner
+	                    android:id="@+id/stateSpinnerUS"
+	                    style="@style/cartProductTextStyle"
+	                    android:layout_height="35dp"
+	                    android:layout_weight="1"
+	                    android:background="@android:color/transparent"
+	                    android:entries="@array/statesUSA"
+	                    android:gravity="center" 
+	                    android:visibility="visible"/>
+	                
+	                <Spinner
+	                    android:id="@+id/stateSpinnerCanada"
+	                    style="@style/cartProductTextStyle"
+	                    android:layout_height="35dp"
+	                    android:layout_weight="1"
+	                    android:background="@android:color/transparent"
+	                    android:entries="@array/statesCanada"
+	                    android:gravity="center"
+	                    android:visibility="gone" />
+	            </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view"
+                    android:layout_marginTop="@dimen/padding_large" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_zip_text" />
+
+                    <EditText
+                        android:id="@+id/zipEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="number" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view"
+                    android:layout_marginTop="@dimen/padding_large" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_telephone_text" />
+
+                    <EditText
+                        android:id="@+id/telephoneEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="number" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view"
+                    android:layout_marginTop="@dimen/padding_large" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_country_text" />
+
+                    <Spinner
+                        android:id="@+id/countryEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_height="35dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:entries="@array/countries"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginTop="@dimen/padding_large" />
+
+                <Button
+                    android:id="@+id/doneAddressBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/padding_large"
+                    android:background="@color/btn_green"
+                    android:padding="@dimen/padding_large"
+                    android:text="@string/done"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addPaymentMethodLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_order_add_payment_method_text" />
+
+                <ImageView
+                    android:id="@+id/paymentMethodDropImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:paddingLeft="@dimen/padding_large"
+                    android:paddingRight="@dimen/padding_large"
+                    android:src="@drawable/ic_green_down_arrow" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/cardViewLine"
+                style="@style/cartViewStyle"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/cardListLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addCardLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/padding_large"
+                    android:src="@drawable/ic_cart_card" />
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_order_add_card_text" />
+            </LinearLayout>
+
+            <View
+                style="@style/cartViewStyle" />
+
+            <LinearLayout
+                android:id="@+id/addNewCardLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_number_text" />
+
+                    <EditText
+                        android:id="@+id/cardNumberEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:maxLength="19" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view"
+                    android:layout_marginTop="@dimen/padding_large" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_card_name_text" />
+
+                    <EditText
+                        android:id="@+id/cardHolderNameEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="textCapSentences|textNoSuggestions" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view"
+                    android:layout_marginTop="@dimen/padding_large" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_cvv_text" />
+
+                    <EditText
+                        android:id="@+id/cvvEditText"
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:maxLength="3" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view"
+                    android:layout_marginTop="@dimen/padding_large" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/card_info_expiry_text" />
+
+                    <Spinner
+                        android:id="@+id/monthSpinner"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:entries="@array/months"
+                        android:gravity="center"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#B2B2B1" />
+
+                    <Spinner
+                        android:id="@+id/yearSpinner"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginTop="@dimen/padding_large" />
+                <include layout="@layout/billing_layout"/>
+
+                <Button
+                    android:id="@+id/doneBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/padding_large"
+                    android:background="@color/btn_green"
+                    android:padding="@dimen/padding_large"
+                    android:text="@string/done"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paypalLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large"
+                android:visibility="gone" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_paypal_text" />
+            </LinearLayout>
+
+            <View
+                style="@style/cartViewStyle"
+                android:layout_marginLeft="@dimen/padding_cart_list_view"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:id="@+id/dynamic_wallet_button_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:visibility="gone" >
+            </FrameLayout>
+
+            <View
+                style="@style/cartViewStyle"
+                android:layout_marginLeft="@dimen/padding_cart_list_view"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/promoCodeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_order_promo_card_text" />
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:paddingRight="@dimen/padding_large"
+                    android:text="Add"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <View
+                style="@style/cartViewStyle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_order_subtotal_text" />
+
+                <TextView
+                    android:id="@+id/subtotalText"
+                    style="@style/cartProductTextStyle"
+                    android:background="@android:color/transparent"
+                    android:text="pending" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_order_est_tax_text" />
+
+                <TextView
+                    android:id="@+id/taxText"
+                    style="@style/cartProductTextStyle"
+                    android:background="@android:color/transparent"
+                    android:text="pending" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_order_est_shipping_text" />
+
+                <TextView
+                    android:id="@+id/shippingText"
+                    style="@style/cartProductTextStyle"
+                    android:background="@android:color/transparent"
+                    android:text="pending" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large"
+                android:visibility="gone" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_order_est_handling_text" />
+
+                <TextView
+                    android:id="@+id/handlingText"
+                    style="@style/cartProductTextStyle"
+                    android:background="@android:color/transparent"
+                    android:text="" />
+            </LinearLayout>
+
+            <View style="@style/cartViewStyle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/btn_green"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    android:id="@+id/totalItemsText"
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/place_order_total_text"
+                    android:textColor="@color/tab_selected_new"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/totalText"
+                    style="@style/cartProductTextStyle"
+                    android:background="@android:color/transparent"
+                    android:text=""
+                    android:textColor="@color/tab_selected_new"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            
+            <TextView
+                style="@style/cartProductTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/btn_green"
+                android:gravity="center_vertical"
+                android:text="Estimated Shipping*"
+                android:textStyle="bold"
+                android:textSize="@dimen/large_text_size" />
+            
+            <TextView
+                style="@style/cartProductTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/btn_green"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_large"
+                android:text="You only pay what the retailer charges."
+                android:textSize="@dimen/large_text_size" />
+            
+            <TextView
+                style="@style/cartProductTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/btn_green"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:text="@string/place_order_learnmore_text"
+                android:textSize="@dimen/large_text_size" />
+            
+            <TextView
+                android:id="@+id/learnmoreText"
+                style="@style/cartProductTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/btn_green"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/padding_large"
+                android:text="Learn More"
+                android:textColor="@color/white"
+                android:textSize="@dimen/large_text_size" />
+
+            <LinearLayout
+                android:id="@+id/cartProductList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/placemyOrderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_large"
+            android:text="@string/place_order_place_my_order_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text_size" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/loadingBar"
+	    android:layout_width="match_parent"
+	    android:layout_alignParentBottom="true"
+	    android:layout_height="@dimen/button_height">
+
+	    <ProgressBar
+	        android:id="@+id/progressBarPlaceOrder"
+	        style="@android:style/Widget.ProgressBar.Horizontal"
+	        android:layout_width="match_parent"
+	        android:progressDrawable="@drawable/progress_bar_teal"
+	        android:layout_height="@dimen/button_height" />
+  
+	    <TextView
+	        android:id="@+id/txtMessageBar"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/button_height"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentLeft="true"
+	        android:gravity="center_vertical|center_horizontal"
+	        android:text="Calculating"
+	        android:textColor="@color/neongreen"
+	        android:textSize="@dimen/medium_text_size"
+	        android:textStyle="bold" />
+	    
+	</FrameLayout>
+
+    
+
+</RelativeLayout>

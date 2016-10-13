@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="in_duration">300</integer>
+    <integer name="out_duration">400</integer>
+    <integer name="rotate_duration">200</integer>
+    <integer name="middle_rotate_duration">200</integer>
+    <integer name="start_offset">200</integer>
+    <integer name="alpha_offset">500</integer>
+    <integer name="out_rotate_degree">0</integer>
+	<integer name="deeplinkrequestcode">1000</integer>
+</resources>

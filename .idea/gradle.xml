@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/instagram_library" />
+            <option value="$PROJECT_DIR$/kikr_FacebookSDK" />
+            <option value="$PROJECT_DIR$/kikr_app_services" />
+            <option value="$PROJECT_DIR$/kikr_app_ui" />
+            <option value="$PROJECT_DIR$/kikr_ibeacon_service" />
+            <option value="$PROJECT_DIR$/kikr_menudrawer_lib" />
+            <option value="$PROJECT_DIR$/libAndroidCrop" />
+            <option value="$PROJECT_DIR$/main" />
+            <option value="$PROJECT_DIR$/pdk" />
+            <option value="$PROJECT_DIR$/photo-crop-library" />
+            <option value="$PROJECT_DIR$/squarecamera" />
+            <option value="$PROJECT_DIR$/ucrop" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

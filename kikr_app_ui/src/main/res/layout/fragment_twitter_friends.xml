@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/friends_list_header_padding"
+        android:text="@string/twitter_friends_header"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large_text_size" />
+
+    <include
+        android:id="@+id/itemNotFound"
+        layout="@layout/layout_item_not_found"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/twitter_friends_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" >
+    </ListView>
+
+</LinearLayout>

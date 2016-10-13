@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profilelayout">
+
+        <include
+            android:id="@+id/user_profile"
+            layout="@layout/profile_header_layout" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_below="@id/profilelayout"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/profile_btn_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+
+
+            <LinearLayout
+                android:id="@+id/photolayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/tab_bg_new"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/photo_button"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/photoselected"
+                    android:textSize="@dimen/small_text_size"
+                    android:clickable="false"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/up_arrow_image_first"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:id="@+id/collectionlayout"
+                android:background="@color/tab_bg_new"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/collection_button"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:clickable="false"
+                    android:src="@drawable/profile_collection_tab" />
+
+                <ImageView
+                    android:id="@+id/up_arrow_image_photos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/followinglayout"
+                android:background="@color/tab_bg_new"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/following_button"
+
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:clickable="false"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/followinguser"/>
+
+                <ImageView
+                    android:id="@+id/up_arrow_image_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/followerlayout"
+                android:background="@color/tab_bg_new"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/follower_button"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:clickable="false"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/followeruser"/>
+
+                <ImageView
+                    android:id="@+id/up_arrow_image_third"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/profile_btn_layout"
+            android:layout_marginTop="-2dp"
+            android:visibility="gone"
+            android:background="@color/btn_gray" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/noCollectionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/noDataFoundTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/app_text_color"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:text=""
+                    android:textSize="@dimen/large_text_size" />
+
+                <ImageView
+                    android:id="@+id/bg_nocollection"
+                    android:layout_width="150dp"
+                    android:layout_height="132dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/bg_nocollection" />
+
+                <TextView
+                    android:id="@+id/tvEarnCreditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Earn 100 credits for creating your first collection of 5+ products "
+                    android:textColor="@color/app_text_color"
+                    android:textSize="@dimen/large_text_size"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btnCreateCollection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/createcollection_btnbg"
+                    android:drawableLeft="@drawable/ic_add_follow"
+                    android:drawablePadding="5dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="Create a Collection"
+                    android:textColor="#ffffff"
+                    android:visibility="gone"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/followerNotFound"
+        layout="@layout/follower_profile_notfound"
+        android:visibility="gone" />
+    <!--  <TextView
+          android:id="@+id/noCollectionText"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:layout_marginLeft="@dimen/margin_xxlarge"
+          android:layout_marginRight="@dimen/margin_xxlarge"
+          android:text="@string/help_nocollection_text"
+          android:textColor="@color/app_text_color"
+          android:textSize="@dimen/large_text_size"
+          android:visibility="gone" />-->
+
+    <LinearLayout
+        android:id="@+id/layoutPeopleStoreBrand"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_background"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/interest_people_button"
+            style="@style/buttonInterestSection"
+            android:layout_weight="1"
+            android:background="@color/tab_bg_new"
+            android:text="@string/people_text"
+            android:textColor="@color/btn_green" />
+
+        <Button
+            android:id="@+id/interest_store_button"
+            style="@style/buttonInterestSection"
+            android:layout_weight="1"
+            android:background="@color/tab_bg_new"
+            android:text="@string/store_text"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/interest_brand_button"
+            style="@style/buttonInterestSection"
+            android:layout_weight="1"
+            android:background="@color/tab_bg_new"
+            android:text="@string/brand_text"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/FollowingNotFound"
+        layout="@layout/layout_item_not_found"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/itemNotFound"
+        layout="@layout/layout_item_not_found"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/photosNotFound"
+        layout="@layout/layout_photos_not_found"
+        android:visibility="gone" />
+    <include
+        android:id="@+id/photos_otheruser_not_found"
+        layout="@layout/layoutphotoanotheruser"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/txtfollowers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_bg_new"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+     android:visibility="gone"
+        android:paddingTop="8dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="19dp"
+            android:layout_height="wrap_content"
+            android:text="Followers"/>
+        </LinearLayout>
+
+    <ListView
+        android:id="@+id/collection_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/btn_gray"
+        android:dividerHeight="0.5dp"
+        android:listSelector="@android:color/transparent"
+        android:paddingBottom="10dp"
+        android:scrollbars="vertical"></ListView>
+
+    <TextView
+        android:id="@+id/loadingTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Loading...\nPlease Wait"
+        android:textColor="@color/btn_green"
+        android:visibility="visible" />
+
+    <GridView
+        android:id="@+id/imagesList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:cacheColorHint="#00000000"
+        android:horizontalSpacing="2dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="2dp"></GridView>
+
+</LinearLayout>

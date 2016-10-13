@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="invalid_response">Invalid response from server. Please try again later.</string>
+    <string name="alert_signup_error_facebook_data">Error in getting Facebook Profile Data</string>
+
+    <!-- SIGNUP SCREEN ALERT TEXT -->
+    <string name="alert_register_already_registered">Email address already exists</string>
+    <string name="alert_register_email">Please enter email address</string>
+    <string name="alert_register_email_verification">Please enter a valid email address</string>
+    <string name="alert_register_password">Please enter password</string>
+    <string name="alert_register_password_length">Password length should be minimum 5 digit</string>
+    <string name="alert_register_password_current_length">Current password length should be minimum 5 digit</string>
+    <string name="alert_register_password__new_length">New password length should be minimum 5 digit</string>
+    <string name="alert_register_password__confirm_length">Confirm password length should be minimum 5 digit</string>
+    <string name="alert_register_success">User registerd successfully</string>
+
+    <!-- PHONE SCREEN ALERT TEXT -->
+    <string name="alert_phone_enter_number">Please enter Phone Number</string>
+
+    <!-- PIN AUTH SCREEN ALERT TEXT -->
+    <string name="alert_pin_aut_enter_pin">Please enter PIN</string>
+    <string name="alert_pin_sent">PIN sent to your mobile successfully</string>
+
+    <!-- Landing screen ALERT TEXT -->
+    <string name="alert_connected_with_twitter">Connected with Twitter</string>
+    <string name="alert_connected_with_fb">Connected with Facebook</string>
+    <string name="alert_follow_atleast_one">Follow at least one brand</string>
+    <string name="alert_pin_not_matched">Pin not matched</string>
+
+    <!-- Home screen ALERT TEXT -->
+    <string name="alert_fb_friend_not_found">No friend found those installed Kikr app</string>
+    <string name="alert_twit_friend_not_found">No followers found</string>
+    <string name="alert_twitter_friend_not_found">No followers found</string>
+
+    <!-- Reset Password ALERT TEXT -->
+    <string name="alert_blank_pin">Please enter reset pin</string>
+    <string name="alert_blank_password">Please enter new password</string>
+    <string name="alert_register_confirm_password">Please enter confirm new password</string>
+    <string name="alert_password_not_matched">Password not match</string>
+    <string name="no_users_found_msg">Users not found.</string>
+    <string name="alert_brand_followed_successfully">Brand followed successfully</string>
+    <string name="alert_back_disabled">Enter your valid phone number to complete registration</string>
+    <string name="alert_email_has_sent">An email has been sent to reset your password</string>
+    <string name="alert_password_reset">Password reset successfully</string>
+     <string name="alert_pin_resent">Pin resent successfully</string>
+
+    <!-- Edit Profile screen ALERT TEXT -->
+    <string name="alert_blank_username">Please enter username</string>
+    <string name="alert_username_length">Username should be 10 digits only</string>
+
+    <!-- Collection screen ALERT TEXT -->
+    <string name="alert_collection_blank">Please enter Collection Name</string>
+    <string name="alert_collection_length">Collection Name should be 16 digits only</string>
+    <string name="alert_collection_deleted">Collection deleted sucessfully</string>
+    <string name="alert_collection_product_deleted">Product deleted from Collection sucessfully</string>
+    <string name="alert_collection_updated">Collection name updated sucessfully</string>
+    <string name="alert_collection_no_product">No product found to share in selected collection</string>
+
+    <!-- Card screen ALERT TEXT -->
+    <string name="alert_cardnumber_blank">Please enter Card Number</string>
+    <string name="alert_cvv_blank">cvv should be 3 digits</string>
+    <string name="alert_expirymonth_blank">Please enter Expiry Month</string>
+    <string name="alert_expiryyear_blank">Please enter Expiry Year</string>
+     <string name="alert_card_invalid_blank">Invalid card number or unsupported</string>
+    <string name="alert_cardnumber_short">Invalid Card Number</string>
+    <string name="alert_cardholdername_blank">Please enter CardHolder Name</string>
+
+    <!-- Address screen ALERT TEXT -->
+    <string name="alert_streetnumber_blank">Please enter Street Number</string>
+    <string name="alert_firstname_blank">Please enter First Name</string>
+    <string name="alert_lastname_blank">Please enter Last Name</string>
+    <string name="alert_streetname_blank">Please enter Street Address</string>
+    <string name="alert_city_blank">Please enter City</string>
+    <string name="alert_state_blank">Please enter State</string>
+    <string name="alert_zip_blank">Please enter Zip Code</string>
+    <string name="alert_countryname_blank">Please enter Country Name</string>
+    <string name="alert_invalid_zipcode">Invalid Zip Code</string>
+    <string name="alert_telephone_blank">Please enter Telephone</string>
+    <string name="alert_password_blank">Please enter Password</string>
+    <string name="alert_password_current_blank">Please enter current password</string>
+    <string name="alert_password_new_blank">Please enter new password</string>
+    <string name="alert_password_confirm_blank">Please enter confirm new password</string>
+    <string name="alert_pin_blank">Please enter Pin</string>
+    <string name="alert_pin_current_blank">Please enter current pin</string>
+    <string name="alert_pin_new_blank">Please enter new pin</string>
+    <string name="alert_pin_confirm_new_blank">Please enter confirm new pin</string>
+    <string name="alert_wallent_current_pin_length">Current pin length should be 4 digit</string>
+    <string name="alert_wallent_new_pin_length">New pin length should be 4 digit</string>
+    <string name="alert_wallent_confirm_pin_length">Confirm new pin length should be 4 digit</string>
+    <string name="alert_address_not_selected_for_paypal">Please select Shipping Address</string>
+    <string name="alert_address_not_selected_for_card">Please select Shipping Address</string>
+    <string name="alert_card_not_selected_for_card">Please select Card</string>
+    <string name="alert_address_and_card_not_selected_for_card">Please select Shipping Address and Card</string>
+    <string name="alert_no_image_selected">Please select Image</string>
+    <string name="alert_no_description_entered">Please enter Description</string>
+    <string name="alert_no_comment_entered">Please enter Comment</string>
+    <string name="alert_amount_length">Please enter Amount</string>
+    <string name="alert_amount_less_than_credit">Amount must be less than available credits</string>
+    <string name="alert_no_user_selected">Please select User</string>
+    <string name="alert_amount_not_be_zero">Amount should not be zero</string>
+
+</resources>

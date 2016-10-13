@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="@dimen/addBank_ListItem_padding"
+        android:layout_centerInParent="true"
+        android:gravity="center|center_vertical"
+        android:orientation="horizontal" >
+
+        <com.flatlay.ui.RoundImageView
+            android:id="@+id/follower_user_image"
+            android:layout_width="@dimen/discover_bottom_height"
+            android:layout_height="@dimen/discover_bottom_height"
+            android:scaleType="center"
+            android:src="@drawable/followeruser" />
+
+        <TextView
+            android:id="@+id/follower_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CitiBank"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/discover_bottom_height"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="4"
+            android:textSize="@dimen/xx_large_text_size"  />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/btn_green"
+    android:gravity="center">
+
+<ImageView
+    android:id="@+id/kikrLogo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/flatlayhomeimage"
+    android:padding="@dimen/padding_large"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="The FLATLAY Guide"
+        android:textStyle="bold"
+        android:id="@+id/kikrGuideTextView"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/padding_large"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="&amp;"
+        android:visibility="gone"
+        android:layout_margin="@dimen/margin_xlarge"
+        android:textColor="@color/white"
+        android:id="@+id/textView8"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Watch The Tutorial"
+        android:padding="@dimen/padding_large"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/kikrVideoTextView" />
+    <ImageView
+        android:clickable="true"
+        android:id="@+id/kikrVideoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_kikr_video"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="@dimen/margin_large"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/margin_xxlarge"
+        android:layout_marginRight="@dimen/margin_xxlarge"/>
+</LinearLayout>

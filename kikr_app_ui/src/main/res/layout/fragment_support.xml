@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/btn_green"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_text_color" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.2">
+
+    <TextView
+        android:id="@+id/helpTextView"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/support_help_height"
+        android:gravity="center"
+        android:text="@string/need_help"
+        android:textSize="@dimen/xx_large_text_size" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:background="@color/btn_green"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/customerSupportTextView"
+            style="@style/supportTextView"
+            android:gravity="center"
+            android:layout_gravity="center"
+
+            android:textColor="@color/app_background"
+            android:background="@color/btn_green"
+            android:text="@string/customer_support" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="0.5dp"
+            android:background="@color/credittextcolor" />
+
+        <TextView
+            android:id="@+id/termsTextView"
+            style="@style/supportTextView"
+            android:background="@color/btn_green"
+
+            android:textColor="@color/app_background"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/terms_of_use" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/credittextcolor" />
+
+        <TextView
+            android:id="@+id/privacyTextView"
+            style="@style/supportTextView"
+
+            android:textColor="@color/app_background"
+            android:background="@color/btn_green"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/privacy_statement" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/credittextcolor" />
+
+        <TextView
+            android:id="@+id/legalTextView"
+            style="@style/supportTextView"
+            android:textColor="@color/app_background"
+            android:background="@color/btn_green"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/legal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/credittextcolor" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+    <TextView
+        android:id="@+id/textViewOutside"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:lineSpacingExtra="3dp"
+        android:visibility="gone"
+        android:textColor="@color/app_text_color"
+        android:text="@string/kikr_outside_us_canada"
+        android:textSize="@dimen/medium_text_size" />
+
+        <TextView
+            android:id="@+id/kikr_learn_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:text="Learn More"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/xx_large_text_size" />
+    </LinearLayout>
+</LinearLayout>

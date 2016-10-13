@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true" 
+    android:interpolator="@android:anim/bounce_interpolator" >
+
+    <rotate
+        android:duration="@integer/out_duration"
+        android:fromDegrees="0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:toDegrees="@integer/out_rotate_degree" 
+        />
+
+    <translate
+        android:duration="@integer/out_duration"
+        android:fromXDelta="-20%p"
+        android:fromYDelta="2%p"
+        android:toXDelta="0%p"
+        android:toYDelta="0%p"
+       />
+
+</set>

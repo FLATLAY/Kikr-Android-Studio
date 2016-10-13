@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/btn_green"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:text="@string/settings_accountinfo_text"
+                    android:layout_gravity="center"
+                    android:gravity="center|bottom"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:layout_marginTop="35dp"/>
+            </LinearLayout>
+
+            <View style="@style/cartViewStyle" />
+
+            <LinearLayout
+                android:id="@+id/usernameTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    android:id="@+id/usernameText"
+                    style="@style/cartProductTextStyle"
+                    android:text="Username" />
+            </LinearLayout>
+
+            <View
+                style="@style/cartViewStyle"
+                android:layout_marginLeft="@dimen/padding_cart_list_view" />
+
+            <LinearLayout
+                android:id="@+id/emailTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/edittext_padding"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    android:id="@+id/emailText"
+                    android:textColor="@color/app_background"
+                    style="@style/cartProductTextStyle"
+                    android:text="@string/email" />
+            </LinearLayout>
+
+            <View
+                style="@style/cartViewStyle"
+                android:layout_marginLeft="@dimen/padding_cart_list_view" />
+
+            <LinearLayout
+                android:id="@+id/passwordTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/edittext_padding"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    android:id="@+id/passwordText"
+                    style="@style/cartProductTextStyle"
+                    android:textColor="@color/app_background"
+                    android:text="@string/settings_password_text" />
+            </LinearLayout>
+
+            <View style="@style/cartViewStyle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:text="@string/settings_notifications_text"
+                    android:layout_gravity="center"
+                    android:gravity="center|bottom"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:layout_marginTop="35dp"/>
+            </LinearLayout>
+
+            <View style="@style/cartViewStyle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/edittext_padding"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:textColor="@color/app_background"
+                    android:text="@string/settings_newfollowers_text" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/padding_large"
+                    android:id="@+id/switchfollowers"
+                    android:layout_centerVertical="true"
+                    android:theme="@style/SettingSwitch"
+                    app:showText="false"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBar_settings_followers"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/settings_margin_rignt"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <View
+                style="@style/cartViewStyle"
+                android:layout_marginLeft="@dimen/padding_cart_list_view" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/edittext_padding"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:textColor="@color/app_background"
+                    android:text="@string/settings_newcomments_text" />
+
+
+                <android.support.v7.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/padding_large"
+                    android:id="@+id/switchcomment"
+                    android:layout_centerVertical="true"
+                    android:theme="@style/SettingSwitch"
+                    app:showText="false"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBar_settings_comments"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/settings_margin_rignt"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <View
+                style="@style/cartViewStyle"
+                android:layout_marginLeft="@dimen/padding_cart_list_view" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/edittext_padding"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:textColor="@color/app_background"
+                    android:text="@string/settings_favorites_text" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/padding_large"
+                    android:id="@+id/switchfavoritesImage"
+                    android:layout_centerVertical="true"
+                    android:theme="@style/SettingSwitch"
+                    app:showText="false"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBar_settings_favorites"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/settings_margin_rignt"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <View
+                style="@style/cartViewStyle"
+                android:layout_marginLeft="@dimen/padding_cart_list_view" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/edittext_padding"
+                android:layout_marginRight="10dp"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:layout_weight="1"
+                    android:textColor="@color/app_background"
+                    android:text="@string/settings_itemspurchased_text" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/padding_large"
+                    android:id="@+id/switchitemsPurchasedImage"
+                    android:layout_centerVertical="true"
+                    android:theme="@style/SettingSwitch"
+                    app:showText="false"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBar_settings_purchases"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/settings_margin_rignt"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+            <View style="@style/cartViewStyle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/app_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:text="@string/settings_socialaccounts_text" />
+                </LinearLayout>
+
+                <View style="@style/cartViewStyle" />
+
+                <LinearLayout
+                    android:id="@+id/fbAccountLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:text="@string/settings_facebook_text" />
+
+                    <ImageView
+                        android:id="@+id/socialFbImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/padding_large"
+                        android:background="@drawable/card_selector" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view" />
+
+                <LinearLayout
+                    android:id="@+id/twitterAccountLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:text="@string/settings_twitter_text" />
+
+                    <ImageView
+                        android:id="@+id/socialTwitterImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/padding_large"
+                        android:background="@drawable/card_selector" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view" />
+
+                <LinearLayout
+                    android:id="@+id/pinterestAccountLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:text="@string/settings_pinterest_text" />
+
+                    <ImageView
+                        android:id="@+id/socialPinterestImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/padding_large"
+                        android:background="@drawable/card_selector" />
+                </LinearLayout>
+
+                <View
+                    style="@style/cartViewStyle"
+                    android:layout_marginLeft="@dimen/padding_cart_list_view" />
+
+                <LinearLayout
+                    android:id="@+id/instagramAccountLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/padding_large"
+                    android:paddingTop="@dimen/padding_large" >
+
+                    <TextView
+                        style="@style/cartProductTextStyle"
+                        android:layout_weight="1"
+                        android:text="@string/settings_instagram_text" />
+
+                    <ImageView
+                        android:id="@+id/socialInstagramImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/padding_large"
+                        android:background="@drawable/card_selector" />
+                </LinearLayout>
+
+                <View style="@style/cartViewStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:text="@string/settings_walletsecurity_text"
+                    android:layout_gravity="center"
+                    android:gravity="center|bottom"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:layout_marginTop="35dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/walletPinChangeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/edittext_padding"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:textColor="@color/app_background"
+                    android:text="@string/settings_changepin_text" />
+            </LinearLayout>
+
+            <View style="@style/cartViewStyle" />
+
+            <View style="@style/cartViewStyle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:text="@string/settings_editaddress_text"
+                    android:layout_gravity="center"
+                    android:gravity="center|bottom"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:layout_marginTop="35dp"/>
+            </LinearLayout>
+
+            <View style="@style/cartViewStyle" />
+
+            <TextView
+                android:id="@+id/noAddressFound"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:layout_marginLeft="@dimen/edittext_padding"
+                android:textColor="@color/app_background"
+                android:text="No address found"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/addressListLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_background"
+                android:orientation="vertical"
+                android:visibility="gone" >
+            </LinearLayout>
+
+            <View style="@style/cartViewStyle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/cartProductTextStyle"
+                    android:text="@string/settings_storedcards_text"
+                    android:layout_gravity="center"
+                    android:gravity="center|bottom"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:layout_marginTop="35dp"/>
+            </LinearLayout>
+
+            <View style="@style/cartViewStyle" />
+
+            <TextView
+                android:id="@+id/noCardFound"
+                android:layout_marginLeft="@dimen/edittext_padding"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:text="No card found"
+                android:textColor="@color/app_background"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/cardListLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/edittext_padding"
+                android:orientation="vertical"
+                android:visibility="gone" >
+            </LinearLayout>
+
+            <View style="@style/cartViewStyle" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

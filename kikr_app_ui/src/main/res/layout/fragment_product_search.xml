@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/searchbar"
+        android:layout_width="fill_parent"
+
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/button1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:background="#80ffffff"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/search_icon"
+            android:visibility="visible" />
+
+
+        <TextView
+            android:id="@+id/searchMultiText"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@android:color/transparent"
+             android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:hint="Search for People, Stores &amp; Brands"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            />
+
+
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvCategriesList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/searchbar"
+        android:fadeScrollbars="false"
+        android:scrollbarSize="2dp"
+        android:scrollbarThumbVertical="@drawable/scrollbar_style"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>

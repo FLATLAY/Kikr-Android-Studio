@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentRL"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/mainRL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" 
+        android:padding="@dimen/padding_large"
+        android:layout_marginTop="@dimen/margin_xlarge">
+
+        <ImageView
+            android:id="@+id/pinGuideIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pin_guide" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp" >
+
+        <RelativeLayout
+            android:id="@+id/likeRL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/arch_margin" >
+
+            <ImageView
+                android:id="@+id/likeIV"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/likewhite" />
+
+            <TextView
+                android:id="@+id/lekeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6dp"
+                android:layout_toRightOf="@+id/likeIV"
+                android:padding="5dp"
+                android:text="Like"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/discoverRL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/arch_margin" >
+
+            <ImageView
+                android:id="@+id/discoverIV"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_add_collection_unselect" />
+
+            <TextView
+                android:id="@+id/discoverTV"
+                android:layout_marginLeft="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/discoverIV"
+                android:padding="5dp"
+                android:text="Add to Collection"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/checkoutRL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/arch_margin" >
+
+            <ImageView
+                android:id="@+id/checkoutIV"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_cart_unselect" />
+
+            <TextView
+                android:id="@+id/checkoutTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/checkoutIV"
+                android:padding="5dp"
+                android:text="Add to Cart"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/shareRL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/arch_margin" >
+
+            <ImageView
+                android:id="@+id/shareIV"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/sharewhite" />
+
+            <TextView
+                android:id="@+id/shareTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/shareIV"
+                android:padding="5dp"
+                android:text="Share"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mainRL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true" >
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/bg_btn_discover" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

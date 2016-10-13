@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/collection_name_inspiration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/padding_large"
+        android:text="Collection Name"
+        android:textColor="@color/app_text_color"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/name_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="@dimen/padding_large"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:id="@+id/collection_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/ll"
+                android:text="Collection Name"
+
+                android:textColor="@color/app_text_color" />
+
+
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/clock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+
+                    android:src="@drawable/ic_clockicon" />
+
+                <TextView
+                    android:id="@+id/collection_created_at"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:text="Dec 20th"
+                    android:textColor="@color/app_text_color" />
+
+                <ImageView
+                    android:id="@+id/detail_collection_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="@dimen/padding_large"
+                    android:src="@drawable/ic_detail_collection_img" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/app_background"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/collection_image_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dum_list_item_product"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@color/app_text_color" />
+
+            <ImageView
+                android:id="@+id/collection_image_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dum_list_item_product"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@color/app_text_color" />
+
+            <ImageView
+                android:id="@+id/collection_image_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dum_list_item_product"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@color/app_text_color" />
+
+            <ImageView
+                android:id="@+id/collection_image_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dum_list_item_product"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_first_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:visibility="gone"
+            android:background="@color/app_text_color" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/collection_image_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dum_list_item_product"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@color/app_text_color" />
+
+            <ImageView
+                android:id="@+id/collection_image_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dum_list_item_product"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@color/app_text_color" />
+
+            <ImageView
+                android:id="@+id/collection_image_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dum_list_item_product"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@color/app_text_color" />
+
+            <ImageView
+                android:id="@+id/collection_image_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dum_list_item_product"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:visibility="visible"
+            android:background="@color/app_text_color" />
+    </LinearLayout>
+
+</LinearLayout>

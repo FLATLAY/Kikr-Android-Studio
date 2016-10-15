@@ -55,7 +55,6 @@ dependencies {
     compile project(':kikr_menudrawer_lib')
     compile project(':libAndroidCrop2')
     //  compile project(':kikr_FacebookSDK')
-    compile project(':kikr_ibeacon_service')
     compile files('libs/android-query-full.0.25.8-beta.jar')
     compile files('libs/Branch-1.8.11.jar')
     compile files('libs/glide-3.4.0.jar')

@@ -3,7 +3,6 @@ package com.flatlay.activity;
 import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -44,10 +43,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.braintreepayments.api.Braintree;
-import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.flatlay.KikrApp;
 import com.flatlay.KikrApp.TrackerName;
 import com.flatlay.R;
@@ -107,7 +102,6 @@ import com.flatlay.fragment.FragmentTagList;
 import com.flatlay.fragment.FragmentTrackOrder;
 import com.flatlay.fragment.FragmentUserCart;
 import com.flatlay.fragment.SettingFragmentTab;
-import com.flatlay.ibeacon.BeaconMonitorService;
 import com.flatlay.menu.ArcLayout;
 import com.flatlay.menu.ContextMenuView;
 import com.flatlay.post_upload.FragmentPostUploadTag;
@@ -121,6 +115,10 @@ import com.flatlay.utility.AppConstants.Screen;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.MarshmallowPermissions;
 import com.flatlay.utility.UiUpdate;
+import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.kikrlib.api.BraintreePaymentApi;
 import com.kikrlib.api.CartApi;
 import com.kikrlib.api.ConnectWithFacebookApi;
@@ -164,7 +162,6 @@ import com.pinterest.android.pdk.PDKClient;
 import com.pinterest.android.pdk.PDKException;
 import com.pinterest.android.pdk.PDKResponse;
 import com.pinterest.android.pdk.Utils;
-import com.radiusnetworks.ibeacon.IBeaconManager;
 import com.soundcloud.android.crop.Crop;
 import com.yalantis.ucrop.UCrop;
 
@@ -254,9 +251,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
         setActionBar();
         if (UserPreference.getInstance().getIsCheckBluetooth())
-            verifyBluetooth(false);
-        if (CommonUtility.isOnline(context))
-            getUUIDList();
+
         inItMethods();
         addMenuLayouts();
         if (AppConstants.isFromTutorial) {
@@ -1446,72 +1441,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
 
-    private void verifyBluetooth(boolean showDialog) {
-        try {
-            if (!IBeaconManager.getInstanceForApplication(this)
-                    .checkAvailability()) {
-                if (showDialog)
-                    showBluetoothDialog();
-            } else {
-                if (showDialog)
-                    AlertUtils.showToast(context, "Searching iBeacon...");
-                startIBeaconService();
-            }
-        } catch (RuntimeException e) {
-            if (showDialog) {
-                e.printStackTrace();
-                final AlertDialog.Builder builder = new AlertDialog.Builder(
-                        this);
-                builder.setTitle("Bluetooth LE not available");
-                builder.setMessage("Sorry, this device does not support Bluetooth LE.");
-                builder.setPositiveButton(android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
 
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                builder.create().dismiss();
-                            }
-                        });
-                builder.show();
-            }
-        }
-
-    }
-
-    private void showBluetoothDialog() {
-        // TODO Auto-generated method stub
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Bluetooth not enabled");
-        builder.setMessage("Please enable bluetooth in settings to receive exclusive in-store deals.");
-
-        builder.setPositiveButton(android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intentOpenBluetoothSettings = new Intent();
-                        intentOpenBluetoothSettings
-                                .setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
-                        startActivity(intentOpenBluetoothSettings);
-                        builder.create().dismiss();
-                    }
-                });
-        builder.setNegativeButton("Cancel",
-                new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        builder.create().dismiss();
-                    }
-                });
-        builder.show();
-    }
-
-    private void startIBeaconService() {
-        Intent intent = new Intent(context, BeaconMonitorService.class);
-        startService(intent);
-    }
 
     public void shareProduct(final Product product, final boolean isOther) {
         AlertUtils.showToast(context, "Please wait...");

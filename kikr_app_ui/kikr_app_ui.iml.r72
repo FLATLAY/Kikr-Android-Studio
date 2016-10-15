@@ -162,6 +162,5 @@
     <orderEntry type="module" module-name="photo-crop-library" exported="" />
     <orderEntry type="module" module-name="kikr_menudrawer_lib" exported="" />
     <orderEntry type="module" module-name="libAndroidCrop2" exported="" />
-    <orderEntry type="module" module-name="kikr_ibeacon_service" exported="" />
   </component>
 </module>

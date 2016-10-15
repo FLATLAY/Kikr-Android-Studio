@@ -159,15 +159,7 @@ From Kikr_app_ui:
 * kit-libs\io-fabric-sdk-android_fabric\libs\io-fabric-sdk-android_fabric-classes.jar
 * kit-libs\io-fabric-sdk-android_fabric\project.properties
 * kits.properties
-* proguard-project.txt
-From Kikr_ibeacon_service:
-* .gitignore
-* LICENSE
-* NOTICE
-* README.md
-* proguard-project.txt
-* scripts\
-* scripts\generatejavadoc
+* proguard-project.txt=
 From Kikr_menudrawer_lib:
 * .gitignore
 From LibAndroidCrop:
@@ -518,10 +510,6 @@ In Kikr_app_ui:
 * libs\glide-3.4.0.jar => kikr_app_ui\libs\glide-3.4.0.jar
 * libs\HockeySDK-3.5.0.jar => kikr_app_ui\libs\HockeySDK-3.5.0.jar
 * libs\Personagraph-SDK-1.11.3.jar => kikr_app_ui\libs\Personagraph-SDK-1.11.3.jar
-* libs\twitter4j-async-4.0.2.jar => kikr_app_ui\libs\twitter4j-async-4.0.2.jar
-* libs\twitter4j-core-4.0.2.jar => kikr_app_ui\libs\twitter4j-core-4.0.2.jar
-* libs\twitter4j-media-support-4.0.2.jar => kikr_app_ui\libs\twitter4j-media-support-4.0.2.jar
-* libs\twitter4j-stream-4.0.2.jar => kikr_app_ui\libs\twitter4j-stream-4.0.2.jar
 * libs\universal-image-loader-1.9.4.jar => kikr_app_ui\libs\universal-image-loader-1.9.4.jar
 * libs\urlimageviewhelper-1.0.4.jar => kikr_app_ui\libs\urlimageviewhelper-1.0.4.jar
 * lint.xml => kikr_app_ui\lint.xml

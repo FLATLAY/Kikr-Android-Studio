@@ -176,7 +176,6 @@
     <orderEntry type="module" module-name="main" exported="" />
     <orderEntry type="module" module-name="kikr_menudrawer_lib" exported="" />
     <orderEntry type="module" module-name="instagram_library" exported="" />
-    <orderEntry type="module" module-name="kikr_ibeacon_service" exported="" />
     <orderEntry type="module" module-name="photo-crop-library" exported="" />
     <orderEntry type="module" module-name="kikr_app_services" exported="" />
     <orderEntry type="module" module-name="libAndroidCrop2" exported="" />

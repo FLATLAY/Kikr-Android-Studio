@@ -100,7 +100,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.asne/asne-facebook/0.3.3/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.asne/asne-instagram/0.3.3/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.asne/asne-odnoklassniki/0.3.3/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.asne/asne-twitter/0.3.3/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.asne/asne-vk/0.3.3/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.3.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/jars" />
@@ -137,7 +136,6 @@
     <orderEntry type="library" exported="" name="facebook-android-sdk-3.19.1" level="project" />
     <orderEntry type="library" exported="" name="asne-vk-0.3.3" level="project" />
     <orderEntry type="library" exported="" name="picasso-2.5.2" level="project" />
-    <orderEntry type="library" exported="" name="asne-twitter-0.3.3" level="project" />
     <orderEntry type="library" exported="" name="play-services-base-8.3.0" level="project" />
     <orderEntry type="library" exported="" name="Personagraph-SDK-1.11.3" level="project" />
     <orderEntry type="library" exported="" name="play-services-identity-8.3.0" level="project" />
@@ -170,14 +168,12 @@
     <orderEntry type="library" exported="" name="HockeySDK-3.5.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
     <orderEntry type="library" exported="" name="asne-core-0.3.3" level="project" />
-    <orderEntry type="library" exported="" name="twitter4j-core-4.0.2" level="project" />
     <orderEntry type="library" exported="" name="android-query-full.0.25.8-beta" level="project" />
     <orderEntry type="module" module-name="pdk2" exported="" />
     <orderEntry type="module" module-name="ucrop" exported="" />
     <orderEntry type="module" module-name="main" exported="" />
     <orderEntry type="module" module-name="kikr_menudrawer_lib" exported="" />
     <orderEntry type="module" module-name="instagram_library" exported="" />
-    <orderEntry type="module" module-name="kikr_ibeacon_service" exported="" />
     <orderEntry type="module" module-name="photo-crop-library" exported="" />
     <orderEntry type="module" module-name="kikr_app_services" exported="" />
     <orderEntry type="module" module-name="libAndroidCrop2" exported="" />

@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Personagraph-SDK-1.11.3">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/kikr_app_ui/libs/Personagraph-SDK-1.11.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/flatlay_ui/libs/Personagraph-SDK-1.11.3.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

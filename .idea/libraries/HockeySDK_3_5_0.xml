@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="HockeySDK-3.5.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/kikr_app_ui/libs/HockeySDK-3.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/flatlay_ui/libs/HockeySDK-3.5.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -13,7 +13,7 @@
         android:allowBackup="true"
         android:theme="@style/AppTheme" >
        <!--  <activity
-            android:name="com.kikrlib.MainActivity"
+            android:name="com.flatlaylibtlaylib.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.google.android.gms.wallet.FullWallet;
 import com.flatlay.BaseActivity;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
@@ -20,7 +19,6 @@ import com.flatlaylib.service.res.CartRes;
 
 public class OrderCompleteActivity extends BaseActivity implements OnClickListener{
 	private ProgressBarDialog progressBarDialog;
-	private FullWallet mFullWallet;
 	private TextView return_to_shopping;
     
     @Override
@@ -28,7 +26,6 @@ public class OrderCompleteActivity extends BaseActivity implements OnClickListen
         super.onCreate(savedInstanceState);
         CommonUtility.noTitleActivity(this);
         setContentView(R.layout.activity_order_complete);
-        mFullWallet = getIntent().getParcelableExtra(Constants.EXTRA_FULL_WALLET);
     }
 
 	@Override

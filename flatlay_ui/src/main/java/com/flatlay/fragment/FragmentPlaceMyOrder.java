@@ -3,7 +3,6 @@ package com.flatlay.fragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,9 +27,6 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-import com.google.android.gms.analytics.ecommerce.ProductAction;
 import com.flatlay.GCMAlarmReceiver;
 import com.flatlay.KikrApp;
 import com.flatlay.KikrApp.TrackerName;
@@ -71,6 +67,9 @@ import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Constants;
 import com.flatlaylib.utils.StringUtils;
 import com.flatlaylib.utils.Syso;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.analytics.ecommerce.ProductAction;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -208,8 +207,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
         b_stateSpinnerUS = (Spinner) mainView.findViewById(R.id.b_stateSpinnerUS);
         b_stateSpinnerCanada = (Spinner) mainView.findViewById(R.id.b_stateSpinnerCanada);
         b_countryEditText = (Spinner) mainView.findViewById(R.id.b_countryEditText);
-// 		progressBarPlaceOrder.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.btn_green), android.graphics.PorterDuff.Mode.MULTIPLY);
-//		createAndAddWalletFragment();
+
         changePlaceOrderColor();
         learnmoreText.setPaintFlags(learnmoreText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         whyTextView = (TextView) mainView.findViewById(R.id.whyTextView);
@@ -565,86 +563,18 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
         addressApi.execute();
     }
 
-    //	============================== Google wallet===================
-//	private SupportWalletFragment mWalletFragment;
     String itemCount = "1";
     private String apartment;
 
+    // TODO: 10/24/2016 : this is added from extending googlewallet class the, class and overriden methods should be removed
     @Override
     protected Fragment getResultTargetFragment() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    private void createAndAddWalletFragment() {
-//		WalletFragmentStyle walletFragmentStyle = new WalletFragmentStyle()
-//				.setBuyButtonText(BuyButtonText.BUY_WITH_GOOGLE)
-//				.setBuyButtonWidth(Dimension.MATCH_PARENT);
-//
-//		WalletFragmentOptions walletFragmentOptions = WalletFragmentOptions
-//				.newBuilder()
-//				.setEnvironment(AppConstants.GOOGLE_WALLET_ENVIRONMENT)
-//				.setFragmentStyle(walletFragmentStyle)
-//				.setTheme(WalletConstants.THEME_HOLO_LIGHT)
-//				.setMode(WalletFragmentMode.BUY_BUTTON).build();
-//		mWalletFragment = SupportWalletFragment.newInstance(walletFragmentOptions);
-//
-//		// Now initialize the Wallet Fragment
-//		String accountName = ((KikrApp) mContext.getApplication()).getAccountName();
-//		MaskedWalletRequest maskedWalletRequest = WalletUtil
-//				.createMaskedWalletRequest(Constants.getDummyToatlObject());
-//		WalletFragmentInitParams.Builder startParamsBuilder = WalletFragmentInitParams
-//				.newBuilder()
-//				.setMaskedWalletRequest(maskedWalletRequest)
-//				.setMaskedWalletRequestCode(
-//						AppConstants.REQUEST_CODE_MASKED_WALLET)
-//				.setAccountName(accountName);
-//		mWalletFragment.initialize(startParamsBuilder.build());
-//
-//		// add Wallet fragment to the UI
-//		mContext.getSupportFragmentManager().beginTransaction()
-//				.replace(R.id.dynamic_wallet_button_fragment, mWalletFragment)
-//				.commit();
-    }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // retrieve the error code, if available
-//		System.out.println("1234567 DumFragmentGoogleWallet.onActivityResult()");
-        int errorCode = -1;
-//		if (data != null) {
-//			errorCode = data.getIntExtra(WalletConstants.EXTRA_ERROR_CODE, -1);
-//		}
-        switch (requestCode) {
-//		case AppConstants.REQUEST_CODE_MASKED_WALLET:
-//			switch (resultCode) {
-//			case Activity.RESULT_OK:
-//				MaskedWallet maskedWallet = data.getParcelableExtra(WalletConstants.EXTRA_MASKED_WALLET);
-//				launchConfirmationPage(maskedWallet);
-//				break;
-//			case Activity.RESULT_CANCELED:
-//				break;
-//			default:
-//				handleError(errorCode);
-//				break;
-//			}
-//			break;
-//		case WalletConstants.RESULT_ERROR:
-//			handleError(errorCode);
-//			break;
-            default:
-                super.onActivityResult(requestCode, resultCode, data);
-                break;
-        }
-    }
 
-//	private void launchConfirmationPage(MaskedWallet maskedWallet) {
-//		Intent intent = new Intent(mContext, ConfirmationActivity.class);
-//		intent.putExtra(Constants.EXTRA_ITEM_ID, 0);
-//		intent.putExtra(Constants.EXTRA_ITEM_DETAIL, Constants.getDummyToatlObject());
-//		intent.putExtra(Constants.EXTRA_MASKED_WALLET, maskedWallet);
-//		startActivity(intent);
-//	}
 
 
     private void updateCartInfo() {
@@ -659,36 +589,6 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
             totalText.setText(cartTotalInfo.getTotal_price().equals(blank) ? "$0.00" : "$" + CommonUtility.getFormatedNum(cartTotalInfo.getTotal_price()));
         }
     }
-
-//	public void getTotalInfo(String address_id) {
-//		progressBarDialog = new ProgressBarDialog(mContext);
-//		progressBarDialog.show();
-//		final GetCartInfoApi cartApi = new GetCartInfoApi(new ServiceCallback() {
-//
-//			@Override
-//			public void handleOnSuccess(Object object) {
-//				progressBarDialog.dismiss();
-//				if (object != null) {
-//					GetCartInfoRes cartRes = (GetCartInfoRes) object;
-//					cartTotalInfo = cartRes.getTotal_info();
-//					updateCartInfo();
-//					}
-//			}
-//
-//			@Override
-//			public void handleOnFailure(ServiceException exception, Object object) {
-//				progressBarDialog.dismiss();
-//				if(object!=null){
-//					GetCartInfoRes cartRes=(GetCartInfoRes) object;
-//					AlertUtils.showToast(mContext, cartRes.getMessage());
-//				}else{
-//					AlertUtils.showToast(mContext, R.string.invalid_response);
-//				}
-//			}
-//		});
-//		cartApi.getTotalInfo(UserPreference.getInstance().getUserID(), address_id);
-//		cartApi.execute();
-//	}
 
     public void setAddress(Address address) {
         this.address = address;

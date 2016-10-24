@@ -1,6 +1,5 @@
 package com.flatlay.utility;
 
-import com.google.android.gms.wallet.WalletConstants;
 import com.flatlay.bubble.ChipBubbleText;
 
 public class AppConstants {
@@ -62,7 +61,6 @@ public class AppConstants {
         String PURCHASES = "purchases";
     }
 
-    public static final int GOOGLE_WALLET_ENVIRONMENT = WalletConstants.ENVIRONMENT_SANDBOX;
 
     public static final String TERMS_OF_USE_URL =  "https://flat-lay.com/#/terms";
     public static final String PRIVACY_POLICY_URL = "https://flat-lay.com/#/privacy";

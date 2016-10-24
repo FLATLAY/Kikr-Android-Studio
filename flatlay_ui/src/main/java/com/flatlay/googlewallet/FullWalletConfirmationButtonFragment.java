@@ -1,8 +1,5 @@
 package com.flatlay.googlewallet;
 
-import java.lang.ref.WeakReference;
-
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -20,6 +17,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.flatlay.KikrApp;
+import com.flatlay.R;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.analytics.ecommerce.ProductAction;
@@ -28,15 +27,8 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.wallet.FullWallet;
-import com.google.android.gms.wallet.MaskedWallet;
-import com.google.android.gms.wallet.NotifyTransactionStatusRequest;
-import com.google.android.gms.wallet.Wallet;
-import com.google.android.gms.wallet.WalletConstants;
-import com.flatlay.KikrApp;
-import com.flatlay.R;
-import com.flatlay.utility.AppConstants;
-import com.flatlaylib.utils.Syso;
+
+import java.lang.ref.WeakReference;
 
 public class FullWalletConfirmationButtonFragment extends Fragment implements ConnectionCallbacks,
         OnConnectionFailedListener, OnClickListener {
@@ -72,7 +64,6 @@ public class FullWalletConfirmationButtonFragment extends Fragment implements Co
 
     private ItemInfo mItemInfo;
     private Button mConfirmButton;
-    private MaskedWallet mMaskedWallet;
     private int mRetryLoadFullWalletCount = 0;
     private Intent mActivityLaunchIntent;
 
@@ -96,20 +87,8 @@ public class FullWalletConfirmationButtonFragment extends Fragment implements Co
         }
         mActivityLaunchIntent = getActivity().getIntent();
         mItemId = mActivityLaunchIntent.getIntExtra(Constants.EXTRA_ITEM_ID, 0);
-        mMaskedWallet = mActivityLaunchIntent.getParcelableExtra(Constants.EXTRA_MASKED_WALLET);
 
         String accountName = getApplication().getAccountName();
-
-        // Set up an API client;
-        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .setAccountName(accountName)
-                .addApi(Wallet.API, new Wallet.WalletOptions.Builder()
-                        .setEnvironment(AppConstants.GOOGLE_WALLET_ENVIRONMENT)
-                        .setTheme(WalletConstants.THEME_HOLO_LIGHT)
-                        .build())
-                .build();
 
         mRetryHandler = new RetryHandler(this);
     }
@@ -235,11 +214,8 @@ public class FullWalletConfirmationButtonFragment extends Fragment implements Co
 
         // retrieve the error code, if available
         int errorCode = -1;
-        if (data != null) {
-            errorCode = data.getIntExtra(WalletConstants.EXTRA_ERROR_CODE, -1);
-        }
 
-        switch (requestCode) {
+     /*   switch (requestCode) {
             case REQUEST_CODE_RESOLVE_ERR:
                 if (resultCode == Activity.RESULT_OK) {
                     mGoogleApiClient.connect();
@@ -274,12 +250,11 @@ public class FullWalletConfirmationButtonFragment extends Fragment implements Co
                         break;
                 }
                 break;
-        }
+        }*/
     }
 
-    /*package*/ void updateMaskedWallet(MaskedWallet maskedWallet) {
-        mMaskedWallet = maskedWallet;
-    }
+    /*package*/
+
 
     private void reconnect() {
         if (mRetryCounter < MAX_RETRIES) {
@@ -290,14 +265,13 @@ public class FullWalletConfirmationButtonFragment extends Fragment implements Co
             mRetryHandler.sendMessageDelayed(m, delay);
             mRetryCounter++;
         } else {
-            handleError(WalletConstants.ERROR_CODE_SERVICE_UNAVAILABLE);
+           ;
         }
     }
 
     protected void handleUnrecoverableGoogleWalletError(int errorCode) {
         Intent intent = new Intent(getActivity(), CheckoutActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra(WalletConstants.EXTRA_ERROR_CODE, errorCode);
         intent.putExtra(Constants.EXTRA_ITEM_ID, mItemId);
         startActivity(intent);
     }
@@ -307,22 +281,7 @@ public class FullWalletConfirmationButtonFragment extends Fragment implements Co
             // handled by retrying
             return;
         }
-        switch (errorCode) {
-            case WalletConstants.ERROR_CODE_SPENDING_LIMIT_EXCEEDED:
-                // may be recoverable if the user tries to lower their charge
-                // take the user back to the checkout page to try to handle
-            case WalletConstants.ERROR_CODE_INVALID_PARAMETERS:
-            case WalletConstants.ERROR_CODE_AUTHENTICATION_FAILURE:
-            case WalletConstants.ERROR_CODE_BUYER_ACCOUNT_ERROR:
-            case WalletConstants.ERROR_CODE_MERCHANT_ACCOUNT_ERROR:
-            case WalletConstants.ERROR_CODE_SERVICE_UNAVAILABLE:
-            case WalletConstants.ERROR_CODE_UNSUPPORTED_API_VERSION:
-            case WalletConstants.ERROR_CODE_UNKNOWN:
-            default:
-                // unrecoverable error
-                // take the user back to the checkout page to handle these errors
-                handleUnrecoverableGoogleWalletError(errorCode);
-        }
+            handleUnrecoverableGoogleWalletError(errorCode);
     }
 
     private void confirmPurchase() {
@@ -348,42 +307,11 @@ public class FullWalletConfirmationButtonFragment extends Fragment implements Co
     }
 
     private void getFullWallet() {
-        Wallet.Payments.loadFullWallet(mGoogleApiClient,
-                WalletUtil.createFullWalletRequest(Constants.getDummyToatlObject(),mMaskedWallet.getGoogleTransactionId()),
-                REQUEST_CODE_RESOLVE_LOAD_FULL_WALLET);
     }
 
-    private void fetchTransactionStatus(FullWallet fullWallet) {
-        if (mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
-        }
-        // Send back details such as fullWallet.getProxyCard() and fullWallet.getBillingAddress()
-        // and get back success or failure
-        // The following code assumes a successful response and calls notifyTransactionStatus
-        Wallet.Payments.notifyTransactionStatus(mGoogleApiClient,
-                WalletUtil.createNotifyTransactionStatusRequest(fullWallet.getGoogleTransactionId(),
-                        NotifyTransactionStatusRequest.Status.SUCCESS));
-        writeData(fullWallet);
-        Intent intent = new Intent(getActivity(), OrderCompleteActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(Constants.EXTRA_FULL_WALLET, fullWallet);
-        startActivity(intent);
-    }
-
-    private void writeData(FullWallet fullWallet) {
-		// TODO Auto-generated method stub
-		Syso.info("Email: "+fullWallet.getEmail());
-		Syso.info("GoogleTransactionId: "+fullWallet.getGoogleTransactionId());
-		Syso.info("MerchantTransactionId: "+fullWallet.getMerchantTransactionId());
-		Syso.info("BillingAddress: "+fullWallet.getBillingAddress().getAddress1()+","+fullWallet.getBillingAddress().getCity());
-		Syso.info("BuyerBillingAddress: "+fullWallet.getBuyerBillingAddress().getAddress1()+","+fullWallet.getBuyerBillingAddress().getName());
-		Syso.info("BuyerShippingAddress: "+fullWallet.getBuyerShippingAddress().getAddress1()+","+fullWallet.getBuyerShippingAddress().getName());
-	}
 
 	private boolean checkAndRetryFullWallet(int errorCode) {
-        if ((errorCode == WalletConstants.ERROR_CODE_SERVICE_UNAVAILABLE ||
-                errorCode == WalletConstants.ERROR_CODE_UNKNOWN) &&
-                mRetryLoadFullWalletCount < MAX_FULL_WALLET_RETRIES) {
+        if (mRetryLoadFullWalletCount < MAX_FULL_WALLET_RETRIES) {
             mRetryLoadFullWalletCount++;
             getFullWallet();
             return true;

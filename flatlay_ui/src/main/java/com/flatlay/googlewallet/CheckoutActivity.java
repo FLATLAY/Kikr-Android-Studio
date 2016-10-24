@@ -9,9 +9,6 @@ import android.view.View;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.analytics.ecommerce.ProductAction;
-import com.google.android.gms.wallet.MaskedWallet;
-import com.google.android.gms.wallet.WalletConstants;
-import com.google.android.gms.wallet.fragment.SupportWalletFragment;
 import com.flatlay.KikrApp;
 import com.flatlay.R;
 import com.flatlay.utility.CommonUtility;
@@ -19,7 +16,6 @@ import com.flatlay.utility.CommonUtility;
 public class CheckoutActivity extends BikestoreFragmentActivity implements android.view.View.OnClickListener {
 
     private static final int REQUEST_CODE_MASKED_WALLET = 1001;
-    private SupportWalletFragment mWalletFragment;
     private int mItemId;
     private  Tracker mTracker = null;
     public static final String SCREEN_NAME = "Checkout Activity";
@@ -43,9 +39,7 @@ public class CheckoutActivity extends BikestoreFragmentActivity implements andro
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // retrieve the error code, if available
         int errorCode = -1;
-        if (data != null) {
-            errorCode = data.getIntExtra(WalletConstants.EXTRA_ERROR_CODE, -1);
-        }
+
         switch (requestCode) {
             case REQUEST_CODE_MASKED_WALLET:
                 switch (resultCode) {
@@ -60,9 +54,6 @@ public class CheckoutActivity extends BikestoreFragmentActivity implements andro
 
                         mTracker.send(builder.build());
 
-                        MaskedWallet maskedWallet =
-                                data.getParcelableExtra(WalletConstants.EXTRA_MASKED_WALLET);
-                        launchConfirmationPage(maskedWallet);
                         break;
                     case Activity.RESULT_CANCELED:
                         break;
@@ -70,9 +61,6 @@ public class CheckoutActivity extends BikestoreFragmentActivity implements andro
                         handleError(errorCode);
                         break;
                 }
-                break;
-            case WalletConstants.RESULT_ERROR:
-                handleError(errorCode);
                 break;
             default:
                 super.onActivityResult(requestCode, resultCode, data);
@@ -82,10 +70,6 @@ public class CheckoutActivity extends BikestoreFragmentActivity implements andro
 
     @Override
     protected void onNewIntent(Intent intent) {
-        if (intent.hasExtra(WalletConstants.EXTRA_ERROR_CODE)) {
-            int errorCode = intent.getIntExtra(WalletConstants.EXTRA_ERROR_CODE, 0);
-            handleError(errorCode);
-        }
     }
 
     @Override
@@ -132,10 +116,9 @@ public class CheckoutActivity extends BikestoreFragmentActivity implements andro
 //                .commit();
     }
 
-    private void launchConfirmationPage(MaskedWallet maskedWallet) {
+    private void launchConfirmationPage() {
         Intent intent = new Intent(this, ConfirmationActivity.class);
         intent.putExtra(Constants.EXTRA_ITEM_ID, mItemId);
-        intent.putExtra(Constants.EXTRA_MASKED_WALLET, maskedWallet);
         startActivity(intent);
     }
 

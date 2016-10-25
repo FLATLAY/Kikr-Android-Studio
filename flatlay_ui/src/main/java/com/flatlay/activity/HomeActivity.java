@@ -61,7 +61,6 @@ import com.flatlay.fragment.FragmentAllOrders;
 import com.flatlay.fragment.FragmentCardInfo;
 import com.flatlay.fragment.FragmentCategories;
 import com.flatlay.fragment.FragmentCreditRedeemDetailPage;
-import com.flatlay.fragment.FragmentDeals;
 import com.flatlay.fragment.FragmentDiscover;
 import com.flatlay.fragment.FragmentDiscoverDetail;
 import com.flatlay.fragment.FragmentDiscoverNew;
@@ -115,10 +114,6 @@ import com.flatlay.utility.AppConstants.Screen;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.MarshmallowPermissions;
 import com.flatlay.utility.UiUpdate;
-import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.flatlaylib.api.BraintreePaymentApi;
 import com.flatlaylib.api.CartApi;
 import com.flatlaylib.api.ConnectWithFacebookApi;
@@ -156,6 +151,10 @@ import com.flatlaylib.service.res.WalletPinRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.StringUtils;
 import com.flatlaylib.utils.Syso;
+import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.personagraph.api.PGAgent;
 import com.pinterest.android.pdk.PDKCallback;
 import com.pinterest.android.pdk.PDKClient;
@@ -2551,9 +2550,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         super.onResume();
         checkForCrashes();
         checkForUpdates();
-        if (mContent instanceof FragmentDeals) {
-            ((FragmentDeals) mContent).getLocation();
-        }
     }
 
     private void checkForCrashes() {

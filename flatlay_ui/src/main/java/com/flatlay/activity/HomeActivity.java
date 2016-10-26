@@ -164,8 +164,6 @@ import com.pinterest.android.pdk.Utils;
 import com.soundcloud.android.crop.Crop;
 import com.yalantis.ucrop.UCrop;
 
-import net.hockeyapp.android.CrashManager;
-import net.hockeyapp.android.UpdateManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -2553,12 +2551,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void checkForCrashes() {
-        CrashManager.register(this, "3ec40bcb125d3ad0f770b3d424bcf913");
+        //CrashManager.register(this, "3ec40bcb125d3ad0f770b3d424bcf913");
     }
 
     private void checkForUpdates() {
         // Remove this for store builds!
-        UpdateManager.register(this, "3ec40bcb125d3ad0f770b3d424bcf913");
+       // UpdateManager.register(this, "3ec40bcb125d3ad0f770b3d424bcf913");
     }
 
     @Override

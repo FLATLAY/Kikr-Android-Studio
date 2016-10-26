@@ -3,6 +3,7 @@ package com.flatlay.utility;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -17,6 +18,7 @@ import android.provider.MediaStore.Images;
 import android.provider.Settings.Secure;
 import android.support.v4.app.FragmentActivity;
 import android.text.Html;
+import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Base64;
 import android.util.DisplayMetrics;
@@ -34,6 +36,7 @@ import android.widget.TextView;
 import com.flatlay.R;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Constants.WebConstants;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -48,6 +51,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 //import com.google.android.gcm.GCMRegistrar;
+
 
 public class CommonUtility {
     public static final String SENDER_ID = "331880348728";
@@ -170,16 +174,6 @@ public class CommonUtility {
         }
     }
 
-    public static void hideSoftKeyboard2(Activity context) {
-        try {
-            InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
-            imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
     public static String printKeyHash(Activity context) {
         PackageInfo packageInfo;
         String key = null;
@@ -225,28 +219,6 @@ public class CommonUtility {
      * preference.
      */
 
-    public static String getDeviceTocken(Context context) {
-        //// TODO: 10/25/2016 get the fcm token here
-         /*    SharedPreferences preferences = context.getSharedPreferences("device_pref", Context.MODE_PRIVATE);
-        String deviceId = preferences.getString("deviceId", "");
-        if (deviceId.equals("")) {
-           String regId = GCMRegistrar.getRegistrationId(context);
-            if (TextUtils.isEmpty(regId) && !GCMRegistrar.isRegistered(context)) {
-                // Registration is not present, register now with GCM
-                System.out.println("Within if condition");
-                GCMRegistrar.register(context, SENDER_ID);
-                regId = GCMRegistrar.getRegistrationId(context);
-            }
-            if (TextUtils.isEmpty(regId)) {
-                regId = "";
-            }
-            preferences.edit().putString("deviceId", regId).commit();
-
-        } else {
-            return deviceId;
-        }return regId;*/
-        return "aaaa";//remove this also after performing todo
-    }
 
     public static int getDeviceWidth(FragmentActivity context) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
@@ -552,5 +524,19 @@ public class CommonUtility {
         return message;
     }
 
+    public static String getDeviceTocken(Context context) {
+
+        SharedPreferences preferences = context.getSharedPreferences("device_pref", Context.MODE_PRIVATE);
+        String deviceId = preferences.getString("deviceId", "");
+        if (deviceId.equals("")) {
+            try{
+            deviceId = FirebaseInstanceId.getInstance().getToken();}catch (Exception e){deviceId ="";}
+             preferences.edit().putString("deviceId", deviceId).commit();
+            if (TextUtils.isEmpty(deviceId)) {
+                deviceId = "";
+            }
+        }
+        return deviceId;
+    }
 
 }

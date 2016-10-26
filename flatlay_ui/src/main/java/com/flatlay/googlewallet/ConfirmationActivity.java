@@ -52,7 +52,7 @@ public class ConfirmationActivity extends BikestoreFragmentActivity implements O
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
     	try{
     	Syso.info("In onActivityResult>>"+requestCode+","+resultCode+","+data);
-    	//GCMIntentService.dumpIntent(data);
+    	//FirebaseMsgService.dumpIntent(data);
 
 
             super.onActivityResult(requestCode, resultCode, data);

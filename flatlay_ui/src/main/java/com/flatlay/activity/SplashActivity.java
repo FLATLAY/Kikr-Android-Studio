@@ -1,19 +1,6 @@
 package com.flatlay.activity;
 
-import io.branch.referral.Branch;
-import io.branch.referral.BranchError;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Calendar;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -21,26 +8,26 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
-import android.view.View;
 import android.widget.ProgressBar;
 
-import com.flatlay.AlarmReceiver;
 import com.flatlay.R;
 import com.flatlay.utility.AppConstants.Screen;
 import com.flatlay.utility.CommonUtility;
-import com.flatlaylib.api.GetServerIpApi;
 import com.flatlaylib.bean.LikeInfo;
 import com.flatlaylib.bean.Product;
-import com.flatlaylib.db.AppPreference;
 import com.flatlaylib.db.UserPreference;
-import com.flatlaylib.service.ServiceCallback;
-import com.flatlaylib.service.ServiceException;
-import com.flatlaylib.service.res.ServerIpRes;
-import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import io.branch.referral.Branch;
+import io.branch.referral.BranchError;
 
 public class SplashActivity extends Activity {
 	
@@ -61,7 +48,7 @@ public class SplashActivity extends Activity {
 //		}else{
 		//	handler.postDelayed(runnable, SPLASH_DISPLAY_TIME);
 //		}
-		setNotification();
+		//setNotification();
 //		facebookKey();
 	}
 
@@ -140,48 +127,8 @@ public class SplashActivity extends Activity {
 		finish();
 	}
 	
-	private void getServerIp() {
-		progressBar=(ProgressBar) findViewById(R.id.progressBar);
-		progressBar.setVisibility(View.VISIBLE);
-		GetServerIpApi getServerIpApi=new GetServerIpApi(new ServiceCallback() {
-				@Override
-				public void handleOnSuccess(Object object) {
-					ServerIpRes ipRes=(ServerIpRes) object;
-					String address=ipRes.getServer_address();
-					Syso.info("Server IP: "+address);
-					if(!TextUtils.isEmpty(address))
-						AppPreference.getInstance().setServerIp(address);
-					goToNext();
-				}
-				
-				@Override
-				public void handleOnFailure(ServiceException exception, Object object) {
-						AlertUtils.showToast(context,R.string.invalid_response);
-					goToNext();
-				}
-			});
-			getServerIpApi.getServerIp(CommonUtility.getIpAddress(context));
-			getServerIpApi.execute();
-	}
-	
-	  private void setNotification(){
-	        /* Set the alarm to start at 08:00 AM */
-	        Calendar calendar = Calendar.getInstance();
-	        calendar.setTimeInMillis(System.currentTimeMillis());
-	        calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH)+1);
-	        calendar.set(Calendar.HOUR_OF_DAY, 8);
-	        calendar.set(Calendar.MINUTE, 00);
 
-	    	AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-	    	Intent _myIntent = new Intent(context, AlarmReceiver.class);
-	    	PendingIntent _myPendingIntent = PendingIntent.getBroadcast(context, 123, _myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//	    	alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),_myPendingIntent);
-	    	/* Repeating on every 1 day interval */
-	    	alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-	    			24*60*60*1000, _myPendingIntent);  
-	  }
-	  
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -219,7 +166,7 @@ public class SplashActivity extends Activity {
 		                    
 		                    startActivity(i);
 		            } else if (productid.equals("") || UserPreference.getInstance().getUserID().equals("")) {
-	                	Log.e("Product empty or not logged in", "product empty or not logged in");
+	                	Log.e("Product empty", "product empty or not logged in");
 	                	handler.postDelayed(runnable, SPLASH_DISPLAY_TIME);
 	                }
 	                else {

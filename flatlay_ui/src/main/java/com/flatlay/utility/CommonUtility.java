@@ -530,7 +530,8 @@ public class CommonUtility {
         String deviceId = preferences.getString("deviceId", "");
         if (deviceId.equals("")) {
             try{
-            deviceId = FirebaseInstanceId.getInstance().getToken();}catch (Exception e){deviceId ="";}
+            deviceId = FirebaseInstanceId.getInstance().getToken();}
+            catch (Exception e){deviceId ="";}
              preferences.edit().putString("deviceId", deviceId).commit();
             if (TextUtils.isEmpty(deviceId)) {
                 deviceId = "";

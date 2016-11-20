@@ -134,11 +134,6 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
                 startActivity(LoginActivity.class);
                 finish();
                 break;
-            case R.id.skipButton:
-                if (checkInternet()) {
-                    skip();
-                }
-                break;
             case R.id.kikrIntroductionTextView:
                 startActivity(IntroductionPagerActivity.class);
                 break;
@@ -180,7 +175,8 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
             vedio.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 public void onCompletion(MediaPlayer mp) {
                     mp.setLooping(true);
-                    vedio.start(); //need to make transition seamless.
+                    vedio.start(); //TODO: need to make transition seamless.
+                    //need to be replaced by youtube
                 }
             });
 
@@ -257,70 +253,6 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
         }
     }
 
-    private void skip() {
-
-        progressBarDialog = new ProgressBarDialog(context);
-        progressBarDialog.show();
-
-        final RegisterUserApi service = new RegisterUserApi(
-                new ServiceCallback() {
-
-                    @Override
-                    public void handleOnSuccess(Object object) {
-                        if (object != null) {
-                            RegisterUserResponse response = (RegisterUserResponse) object;
-                            UserPreference.getInstance().setUserID(response.getId());
-                            UserPreference.getInstance().setCurrentScreen(Screen.CategoryScreen);
-                            UserPreference.getInstance().setcheckedIsConnected(true);
-                            UserPreference.getInstance().setIsCreateWalletPin(true);
-                            UserPreference.getInstance().setCartID(response.getCart_id());
-                            setHelpPreference();
-                            startActivity(FollowCategoriesNewActivity.class);
-                            finish();
-                        }
-                    }
-
-                    @Override
-                    public void handleOnFailure(ServiceException exception,
-                                                Object object) {
-                        // TODO Auto-generated method stub
-                        progressBarDialog.dismiss();
-                        Syso.info("In handleOnFailure>>" + object);
-                        if (object != null) {
-                            RegisterUserResponse response = (RegisterUserResponse) object;
-                            AlertUtils.showToast(context, response.getMessage());
-                        } else {
-                            AlertUtils.showToast(context, R.string.invalid_response);
-                        }
-                    }
-                });
-        service.registerGeustUser(CommonUtility.getDeviceTocken(context), Screen.CategoryScreen, CommonUtility.getDeviceId(context));
-        service.execute();
-
-        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
-    }
-
-    private void registerViaSocial(String id, String gender) {
-
-        progressBarDialog = new ProgressBarDialog(context);
-        progressBarDialog.show();
-
-        final RegisterUserApi service = new RegisterUserApi(this);
-        service.registerViaSocial(social, id, gender, DeviceUtils.getPhoneModel(), CommonUtility.getDeviceTocken(context), Screen.EmailScreen, "android", CommonUtility.getDeviceId(context));
-        service.execute();
-
-        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
-    }
 
     private void registerViaFbSocial(String id, String g) {
         progressBarDialog = new ProgressBarDialog(context);

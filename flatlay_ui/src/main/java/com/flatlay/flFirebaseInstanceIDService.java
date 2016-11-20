@@ -14,7 +14,6 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
 
 public class flFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
-
     private static final String TAG = "flFirebaseIIDService";
 
     /**

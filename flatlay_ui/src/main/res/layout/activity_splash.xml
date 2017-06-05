@@ -1,16 +1,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/splash_layout_main"
     android:layout_width="fill_parent"
-android:layout_gravity="center"
+    android:layout_gravity="center"
     android:layout_height="fill_parent" >
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
         android:adjustViewBounds="true"
         android:contentDescription="@null"
         android:layout_centerVertical="true"
-      android:scaleType="fitXY"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:src="@drawable/flatlaylaunchscreen" />
 
     <!--<ImageView-->

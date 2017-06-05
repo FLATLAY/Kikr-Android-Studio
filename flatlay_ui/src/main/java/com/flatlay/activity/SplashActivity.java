@@ -42,6 +42,8 @@ public class SplashActivity extends Activity {
 		context=(SplashActivity)this;
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_splash);
+
+
 		Syso.info("Device Token>> "+CommonUtility.getDeviceTocken(context));
 //		if(TextUtils.isEmpty(AppPreference.getInstance().getServerIp())&&CommonUtility.isOnline(context)){
 //			getServerIp();

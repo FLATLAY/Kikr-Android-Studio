@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/fl-Android.iml" filepath="$PROJECT_DIR$/fl-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kikr-Android-Studio.iml" filepath="$PROJECT_DIR$/Kikr-Android-Studio.iml" />
       <module fileurl="file://$PROJECT_DIR$/flatlay_ui/flatlay_ui.iml" filepath="$PROJECT_DIR$/flatlay_ui/flatlay_ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/instagram_library/instagram_library.iml" filepath="$PROJECT_DIR$/instagram_library/instagram_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/kikr_app_services/kikr_app_services.iml" filepath="$PROJECT_DIR$/kikr_app_services/kikr_app_services.iml" />

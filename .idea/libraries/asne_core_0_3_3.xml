@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="asne-core-0.3.3">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/flatlay_ui/build/intermediates/exploded-aar/com.github.asne/asne-core/0.3.3/jars/libs/signpost-core-1.2.1.1.jar!/" />
-      <root url="file://$PROJECT_DIR$/flatlay_ui/build/intermediates/exploded-aar/com.github.asne/asne-core/0.3.3/res" />
-      <root url="jar://$PROJECT_DIR$/flatlay_ui/build/intermediates/exploded-aar/com.github.asne/asne-core/0.3.3/jars/classes.jar!/" />
-      <root url="jar://$PROJECT_DIR$/flatlay_ui/build/intermediates/exploded-aar/com.github.asne/asne-core/0.3.3/jars/libs/signpost-commonshttp4-1.2.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/67a7cd8234b6f7c7d3f7b2e0791088bff325904b/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/67a7cd8234b6f7c7d3f7b2e0791088bff325904b/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/67a7cd8234b6f7c7d3f7b2e0791088bff325904b/output/jars/libs/signpost-commonshttp4-1.2.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/67a7cd8234b6f7c7d3f7b2e0791088bff325904b/output/jars/libs/signpost-core-1.2.1.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

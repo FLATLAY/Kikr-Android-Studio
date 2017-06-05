@@ -15,9 +15,6 @@ import com.flatlay.R;
 import com.flatlay.adapter.IntroductionPagerAdapter;
 import com.viewpagerindicator.CirclePageIndicator;
 
-/**
- * Created by Ujjwal on 12/15/2015.
- */
 public class IntroductionPagerActivity extends FragmentActivity{
     ViewPager tutorialImageView;
     TextView skipButton,nextButton;
@@ -45,7 +42,6 @@ public class IntroductionPagerActivity extends FragmentActivity{
     }
 
     private void setUpData() {
-
 
         vedio.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mp) {
@@ -75,15 +71,6 @@ public class IntroductionPagerActivity extends FragmentActivity{
 //
 //        Uri uri = Uri.parse("android.resource://com.example/"
 //                + R.raw.video);
-
-
-
-
-
-
-
-
-
 
         IntroductionPagerAdapter pagerActivity =  new IntroductionPagerAdapter(this);
         tutorialImageView.setAdapter(pagerActivity);

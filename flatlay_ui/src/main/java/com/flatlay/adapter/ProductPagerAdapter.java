@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +31,7 @@ public class ProductPagerAdapter extends PagerAdapter {
 		this.url = url;
 		this.product= product;
 		Syso.info("instantiateItem>>>>>>>>>>>ProductPagerAdapter");
+		Log.w("Activity","ProductPagerAdapter");
 	}
 
 	class ViewHolder {

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -37,6 +38,7 @@ public class WalletPinActivity extends BaseActivity implements OnClickListener, 
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity","WalletPinActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_wallet_pin);
 	}

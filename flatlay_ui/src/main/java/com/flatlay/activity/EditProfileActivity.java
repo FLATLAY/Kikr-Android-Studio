@@ -108,6 +108,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.w("Activity:","EditProfileActivity");
         if (getIntent().hasExtra("is_edit_profile")) {
             isEditProfile = getIntent().getBooleanExtra("is_edit_profile", false);
         } else {

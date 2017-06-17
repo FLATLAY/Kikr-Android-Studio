@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class DiscoverAdapter extends BaseAdapter {
         this.mFragmentDiscover = fragmentDiscover;
         this.brandsArray = brandsArray;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        Log.w("Activity","DiscoverAdapter");
     }
 
     public void removeItem(int position) {

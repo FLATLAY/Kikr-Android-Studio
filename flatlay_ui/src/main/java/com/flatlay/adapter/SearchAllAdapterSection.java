@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class SearchAllAdapterSection extends ArrayAdapter<Item> {
         this.items = items;
         this.fragmentSearchAll = fragmentSearchAll;
         vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        Log.w("Activity","SearchAllAdapterSection");
     }
 
     public void setData(ArrayList<Item> items) {

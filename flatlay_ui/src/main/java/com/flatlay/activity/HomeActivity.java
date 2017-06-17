@@ -235,6 +235,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.w("Activity","HomeActivity");
         setContentView(R.layout.activity_home);
         if (homeActivtyList != null) {
             homeActivtyList.add(this);
@@ -975,11 +976,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.w("HomeActivity","onActivityResult");
 
         Log.e("home act", requestCode + "wefwe" + resultCode);
         if (requestCode == AppConstants.WALLETLIST && resultCode == RESULT_OK) {
+            //Log.w("onActivityResultHA","1");
             loadFragment(new FragmentKikrWalletCard());
         } else if (requestCode == AppConstants.REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
+            //Log.w("onActivityResultHA","2");
             String id = data.getStringExtra("id");
             String email = data.getStringExtra("email");
             String gender = data.getStringExtra("gender");
@@ -990,6 +994,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             String location = data.getStringExtra("location");
             connectWithFacebook(id, email, gender, name, username, birthday, profile_link, location);
         } else if (requestCode == AppConstants.REQUEST_CODE_TWIT_LOGIN && resultCode == RESULT_OK) {
+            //Log.w("onActivityResultHA","3");
             String id = String.valueOf(data.getLongExtra("id", 0));
             String description = data.getStringExtra("description");
             String language = data.getStringExtra("language");
@@ -1003,6 +1008,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             connectWithTwitter(id, description, language, location, name, profile_image_url, screen_name, status, time_zone);
 
         } else if (requestCode == AppConstants.REQUEST_CODE_FB_FRIEND_LIST) {
+            //Log.w("onActivityResultHA","4");
             ArrayList<FbUser> fbUsers = (ArrayList<FbUser>) data.getSerializableExtra("friend_list");
             if (fbUsers != null && fbUsers.size() > 0) {
                 uploadFbFriends(fbUsers);
@@ -1011,9 +1017,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
             }
         } else if (requestCode == AppConstants.REQUEST_CODE_TWIT_FRIEND_LIST) {
+            //Log.w("onActivityResultHA","5");
             ArrayList<OauthItem> twitUsers = (ArrayList<OauthItem>) data.getSerializableExtra("friend_list");
             showTwitterFriendList(twitUsers);
         } else if (requestCode == PAYPAL_REQUEST_CODE) {
+            //Log.w("onActivityResultHA","6");
             if (resultCode == RESULT_OK) {
                 System.out.println("in result ok");
                 AlertUtils.showToast(context, "Please wait...");
@@ -1029,6 +1037,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 braintree.finishPayWithPayPal(this, resultCode, data);
             }
         } else if (requestCode == AppConstants.REQUEST_CODE_MASKED_WALLET) {
+            //Log.w("onActivityResultHA","7");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(
                     mFragmentStack.peek());
             ((FragmentPlaceMyOrder) fragment).onActivityResult(requestCode,
@@ -1036,47 +1045,55 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
 
         if (requestCode == UCrop.REQUEST_CROP) {
+            //Log.w("onActivityResultHA","8");
             handleCropResult(data);
         }
         if (requestCode == UCrop.RESULT_ERROR) {
+            //Log.w("onActivityResultHA","9");
             handleCropError(data);
         }
 
 
         if (requestCode == Crop.REQUEST_CROP) {
+            //Log.w("onActivityResultHA","10");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
 
         if (requestCode == Crop.REQUEST_PICK) {
+            //Log.w("onActivityResultHA","16");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
         if (requestCode == AppConstants.REQUEST_CODE_INSTAGRAM) {
+            //Log.w("onActivityResultHA","11");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
 
         if (requestCode == AppConstants.REQUEST_CODE_TWIT_TO_FRIEND) {
+            //Log.w("onActivityResultHA","12");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentMyFriends) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
         if (requestCode == AppConstants.REQUEST_CODE_EMAIL_CHANGE) {
+            //Log.w("onActivityResultHA","13");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentSettings) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
         if (requestCode == HomeActivity.SHARING_CODE) {
-
+            //Log.w("onActivityResultHA","14");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
             if (fragment != null) {
                 fragment.onActivityResult(requestCode, resultCode, data);
             }
         } else {
+            //Log.w("onActivityResultHA","15");
 
             if (data != null) {
                 Uri dataUri = data.getData();
@@ -1534,7 +1551,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         BranchShortLinkBuilder shortUrlBuilder = new BranchShortLinkBuilder(this)
 
                 .addParameters("product_url", imageUrl);
-
+        //Log.w("temp","CREATING BRANCH LINK!");
         // Get URL Asynchronously
         shortUrlBuilder.generateShortUrl(new Branch.BranchLinkCreateListener() {
 
@@ -1638,6 +1655,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void addFragment(Fragment fragment) {
+        Log.w("HomeActivity","addFragment()");
+        //Thread.dumpStack();
         try {
 
             if (fragment instanceof FragmentPostUploadTab || fragment instanceof FragmentPostUploadTag) {
@@ -2769,23 +2788,22 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 //            Toast.makeText(this, "Required fields cannot be empty", Toast.LENGTH_SHORT).show();
 //        }
 //    }
-
-
     //  cropping functions
-
 
     private Uri mDestinationUri;
 
     public void startCropActivity(@NonNull Uri uri) {
+        Log.w("HomeActivity","startCropActivity()");
+
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
         UCrop uCrop = UCrop.of(uri, mDestinationUri);
         uCrop = basisConfig(uCrop);
         uCrop = advancedConfig(uCrop);
         uCrop.withMaxResultSize(500,500);
-
+        //uCrop.withAspectRatio(1,1);
         uCrop.start(context);
+        //Log.w("HA:startCropActivity()","Back");
     }
-
 
     private UCrop basisConfig(@NonNull UCrop uCrop) {
 
@@ -2798,10 +2816,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             }
         } catch (NumberFormatException e) {
             Log.d("UCrop", "Number please");
-
         }
-
-
         return uCrop;
     }
 
@@ -2815,9 +2830,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         options.setCompressionQuality(100);
 
         options.setHideBottomControls(false);
+
         options.setFreeStyleCropEnabled(true);
-
-
+        //options.setMaxBitmapSize(500);
 
         return uCrop.withOptions(options);
     }
@@ -2825,6 +2840,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private void handleCropResult(@NonNull Intent result) {
 
         if (result != null) {
+            Log.w("handleCropResultHA","Here");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentPostUploadTab) fragment).onActivityResult(UCrop.REQUEST_CROP, RESULT_OK
                     , result);

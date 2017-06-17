@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class GridVideoAdapter extends BaseAdapter {
 		this.mContext = context;
 		this.bitmaps = bitmaps;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","GridVideoAdapter");
 	}
 	
 	public void setData(List<Bitmap> data){

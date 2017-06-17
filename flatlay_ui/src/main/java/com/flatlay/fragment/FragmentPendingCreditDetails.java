@@ -26,7 +26,7 @@ public class FragmentPendingCreditDetails extends BaseFragment implements OnClic
 
 	@Override
 	public void initUI(Bundle savedInstanceState) {
-		back=(Button)mainView.findViewById(R.id.back);
+		back=(Button)mainView.findViewById(R.id.backButton);
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class FragmentPendingCreditDetails extends BaseFragment implements OnClic
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.back:
+			case R.id.backButton:
 				((HomeActivity)mContext).onBackPressed();
 				break;
 		}

@@ -1,6 +1,7 @@
 package com.flatlay.bubble;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.MultiAutoCompleteTextView;
@@ -15,6 +16,7 @@ public class ChioBubbleOnClickListner implements OnClickListener {
 	
 	public ChioBubbleOnClickListner(Context context, MultiAutoCompleteTextView autoCompleteTextView, ChipPropery chipPropery) {
 		super();
+		Log.w("Activity","ChioBubbleOnClickListner");
 		this.autoCompleteTextView = autoCompleteTextView;
 		this.context = context;
 		this.chipPropery = chipPropery;

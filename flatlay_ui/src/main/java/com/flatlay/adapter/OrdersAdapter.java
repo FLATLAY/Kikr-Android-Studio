@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class OrdersAdapter extends BaseExpandableListAdapter  {
 		this.dataChild = dataChild;
 		this.cartDataMap = cartDataMap;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","OrdersAdapter");
 	}
 
 	public void addAll(List<String> cartHeaders, HashMap<String, List<Orders>> dataChild, HashMap<String, String> cartDataMap) {

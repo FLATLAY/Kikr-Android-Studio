@@ -37,7 +37,7 @@ public class FragmentLearnMore extends BaseFragment implements OnClickListener {
 		learnMoretext=(TextView) mainView.findViewById(R.id.learnMoretext);
 		learnMoretext.setPaintFlags(learnMoretext.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		learnMoretext.setMovementMethod(LinkMovementMethod.getInstance());
-        back=(Button)mainView.findViewById(R.id.back);
+        back=(Button)mainView.findViewById(R.id.backButton);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class FragmentLearnMore extends BaseFragment implements OnClickListener {
 				addFragment(new FragmentPurchaseGuarantee());
 				break;
 
-			case R.id.back:
+			case R.id.backButton:
 				((HomeActivity)mContext).onBackPressed();
 				break;
 		}

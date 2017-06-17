@@ -1,5 +1,7 @@
 package com.flatlay.adapter;
 
+import android.util.Log;
+
 import com.flatlay.R;
 
 /**
@@ -18,6 +20,7 @@ public enum ModelObject {
     ModelObject(int titleResId, int layoutResId) {
         mTitleResId = titleResId;
         mLayoutResId = layoutResId;
+        Log.w("Activity","ModelObject");
     }
 
     public int getTitleResId() {

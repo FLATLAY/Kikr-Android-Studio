@@ -42,6 +42,8 @@ public class FollowCategoryNewAdapter extends BaseAdapter{
 		catList=(ArrayList<Category>) categories;
 		this.mContext = mContext;
 		this.imagesList = imagesList;
+		Log.w("Activity","FollowCategoryNewAdapter");
+
 	}
 	
 	public void setData(List<Category> data){

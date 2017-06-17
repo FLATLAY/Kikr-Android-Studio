@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public class LifestyleImageAdapter extends BaseAdapter {
 		this.mContext = context;
 		this.bgImages = bgImages;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","LifestyleImageAdapter");
 	}
 	
 	@Override

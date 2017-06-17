@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +31,7 @@ public class PinActivity extends BaseActivity implements OnKeyListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.w("Activity","PinActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_pin);
 		updateScreen(Screen.PinScreen);

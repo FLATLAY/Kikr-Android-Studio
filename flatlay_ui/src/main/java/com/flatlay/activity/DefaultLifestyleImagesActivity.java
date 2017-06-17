@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -43,6 +44,7 @@ public class DefaultLifestyleImagesActivity extends BaseActivity implements OnCl
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.w("Activity:","DefaultLifestyleImagesActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_default_lifestyle_images);
 		if(checkInternet()){

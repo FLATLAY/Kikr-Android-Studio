@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -153,6 +154,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.fragment_profile, null);
         fragmentProfileView = this;
+        Log.w("FragmentProfileView","onCreateView");
         return mainView;
     }
 
@@ -301,6 +303,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
     @Override
     public void onClick(View v) {
+        Log.w("FragmemtProfileView","onClick()");
         switch (v.getId()) {
             case R.id.btnUpload:
                 ((HomeActivity)mContext).checkPermissions();
@@ -318,7 +321,10 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 addFragment(new FragmentActivityMonths());
                 break;
             case R.id.backarrowlayout:
-                ((HomeActivity) mContext).onBackPressed();
+                Log.w("FragmentProfileView","Back Button Pressed!");
+                //((HomeActivity) mContext).onBackPressed();
+                Intent intent = new Intent(mContext, HomeActivity.class);
+                startActivity(intent);
                 break;
             case R.id.invite:
                 ((HomeActivity) mContext).inviteFriends();
@@ -1239,6 +1245,4 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
             }
         });
     }
-
-
 }

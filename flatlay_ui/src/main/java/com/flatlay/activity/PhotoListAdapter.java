@@ -3,6 +3,7 @@ package com.flatlay.activity;
 import java.util.ArrayList;
 
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -49,6 +50,7 @@ public class PhotoListAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ImageView imageIv;
+		Log.w("Activity","PhotoListAdapter");
 		if (convertView == null) {
 			imageIv = new ImageView(mContext);
 			imageIv.setLayoutParams(new GridView.LayoutParams(mWidth, mHeight));

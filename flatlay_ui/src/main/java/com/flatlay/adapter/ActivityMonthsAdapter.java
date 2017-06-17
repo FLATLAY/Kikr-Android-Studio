@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class ActivityMonthsAdapter extends BaseAdapter {
 		this.data = data;
 		this.user = user;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","ActivityMonthsAdapter");
 	}
 
 	@Override

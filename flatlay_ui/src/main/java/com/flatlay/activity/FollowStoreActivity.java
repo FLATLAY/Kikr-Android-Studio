@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
@@ -45,6 +46,7 @@ public class FollowStoreActivity extends BaseActivity implements OnItemClickList
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity:","FollowStoreActivity");
 		CommonUtility.noTitleActivity(context);
 		UserPreference.getInstance().setCurrentScreen(Screen.StoreScreen);
 		setContentView(R.layout.activity_follow_store);

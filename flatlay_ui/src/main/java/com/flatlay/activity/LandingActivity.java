@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
+import android.util.Log;
 
 import com.flatlay.BaseActivity;
 import com.flatlay.R;
@@ -78,11 +79,13 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.w("Activity","LandingActivity");
         CommonUtility.noTitleActivity(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_landing);
 
+        Log.w("myApp", "In LandingActivity");
 
         if (getIntent().getStringExtra("referred_userid") != null) {
             referred_userid = getIntent().getStringExtra("referred_userid");
@@ -122,6 +125,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
                 if (checkInternet()) {
                     isFromFacebook = true;
                     PGAgent.logEvent("SIGNUP_VIA_FACEBOOK_CLICKED");
+                    //Log.w("myApp", "Clicked here!");
                     social = UserPreference.FACEBOOK;
                     Intent i = new Intent(context, FbSignActivity.class);
                     i.putExtra("getFriendList", false);

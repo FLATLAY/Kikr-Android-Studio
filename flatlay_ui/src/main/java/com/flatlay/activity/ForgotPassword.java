@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,6 +37,7 @@ public class ForgotPassword extends BaseActivity implements OnKeyListener,
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity:","ForgotPasswordActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_email);
 	}

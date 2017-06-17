@@ -263,6 +263,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_post_upload_tag, null);
+        Log.w("my-App","FragmentPostUploadTag");
         setActionBarButtons();
         return view;
     }
@@ -422,6 +423,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
 
     private void inflateHeader() {
+        Log.w("my-App","inflateHeader() in FragmentPostUploadTag");
         // inflate custom header and attach it to the list
         LayoutInflater inflater = mContext.getLayoutInflater();
         ViewGroup header = (ViewGroup) inflater.inflate(R.layout.post_upload_listview_custom_header, listView, false);
@@ -652,6 +654,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     private void setActionBarButtons() {
 
+        Log.w("my-App","setActionBarButtons");
         HomeActivity.menuRightImageView.setVisibility(View.GONE);
         HomeActivity.photouploadnext.setVisibility(View.VISIBLE);
         HomeActivity.camera.setVisibility(View.GONE);
@@ -663,6 +666,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         HomeActivity.crossarrow.setVisibility(View.GONE);
         HomeActivity.menuTextCartCount.setVisibility(View.GONE);
         //   HomeActivity.uploadphoto.setGravity(Gravity.CENTER);
+        Log.w("my-App","Going in HomeActivity");
         if (isUpdate)
             HomeActivity.uploadphoto.setText("Edit Post");
         else
@@ -810,7 +814,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     public void addTag() {
         try {
-
             final EditInspirationApi editPostApi = new EditInspirationApi(new ServiceCallback() {
                 @Override
                 public void handleOnSuccess(Object object) {
@@ -918,12 +921,12 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
 
     private void validateInput() {
-
+        Log.w("my-App","validateInput()");
         description = descriptionEditText.getText().toString().trim();
-        if (bmp == null && imageUrl == null && !isUpdate) {
+        if (bmp == null && imageUrl == null && !isUpdate) { //If an image has been selected
             AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
         } else if (TextUtils.isEmpty(description)) {
-            AlertUtils.showToast(mContext,
+            AlertUtils.showToast(mContext, // If a description has been added
                     R.string.alert_no_description_entered);
         } else {
             if (checkInternet()) {
@@ -945,6 +948,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                         }
                     } else {
                         progressbar.setVisibility(View.VISIBLE);
+                        Log.w("my-App","Going in GetImage().execute();");
                         new GetImage().execute();
                     }
                 }
@@ -954,7 +958,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     private void sharePost() {
         if (switchInstagram.isChecked() || switchTwitter.isChecked() || switchFacebook.isChecked()) {
-
             for (int i = 0; i < networkidarray.size(); i++) {
                 startProfile(networkidarray.get(i));
             }
@@ -1128,6 +1131,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                     }
                 });
         if (image != null || imageUrl != null) {
+            Log.w("my-App","Image present");
             String width = bmp != null ? String.valueOf(bmp.getWidth()) : "";
             String height = bmp != null ? String.valueOf(bmp.getHeight()) : "";
             inspirationSectionApi.uploadImage(UserPreference.getInstance()
@@ -1206,6 +1210,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         @Override
         protected byte[] doInBackground(Void... params) {
             // TODO Auto-generated method stub
+            Log.w("my-App","GetImage()");
             if (isImage.equals("no")) {
                 return byteArray;
             } else {
@@ -1218,6 +1223,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         protected void onPostExecute(byte[] result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
+            Log.w("my-App","Going in uploadInspiration()");
             uploadInspiration(result);
         }
 
@@ -1228,11 +1234,18 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
         @Override
         protected Bitmap doInBackground(String... URL) {
-
+            Log.w("my-App","DownloadImage()");
             String imageURL = URL[0];
 
             Bitmap bitmap = null;
             try {
+
+                // Try this!
+                //BitmapFactory.Options options = new BitmapFactory.Options();
+                //options.inScaled = false;
+                //options.inDither = false;
+                //options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+
                 // Download Image from URL
                 InputStream input = new java.net.URL(imageURL).openStream();
                 // Decode Bitmap
@@ -1257,6 +1270,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     public Bitmap resizeBitmapFitXY(int width, int height, Bitmap bitmap) {
+        Log.w("my-App","resizeBitmapFitXY()");
         try {
             Bitmap background = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
             float originalWidth = bitmap.getWidth(), originalHeight = bitmap.getHeight();
@@ -1332,16 +1346,14 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     @Override
     public void onTagsChanged(Collection<String> tags) {
-        Log.d("Multi", "Tags changed: ");
-        Log.d("Multi", Arrays.toString(tags.toArray()));
+        //Log.d("Multi", "Tags changed: ");
+        //Log.d("Multi", Arrays.toString(tags.toArray()));
         showKeypad();
-
-
     }
 
     @Override
     public void onEditingFinished() {
-        Log.d("Multi", "OnEditing finished");
+        //Log.d("Multi", "OnEditing finished");
     }
 
     private void showKeypad() {
@@ -1514,9 +1526,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
         switch (buttonView.getId()) {
             case R.id.switchfacebook:
-
                 if (isChecked && !UserPreference.getInstance().getmIsFacebookSignedIn()) {
-
                     switchFacebook.setChecked(false);
                     networkId = FacebookSocialNetwork.ID;
 
@@ -1690,7 +1700,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
                 @Override
                 public void onFailure(PDKException exception) {
-                    Log.e(getClass().getName(), exception.getDetailMessage());
+                    //Log.e(getClass().getName(), exception.getDetailMessage());
                     Syso.info("12345678 >>> output" + exception.getDetailMessage());
                     try {
                         JSONObject jsonObject = new JSONObject(exception.getDetailMessage());
@@ -1712,7 +1722,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         super.onActivityResult(requestCode, resultCode, data);
         try {
             Product product = (Product) data.getExtras().getSerializable("data");
-            Log.d("product selected : ", product.getAffiliateurl());
+            //Log.d("product selected : ", product.getAffiliateurl());
             if (isAddProduct) {
                 isNewCollectionAdded = true;
                 addProductListNew.add(product);
@@ -1729,8 +1739,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
 
         } catch (Exception ex) {
-            Log.e("error on selection : ", ex.getMessage());
+            //Log.e("error on selection : ", ex.getMessage());
         }
-
     }
 }

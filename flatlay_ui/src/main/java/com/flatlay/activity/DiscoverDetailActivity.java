@@ -30,6 +30,7 @@ public class DiscoverDetailActivity extends BaseActivity implements OnClickListe
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity:","DiscoverDetailActivity");
 		if(CommonUtility.isOnline(context))
 			PGAgent.logEvent("PRODUCT_DETAIL_PAGE_OPEN");
 		CommonUtility.noTitleActivity(context);

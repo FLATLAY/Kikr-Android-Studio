@@ -5,6 +5,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,6 +39,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener, OnKe
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.w("Activity","LoginActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_login);
 	}

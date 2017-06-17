@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ public class AddBankAdapter extends BaseAdapter {
 		this.mContext = context;
 		this.data = (ArrayList<BankList>) data;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","AddBankAdapter");
 	}
 
 	@Override

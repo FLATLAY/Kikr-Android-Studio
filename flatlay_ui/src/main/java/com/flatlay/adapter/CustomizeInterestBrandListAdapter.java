@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +36,7 @@ public class CustomizeInterestBrandListAdapter extends BaseAdapter{
         this.customizeFeedActivity = customizeFeedActivity;
         fromProfile = false;
         inflater=(LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        Log.w("Activity","CustomizeInterestBrandListAdapter");
     }
 
     public CustomizeInterestBrandListAdapter(FragmentActivity mContext,List<InterestSection> stores, FragmentProfileView fragmentProfileView) {

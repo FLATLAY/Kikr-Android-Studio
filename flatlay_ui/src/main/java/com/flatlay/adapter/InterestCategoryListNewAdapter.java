@@ -50,6 +50,7 @@ public class InterestCategoryListNewAdapter extends BaseAdapter{
 //		mSelectedItems=new boolean[stores.size()];
 //		Arrays.fill(mSelectedItems, false);
 		this.mContext = mContext;
+		Log.w("Activity","InterestCategoryListNewAdapter");
 	}
 	
 	public void setData(List<InterestSection> data){

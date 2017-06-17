@@ -108,6 +108,7 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
     }
 
     private void setClickListner() {
+        Log.w("my-App","setClickListner");
         for (int i = 0; i < optionArray.length; i++) {
             optionArray[i].setTag(i);
             // mViewPager.setCurrentItem(optionArray.(2));
@@ -135,6 +136,7 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
 //        for (int i = 0; i < optionArray.length; i++)
 //        {
 //
+        Log.w("my-App","changeIndicator()");
         tabposition = tag;
         if (tag == 0) {
             optionArray[0].setBackgroundColor(getResources().getColor(R.color.tab_color));
@@ -319,7 +321,9 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
 
                 case 1: {
                     // return new CameraFragment();
+                    //Log.w("test","testing3");
                     return Fragment.instantiate(mContext, CameraFragment.class.getName(), null);
+
                 }
 
 
@@ -438,19 +442,22 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
             Log.e("req code", requestCode + "");
             if (requestCode == UCrop.REQUEST_CROP) {
 
+                //Log.w("onActivityResultFPUT","REQUEST_CROP");
 
                 String filePath = Environment.getExternalStorageDirectory()
                         + "/temporary_holder.jpg";
 
-
+                //Log.w("onActivityResultFPUT","****1"+filePath);
                 Bitmap thumbnail = BitmapFactory.decodeFile(filePath);
-
+                //Log.w("onActivityResultFPUT","****2");
 
                 inspirationImageUrl = filePath;
                 goToNext(thumbnail);
+                //Log.w("onActivityResultFPUT","****3");
 
 
             } else if (requestCode == Crop.REQUEST_PICK) {
+                //Log.w("onActivityResultFPUT","REQUEST_PICK");
                 Uri destination = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
                 Crop crop = new Crop(data.getData());
                 crop.output(destination).asSquare().start(mContext);
@@ -509,7 +516,6 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
         }
         if (bitmap != null)
             return bitmap;
-
         else
             return null;
     }
@@ -555,6 +561,7 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //Log.w("test","testing1");
         ((CameraFragment) (mCustomPagerAdapter.getFragment(mViewPager.getCurrentItem()))).onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

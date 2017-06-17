@@ -2,6 +2,7 @@ package com.flatlay.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,7 @@ import com.flatlaylib.bean.YouFollowingModel;
 
 import java.util.ArrayList;
 
-/**
- * Created by Tycho on 6/8/2016.
- */
+
 public class YouFollowingAdapter extends RecyclerView.Adapter<YouFollowingAdapter.ViewHolder> {
 
     private ArrayList<YouFollowingModel> hotelList;
@@ -23,6 +22,7 @@ public class YouFollowingAdapter extends RecyclerView.Adapter<YouFollowingAdapte
     public YouFollowingAdapter(Context context, ArrayList<YouFollowingModel> hotelList) {
         this.hotelList = hotelList;
         this.context = context;
+        Log.w("Activity","YouFollowingAdapter");
     }
 
     @Override

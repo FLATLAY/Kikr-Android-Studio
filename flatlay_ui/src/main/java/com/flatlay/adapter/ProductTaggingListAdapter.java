@@ -1,6 +1,7 @@
 package com.flatlay.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class ProductTaggingListAdapter
         this.data = data;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         isProductSearch = false;
+        Log.w("Activity","ProductTaggingListAdapter");
     }
 
 

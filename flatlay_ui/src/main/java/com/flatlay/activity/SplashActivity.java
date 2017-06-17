@@ -39,6 +39,7 @@ public class SplashActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.w("Activity","SplashActivity");
 		context=(SplashActivity)this;
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_splash);

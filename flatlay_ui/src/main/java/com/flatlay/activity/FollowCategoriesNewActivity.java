@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
@@ -43,6 +44,7 @@ public class FollowCategoriesNewActivity extends BaseActivity implements  OnClic
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity:","FollowCategoriesNewActivity");
 		CommonUtility.noTitleActivity(context);
 		UserPreference.getInstance().setCurrentScreen(Screen.CategoryScreen);
 		setContentView(R.layout.activity_follow_categories_new);

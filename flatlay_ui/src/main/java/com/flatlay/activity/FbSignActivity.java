@@ -4,8 +4,8 @@ package com.flatlay.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
-
 import com.facebook.FacebookException;
 import com.facebook.FacebookOperationCanceledException;
 import com.facebook.Request;
@@ -55,6 +55,7 @@ public class FbSignActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.w("Activity:", "FbSignActivity");
         CommonUtility.noTitleActivity(context);
         uiHelper = new UiLifecycleHelper(this, callback);
         uiHelper.onCreate(savedInstanceState);
@@ -120,24 +121,28 @@ public class FbSignActivity extends BaseActivity {
     };
 
     private void getFacebookMeInfo(Session session) {
-
+        //Log.w("my-App","getFacebookMeInfo");
         Request me=Request.newMeRequest(session, new GraphUserCallback() {
             @Override
             public void onCompleted(GraphUser user, Response response) {
+                //Log.w("my-App","onCompleted");
                 if (user != null) {
                     if (isGetFriendList) {
+                        //Log.w("my-App","1");
                         Session session = Session.getActiveSession();
                         if (session != null && session.isOpened()) {
-
                             requestMyAppFacebookFriends(session);
                         }
                     } else if (isGetProfilePic) {
+                        //Log.w("my-App","2");
                         getProfilePic(user);
                     } else {
+                        //Log.w("my-App","3");
 //						 sendRequestDialog();
                         buildUserDataAndDoSignIn(user);
                     }
                 } else {
+                    //Log.w("my-App","4");
                     AlertUtils.showToast(context,
                             "Error in getting Facebook Profile Data.");
                     finish();
@@ -146,13 +151,13 @@ public class FbSignActivity extends BaseActivity {
         });
         Bundle params = me.getParameters();
         params.putString("fields", "email,name");
+        //Log.w("my-App","5");
         me.setParameters(params);
         me.executeAsync();
     }
 
-
-
     private void getProfilePic(GraphUser user) {
+        //Log.w("my-App","getProfilePic");
         URL url = null;
         String fb_id = user.getId();
         try {
@@ -167,14 +172,13 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private void buildUserDataAndDoSignIn(GraphUser graphUser) {
-
+        //Log.w("my-App","buildUserDataAndDoSignIn");
         String fb_id = graphUser.getId();
         String name = graphUser.getName();
         String email = (String) graphUser.getProperty("email");
         UserPreference.getInstance().setEmail(name);
         UserPreference.getInstance().setEmail(email);
         String username = graphUser.getUsername() != null ? graphUser.getUsername() : "";
-
         String gender = (String) graphUser.getProperty("gender");
         URL url = null;
         try {
@@ -195,7 +199,6 @@ public class FbSignActivity extends BaseActivity {
             String zipCode = location.getZip() != null ? location.getZip() : "";
             address = street + " " + city + " " + state + " " + country + " " + zipCode;
         }
-
         Intent intent = new Intent();
         intent.putExtra("id", fb_id);
         intent.putExtra("email", email);
@@ -213,6 +216,7 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private void getDetailsFromFacebook(GraphUser graphUser) {
+        //Log.w("my-App","getDetailsFromFacebook");
         String id = graphUser.getId();
         String Birthday = graphUser.getBirthday();
         String Link = graphUser.getLink();
@@ -229,16 +233,15 @@ public class FbSignActivity extends BaseActivity {
         Syso.info(Gender + "\n");
     }
 
-
     @Override
     public void initLayout() {
+        //Log.w("my-App","initLayout");
         btnFacebookLogin = (LoginButton) findViewById(R.id.authButton);
         btnFacebookLogin.setReadPermissions(Arrays.asList("email", "user_friends"));
     }
 
     @Override
     public void headerView() {
-
     }
 
     @Override
@@ -255,6 +258,7 @@ public class FbSignActivity extends BaseActivity {
 
     private Request createRequest(Session session) {
 
+
         Request request = Request.newGraphPathRequest(session, "me/friends", null);
 
         Set<String> fields = new HashSet<String>();
@@ -269,9 +273,9 @@ public class FbSignActivity extends BaseActivity {
         return request;
     }
 
-
     private void requestMyAppFacebookFriends(Session session) {
 
+        //Log.w("my-App","requestMyAppFacebookFriends");
         Request friendsRequest = createRequest(session);
         friendsRequest.setCallback(new Request.Callback() {
 
@@ -291,6 +295,7 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private ArrayList<FbUser> getResults(Response response) {
+        //Log.w("my-App","getResults");
         GraphMultiResult multiResult = response.getGraphObjectAs(GraphMultiResult.class);
         GraphObjectList<GraphObject> data = multiResult.getData();
         List<GraphUser> graphUsers = data.castToListOf(GraphUser.class);
@@ -315,6 +320,7 @@ public class FbSignActivity extends BaseActivity {
         return friendList;
     }
 
+    // Never called*
     private void sendRequestDialog() {
 
         Bundle params = new Bundle();

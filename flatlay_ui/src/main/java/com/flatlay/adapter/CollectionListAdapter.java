@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -44,6 +45,7 @@ public class CollectionListAdapter extends BaseAdapter implements ServiceCallbac
 		this.product = productId;
 		this.collectionListDialog=collectionListDialog;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","CollectionListAdapter");
 	}
 	
 	public void setData(List<CollectionList> data){

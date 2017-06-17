@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -89,6 +90,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        Log.w("Activity:","CustomizeFeedActivity");
         requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.customize_fragment_interest_section);
         this.context = (FragmentActivity) CustomizeFeedActivity.this;

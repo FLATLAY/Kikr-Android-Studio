@@ -4,6 +4,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.flatlaylib.utils.Constants;
 import com.flatlaylib.utils.Constants.WebConstants;
@@ -32,7 +33,7 @@ public abstract class AbsService implements IService {
      * perform service execution
      * <p/>
      * In case of validation exception, service will delegate exception to
-     * handles's {@link ServiceCallback#handleOnFailure(Exception)}
+     * handles's {@link ServiceCallback #handleOnFailure(Exception)}
      */
     public void execute() {
         try {
@@ -84,6 +85,7 @@ public abstract class AbsService implements IService {
     @Override
     public void handleResponse(String response) {
         Syso.info("In handleResponse>>" + response);
+        Log.w("my-App","In AbsService handleResponse");
         Syso.info("httpResponse", response);
         processResponse(response);
         if (isValidResponse) {

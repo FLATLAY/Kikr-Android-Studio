@@ -8,6 +8,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,6 +43,7 @@ public class KikrUserListAdapter extends BaseAdapter implements ServiceCallback 
 		this.mContext = context;
 		this.data =  data;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","KikrUserListAdapter");
 	}
 
 	@Override

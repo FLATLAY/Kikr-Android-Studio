@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -21,6 +22,7 @@ public class DealWebViewActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.w("Activity:","DealWebViewActivity");
 		setContentView(R.layout.fragment_product_detail_webview);
 		webView = (WebView) findViewById(R.id.webview1);
 		String url = getIntent().getStringExtra("data");

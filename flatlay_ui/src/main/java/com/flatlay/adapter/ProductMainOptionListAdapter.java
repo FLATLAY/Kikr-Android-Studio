@@ -1,6 +1,7 @@
 package com.flatlay.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,6 +37,7 @@ public class ProductMainOptionListAdapter extends BaseAdapter{
 		}
 		this.productMainOptionDialog = productMainOptionDialog;
 		this.optionList = optionList2;
+		Log.w("Activity","ProductMainOptionsListAdapter");
 	}
 
 	@Override

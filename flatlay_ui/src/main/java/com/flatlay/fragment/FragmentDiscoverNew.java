@@ -2,12 +2,14 @@ package com.flatlay.fragment;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +18,7 @@ import android.widget.LinearLayout;
 
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
+import com.flatlay.activity.HomeActivity;
 import com.flatlay.utility.AppConstants;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.utils.Syso;
@@ -77,7 +80,17 @@ public class FragmentDiscoverNew extends BaseFragment implements OnPageChangeLis
 
         initData();
 
+        option1_LinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Log.w("FragmentDiscoverNew","CLICKED!");
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
+
     }
 
     public void initData() {
@@ -94,10 +107,13 @@ public class FragmentDiscoverNew extends BaseFragment implements OnPageChangeLis
     private void setClickListner() {
         for (int i = 0; i < optionArray.length; i++) {
             optionArray[i].setTag(i);
+
+
             optionArray[i].setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
+
                     int tag = (Integer) v.getTag();
                     changeIndicator((Integer) v.getTag());
                     mViewPager.setCurrentItem((Integer) v.getTag());
@@ -118,7 +134,10 @@ public class FragmentDiscoverNew extends BaseFragment implements OnPageChangeLis
     private void setFragmentData(int tag) {
         try {
             if (tag == 0) {
-                ((FragmentInspirationSection) mCustomPagerAdapter.getFragment(tag)).initData();
+                //((FragmentInspirationSection) mCustomPagerAdapter.getFragment(tag)).initData();
+                Log.w("WORKING!!!","CLICKED!2");
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(intent);
 
             }
             if (tag == 1) {
@@ -136,6 +155,7 @@ public class FragmentDiscoverNew extends BaseFragment implements OnPageChangeLis
     }
 
     protected void changeIndicator(int tag) {
+        Log.w("WORKING!!!","changeIndicator"+tag);
         for (int i = 0; i < optionArray.length; i++) {
             if (tag == i) {
                 optionArray[i].setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
@@ -181,19 +201,15 @@ public class FragmentDiscoverNew extends BaseFragment implements OnPageChangeLis
 
         @Override
         public Fragment getItem(int position) {
-            Syso.info("uuuuuuuuuuu in getItem");
             switch (position) {
                 case 0:
-
                     return Fragment.instantiate(mContext, new FragmentInspirationSection(true, UserPreference.getInstance().getUserID(), true).getClass().getName(), null);
-
 
                 case 1:
                     return Fragment.instantiate(mContext, new FragmentDiscover().getClass().getName(), null);
 
                 case 2:
                     return Fragment.instantiate(mContext, new FragmentFeatured().getClass().getName(), null);
-
 
                 default:
                     return Fragment.instantiate(mContext, new FragmentFeatured().getClass().getName(), null);

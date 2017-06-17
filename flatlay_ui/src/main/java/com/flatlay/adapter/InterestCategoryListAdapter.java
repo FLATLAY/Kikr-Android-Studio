@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,6 +35,7 @@ public class InterestCategoryListAdapter extends BaseAdapter{
 //		mSelectedItems=new boolean[stores.size()];
 //		Arrays.fill(mSelectedItems, false);
 		this.mContext = mContext;
+		Log.w("Activity","InterestCategoryListAdapter");
 	}
 	
 	public void setData(List<InterestSection> data){

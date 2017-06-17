@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,6 +38,7 @@ public class InterestBrandListAdapter extends BaseAdapter{
 		this.fragmentInterestSection = fragmentInterestSection;
 		fromProfile = false;
 		inflater=(LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","InterestBrandListAdapter");
 	}
 	
 	public InterestBrandListAdapter(FragmentActivity mContext,List<InterestSection> stores, FragmentProfileView fragmentProfileView) {
@@ -45,6 +47,8 @@ public class InterestBrandListAdapter extends BaseAdapter{
 		this.fragmentProfileView = fragmentProfileView;
 		fromProfile = true;
 		inflater=(LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","InterestBrandListAdapter");
+
 	}
 	public void setData(List<InterestSection> data){
 		this.brands.addAll(data);

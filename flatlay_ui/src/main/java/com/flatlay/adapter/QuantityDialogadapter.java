@@ -1,6 +1,7 @@
 package com.flatlay.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class QuantityDialogadapter extends BaseAdapter {
         this.dialogCallback = dialogCallback;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.size = size;
+        Log.w("Activity","QuantityDialogAdapter");
     }
 
     public void setData(List<CollectionList> data){

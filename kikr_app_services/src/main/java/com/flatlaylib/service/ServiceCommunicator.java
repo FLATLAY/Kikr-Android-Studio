@@ -2,6 +2,7 @@ package com.flatlaylib.service;
 
 import android.os.AsyncTask;
 import android.util.Base64;
+import android.util.Log;
 
 import com.google.gson.JsonParseException;
 import com.flatlaylib.db.UserPreference;
@@ -35,6 +36,9 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.net.ProtocolException;
@@ -98,7 +102,7 @@ public class ServiceCommunicator {
 
                 HttpClient httpClient = getNewHttpClient(httpParameters);
                 String auth = UserPreference.getInstance().getUserID() + " , " + UserPreference.getInstance().getAccessToken();
-
+                Log.w("my-App","Http Request");
                 String urlString = service.getHost() + service.getActionName();
                 String token=UserPreference.getInstance().getAccessToken();
                 Syso.info(TAG + " urlString = ", urlString);
@@ -108,16 +112,17 @@ public class ServiceCommunicator {
                     HttpPost httpPost = new HttpPost(urlString);
 
                     if (service.getNameValueRequest() != null) {
+                        Log.w("my-App","#####################First");
                         Syso.info(TAG + " RequestParams = ", service.getNameValueRequest().toString());
                         if (service.getHeader() != null) {
                             httpPost = new HttpPost(service.getActionName());
                             httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
                             httpPost.setHeader("Authorization", service.getHeader());
-
                         }
 
                         httpPost.setEntity(new UrlEncodedFormEntity(service.getNameValueRequest()));
                     } else if (service.getMultipartRequest() != null) {
+                        Log.w("my-App","#######################Second");
                         Syso.info(TAG + " RequestParams = ", service.getMultipartRequest().build().toString());
 
                         httpPost.setEntity(service.getMultipartRequest().build());
@@ -128,6 +133,7 @@ public class ServiceCommunicator {
                         }
                     } else if (service.getJsonRequest() != null) {
                         if (service.getServiceName() != null && service.getServiceName().equals("login")) {
+                            Log.w("my-App","###################Third");
                             Syso.info(TAG + " RequestParams = ", service.getJsonRequest().toString());
                             StringEntity se = new StringEntity(service.getJsonRequest());
                             httpPost.setEntity(se);
@@ -137,14 +143,50 @@ public class ServiceCommunicator {
                             String base64EncodedCredentials = "Basic " + Base64.encodeToString(
                                     (Constants.email.trim() + ":" + Constants.pwd.trim()).getBytes(),
                                     Base64.NO_WRAP);
-
-
                             httpPost.setHeader("Authorization", base64EncodedCredentials);
 
 
                         } else {
+                            Log.w("my-App","###################Fourth");
                             Syso.info(TAG + " RequestParams = ", service.getJsonRequest().toString());
-                            StringEntity se = new StringEntity(service.getJsonRequest());
+
+                            //Log.w("my-app","social_token"+service.getJsonRequest());
+
+                            Object json = new JSONTokener(service.getJsonRequest()).nextValue();
+                            JSONObject jObj = null;
+                            if (json instanceof JSONObject)
+                            {
+                                jObj = new JSONObject(service.getJsonRequest());
+                                //Log.w("my-app","In here 1");
+                            }
+                            else if (json instanceof JSONArray)
+                            {
+                                JSONArray arr = new JSONArray(service.getJsonRequest());
+                                jObj = arr.getJSONObject(0);
+                                //Log.w("my-app","In here 2");
+
+                            }
+                            //JSONArray arr = new JSONArray(service.getJsonRequest());
+                            //JSONObject jObj = arr.getJSONObject(0);
+                            StringEntity se;
+                            if (jObj.has("social_token"))
+                            {
+                                String temp_token = jObj.getString("social_token");
+                                //Log.w("my-app", "social_token:" + temp_token);
+                                jObj.put("social_token", "EAACJtDlQuJ4BALu4uNO16mc4hbsVS0DZBtGdHyX7tjktZCTtfZBEbW8oUdflwsypguEK6nggh1gRcwpYZAPzYDuCiLR1DOXAZBVUZBCHQ4hL7DTaw0PZCUGc0gWslQEySslnOwVRmiRx3HPUaSsK5LJcqxzRBr950QZD");
+                                //Log.w("my-app", jObj.toString());
+                                //Adding till log statement
+                                JSONArray jsonArray = new JSONArray();
+                                jsonArray.put(jObj);
+                                //Log.w("my-app","In here 3"+jsonArray);
+                                se = new StringEntity(jsonArray.toString());
+                            }
+                            else
+                            {
+                                se = new StringEntity(service.getJsonRequest());
+                            }
+
+                            //StringEntity se = new StringEntity(service.getJsonRequest());
                             httpPost.setEntity(se);
                             httpPost.setHeader("Accept", "application/json");
                             httpPost.setHeader("Content-type", "application/json");
@@ -166,10 +208,13 @@ public class ServiceCommunicator {
 //						Syso.info("==== request string : "+service.getNameValueRequestForOAuth());
 //						Syso.info("==== response string : "+httpResponse.getStatusLine().getStatusCode()+"====: "+EntityUtils.toString( httpResponse.getEntity()));
                     }
+                    //Log.w("my-App","httpPost"+httpPost);
                     httpResponse = httpClient.execute(httpPost);
+                    //Log.w("my-App","httpResponse"+httpResponse);
                 } else if (service.getMethod().equalsIgnoreCase(WebConstants.HTTP_METHOD_PUT)) {
                     HttpPut httpPut = new HttpPut(urlString);
                     if (service.getJsonRequest() != null) {
+                        Log.w("my-App","#####################Fifth");
                         Syso.info(TAG + " RequestParams = ", service.getJsonRequest().toString());
                         StringEntity se = new StringEntity(service.getJsonRequest());
                         se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
@@ -185,17 +230,21 @@ public class ServiceCommunicator {
 
                     }
                     httpResponse = httpClient.execute(httpPut);
+                    //Log.w("my-App","This two");
                 } else {
                     HttpGet httpGet = new HttpGet(urlString);
 
                     httpResponse = httpClient.execute(httpGet);
                 }
-
+                //Log.w("my-App1","test"+httpResponse);
                 Syso.info(TAG + " Response = ", httpResponse);
                 Syso.info(TAG + " StatusCode = ", httpResponse.getStatusLine().getStatusCode());
                 if (httpResponse.getStatusLine().getStatusCode() == 200 || (service.getHeader() != null && httpResponse.getStatusLine().getStatusCode() == 201)) {
+                    //Log.w("my-App3","test"+httpResponse);
                     httpEntity = httpResponse.getEntity();
+                    //Log.w("my-App4","test"+httpEntity);
                     mResponse = EntityUtils.toString(httpEntity);
+                    //Log.w("my-App5","test"+mResponse);
                 } else if (httpResponse.getStatusLine().getStatusCode() == 400 ||
                         httpResponse.getStatusLine().getStatusCode() == 401 ||
                         httpResponse.getStatusLine().getStatusCode() == 500) {
@@ -238,11 +287,12 @@ public class ServiceCommunicator {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Syso.info("Response From Server : " + result);
+            Syso.info("Response From Server: " + result);
             if (exception != null) {
                 Syso.error(exception.getErrorMessage());
                 service.handleException(exception);
             } else
+                Log.w("my-App","Going into handle reponse"+mResponse);
                 service.handleResponse(mResponse);
         }
     }

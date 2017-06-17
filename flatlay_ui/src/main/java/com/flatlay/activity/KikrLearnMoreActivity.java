@@ -1,6 +1,7 @@
 package com.flatlay.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -14,6 +15,7 @@ public class KikrLearnMoreActivity extends BaseActivity implements OnClickListen
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity","KikrLearnMoreActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_kikr_learn_more);
 	}

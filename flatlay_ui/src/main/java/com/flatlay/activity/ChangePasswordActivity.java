@@ -36,6 +36,7 @@ public class ChangePasswordActivity extends BaseActivity implements OnKeyListene
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity:","ChangePasswordActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_change_password);
 		if(getIntent().hasExtra("isCreatePassword")&&getIntent().getBooleanExtra("isCreatePassword", false)){

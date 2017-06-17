@@ -31,7 +31,7 @@ public class FragmentLearnMoreOutsideUS extends BaseFragment implements OnClickL
 	@Override
 	public void initUI(Bundle savedInstanceState) {
 		txtLearnMoreDesc = (TextView) mainView.findViewById(R.id.txtLearnMoreDesc);
-		back=(Button) mainView.findViewById(R.id.back);
+		back=(Button) mainView.findViewById(R.id.backButton);
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class FragmentLearnMoreOutsideUS extends BaseFragment implements OnClickL
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.back:
+			case R.id.backButton:
 				((HomeActivity)mContext).onBackPressed();
 				break;
 		}

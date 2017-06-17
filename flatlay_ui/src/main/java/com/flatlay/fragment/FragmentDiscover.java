@@ -289,5 +289,4 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener, S
         };
         handler.postDelayed(runnable, 100);
     }
-
 }

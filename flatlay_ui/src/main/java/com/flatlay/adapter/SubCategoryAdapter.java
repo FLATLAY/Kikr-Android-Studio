@@ -22,6 +22,7 @@ public class SubCategoryAdapter extends BaseAdapter {
 
         this.context = context;
         this.items = items;
+        Log.w("Activity","SubCategoryAdapter");
     }
 
     @Override

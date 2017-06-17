@@ -14,6 +14,7 @@ import android.support.annotation.FloatRange;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Created by Oleksii Shliama (https://github.com/shliama).
@@ -109,6 +110,8 @@ public class UCrop {
      * @param activity Activity to receive result
      */
     public void start(@NonNull Activity activity) {
+
+        Log.w("Ucrop","1");
         start(activity, REQUEST_CROP);
     }
 
@@ -119,6 +122,7 @@ public class UCrop {
      * @param requestCode requestCode for result
      */
     public void start(@NonNull Activity activity, int requestCode) {
+        Log.w("Ucrop","2");
         activity.startActivityForResult(getIntent(activity), requestCode);
     }
 

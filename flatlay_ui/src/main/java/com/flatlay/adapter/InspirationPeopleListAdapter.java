@@ -7,6 +7,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,6 +33,7 @@ public class InspirationPeopleListAdapter extends BaseAdapter{
 		this.followUsers = stores;
 		this.fragmentInterestSection = fragmentInterestSection;
 		mInflater=(LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","InspirationPeopleListAdapter");
 	}
 	
 	public void setData(List<InterestSection> data){

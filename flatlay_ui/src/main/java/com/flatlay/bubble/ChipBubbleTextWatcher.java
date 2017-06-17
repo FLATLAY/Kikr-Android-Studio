@@ -3,6 +3,7 @@ package com.flatlay.bubble;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.MultiAutoCompleteTextView;
 
 import com.flatlay.R;
@@ -33,6 +34,7 @@ public class ChipBubbleTextWatcher implements TextWatcher {
 
     public ChipBubbleTextWatcher(Context context, MultiAutoCompleteTextView multiAutoCompleteTextView, ChipPropery chipPropery) {
         super();
+        Log.w("Activity","ChipBubbleTextWatcher");
         this.multiAutoCompleteTextView = multiAutoCompleteTextView;
         this.context = context;
         this.chipPropery = chipPropery;

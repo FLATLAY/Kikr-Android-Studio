@@ -38,11 +38,12 @@ public class ProductDetailWebViewActivity extends BaseActivity implements OnClic
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity","ProductDetailWebViewActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.fragment_product_detail_webview);
 		
 		this.url = getIntent().getExtras().getString("product_url");
-		Log.e("url value product webview", url);
+		//Log.e("url value product webview", url);
 		
 		webView = (WebView) findViewById(R.id.webview1);
 		add_favorite_layout = (LinearLayout) findViewById(R.id.add_favorite_layout);

@@ -15,9 +15,6 @@ import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.CallBack;
 import com.flatlaylib.bean.Inspiration;
 
-/**
- * Created by Tycho on 4/12/2016.
- */
 public class RemoveProduct extends Dialog {
     private TextView cancelTextView, okTextView, editcollection;
     private String inspiration_id;

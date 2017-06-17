@@ -3,6 +3,7 @@ package com.flatlay.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class AutocompleteCustomArrayAdapter extends ArrayAdapter<String> {
         this.layoutResourceId = layoutResourceId;
         this.mContext = mContext;
         this.data = data;
+        Log.w("Activity","AutoCompleteCustomArrayAdapter");
     }
     @Override
     public int getCount() {

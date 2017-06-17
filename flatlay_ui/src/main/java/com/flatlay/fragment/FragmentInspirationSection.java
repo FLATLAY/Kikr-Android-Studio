@@ -1,7 +1,9 @@
 package com.flatlay.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -277,7 +279,6 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
             }
         });
 
-        ////////////////////////////////
         if (HelpPreference.getInstance().getHelpInspiration().equals("yes")) {
             HelpPreference.getInstance().setHelpInspiration("no");
             HelpInspirationDialog helpInspirationDialog = new HelpInspirationDialog(mContext);
@@ -312,7 +313,6 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
         inspirationFeedApi.getInspirationFeed(userId, isViewAll, String.valueOf(page), UserPreference.getInstance().getUserID());
         inspirationFeedApi.execute();
 
-
     }
 
     @Override
@@ -337,11 +337,13 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
         if (product_list.size() > 0 && isFirstTime) {
             inspirationAdapter = new InspirationAdapter(mContext, product_list, isViewAll, FragmentInspirationSection.this);
             inspirationList.setAdapter(inspirationAdapter);
+            //Log.w("FragmentInspirationSec","8.2");
+            //inspirationAdapter.notifyDataSetChanged();
+            //Log.w("FragmentInspirationSec","after8.2");
+
         } else if (inspirationAdapter != null) {
             inspirationAdapter.setData(product_list);
             inspirationAdapter.notifyDataSetChanged();
-
-
         }
 
         if (FragmentDiscoverNew.isCreateCollection && !isPostUpload)
@@ -412,6 +414,9 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
         });
     }
 
+
+
+
     public void refresh() {
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
@@ -442,7 +447,6 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
 
     public void removePost(final String inspiration_id, final String user_id) {
 
-
         mProgressBarDialog = new ProgressBarDialog(mContext);
         mProgressBarDialog.show();
         this.inspiration_id = inspiration_id;
@@ -456,13 +460,13 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
                     mProgressBarDialog.dismiss();
                 if (object.toString().equals(Constants.WebConstants.SUCCESS_CODE)) {
                     for (int i = 0; i < product_list.size(); i++) {
+
                         if (inspiration_id.equals(product_list.get(i).getInspiration_id())) {
                             product_list.remove(i);
                         }
                     }
 
                     inspirationAdapter.notifyDataSetChanged();
-
                     //    AlertUtils.showToast(mContext, "Post removed successfully");
                 }
             }

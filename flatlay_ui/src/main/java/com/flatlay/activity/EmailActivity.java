@@ -3,6 +3,7 @@ package com.flatlay.activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,6 +33,7 @@ public class EmailActivity extends BaseActivity implements OnKeyListener,
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity:","EmailActivity");
 		UserPreference.getInstance().setCurrentScreen(Screen.EmailScreen);
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_email);

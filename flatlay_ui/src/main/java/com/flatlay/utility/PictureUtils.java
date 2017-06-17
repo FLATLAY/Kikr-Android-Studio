@@ -168,7 +168,7 @@ public class PictureUtils {
 			newheight = (int) (bitmap.getHeight() * 0.70);
 		}
 		
-		Log.e("image size new byte aray","width: " + newwidth + "height: " + newheight);
+		Log.e("image size new byte aray","width:" + newwidth + "height:" + newheight);
 	    Bitmap resizedImage = Bitmap.createScaledBitmap(bitmap, newwidth , newheight, true);
 	    resizedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
 		byte[] byteArray = stream.toByteArray();
@@ -176,7 +176,7 @@ public class PictureUtils {
 	}
 
 	public static byte[] getByteArray2(Bitmap bitmap) {
-		
+		//Log.w("my-App","getByteArray2 of PictureUtils.class");
 		if(bitmap == null){
 			return null;
 		}
@@ -192,9 +192,6 @@ public class PictureUtils {
 		}
 		return byteArray;
 	}
-
-
-
 
 	
 	public static Bitmap createScaledImage(File mFile) {

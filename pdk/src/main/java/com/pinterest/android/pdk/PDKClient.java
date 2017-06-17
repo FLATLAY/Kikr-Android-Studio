@@ -200,7 +200,6 @@ public class PDKClient {
                 return alreadyLoggedIn;
             }
         }
-
         return alreadyLoggedIn;
     }
 

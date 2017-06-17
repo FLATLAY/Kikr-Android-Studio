@@ -354,7 +354,7 @@
             android:glEsVersion="0x00020000"
             android:required="true" />
 
-        <!-- Goolge API Key -->
+        <!-- Googlge API Key -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/map_api_key_production" />
@@ -364,8 +364,6 @@
             android:value="@integer/google_play_services_version" />
 
         <receiver android:name="com.flatlay.GCMAlarmReceiver"></receiver>
-
-
 
 
         <meta-data

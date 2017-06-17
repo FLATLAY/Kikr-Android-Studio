@@ -2,6 +2,7 @@ package com.flatlay.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class FragmentProfileAdapter extends BaseAdapter {
 		super();
 		this.mContext = context;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","FragmentProfileAdapter");
 	}
 
 	@Override
@@ -64,5 +66,4 @@ public class FragmentProfileAdapter extends BaseAdapter {
 		ImageView collection_image_4;
 		TextView collection_name;
 	}
-
 }

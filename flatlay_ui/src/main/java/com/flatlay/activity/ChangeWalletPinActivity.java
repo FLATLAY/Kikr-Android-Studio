@@ -3,6 +3,7 @@ package com.flatlay.activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +36,7 @@ public class ChangeWalletPinActivity extends BaseActivity implements OnKeyListen
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity:","ChangeWalletPinActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_change_wallet_pin);
 		if(getIntent().hasExtra("isCreatePin")&&getIntent().getBooleanExtra("isCreatePin", false)){

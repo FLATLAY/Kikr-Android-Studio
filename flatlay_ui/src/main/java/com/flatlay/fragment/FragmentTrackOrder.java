@@ -74,7 +74,7 @@ public class FragmentTrackOrder extends BaseFragment implements OnClickListener 
 		sizeLayout=(LinearLayout) mainView.findViewById(R.id.sizeLayout);
 		quantityLayout=(LinearLayout) mainView.findViewById(R.id.quantityLayout);
 		priceLayout=(LinearLayout) mainView.findViewById(R.id.priceLayout);
-		back=(Button)mainView.findViewById(R.id.back);
+		back=(Button)mainView.findViewById(R.id.backButton);
 	}
 
 	@Override
@@ -188,7 +188,7 @@ public class FragmentTrackOrder extends BaseFragment implements OnClickListener 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.back:
+			case R.id.backButton:
 				((HomeActivity)mContext).onBackPressed();
 				break;
 		}

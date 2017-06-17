@@ -3,6 +3,7 @@ package com.flatlay.adapter;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ public class IntroductionPagerAdapter extends PagerAdapter {
 	public IntroductionPagerAdapter(FragmentActivity mContext) {
 		this.mContext = mContext;
 		inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","IntroductionPagerAdapter");
 	}
 
 	@Override

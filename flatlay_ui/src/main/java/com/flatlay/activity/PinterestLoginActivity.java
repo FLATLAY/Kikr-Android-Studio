@@ -20,15 +20,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ujjwal on 11/29/2015.
- */
 public class PinterestLoginActivity extends FragmentActivity{
     FragmentActivity context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.w("Activity","PinterestLoginActivity");
         context = this;
         PDKClient.configureInstance(this, AppConstants.PINTEREST_APP_ID);
         PDKClient.getInstance().onConnect(this);

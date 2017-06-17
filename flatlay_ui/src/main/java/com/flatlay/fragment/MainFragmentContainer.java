@@ -48,8 +48,6 @@ public class MainFragmentContainer extends BaseFragment implements OnPageChangeL
         this.currentTab = currenttab;
 
         this.isCreateCollection = isCreateCollection;
-
-
     }
 
     public MainFragmentContainer(int currenttab) {
@@ -63,7 +61,7 @@ public class MainFragmentContainer extends BaseFragment implements OnPageChangeL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        Syso.info("uuuuuuuuuuu in onCreateView");
+        Syso.info("MainFragmentContainer");
         View view = inflater.inflate(R.layout.fragment_main_new, null);
         mCustomPagerAdapter = new CustomPagerAdapter(getChildFragmentManager(), (Context) getActivity());
         mViewPager = (ViewPager) view.findViewById(R.id.pager);

@@ -30,9 +30,6 @@ import com.flatlaylib.utils.Syso;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Nishant on 12/21/2015.
- */
 public class CategoryNewAdapter extends BaseAdapter {
         private LayoutInflater inflater;
         public ArrayList<Category> catList=new ArrayList<Category>();
@@ -47,6 +44,8 @@ public class CategoryNewAdapter extends BaseAdapter {
             this.mContext = mContext;
             this.fragmentCategories = fragmentCategories;
             this.imagesList = imagesList;
+            Log.w("Activity","CategoryNewAdapter");
+
         }
 
         public void setData(List<Category> data){

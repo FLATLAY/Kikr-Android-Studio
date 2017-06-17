@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
@@ -43,6 +44,7 @@ public class FollowBrandsActivity extends BaseActivity implements OnItemClickLis
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity:","FollowBrandsActivity");
 		CommonUtility.noTitleActivity(context);
 		UserPreference.getInstance().setCurrentScreen(Screen.BrandScreen);
 		setContentView(R.layout.activity_follow_brands);

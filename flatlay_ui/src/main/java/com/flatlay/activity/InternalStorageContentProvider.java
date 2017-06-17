@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.flatlay.circle_crop.circle_crop.ImageCropActivity;
 
@@ -29,6 +30,7 @@ public class InternalStorageContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
+        Log.w("Activity","InternalStorageContentProvider");
         try {
             File mFile = new File(getContext().getFilesDir(), ImageCropActivity.TEMP_PHOTO_FILE_NAME);
             if (!mFile.exists()) {

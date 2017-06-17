@@ -8,6 +8,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -67,6 +68,7 @@ public class FragmentProductBasedOnTypeAdapter extends BaseAdapter {
 		this.collectionId=collectionId;
 		this.productBasedOnInspiration=productBasedOnInspiration;
 		adapter=this;
+		Log.w("Activity","FragmentProductBasedOnTypeAdapter");
 	}
 	
 	public void setData(List<Product> data){

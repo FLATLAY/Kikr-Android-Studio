@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class GroupListAdapter extends BaseExpandableListAdapter {
         this.categories = categories;
         this.listDataChild = listDataChild2;
         this.imgid = imgid;
+        Log.w("Activity","GroupListAdapter");
     }
  
     @Override

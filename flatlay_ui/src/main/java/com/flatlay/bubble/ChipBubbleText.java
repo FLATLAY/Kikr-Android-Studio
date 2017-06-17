@@ -5,6 +5,7 @@ import android.content.Context;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.MultiAutoCompleteTextView;
 
@@ -21,6 +22,7 @@ public class ChipBubbleText {
     public ChipBubbleText(Context context, MultiAutoCompleteTextView multiAutoCompleteTextView,
                           String[] adapterValue, int threshold) {
         super();
+        Log.w("Activity","ChipBubbleText");
         this.context = context;
         this.multiAutoCompleteTextView = multiAutoCompleteTextView;
         this.adapterValue = adapterValue;

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.multidex.MultiDex;
+import android.util.Log;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Logger;
@@ -39,6 +40,7 @@ public class KikrApp extends BranchApp {
 	public void onCreate() {
 		super.onCreate();
 		//Fabric.with(this, new Crashlytics());
+		Log.w("Activity","KikrApp");
 		AppContext context = AppContext.getInstance();
 		context.setContext(this);
 		mDatabaseHelper = DatabaseHelper.getIntance(this);

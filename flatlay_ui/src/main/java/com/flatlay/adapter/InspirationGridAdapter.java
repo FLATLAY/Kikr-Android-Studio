@@ -3,6 +3,7 @@ package com.flatlay.adapter;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,6 +30,7 @@ public class InspirationGridAdapter extends BaseAdapter{
 		this.mContext = context;
 		this.inspirations = inspirations;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.w("Activity","InspirationGridAdapter");
 	}
 
 	public void setData(List<Inspiration> data){

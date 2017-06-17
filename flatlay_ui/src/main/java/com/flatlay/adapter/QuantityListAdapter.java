@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +36,7 @@ public class QuantityListAdapter extends BaseAdapter{
 		quantity.add("5");
 		quantity.add("6");
 		quantity.add("7");
+		Log.w("Activity","QuantityListAdapter");
 	}
 	
 	public void setData(List<CollectionList> data){

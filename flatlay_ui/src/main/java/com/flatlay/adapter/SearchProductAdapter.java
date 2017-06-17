@@ -1,12 +1,10 @@
 package com.flatlay.adapter;
 
-/**
- * Created by Tycho on 10/13/2015.
- */
 
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +29,7 @@ public class SearchProductAdapter extends RecyclerView.Adapter<SearchProductAdap
         super();
         this.categoriesName = categoriesName;
         this.mContext = context;
+        Log.w("Activity","SearchProductAdapter");
     }
 
     @Override

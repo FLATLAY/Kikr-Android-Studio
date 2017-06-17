@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class TwitterFriendListAdapter extends BaseAdapter {
 
 	public TwitterFriendListAdapter(FragmentActivity context, List<OauthItem> data) {
 		super();
+		Log.w("Activity","TwitterFriendListAdapter");
 		this.mContext = context;
 		this.data = (ArrayList<OauthItem>) data;
 		this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

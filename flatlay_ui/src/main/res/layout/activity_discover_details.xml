@@ -24,7 +24,7 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/productImageView"
             android:layout_width="match_parent"
-            android:layout_below="@+id/back"
+            android:layout_below="@+id/backButton"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="@dimen/padding_large"

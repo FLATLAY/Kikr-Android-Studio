@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.support.v4.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,7 @@ public class CustomizeFeedAllAdapter extends ArrayAdapter<Item> {
 
         //sortItems();
         vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        Log.w("Activity","CustomizeFeedAllAdapter");
     }
 
     private void sortItems() {

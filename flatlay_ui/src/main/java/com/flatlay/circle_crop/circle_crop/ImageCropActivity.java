@@ -219,6 +219,7 @@ public class ImageCropActivity extends AppCompatActivity {
     }
 
     private void init() {
+        Log.w("Activity","ImageCropActivity");
         Bitmap b = getBitmap(mImageUri);
         Drawable bitmap = new BitmapDrawable(getResources(), b);
         int h = bitmap.getIntrinsicHeight();

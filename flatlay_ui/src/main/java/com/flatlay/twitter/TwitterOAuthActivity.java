@@ -40,7 +40,6 @@ public class TwitterOAuthActivity extends Activity implements TwitterOAuthView.L
 	private boolean isGetFollowers=false;
 	private boolean isGetProfilePic = false;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState)
     {

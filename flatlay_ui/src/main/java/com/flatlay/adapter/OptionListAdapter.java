@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,6 +35,7 @@ public class OptionListAdapter extends BaseAdapter{
 				selectedPos=i;
 		}
 		this.optionList = optionList;
+		Log.w("Activity","OptionListAdapter");
 	}
 
 	@Override

@@ -34,7 +34,7 @@ public class FragmentPurchaseGuarantee extends BaseFragment implements OnClickLi
 	@Override
 	public void initUI(Bundle savedInstanceState) {
 		txtHere = (TextView) mainView.findViewById(R.id.txtHere);
-		back=(Button) mainView.findViewById(R.id.back);
+		back=(Button) mainView.findViewById(R.id.backButton);
 		txtContact = (TextView) mainView.findViewById(R.id.txtContact);
 		txtContact.setPaintFlags(txtContact.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		learnmorelayout=(LinearLayout)mainView.findViewById(R.id.learnmorelayout);
@@ -80,7 +80,7 @@ public class FragmentPurchaseGuarantee extends BaseFragment implements OnClickLi
 			case R.id.learnmorelayout:
 				addFragment(new FragmentLearnMoreOutsideUS());
 				break;
-			case R.id.back:
+			case R.id.backButton:
 				((HomeActivity)mContext).onBackPressed();
 				break;
 		}

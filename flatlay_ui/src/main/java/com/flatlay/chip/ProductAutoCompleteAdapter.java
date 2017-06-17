@@ -2,6 +2,7 @@ package com.flatlay.chip;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,6 @@ import com.flatlaylib.bean.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by anshumaan on 6/15/2016.
- */
 public class ProductAutoCompleteAdapter extends ArrayAdapter<Product> {
 
     List<Product> products = new ArrayList<>();
@@ -31,6 +29,7 @@ public class ProductAutoCompleteAdapter extends ArrayAdapter<Product> {
         this.products.addAll(products);
 
         this.viewResourceId = viewResourceId;
+        Log.w("Activity","ProductAutoCompleteAdapter");
     }
 
     @Override

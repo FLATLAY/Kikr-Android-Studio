@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public abstract class BaseFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.w("Activity","BaseFragment");
 		Syso.debug("BaseFragment - onCreate = ", this.getClass().getSimpleName());
 		mContext = getActivity();
 	}
@@ -134,6 +136,7 @@ public abstract class BaseFragment extends Fragment {
 	}
 	
 	public void startActivityForResult(Class activity,Bundle bundle,int requestCode) {
+		Log.w("startActivityForResult","Here");
 		Intent i = new Intent(mContext, activity);
 		i.putExtras(bundle);
 		startActivityForResult(i, requestCode);

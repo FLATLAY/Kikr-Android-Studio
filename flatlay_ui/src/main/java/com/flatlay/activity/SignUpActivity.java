@@ -3,6 +3,7 @@ package com.flatlay.activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,6 +43,7 @@ public class SignUpActivity extends BaseActivity implements OnClickListener, OnK
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.w("Activity","SignUpActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_signup);
 		setOnKeyListener();

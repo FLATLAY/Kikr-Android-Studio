@@ -1,6 +1,7 @@
 package com.flatlay.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -41,6 +42,7 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.InspirationRes;
 import com.flatlaylib.utils.StringUtils;
 import com.flatlaylib.utils.Syso;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -70,6 +72,7 @@ InspirationAdapter extends BaseAdapter {
         this.inspirations = inspirations;
         this.isViewAll = isViewAll;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        Log.w("Activity","InspirationAdapter");
     }
 
     public void setData(List<Inspiration> data) {
@@ -223,16 +226,17 @@ InspirationAdapter extends BaseAdapter {
         });
         if (getItem(position).getIs_followed() != null && getItem(position).getIs_followed().equals("yes")) {
             viewholder.follow_btn.setText("FOLLOWING");
-
             viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
             viewholder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
-
+            //Log.w("Inspiration Adapter","1");
+            //notifyDataSetChanged();
 
         } else {
             viewholder.follow_btn.setText("  FOLLOW   ");
             viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_borderbg_gray));
-
             viewholder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.app_text_color));
+            //Log.w("Inspiration Adapter","2");
+            //notifyDataSetChanged();
         }
         viewholder.follow_btn.setOnClickListener(new OnClickListener() {
             @Override
@@ -241,10 +245,12 @@ InspirationAdapter extends BaseAdapter {
                     if (getItem(position).getIs_followed().equals("no")) {
                         getItem(position).setIs_followed("yes");
                         notifyDataSetChanged();
+                        //Log.w("Inspiration Adapter","3");
                         ((HomeActivity) mContext).followUser(getItem(position).getUser_id());
                     } else {
                         getItem(position).setIs_followed("no");
                         notifyDataSetChanged();
+                        //Log.w("Inspiration Adapter","4");
                         ((HomeActivity) mContext).unFollowUser(getItem(position).getUser_id());
                     }
                 }
@@ -288,6 +294,9 @@ InspirationAdapter extends BaseAdapter {
         String image = getItem(position).getInspiration_image();
         System.out.print(image);
         CommonUtility.setImage(mContext, getItem(position).getInspiration_image(), viewholder.inspirationImage, R.drawable.dum_list_item_product);
+        //Picasso.with(mContext).load(getItem(position).getInspiration_image()).resize(500, 500).into(viewholder.inspirationImage);
+
+
         //InspirationRes res=(InspirationRes)getItem(position);
         List<Product> data = getItem(position).getProducts();
         viewholder.productInflaterLayout.removeAllViews();

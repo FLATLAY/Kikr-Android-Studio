@@ -6,9 +6,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
 
-/**
- * Created by Tycho on 5/23/2016.
- */
 public class MultiLineEditText extends EditText{
 
 

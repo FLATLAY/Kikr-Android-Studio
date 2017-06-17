@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -37,6 +38,7 @@ public class AddBankActivity extends BaseActivity implements OnClickListener, Se
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.w("Activity:","AddBankActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_add_bank);
 		if(checkInternet())

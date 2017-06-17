@@ -3,6 +3,7 @@ package com.flatlay.activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +31,7 @@ public class RegisterEmailOnSkipActivity extends BaseActivity implements OnKeyLi
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w("Activity","RegisterEmailOnSkipActivity");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_change_email);
 	}

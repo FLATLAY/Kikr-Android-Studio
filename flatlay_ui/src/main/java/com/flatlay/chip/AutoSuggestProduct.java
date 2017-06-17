@@ -19,9 +19,7 @@ import com.flatlaylib.utils.Syso;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by anshumaan on 6/5/2016.
- */
+
 public class AutoSuggestProduct {
     ProgressBarDialog mProgressBarDialog;
     Context mContext;

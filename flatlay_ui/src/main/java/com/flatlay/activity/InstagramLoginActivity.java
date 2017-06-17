@@ -23,6 +23,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -39,12 +40,6 @@ import com.flatlaylib.utils.Syso;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
-/**
- * Instagram authentication.
- *  
- * @author Lorensius W. L. T
- *
- */
 public class InstagramLoginActivity extends Activity {
 	private InstagramSession mInstagramSession;
 	private Instagram mInstagram;
@@ -55,6 +50,7 @@ public class InstagramLoginActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.w("Activity","InstagramLoginActivity");
 		
 		mInstagram  		= new Instagram(this, AppConstants.INSTAGRAM_CLIENT_ID, AppConstants.INSTAGRAM_CLIENT_SECRET, AppConstants.INSTAGRAM_REDIRECT_URI);
 		

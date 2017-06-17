@@ -26,6 +26,7 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -336,6 +337,7 @@ public class TagsEditText extends AutoCompleteTextView {
 
     private void init(@Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         Context context = getContext();
+        Log.w("Activity","TagsEditText");
         if (attrs == null) {
             mIsSpacesAllowedInTags = false;
             mTagsTextColor = ResourceUtils.getColor(context, R.color.defaultTagsTextColor);

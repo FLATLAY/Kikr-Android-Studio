@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -14,6 +15,7 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -45,6 +47,7 @@ import com.flatlaylib.service.res.MyProfileRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
 import com.soundcloud.android.crop.Crop;
+import com.theartofdev.edmodo.cropper.CropImage;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
@@ -440,14 +443,17 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
         Log.e("resu and req code", requestCode + " -- " + resultCode);
         if (resultCode == Activity.RESULT_OK) {
             Log.e("req code", requestCode + "");
-            if (requestCode == UCrop.REQUEST_CROP) {
+            if (requestCode == UCrop.REQUEST_CROP) { //Changed the code
 
                 //Log.w("onActivityResultFPUT","REQUEST_CROP");
+                // UCrop.REQUEST_CROP
+                // CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
 
                 String filePath = Environment.getExternalStorageDirectory()
                         + "/temporary_holder.jpg";
 
-                //Log.w("onActivityResultFPUT","****1"+filePath);
+                Log.w("onActivityResultFPUT","****FPUT: "+filePath);
+
                 Bitmap thumbnail = BitmapFactory.decodeFile(filePath);
                 //Log.w("onActivityResultFPUT","****2");
 
@@ -460,7 +466,7 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
                 //Log.w("onActivityResultFPUT","REQUEST_PICK");
                 Uri destination = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
                 Crop crop = new Crop(data.getData());
-                crop.output(destination).asSquare().start(mContext);
+                crop.output(destination).asSquare().start(mContext); //Check the Max Size
             }
         }
     }

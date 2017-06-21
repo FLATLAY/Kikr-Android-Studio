@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -162,6 +163,8 @@ import com.pinterest.android.pdk.PDKException;
 import com.pinterest.android.pdk.PDKResponse;
 import com.pinterest.android.pdk.Utils;
 import com.soundcloud.android.crop.Crop;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 import com.yalantis.ucrop.UCrop;
 
 
@@ -982,7 +985,22 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         if (requestCode == AppConstants.WALLETLIST && resultCode == RESULT_OK) {
             //Log.w("onActivityResultHA","1");
             loadFragment(new FragmentKikrWalletCard());
-        } else if (requestCode == AppConstants.REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
+        }
+        else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                Log.w("HomeActivity","Going to handleCropResult2"+resultUri);
+
+                handleCropResult2(data, resultUri);
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                handleCropError2(data);
+
+            }
+        }
+        else if (requestCode == AppConstants.REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
             //Log.w("onActivityResultHA","2");
             String id = data.getStringExtra("id");
             String email = data.getStringExtra("email");
@@ -2796,13 +2814,21 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         Log.w("HomeActivity","startCropActivity()");
 
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
+        String filePath = Environment.getExternalStorageDirectory()
+                + "/temporary_holder.jpg";
+
+        Log.w("startCropActHA","****2: "+filePath);
         UCrop uCrop = UCrop.of(uri, mDestinationUri);
         uCrop = basisConfig(uCrop);
         uCrop = advancedConfig(uCrop);
-        uCrop.withMaxResultSize(500,500);
-        //uCrop.withAspectRatio(1,1);
+        uCrop.withMaxResultSize(3000,3000);
         uCrop.start(context);
-        //Log.w("HA:startCropActivity()","Back");
+
+        /*
+        //Trying new cropping library
+        CropImage.activity(uri)
+                 .start(context);
+        */
     }
 
     private UCrop basisConfig(@NonNull UCrop uCrop) {
@@ -2854,6 +2880,24 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 //        }
     }
 
+    private void handleCropResult2(@NonNull Intent result, Uri resultUri) {
+
+        if (result != null) {
+            Log.w("HomeActivity","handleCropResult2()");
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+
+            ((FragmentPostUploadTab) fragment).onActivityResult(CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE, RESULT_OK
+                    , result);
+        } else
+            AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
+//        final Uri resultUri = UCrop.getOutput(result);
+//        if (resultUri != null) {
+//            ResultActivity.startWithUri(SampleActivity.this, resultUri);
+//        } else {
+//            Toast.makeText(SampleActivity.this, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show();
+//        }
+    }
+
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
     private void handleCropError(@NonNull Intent result) {
         final Throwable cropError = UCrop.getError(result);
@@ -2864,6 +2908,20 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             Toast.makeText(HomeActivity.this, R.string.toast_unexpected_error, Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void handleCropError2(@NonNull Intent result) {
+        Toast.makeText(HomeActivity.this, "handleCropError2"+result, Toast.LENGTH_LONG).show();
+        /*
+        final Throwable cropError = UCrop.getError(result);
+        if (cropError != null) {
+            Log.e("UCrop Error", "handleCropError: ", cropError);
+            Toast.makeText(HomeActivity.this, cropError.getMessage(), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(HomeActivity.this, R.string.toast_unexpected_error, Toast.LENGTH_SHORT).show();
+        }
+        */
+    }
+
 
     public void onSavePin(String imageUrl, String boardId, String text, String linkUrl) {
 

@@ -168,7 +168,7 @@ public class PictureUtils {
 			newheight = (int) (bitmap.getHeight() * 0.70);
 		}
 		
-		Log.e("image size new byte aray","width:" + newwidth + "height:" + newheight);
+		Log.e("img size new byte aray","width:" + newwidth + "height:" + newheight);
 	    Bitmap resizedImage = Bitmap.createScaledBitmap(bitmap, newwidth , newheight, true);
 	    resizedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
 		byte[] byteArray = stream.toByteArray();
@@ -176,7 +176,7 @@ public class PictureUtils {
 	}
 
 	public static byte[] getByteArray2(Bitmap bitmap) {
-		//Log.w("my-App","getByteArray2 of PictureUtils.class");
+		Log.w("my-App","getByteArray2 of PictureUtils.class");
 		if(bitmap == null){
 			return null;
 		}
@@ -217,7 +217,7 @@ public class PictureUtils {
 			mat.postRotate(angle);
 			BitmapFactory.Options options = new BitmapFactory.Options();
 //			options.inJustDecodeBounds=false;
-			options.inSampleSize = calculateInSampleSize2(options, 800, 600);
+			options.inSampleSize = calculateInSampleSize2(options, 500, 500);
 			Syso.info("2222===="+mFile.getPath());
 			options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 			Bitmap bmp = BitmapFactory.decodeStream(new FileInputStream(mFile), null, options);

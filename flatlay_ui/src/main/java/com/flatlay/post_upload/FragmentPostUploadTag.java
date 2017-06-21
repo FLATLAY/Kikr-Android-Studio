@@ -263,7 +263,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_post_upload_tag, null);
-        Log.w("my-App","FragmentPostUploadTag");
+        Log.w("FragmentPUTag","onCreateView()");
         setActionBarButtons();
         return view;
     }
@@ -271,6 +271,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     @Override
     public void initUI(Bundle savedInstanceState) {
+        Log.w("FragmentPUTag","initUI");
         cab = this;
         mProgressBarDialog = new ProgressBarDialog(mContext);
         autoSuggestProduct = new AutoSuggestProduct(mContext);
@@ -291,6 +292,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         tvTagWithoutTag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.w("FragmentPostUploadTag","setOnClickListener");
                 getConfirmation();
             }
         });
@@ -315,7 +317,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     private void setMultiAutoText() {
-
+        Log.w("FragmentPUTag","setMultiAutoText()");
 
         multiAutoCompleteTextView.setHint("Search for products to add to post.");
 
@@ -380,7 +382,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     private void addProductToNewCollection(Product product) {
-
+        Log.w("FragmentPUTag","addProductToNewCollection()");
 
         addProductListNew1.add(product);
 
@@ -405,6 +407,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     private void addScrollListenerForSDKsAbove11() {
+        Log.w("FragmentPUTag","addScrollListenerForSDKsAbove11()");
         if (Integer.valueOf(Build.VERSION.SDK_INT) > 11) {
             // setting onScroll listener
             listView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -423,7 +426,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
 
     private void inflateHeader() {
-        Log.w("my-App","inflateHeader() in FragmentPostUploadTag");
+        Log.w("FragmentPUTag","inflateHeader() in FragmentPostUploadTag");
         // inflate custom header and attach it to the list
         LayoutInflater inflater = mContext.getLayoutInflater();
         ViewGroup header = (ViewGroup) inflater.inflate(R.layout.post_upload_listview_custom_header, listView, false);
@@ -497,6 +500,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     private void setTouchEvent() {
+        Log.w("FragmentPUTag","setTouchEvent()");
         tagView = new TagView(mContext);
         imageUploadView.setOnTouchListener(new View.OnTouchListener() {
 
@@ -512,7 +516,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
 
     private void plotTagOnImage(float x, float y, boolean isHideActionBar, String TAG_TEXT) {
-
+        Log.w("FragmentPUTag","plotTagOnImage()");
         this.x = x;
         this.y = y;
         if (!isTaggingProduct || tagView.getText().equals(START_TEXT)) {
@@ -548,6 +552,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     @Override
     public void setData(Bundle bundle) {
+        Log.w("FragmentPUTag","setData()");
         try {
             //  mAdapter = new SelectionAdapter(this, R.layout.row_list_item, R.id.textView1, data);
             inflateHeader();
@@ -578,7 +583,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     public void tagitemshow(ProfileCollectionList item) {
-
+        Log.w("FragmentPUTag","tagitemshow()");
         taggedCollection = item;
         String arr = collectionLists.get(click).toString();
 
@@ -654,7 +659,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     private void setActionBarButtons() {
 
-        Log.w("my-App","setActionBarButtons");
+        Log.w("FragmentPUTag","setActionBarButtons");
         HomeActivity.menuRightImageView.setVisibility(View.GONE);
         HomeActivity.photouploadnext.setVisibility(View.VISIBLE);
         HomeActivity.camera.setVisibility(View.GONE);
@@ -666,7 +671,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         HomeActivity.crossarrow.setVisibility(View.GONE);
         HomeActivity.menuTextCartCount.setVisibility(View.GONE);
         //   HomeActivity.uploadphoto.setGravity(Gravity.CENTER);
-        Log.w("my-App","Going in HomeActivity");
+        Log.w("FragmentPUTag","Going in HomeActivity");
         if (isUpdate)
             HomeActivity.uploadphoto.setText("Edit Post");
         else
@@ -675,6 +680,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     public void updateDescription() {
+        Log.w("FragmentPUTag","updateDescription()");
         try {
             progressbar.setVisibility(View.VISIBLE);
             CommonUtility.hideSoftKeyboard(mContext);
@@ -737,6 +743,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     public void removeGeneralTag() {
+        Log.w("FragmentPUTag","removeGeneralTag()");
         try {
 
             final EditInspirationApi editPostApi = new EditInspirationApi(new ServiceCallback() {
@@ -853,6 +860,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     public void getCollectionList() {
+        Log.w("FragmentPUTag","getCollectionList()");
         try {
             mProgressBarDialog = new ProgressBarDialog(mContext);
             mProgressBarDialog.show();
@@ -921,7 +929,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
 
     private void validateInput() {
-        Log.w("my-App","validateInput()");
+        Log.w("FragmentPUTag","validateInput()");
         description = descriptionEditText.getText().toString().trim();
         if (bmp == null && imageUrl == null && !isUpdate) { //If an image has been selected
             AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
@@ -948,7 +956,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                         }
                     } else {
                         progressbar.setVisibility(View.VISIBLE);
-                        Log.w("my-App","Going in GetImage().execute();");
+                        Log.w("FragmentPUTag","Going in GetImage().execute();");
                         new GetImage().execute();
                     }
                 }
@@ -1095,11 +1103,10 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         });
         collectionApi.addProductInCollection(UserPreference.getInstance().getUserID(), taggedItem.getSelectedItem(), product.getId(), from_user_id, from_collection_id, product.getProductimageurl());
         collectionApi.execute();
-
-
     }
 
     private void uploadInspiration(byte[] image) {
+        Log.w("FragmentPUTag","uploadInspiration()");
         final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(
                 new ServiceCallback() {
 
@@ -1131,7 +1138,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                     }
                 });
         if (image != null || imageUrl != null) {
-            Log.w("my-App","Image present");
+            Log.w("FragmentPUTag","Image present");
             String width = bmp != null ? String.valueOf(bmp.getWidth()) : "";
             String height = bmp != null ? String.valueOf(bmp.getHeight()) : "";
             inspirationSectionApi.uploadImage(UserPreference.getInstance()
@@ -1148,6 +1155,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     public void uploadPost() {
+        Log.w("FragmentPUTag","uploadPost()");
 
         validateInput();
         HomeActivity.uploadphoto.setVisibility(View.GONE);
@@ -1203,17 +1211,21 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
         @Override
         protected void onPreExecute() {
+            Log.w("FragmentPUTag","GetImage() onPreExecute()");
+            imageUploadView.setImageBitmap(bmp);
 
             super.onPreExecute();
         }
 
         @Override
         protected byte[] doInBackground(Void... params) {
+
             // TODO Auto-generated method stub
-            Log.w("my-App","GetImage()");
+            Log.w("FragmentPUTag","GetImage() doInBackground()");
             if (isImage.equals("no")) {
                 return byteArray;
             } else {
+
                 return PictureUtils.getByteArray2(bmp);
             }
 
@@ -1223,7 +1235,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         protected void onPostExecute(byte[] result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-            Log.w("my-App","Going in uploadInspiration()");
+            Log.w("FragmentPUTag","Going in uploadInspiration()");
             uploadInspiration(result);
         }
 
@@ -1231,26 +1243,18 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
 
-
         @Override
         protected Bitmap doInBackground(String... URL) {
-            Log.w("my-App","DownloadImage()");
+            Log.w("FragmentPUTag","DownloadImage()");
             String imageURL = URL[0];
 
             Bitmap bitmap = null;
             try {
 
-                // Try this!
-                //BitmapFactory.Options options = new BitmapFactory.Options();
-                //options.inScaled = false;
-                //options.inDither = false;
-                //options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-
                 // Download Image from URL
                 InputStream input = new java.net.URL(imageURL).openStream();
                 // Decode Bitmap
                 bitmap = BitmapFactory.decodeStream(input);
-
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1262,7 +1266,8 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         protected void onPostExecute(Bitmap result) {
             if (result != null) {
                 bmp = resizeBitmapFitXY(500, 500, result);
-                imageUploadView.setImageBitmap(bmp);
+                //bmp = result;
+                //imageUploadView.setImageBitmap(bmp);
             }
             if (mProgressBarDialog.isShowing())
                 mProgressBarDialog.dismiss();
@@ -1270,7 +1275,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     public Bitmap resizeBitmapFitXY(int width, int height, Bitmap bitmap) {
-        Log.w("my-App","resizeBitmapFitXY()");
+        Log.w("FragmentPUTag","resizeBitmapFitXY()");
         try {
             Bitmap background = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
             float originalWidth = bitmap.getWidth(), originalHeight = bitmap.getHeight();
@@ -1297,6 +1302,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     private void getConfirmation() {
+        Log.w("FragmentPUTag","getConfirmation()");
         final AlertDialog.Builder builder;
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
@@ -1719,6 +1725,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.w("FragmentPUTag","onActivityResult()");
         super.onActivityResult(requestCode, resultCode, data);
         try {
             Product product = (Product) data.getExtras().getSerializable("data");

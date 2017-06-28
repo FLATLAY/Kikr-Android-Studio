@@ -71,7 +71,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         Log.i(TAG, "Received message");
         Intent intent = new Intent(this, HomeActivity.class);
         dumpIntent(intent);
-        String message;
+        String message = "";
         String otherdata = "";
         String inspiration_id = null;
         String purchase_id = "";
@@ -93,9 +93,10 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         try {
             message = intent.getStringExtra("message");
             section = intent.getStringExtra("section");
-            if (section.equalsIgnoreCase("follow"))
+            if (section != null && section.equalsIgnoreCase("follow")) {
                 inspiration_id = intent.getStringExtra("user_idsend");
-            if (section.equalsIgnoreCase("twotap")) {
+            }
+            if (section != null && section.equalsIgnoreCase("twotap")) {
                 AppPreference.getInstance().setIsShowNotification(purchase_id, false);
             }
         } catch (Exception e) {
@@ -103,7 +104,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
             message = "You received new message";
         }
         boolean isShowNotification = true;
-        if (section.equalsIgnoreCase("placeorder")) {
+        if (section != null && section.equalsIgnoreCase("placeorder")) {
 //			double finalValue = StringUtils.getDoubleValue(getFinalPrice(otherdata.toString()));
             isShowNotification = false;
 
@@ -230,8 +231,10 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         if (!TextUtils.isEmpty(inspiration_id)) {
             intent.putExtra("inspiration_id", inspiration_id);
         }
-        intent.putExtra("section", section);
-        intent.setData(Uri.parse(section));
+        if (!TextUtils.isEmpty(section)) {
+            intent.putExtra("section", section);
+            intent.setData(Uri.parse(section));
+        }
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_ONE_SHOT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)

@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -146,6 +147,10 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
         productName = (TextView) mainView.findViewById(R.id.productName);
         viewDetailsText = (TextView) mainView.findViewById(R.id.viewDetailsText);
         removeFromCartText = (TextView) mainView.findViewById(R.id.removeFromCartText);
+        if(product.getProductcart_id() == null)
+        {
+            removeFromCartText.setVisibility(View.INVISIBLE);
+        }
         colorText = (TextView) mainView.findViewById(R.id.colorText);
         sizeText = (TextView) mainView.findViewById(R.id.sizeText);
         quantityText = (TextView) mainView.findViewById(R.id.quantityText);

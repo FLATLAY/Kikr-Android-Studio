@@ -8,6 +8,7 @@ import org.apache.http.NameValuePair;
 import org.json.JSONArray;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.gson.JsonParseException;
 import com.flatlaylib.bean.CartProduct;
@@ -445,6 +446,7 @@ public class TwoTapApi extends AbsService {
 				+ "\",\"http_confirm_url\":"
 				+ "\""+Constants.WebConstants.DEFAULT_IP+"twotapcallbackhttp_confirm_url" + "\"}}";
 		requestValue = finalValue;
+		Log.w("purchaseApi2","finalValue"+finalValue);
 		Syso.infoFull(finalValue);
 	}
 

@@ -33,6 +33,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -122,6 +123,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
     boolean isPostComment = false;
     String user_id;
     boolean isFromNotification;
+
     public FragmentInspirationDetail(Inspiration inspiration, boolean isShowProducts) {
         this.inspiration = inspiration;
         this.isShowProducts = isShowProducts;
@@ -134,8 +136,6 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         this.isFromNotification=false;
         this.showhide=true;
     }
-
-
 
     public FragmentInspirationDetail(Inspiration inspiration, boolean isShowProducts,boolean isFromNofication) {
         this.inspiration = inspiration;
@@ -157,8 +157,10 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.fragment_inspiration_detail, null);
         fragmentInspirationDetail = this;
+        Log.w("FragmentInspD","onCreateView()");
         return mainView;
     }
+
 
     @Override
     public void initUI(Bundle savedInstanceState) {
@@ -181,6 +183,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         descriptionArrow = (ImageView) mainView.findViewById(R.id.descriptionArrow);
         descriptionText = (TextView) mainView.findViewById(R.id.tvDescription);
         commentList = (LinearLayout) mainView.findViewById(R.id.commentList);
+        commentList.setFocusable(false);
         backIcon = (LinearLayout) mainView.findViewById(R.id.backIcon);
         contentContainer = (FrameLayout) mainView.findViewById(R.id.content_container);
         commentBtn = (Button) mainView.findViewById(R.id.commentBtn);
@@ -364,7 +367,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         if (list.size() >= 0) {
             commentList.addView(new InspirationCommentsUI(mContext, list, fragmentInspirationDetail).getView());
         }
-        pushScrollBottom();
+        //pushScrollBottom();
     }
 
 
@@ -560,7 +563,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                     }
                     setDetails();
                 }
-                pushScrollBottom();
+                //pushScrollBottom();
 
             }
 
@@ -597,6 +600,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
             }
         }, 100);
     }
+
 
     protected void setDetails() {
 //        if (!TextUtils.isEmpty(inspiration.getUsername())) {
@@ -749,9 +753,11 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         switch (v.getId()) {
             case R.id.commentBtn:
                 if (UserPreference.getInstance().getPassword() == "" || UserPreference.getInstance().getEmail() == "" || UserPreference.getInstance().getUserName() == "") {
+                    //Log.w("FragmentInspDetail","Comment Button Clicked 1!");
                     CreateAccountDialog createAccountDialog = new CreateAccountDialog(mContext);
                     createAccountDialog.show();
                 } else {
+                    //Log.w("FragmentInspDetail","Comment Button Clicked 2!");
                     CommonUtility.hideSoftKeyboard(mContext);
                     validateUserInput();
                 }
@@ -811,15 +817,14 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
 
                 InspirationRes inspirationRes = (InspirationRes) object;
                 likeId = inspirationRes.getLike_id();
+                Log.w("FragmentInsDetail","handleOnSuccess"+likeId);
                 if (TextUtils.isEmpty(likeId)) {
                     likeCount.setText((getInt(likeCount.getText().toString().trim()) - 1) + "");
-
                     likeCountTextImage.setImageResource(R.drawable.ic_heart_outline_grey);
 
 
                 } else {
                     likeCount.setText((getInt(likeCount.getText().toString().trim()) + 1) + "");
-
                     likeCountTextImage.setImageResource(R.drawable.ic_heart_red);
 
                 }
@@ -835,17 +840,19 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                 likeCountTextImage.setVisibility(View.VISIBLE);
             }
         });
-        if (TextUtils.isEmpty(likeId))
+        //Log.w("FragmentInsDetail","postLike()"+likeId);
+        if (TextUtils.isEmpty(likeId)) {
+            //Log.w("FragmentInsDetail","postLike()");
             inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), inspiration.getInspiration_id(), "inspiration");
-        else
+        }else {
+            //Log.w("FragmentInsDetail","removeLike()");
             inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), likeId);
+        }
         inspirationSectionApi.execute();
     }
 
-    public void goToNext() {
-    }
-
     private void validateUserInput() {
+        //Log.w("FragmentInspDetail","validateUserInput()");
         boolean isValid = true;
         String comment = commentEditText.getText().toString().trim();
         if (TextUtils.isEmpty(comment)) {
@@ -861,7 +868,6 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         }
     }
 
-
     private void postComment(final String comment) {
         mProgressBarDialog = new ProgressBarDialog(mContext);
         mProgressBarDialog.show();
@@ -870,6 +876,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
 
             @Override
             public void handleOnSuccess(Object object) {
+                Log.w("postcomment","handleOnSuccess");
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
                 commentEditText.setText("");
@@ -883,6 +890,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
+                Log.w("postcomment","handleOnFailure");
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
             }
@@ -1126,6 +1134,4 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
             scaleFactor = imgWidth / dWidth;
         }
     }
-
-
 }

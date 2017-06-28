@@ -673,7 +673,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 
             @Override
             public void handleOnSuccess(Object object) {
-                Syso.info("success:   " + object);
+                Syso.info("successabc:   " + object);
                 try {
                     subtotal = "0";
                     tax = "0";

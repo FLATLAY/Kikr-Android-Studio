@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.util.Log;
 
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
@@ -28,9 +29,7 @@ import com.flatlaylib.utils.Syso;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Tycho on 6/3/2016.
- */
+
 public class FollowinginstagramScreen extends BaseFragment implements View.OnClickListener, AdapterView.OnItemClickListener, ServiceCallback {
     private View mainView;
     RecyclerView recyclerView;
@@ -44,10 +43,10 @@ public class FollowinginstagramScreen extends BaseFragment implements View.OnCli
     MessageCenterApi messageCenterApi;
     RelativeLayout followerNotFound;
     private List<FollowingKikrModel.DataBean> followinglist = new ArrayList<>();
+    private List<FollowingKikrModel.DataBean> followinglistRefined = new ArrayList<>();
     public static boolean isPostUpload = false;
 
     public FollowinginstagramScreen(boolean isViewAll, String userId) {
-
         this.isViewAll = isViewAll;
         this.userId = userId;
 
@@ -115,6 +114,7 @@ public class FollowinginstagramScreen extends BaseFragment implements View.OnCli
 
             @Override
             public void handleOnSuccess(Object object) {
+                Log.w("FIScreen","getFollowingInstagramList() Success");
 //                if (mProgressBarDialog.isShowing())
 //                    mProgressBarDialog.dismiss();
                 Syso.info("In handleOnSuccess>>" + object);
@@ -138,7 +138,31 @@ public class FollowinginstagramScreen extends BaseFragment implements View.OnCli
                     followerNotFound.setVisibility(View.GONE);
                     loadingTextView.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
-                    KikrFollowingAdapter adapter = new KikrFollowingAdapter(mContext, (ArrayList<FollowingKikrModel.DataBean>) followinglist);
+                    for (int i = 0; i < followinglist.size(); i++) {
+                        Log.w("Here: ",followinglist.get(i).getMessage() + UserPreference.getInstance().getUserName());
+
+                        String userString = followinglist.get(i).getMessage();
+                        String notificationType = followinglist.get(i).getType();
+                        String userName = "";
+                        if(userString.contains("commented") && notificationType.equals("commentinsp"))
+                        {
+                            userName = userString.split(" commented")[0];
+                        }
+                        else if(userString.contains("liked") && notificationType.equals("likeinsp"))
+                        {
+                            userName = userString.split(" liked")[0];
+                        }
+                        else if(userString.contains("following") && notificationType.equals("follow"))
+                        {
+                            userName = userString.split(" is following")[0];
+                        }
+
+                        if(!userName.equals(UserPreference.getInstance().getUserName()))
+                        {
+                            followinglistRefined.add(followinglist.get(i));
+                        }
+                    }
+                    KikrFollowingAdapter adapter = new KikrFollowingAdapter(mContext, (ArrayList<FollowingKikrModel.DataBean>) followinglistRefined);
                     recyclerView.setAdapter(adapter);
                 }
 
@@ -150,7 +174,7 @@ public class FollowinginstagramScreen extends BaseFragment implements View.OnCli
 
             }
         });
-
+        Log.w("FIScreen","getFollowingInstagramList() ");
         messageCenterApi.followinginstagram("0", "1");
         messageCenterApi.execute();
 

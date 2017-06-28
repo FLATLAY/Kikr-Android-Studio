@@ -163,8 +163,8 @@ import com.pinterest.android.pdk.PDKException;
 import com.pinterest.android.pdk.PDKResponse;
 import com.pinterest.android.pdk.Utils;
 import com.soundcloud.android.crop.Crop;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
+//import com.theartofdev.edmodo.cropper.CropImage;
+//import com.theartofdev.edmodo.cropper.CropImageView;
 import com.yalantis.ucrop.UCrop;
 
 
@@ -986,6 +986,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             //Log.w("onActivityResultHA","1");
             loadFragment(new FragmentKikrWalletCard());
         }
+        /*
         else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
@@ -1000,6 +1001,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
             }
         }
+        */
         else if (requestCode == AppConstants.REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
             //Log.w("onActivityResultHA","2");
             String id = data.getStringExtra("id");
@@ -2565,11 +2567,15 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     }
                 });
         if (TextUtils.isEmpty(product.getLike_info().getLike_id()))
-            inspirationSectionApi.postLike(UserPreference.getInstance()
-                    .getUserID(), product.getId(), "product");
+        {
+            Log.w("HomeActivity","postLike()");
+            inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), product.getId(), "product");
+        }
         else
-            inspirationSectionApi.removeLike(UserPreference.getInstance()
-                    .getUserID(), product.getLike_info().getLike_id());
+        {
+            Log.w("HomeActivity","removeLike()");
+            inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), product.getLike_info().getLike_id());
+        }
         inspirationSectionApi.execute();
     }
 
@@ -2858,7 +2864,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         options.setHideBottomControls(false);
 
         options.setFreeStyleCropEnabled(true);
-        //options.setMaxBitmapSize(500);
+        options.setMaxBitmapSize(500);
 
         return uCrop.withOptions(options);
     }
@@ -2880,6 +2886,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 //        }
     }
 
+    /*
     private void handleCropResult2(@NonNull Intent result, Uri resultUri) {
 
         if (result != null) {
@@ -2897,6 +2904,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 //            Toast.makeText(SampleActivity.this, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show();
 //        }
     }
+    */
 
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
     private void handleCropError(@NonNull Intent result) {

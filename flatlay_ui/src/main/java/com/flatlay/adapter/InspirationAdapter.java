@@ -213,12 +213,15 @@ InspirationAdapter extends BaseAdapter {
         viewholder.likeCountImage.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Log.w("InspirationAdapter","setOnClickListener()");
                 if (UserPreference.getInstance().getPassword() == "" || UserPreference.getInstance().getEmail() == "" || UserPreference.getInstance().getUserName() == "") {
                     CreateAccountDialog createAccountDialog = new CreateAccountDialog(mContext);
                     createAccountDialog.show();
                 } else {
                     if (((HomeActivity) mContext).checkInternet()) {
+                        //Log.w("InspirationAdapter","position"+position);
                         likeId = getItem(position).getLike_id();
+                        //Log.w("InspirationAdapter","likeId"+likeId);
                         likeInspiration(position);
                     }
                 }
@@ -453,6 +456,7 @@ InspirationAdapter extends BaseAdapter {
 
     private void likeInspiration(final int position) {
         // final TextView v = (TextView) likeCount.findViewById(R.id.likeCount);
+        //Log.w("InspirationAdapter","likeInspiration()");
         mProgressBarDialog = new ProgressBarDialog(mContext);
         mProgressBarDialog.show();
         final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(new ServiceCallback() {
@@ -464,17 +468,22 @@ InspirationAdapter extends BaseAdapter {
                 InspirationRes inspirationRes = (InspirationRes) object;
                 likeId = inspirationRes.getLike_id();
 
+                //Log.w("InspirationAdapater","In handle onSuccess"+likeId);
                 if (TextUtils.isEmpty(likeId)) {
+                    getItem(position).setLike_id(likeId);
+                    //Log.w("InspirationAdapater",position+ "here1*"+ getItem(position).getLike_id());
                     getItem(position).setLike_count(((getInt(getItem(position).getLike_count()) - 1) < 0 ? 0 : (getInt(getItem(position).getLike_count()) - 1)) + "");
 
                 } else {
+                    //Log.w("InspirationAdapater","here2");
                     if (getItem(position).getLike_count() != null) {
+                        //Log.w("InspirationAdapater","here3");
                         getItem(position).setLike_count((getInt(getItem(position).getLike_count()) + 1) + "");
                         getItem(position).setLike_id(likeId);
+                        //Log.w("InspirationAdapater",position+ "here4*"+ getItem(position).getLike_id());
                     }
-
-
                 }
+                //Log.w("InspirationAdapater","In handle onSuccess"+likeId);
                 notifyDataSetChanged();
             }
 
@@ -482,16 +491,18 @@ InspirationAdapter extends BaseAdapter {
             public void handleOnFailure(ServiceException exception, Object object) {
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
-
             }
         });
-        if (TextUtils.isEmpty(likeId))
+        if (TextUtils.isEmpty(likeId)) {
+            //Log.w("InspirationAdapter","postLike()");
             inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), getItem(position).getInspiration_id(), "inspiration");
-        else
+        }
+        else {
+            //Log.w("InspirationAdapter","removeLike()");
             inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), likeId);
+        }
         inspirationSectionApi.execute();
     }
-
 
     private int getInt(String image_width) {
         try {
@@ -501,6 +512,4 @@ InspirationAdapter extends BaseAdapter {
             return 0;
         }
     }
-
-
 }

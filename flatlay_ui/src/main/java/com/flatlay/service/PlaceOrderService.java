@@ -30,10 +30,6 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.Iterator;
 
-
-/**
- * Created by Ujjwal on 12/6/2015.
- */
 public class PlaceOrderService extends IntentService{
 
     private static int PURCHASE_STATUS_TIME = 15*1000;

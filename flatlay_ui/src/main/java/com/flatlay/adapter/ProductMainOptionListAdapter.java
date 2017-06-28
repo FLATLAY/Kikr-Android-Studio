@@ -37,7 +37,7 @@ public class ProductMainOptionListAdapter extends BaseAdapter{
 		}
 		this.productMainOptionDialog = productMainOptionDialog;
 		this.optionList = optionList2;
-		Log.w("Activity","ProductMainOptionsListAdapter");
+		Log.w("Activity","ProductMainOptionListAdapter");
 	}
 
 	@Override

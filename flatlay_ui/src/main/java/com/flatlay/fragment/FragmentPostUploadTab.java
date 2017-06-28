@@ -47,7 +47,7 @@ import com.flatlaylib.service.res.MyProfileRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
 import com.soundcloud.android.crop.Crop;
-import com.theartofdev.edmodo.cropper.CropImage;
+//import com.theartofdev.edmodo.cropper.CropImage;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;

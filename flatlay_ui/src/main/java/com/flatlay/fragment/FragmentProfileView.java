@@ -443,8 +443,10 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 txtfollowers.setVisibility(View.VISIBLE);
                 noCollectionText.setVisibility(View.GONE);
                 photo_not_found.setVisibility(View.GONE);
-                if (followersLists.size() == 0 && (user_id.equals(UserPreference.getInstance().getUserID())))
+                if (followersLists.size() == 0 && (user_id.equals(UserPreference.getInstance().getUserID()))) {
                     followerNotFound.setVisibility(View.VISIBLE);
+                    ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setVisibility(View.INVISIBLE);
+                }
                 else if(followersLists.size()>0) {
                     hideDataNotFound();
                     collection_list.setAdapter(new FragmentProfileFollowersAdapter(mContext, followersLists));
@@ -452,7 +454,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 }
                 else
                 {
-                    ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " haven't any followers.");
+                    ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " has no followers.");
                     ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
                     photo_not_found.setVisibility(View.VISIBLE);
                 }

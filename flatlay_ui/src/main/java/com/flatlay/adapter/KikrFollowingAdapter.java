@@ -57,17 +57,40 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
 
       //  String oldDate = followingList.get(i).getDateadded();
 
+        String userString = followingList.get(i).getMessage();
+        String notificationType = followingList.get(i).getType();
+        String userName = "";
+        String notitification = "";
+
+        if(userString.contains("commented") && notificationType.equals("commentinsp"))
+        {
+            userName = userString.split(" commented")[0];
+            notitification = userString.split(userName+" ")[1];
+        }
+        else if(userString.contains("liked") && notificationType.equals("likeinsp"))
+        {
+            userName = userString.split(" liked")[0];
+            notitification = userString.split(userName+" ")[1];
+        }
+        else if(userString.contains("following") && notificationType.equals("follow"))
+        {
+            userName = userString.split(" is following")[0];
+            notitification = userString.split(userName+" ")[1];
+
+        }
+
+        /*
         String userstring=followingList.get(i).getMessage();
         //String onlyuserimagepic=firstword(userstring);
         String[] result = userstring.split(" ", 2);
         String first = result[0];
         String rest = result[1];
-        String time;
         System.out.println("First: " + first);
         System.out.println("Rest: " + rest);
-
+        */
         //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
 
+        String time;
         Calendar calLocal = Calendar.getInstance();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -82,7 +105,7 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
 
 //            viewHolder.user_following.setText(first);
 //            viewHolder.followingsubstring.setText(rest);
-            viewHolder.followingsubstring.setText(Html.fromHtml("<b><font color=\"#000000\" size=\"9\"  >" + first+ "</font></b>" + "<font color=\"#777777\">" + "&nbsp;" + rest + "</font>"));
+            viewHolder.followingsubstring.setText(Html.fromHtml("<b><font color=\"#000000\" size=\"9\"  >" + userName + "</font></b>" + "<font color=\"#777777\">" + "&nbsp;" + notitification + "</font>"));
             Picasso.with(context).load(followingList.get(i).getImg()).into(viewHolder.userimagepic);
        //     Picasso.with(context).load(followingList.get(i).getImg()).into(viewHolder.follower_user_image);
            // viewHolder.week.setText( CommonUtility.calculateTimeDiff(calServer, calLocal));
@@ -90,13 +113,14 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
             if(commentinsp.equals(followingList.get(i).getType()))
             {
                 viewHolder.follower_user_image.setImageResource(R.drawable.chat_icon_green);
+                //Picasso.with(context).load().into(viewHolder.follower_user_image);
             }
            else
             {
                 //    follower_user_image.setImageResource(R.drawable.shareclicked);
                 viewHolder.follower_user_image.setImageResource(R.drawable.ic_heart_red);
             }
-            time=CommonUtility.messageCenter(calServer,calLocal);
+            time = CommonUtility.messageCenter(calServer,calLocal);
             viewHolder.followingsubstring.append("   " +time.toString());
 
 
@@ -117,6 +141,7 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
                             JSONObject innerJObject = jObject.getJSONObject("otherdata");
                             String inspiration_id = innerJObject.getString("inspiration_id");
                             System.out.print(inspiration_id);
+
                             Inspiration inspirationsetvalue=new Inspiration();
                             String dateadded=followingList.get(i).getDateadded();
                             inspirationsetvalue.setUser_id(usersend);
@@ -185,30 +210,6 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
 
     }
 
-    public String firstword(String user) {
-//        String result = "";  // Return empty string if no space found
-//
-//        for(int i = 0; i < user.length(); i++)
-//        {
-//            if(user.charAt(i) == ' ')
-//            {
-//                result = user.substring(0, i);
-//                break; // because we're done
-//            }
-//        }
-//
-//        return result;
-        String[] result = user.split(" ", 2);
-        String first = result[0];
-        String rest = result[1];
-        System.out.println("First: " + first);
-        System.out.println("Rest: " + rest);
-       // return result;
-
-        return first;
-    }
-
-
     @Override
     public int getItemCount() {
 
@@ -256,7 +257,6 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
             return "";
 
     }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

@@ -2,9 +2,6 @@ package com.flatlaylib.bean;
 
 import java.util.List;
 
-/**
- * Created by pushpendra on 5/30/2016.
- */
 public class FollowingKikrModel {
 
 

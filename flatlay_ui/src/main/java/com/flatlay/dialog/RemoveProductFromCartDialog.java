@@ -18,6 +18,7 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.CartRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
+import android.util.Log;
 
 public class RemoveProductFromCartDialog extends Dialog{
 	private TextView cancelTextView,okTextView;

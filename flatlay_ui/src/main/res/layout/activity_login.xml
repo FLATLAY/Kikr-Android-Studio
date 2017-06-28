@@ -36,18 +36,18 @@
             style="@style/editTextSignup"
             android:layout_marginBottom="-2dp"
             android:ems="10"
+            android:fontFamily="montserrat"
             android:hint="@string/email"
-            android:inputType="textEmailAddress" >
-        </EditText>
+            android:inputType="textEmailAddress"></EditText>
 
         <EditText
             android:id="@+id/passwordEditText"
             style="@style/editTextSignup"
             android:layout_marginTop="-2dp"
             android:ems="10"
+            android:fontFamily="montserrat"
             android:hint="@string/password"
-            android:inputType="textPassword" >
-        </EditText>
+            android:inputType="textPassword"></EditText>
 
         <TextView
             android:id="@+id/forgotPasswordTextView"

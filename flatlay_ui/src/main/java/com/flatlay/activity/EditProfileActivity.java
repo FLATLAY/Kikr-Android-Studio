@@ -485,6 +485,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         if (needToUpdateName) {
             setResult(RESULT_OK);
             doRegister();
+            mProgressBarDialog.dismiss();
         } else if (needToUpdatePic) {
             setResult(RESULT_OK);
             uploadImage();

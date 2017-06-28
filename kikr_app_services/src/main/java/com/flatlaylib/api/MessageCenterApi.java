@@ -16,9 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Tycho on 5/24/2016.
- */
+import android.util.Log;
+
+
 public class MessageCenterApi extends AbsService {
     private String requestValue;
     private String requestType;
@@ -31,6 +31,7 @@ public class MessageCenterApi extends AbsService {
     public void followinginstagram(String pagenum  ,String user_id) {
 
         this.METHOD_NAME= Constants.WebConstants.HOST_FILE +"getmessages";
+        Log.w("MessageCenterApi","followinginstagram()");
         requestType= Constants.WebConstants.HTTP_METHOD_POST;
         Map<String, String> comment = new HashMap<String, String>();
         //  comment.put("user_id", UserPreference.getInstance().getUserID());

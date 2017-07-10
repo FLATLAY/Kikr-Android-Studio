@@ -86,7 +86,10 @@ public class QuantityDialog extends Dialog{
 				item = parent.getItemAtPosition(position).toString();
 				if(position==0)
 				{
-					show();
+					//show();
+					dismiss();
+					if(((HomeActivity)mContext).checkInternet())
+						dialogCallback.setQuantity(item);
 				}
 				else {
 					dismiss();

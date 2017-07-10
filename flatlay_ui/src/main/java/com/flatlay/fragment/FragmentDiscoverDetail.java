@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -513,7 +514,7 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		switch (v.getId()) {
 		case R.id.checkoutButton:
 			if(checkInternet()){
-				addProductToCart(true);
+				addProductToCart(true, "1");
 			}
 			break;
 		case R.id.descriptionArrow:
@@ -585,12 +586,13 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		}
 	}
 
-	public void addToCartFromEdit(boolean isFromBuy){
+	public void addToCartFromEdit(boolean isFromBuy, String quantity){
 		isSelectOptionRequired = false;
-		addProductToCart(isFromBuy);
+		Log.w("addToCartFromEdit",""+quantity);
+		addProductToCart(isFromBuy, quantity);
 	}
 	
-	public void addProductToCart(final boolean isFromBuy) {
+	public void addProductToCart(final boolean isFromBuy, String quantity) {
 		
 		if(isLoadingData)
 		{
@@ -656,7 +658,8 @@ public class FragmentDiscoverDetail extends BaseFragment implements OnClickListe
 		});
 		String fromUserId=product.getFrom_user_id()==null?"":product.getFrom_user_id();
 		String fromCollection=product.getFrom_collection_id()==null?"":product.getFrom_collection_id();
-		cartApi.addToCart(UserPreference.getInstance().getUserID(), product.getId(), "1",UserPreference.getInstance().getCartID(),fromUserId,fromCollection,selectedSize,selectedColor,productLists.get(0).getSelected_values());
+		Log.w("FragmentDiscoverDetail",""+quantity);
+		cartApi.addToCart(UserPreference.getInstance().getUserID(), product.getId(), quantity,UserPreference.getInstance().getCartID(),fromUserId,fromCollection,selectedSize,selectedColor,productLists.get(0).getSelected_values());
 		cartApi.execute();
 	}
 

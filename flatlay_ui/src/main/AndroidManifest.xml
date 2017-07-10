@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.flatlay"
-    android:versionCode="9"
-    android:versionName="1.7">
+    android:versionCode="24"
+    android:versionName="2.1.2">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -121,9 +121,6 @@
                 <data android:scheme="pdk4803833610914245485" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
 
         <activity
             android:name="com.flatlay.activity.PinAuthActivity"

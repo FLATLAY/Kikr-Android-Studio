@@ -66,6 +66,9 @@ public class CartListAdapter extends BaseAdapter {
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		final ViewHolder viewHolder;
+
+
+
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.adapter_cart_list, null);
 			viewHolder = new ViewHolder();
@@ -78,12 +81,17 @@ public class CartListAdapter extends BaseAdapter {
 			viewHolder.colorText = (TextView) convertView.findViewById(R.id.colorText);
 			viewHolder.kikrDiscountText = (TextView) convertView.findViewById(R.id.kikrDiscountText);
 			viewHolder.sizeText = (TextView) convertView.findViewById(R.id.sizeText);
+			viewHolder.pricetext = (TextView) convertView.findViewById(R.id.pricetext);
 			viewHolder.selectProductOption = (TextView) convertView.findViewById(R.id.selectProductOption);
 			viewHolder.colorLayout=(LinearLayout) convertView.findViewById(R.id.colorLayout);
 			viewHolder.discountLayout=(LinearLayout) convertView.findViewById(R.id.discountLayout);
 			viewHolder.sizeLayout=(LinearLayout) convertView.findViewById(R.id.sizeLayout);
 			viewHolder.quantityLayout=(LinearLayout) convertView.findViewById(R.id.quantityLayout);
 			viewHolder.priceLayout=(LinearLayout) convertView.findViewById(R.id.priceLayout);
+			/* ****************/
+			//viewHolder.regularPriceText.setVisibility(View.GONE);
+			//viewHolder.pricetext.setVisibility(View.GONE);
+
 			viewHolder.shipping_status = (ImageView) convertView.findViewById(R.id.shipping_status);
 			viewHolder.shippingLayout = (LinearLayout) convertView.findViewById(R.id.shippingLayout);
 
@@ -98,6 +106,10 @@ public class CartListAdapter extends BaseAdapter {
 		CommonUtility.setImage(mContext, getItem(position).getProductimageurl(), viewHolder.cartProductImage, R.drawable.dum_list_item_product);
 		viewHolder.brandName.setText(getItem(position).getMerchantname());
 		viewHolder.productName.setText(getItem(position).getProductname());
+
+
+
+
 		if(!TextUtils.isEmpty(getItem(position).getSaleprice()) || getItem(position).getSaleprice().equals("0")){
 			viewHolder.regularPriceText.setText(" $"+CommonUtility.getFormatedNum(getItem(position).getSaleprice()));
 		}else{
@@ -228,12 +240,15 @@ public class CartListAdapter extends BaseAdapter {
 					if(productDetails.size()>0){
 						for (int i = 0; i <productDetails.size(); i++) {
 							if (getItem(position).getProducturl().equals(productDetails.get(i).getOriginal_url())) {
+                                Log.w("CartListAdapter","1=>"+productDetails.get(i));
 								((HomeActivity)mContext).addFragment(new FragmentEditPurchaseItem(fragmentUserCart,productDetails.get(i),getItem(position)));
-
+								Log.w("CartListAdapter","Back1");
 							}
 						}
 					}else{
+                        Log.w("CartListAdapter","2=><=");
 						((HomeActivity)mContext).addFragment(new FragmentEditPurchaseItem(getItem(position),fragmentUserCart));
+						Log.w("CartListAdapter","Back2");
 					}
 				}
 			}
@@ -247,6 +262,7 @@ public class CartListAdapter extends BaseAdapter {
 					public void onSuccess() {
 						data.remove(position);
 						if (data.size()>10) {
+							Log.w("CartListAdapter","CartOverLoadDialog");
 							CartOverLoadDialog cartOverLoadDialog = new CartOverLoadDialog(mContext);
 							cartOverLoadDialog.show();
 						}
@@ -286,12 +302,11 @@ public class CartListAdapter extends BaseAdapter {
 
 	public class ViewHolder {
 		private ImageView cartProductImage,deleteCartProductImage,shipping_status;
-		private TextView brandName,productName,regularPriceText,quantityText,colorText;
+		private TextView brandName,productName,regularPriceText,quantityText,colorText, pricetext;
 		private TextView kikrDiscountText,sizeText,selectProductOption;
 		private LinearLayout colorLayout,discountLayout,sizeLayout,quantityLayout,priceLayout,shippingLayout;
 		private Button btnStandard, btnExpress;
 		private TextView shippingTxt;
 		private LinearLayout shipLayout;
 	}
-
 }

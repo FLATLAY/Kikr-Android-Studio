@@ -8,9 +8,6 @@ import android.widget.TextView;
 
 import com.flatlay.R;
 
-/**
- * Created by anshumaan on 3/17/2016.
- */
 public class AddressVerificationDialog extends Dialog {
     private TextView cancelTextView,okTextView,messageTextView;
     private Context mContext;

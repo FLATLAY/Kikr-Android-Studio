@@ -282,6 +282,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             bundle.putSerializable("data", prod);
             FragmentDiscoverDetail detail = new FragmentDiscoverDetail(null);
             detail.setArguments(bundle);
+            Log.w("HomeActivity","FragmentDiscoverDetail()");
             addFragment(detail);
         }
 
@@ -293,8 +294,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         } catch (Exception ex) {
 
         }
-//		PDKClient.configureInstance(this, AppConstants.PINTEREST_APP_ID);
-//		PDKClient.getInstance().onConnect(this);
+
     }
 
     public double getCredits() {
@@ -548,6 +548,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     // do nothing
                 } else {
                     if (TextUtils.isEmpty(UserPreference.getInstance().getPurchaseId())) {
+                        Log.w("HomeActivity","CartFragmentTab()");
                         addFragment(new CartFragmentTab());
                     } else if (!TextUtils.isEmpty(UserPreference.getInstance().getPurchaseId())) {
                         purchaseStatus(UserPreference.getInstance().getPurchaseId());
@@ -688,12 +689,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
     }
 
-    private void startActivity(Class class1) {
-        Intent i = new Intent(this, class1);
-        startActivity(i);
-    }
-
-
     public void initLayout() {
         tab_layout = (LinearLayout) findViewById(R.id.tabLayout);
         cart_tab = (LinearLayout) findViewById(R.id.cart_tab);
@@ -774,6 +769,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             if (getIntent().getStringExtra("section").equals("placeorder")) {
                 UserPreference.getInstance().setIsNotificationClicked(true);
                 String otherdata = getIntent().getStringExtra("otherdata");
+                Log.w("HomeActivity","FragmentPlaceMyOrder()");
                 addFragment(new FragmentPlaceMyOrder(otherdata, true));
                 cleanActivity();
             } else if (getIntent().getStringExtra("section").equals("commission") || getIntent().getStringExtra("section").equals("collectionwithfiveproducts") || getIntent().getStringExtra("section").equals("invite")) {
@@ -932,7 +928,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     intent.putExtra(Intent.EXTRA_TEXT, context.getResources().getString(R.string.text_join) + " #" + app_title + " \n" + url);
 
                     startActivity(Intent.createChooser(intent, "Earn 25 credits for each sign up !"));
-                    Log.i("Branch", "Got a Branch URL " + url);
+                    Log.i("Branch", "Got a Branch URL 1 " + url);
                 }
             }
         });
@@ -1544,7 +1540,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         startActivity(i);
                     }
                 } else {
-                    Log.i("Branch", "Got a Branch URL " + url);
+                    Log.i("Branch", "Got a Branch URL 2 " + url);
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     //intent.putExtra(Intent.EXTRA_SUBJECT,  "Check out this " + product.getProductname() + " on Kikr!");
@@ -1594,7 +1590,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         startActivity(i);
                     }
                 } else {
-                    Log.i("Branch", "Got a Branch URL " + url);
+                    Log.i("Branch", "Got a Branch URL 3 " + url);
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     //intent.putExtra(Intent.EXTRA_SUBJECT,  "Check out this " + product.getProductname() + " on Kikr!");
@@ -1639,7 +1635,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                             + AppConstants.APP_LINK);
                     startActivity(Intent.createChooser(intent, "Share"));
                 } else {
-                    Log.i("Branch", "Got a Branch URL " + url);
+                    Log.i("Branch", "Got a Branch URL 4 " + url);
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     //intent.putExtra(Intent.EXTRA_SUBJECT,  "Check out this " + product.getProductname() + " on Kikr!");
@@ -2512,6 +2508,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         });
         String fromUserId = product.getFrom_user_id() == null ? "" : product.getFrom_user_id();
         String fromCollection = product.getFrom_collection_id() == null ? "" : product.getFrom_collection_id();
+        Log.w("HomeActivity",""+product.getQuantity());
         cartApi.addToCart(UserPreference.getInstance().getUserID(), product.getId(), "1", UserPreference.getInstance().getCartID(), fromUserId, fromCollection, "", "", product.getSelected_values());
         cartApi.execute();
     }
@@ -2648,6 +2645,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     JSONObject jsonObject = new JSONObject(object.toString());
                     if (jsonObject.getString("message").equalsIgnoreCase("done")) {
                         UserPreference.getInstance().setPurchaseId("");
+                        Log.w("HomeActivity","FragmentUserCart()");
                         addFragment(new FragmentUserCart());
                     } else {
                         AlertUtils.showToast(context, "Your previous order is still being processed. You should receive confirmation on the status shortly.");

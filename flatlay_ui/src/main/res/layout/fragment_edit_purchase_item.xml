@@ -207,7 +207,7 @@
                     android:id="@+id/quantityText"
                     style="@style/cartProductTextStyle"
                     android:layout_marginTop="3dp"
-                    android:text="1" />
+                    />
 
                 <ImageView
                     android:id="@+id/colorArrow"

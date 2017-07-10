@@ -116,7 +116,6 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
 
     public FragmentEditPurchaseItem(Product productList, boolean isFromBuy) {
         this.product = productList;
-
         this.isFromArcMenu = isFromBuy;
     }
 
@@ -129,6 +128,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.w("FragmentEPurchaseItem","onCreateView");
         mainView = inflater.inflate(R.layout.fragment_edit_purchase_item, null);
         editPurchaseItem = this;
         return mainView;
@@ -136,6 +136,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
 
     @Override
     public void initUI(Bundle savedInstanceState) {
+        Log.w("FragmentEPurchaseItem","initUI");
         productImage = (ImageView) mainView.findViewById(R.id.productImage);
         sizeArrow = (ImageView) mainView.findViewById(R.id.sizeArrow);
         colorArrow = (ImageView) mainView.findViewById(R.id.colorArrow);
@@ -165,6 +166,16 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
         optionMainLayout = (LinearLayout) mainView.findViewById(R.id.optionMainLayout);
         kikr_learn_more = (TextView) mainView.findViewById(R.id.kikr_learn_more);
         kikr_learn_more.setPaintFlags(kikr_learn_more.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        Log.w("FragmentEPItem","Quantity"+product.getQuantity());
+        if(product.getQuantity()==null)
+        {
+            quantityText.setText("1");
+        }
+        else
+        {
+            quantityText.setText(product.getQuantity());
+        }
+
     }
 
     @Override
@@ -187,13 +198,15 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
 
     @Override
     public void setData(Bundle bundle) {
-        setDaynamicData();
+        Log.w("FragmentEPurchaseItem","setData");
+        setDynamicData();
 
         productName.setText(product.getProductname());
         CommonUtility.setImage(mContext, product.getProductimageurl(), productImage, R.drawable.dum_list_item_product);
     }
 
-    private void setDaynamicData() {
+    private void setDynamicData() {
+        Log.w("FragmentEPurchaseItem","setDynamicData");
         if (product != null) {
             List<ProductMainOption> mainOptions = product.getProductMainOptionList();
             setNewOption(mainOptions);
@@ -201,6 +214,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private void setNewOption(List<ProductMainOption> mainOptions) {
+        Log.w("FragmentEPurchaseItem","setNewOption");
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         List<String> nameList;
         for (int i = 0; i < mainOptions.size(); i++) {
@@ -210,6 +224,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
             TextView nameTextView = (TextView) v.findViewById(R.id.optionName);
             final TextView optionTextValue = (TextView) v.findViewById(R.id.optionText);
             nameTextView.setText(StringUtils.FirstLetterInUpperCase(name));
+            Log.w("First for loop",""+StringUtils.FirstLetterInUpperCase(name));
             LinearLayout productOptionLayout = (LinearLayout) v.findViewById(R.id.productOptionLayout);
             productOptionLayout.setTag(mainOptions.get(i));
             productOptionLayout.setOnClickListener(new OnClickListener() {
@@ -255,6 +270,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private void checkButtonLayout() {
+        Log.w("FragmentEPurchaseItem","checkButtonLayout");
         if (validateOption(false)) {
             ok_layout.setBackgroundColor(getResources().getColor(R.color.header_background));
         } else {
@@ -263,6 +279,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private List<String> getNameList(List<ProductMainOption> mainOptions) {
+        Log.w("FragmentEPurchaseItem","getNameList");
         List<String> nameList = new ArrayList<String>();
         for (int i = 0; i < mainOptions.size(); i++) {
             String finalName = mainOptions.get(i).getName();
@@ -318,6 +335,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private void getStatus(String cart_id) {
+        Log.w("FragmentEPurchaseItem","getStatus");
         TwoTapApi twoTapApi = new TwoTapApi(new ServiceCallback() {
 
             @Override
@@ -336,6 +354,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     protected void getData(Object object) {
+        Log.w("FragmentEPurchaseItem","getData");
         try {
             JSONObject jsonObject = new JSONObject(object.toString());
             JSONObject add_to_cart = null;
@@ -460,6 +479,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private void setData() {
+        Log.w("FragmentEPurchaseItem","setData");
         if (colors.size() == 0 && i == 0 && sizearray.size() == 0 && optionList.size() == 0 && fitList.size() == 0) {
             i = 1;
             handler.postDelayed(runnable, 3000);
@@ -505,6 +525,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private void setSizeForSelectedColor(int position) {
+        Log.w("FragmentEPurchaseItem","setSizeForSelectedColor");
         sizeForSelectedColor.clear();
         if (twoTapProductDetails != null && twoTapProductDetails.getSizeArray() != null && twoTapProductDetails.getSizeArray().size() > position) {
             for (int i = 0; i < twoTapProductDetails.getSizeArray().get(position).length(); i++) {
@@ -526,6 +547,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private void setColorForSelectedOption(int position) {
+        Log.w("FragmentEPurchaseItem","setColorForSelectedOption");
         colorForSelectedOption.clear();
         if (twoTapProductDetails != null && twoTapProductDetails.getColorsArray() != null && twoTapProductDetails.getColorsArray().size() > position) {
             for (int i = 0; i < twoTapProductDetails.getColorsArray().get(position).length(); i++) {
@@ -548,6 +570,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
 
     @Override
     public void onClick(View v) {
+        Log.w("FragmentEPurchaseItem","onClick");
         switch (v.getId()) {
             case R.id.viewDetailsText:
                 addFragment(new FragmentProductDetailWebView(product.getProducturl(), product));
@@ -624,27 +647,30 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
                 this.addFragment(new FragmentLearnMoreOutsideUS());
                 break;
             case R.id.doneBtn:
+                Log.w("FragmentEPI","Done Button Pressed!");
                 if (validateOption(true)) {
                     if (selectedList.size() > 0) {
                         if (checkInternet()) {
 //						callWebservicehere
                             if (discoverDetail != null) {
+                                Log.w("FragmentEPI","1");
                                 product.setSelected_values(selectedList);
-
-                                discoverDetail.addToCartFromEdit(isFromBuy);
-
+                                discoverDetail.addToCartFromEdit(isFromBuy, product.getQuantity().toString() );
                                 ((HomeActivity) mContext).onBackPressed();
                             } else if (isFromArcMenu) {
+                                Log.w("FragmentEPI","2");
                                 product.setSelected_values(selectedList);
 
                                 ((HomeActivity) mContext).addProductToCart(product);
                                 ((HomeActivity) mContext).onBackPressed();
                             } else {
+                                Log.w("FragmentEPI","3");
                                 Syso.print("Selected list>>>" + selectedList);
                                 updateProductOptionValue();
                             }
                         }
                     } else {
+                        Log.w("FragmentEPI","4");
                         ((HomeActivity) mContext).onBackPressed();
                     }
 
@@ -664,6 +690,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private boolean validateOption(boolean showMessage) {
+        Log.w("FragmentEPurchaseItem","validateOption");
         selectedList.clear();
         for (int i = 0; i < optionMainLayout.getChildCount(); i++) {
             View v = optionMainLayout.getChildAt(i);
@@ -686,6 +713,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     public void setColor(String color, int position) {
+        Log.w("FragmentEPurchaseItem","setColor");
         type = TYPE.Color;
 //		colorText.setText(color);
         colourDialog.dismiss();
@@ -694,6 +722,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     public void setSize(String size) {
+        Log.w("FragmentEPurchaseItem","setSize");
         type = TYPE.Size;
 //		sizeText.setText(size);
         sizeDialog.dismiss();
@@ -701,13 +730,16 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     public void setQuantity(String quantity) {
+        Log.w("FragmentEPurchaseItem","setQuantity");
         type = TYPE.Quantity;
+        Log.w("Here","Quantity" +quantity);
 //		quantityText.setText(quantity);
         quantityDialog.dismiss();
         updateProductValue(quantity);
     }
 
     private void updateProductValue(final String value) {
+        Log.w("FragmentEPurchaseItem","updateProductValue");
         System.out.println("Type :" + type);
 //		mProgressBarDialog = new ProgressBarDialog(mContext);
 //		mProgressBarDialog.show();
@@ -750,6 +782,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     protected void changeUi(String value) {
+        Log.w("FragmentEPurchaseItem","changeUi");
         isProductUpdated = true;
         if (type.equals(TYPE.Quantity)) {
             quantityText.setText(value);
@@ -771,6 +804,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private void validate() {
+        Log.w("FragmentEPurchaseItem","validate");
         if (iscolor) {
             if (!TextUtils.isEmpty(product.getSelected_color())) {
                 iscolor = false;
@@ -807,6 +841,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
 
     @Override
     public void setOption(String option) {
+        Log.w("FragmentEPurchaseItem","setOption1");
         type = TYPE.option;
 //		sizeText.setText(size);
         optionDialog.dismiss();
@@ -815,6 +850,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
 
     @Override
     public void setOption(String option, int position) {
+        Log.w("FragmentEPurchaseItem","setOption2");
         type = TYPE.option;
 //		sizeText.setText(size);
         optionDialog.dismiss();
@@ -824,6 +860,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
 
     @Override
     public void setFit(String fit) {
+        Log.w("FragmentEPurchaseItem","setFit");
         type = TYPE.fit;
 //		sizeText.setText(size);
         fitDialog.dismiss();
@@ -831,6 +868,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private void updateValue(final String value) {
+        Log.w("FragmentEPurchaseItem","updateValue");
         System.out.println("Type :" + type);
 //		mProgressBarDialog = new ProgressBarDialog(mContext);
 //		mProgressBarDialog.show();
@@ -872,6 +910,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
 
     @Override
     public void addOption(ProductChildOption child) {
+        Log.w("FragmentEPurchaseItem","addOption");
         if (child != null && child.getDep() != null && child.getDep().size() > 0) {
             List<ProductMainOption> mainOptions = child.getDep();
             setNewOption(mainOptions);
@@ -880,6 +919,7 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
     }
 
     private void updateProductOptionValue() {
+        Log.w("FragmentEPurchaseItem","updateProductOptionValue");
         System.out.println("Type :" + type);
         mProgressBarDialog = new ProgressBarDialog(mContext);
         mProgressBarDialog.show();
@@ -924,6 +964,4 @@ public class FragmentEditPurchaseItem extends BaseFragment implements OnClickLis
         cartApi.updateProductValues(UserPreference.getInstance().getUserID(), product.getProductcart_id(), selectedList);
         cartApi.execute();
     }
-
-
 }

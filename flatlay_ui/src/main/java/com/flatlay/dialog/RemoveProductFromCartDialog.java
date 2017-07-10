@@ -2,6 +2,7 @@ package com.flatlay.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -68,6 +69,12 @@ public class RemoveProductFromCartDialog extends Dialog{
 			@Override
 			public void onClick(View v) {
 				if(((HomeActivity)mContext).checkInternet()){
+					SharedPreferences temp = mContext.getSharedPreferences("fromRemove", 0);
+					SharedPreferences.Editor editor = temp.edit();
+					editor.putString("fromRemove","Yes");
+					editor.apply();
+
+					Log.w("RemoveProdFrmCartDialog","Clicked OK!");
 					fragmentUserCart.removeFromCart(id);
 //				removeFromCart();
 					//((HomeActivity) mContext).onBackPressed();
@@ -76,6 +83,7 @@ public class RemoveProductFromCartDialog extends Dialog{
 				}
 			}
 		});
+		Log.w("RemoveProdFrmCartDialog","initUI()");
 	}
 
 	public void removeFromCart(){

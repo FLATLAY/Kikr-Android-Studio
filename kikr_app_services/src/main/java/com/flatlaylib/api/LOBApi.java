@@ -1,5 +1,7 @@
 package com.flatlaylib.api;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +27,9 @@ public class LOBApi extends AbsService {
     }
 
     public void validateAddress(String address_line1, String address_line2, String address_state, String address_city, String address_zip, String address_country) {
-        this.METHOD_NAME = "https://api.lob.com/v1/verify";
+        this.METHOD_NAME = "https://api.lob.com/v1/us_verifications";
         requestType = WebConstants.HTTP_METHOD_POST;
+
         String address = "";
         if (address_line2.length() > 0) {
             address = "#" + address_line2 + " " + address_line1;
@@ -34,12 +37,12 @@ public class LOBApi extends AbsService {
             address = address_line1;
         }
 
-        list.add(new BasicNameValuePair("address_line1", address));
-        list.add(new BasicNameValuePair("address_line2", address_line2));
-        list.add(new BasicNameValuePair("address_state", address_state));
-        list.add(new BasicNameValuePair("address_city", address_city));
-        list.add(new BasicNameValuePair("address_zip", address_zip));
-        list.add(new BasicNameValuePair("address_country", address_country));
+        list.add(new BasicNameValuePair("primary_line", address));
+        //list.add(new BasicNameValuePair("primary_line", address_line2));
+        list.add(new BasicNameValuePair("city", address_city));
+        list.add(new BasicNameValuePair("state", address_state));
+        list.add(new BasicNameValuePair("zipCode", address_zip));
+        //list.add(new BasicNameValuePair("address_country", address_country));
     }
 
     @Override
@@ -69,7 +72,7 @@ public class LOBApi extends AbsService {
 
     @Override
     protected void processResponse(String response) {
-        Syso.info("In RegisterUserApi processResponse>>" + response);
+        Log.w("LOBApi","processResponse"+response);
         try {
             isValidResponse = true;
             serviceResponse = response;

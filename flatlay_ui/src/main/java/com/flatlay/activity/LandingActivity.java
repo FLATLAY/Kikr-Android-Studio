@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -74,6 +75,8 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
     private String referred_usermail;
     private String referred_userprofilepic;
     private TextView earn250, kikrIntroductionTextView;
+    SharedPreferences userSettings;
+    SharedPreferences temp;
 
 
     @Override
@@ -84,8 +87,14 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_landing);
-
         Log.w("myApp", "In LandingActivity");
+
+        temp = getSharedPreferences("fromRemove", 0);
+        userSettings = getSharedPreferences("UserSettings", 0);
+        SharedPreferences.Editor editor = userSettings.edit();
+        editor.putString("isSet", "False");
+        editor.apply();
+
 
         if (getIntent().getStringExtra("referred_userid") != null) {
             referred_userid = getIntent().getStringExtra("referred_userid");

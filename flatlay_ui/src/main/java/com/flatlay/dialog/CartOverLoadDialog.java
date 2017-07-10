@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Dialog;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ public class CartOverLoadDialog extends Dialog{
 	private List<Product> data = new ArrayList<Product>();
 	private ListView cartItemsList;
 	private FragmentUserCart fragmentUserCart;
+
 
 	public CartOverLoadDialog(FragmentActivity mContext) {
 		super(mContext, R.style.AdvanceDialogTheme);
@@ -44,6 +46,7 @@ public class CartOverLoadDialog extends Dialog{
 	}
 
 	private void init() {
+		Log.w("CartOverLoadDialog","initUI()");
 		setContentView(R.layout.dialog_overload_cart);
 		setCancelable(true);
 		WindowManager.LayoutParams lp = getWindow().getAttributes();
@@ -56,7 +59,7 @@ public class CartOverLoadDialog extends Dialog{
 		if (data.size()>0) {
 			messageTextView.setText("Select details for below products");
 			cartItemsList.setVisibility(View.VISIBLE);
-			cartItemsList.setAdapter(new CartListAdapter(mContext, data, fragmentUserCart,true,null));
+			cartItemsList.setAdapter(new CartListAdapter(mContext, data, fragmentUserCart, true, null));
 		} else {
 			messageTextView.setVisibility(View.VISIBLE);
 			cartItemsList.setVisibility(View.GONE);

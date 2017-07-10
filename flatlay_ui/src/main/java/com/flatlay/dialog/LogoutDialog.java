@@ -2,6 +2,7 @@ package com.flatlay.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -62,6 +63,17 @@ public class LogoutDialog extends Dialog{
 			public void onClick(View v) {
 				 if (homeActivity.checkInternet()) {
 					Branch.getInstance().logout();
+
+					 //Remove SharedPreferences for User Settings
+					 SharedPreferences userSettings = mContext.getSharedPreferences("UserSettings", 0);
+					 SharedPreferences.Editor editor = userSettings.edit();
+					 editor.remove("isSet");
+					 editor.remove("settingComments");
+					 editor.remove("settingFollowers");
+					 editor.remove("settingPurchases");
+					 editor.remove("settingFavourites");
+					 editor.apply();
+
 					logoutUser();
 					UserPreference.getInstance().clearAllData();
 					HelpPreference.getInstance().clearAllData();

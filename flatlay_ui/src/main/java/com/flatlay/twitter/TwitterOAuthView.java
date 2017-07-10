@@ -16,6 +16,7 @@
 package com.flatlay.twitter;
 
 
+import com.flatlay.R;
 import com.flatlaylib.utils.AlertUtils;
 
 import twitter4j.Twitter;
@@ -23,7 +24,10 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
+
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
@@ -509,13 +513,6 @@ public class TwitterOAuthView extends WebView
                 Log.e(TAG, "onReceivedError: [" + errorCode + "] " + description);
 
                 notifyAuthorization();
-            }
-
-
-            @Override
-            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error)
-            {
-                handler.proceed();
             }
 
 

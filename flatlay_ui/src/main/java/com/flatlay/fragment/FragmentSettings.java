@@ -3,9 +3,11 @@ package com.flatlay.fragment;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -65,6 +67,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 	private HashMap<String, Boolean> settingStatus = new HashMap<String, Boolean>();
 	private ProgressBar progressBar_settings_followers,progressBar_settings_comments,progressBar_settings_purchases,progressBar_settings_favorites;
 	public static int cameFromPassword = -1;
+	SharedPreferences userSettings;
 	public FragmentSettings() {
 	}
 
@@ -107,6 +110,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		progressBar_settings_comments = (ProgressBar) mainView.findViewById(R.id.progressBar_settings_comments);
 		progressBar_settings_purchases = (ProgressBar) mainView.findViewById(R.id.progressBar_settings_purchases);
 		progressBar_settings_favorites = (ProgressBar) mainView.findViewById(R.id.progressBar_settings_favorites);
+		userSettings = mContext.getSharedPreferences("UserSettings", 0);
 	}
 
 	@Override
@@ -128,6 +132,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		switchfollowers.setOnClickListener(this);
 		//itemsPurchasedImage.setOnClickListener(this);
 		//favoritesImage.setOnClickListener(this);
+
 		switchitemsPurchasedImage.setOnClickListener(this);
 		switchfavoritesImage.setOnClickListener(this);
 		switchcomment.setOnClickListener(this);
@@ -135,7 +140,19 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
 	@Override
 	public void setData(Bundle bundle) {
-		getAddressList(true);
+
+		if(userSettings.getString("isSet", "").equals("True"))
+		{
+			Log.w("isSet","false!!!!!");
+			emailText.setText(UserPreference.getInstance().getEmail());
+			setNotifications();
+			getAddressList(false);
+		}
+		else
+		{
+			Log.w("isSet","true!!!!!");
+			getAddressList(true);
+		}
 
 	}
 
@@ -171,6 +188,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		SharedPreferences.Editor editor = userSettings.edit();
 		switch (v.getId()) {
 			case R.id.passwordTextLayout:
 //			startActivity(ChangePasswordActivity.class);
@@ -235,47 +253,87 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 //				}
 				//break;
 			case R.id.switchfollowers:
+				Log.w("Updating followers","Clicked");
 				if(checkInternet()){
-					if (settingStatus.containsKey(AppConstants.Options.FOLLOWERS)&&settingStatus.get(AppConstants.Options.FOLLOWERS)) {
+					if (userSettings.getString("settingFollowers", null).equals("true")) {
+						Log.w("followers","false/off");
+						editor.putString("settingFollowers", "false");
+						editor.apply();
+						Log.w("followers","now is "+userSettings.getString("settingFollowers", null));
 						setNotificationStatus(AppConstants.Options.FOLLOWERS, "off",progressBar_settings_followers);
 					} else {
+						Log.w("followers","true/on");
+						editor.putString("settingFollowers", "true");
+						editor.apply();
+						Log.w("followers","now is "+userSettings.getString("settingFollowers", null));
 						setNotificationStatus(AppConstants.Options.FOLLOWERS, "on",progressBar_settings_followers);
 					}
 				}
+
 				break;
 			case R.id.switchcomment:
+				Log.w("Updating comments","Clicked");
 				if(checkInternet()){
-					if (settingStatus.containsKey(AppConstants.Options.COMMENTS)&&settingStatus.get(AppConstants.Options.COMMENTS)) {
+					if (userSettings.getString("settingComments", null).equals("true")) {
+						Log.w("comments","false/off");
+						editor.putString("settingComments", "false");
+						editor.apply();
+						Log.w("comments","now is "+userSettings.getString("settingComments", null));
 						setNotificationStatus(AppConstants.Options.COMMENTS, "off",progressBar_settings_comments);
 					} else {
+						Log.w("comments","true/on");
+						editor.putString("settingComments", "true");
+						editor.apply();
+						Log.w("comments","now is "+userSettings.getString("settingComments", null));
 						setNotificationStatus(AppConstants.Options.COMMENTS, "on",progressBar_settings_comments);
 					}
 				}
+
 				break;
 			case R.id.switchfavoritesImage:
 				if(checkInternet()){
-					if (settingStatus.containsKey(AppConstants.Options.FAVOURITES)&&settingStatus.get(AppConstants.Options.FAVOURITES)) {
+					Log.w("Updating favorites","Clicked");
+					if (userSettings.getString("settingFavourites", null).equals("true")) {
+						Log.w("favorites","false/off");
+						editor.putString("settingFavourites", "false");
+						editor.apply();
+						Log.w("favorites","now is "+userSettings.getString("settingFavourites", null));
 						setNotificationStatus(AppConstants.Options.FAVOURITES, "off",progressBar_settings_favorites);
 					} else {
+						Log.w("favorites","true/on");
+						editor.putString("settingFavourites", "true");
+						editor.apply();
+						Log.w("favorites","now is "+userSettings.getString("settingFavourites", null));
 						setNotificationStatus(AppConstants.Options.FAVOURITES, "on",progressBar_settings_favorites);
 					}
 				}
+
 				break;
 			case R.id.switchitemsPurchasedImage:
 				if(checkInternet()){
-					if (settingStatus.containsKey(AppConstants.Options.PURCHASES)&&settingStatus.get(AppConstants.Options.PURCHASES)) {
+					Log.w("Updating purchases","Clicked");
+					if (userSettings.getString("settingPurchases", null).equals("true")) {
+						Log.w("purchases","false/off");
+						editor.putString("settingPurchases", "false");
+						editor.apply();
+						Log.w("purchases","now is "+userSettings.getString("settingPurchases", null));
 						setNotificationStatus(AppConstants.Options.PURCHASES, "off",progressBar_settings_purchases);
 					} else {
+						Log.w("purchases","true/on");
+						editor.putString("settingPurchases", "true");
+						editor.apply();
+						Log.w("purchases","now is "+userSettings.getString("settingPurchases", null));
 						setNotificationStatus(AppConstants.Options.PURCHASES, "on",progressBar_settings_purchases);
 					}
 				}
+
 				break;
 			default:
 				break;
 		}
 	}
 
-	public void getCardList(final boolean isLoadOther) {
+	public void getCardList(final boolean isLoadNot) {
 		progressBarDialog = new ProgressBarDialog(mContext);
 		progressBarDialog.show();
 		final CardInfoApi cardInfoApi = new CardInfoApi(new ServiceCallback() {
@@ -293,8 +351,11 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 					else
 						noCardFound.setVisibility(View.VISIBLE);
 
-					if(isLoadOther)
+					if (isLoadNot) {
 						getNotificationStatus();
+					}
+
+
 				} else {
 					AlertUtils.showToast(mContext, R.string.invalid_response);
 				}
@@ -315,7 +376,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		cardInfoApi.execute();
 	}
 
-	public void getAddressList(final boolean loadOther) {
+	public void getAddressList(final boolean isLoadNot) {
 		progressBarDialog = new ProgressBarDialog(mContext);
 		progressBarDialog.show();
 		final AddressApi addressApi = new AddressApi(new ServiceCallback() {
@@ -328,12 +389,23 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 					addressListLayout.setVisibility(View.VISIBLE);
 					addressListLayout.removeAllViews();
 					addressListLayout.addView(new SettingsAddressList(mContext, addressRes.getData(),fragmentSettings).getView());
+
+					//Log.w("getAddressList","Address stuff"+addressRes.getData().toString());
+					//SharedPreferences.Editor editor = userSettings.edit();
+					//editor.putString("isSet", addressRes.getData().toString());
+					//editor.putString("settingAddress", null);
+					//editor.apply();
+
 					if(addressRes.getData().size()>0)
 						noAddressFound.setVisibility(View.GONE);
 					else
 						noAddressFound.setVisibility(View.VISIBLE);
-					if(loadOther)
-						getCardList(true);
+
+
+
+					getCardList(isLoadNot);
+
+
 				} else {
 					AlertUtils.showToast(mContext, R.string.invalid_response);
 				}
@@ -352,6 +424,58 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		});
 		addressApi.getAddressList(UserPreference.getInstance().getUserID());
 		addressApi.execute();
+	}
+
+
+
+
+	public void setNotifications()
+	{
+
+		Log.w("FragmentSettings","setNotifications()");
+		Log.w("Comments",":"+userSettings.getString("settingComments", ""));
+		Log.w("Followers",":"+userSettings.getString("settingFollowers", ""));
+		Log.w("Purcahses",":"+userSettings.getString("settingPurchases", ""));
+		Log.w("Favourites",":"+userSettings.getString("settingFavourites", ""));
+
+		if (userSettings.getString("settingComments", "").equals("true")) {
+			Log.w("c","true");
+			switchcomment.setChecked(true);
+		}
+		else {
+			Log.w("c","false");
+			switchcomment.setChecked(false);
+		}
+
+		//FOLLOWERS
+		if (userSettings.getString("settingFollowers", "").equals("true")) {
+			Log.w("fol","true");
+			switchfollowers.setChecked(true);
+		}
+		else {
+			Log.w("fol","false");
+			switchfollowers.setChecked(false);
+		}
+
+		//PURCHASES
+		if (userSettings.getString("settingPurchases", "").equals("true")) {
+			Log.w("p","true");
+			switchitemsPurchasedImage.setChecked(true);
+		}
+		else {
+			Log.w("p","false");
+			switchitemsPurchasedImage.setChecked(false);
+		}
+
+		//FAVOURITES
+		if (userSettings.getString("settingFavourites", "").equals("true")) {
+			Log.w("fav","true");
+			switchfavoritesImage.setChecked(true);
+		}
+		else {
+			Log.w("fav","false");
+			switchfavoritesImage.setChecked(false);
+		}
 	}
 
 
@@ -377,33 +501,57 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 						settingStatus.put(data.get(i).getOption(), data.get(i).getStatus().equals("on") ? true: false);
 					}
 
-					if (settingStatus.get(AppConstants.Options.COMMENTS))
-						//commentsImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
-					switchcomment.setChecked(true);
-					else
+					//SharedPreferences userSettings = mContext.getSharedPreferences("UserSettings", 0);
+
+
+					SharedPreferences.Editor editor = userSettings.edit();
+					editor.putString("isSet", "True");
+					editor.putString("settingComments", settingStatus.get(AppConstants.Options.COMMENTS).toString());
+					editor.putString("settingFollowers", settingStatus.get(AppConstants.Options.FOLLOWERS).toString());
+					editor.putString("settingPurchases", settingStatus.get(AppConstants.Options.PURCHASES).toString());
+					editor.putString("settingFavourites", settingStatus.get(AppConstants.Options.FAVOURITES).toString());
+					editor.apply();
+
+					// txtUname.setText(settings.getString("Username", "").toString());
+					// txtPWD.setText(settings.getString("Password", "").toString());
+
+					// COMMENTS
+					Log.w("Comments",":"+settingStatus.get(AppConstants.Options.COMMENTS));
+					Log.w("Followers",":"+settingStatus.get(AppConstants.Options.FOLLOWERS));
+					Log.w("Purcahses",":"+settingStatus.get(AppConstants.Options.PURCHASES));
+					Log.w("Favourites",":"+settingStatus.get(AppConstants.Options.FAVOURITES));
+
+					if (settingStatus.get(AppConstants.Options.COMMENTS)) {
+						switchcomment.setChecked(true);
+					}
+					else {
 						switchcomment.setChecked(false);
-					//	commentsImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
+					}
 
-
-					if (settingStatus.get(AppConstants.Options.FOLLOWERS))
+					//FOLLOWERS
+					if (settingStatus.get(AppConstants.Options.FOLLOWERS)) {
 						switchfollowers.setChecked(true);
-						//followersImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
-					else
+					}
+					else {
 						switchfollowers.setChecked(false);
-					//followersImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
+					}
 
-					if (settingStatus.get(AppConstants.Options.PURCHASES))
+					//PURCHASES
+					if (settingStatus.get(AppConstants.Options.PURCHASES)) {
 						switchitemsPurchasedImage.setChecked(true);
-						//itemsPurchasedImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
-					else
+					}
+					else {
 						switchitemsPurchasedImage.setChecked(false);
-						//itemsPurchasedImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
-					if (settingStatus.get(AppConstants.Options.FAVOURITES))
+					}
+
+					//FAVOURITES
+					if (settingStatus.get(AppConstants.Options.FAVOURITES)) {
 						switchfavoritesImage.setChecked(true);
-						//favoritesImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_on));
-					else
+					}
+					else {
 						switchfavoritesImage.setChecked(false);
-						//favoritesImage.setImageDrawable(getResources().getDrawable(R.drawable.hdpi_off));
+					}
+
 				} else {
 					AlertUtils.showToast(mContext, R.string.invalid_response);
 				}
@@ -566,6 +714,4 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 			}
 		});
 	}
-
-
 }

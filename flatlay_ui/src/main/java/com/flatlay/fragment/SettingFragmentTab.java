@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,7 @@ public class SettingFragmentTab extends BaseFragment implements ActionBar.TabLis
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        Syso.info("uuuuuuuuuuu in onCreateView");
+        Log.w("SettingFragmentTab","onCreateView()");
         View view = inflater.inflate(R.layout.fragment_kikr_setting_tab, null);
         mCustomPagerAdapter = new CustomPagerAdapter(getChildFragmentManager(), (Context) getActivity());
         mViewPager = (ViewPager) view.findViewById(R.id.pager);

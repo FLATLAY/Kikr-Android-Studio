@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Paint;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.flatlay.GCMAlarmReceiver;
 import com.flatlay.KikrApp;
@@ -71,14 +73,28 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.analytics.ecommerce.ProductAction;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
+import com.lob.Lob;
+import com.lob.client.AsyncLobClient;
+import com.lob.client.LobClient;
+import com.lob.protocol.request.USVerificationRequest;
+import com.lob.protocol.response.USVerificationResponse;
 
 public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements OnClickListener {
     private View mainView, cardViewLine;
@@ -127,6 +143,8 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     HashMap<String, List<Product>> cartList = new HashMap<String, List<Product>>();
     CartProduct cardAndShippingDetail;
     boolean isShowAlerts = true;
+    public static final int CONNECTION_TIMEOUT = 10000;
+    public static final int READ_TIMEOUT = 15000;
 
     //	commit
     public FragmentPlaceMyOrder(List<Product> productList, String cartid) {
@@ -154,6 +172,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 
     @Override
     public void initUI(Bundle savedInstanceState) {
+        Log.w("FragmentPlaceMyOrder","initUI");
         itemsCountText = (TextView) mainView.findViewById(R.id.itemsCountText);
         subtotalText = (TextView) mainView.findViewById(R.id.subtotalText);
         taxText = (TextView) mainView.findViewById(R.id.taxText);
@@ -225,6 +244,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void createCartList() {
+        Log.w("FragmentPlaceMO","validateCard()");
         for (int i = 0; i < productList.size(); i++) {
             String siteId = productList.get(i).getSiteId();
             if (cartList.containsKey(siteId)) {
@@ -248,6 +268,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 
 
     private void setOtherData() {
+        Log.w("FragmentPlaceMO","setOtherData()");
         if (!isAddressSelected && !isCardSelected) {
             shippingAddressLayout.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
             addPaymentMethodLayout.setBackgroundColor(mContext.getResources().getColor(R.color.gray));
@@ -321,6 +342,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 
     @Override
     public void setData(Bundle bundle) {
+        Log.w("FragmentPlaceMO","setData()");
         createCartList();
         if (otherdata != null) {
             //	JSONObject jsonObject = new JSONObject(otherdata.toString());
@@ -335,9 +357,10 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
                 double price = 0;
                 for (int i = 0; i < productList.size(); i++) {
                     if (!TextUtils.isEmpty(productList.get(i).getSaleprice())) {
-                        price += Double.parseDouble(productList.get(i).getSaleprice());
+
+                        price += Double.parseDouble(productList.get(i).getSaleprice())*Integer.parseInt(productList.get(i).getQuantity());
                     } else {
-                        price += Double.parseDouble(productList.get(i).getRetailprice());
+                        price += Double.parseDouble(productList.get(i).getRetailprice())*Integer.parseInt(productList.get(i).getQuantity());
                     }
                 }
                 subtotalText.setText("$" + CommonUtility.getFormatedNum(price));
@@ -359,6 +382,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 
     @Override
     public void onClick(View v) {
+        Log.w("FragmentPlaceMO","onClick()");
         Animation animationTop = AnimationUtils.loadAnimation(mContext, R.anim.rotate_arrow_top);
         Animation animationBottom = AnimationUtils.loadAnimation(mContext, R.anim.rotate_arrow_bottom);
         switch (v.getId()) {
@@ -449,6 +473,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void validateAddressAndCard() {
+        Log.w("FragmentPlaceMO","validateAddressAndCard()");
         if (!isAddressSelected && !isCardSelected) {
             shippingAddressLayout.setBackgroundColor(mContext.getResources().getColor(R.color.btn_gray));
             addPaymentMethodLayout.setBackgroundColor(mContext.getResources().getColor(R.color.btn_gray));
@@ -471,6 +496,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void changePlaceOrderColor() {
+        Log.w("FragmentPlaceMO","changePlaceOrderColor()");
         try {
             if (isAddressSelected && isCardSelected && placemyOrderLayout != null) {
                 placemyOrderLayout.setBackgroundColor(getResources().getColor(R.color.btn_green));
@@ -497,6 +523,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public void getCardList() {
+        Log.w("FragmentPlaceMO","getCardList()");
         progressBarDialog = new ProgressBarDialog(mContext);
         progressBarDialog.show();
         final CardInfoApi cardInfoApi = new CardInfoApi(new ServiceCallback() {
@@ -531,6 +558,8 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public void getAddressList() {
+
+        Log.w("FragmentPlaceMO","getAddressList()");
         progressBarDialog = new ProgressBarDialog(mContext);
         progressBarDialog.show();
         final AddressApi addressApi = new AddressApi(new ServiceCallback() {
@@ -591,6 +620,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public void setAddress(Address address) {
+        Log.w("FragmentPlaceMO","setAddress()");
         this.address = address;
 //		for (int i = 0; i < cartProducts.size(); i++) {
         cardAndShippingDetail.setShipping_title(address.getTitle());
@@ -621,6 +651,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public void setCard(Card card) {
+        Log.w("FragmentPlaceMO","setCard()");
         if (card != null) {
             this.card = card;
 //			for (int i = 0; i < cartProducts.size(); i++) {
@@ -637,6 +668,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void getEstimate() {
+        Log.w("FragmentPlaceMO","getEstimate()");
         progressBarPlaceOrder.setProgress(0);
         loadingBar.setVisibility(View.VISIBLE);
         placemyOrderLayout.setVisibility(View.GONE);
@@ -722,6 +754,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void updateProductPrice(String productCartId, String price, String shiping, String productTax, String md5, String siteId) {
+        Log.w("FragmentPlaceMO","updateProductPrice()");
         CartApi cartApi = new CartApi(new ServiceCallback() {
 
             @Override
@@ -738,6 +771,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public void callPurchase() {
+        Log.w("FragmentPlaceMO","callPurchase()");
 //		loadingBar.setVisibility(View.VISIBLE);
         dialog = new ProgressDialog(mContext);
         dialog.setMessage("Please wait");
@@ -782,6 +816,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public void confirmPuchase(final String purchase_id) {
+        Log.w("FragmentPlaceMO","confirmPurchase()");
 //		if (dialog!=null && !dialog.isShowing()) {
         Syso.info("uuuuuuuuuuuuu >>>>> in confirmPuchase");
         if (isShowAlerts) {
@@ -876,6 +911,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public double getFinalPrice(String string) {
+        Log.w("FragmentPlaceMO","getFinalPrice()");
         double price = 0;
         try {
             JSONObject jsonObject = new JSONObject(string);
@@ -889,6 +925,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public void callServerForConfirmation(final String purchase_id, final String status) {
+        Log.w("FragmentPlaceMO","callServerForConfirmation()");
         UpdateCartApi twoTapApi = new UpdateCartApi(new ServiceCallback() {
 
             @Override
@@ -959,6 +996,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public void createCart() {
+        Log.w("FragmentPlaceMO","createCart()");
 //		progressBarDialog = new ProgressBarDialog(context);
 //		progressBarDialog.show();
         final CartApi cartApi = new CartApi(new ServiceCallback() {
@@ -982,6 +1020,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void updateCartInfoViaTwoTap() {
+        Log.w("FragmentPlaceMO","updateCartInfoViaTwoTap()");
         itemsCountText.setText("" + productList.size());
         totalItemsText.setText("Total (" + productList.size() + " items)");
 //		if(cartTotalInfo!=null){
@@ -996,6 +1035,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void validateUserInput() {
+        Log.w("FragmentPlaceMO","validateUserInput()");
         boolean isValid = true;
         String cardNumber = cardNumberEditText.getText().toString().trim();
         String cvv = cvvEditText.getText().toString().trim();
@@ -1107,6 +1147,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void addCard(String cardNumber, String cardHolderName, String expiryDate, String cvv, String cardtype) {
+        Log.w("FragmentPlaceMO","addCard()");
         if (progressBarDialog == null) {
             progressBarDialog = new ProgressBarDialog(mContext);
             progressBarDialog.show();
@@ -1145,6 +1186,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void resetValues() {
+        Log.w("FragmentPlaceMO","resetValues()");
         cardNumberEditText.setText("");
         cardHolderNameEditText.setText("");
         cvvEditText.setText("");
@@ -1161,6 +1203,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void validateUserInputAddress() {
+        Log.w("FragmentPlaceMO","validateUserInputAddress()");
         boolean isValid = true;
         title = titleSpinner.getSelectedItem().toString();
         firstname = firstNameEditText.getText().toString().trim();
@@ -1235,6 +1278,13 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void validateAddressviaLOB() {
+        Log.w("FragmentPlaceMO","validateAddressviaLOB()");
+
+        new AsyncLOB().execute();
+
+
+        /*
+
         progressBarDialog = new ProgressBarDialog(mContext);
         progressBarDialog.show();
 
@@ -1242,6 +1292,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 
             @Override
             public void handleOnSuccess(Object object) {
+                Log.w("LOBApi","handleOnSuccess");
                 progressBarDialog.dismiss();
                 if (object != null) {
                     try {
@@ -1269,7 +1320,9 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
+                Log.w("LOBApi","handleOnFailure");
                 progressBarDialog.dismiss();
+                Log.w("LOBAPI","handleOnFailure()");
                 AddressVerificationDialog verificationDialog = new AddressVerificationDialog(mContext, "Address not found or seems to be invalid");
                 verificationDialog.show();
                 //AlertUtils.showToast(mContext, "Address not found or seems to be invalid");
@@ -1284,9 +1337,65 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
                 addressApi.cancel();
             }
         });
+    */
     }
 
+
+    private class AsyncLOB extends AsyncTask<String, String, String> {
+
+        String d = "";
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+
+                Lob.setApiVersion("2017-06-16");
+                final LobClient client = AsyncLobClient.createDefault("live_bf92e586ac52066021d03ab6ade48ce5227");
+                //Log.w("Verifiying Address: ", streetname+""+city+""+state+"+"+zipcode);
+                final USVerificationResponse addressResponse = client.verifyUSAddress(USVerificationRequest.builder()
+                        .primary_line(streetname)
+                        .secondary_line(apartment)
+                        .city(city)
+                        .state(state)
+                        .zipCode(zipcode)
+                        .build()).get();
+                //Log.w("Verified Address: ", ""+addressResponse.getLastLine());
+                //Log.w("Verified Address: ", ""+addressResponse.getDeliverability());
+                //Log.w("Verified Address: ", ""+addressResponse.getComponents().toString());
+                d = addressResponse.getDeliverability();
+
+            }catch(Exception e) {
+                e.printStackTrace();
+            }
+           return d;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+            if(result.equals("no_match")){
+                AlertUtils.showToast(mContext, "Invalid Address.");
+            } else if(result.equals("deliverable_missing_secondary")){
+                AlertUtils.showToast(mContext, "Missing Apt/Unit Number.");
+            } else if(result.equals("undeliverable")){
+                AlertUtils.showToast(mContext, "Address is currently undeliverable.");
+            } else if(result.equals("deliverable_extra_secondary")){
+                AlertUtils.showToast(mContext, "Incorrect or unnecessary UNIT number");
+            } else {
+                sendDataToServer();
+            }
+
+        }
+    }
+
+
     private boolean checkValidZipCode(String zipcode) {
+        Log.w("FragmentPlaceMO","checkValidZipCode()");
         if (countryEditText.getSelectedItemPosition() == 0) {
             if (ValidZipcode.isValidPostalUSCode(zipcode)) {
                 return true;
@@ -1300,6 +1409,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void sendDataToServer() {
+        Log.w("FragmentPlaceMO","sentDataToServer()");
         progressBarDialog = new ProgressBarDialog(mContext);
         progressBarDialog.show();
 
@@ -1344,6 +1454,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 
 
     protected void resetAddressValues() {
+        Log.w("FragmentPlaceMO","resetAddressValues()");
         streetNameEditText.setText("");
         cityEditText.setText("");
         zipEditText.setText("");
@@ -1428,6 +1539,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     private void getStatus(String cart_id) {
+        Log.w("FragmentPlaceMO","getStatus()");
         TwoTapApi twoTapApi = new TwoTapApi(new ServiceCallback() {
 
             @Override
@@ -1449,6 +1561,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     protected void getData(Object object) {
+        Log.w("FragmentPlaceMO","getData()");
         try {
             JSONObject jsonObject = new JSONObject(object.toString());
             JSONObject sites = jsonObject.getJSONObject("sites");
@@ -1565,6 +1678,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
 
     //    ======================================= validate ===============================================
     public void getAuthTocken() {
+        Log.w("FragmentPlaceMO","getAuthToken()");
         progressBarDialog = new ProgressBarDialog(mContext);
         progressBarDialog.show();
         boolean condition1 = UserPreference.getInstance().getAuthTimeStamp() == 0;
@@ -1600,6 +1714,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public void validateCard(final Card card, BillingAddress address) {
+        Log.w("FragmentPlaceMO","validateCard()");
         if (progressBarDialog == null) {
             progressBarDialog = new ProgressBarDialog(mContext);
             progressBarDialog.show();
@@ -1637,7 +1752,6 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
                         AlertUtils.showToast(mContext, object.toString());
                     else
                         AlertUtils.showToast(mContext, "Please enter valid card");
-
                 }
             });
             authWebService.setRequest(card, address);
@@ -1646,6 +1760,7 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
     }
 
     public void voidAuthorization(String authId) {
+        Log.w("FragmentPlaceMO","voidAuthorization()");
         if (checkInternet2()) {
             OAuthWebService authWebService = new OAuthWebService(Constants.WebConstants.PAYPAL_VOID_URL + authId + "/void", new ServiceCallback() {
                 @Override
@@ -1672,6 +1787,4 @@ public class FragmentPlaceMyOrder extends FragmentBaseGoogleWallet implements On
             authWebService.execute();
         }
     }
-
-
 }

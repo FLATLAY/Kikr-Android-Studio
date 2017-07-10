@@ -2,6 +2,7 @@ package com.flatlay.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -13,9 +14,6 @@ import com.flatlay.fragment.FragmentUserCart;
 import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.CallBack;
 
-/**
- * Created by Tycho on 5/25/2016.
- */
 public class RemoveProductFragmentEditPur extends Dialog {
     private TextView cancelTextView,okTextView;
     private String id;
@@ -60,6 +58,7 @@ public class RemoveProductFragmentEditPur extends Dialog {
                 }
             }
         });
+        Log.w("RemoveProductFragmentEP","initUI()");
     }
 
 }

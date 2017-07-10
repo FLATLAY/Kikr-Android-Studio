@@ -64,6 +64,7 @@ String address_line1="";
 
 	@Override
 	public void initUI(Bundle savedInstanceState) {
+		Log.w("FragmentShippingInfo","initUI");
 //		streetNumberEditText = (EditText) mainView.findViewById(R.id.streetNumberEditText);
 		streetNameEditText = (EditText) mainView.findViewById(R.id.streetNameEditText);
 		apartmentEditText = (EditText) mainView.findViewById(R.id.apartmentEditText);
@@ -318,5 +319,4 @@ String address_line1="";
 			AlertUtils.showToast(mContext, R.string.invalid_response);
 		}
 	}
-
 }

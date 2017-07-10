@@ -2,9 +2,11 @@ package com.flatlay.fragment;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +18,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.flatlay.adapter.CartListAdapter2;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.analytics.ecommerce.ProductAction;
@@ -73,6 +76,7 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener, S
 	private Runnable runnable;
 	private Handler handler = new Handler();
 	private CartListAdapter cartListAdapter;
+	private CartListAdapter2 cartListAdapter2;
 	private String status = "";
 	private List<TwoTapProductDetails> productDetails = new ArrayList<TwoTapProductDetails>();
 	private ProgressBar progressBarCart;
@@ -86,6 +90,7 @@ public class FragmentUserCart extends BaseFragment implements OnClickListener, S
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		Log.w("FragmentUserCart","onCreateView");
 		mainView = inflater.inflate(R.layout.fragment_user_cart, null);
 		return mainView;
 	}
@@ -101,6 +106,7 @@ public FragmentUserCart()
 }
 	@Override
 	public void initUI(Bundle savedInstanceState) {
+		Log.w("FragmentUserCart","initUI");
 		fragmentUserCart = this;
 		cartItemsList = (ListView) mainView.findViewById(R.id.cartItemsList);
 		checkout_layout = (LinearLayout) mainView.findViewById(R.id.checkout_layout);
@@ -112,25 +118,28 @@ public FragmentUserCart()
 //		loadingBar = (FrameLayout) mainView.findViewById(R.id.loadingBar);
 		txtMessageBar = (TextView) mainView.findViewById(R.id.txtMessageBar);
 		txtMessageBar.setTypeface(FontUtility.setProximanovaLight(mContext));
+		Log.w("FragmentUserCart","initUI()");
 	}
 
 	private void getPointsStatus() {
-		mProgressBarDialog = new ProgressBarDialog(mContext);
-		mProgressBarDialog.show();
+		Log.w("FragmentUserCart","getPointsStatus");
+		//mProgressBarDialog = new ProgressBarDialog(mContext);
+		//mProgressBarDialog.show();
 		CheckPointsStatusApi checkPointsStatusApi = new CheckPointsStatusApi(new ServiceCallback() {
 
 			@Override
 			public void handleOnSuccess(Object object) {
-				mProgressBarDialog.dismiss();
+				//mProgressBarDialog.dismiss();
 				Syso.info("In handleOnSuccess>>" + object);
 				CheckPointStatusRes pointStatusRes = (CheckPointStatusRes) object;
 				status = pointStatusRes.getStatus();
+				Log.w("FragmenUserCart","getCartList()");
 				getCartList();
 			}
 
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				mProgressBarDialog.dismiss();
+				//mProgressBarDialog.dismiss();
 			}
 		});
 		checkPointsStatusApi.checkcartpointstatus(UserPreference.getInstance().getUserID());
@@ -138,6 +147,7 @@ public FragmentUserCart()
 	}
 
 	public void getCartList() {
+		Log.w("FragmentUserCart","getCartList");
 		mProgressBarDialog = new ProgressBarDialog(mContext);
 		mProgressBarDialog.setMessage("Contacting Merchants For Availability");
 		mProgressBarDialog.setCanceledOnTouchOutside(false);
@@ -147,6 +157,7 @@ public FragmentUserCart()
 		final CartApi cartApi = new CartApi(this);
 		cartApi.getCartList(UserPreference.getInstance().getUserID());
 		cartApi.execute();
+		//mProgressBarDialog.dismiss();
 
 		mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
 			@Override
@@ -158,8 +169,9 @@ public FragmentUserCart()
 
 	@Override
 	public void handleOnSuccess(Object object) {
+		Log.w("FragmentUserCart","handleOnSuccess");
 		try {
-			//mProgressBarDialog.dismiss();
+			//vmProgressBarDialog.dismiss();
 			Syso.info("In handleOnSuccess>>" + object);
 			CartRes cartRes = (CartRes) object;
 			productLists = cartRes.getData();
@@ -236,6 +248,7 @@ public FragmentUserCart()
 
 			}
 			if (productLists.size() > 10) {
+				Log.w("FragmentUserCart","CartOverLoadDialog 1");
 				CartOverLoadDialog cartOverLoadDialog = new CartOverLoadDialog(mContext);
 				cartOverLoadDialog.show();
 			}
@@ -247,6 +260,7 @@ public FragmentUserCart()
 	}
 
 	public void showEmptyCart() {
+		Log.w("FragmentUserCart","showEmptyCart");
 		try {
 			if (mProgressBarDialog.isShowing())
 				mProgressBarDialog.dismiss();
@@ -272,6 +286,7 @@ public FragmentUserCart()
 
 	@Override
 	public void handleOnFailure(ServiceException exception, Object object) {
+		Log.w("FragmentUserCart","handleOnFailure");
 		mProgressBarDialog.dismiss();
 		Syso.info("In handleOnFailure>>" + object);
 		if (object != null) {
@@ -285,12 +300,14 @@ public FragmentUserCart()
 
 	@Override
 	public void onClick(View v) {
+		Log.w("FragmentUserCart","onClick");
 		switch (v.getId()) {
 			case R.id.checkout_layout:
 
 				if (productLists != null && productLists.size() > 0 && productLists.size() < 11) {
 					alertForSelectFields();
 				} else if (productLists.size() > 0) {
+					Log.w("FragmentUserCart","CartOverLoadDialog 2");
 					CartOverLoadDialog cartOverLoadDialog = new CartOverLoadDialog(mContext);
 					cartOverLoadDialog.show();
 				} else if (productLists.size() == 0) {
@@ -303,6 +320,7 @@ public FragmentUserCart()
 	}
 
 	private void alertForSelectFields() {
+		Log.w("FragmentUserCart","alertForSelectFields");
 		productsToSelectDetails.clear();
 		for (int i = 0; i < productLists.size(); i++) {
 			if (productLists.get(i).getRequiredOptions().size() > 1) {  //excluding quantity
@@ -322,6 +340,7 @@ public FragmentUserCart()
 //			}
 		}
 		if (productsToSelectDetails.size() > 0) {
+			Log.w("FragmentUserCart","CartOverLoadDialog 3");
 			CartOverLoadDialog cartOverLoadDialog = new CartOverLoadDialog(mContext, productsToSelectDetails, FragmentUserCart.this);
 			cartOverLoadDialog.show();
 		} else {
@@ -330,6 +349,7 @@ public FragmentUserCart()
 		proceedtoorder();
 	}
 	private void proceedtoorder() {
+		Log.w("FragmentUserCart","proceedtoorder");
 		cartListAdapter.notifyDataSetChanged();
 		boolean isListEmpty = false;
 		for (int i = 0; i < productLists.size(); i++) {
@@ -350,18 +370,29 @@ public FragmentUserCart()
 	}
 	@Override
 	public void setData(Bundle bundle) {
+		Log.w("FragmentUserCart","setData");
+
 	//	initData();
 		if(isFirstTimeFromMain)
 			initData();
 		isFirstTimeFromMain=false;
 	}
 	public void initData() {
+		Log.w("FragmentUserCart","initData");
 		Handler handler = new Handler();
 		handler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
 				if (checkInternet()) {
-					getPointsStatus();
+					SharedPreferences temp = mContext.getSharedPreferences("fromRemove", 0);
+					if(!temp.contains("fromRemove"))
+					{
+						getPointsStatus();
+					}
+					else
+					{
+						getCartList();
+					}
 				}
 			}
 		}, 100);
@@ -370,6 +401,8 @@ public FragmentUserCart()
 
 
 	public void refreshCart() {
+
+		Log.w("FragmentUserCart","refreshCart");
 		setCheckoutBtn();
 	}
 
@@ -405,6 +438,7 @@ public FragmentUserCart()
 	}
 
 	private void getCartId(final boolean isProceed) {
+		Log.w("FragmentUserCart","getCartId()");
 		if (isProceed) {
 			mProgressBarDialog = new ProgressBarDialog(mContext);
 			mProgressBarDialog.show();
@@ -419,6 +453,7 @@ public FragmentUserCart()
 					JSONObject jsonObject = new JSONObject(object.toString());
 					cartid = (String) jsonObject.get("cart_id");
 					if (isProceed) {
+						Log.w("FragmentUserCart","getCartId handleOnSuccess if");
 						mProgressBarDialog.dismiss();
 						Bundle b = new Bundle();
 						b.putSerializable("total_info", cartTotalInfo);
@@ -426,6 +461,7 @@ public FragmentUserCart()
 						order.setArguments(b);
 						addFragment(order);
 					} else {
+						Log.w("FragmentUserCart","getCartId handleOnSuccess else");
 						runnable = new Runnable() {
 
 							@Override
@@ -457,7 +493,9 @@ public FragmentUserCart()
 
 	boolean isLoading = false;
 
+
 	private synchronized void getStatus(final String cart_id) {
+		Log.w("FragmentUserCart","getStatus");
 		if (!isLoading)
 			isLoading = true;
 		else
@@ -468,6 +506,23 @@ public FragmentUserCart()
 			@Override
 			public void handleOnSuccess(Object object) {
 //				mProgressBarDialog.dismiss();
+				/*
+				try {
+					JSONObject obj = new JSONObject(object.toString());
+					JSONObject obj1 = obj.getJSONObject("sites");
+					Log.w("FragmentUserCart","OBJECT"+obj1.toString());
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
+				cartListAdapter2 = new CartListAdapter2(mContext, productLists, FragmentUserCart.this, false, productDetails);
+				cartItemsList.setAdapter(cartListAdapter2);
+
+				*/
+
+
+
 				isLoading = false;
 				Syso.infoFull("getStatus success:   " + object);
 				try {
@@ -476,6 +531,7 @@ public FragmentUserCart()
 					if (message.equalsIgnoreCase("has_failures") || message.equalsIgnoreCase("done")) {
 						getData(object);
 					} else {
+
 						getStatus(cart_id);
 					}
 				} catch (Exception e) {
@@ -494,7 +550,25 @@ public FragmentUserCart()
 		twoTapApi.execute();
 	}
 
+	private void updateView(int index){
+		Log.w("FragmentUserCart","updateView");
+		View v = cartItemsList.getChildAt(cartItemsList.getFirstVisiblePosition());
+		Log.w("FragmentUserCart","updateView"+v);
+
+		if(v == null)
+		{
+			Log.w("FragmentUserCart","updateView is NULL returning!!!!");
+			return;
+		}
+		final CartListAdapter.ViewHolder viewHolder = null;
+		//(CartListAdapter.ViewHolder) viewHolder.regularPriceText = (TextView) findViewById(R.id.regularPriceText);
+		TextView someText = (TextView) v.findViewById(R.id.regularPriceText);
+		someText.setText("Hi! I updated you manually!");
+	}
+
+
 	protected synchronized void getData(Object object) {
+		Log.w("FragmentUserCart","getData");
 		List<JSONObject> list = new ArrayList<JSONObject>();
 		try {
 			JSONObject jsonObject = new JSONObject(object.toString());
@@ -597,6 +671,7 @@ public FragmentUserCart()
 	}
 
 	private void setFailedProduct(String url) {
+		Log.w("FragmentUserCart","setFailedProduct");
 //		String url="";
 //		try {
 //			url = failed_to_add_to_cart.getString("original_url");
@@ -612,6 +687,7 @@ public FragmentUserCart()
 	}
 
 	private void setNoDetailsProduct(String url) {
+		Log.w("FragmentUserCart","setNoDetailsProduct");
 		for (int i = 0; i < productLists.size(); i++) {
 			if (url.equals(productLists.get(i).getProducturl())) {
 				productLists.get(i).setNoDetails(true);
@@ -621,6 +697,7 @@ public FragmentUserCart()
 	}
 
 	private synchronized void fetchData(List<JSONObject> list) {
+		Log.w("FragmentUserCart","fetchData");
 		for (int i = 0; i < list.size(); i++) {
 			TwoTapProductDetails product = new TwoTapProductDetails();
 			if (list.get(i) != null) {
@@ -659,7 +736,7 @@ public FragmentUserCart()
 //			if (productDetails.get(i).getColorList()!=null && productDetails.get(i).getColorList().size()>0 ||
 //				productDetails.get(i).getSizeList()!=null && productDetails.get(i).getSizeList().size()>0 ||
 //				productDetails.get(i).getFitList()!=null && productDetails.get(i).getFitList().size()>0 ||
-//				productDetails.get(i).getColorsArray()!=null && productDetails.get(i).getColorsArray().size()>0 ||
+//				productDetails.get(i).getColorsArray()!=null && productDetails.get(i).getColorsArray().size()>0 ||fc
 //				productDetails.get(i).getOptionList()!=null && productDetails.get(i).getOptionList().size()>0  ) {
 
 			List<ProductRequiredOption> list2 = productDetails.get(i).getRequiredOptionList();
@@ -729,6 +806,7 @@ public FragmentUserCart()
 			RemoveProductsFromCartDialog dialog = new RemoveProductsFromCartDialog(mContext, productsNotAvailable, FragmentUserCart.this);
 			dialog.show();
 		} else if (productsNotAvailable.size() == 0 && productsToSelectDetails.size() > 0 && fragmentUserCart != null && fragmentUserCart.isVisible()) {
+			Log.w("FragmentUserCart","CartOverLoadDialog 4");
 			CartOverLoadDialog dialog2 = new CartOverLoadDialog(mContext, productsToSelectDetails, FragmentUserCart.this);
 			dialog2.show();
 		}
@@ -743,6 +821,7 @@ public FragmentUserCart()
 	}
 
 	private void setCheckoutBtn() {
+		Log.w("FragmentUserCart","setCheckoutBtn");
 		cartListAdapter.notifyDataSetChanged();
 		boolean isListEmpty = false;
 		for (int i = 0; i < productLists.size(); i++) {
@@ -756,11 +835,10 @@ public FragmentUserCart()
 			checkout_layout.setClickable(true);
 		}
 		//checkout_layout.setClickable(true);
-
-
 	}
 
 	private List<ProductMainOption> getMainOptionList(JSONObject optJSONObject) {
+		Log.w("FragmentUserCart","getMainOptionList");
 		Iterator data = optJSONObject.keys();
 		List<ProductMainOption> productMainOptionList = new ArrayList<ProductMainOption>();
 		try {
@@ -792,12 +870,14 @@ public FragmentUserCart()
 	}
 
 	public void removeProducts() {
+		Log.w("FragmentUserCart","removeProducts!!!");
 		for (int i = 0; i < productsNotAvailable.size(); i++) {
 			removeFromCart(productsNotAvailable.get(i).getProductcart_id());
 		}
 		if (productLists.size() == 0) {
 			showEmptyCart();
 		} else if (productsToSelectDetails.size() > 0 && fragmentUserCart != null && fragmentUserCart.isVisible()) {
+			Log.w("FragmentUserCart","CartOverLoadDialog 5");
 			CartOverLoadDialog dialog2 = new CartOverLoadDialog(mContext, productsToSelectDetails, FragmentUserCart.this);
 			dialog2.show();
 		}
@@ -822,9 +902,9 @@ public FragmentUserCart()
 	}
 
 	public void removeFromCart(final String id) {
-
-		mProgressBarDialog = new ProgressBarDialog(mContext);
-		mProgressBarDialog.show();
+		Log.w("FragmentUserCart","removeFromCart()");
+		//mProgressBarDialog = new ProgressBarDialog(mContext);
+		//mProgressBarDialog.show();
 
 		final CartApi cartApi = new CartApi(new ServiceCallback() {
 
@@ -841,16 +921,16 @@ public FragmentUserCart()
 				if (productLists.size() == 0) {
 					showEmptyCart();
 				}
-				mProgressBarDialog.dismiss();
+				//mProgressBarDialog.dismiss();
 				addFragment(new CartFragmentTab());
-//				AlertUtils.showToast(mContext, "Product removed successfully");
+				AlertUtils.showToast(mContext, "Product removed successfully");
 
 
 			}
 
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				mProgressBarDialog.dismiss();
+				//mProgressBarDialog.dismiss();
 				Syso.info("In handleOnFailure>>" + object);
 				if (object != null) {
 					CartRes response = (CartRes) object;

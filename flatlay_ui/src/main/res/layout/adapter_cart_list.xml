@@ -83,6 +83,7 @@
                     android:paddingTop="@dimen/padding_tiny" >
 
                     <TextView
+                        android:id="@+id/pricetext"
                         style="@style/cartTextStyle"
                         android:text="@string/regular_price_text"
                         android:textStyle="bold" />

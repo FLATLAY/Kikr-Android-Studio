@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -308,10 +309,11 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
             case R.id.btnUpload:
                 ((HomeActivity)mContext).checkPermissions();
                 break;
-
-
             case R.id.settings_btn_layout:
-                addFragment(new SettingFragmentTab());
+                Log.w("FragmentProfileView","Settings button clicked!");
+                //addFragment(new SettingFragmentTab());
+                //Fragment.instantiate(mContext, SettingFragmentTab.class.getName(), null);
+                addFragment(Fragment.instantiate(mContext, SettingFragmentTab.class.getName(), null));
                 break;
             case R.id.btnCreateCollection:
                 addFragment(new FragmentSearchProduct());
@@ -363,7 +365,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 if (product_list.size() == 0) {
                     if (user_id.equals(UserPreference.getInstance().getUserID())) {
 
-                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have yet to upload any posts, create one now !");
+                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have no posts, create one now!");
                         ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.VISIBLE);
                     } else {
                         ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " hasn't uploaded any photos.");

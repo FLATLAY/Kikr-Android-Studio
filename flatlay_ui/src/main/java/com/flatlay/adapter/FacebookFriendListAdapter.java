@@ -61,7 +61,7 @@ public class FacebookFriendListAdapter extends BaseAdapter {
 		}
 		viewHolder.user_name.setText(getItem(position).getName());
 		if(getItem(position).getProfile_pic()!=null)
-		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.dum_user);
+		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.profile_icon);
 		return convertView;
 	}
 

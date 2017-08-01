@@ -85,7 +85,7 @@ public class IbeaconApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse48>>" + response);
 		try {
 			IbeaconActivityRes activityRes = JsonUtils.fromJson(response,IbeaconActivityRes.class);
 			if (activityRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

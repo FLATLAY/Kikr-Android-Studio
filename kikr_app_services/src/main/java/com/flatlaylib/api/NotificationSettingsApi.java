@@ -83,7 +83,7 @@ public class NotificationSettingsApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse5>>" + response);
 		try {
 			NotificationSettingRes notificationSettingRes = JsonUtils.fromJson(response,NotificationSettingRes.class);
 			if (notificationSettingRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

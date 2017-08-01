@@ -23,7 +23,6 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.PinAuthResponse;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
-import com.personagraph.api.PGAgent;
 
 public class PinAuthActivity extends BaseActivity implements OnKeyListener,
 		OnClickListener {
@@ -116,8 +115,6 @@ public class PinAuthActivity extends BaseActivity implements OnKeyListener,
 		}
 
 		if (isValid) {
-			if(CommonUtility.isOnline(context))
-			PGAgent.logEvent("PIN_FOR_AUTHENTICATE_SENT");
 //			startActivity(WalletPinActivity.class);
 //			finish();
 			if(checkInternet())

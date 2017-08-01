@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="You have yet to upload any posts, create one now !"
+            android:text="You have no posts, create one now!"
             android:textColor="@color/app_text_color"
             android:textSize="@dimen/large_text_size"
             android:visibility="visible" />

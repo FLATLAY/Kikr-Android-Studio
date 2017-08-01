@@ -8,15 +8,20 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ASNECore" />
+            <option value="$PROJECT_DIR$/facebook" />
             <option value="$PROJECT_DIR$/flatlay_ui" />
+            <option value="$PROJECT_DIR$/instagram" />
             <option value="$PROJECT_DIR$/instagram_library" />
             <option value="$PROJECT_DIR$/kikr_app_services" />
             <option value="$PROJECT_DIR$/kikr_menudrawer_lib" />
             <option value="$PROJECT_DIR$/libAndroidCrop" />
+            <option value="$PROJECT_DIR$/linkedin" />
             <option value="$PROJECT_DIR$/main" />
             <option value="$PROJECT_DIR$/pdk" />
             <option value="$PROJECT_DIR$/photo-crop-library" />
             <option value="$PROJECT_DIR$/squarecamera" />
+            <option value="$PROJECT_DIR$/twitter" />
             <option value="$PROJECT_DIR$/ucrop" />
           </set>
         </option>

@@ -21,7 +21,6 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.WalletPinRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
-import com.personagraph.api.PGAgent;
 
 public class WalletPinActivity extends BaseActivity implements OnClickListener, ServiceCallback{
 	private TextView mFirstDigit,mSecondDigit,mThirdDigit,mFourthDigit;
@@ -126,8 +125,6 @@ public class WalletPinActivity extends BaseActivity implements OnClickListener, 
 			mPin+=value;
 			mFourthDigit.setText(mEnterdText);
 			Syso.info("Enterd Pin>>"+mPin);
-			if(CommonUtility.isOnline(context))
-				PGAgent.logEvent("WALLET_PIN_CREATED");
 			if(mIsCreatePinScreen && !pinEntered){
 				pin_header.setText(R.string.confirm_pin);
 				pin = mPin;

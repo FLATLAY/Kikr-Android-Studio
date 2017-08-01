@@ -103,7 +103,7 @@ public class SearchAllAdapter extends BaseAdapter{
         }else{
             viewHolder.follow_btn.setVisibility(View.VISIBLE);
         }
-        CommonUtility.setImage(mContext, getItem(position).getImg(), viewHolder.user_image, R.drawable.dum_user);
+        CommonUtility.setImage(mContext, getItem(position).getImg(), viewHolder.user_image, R.drawable.profile_icon);
         convertView.setOnClickListener(new OnClickListener() {
 
             @Override

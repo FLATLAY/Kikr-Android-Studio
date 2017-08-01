@@ -6,6 +6,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -237,8 +238,10 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         if (checkInternet()) {
             getInspirationFeedList();
             getCollectionStatus();
-        } else
+        } else {
+            Log.w("FragmentProfileView", "no internet");
             showReloadOption();
+        }
     }
 
     @Override
@@ -307,6 +310,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         Log.w("FragmemtProfileView","onClick()");
         switch (v.getId()) {
             case R.id.btnUpload:
+                Log.w("FragmentProfileView","R.id.btnUpload");
                 ((HomeActivity)mContext).checkPermissions();
                 break;
             case R.id.settings_btn_layout:
@@ -316,9 +320,11 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 addFragment(Fragment.instantiate(mContext, SettingFragmentTab.class.getName(), null));
                 break;
             case R.id.btnCreateCollection:
+                Log.w("FragmentProfileView","R.id.btnCreateCollection");
                 addFragment(new FragmentSearchProduct());
                 break;
             case R.id.btn_activity:
+                Log.w("FragmentProfileView","R.id.btn_activity");
                 noCollectionText.setVisibility(View.GONE);
                 addFragment(new FragmentActivityMonths());
                 break;
@@ -329,6 +335,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 startActivity(intent);
                 break;
             case R.id.invite:
+                Log.w("FragmentProfileView","R.id.invite");
                 ((HomeActivity) mContext).inviteFriends();
                 break;
         /*	case R.id.btn_photos:
@@ -358,180 +365,234 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 				break;*/
 
             case R.id.photolayout:
-                followerNotFound.setVisibility(View.GONE);
-                txtfollowers.setVisibility(View.GONE);
-                noCollectionText.setVisibility(View.GONE);
-
-                if (product_list.size() == 0) {
-                    if (user_id.equals(UserPreference.getInstance().getUserID())) {
-
-                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have no posts, create one now!");
-                        ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.VISIBLE);
-                    } else {
-                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " hasn't uploaded any photos.");
-                        ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
-                    }
-                    photo_not_found.setVisibility(View.VISIBLE);
-                    hideDataNotFound();
-                } else {
-                    photo_not_found.setVisibility(View.GONE);
-                    hideDataNotFound();
-                    collection_list.setVisibility(View.GONE);
-                    imagesList.setVisibility(View.VISIBLE);
-                }
-                //if (imagesList.getVisibility() == View.VISIBLE) {
-                // profile_btn_layout.setVisibility(View.VISIBLE);
-                // imagesList.setVisibility(View.GONE);
-                //collection_list.setVisibility(View.VISIBLE);
-                // btn_photos.setText("Photos");
-                // } else {
-                //profile_btn_layout.setVisibility(View.GONE);
-
-
-                //btn_photos.setText("collections");
-                // }
-
-                layoutPeopleStoreBrand.setVisibility(View.GONE);
-                //collection_list.setVisibility(View.VISIBLE);
-                follower_button.setImageResource(R.drawable.followeruser);
-                following_button.setImageResource(R.drawable.followinguser);
-                collection_button.setImageResource(R.drawable.profile_collection_tab);
-                photo_button.setImageResource(R.drawable.photoselected);
-//                followerlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-//                followinglayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-//                collectionlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-//                photolayout.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
-                break;
-            case R.id.collectionlayout:
-                followerNotFound.setVisibility(View.GONE);
-                txtfollowers.setVisibility(View.GONE);
-                photo_not_found.setVisibility(View.GONE);
-                noCollectionText.setVisibility(View.VISIBLE);
-                hideDataNotFound();
-                layoutPeopleStoreBrand.setVisibility(View.GONE);
-                if (!HelpPreference.getInstance().getHelpCollection().equals("yes") && collectionLists.size() == 0) {
-                    noCollectionText.setVisibility(View.VISIBLE);
-                    collection_list.setVisibility(View.GONE);
-                } else if (status.equals("yes") && collectionLists.size() == 0
-                        && user_id.equals(UserPreference.getInstance().getUserID())) {
-                    tvEarnCreditsText.setVisibility(View.VISIBLE);
-                    btnCreateCollection.setVisibility(View.VISIBLE);
-                    noCollectionText.setVisibility(View.VISIBLE);
-                    collection_list.setVisibility(View.GONE);
-                }
-                if (collectionLists.size() == 0 && user_id.equals(UserPreference.getInstance().getUserID())) {
-                    tvEarnCreditsText.setVisibility(View.VISIBLE);
-                    btnCreateCollection.setVisibility(View.VISIBLE);
-                    bg_nocollection.setVisibility(View.VISIBLE);
-                } else if(collectionLists.size()>0){
+                if(checkInternet()) {
+                    Log.w("FragmentProfileView", "R.id.photolayout");
+                    followerNotFound.setVisibility(View.GONE);
+                    txtfollowers.setVisibility(View.GONE);
                     noCollectionText.setVisibility(View.GONE);
-                    collection_list.setVisibility(View.VISIBLE);
-                    collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext, collectionLists, user_id, fragmentProfileView, null, null));
-                }
 
+                    if (product_list.size() == 0) {
+                        if (user_id.equals(UserPreference.getInstance().getUserID())) {
 
-                imagesList.setVisibility(View.GONE);
+                            ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have no posts, create one now!");
+                            ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.VISIBLE);
+                        } else {
+                            ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " hasn't uploaded any photos.");
+                            ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
+                        }
+                        photo_not_found.setVisibility(View.VISIBLE);
+                        hideDataNotFound();
+                    } else {
+                        photo_not_found.setVisibility(View.GONE);
+                        hideDataNotFound();
+                        collection_list.setVisibility(View.GONE);
+                        imagesList.setVisibility(View.VISIBLE);
+                    }
 
-                follower_button.setImageResource(R.drawable.followeruser);
-                following_button.setImageResource(R.drawable.followinguser);
-                collection_button.setImageResource(R.drawable.collectionselected);
-                photo_button.setImageResource(R.drawable.profile_photo_tab);
-//                followerlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-//                followinglayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-//                collectionlayout.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
-//                photolayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-                break;
-            case R.id.followerlayout:
-                txtfollowers.setVisibility(View.VISIBLE);
-                noCollectionText.setVisibility(View.GONE);
-                photo_not_found.setVisibility(View.GONE);
-                if (followersLists.size() == 0 && (user_id.equals(UserPreference.getInstance().getUserID()))) {
-                    followerNotFound.setVisibility(View.VISIBLE);
-                    ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setVisibility(View.INVISIBLE);
-                }
-                else if(followersLists.size()>0) {
-                    hideDataNotFound();
-                    collection_list.setAdapter(new FragmentProfileFollowersAdapter(mContext, followersLists));
-                    collection_list.setVisibility(View.VISIBLE);
+                    layoutPeopleStoreBrand.setVisibility(View.GONE);
+                    //collection_list.setVisibility(View.VISIBLE);
+                    follower_button.setImageResource(R.drawable.followeruser);
+                    following_button.setImageResource(R.drawable.followinguser);
+                    collection_button.setImageResource(R.drawable.profile_collection_tab);
+                    photo_button.setImageResource(R.drawable.photoselected);
                 }
                 else
                 {
-                    ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " has no followers.");
+                    showReloadOption();
+                    followerNotFound.setVisibility(View.GONE);
+                    txtfollowers.setVisibility(View.GONE);
+                    noCollectionText.setVisibility(View.GONE);
+                    layoutPeopleStoreBrand.setVisibility(View.GONE);
+                    follower_button.setImageResource(R.drawable.followeruser);
+                    following_button.setImageResource(R.drawable.followinguser);
+                    collection_button.setImageResource(R.drawable.profile_collection_tab);
+                    photo_button.setImageResource(R.drawable.photoselected);
+                }
+                break;
+
+            case R.id.collectionlayout:
+                if (checkInternet()) {
+                    Log.w("FragmentProfileView", "R.id.collectionlayout");
+                    followerNotFound.setVisibility(View.GONE);
+                    txtfollowers.setVisibility(View.GONE);
+                    photo_not_found.setVisibility(View.GONE);
                     ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
-                    photo_not_found.setVisibility(View.VISIBLE);
+                    noCollectionText.setVisibility(View.GONE);
+                    hideDataNotFound();
+                    layoutPeopleStoreBrand.setVisibility(View.GONE);
+                    if (!HelpPreference.getInstance().getHelpCollection().equals("yes") && collectionLists.size() == 0) {
+                        noCollectionText.setVisibility(View.GONE);
+                        collection_list.setVisibility(View.GONE);
+                        if (user_id.equals(UserPreference.getInstance().getUserID())) {
+                            photo_not_found.setVisibility(View.VISIBLE);
+                            ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have no collections.");
+                        } else {
+                            photo_not_found.setVisibility(View.VISIBLE);
+                            ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " has no collections.");
+                        }
+                        Log.w("R.id.collectionlayout","1");
+                    } else if (status.equals("yes") && collectionLists.size() == 0
+                            && user_id.equals(UserPreference.getInstance().getUserID())) {
+                        tvEarnCreditsText.setVisibility(View.VISIBLE);
+                        btnCreateCollection.setVisibility(View.VISIBLE);
+                        noCollectionText.setVisibility(View.VISIBLE);
+                        collection_list.setVisibility(View.GONE);
+                        Log.w("R.id.collectionlayout","2");
+                    }
+                    if (collectionLists.size() == 0 && user_id.equals(UserPreference.getInstance().getUserID())) {
+                        tvEarnCreditsText.setVisibility(View.VISIBLE);
+                        btnCreateCollection.setVisibility(View.VISIBLE);
+                        bg_nocollection.setVisibility(View.VISIBLE);
+                        Log.w("R.id.collectionlayout","3");
+                    } else if (collectionLists.size() > 0) {
+                        noCollectionText.setVisibility(View.GONE);
+                        collection_list.setVisibility(View.VISIBLE);
+                        collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext, collectionLists, user_id, fragmentProfileView, null, null));
+                        Log.w("R.id.collectionlayout","4");
+                    }
+
+
+                    imagesList.setVisibility(View.GONE);
+
+                    follower_button.setImageResource(R.drawable.followeruser);
+                    following_button.setImageResource(R.drawable.followinguser);
+                    collection_button.setImageResource(R.drawable.collectionselected);
+                    photo_button.setImageResource(R.drawable.profile_photo_tab);
+
+                }
+                else
+                {
+                    Log.w("FragmentProfileView","else of checkInternet()");
+                    showReloadOption();
+                    followerNotFound.setVisibility(View.GONE);
+                    txtfollowers.setVisibility(View.GONE);
+                    photo_not_found.setVisibility(View.GONE);
+                    imagesList.setVisibility(View.GONE);
+
+                    follower_button.setImageResource(R.drawable.followeruser);
+                    following_button.setImageResource(R.drawable.followinguser);
+                    collection_button.setImageResource(R.drawable.collectionselected);
+                    photo_button.setImageResource(R.drawable.profile_photo_tab);
+                }
+                break;
+
+            case R.id.followerlayout:
+                Log.w("FragmentProfileView","R.id.followerlayout");
+                if (checkInternet())
+                {
+                    Log.w("FragmentProfileView","if of checkInternet()");
+                    txtfollowers.setVisibility(View.VISIBLE);
+                    noCollectionText.setVisibility(View.GONE);
+                    photo_not_found.setVisibility(View.GONE);
+                    if (followersLists.size() == 0 && (user_id.equals(UserPreference.getInstance().getUserID()))) {
+                        followerNotFound.setVisibility(View.VISIBLE);
+                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setVisibility(View.INVISIBLE);
+                    }
+                    else if(followersLists.size()>0) {
+                        hideDataNotFound();
+                        collection_list.setAdapter(new FragmentProfileFollowersAdapter(mContext, followersLists));
+                        collection_list.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " has no followers.");
+                        ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
+                        photo_not_found.setVisibility(View.VISIBLE);
+                    }
+
+
+                    imagesList.setVisibility(View.GONE);
+                    txtfollowers.setVisibility(View.VISIBLE);
+                    layoutPeopleStoreBrand.setVisibility(View.GONE);
+                    //  collection_list.setVisibility(View.VISIBLE);
+                    follower_button.setImageResource(R.drawable.followerselected);
+                    following_button.setImageResource(R.drawable.followinguser);
+                    collection_button.setImageResource(R.drawable.profile_collection_tab);
+                    photo_button.setImageResource(R.drawable.profile_photo_tab);
+
+                }
+                else{
+                    Log.w("FragmentProfileView","else of checkInternet()");
+                    noCollectionText.setVisibility(View.GONE);
+                    photo_not_found.setVisibility(View.GONE);
+                    imagesList.setVisibility(View.GONE);
+                    layoutPeopleStoreBrand.setVisibility(View.GONE);
+                    showReloadOption();
+
+                    follower_button.setImageResource(R.drawable.followerselected);
+                    following_button.setImageResource(R.drawable.followinguser);
+                    collection_button.setImageResource(R.drawable.profile_collection_tab);
+                    photo_button.setImageResource(R.drawable.profile_photo_tab);
+
                 }
 
 
-                imagesList.setVisibility(View.GONE);
-                txtfollowers.setVisibility(View.VISIBLE);
-                layoutPeopleStoreBrand.setVisibility(View.GONE);
-              //  collection_list.setVisibility(View.VISIBLE);
-                follower_button.setImageResource(R.drawable.followerselected);
-                following_button.setImageResource(R.drawable.followinguser);
-                collection_button.setImageResource(R.drawable.profile_collection_tab);
-                photo_button.setImageResource(R.drawable.profile_photo_tab);
-
-//                followerlayout.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
-//                followinglayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-//                collectionlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-//                photolayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
                 break;
             case R.id.followinglayout:
-                followerNotFound.setVisibility(View.GONE);
-                txtfollowers.setVisibility(View.GONE);
-                noCollectionText.setVisibility(View.GONE);
-                photo_not_found.setVisibility(View.GONE);
-                if (followingLists.size() == 0) {
-                    collection_list.setVisibility(View.GONE);
-                    noFollowingFound();
-                    //showDataNotFound();
-                } else if(followingLists.size()>0){
-                    hideDataNotFound();
-                    collection_list.setVisibility(View.VISIBLE);
-                    collection_list.setAdapter(new FragmentProfileFollowingAdapter(mContext, followingLists));
+                if(checkInternet()) {
+                    Log.w("FragmentProfileView", "R.id.followinglayout");
+                    followerNotFound.setVisibility(View.GONE);
+                    txtfollowers.setVisibility(View.GONE);
+                    noCollectionText.setVisibility(View.GONE);
+                    photo_not_found.setVisibility(View.GONE);
+                    if (followingLists.size() == 0) {
+                        collection_list.setVisibility(View.GONE);
+                        noFollowingFound();
+                        //showDataNotFound();
+                    } else if (followingLists.size() > 0) {
+                        hideDataNotFound();
+                        collection_list.setVisibility(View.VISIBLE);
+                        collection_list.setAdapter(new FragmentProfileFollowingAdapter(mContext, followingLists));
+                    } else {
+                        ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " haven't any following list.");
+                        ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
+                        photo_not_found.setVisibility(View.VISIBLE);
+                    }
+
+                    if (isSelected.equalsIgnoreCase("store")) {
+                        collection_list.setAdapter(null);
+                        isFirstTime = true;
+                        pagenum = 0;
+                        isSelected = "store";
+                        isLoading = false;
+                        getStoreList();
+                        collection_list.setVisibility(View.VISIBLE);
+                    }
+                    if (isSelected.equalsIgnoreCase("brand")) {
+                        collection_list.setAdapter(null);
+                        isFirstTime = true;
+                        pagenum = 0;
+                        isSelected = "brand";
+                        isLoading = false;
+                        getBrandList();
+                        collection_list.setVisibility(View.VISIBLE);
+                    }
+
+                    layoutPeopleStoreBrand.setVisibility(View.VISIBLE);
+                    imagesList.setVisibility(View.GONE);
+                    follower_button.setImageResource(R.drawable.followeruser);
+                    following_button.setImageResource(R.drawable.followingselected);
+                    collection_button.setImageResource(R.drawable.profile_collection_tab);
+                    photo_button.setImageResource(R.drawable.profile_photo_tab);
                 }
                 else
                 {
-                    ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " haven't any following list.");
-                    ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.GONE);
-                    photo_not_found.setVisibility(View.VISIBLE);
+                    showReloadOption();
+                    followerNotFound.setVisibility(View.GONE);
+                    txtfollowers.setVisibility(View.GONE);
+                    noCollectionText.setVisibility(View.GONE);
+                    photo_not_found.setVisibility(View.GONE);
+                    imagesList.setVisibility(View.GONE);
+                    follower_button.setImageResource(R.drawable.followeruser);
+                    following_button.setImageResource(R.drawable.followingselected);
+                    collection_button.setImageResource(R.drawable.profile_collection_tab);
+                    photo_button.setImageResource(R.drawable.profile_photo_tab);
+
                 }
 
-                if (isSelected.equalsIgnoreCase("store")) {
-                    collection_list.setAdapter(null);
-                    isFirstTime = true;
-                    pagenum = 0;
-                    isSelected = "store";
-                    isLoading = false;
-                    getStoreList();
-                    collection_list.setVisibility(View.VISIBLE);
-                }
-                if (isSelected.equalsIgnoreCase("brand")) {
-                    collection_list.setAdapter(null);
-                    isFirstTime = true;
-                    pagenum = 0;
-                    isSelected = "brand";
-                    isLoading = false;
-                    getBrandList();
-                    collection_list.setVisibility(View.VISIBLE);
-                }
-
-
-                layoutPeopleStoreBrand.setVisibility(View.VISIBLE);
-
-                imagesList.setVisibility(View.GONE);
-                follower_button.setImageResource(R.drawable.followeruser);
-                following_button.setImageResource(R.drawable.followingselected);
-                collection_button.setImageResource(R.drawable.profile_collection_tab);
-                photo_button.setImageResource(R.drawable.profile_photo_tab);
-
-
-//                followerlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-//                followinglayout.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
-//                collectionlayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-//                photolayout.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
                 break;
             case R.id.follow_btn:
+                Log.w("FragmentProfileView","R.id.follow_btn");
                 if (checkInternet()) {
                     if (follow_btn.getText().toString().trim().equalsIgnoreCase("Follow"))
                         followUser();
@@ -540,6 +601,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 }
                 break;
             case R.id.editProfileImageView:
+                Log.w("FragmentProfileView","R.id.editProfileImageView");
                 Bundle bundle = new Bundle();
                 bundle.putString("username", userDetails.get(0).getUsername());
                 bundle.putString("profilePic", userDetails.get(0).getProfile_pic());
@@ -550,6 +612,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 startActivityForResult(EditProfileActivity.class, bundle, 1000);
                 break;
             case R.id.interest_store_button:
+                Log.w("FragmentProfileView","R.id.interest_store_button");
                 isFirstTime = true;
                 pagenum = 0;
                 isSelected = "store";
@@ -568,6 +631,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
                 break;
             case R.id.interest_brand_button:
+                Log.w("FragmentProfileView","R.id.interest_brand_button");
                 pagenum = 0;
                 isFirstTime = true;
                 isSelected = "brand";
@@ -586,6 +650,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
                 break;
             case R.id.interest_people_button:
+                Log.w("FragmentProfileView","R.id.interest_people_button");
                 isFirstTime = true;
                 pagenum = 0;
                 isLoading = false;
@@ -610,6 +675,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 break;
         }
     }
+
 
     private void followUser() {
         mProgressBarDialog = new ProgressBarDialog(mContext);
@@ -695,6 +761,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
 
     private void getUserProfileDetail() {
+        Log.w("FragmentProfileView","getUserProfileDetail");
 //        mProgressBarDialog = new ProgressBarDialog(mContext);
 //        mProgressBarDialog.show();
 
@@ -743,6 +810,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
                 //   mProgressBarDialog.dismiss();
+                Log.w("FragmentProfileView","getUserProfileDetail 1");
                 getUserProfileDetail();
             }
         });
@@ -752,13 +820,15 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
     private void setDetails() {
 
-
         System.out.println("userDetails.get(0).getProfile_pic()    " + userDetails.get(0).getProfile_pic());
-        if (!userDetails.get(0).getProfile_pic().equals(""))
-            CommonUtility.setImage(mContext, userDetails.get(0).getProfile_pic(), user_profile_image, R.drawable.dum_user);
-        if (!userDetails.get(0).getBackground_pic().equals(""))
+        if (!userDetails.get(0).getProfile_pic().equals("")) {
+            Log.w("FragmentProfileView","setDetails() first");
+            CommonUtility.setImage(mContext, userDetails.get(0).getProfile_pic(), user_profile_image, R.drawable.profile_icon);
+        }//////////
+        if (!userDetails.get(0).getBackground_pic().equals("")) {
+            Log.w("FragmentProfileView","setDetails() second");
             CommonUtility.setImage(mContext, userDetails.get(0).getBackground_pic(), bgProfileLayout, R.drawable.flatlay_profile_bg_gradient_rect);
-
+        }
         if (userDetails.get(0).getUsername() != null && !userDetails.get(0).getUsername().equals(""))
             user_profile_name.setText(userDetails.get(0).getUsername());
         else
@@ -770,7 +840,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
             if (user_id.equals(UserPreference.getInstance().getUserID())) {
 
-                ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have yet to upload any posts, create one now !");
+                ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText("You have no posts, create one now!");
                 ((Button) photo_not_found.findViewById(R.id.btnUpload)).setVisibility(View.VISIBLE);
             } else {
                 ((TextView) photo_not_found.findViewById(R.id.tvNoPhotos)).setText(user_profile_name.getText() + " hasn't uploaded any photos.");
@@ -856,8 +926,10 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         up_arrow_image_first.setVisibility(View.VISIBLE);
         up_arrow_image_second.setVisibility(View.INVISIBLE);
         up_arrow_image_third.setVisibility(View.INVISIBLE);
-        if (checkInternet())
+        if (checkInternet()) {
+            Log.w("FragmentProfileView","getUserProfileDetail 2");
             getUserProfileDetail();
+        }
     }
 
     private void showReloadOption() {
@@ -869,6 +941,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 public void onClick(View v) {
                     if (checkInternet()) {
                         if (profile_btn_layout.getVisibility() == View.VISIBLE) {
+                            Log.w("FragmentProfileView","getUserProfileDetail 3");
                             getUserProfileDetail();
                         } else {
                             getInspirationFeedList();
@@ -1231,6 +1304,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         else {
             loadingTextView.setVisibility(View.VISIBLE);
             mProgressBarDialog.show();
+            Log.w("FragmentProfileView","getUserProfileDetail 4");
             getUserProfileDetail();
         }
     }

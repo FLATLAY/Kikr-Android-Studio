@@ -1,5 +1,7 @@
 package com.flatlaylib.api;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,7 @@ public class MyProfileApi extends AbsService {
 	}
 
 	public void getUserProfileDetail(String user_id,String viewer_id) {
+		Log.w("MyProfileApi","getUserProfileDetail");
 		this.METHOD_NAME = WebConstants.HOST_FILE + "getprofile";
 		requestType = WebConstants.HTTP_METHOD_POST;
 		Map<String, String> comment = new HashMap<String, String>();
@@ -85,17 +88,21 @@ public class MyProfileApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse17>>" + response);
 		try {
+            Log.w("MyProfileApi","processResponse 1");
 			MyProfileRes myProfileRes = JsonUtils.fromJson(response,MyProfileRes.class);
 			if (myProfileRes.getCode().equals(WebConstants.SUCCESS_CODE)) {
+                Log.w("MyProfileApi","processResponse 4");
 				isValidResponse = true;
 			}
 			serviceResponse = myProfileRes;
 		} catch (JsonParseException e) {
+            Log.w("MyProfileApi","processResponse 2");
 			Syso.error(e);
 			isValidResponse = false;
 		} catch (NullPointerException e) {
+            Log.w("MyProfileApi","processResponse 3");
 			Syso.error(e);
 			isValidResponse = false;
 		}

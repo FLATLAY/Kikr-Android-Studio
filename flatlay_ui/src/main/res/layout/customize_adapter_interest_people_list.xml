@@ -11,11 +11,11 @@
 
         <com.flatlay.ui.RoundImageView
             android:id="@+id/user_image"
-            android:layout_margin="@dimen/padding_small"
             android:layout_width="@dimen/interest_user_profile"
             android:layout_height="@dimen/interest_user_profile"
+            android:layout_margin="@dimen/padding_small"
             android:scaleType="fitXY"
-            android:src="@drawable/dum_user" />
+            android:src="@drawable/profile_icon" />
 
         <TextView
             android:id="@+id/user_name"

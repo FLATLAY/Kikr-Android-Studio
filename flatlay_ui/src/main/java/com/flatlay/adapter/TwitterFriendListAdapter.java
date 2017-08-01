@@ -62,7 +62,7 @@ public class TwitterFriendListAdapter extends BaseAdapter {
 		}
 		viewHolder.user_name.setText(getItem(position).getFriendName());
 		if(getItem(position).getFriendImage()!=null)
-			CommonUtility.setImage(mContext, getItem(position).getFriendImage(), viewHolder.user_image, R.drawable.dum_user);
+			CommonUtility.setImage(mContext, getItem(position).getFriendImage(), viewHolder.user_image, R.drawable.profile_icon);
 		return convertView;
 	}
 

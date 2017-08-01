@@ -11,6 +11,14 @@
     <string name="splashfourthscreen">FOURTHSCREEN</string>
     <string name="notification_error_ssl_cert_invalid"> SSL Certificate Invalid</string>
 
+    <string name="icon_heart">&#xf08a;</string>
+    <string name="icon_comment">&#xf0e5;</string>
+    <string name="icon_facebook">&#xf09a;</string>
+    <string name="icon_twitter">&#xf099;</string>
+    <string name="icon_pinterest">&#xf0d2;</string>
+    <string name="icon_external">&#xf08e;</string>
+
+    <string name="likes">likes</string>
 
 
     <string name="twitter_consumer_key">5tQwAp0Z802BLmdF709OEsnLD</string>

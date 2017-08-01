@@ -70,7 +70,7 @@ public class FeaturedTabApi extends AbsService {
 
     @Override
     protected void processResponse(String response) {
-        Syso.info("In RegisterUserApi processResponse>>" + response);
+        Syso.info("In RegisterUserApi processResponse16>>" + response);
         try {
 
 //            JSONObject object = null;

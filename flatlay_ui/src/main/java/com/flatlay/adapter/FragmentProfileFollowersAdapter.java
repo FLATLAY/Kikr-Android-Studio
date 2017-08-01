@@ -68,7 +68,7 @@ public class FragmentProfileFollowersAdapter extends BaseAdapter {
 		else
 			viewHolder.follower_user_name.setText("Unknown");
 		
-		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.follower_user_image, R.drawable.dum_user);
+		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.follower_user_image, R.drawable.profile_icon);
 		convertView.setOnClickListener(new OnClickListener() {
 			
 			@Override

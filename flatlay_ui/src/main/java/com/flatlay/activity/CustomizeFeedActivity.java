@@ -1033,6 +1033,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
 
 
     public void getUserList(String gender) {
+        Log.w("CustomizeFeedActivity","getUserList()");
         isLoading = !isLoading;
         mProgressBarDialog = new ProgressBarDialog(CustomizeFeedActivity.this);
         if (pagenum > 0) {

@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" 
     android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="150dp"
+        android:layout_height="132dp"
+        android:src="@drawable/nointernet" />
+
     <TextView
         android:id="@+id/noDataFoundTextView"
         android:layout_width="match_parent"
@@ -12,13 +19,7 @@
         android:layout_marginTop="10dp"
         android:clickable="true"
         android:gravity="center"
-        android:text="@string/no_data_found"
+        android:text="No internet conection \n Try Again"
         android:textSize="@dimen/large_text_size" />
-    <ImageView
-        android:layout_width="150dp"
-
-        android:layout_height="132dp"
-        android:src="@drawable/bg_nocollection"/>
-
 
 </LinearLayout>

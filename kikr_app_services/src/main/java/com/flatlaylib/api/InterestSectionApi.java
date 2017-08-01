@@ -203,7 +203,7 @@ public class InterestSectionApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse1>>" + response);
 		try {
 			InterestSectionRes interestSectionRes = JsonUtils.fromJson(response,InterestSectionRes.class);
 			if (interestSectionRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

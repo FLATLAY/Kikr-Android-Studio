@@ -16,11 +16,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-/**
- * Created by Oleksii Shliama (https://github.com/shliama).
- * <p/>
- * Builder class to ease Intent setup.
- */
+
 public class UCrop {
 
     public static final int REQUEST_CROP = 69;

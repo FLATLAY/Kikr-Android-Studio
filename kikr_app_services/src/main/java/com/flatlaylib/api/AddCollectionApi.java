@@ -72,7 +72,7 @@ public class AddCollectionApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse56>>" + response);
 		try {
 			AddCollectionApiRes collectionApiRes = JsonUtils.fromJson(response,AddCollectionApiRes.class);
 			if (collectionApiRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

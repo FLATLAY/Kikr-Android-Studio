@@ -19,7 +19,6 @@ import com.flatlay.utility.AppConstants;
 import com.flatlay.utility.FontUtility;
 import com.flatlaylib.AppContext;
 import com.flatlaylib.db.DatabaseHelper;
-import com.personagraph.api.PGAgent;
 
 //test
 public class KikrApp extends BranchApp {
@@ -44,7 +43,6 @@ public class KikrApp extends BranchApp {
 		AppContext context = AppContext.getInstance();
 		context.setContext(this);
 		mDatabaseHelper = DatabaseHelper.getIntance(this);
-		initPersonagraphLib();
 		FontUtility.overrideFont(getApplicationContext(), "SERIF"); // font from assets
 	}
 
@@ -68,11 +66,6 @@ public class KikrApp extends BranchApp {
 		return mDatabaseHelper.getWritableDatabase();
 	}
 
-	private void initPersonagraphLib() {
-		int sensorConfig = PGAgent.APP; 
-		boolean enableAppSensorByDefault = true; 
-		PGAgent.init(this, AppConstants.PERSONAGRAPH_API_KEY, sensorConfig,enableAppSensorByDefault);
-	}
 	
 	public synchronized Tracker getTracker(TrackerName trackerId) {
         if (!mTrackers.containsKey(trackerId)) {

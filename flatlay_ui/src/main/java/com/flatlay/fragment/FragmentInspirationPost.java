@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore.Video.Thumbnails;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -213,6 +214,7 @@ public class FragmentInspirationPost extends BaseFragment implements
 		protected void onPostExecute(byte[] result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
+            Log.w("FragmentPUTag","Going in uploadInspiration() 2");
 			uploadInspiration(result);
 		}
 

@@ -211,7 +211,7 @@ public class CartApi extends AbsService {
 
     @Override
     protected void processResponse(String response) {
-        Syso.info("In RegisterUserApi processResponse>>" + response);
+        Syso.info("In RegisterUserApi processResponse9>>" + response);
         try {
             if (isGetCartList) {
                 JSONObject object = null;

@@ -29,7 +29,7 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.ProductFeedRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
-import com.personagraph.api.PGAgent;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +60,7 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener, S
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (CommonUtility.isOnline(mContext))
-            PGAgent.logEvent("DISCOVER_SCREEN_OPEND");
+
         homeActivity = (HomeActivity) getActivity();
         fragmentDiscover = this;
         try {

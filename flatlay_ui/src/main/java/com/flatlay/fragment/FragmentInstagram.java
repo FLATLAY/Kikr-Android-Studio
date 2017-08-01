@@ -41,6 +41,7 @@ import java.util.Random;
 
 
 public class FragmentInstagram extends ParentFragment implements AdapterView.OnItemClickListener, ServiceCallback {
+
     GridView imagesList;
 
     private ProgressBarDialog mProgressBarDialog;
@@ -82,21 +83,15 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        //CommonUtility.noTitleActivity(mContext);
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-
         view = inflater.inflate(R.layout.activity_default_lifestyle_images, container, false);
         return view;
     }
@@ -104,27 +99,7 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
 
     public void getInstagramList(int count, boolean isShowLoader) {
         super.getInstagramList(count, isShowLoader);
-//        isLoading = true;
-//      instagramUtility = new InstagramUtility(mContext, false, count + "", isShowLoader, new InstagramCallBack() {
-//            @Override
-//            public void setProfilePic(String url) {
-//
-//            }
-//
-//            @Override
-//            public void setPictureList(ArrayList<String> photoList) {
-//                if (photoList.size() == 10)
-//                    isLoading = false;
-//                bgImageList.addAll(photoList);
-//                if (lifestyleImageAdapter == null) {
-//                    lifestyleImageAdapter = new LifestyleImageAdapter(mContext, bgImageList);
-//                    imagesList.setAdapter(lifestyleImageAdapter);
-//                } else {
-//                    lifestyleImageAdapter.notifyDataSetChanged();
-//                }
-//            }
-//        });
-//       instagramUtility.inItInstgram();
+
     }
 
     public void loginToInstagram(int count, boolean isShowLoader) {
@@ -133,7 +108,6 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
         postImages.clear();
         bgImageList.clear();
 
-        // if(instagramUtility == null) {
         instagramUtility = new InstagramUtility(mContext, false, count + "", isShowLoader, new InstagramCallBack() {
             @Override
             public void setProfilePic(String url) {
@@ -153,49 +127,26 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
 
                 postImages.addAll(photoList);
                 for (InstagramImage image : postImages)
-                    bgImageList.add(image.getThumbnail_url());
+                    bgImageList.add(image.getHigh_resolution_url());
                 if (lifestyleImageAdapter == null) {
                     lifestyleImageAdapter = new LifestyleImageAdapter(mContext, bgImageList);
                     imagesList.setAdapter(lifestyleImageAdapter);
                 } else {
                     lifestyleImageAdapter.notifyDataSetChanged();
                 }
-
                 userLoggedIn = true;
             }
         });
-
         instagramUtility.inItInstgram();
-        //instagramUtility.login();
-        //}
-
-
-    }
-
-
-    private void getBgList() {
-        mProgressBarDialog = new ProgressBarDialog(mContext);
-        mProgressBarDialog.show();
-        final EditProfileApi listApi = new EditProfileApi(this);
-        listApi.getBgImageUrlList(UserPreference.getInstance().getUserID());
-        listApi.execute();
-        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                listApi.cancel();
-            }
-        });
     }
 
     boolean isLoading = false;
-
 
     public void handleOnSuccess(Object object) {
         mProgressBarDialog.dismiss();
         Syso.info("In handleOnSuccess>>" + object);
         EditProfileRes editProfileRes = (EditProfileRes) object;
         List<BgImage> bgImages = editProfileRes.getData();
-//		List<String> bgImages = new ArrayList<String>();
         if (bgImages.size() > 0) {
             bgImageList = getImageList(bgImages);
             lifestyleImageAdapter = new LifestyleImageAdapter(mContext, bgImageList);
@@ -227,18 +178,6 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 
         new DownloadImage().execute(postImages.get(arg2).getHigh_resolution_url());
-//        Uri picUri = Uri.fromFile(new File(bgImageList.get(arg2)));
-//
-//
-//        if (Build.VERSION.SDK_INT <= 23) {
-//            Crop crop = new Crop(picUri);
-//            Uri destination = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
-//            crop.output(destination);
-//            crop.asSquare().start(mContext);
-//        }
-//        Intent i = new Intent();
-//        i.putExtra("url", bgImageList.get(arg2));
-//        mContext.setResult(AppConstants.REQUEST_CODE_INSTAGRAM, i);
 
     }
 
@@ -264,27 +203,11 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
         imagesList = (GridView) view.findViewById(R.id.imagesList);
     }
 
-
-    //    public void goToNext(Bitmap thumbnail) {
-//
-//        if (thumbnail != null || inspirationImageUrl != null) {
-//            addFragment(new FragmentPostUploadTag(thumbnail, inspirationImageUrl, String.valueOf(isImage)));
-//        } else {
-//            AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
-//        }
-//
-////            if (byteArray!=null) {
-////                addFragment(new FragmentInspirationPost(byteArray,isImage,filePath));
-////            } else {
-////                AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
-////            }
-//    }
     private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            // Create a progressdialog
             mProgressBarDialog = new ProgressBarDialog(mContext);
             mProgressBarDialog.show();
         }
@@ -296,16 +219,9 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
 
             Bitmap bitmap = null;
             try {
-                // Download Image from URL
                 InputStream input = new java.net.URL(imageURL).openStream();
-                // Decode Bitmap
                 bitmap = BitmapFactory.decodeStream(input);
-                //  String path = MediaStore.Images.Media.insertImage(mContext.getContentResolver(), bitmap, "Title", null);
                 Uri url = bitmapToUriConverter(bitmap);
-//                if(bitmap!=null&&!bitmap.isRecycled()) {
-//                    bitmap.recycle();
-//                    bitmap = null;
-//                }
                 ((HomeActivity) mContext).startCropActivity(url);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -315,9 +231,7 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
 
         @Override
         protected void onPostExecute(Bitmap result) {
-            // Set the bitmap into ImageView
             bitmapImg = result;
-            // Close progressdialog
             mProgressBarDialog.dismiss();
         }
     }
@@ -325,18 +239,13 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
     public Uri bitmapToUriConverter(Bitmap mBitmap) {
         Uri uri = null;
         try {
-//            final BitmapFactory.Options options = new BitmapFactory.Options();
-//            // Calculate inSampleSize
-//            options.inSampleSize = calculateInSampleSize2(options, 300, 300);
-//
-//            // Decode bitmap with inSampleSize set
-//            options.inJustDecodeBounds = false;
+
             Bitmap newBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth(), mBitmap.getHeight(),
                     true);
             File file = new File(getActivity().getFilesDir(), "Image"
                     + new Random().nextInt() + ".jpeg");
             FileOutputStream out = getActivity().openFileOutput(file.getName(),
-                    Context.MODE_WORLD_READABLE);
+                    Context.MODE_PRIVATE);
             newBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
@@ -350,7 +259,6 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
         }
         return uri;
     }
-
 
     @Override
     public void setData(Bundle sa) {

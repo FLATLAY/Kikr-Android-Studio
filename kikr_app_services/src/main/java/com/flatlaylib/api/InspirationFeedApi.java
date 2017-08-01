@@ -75,7 +75,7 @@ public class InspirationFeedApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse34>>" + response);
 		try {
 			InspirationFeedRes inspirationFeedRes = JsonUtils.fromJson(response,InspirationFeedRes.class);
 			if (inspirationFeedRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

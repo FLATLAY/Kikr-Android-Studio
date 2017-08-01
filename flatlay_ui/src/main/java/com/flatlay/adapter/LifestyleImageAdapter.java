@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.flatlay.R;
 import com.flatlay.utility.CommonUtility;
+import com.squareup.picasso.Picasso;
 
 public class LifestyleImageAdapter extends BaseAdapter {
 
@@ -55,12 +56,12 @@ public class LifestyleImageAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		CommonUtility.setImage(mContext, getItem(position), viewHolder.lifestyleImage, R.drawable.dum_list_item_product);
+		Picasso.with(mContext).load(getItem(position)).into(viewHolder.lifestyleImage);
+		//CommonUtility.setImage(mContext, getItem(position), viewHolder.lifestyleImage, R.drawable.dum_list_item_product);
 		return convertView;
 	}
 
 	public class ViewHolder {
 		ImageView lifestyleImage;
 	}
-
 }

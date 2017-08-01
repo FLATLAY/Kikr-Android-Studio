@@ -106,7 +106,7 @@ public class WalletPinApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse23>>" + response);
 		try {
 			WalletPinRes commonRes = JsonUtils.fromJson(response, WalletPinRes.class);
 			if (commonRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

@@ -2,7 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@android:color/white"
+        card_view:cardElevation="5dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="9dp">
 
     <ImageView
         android:id="@+id/inspirationImage"
@@ -11,4 +20,7 @@
         android:maxHeight="@dimen/buy_option_height"
         android:adjustViewBounds="true"
         android:src="@drawable/dum_list_item_product" />
+
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>

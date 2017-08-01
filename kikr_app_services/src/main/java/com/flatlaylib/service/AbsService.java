@@ -80,6 +80,7 @@ public abstract class AbsService implements IService {
      */
 
     protected void processResponse(String response) {
+        Log.w("AbsService","processResponse()");
     }
 
     @Override
@@ -87,11 +88,15 @@ public abstract class AbsService implements IService {
         Syso.info("In handleResponse>>" + response);
         Log.w("my-App","In AbsService handleResponse");
         Syso.info("httpResponse", response);
+        Log.w("AbsService","handleResponse 1:"+isValidResponse);
         processResponse(response);
+        Log.w("AbsService","handleResponse 2:"+isValidResponse);
         if (isValidResponse) {
+            Log.w("AbsService","if:"+isValidResponse);
             mServiceCallback.handleOnSuccess(serviceResponse);
         } else {
             if (serviceException == null) {
+                Log.w("AbsService","else:"+isValidResponse);
                 serviceException = new ServiceException(WebConstants.FAILED_ERROR, WebConstants.INVALID_RESPONSE_MESSAGE);
             }
             mServiceCallback.handleOnFailure(serviceException, serviceResponse);

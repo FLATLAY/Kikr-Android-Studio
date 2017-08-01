@@ -73,7 +73,7 @@ public class BrandStoreBasedOnCategoryApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse36>>" + response);
 		try {
 			BrandStoreRes brandRes = JsonUtils.fromJson(response,BrandStoreRes.class);
 			if (brandRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

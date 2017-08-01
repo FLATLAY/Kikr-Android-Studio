@@ -3,15 +3,18 @@ package net.londatiga.android.instagram;
 import net.londatiga.android.instagram.R;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +24,7 @@ import android.view.Display;
 import android.view.ViewGroup;
 import android.view.Window;
 
+import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -28,12 +32,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-/**
- * Authentication and authorization dialog.
- * 
- * @author Lorensius W. L. T <lorenz@londatiga.net>
- *
- */
+
 @SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
 public class InstagramDialog extends Dialog {
 	private ProgressDialog mSpinner;
@@ -116,7 +115,7 @@ public class InstagramDialog extends Dialog {
 	        
 		mTitle = new TextView(getContext());
 	        
-		mTitle.setText("Instagram");
+		mTitle.setText(R.string.instagram);
 		mTitle.setTextColor(Color.WHITE);
 		mTitle.setTypeface(Typeface.DEFAULT_BOLD);
 		mTitle.setBackgroundColor(0xFF163753);
@@ -182,16 +181,25 @@ public class InstagramDialog extends Dialog {
 			return false;
 		}
 
-		@Override
-		public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {	
-			super.onReceivedError(view, errorCode, description, failingUrl);
-	      
-			mListener.onError(description);
-	            
-			InstagramDialog.this.dismiss();
-			
-			Log.d(TAG, "Page error: " + description);
-		}
+        @Override
+        public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setMessage("SSL Certificate Invalid");
+            builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    handler.proceed();
+                }
+            });
+            builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    handler.cancel();
+                }
+            });
+            final AlertDialog dialog = builder.create();
+            dialog.show();
+        }
 
 		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {

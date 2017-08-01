@@ -1,8 +1,5 @@
 package com.flatlay.model;
 
-/**
- * Created by anshumaan on 5/2/2016.
- */
 public class InstagramImage {
     String low_resolution_url;
     String high_resolution_url;

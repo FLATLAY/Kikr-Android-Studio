@@ -48,6 +48,7 @@ import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
 import com.soundcloud.android.crop.Crop;
 //import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImage;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
@@ -56,6 +57,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static android.app.Activity.RESULT_OK;
 
 public class FragmentPostUploadTab extends BaseFragment implements TabListener, OnPageChangeListener {
     CustomPagerAdapter mCustomPagerAdapter;
@@ -75,9 +78,6 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
     FrameLayout createCollectionAlert;
     private Button create_my_collection;
 
-    public FragmentPostUploadTab(boolean isInspiration) {
-        // this.isInspiration = isInspiration;
-    }
 
     public FragmentPostUploadTab() {
 
@@ -86,7 +86,7 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        Syso.info("uuuuuuuuuuu in onCreateView");
+        Log.w("FragmentPUTab","onCreateView()");
         View view = inflater.inflate(R.layout.fragment_post_upload_main, null);
         mCustomPagerAdapter = new CustomPagerAdapter(getChildFragmentManager(), (Context) getActivity());
         mViewPager = (ViewPager) view.findViewById(R.id.pager);
@@ -104,8 +104,6 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
 
         changeIndicator(0);
         setClickListner();
-
-
 
         return view;
     }
@@ -136,9 +134,7 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
     }
 
     protected void changeIndicator(int tag) {
-//        for (int i = 0; i < optionArray.length; i++)
-//        {
-//
+
         Log.w("my-App","changeIndicator()");
         tabposition = tag;
         if (tag == 0) {
@@ -323,8 +319,7 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
 
 
                 case 1: {
-                    // return new CameraFragment();
-                    //Log.w("test","testing3");
+                    Log.w("test","testing3");
                     return Fragment.instantiate(mContext, CameraFragment.class.getName(), null);
 
                 }
@@ -441,14 +436,24 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
         Log.e("resu and req code", requestCode + " -- " + resultCode);
         super.onActivityResult(requestCode, resultCode, data);
         Log.e("resu and req code", requestCode + " -- " + resultCode);
-        if (resultCode == Activity.RESULT_OK) {
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Log.w("onActivityResultFPUT","1");
+                String filePath = Environment.getExternalStorageDirectory()
+                        + "/temporary_holder.jpg";
+                Bitmap thumbnail = BitmapFactory.decodeFile(filePath);
+                inspirationImageUrl = filePath;
+                goToNext(thumbnail);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+        else if (resultCode == RESULT_OK) {
+
             Log.e("req code", requestCode + "");
-            if (requestCode == UCrop.REQUEST_CROP) { //Changed the code
-
-                //Log.w("onActivityResultFPUT","REQUEST_CROP");
-                // UCrop.REQUEST_CROP
-                // CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
-
+            if (requestCode == UCrop.REQUEST_CROP) {
                 String filePath = Environment.getExternalStorageDirectory()
                         + "/temporary_holder.jpg";
 
@@ -472,18 +477,12 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
     }
 
     public void goToNext(Bitmap thumbnail) {
-
+        Log.w("FragmentPUTag","gotoNext");
         if (thumbnail != null || inspirationImageUrl != null) {
             addFragment(new FragmentPostUploadTag(thumbnail, inspirationImageUrl, String.valueOf(isImage)));
         } else {
             AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
         }
-
-//            if (byteArray!=null) {
-//                addFragment(new FragmentInspirationPost(byteArray,isImage,filePath));
-//            } else {
-//                AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
-//            }
     }
 
     public Bitmap createScaledImage(File mFile) {
@@ -567,7 +566,7 @@ public class FragmentPostUploadTab extends BaseFragment implements TabListener, 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        //Log.w("test","testing1");
+        Log.w("test","testing1");
         ((CameraFragment) (mCustomPagerAdapter.getFragment(mViewPager.getCurrentItem()))).onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

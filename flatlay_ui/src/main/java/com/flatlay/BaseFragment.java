@@ -34,7 +34,7 @@ public abstract class BaseFragment extends Fragment {
 		Syso.debug("BaseFragment - onAttach = ", this.getClass().getSimpleName());
 	}
 	
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -160,24 +160,37 @@ public abstract class BaseFragment extends Fragment {
 			LinearLayout layout=(LinearLayout) getView().findViewById(R.id.itemNotFound);
 			layout.setVisibility(View.VISIBLE);
 			TextView textView=(TextView) getView().findViewById(R.id.noDataFoundTextView);
-			textView.setText(getResources().getString(R.string.no_data_found));
+			if(checkInternet())
+			{
+				Log.w("showdataNotFound()","no_data_found");
+				textView.setText(getResources().getString(R.string.no_data_found));
+			}
+			else
+			{
+				Log.w("showdataNotFound()","no_internet");
+				textView.setText(Html.fromHtml(getResources().getString(R.string.no_internet)));
+				Log.w("showdataNotFound()",""+textView.getText().toString());
+			}
+
 		}catch(NullPointerException exception){
 			exception.printStackTrace();
 		}
 	}
-
 
 	public void noFollowingFound(){
 		try{
 			LinearLayout layout=(LinearLayout) getView().findViewById(R.id.FollowingNotFound);
 			layout.setVisibility(View.GONE);
 			TextView textView=(TextView) getView().findViewById(R.id.noFollowingyet);
-			textView.setText(getResources().getString(R.string.no_following));
+            if(getResources().getString(R.string.no_following) != "") {
+                textView.setText(getResources().getString(R.string.no_following));
+            }
 			textView.setVisibility(View.GONE);
 		}catch(NullPointerException exception){
 			exception.printStackTrace();
 		}
 	}
+
 	public void hideDataNotFound(){
 		try{
 			LinearLayout layout=(LinearLayout) getView().findViewById(R.id.itemNotFound);

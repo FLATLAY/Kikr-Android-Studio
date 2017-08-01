@@ -684,6 +684,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         inspirationTime.setText(CommonUtility.calculateTimeDiff(calServer, calLocal));
         getUsersList();
         commentEditText.addTextChangedListener(new CustomAutoCompleteTextChangedListener(mContext));
+        Log.w("FragmentInspDetail","1");
         adapter = new AutocompleteCustomArrayAdapter(mContext, R.layout.list_item, temp_usersList);
         commentEditText.setAdapter(adapter);
 
@@ -1009,6 +1010,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                     }
 //					Syso.info("temp_usersList :  "+temp_usersList);
                     adapter.notifyDataSetChanged();
+                    Log.w("FragmentInspDetail","2");
                     adapter = new AutocompleteCustomArrayAdapter(mContext,
                             R.layout.list_item, temp_usersList);
                     commentEditText.setAdapter(adapter);

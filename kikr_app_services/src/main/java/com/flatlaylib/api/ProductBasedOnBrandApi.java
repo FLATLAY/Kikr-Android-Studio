@@ -125,7 +125,7 @@ public class ProductBasedOnBrandApi extends AbsService{
 	
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>"+response);
+		Syso.info("In RegisterUserApi processResponse13>>"+response);
 		try {
 			ProductBasedOnBrandRes productBasedOnBrandRes = JsonUtils.fromJson(response, ProductBasedOnBrandRes.class);
 			if(productBasedOnBrandRes.getCode().equals(WebConstants.SUCCESS_CODE)){

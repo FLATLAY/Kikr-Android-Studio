@@ -85,7 +85,7 @@ public class SearchApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse43>>" + response);
 		try {
 			SearchRes userResponse = JsonUtils.fromJson(response,SearchRes.class);
 			if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {

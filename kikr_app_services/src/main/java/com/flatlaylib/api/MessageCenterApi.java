@@ -78,7 +78,7 @@ public class MessageCenterApi extends AbsService {
 
     @Override
     protected void processResponse(String response) {
-        Syso.info("In RegisterUserApi processResponse>>" + response);
+        Syso.info("In RegisterUserApi processResponse25>>" + response);
         try {
             FollowingKikrModel inspirationFeedRes = JsonUtils.fromJson(response, FollowingKikrModel.class);
             if (inspirationFeedRes.getCode().equals(Constants.WebConstants.SUCCESS_CODE)) {

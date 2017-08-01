@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -170,6 +171,7 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 		}
 		setDetails();
 		searchUserEditText.addTextChangedListener(new CustomAutoCompleteTextChangedListener(mContext));
+        Log.w("FragmentInspDetail","3");
 		adapter = new AutocompleteCustomArrayAdapter(mContext,R.layout.list_item, temp_usersList);
 		searchUserEditText.setAdapter(adapter);
 		searchUserEditText.setOnItemClickListener(new OnItemClickListener() {
@@ -479,6 +481,7 @@ public class FragmentInspirationImageTag extends BaseFragment implements View.On
 		}
 		adapter.notifyDataSetChanged();
 		Syso.info("12345678 Temp user list>>>>"+temp_usersList);
+        Log.w("FragmentInspDetail","4");
 		adapter = new AutocompleteCustomArrayAdapter(mContext,R.layout.list_item, temp_usersList);
 		temp_usersList.add(userInput);
 		temp_usersListId.add("0");

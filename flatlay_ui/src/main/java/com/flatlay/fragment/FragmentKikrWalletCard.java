@@ -39,7 +39,7 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.CardInfoRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
-import com.personagraph.api.PGAgent;
+
 
 import java.util.List;
 
@@ -76,8 +76,7 @@ public class FragmentKikrWalletCard extends BaseFragment implements OnClickListe
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-		if(CommonUtility.isOnline(mContext))
-			PGAgent.logEvent("DISCOVER_SCREEN_OPEND");
+
 		context = this.getActivity();
 		mainView = inflater.inflate(R.layout.kiker_wallet_cards, null);
 		setAnimation();

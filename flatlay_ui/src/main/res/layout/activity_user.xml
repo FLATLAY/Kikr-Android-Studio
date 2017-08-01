@@ -9,7 +9,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/profile_icon" />
 
     <LinearLayout
         android:layout_toRightOf="@+id/iv_user"

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -1135,6 +1136,7 @@ public class CustomizeFeedFragment extends BaseFragment implements View.OnClickL
 
 
     public void getUserList(String gender) {
+        Log.w("CustomizeFeedFragment","getUserList()");
         isLoading = !isLoading;
         mProgressBarDialog = new ProgressBarDialog(mContext);
         if (pagenum > 0) {
@@ -1145,11 +1147,13 @@ public class CustomizeFeedFragment extends BaseFragment implements View.OnClickL
 
             @Override
             public void handleOnSuccess(Object object) {
+                Log.w("CustomizeFeedFragment","handleOnSuccess()");
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
                 else {
                     hideFotter();
                 }
+                Log.w("CustomizeFeedFragment","handleOnSuccess() 2");
                 hideProductNotFound();
                 isLoading = !isLoading;
                 Syso.info("In handleOnSuccess>>" + object);
@@ -1159,6 +1163,7 @@ public class CustomizeFeedFragment extends BaseFragment implements View.OnClickL
                     isLoading = true;
                 }
                 if (interestList.size() == 0 && isFirstTime) {
+                    Log.w("CustomizeFeedFragment","handleOnSuccess() 3");
                     hideProductNotFound();
                     noDataGalGuy.setVisibility(View.VISIBLE);
                     if (interestSectionList.getHeaderViewsCount() == 0)
@@ -1167,6 +1172,7 @@ public class CustomizeFeedFragment extends BaseFragment implements View.OnClickL
                     interestSectionList.setAdapter(interestPeopleListAdapter);
                     showProductNotFound();
                 } else if (interestList.size() > 0 && isFirstTime) {
+                    Log.w("CustomizeFeedFragment","handleOnSuccess() 4");
                     hideProductNotFound();
                     noDataGalGuy.setVisibility(View.GONE);
                     if (interestSectionList.getHeaderViewsCount() == 0)
@@ -1174,6 +1180,7 @@ public class CustomizeFeedFragment extends BaseFragment implements View.OnClickL
                     interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, interestList, fragmentFeedFragment);
                     interestSectionList.setAdapter(interestPeopleListAdapter);
                 } else {
+                    Log.w("CustomizeFeedFragment","handleOnSuccess() 5");
                     if (interestSectionList.getHeaderViewsCount() == 0)
                         interestSectionList.removeHeaderView(peopleHeaderView);
                     interestPeopleListAdapter.setData(interestList);

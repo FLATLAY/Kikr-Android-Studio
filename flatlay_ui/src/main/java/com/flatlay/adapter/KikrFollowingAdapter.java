@@ -106,9 +106,14 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
 //            viewHolder.user_following.setText(first);
 //            viewHolder.followingsubstring.setText(rest);
             viewHolder.followingsubstring.setText(Html.fromHtml("<b><font color=\"#000000\" size=\"9\"  >" + userName + "</font></b>" + "<font color=\"#777777\">" + "&nbsp;" + notitification + "</font>"));
-            Picasso.with(context).load(followingList.get(i).getImg()).into(viewHolder.userimagepic);
-       //     Picasso.with(context).load(followingList.get(i).getImg()).into(viewHolder.follower_user_image);
-           // viewHolder.week.setText( CommonUtility.calculateTimeDiff(calServer, calLocal));
+
+            if(followingList.get(i).getImg().equals(""))
+            {
+                Picasso.with(context).load(R.drawable.profile_icon).into(viewHolder.userimagepic);
+            }
+            else{
+                Picasso.with(context).load(followingList.get(i).getImg()).into(viewHolder.userimagepic);
+            }
 
             if(commentinsp.equals(followingList.get(i).getType()))
             {

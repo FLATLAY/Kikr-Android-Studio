@@ -1,5 +1,7 @@
 package com.flatlaylib.api;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.flatlaylib.db.UserPreference;
@@ -61,7 +63,7 @@ public class RegisterUserApi extends AbsService {
     }
 
     public void registerViaSocial(String social, String id, String gender, String phone_model, String device_token, String current_screen, String device_type, String device_id) {
-
+        Log.w("RegisterUserApi","registerViaSocial()");
         this.METHOD_NAME = WebConstants.HOST_FILE + "registerviasocial";
         requestType = WebConstants.HTTP_METHOD_POST;
 
@@ -82,7 +84,7 @@ public class RegisterUserApi extends AbsService {
     }
 
     public void registerViaFbSocial(String email,String social, String id, String gender, String phone_model, String device_token, String current_screen, String device_type, String device_id) {
-
+        Log.w("RegisterUserApi","registerViaFbSocial()");
         this.METHOD_NAME = WebConstants.HOST_FILE + "registerviasocial";
         requestType = WebConstants.HTTP_METHOD_POST;
 
@@ -190,10 +192,11 @@ public class RegisterUserApi extends AbsService {
 
     @Override
     protected void processResponse(String response) {
-        Syso.info("In RegisterUserApi processResponse>>" + response);
+        Syso.info("In RegisterUserApi processResponse6>>" + response);
         try {
             RegisterUserResponse userResponse = JsonUtils.fromJson(response, RegisterUserResponse.class);
             if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {
+                Log.w("RegisterUserApi","processResponse 1");
                 isValidResponse = true;
 //                String userId = userResponse.getId();
 //                String token = userResponse.gettoken();
@@ -203,9 +206,11 @@ public class RegisterUserApi extends AbsService {
             }
             serviceResponse = userResponse;
         } catch (JsonParseException e) {
+            Log.w("RegisterUserApi","processResponse 2");
             Syso.error(e);
             isValidResponse = false;
         } catch (NullPointerException e) {
+            Log.w("RegisterUserApi","processResponse 3");
             Syso.error(e);
             isValidResponse = false;
         }

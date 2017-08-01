@@ -100,7 +100,7 @@ public class InstagramLoginActivity extends Activity {
 //			AnimateFirstDisplayListener animate  = new AnimateFirstDisplayListener();
 //			
 //			imageLoader.displayImage(instagramUser.profilPicture, userIv, animate); 
-			CommonUtility.setImage(this, instagramUser.profilPicture, userIv, R.drawable.dum_user);
+			CommonUtility.setImage(this, instagramUser.profilPicture, userIv, R.drawable.profile_icon);
 			
 			new DownloadTask().execute();
 			

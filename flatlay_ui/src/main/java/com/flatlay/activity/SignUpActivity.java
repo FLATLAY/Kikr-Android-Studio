@@ -29,7 +29,6 @@ import com.flatlaylib.service.res.RegisterUserResponse;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.DeviceUtils;
 import com.flatlaylib.utils.Syso;
-import com.personagraph.api.PGAgent;
 
 public class SignUpActivity extends BaseActivity implements OnClickListener, OnKeyListener ,ServiceCallback{
 	private ImageView mBackArrowImageView;
@@ -62,8 +61,6 @@ public class SignUpActivity extends BaseActivity implements OnClickListener, OnK
 			goBack();
 			break;
 		case R.id.nextButton:
-			if(CommonUtility.isOnline(context))
-			PGAgent.logEvent("SIGNUP_VIA_EMAIL_NEXT_CLICKED");
 			CommonUtility.hideSoftKeyboard(context);
 			validateUserInput();
 			break;

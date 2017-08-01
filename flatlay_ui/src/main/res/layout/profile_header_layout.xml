@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#5EE2CC"
+    android:background="#000000"
     android:layout_height="220dp">
 
     <ImageView
@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:src="@drawable/flatlay_profile_bg_gradient_rect" />
+         />
 
     <LinearLayout
         android:id="@+id/centerLayout"
@@ -26,8 +26,9 @@
             android:layout_width="@dimen/addBank_image_size"
             android:layout_height="@dimen/addBank_image_size"
             android:layout_marginBottom="5dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/dum_user" />
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/profile_icon" />
 
         <TextView
             android:id="@+id/user_profile_name"
@@ -35,7 +36,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/user_profile_image"
             android:layout_centerHorizontal="true"
-            android:text="User Name"
             android:textColor="@color/white"
             android:textSize="@dimen/medium_text_size"
             android:textStyle="bold" />

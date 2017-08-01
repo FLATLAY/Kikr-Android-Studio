@@ -98,7 +98,7 @@ public class CategoryListApi extends AbsService{
 	
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>"+response);
+		Syso.info("In RegisterUserApi processResponse45>>"+response);
 		try {
 			CategoryRes categoryRes = JsonUtils.fromJson(response, CategoryRes.class);
 			if(categoryRes.getCode().equals(WebConstants.SUCCESS_CODE)){

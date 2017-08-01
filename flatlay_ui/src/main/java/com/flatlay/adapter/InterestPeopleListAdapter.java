@@ -98,7 +98,7 @@ public class InterestPeopleListAdapter extends BaseAdapter{
 		}else{
 			viewHolder.checkImageView.setVisibility(View.VISIBLE);
 		}
-		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.dum_user);
+		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.profile_icon);
 		convertView.setOnClickListener(new OnClickListener() {
 
 			@Override

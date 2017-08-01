@@ -134,7 +134,7 @@ public class ActivityApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse11>>" + response);
 		try {
 			ActivityRes activityRes = JsonUtils.fromJson(response,ActivityRes.class);
 			if (activityRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

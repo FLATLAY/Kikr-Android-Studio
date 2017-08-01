@@ -82,7 +82,7 @@ public class ConnectWithTwitterApi extends AbsService{
 	
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse57>>" + response);
 		try {
 			ConnectWithTwitterRes walletPinResponse = JsonUtils.fromJson(response, ConnectWithTwitterRes.class);
 			if (walletPinResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {

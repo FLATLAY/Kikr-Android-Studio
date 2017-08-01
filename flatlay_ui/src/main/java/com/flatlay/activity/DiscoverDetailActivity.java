@@ -16,7 +16,6 @@ import com.flatlay.googlewallet.CheckoutActivity;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
 import com.flatlaylib.bean.Product;
-import com.personagraph.api.PGAgent;
 
 public class DiscoverDetailActivity extends BaseActivity implements OnClickListener{
 	private Button mBuyButton; 
@@ -31,8 +30,6 @@ public class DiscoverDetailActivity extends BaseActivity implements OnClickListe
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		Log.w("Activity:","DiscoverDetailActivity");
-		if(CommonUtility.isOnline(context))
-			PGAgent.logEvent("PRODUCT_DETAIL_PAGE_OPEN");
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_discover_detail);
 		setDetails();

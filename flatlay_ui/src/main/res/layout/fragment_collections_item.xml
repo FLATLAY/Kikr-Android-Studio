@@ -99,7 +99,7 @@
                             android:layout_height="70dp"
 
                             android:scaleType="center"
-                            android:src="@drawable/dum_user"
+                            android:src="@drawable/profile_icon"
                             android:visibility="visible"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentLeft="true"

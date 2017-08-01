@@ -73,7 +73,7 @@ public class GetConnectedWithSocialApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse51>>" + response);
 		try {
 			GetConnectedWithSocialRes getConnectedWithSocialRes = JsonUtils.fromJson(response,GetConnectedWithSocialRes.class);
 			if (getConnectedWithSocialRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

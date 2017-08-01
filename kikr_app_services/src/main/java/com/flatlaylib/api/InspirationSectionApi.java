@@ -53,7 +53,7 @@ public class InspirationSectionApi extends AbsService {
 		builder.addTextBody("is_image",is_image);
 		builder.addTextBody("image_width",image_width);
 		builder.addTextBody("image_height",image_height);
-		
+		Log.w("InspirationSectionApi", "ALL DETAILS:"+image_height+":"+image_width);
 		Syso.info("wwwwwwwwwww >>>>"+taggedItem.getSelectedItemType());
 		Syso.info("wwwwwwwwwww >>>>"+taggedItem.getSelectedItemName());
 		Syso.info("wwwwwwwwwww >>>>"+taggedItem.getSelectedItem());
@@ -182,7 +182,7 @@ public class InspirationSectionApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse41>>" + response);
 		try {
 			InspirationRes inspirationRes = JsonUtils.fromJson(response,InspirationRes.class);
 			if (inspirationRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

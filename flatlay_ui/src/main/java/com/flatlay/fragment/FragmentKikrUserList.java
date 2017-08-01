@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -44,6 +45,7 @@ public class FragmentKikrUserList extends BaseFragment implements OnClickListene
 	}
 	
 	private void getFriendsList() {
+        Log.w("FragmentKikrUserList","getFriendsList()");
 		mProgressBarDialog = new ProgressBarDialog(mContext);
 		mProgressBarDialog.show();
 		

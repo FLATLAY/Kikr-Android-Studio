@@ -27,7 +27,6 @@ import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.ServiceCallback;
 import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.utils.Syso;
-import com.personagraph.api.PGAgent;
 
 public abstract class BaseActivity extends FragmentActivity {
 
@@ -93,7 +92,6 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        PGAgent.startSession(context);
     }
 
     @Override
@@ -109,7 +107,6 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        PGAgent.endSession(context);
     }
 
     @Override

@@ -99,7 +99,7 @@ public class FollowUserApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse58>>" + response);
 		try {
 			FollowUserRes followUserRes = JsonUtils.fromJson(response,FollowUserRes.class);
 			if (followUserRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

@@ -336,7 +336,7 @@ public class TwoTapApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse2>>" + response);
 		try {
 			isValidResponse = true;
 			serviceResponse = response;

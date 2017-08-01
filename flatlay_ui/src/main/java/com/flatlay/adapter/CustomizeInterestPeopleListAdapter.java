@@ -24,6 +24,7 @@ import com.flatlay.ui.RoundImageView;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.bean.InterestSection;
 import com.flatlaylib.db.UserPreference;
+import com.squareup.picasso.Picasso;
 
 public class CustomizeInterestPeopleListAdapter extends BaseAdapter{
     private FragmentActivity mContext;
@@ -102,7 +103,10 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter{
         }else{
             viewHolder.follow_btn.setVisibility(View.VISIBLE);
         }
-        CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.dum_user);
+        //Picasso.with(mContext).load(R.mipmap.dum_user2).into(viewHolder.user_image);
+        CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.profile_icon);
+
+
         convertView.setOnClickListener(new OnClickListener() {
 
             @Override

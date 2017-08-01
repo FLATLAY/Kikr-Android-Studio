@@ -1,8 +1,17 @@
-include ':libAndroidCrop2', ':pdk2', ':ucrop', ':squarecamera', ':photo-crop-library'
+include ':libAndroidCrop2', ':pdk2', ':ucrop', ':squarecamera', ':photo-crop-library', ':facebook', ':instagram', ':ASNECore', ':twitter', ':linkedin'
 include ':kikr_app_services'
 include ':kikr_menudrawer_lib'
 include ':instagram_library'
 include ':main'
 include ':flatlay_ui'
+include ':ASNECore'
+include ':facebook'
+include ':twitter'
+include ':instagram'
+include ':linkedin'
+
+
+
+
 project(':libAndroidCrop2').projectDir = new File('libAndroidCrop')
 project(':pdk2').projectDir = new File('pdk')

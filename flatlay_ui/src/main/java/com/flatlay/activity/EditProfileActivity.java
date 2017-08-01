@@ -51,6 +51,8 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.EditProfileRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
@@ -184,7 +186,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         if (getIntent().hasExtra("profilePic")) {
             profilePic = getIntent().getStringExtra("profilePic");
             if (!TextUtils.isEmpty(profilePic)) {
-                CommonUtility.setImage(context, profilePic, user_profile_image, R.drawable.dum_user);
+                CommonUtility.setImage(context, profilePic, user_profile_image, R.drawable.profile_icon);
                 if (!from.equals(AppConstants.FROM_PROFILE))
                     needToUpdatePic = true;
             }
@@ -403,7 +405,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
             File file = new File(getFilesDir(), "Image"
                     + new Random().nextInt() + ".jpeg");
             FileOutputStream out = openFileOutput(file.getName(),
-                    Context.MODE_WORLD_READABLE);
+                    Context.MODE_PRIVATE);
             newBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
@@ -750,7 +752,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 needToUpdatePic = true;
                 mImageBitmap = null;
                 profilePic = user.getOriginalProfileImageURL();
-                CommonUtility.setImage(context, profilePic, user_profile_image, R.drawable.dum_user);
+                CommonUtility.setImage(context, profilePic, user_profile_image, R.drawable.profile_icon);
             } else {
                 AlertUtils.showToast(context, "Failed to connect with twitter. Please try again.");
             }
@@ -761,12 +763,19 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
     public void startCropActivity(@NonNull Uri uri) {
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
-        UCrop uCrop = UCrop.of(uri, mDestinationUri);
+       // UCrop uCrop = UCrop.of(uri, mDestinationUri);
 
-        uCrop = basisConfig(uCrop);
+        //uCrop = basisConfig(uCrop);
       // uCrop = advancedConfig(uCrop);
 
-        uCrop.start(context);
+        //uCrop.start(context);
+        CropImage.activity(uri)
+                .setRequestedSize(700, 700, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
+                //.setMaxCropResultSize(2000, 2000)
+                .setFixAspectRatio(true)
+                .setAspectRatio(1,1)
+                .setOutputUri(mDestinationUri)
+                .start(context);
     }
 
 

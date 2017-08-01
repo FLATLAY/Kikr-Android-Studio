@@ -77,7 +77,7 @@ public class DeletePostApi extends AbsService {
 
     @Override
     protected void processResponse(String response) {
-        Syso.info("In RegisterUserApi processResponse>>" + response);
+        Syso.info("In RegisterUserApi processResponse35>>" + response);
         try {
             JSONObject jsonObject=new JSONObject(response);
             String coderesponse=jsonObject.getString("code");

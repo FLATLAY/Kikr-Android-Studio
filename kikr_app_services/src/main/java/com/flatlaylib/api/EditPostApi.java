@@ -111,7 +111,7 @@ public class EditPostApi extends AbsService {
 
     @Override
     protected void processResponse(String response) {
-        Syso.info("In RegisterUserApi processResponse>>" + response);
+        Syso.info("In RegisterUserApi processResponse21>>" + response);
         try {
 
             ServerResponse serverResponse= JsonUtils.fromJson(response,ServerResponse.class);

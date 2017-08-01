@@ -65,7 +65,7 @@ public class GetUUIDApi extends AbsService{
 	
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>"+response);
+		Syso.info("In RegisterUserApi processResponse46>>"+response);
 		try {
 			GetUUIDRes uuidResponse = JsonUtils.fromJson(response, GetUUIDRes.class);
 			if(uuidResponse.getCode().equals(WebConstants.SUCCESS_CODE)){

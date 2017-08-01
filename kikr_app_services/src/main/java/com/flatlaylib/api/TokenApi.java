@@ -74,7 +74,7 @@ public class TokenApi extends AbsService{
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse38>>" + response);
 		try {
 			DealToken activityRes = JsonUtils.fromJson(response,DealToken.class);
 			if (TextUtils.isEmpty(activityRes.getError())) {

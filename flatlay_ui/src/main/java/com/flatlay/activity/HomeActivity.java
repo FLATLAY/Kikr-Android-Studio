@@ -156,15 +156,16 @@ import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.personagraph.api.PGAgent;
 import com.pinterest.android.pdk.PDKCallback;
 import com.pinterest.android.pdk.PDKClient;
 import com.pinterest.android.pdk.PDKException;
 import com.pinterest.android.pdk.PDKResponse;
 import com.pinterest.android.pdk.Utils;
 import com.soundcloud.android.crop.Crop;
-//import com.theartofdev.edmodo.cropper.CropImage;
-//import com.theartofdev.edmodo.cropper.CropImageView;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+
 import com.yalantis.ucrop.UCrop;
 
 
@@ -173,6 +174,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -245,6 +247,21 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
         UserPreference.getInstance().setCurrentScreen(Screen.HomeScreen);
 
+
+        // Branch Init
+        Branch.getInstance().initSession(new Branch.BranchReferralInitListener() {
+        // Branch Link Data
+        @Override
+        public void onInitFinished(JSONObject referringParams, BranchError error) {
+                 if (error == null) {
+                 Log.i("BRANCH SDK", referringParams.toString());
+                 } else {
+                  Log.i("BRANCH SDK", error.getMessage());
+                 }
+         }
+        }, this.getIntent().getData(), this);
+
+
         context = this;
         homeActivity = this;
         CommonUtility.printKeyHash(context);
@@ -288,11 +305,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
         if (getIntent().getStringExtra("profile_collection") != null) {
             addFragment(new FragmentProfileView(getIntent().getStringExtra("profile_collection"), "no"));
-        }
-        try {
-            PGAgent.shareExternalUserId(UserPreference.getInstance().getUserID());
-        } catch (Exception ex) {
-
         }
 
     }
@@ -490,6 +502,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 addFragment(new FragmentProfileView(UserPreference.getInstance().getUserID(), "yes"));
                 break;
             case R.id.upload_post_tab:
+                Log.w("HomeActivity","Clicked on Upload Post Tab");
                checkPermissions();
                 break;
             case R.id.message_tab:
@@ -659,10 +672,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         MarshmallowPermissions.CAMERA_PERMISSION_REQUEST_CODE);
             } else {
+                Log.w("HomeActivity","Here1");
                 startUploadPostSection();
+
             }
         } else
             startUploadPostSection();
+
     }
 
     public void fbLogIn() {
@@ -975,29 +991,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.w("HomeActivity","onActivityResult");
+        Log.w("HomeActivity","onActivityResult"+CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE);
 
         Log.e("home act", requestCode + "wefwe" + resultCode);
         if (requestCode == AppConstants.WALLETLIST && resultCode == RESULT_OK) {
             //Log.w("onActivityResultHA","1");
             loadFragment(new FragmentKikrWalletCard());
         }
-        /*
-        else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                Log.w("HomeActivity","Going to handleCropResult2"+resultUri);
-
-                handleCropResult2(data, resultUri);
-
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
-                handleCropError2(data);
-
-            }
-        }
-        */
         else if (requestCode == AppConstants.REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
             //Log.w("onActivityResultHA","2");
             String id = data.getStringExtra("id");
@@ -1060,8 +1060,24 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     resultCode, data);
         }
 
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            Log.w("onActivityResultHA","30");
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                Log.w("HomeActivity","Going to handleCropResult2"+resultUri);
+
+                handleCropResult2(data, resultUri);
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                handleCropError2(data);
+
+            }
+        }
+
         if (requestCode == UCrop.REQUEST_CROP) {
-            //Log.w("onActivityResultHA","8");
+            Log.w("onActivityResultHA","8");
             handleCropResult(data);
         }
         if (requestCode == UCrop.RESULT_ERROR) {
@@ -1071,7 +1087,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
 
         if (requestCode == Crop.REQUEST_CROP) {
-            //Log.w("onActivityResultHA","10");
+            Log.w("onActivityResultHA","10");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
                     resultCode, data);
@@ -1109,7 +1125,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 fragment.onActivityResult(requestCode, resultCode, data);
             }
         } else {
-            //Log.w("onActivityResultHA","15");
+            Log.w("onActivityResultHA","15");
 
             if (data != null) {
                 Uri dataUri = data.getData();
@@ -1543,8 +1559,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     Log.i("Branch", "Got a Branch URL 2 " + url);
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
-                    //intent.putExtra(Intent.EXTRA_SUBJECT,  "Check out this " + product.getProductname() + " on Kikr!");
                     String link = "Check out the " + product.getProductname() + " on #Flatlay  " + url;
+                    Log.w("link: ",""+link);
                     intent.putExtra(Intent.EXTRA_TEXT, link);
                     if (isOther)
                         startActivity(Intent.createChooser(intent, "Share"));
@@ -1567,7 +1583,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         BranchShortLinkBuilder shortUrlBuilder = new BranchShortLinkBuilder(this)
 
                 .addParameters("product_url", imageUrl);
-        //Log.w("temp","CREATING BRANCH LINK!");
+        Log.w("temp","CREATING BRANCH LINK!"+imageUrl);
+        Log.w("temp","CREATING BRANCH LINK!"+shareimagename);
+
         // Get URL Asynchronously
         shortUrlBuilder.generateShortUrl(new Branch.BranchLinkCreateListener() {
 
@@ -1591,15 +1609,21 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     }
                 } else {
                     Log.i("Branch", "Got a Branch URL 3 " + url);
+                    Log.w("shareimagename", "" + shareimagename);
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
-                    //intent.putExtra(Intent.EXTRA_SUBJECT,  "Check out this " + product.getProductname() + " on Kikr!");
                     String link = shareimagename;
                     intent.putExtra(Intent.EXTRA_TEXT, link);
-                    if (isOther)
+                    if (isOther) {
+                        Log.w("inside if", "inside if");
                         startActivity(Intent.createChooser(intent, "Share"));
+                    }
                     else {
+                        Log.w("inside else", "inside else");
 //							loginPinterest(link, url, product.getProductimageurl());
+                        Log.w("inside else", ""+link);
+                        Log.w("inside else", ""+url);
+                        Log.w("inside else", ""+imageUrl);
                         Intent i = new Intent(context, PinterestLoginActivity.class);
                         i.putExtra("link", link);
                         i.putExtra("link_url", url);
@@ -1638,7 +1662,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     Log.i("Branch", "Got a Branch URL 4 " + url);
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
-                    //intent.putExtra(Intent.EXTRA_SUBJECT,  "Check out this " + product.getProductname() + " on Kikr!");
+                    Log.w("Collection Name:",""+collectionname);
                     intent.putExtra(Intent.EXTRA_TEXT, "Check out the " + collectionname + " collections of " + UserPreference.getInstance().getUserName() + " on #FLATLAY " + url);
 
                     startActivity(Intent.createChooser(intent, "Share"));
@@ -2015,8 +2039,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         TextView textView = (TextView) findViewById(R.id.reloadTextView);
         footerLayout.setVisibility(View.GONE);
         textView.setVisibility(View.VISIBLE);
-        textView.setText(Html.fromHtml(getResources().getString(
-                R.string.no_internet)));
+        textView.setText(Html.fromHtml(getResources().getString(R.string.no_internet)));
         return textView;
     }
 
@@ -2708,6 +2731,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             @Override
             public void handleOnSuccess(Object object) {
                 mProgressBarDialog.dismiss();
+
                 Syso.info("In handleOnSuccess>>" + object);
             }
 
@@ -2734,82 +2758,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         });
     }
 
-//	public void followButtonStatus(){
-//		if(mContent instanceof FragmentCategories)
-//			((FragmentCategories) mContent).checkFollowAtLeastOne();
-//	}
-
-//
-//    public void loginPinterest(final String text,final String link,final String imageUrl){
-//        List scopes = new ArrayList<String>();
-//        scopes.add(PDKClient.PDKCLIENT_PERMISSION_READ_PUBLIC);
-//        scopes.add(PDKClient.PDKCLIENT_PERMISSION_WRITE_PUBLIC);
-//		isFromPinterest = true;
-//
-//        PDKClient.getInstance().login(this, scopes, new PDKCallback() {
-//			@Override
-//			public void onSuccess(PDKResponse response) {
-//				Log.d(getClass().getName(), response.getData().toString());
-//				//user logged in, use response.getUser() to get PDKUser object
-//				Syso.info("123456789 >>> " + response.getUser().getFirstName() + "," + response.getUser().getUsername());
-//				Syso.info("123456789 board UId >>> " + response.getBoard().getUid());
-//				getBoardList(text, link, imageUrl);
-//			}
-//
-//			@Override
-//			public void onFailure(PDKException exception) {
-//				Log.e(getClass().getName(), exception.getDetailMessage());
-//				AlertUtils.showToast(context, exception.getDetailMessage());
-//			}
-//		});
-//    }
-//    private static final String BOARD_FIELDS = "id,name,description,creator,image,counts,created_at";
-//    private void getBoardList(final String text,final String link,final String imageUrl){
-//        PDKClient.getInstance().getMyBoards(BOARD_FIELDS, new PDKCallback() {
-//            @Override
-//            public void onSuccess(PDKResponse response) {
-//                Syso.info("1234567890  2>>>>>>" + response.getBoardList().get(0).getName());
-//                Syso.info("1234567890  2>>>>>>" + response.getBoardList().get(0).getUid());
-////               	onSavePin(imageUrl, response.getBoardList().get(0).getUid(), text, link);
-//				if(response.getBoardList()!=null&&response.getBoardList().size()>0) {
-//					Syso.info("1234567890  2>>>>>> inside condition");
-//					PinterestBoardDialog boardDialog = new PinterestBoardDialog(context, response.getBoardList(), imageUrl, text, link);
-//					boardDialog.show();
-//				}else
-//					AlertUtils.showToast(context, "No board found, please create board first");
-//            }
-//
-//            @Override
-//            public void onFailure(PDKException exception) {
-//                Log.e(getClass().getName(), exception.getDetailMessage());
-//                Syso.info("12345678 >>> output" + exception.getDetailMessage());
-//				AlertUtils.showToast(context, exception.getDetailMessage());
-//            }
-//        });
-//    }
-//
-//    public void onSavePin(String imageUrl,String boardId,String text,String linkUrl) {
-//
-//        if (!Utils.isEmpty(text) &&!Utils.isEmpty(boardId) && !Utils.isEmpty(imageUrl)) {
-//            PDKClient.getInstance().createPin(text, boardId, imageUrl, linkUrl, new PDKCallback() {
-//                @Override
-//                public void onSuccess(PDKResponse response) {
-//                    Log.d(getClass().getName(), response.getData().toString());
-//                    Syso.info("12345678 >>> output" + response.getData().toString());
-//                    AlertUtils.showToast(context,"Shared Successfully");
-//                }
-//
-//                @Override
-//                public void onFailure(PDKException exception) {
-//                    Log.e(getClass().getName(), exception.getDetailMessage());
-//                    Syso.info("12345678 >>> output" + exception.getDetailMessage());
-//                    AlertUtils.showToast(context, exception.getDetailMessage());
-//                }
-//            });
-//        } else {
-//            Toast.makeText(this, "Required fields cannot be empty", Toast.LENGTH_SHORT).show();
-//        }
-//    }
     //  cropping functions
 
     private Uri mDestinationUri;
@@ -2821,18 +2769,41 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         String filePath = Environment.getExternalStorageDirectory()
                 + "/temporary_holder.jpg";
 
-        Log.w("startCropActHA","****2: "+filePath);
+        Log.w("startCropActHA","****2: "+uri.toString());
+
+        /*
         UCrop uCrop = UCrop.of(uri, mDestinationUri);
         uCrop = basisConfig(uCrop);
         uCrop = advancedConfig(uCrop);
-        uCrop.withMaxResultSize(3000,3000);
+        uCrop.withMaxResultSize(500,500);
         uCrop.start(context);
-
-        /*
-        //Trying new cropping library
-        CropImage.activity(uri)
-                 .start(context);
         */
+
+        CropImage.activity(uri)
+                .setRequestedSize(800, 800, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
+                //.setMaxCropResultSize(2000, 2000)
+                .setFixAspectRatio(true)
+                .setAspectRatio(1,1)
+                .setAllowCounterRotation(true)
+                .setAllowRotation(true)
+                .setOutputUri(mDestinationUri)
+                .start(context);
+
+    }
+
+    public void startCropActivityForMedia(@NonNull Uri uri) {
+        Log.w("HomeActivity","startCropActivityForMedia()");
+        mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
+        CropImage.activity(uri)
+                .setRequestedSize(700, 700, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
+                //.setMaxCropResultSize(2000, 2000)
+                .setFixAspectRatio(true)
+                .setAllowCounterRotation(true)
+                .setAllowRotation(true)
+                .setAspectRatio(1,1)
+                .setOutputUri(mDestinationUri)
+                .start(context);
+
     }
 
     private UCrop basisConfig(@NonNull UCrop uCrop) {
@@ -2852,20 +2823,17 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
 
     private UCrop advancedConfig(@NonNull UCrop uCrop) {
+
         UCrop.Options options = new UCrop.Options();
-
-
         options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
-
         options.setCompressionQuality(100);
-
         options.setHideBottomControls(false);
-
         options.setFreeStyleCropEnabled(true);
         options.setMaxBitmapSize(500);
 
         return uCrop.withOptions(options);
     }
+
 
     private void handleCropResult(@NonNull Intent result) {
 
@@ -2884,25 +2852,18 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 //        }
     }
 
-    /*
+
     private void handleCropResult2(@NonNull Intent result, Uri resultUri) {
 
         if (result != null) {
             Log.w("HomeActivity","handleCropResult2()");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-
             ((FragmentPostUploadTab) fragment).onActivityResult(CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE, RESULT_OK
                     , result);
         } else
             AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
-//        final Uri resultUri = UCrop.getOutput(result);
-//        if (resultUri != null) {
-//            ResultActivity.startWithUri(SampleActivity.this, resultUri);
-//        } else {
-//            Toast.makeText(SampleActivity.this, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show();
-//        }
     }
-    */
+
 
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
     private void handleCropError(@NonNull Intent result) {

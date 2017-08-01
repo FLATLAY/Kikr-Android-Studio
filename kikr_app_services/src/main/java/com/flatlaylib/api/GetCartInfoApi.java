@@ -72,7 +72,7 @@ public class GetCartInfoApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse3>>" + response);
 		try {
 			GetCartInfoRes userResponse = JsonUtils.fromJson(response,GetCartInfoRes.class);
 			if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {

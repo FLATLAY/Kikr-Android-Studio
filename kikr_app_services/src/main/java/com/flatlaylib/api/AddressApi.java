@@ -125,7 +125,7 @@ public class AddressApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse53>>" + response);
 		try {
 			AddressRes userResponse = JsonUtils.fromJson(response,AddressRes.class);
 			if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {

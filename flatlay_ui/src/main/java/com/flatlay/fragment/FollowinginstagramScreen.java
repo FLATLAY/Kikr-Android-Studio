@@ -106,77 +106,68 @@ public class FollowinginstagramScreen extends BaseFragment implements View.OnCli
 
     }
 
-
-
-
     private void getFollowingInstagramList() {
-        final MessageCenterApi messageCenterApi = new MessageCenterApi(new ServiceCallback() {
 
-            @Override
-            public void handleOnSuccess(Object object) {
-                Log.w("FIScreen","getFollowingInstagramList() Success");
+            final MessageCenterApi messageCenterApi = new MessageCenterApi(new ServiceCallback() {
+
+                @Override
+                public void handleOnSuccess(Object object) {
+                    Log.w("FIScreen", "getFollowingInstagramList() Success");
 //                if (mProgressBarDialog.isShowing())
 //                    mProgressBarDialog.dismiss();
-                Syso.info("In handleOnSuccess>>" + object);
+                    Syso.info("In handleOnSuccess>>" + object);
 
 
 //                String jsonResponseString  =  R.string.notification_response;
 //
-            //    String mystring = getResources().getString(R.string.notification_response);
+                    //    String mystring = getResources().getString(R.string.notification_response);
 
-                FollowingKikrModel followingKikrModel = (FollowingKikrModel) object;
-                followinglist.addAll(followingKikrModel.getData());
-                followinglist.size();
-                System.out.print("list"+followinglist);
-               // ArrayList<FollowingKikrModel> followingList = prepareData();
-                if (followinglist.size() == 0) {
-                    followerNotFound.setVisibility(View.VISIBLE);
-                    recyclerView.setVisibility(View.GONE);
-                    loadingTextView.setVisibility(View.GONE);
-                }
-                else {
-                    followerNotFound.setVisibility(View.GONE);
-                    loadingTextView.setVisibility(View.GONE);
-                    recyclerView.setVisibility(View.VISIBLE);
-                    for (int i = 0; i < followinglist.size(); i++) {
-                        Log.w("Here: ",followinglist.get(i).getMessage() + UserPreference.getInstance().getUserName());
+                    FollowingKikrModel followingKikrModel = (FollowingKikrModel) object;
+                    followinglist.addAll(followingKikrModel.getData());
+                    followinglist.size();
+                    System.out.print("list" + followinglist);
+                    // ArrayList<FollowingKikrModel> followingList = prepareData();
+                    if (followinglist.size() == 0) {
+                        followerNotFound.setVisibility(View.VISIBLE);
+                        recyclerView.setVisibility(View.GONE);
+                        loadingTextView.setVisibility(View.GONE);
+                    } else {
+                        followerNotFound.setVisibility(View.GONE);
+                        loadingTextView.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
+                        for (int i = 0; i < followinglist.size(); i++) {
+                            Log.w("Here: ", followinglist.get(i).getMessage() + UserPreference.getInstance().getUserName());
 
-                        String userString = followinglist.get(i).getMessage();
-                        String notificationType = followinglist.get(i).getType();
-                        String userName = "";
-                        if(userString.contains("commented") && notificationType.equals("commentinsp"))
-                        {
-                            userName = userString.split(" commented")[0];
-                        }
-                        else if(userString.contains("liked") && notificationType.equals("likeinsp"))
-                        {
-                            userName = userString.split(" liked")[0];
-                        }
-                        else if(userString.contains("following") && notificationType.equals("follow"))
-                        {
-                            userName = userString.split(" is following")[0];
-                        }
+                            String userString = followinglist.get(i).getMessage();
+                            String notificationType = followinglist.get(i).getType();
+                            String userName = "";
+                            if (userString.contains("commented") && notificationType.equals("commentinsp")) {
+                                userName = userString.split(" commented")[0];
+                            } else if (userString.contains("liked") && notificationType.equals("likeinsp")) {
+                                userName = userString.split(" liked")[0];
+                            } else if (userString.contains("following") && notificationType.equals("follow")) {
+                                userName = userString.split(" is following")[0];
+                            }
 
-                        if(!userName.equals(UserPreference.getInstance().getUserName()))
-                        {
-                            followinglistRefined.add(followinglist.get(i));
+                            if (!userName.equals(UserPreference.getInstance().getUserName())) {
+                                followinglistRefined.add(followinglist.get(i));
+                            }
                         }
+                        KikrFollowingAdapter adapter = new KikrFollowingAdapter(mContext, (ArrayList<FollowingKikrModel.DataBean>) followinglistRefined);
+                        recyclerView.setAdapter(adapter);
                     }
-                    KikrFollowingAdapter adapter = new KikrFollowingAdapter(mContext, (ArrayList<FollowingKikrModel.DataBean>) followinglistRefined);
-                    recyclerView.setAdapter(adapter);
+
                 }
 
-            }
+                @Override
+                public void handleOnFailure(ServiceException exception, Object object) {
+                    loadingTextView.setVisibility(View.GONE);
 
-            @Override
-            public void handleOnFailure(ServiceException exception, Object object) {
-                loadingTextView.setVisibility(View.GONE);
-
-            }
-        });
-        Log.w("FIScreen","getFollowingInstagramList() ");
-        messageCenterApi.followinginstagram("0", "1");
-        messageCenterApi.execute();
+                }
+            });
+            Log.w("FIScreen", "getFollowingInstagramList() ");
+            messageCenterApi.followinginstagram("0", "1");
+            messageCenterApi.execute();
 
 
     }
@@ -195,9 +186,9 @@ public class FollowinginstagramScreen extends BaseFragment implements View.OnCli
 
 
     private void showReloadOption() {
-//        showDataNotFound();
-//        TextView textView = getDataNotFound();
-//        Syso.info("text view>>" + textView);
+        showDataNotFound();
+        TextView textView = getDataNotFound();
+        Syso.info("text view>>" + textView);
 
     }
 

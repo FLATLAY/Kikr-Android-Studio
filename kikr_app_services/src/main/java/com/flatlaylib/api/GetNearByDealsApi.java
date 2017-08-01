@@ -76,7 +76,7 @@ public class GetNearByDealsApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse32>>" + response);
 		try {
 			NearByDealsRes nearByDealsRes = JsonUtils.fromJson(response,NearByDealsRes.class);
 			if (nearByDealsRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

@@ -93,7 +93,7 @@ public class FilterProductApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse40>>" + response);
 		try {
 			ProductBasedOnBrandRes brandRes = JsonUtils.fromJson(response,ProductBasedOnBrandRes.class);
 			if (brandRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

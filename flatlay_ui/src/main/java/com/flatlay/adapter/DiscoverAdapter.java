@@ -120,7 +120,7 @@ public class DiscoverAdapter extends BaseAdapter {
             } else
                 CommonUtility.setImage(mContext, getItem(position).getItem_image(), viewholder.brand_image, R.drawable.profile_bg);
 
-            CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.user_profile_image, R.drawable.dum_user);
+            CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.user_profile_image, R.drawable.profile_icon);
         } else {
             CommonUtility.setImage(mContext, getItem(position).getItem_image(), viewholder.brand_image, R.drawable.profile_bg);
         }

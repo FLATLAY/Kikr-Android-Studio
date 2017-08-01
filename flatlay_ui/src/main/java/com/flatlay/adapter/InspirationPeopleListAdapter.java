@@ -79,7 +79,7 @@ public class InspirationPeopleListAdapter extends BaseAdapter{
 		}else{
 			viewHolder.checkImageView.setImageResource(R.drawable.ic_add_collection);
 		}
-		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.dum_user);
+		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.profile_icon);
 		convertView.setOnClickListener(new OnClickListener() {
 			
 			@Override

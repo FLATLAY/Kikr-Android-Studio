@@ -98,7 +98,7 @@ public class CardInfoApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse10>>" + response);
 		try {
 			CardInfoRes userResponse = JsonUtils.fromJson(response,CardInfoRes.class);
 			if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {

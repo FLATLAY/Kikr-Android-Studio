@@ -67,7 +67,7 @@ public class BankListApi extends AbsService{
 	
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>"+response);
+		Syso.info("In RegisterUserApi processResponse47>>"+response);
 		try {
 			BankListRes bankListresponse = JsonUtils.fromJson(response, BankListRes.class);
 			if(bankListresponse.getCode().equals(WebConstants.SUCCESS_CODE)){

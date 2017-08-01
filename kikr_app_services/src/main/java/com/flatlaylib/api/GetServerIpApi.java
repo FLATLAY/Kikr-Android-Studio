@@ -78,7 +78,7 @@ public class GetServerIpApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse18>>" + response);
 		try {
 			ServerIpRes serverIpRes = JsonUtils.fromJson(response,ServerIpRes.class);
 			if (serverIpRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

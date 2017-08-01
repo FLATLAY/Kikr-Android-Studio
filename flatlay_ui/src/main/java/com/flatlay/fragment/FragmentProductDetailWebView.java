@@ -1,7 +1,10 @@
 package com.flatlay.fragment;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +19,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -80,6 +84,28 @@ public class FragmentProductDetailWebView extends BaseFragment implements OnClic
 	}
 	
 	private class MyWebViewClient extends WebViewClient {
+
+		@Override
+		public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+			final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+            builder.setMessage(R.string.notification_error_ssl_cert_invalid);
+			builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					handler.proceed();
+				}
+			});
+			builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					handler.cancel();
+				}
+			});
+			final AlertDialog dialog = builder.create();
+			dialog.show();
+		}
+
+
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			if (url.endsWith(".pdf"))

@@ -113,7 +113,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
         Log.d(LOG_TAG, "onCreate");
         setHasOptionsMenu(true);
 
-
     }
 
     @Override
@@ -262,7 +261,7 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
                             picUri=resizeBitmapFitXY(bmp.getWidth(),bmp.getHeight(),bmp);
                             //picUri = bitmapToUriConverter(BitmapFactory.decodeFile(String.valueOf(arrPath[position])));
                             //picUri = Uri.fromFile(new File(String.valueOf(arrPath[position])));
-                            ((HomeActivity) mContext).startCropActivity(picUri);
+                            ((HomeActivity) mContext).startCropActivityForMedia(picUri);
                             return null;
                         }
 
@@ -311,7 +310,7 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
             File file = new File(getActivity().getFilesDir(), "Image"
                     + new Random().nextInt() + ".jpeg");
             FileOutputStream out = mContext.openFileOutput(file.getName(),
-                    Context.MODE_WORLD_READABLE);
+                    Context.MODE_PRIVATE);
             background.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
@@ -340,7 +339,7 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
             File file = new File(getActivity().getFilesDir(), "Image"
                     + new Random().nextInt() + ".jpeg");
             FileOutputStream out = getActivity().openFileOutput(file.getName(),
-                    Context.MODE_WORLD_READABLE);
+                    Context.MODE_PRIVATE);
             newBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
@@ -731,10 +730,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
     }
 
     private int dipToPx(int sp) {
-
-
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, sp, getResources().getDisplayMetrics());
     }
-
-
 }

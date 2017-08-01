@@ -70,9 +70,9 @@ public class FragmentActivityPage extends BaseFragment implements OnClickListene
 		if (user != null) {
 			user_profile_name.setText(user.getUser_name());
 			if (!user.getProfile_pic().equalsIgnoreCase(""))
-				CommonUtility.setImage(mContext, user.getProfile_pic(),user_profile_image, R.drawable.dum_user);
+				CommonUtility.setImage(mContext, user.getProfile_pic(),user_profile_image, R.drawable.profile_icon);
 			if (!user.getBackground_pic().equalsIgnoreCase(""))
-				CommonUtility.setImage(mContext, user.getBackground_pic(),bgProfileLayout, R.drawable.dum_user);
+				CommonUtility.setImage(mContext, user.getBackground_pic(),bgProfileLayout, R.drawable.profile_icon);
 		}
 		month_name_heading.setText(month+" Activity");
 	}

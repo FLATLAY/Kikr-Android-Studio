@@ -24,7 +24,6 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.FeaturedTabApiRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
-import com.personagraph.api.PGAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +49,7 @@ public class FragmentFeatured extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (CommonUtility.isOnline(mContext))
-            PGAgent.logEvent("FEATURED_SCREEN_OPEND");
+
         fragmentFeatured = this;
         mainView = inflater.inflate(R.layout.fragment_featured, null);
         return mainView;

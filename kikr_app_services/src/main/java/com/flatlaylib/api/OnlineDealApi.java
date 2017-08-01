@@ -69,7 +69,7 @@ public class OnlineDealApi  extends AbsService{
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse15>>" + response);
 		try {
 			DealToken activityRes = JsonUtils.fromJson(response,DealToken.class);
 			if (TextUtils.isEmpty(activityRes.getError())) {

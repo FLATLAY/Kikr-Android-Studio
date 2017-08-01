@@ -65,7 +65,7 @@ public class FacebookTwitterFriendListAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		viewHolder.user_name.setText(getItem(position).getName());
-		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.dum_user);
+		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.profile_icon);
 		convertView.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

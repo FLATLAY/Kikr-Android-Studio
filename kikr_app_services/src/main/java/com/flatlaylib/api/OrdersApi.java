@@ -84,7 +84,7 @@ public class OrdersApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse29>>" + response);
 		try {
 			OrderRes orderRes = JsonUtils.fromJson(response,OrderRes.class);
 			if (orderRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

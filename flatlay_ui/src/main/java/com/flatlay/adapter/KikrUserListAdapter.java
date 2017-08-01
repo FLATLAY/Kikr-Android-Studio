@@ -80,7 +80,7 @@ public class KikrUserListAdapter extends BaseAdapter implements ServiceCallback 
 		} else {
 			viewHolder.user_name.setText("Unknown");
 		}
-		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.dum_user);
+		CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.profile_icon);
 		viewHolder.follow_btn.setOnClickListener(new OnClickListener() {
 			
 			@Override

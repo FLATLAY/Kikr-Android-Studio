@@ -84,7 +84,7 @@ public class TwitterOAuthView extends WebView
     public TwitterOAuthView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-
+        mContext=context;
         // Additional initialization.
         init();
     }
@@ -93,7 +93,7 @@ public class TwitterOAuthView extends WebView
     public TwitterOAuthView(Context context)
     {
         super(context);
-
+        mContext=context;
         // Additional initialization.
         init();
     }
@@ -508,13 +508,24 @@ public class TwitterOAuthView extends WebView
         {
 
             @Override
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
-            {
-                Log.e(TAG, "onReceivedError: [" + errorCode + "] " + description);
-
-                notifyAuthorization();
+            public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setMessage(R.string.notification_error_ssl_cert_invalid);
+                builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        handler.proceed();
+                    }
+                });
+                builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        handler.cancel();
+                    }
+                });
+                final AlertDialog dialog = builder.create();
+                dialog.show();
             }
-
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon)
@@ -531,7 +542,6 @@ public class TwitterOAuthView extends WebView
                     }
                 }
             }
-
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url)

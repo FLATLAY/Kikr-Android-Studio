@@ -71,7 +71,7 @@ public class LogoutApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse14>>" + response);
 		try {
 			CommonRes commonRes = JsonUtils.fromJson(response,CommonRes.class);
 			if (commonRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

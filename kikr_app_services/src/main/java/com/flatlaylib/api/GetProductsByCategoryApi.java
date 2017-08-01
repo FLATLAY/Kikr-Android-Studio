@@ -71,7 +71,7 @@ public class GetProductsByCategoryApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse28>>" + response);
 		try {
 			GetProductsByCategoryRes activityRes = JsonUtils.fromJson(response,GetProductsByCategoryRes.class);
 			if (activityRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

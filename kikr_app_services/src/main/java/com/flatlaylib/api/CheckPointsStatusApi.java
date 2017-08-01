@@ -83,7 +83,7 @@ public class CheckPointsStatusApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse49>>" + response);
 		try {
 			CheckPointStatusRes checkPointStatusRes = JsonUtils.fromJson(response,CheckPointStatusRes.class);
 			if (checkPointStatusRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

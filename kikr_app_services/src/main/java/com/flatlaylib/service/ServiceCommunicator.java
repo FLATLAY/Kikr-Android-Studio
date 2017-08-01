@@ -13,6 +13,10 @@ import com.flatlaylib.utils.JsonUtils;
 import com.flatlaylib.utils.StringUtils;
 import com.flatlaylib.utils.Syso;
 
+
+//import com.facebook.FacebookSdk;
+//import com.facebook.AccessToken;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
@@ -149,7 +153,8 @@ public class ServiceCommunicator {
                         } else {
                             Log.w("my-App","###################Fourth");
                             Syso.info(TAG + " RequestParams = ", service.getJsonRequest().toString());
-
+                            //FacebookSdk.sdkInitialize(this);
+                            //String accessToken = AccessToken.getCurrentAccessToken();
                             //Log.w("my-app","social_token"+service.getJsonRequest());
 
                             Object json = new JSONTokener(service.getJsonRequest()).nextValue();
@@ -171,10 +176,10 @@ public class ServiceCommunicator {
                             StringEntity se;
                             if (jObj.has("social_token"))
                             {
-                                String temp_token = jObj.getString("social_token");
-                                //Log.w("my-app", "social_token:" + temp_token);
-                                jObj.put("social_token", "EAACJtDlQuJ4BALu4uNO16mc4hbsVS0DZBtGdHyX7tjktZCTtfZBEbW8oUdflwsypguEK6nggh1gRcwpYZAPzYDuCiLR1DOXAZBVUZBCHQ4hL7DTaw0PZCUGc0gWslQEySslnOwVRmiRx3HPUaSsK5LJcqxzRBr950QZD");
-                                //Log.w("my-app", jObj.toString());
+                                //String temp_token = jObj.getString("social_token");
+                                //Log.w("ServiceCommunicator", "social_token:" + temp_token);
+                                //jObj.put("social_token", "EAACJtDlQuJ4BALu4uNO16mc4hbsVS0DZBtGdHyX7tjktZCTtfZBEbW8oUdflwsypguEK6nggh1gRcwpYZAPzYDuCiLR1DOXAZBVUZBCHQ4hL7DTaw0PZCUGc0gWslQEySslnOwVRmiRx3HPUaSsK5LJcqxzRBr950QZD");
+                                //Log.w("ServiceCommunicator", jObj.toString());
                                 //Adding till log statement
                                 JSONArray jsonArray = new JSONArray();
                                 jsonArray.put(jObj);

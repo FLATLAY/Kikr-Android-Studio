@@ -230,6 +230,8 @@ public class CommonUtility {
         return displayMetrics.heightPixels;
     }
 
+
+
     public static void setImage(Activity context, String url, ImageView imageView, int placeholder) {
 //		AQuery aQuery = new AQuery(context);
 //		Bitmap preset = BitmapFactory.decodeResource(context.getResources(), placeholder);
@@ -264,6 +266,11 @@ public class CommonUtility {
     public static int getDeviceWidthActivity(Activity context) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return displayMetrics.widthPixels;
+    }
+
+    public static int getDeviceHeightActivity(Activity context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return displayMetrics.heightPixels;
     }
 
     public static String getDateFormat(String dateStr) {

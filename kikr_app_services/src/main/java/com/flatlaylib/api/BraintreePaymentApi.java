@@ -86,7 +86,7 @@ public class BraintreePaymentApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse7>>" + response);
 		try {
 			BraintreePaymentRes braintreePaymentRes = JsonUtils.fromJson(response,BraintreePaymentRes.class);
 			if (braintreePaymentRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

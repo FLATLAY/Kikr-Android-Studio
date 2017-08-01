@@ -11,7 +11,6 @@ public class AppConstants {
     public static boolean isBubbleApiCall = true;
     public static int REQUEST_CODE_INSTAGRAM = 5555;
     public static final String APP_ID = "1";
-    public static final String PERSONAGRAPH_API_KEY = "1231:p61AxhMNtyHkIma6";
     public static final String MESSAGE = "Come check out Kikr - The shopping wallet that gives you exclusive access to deals, discounts & rewards you for sharing items you love. Pay less, earn more. Download at ";
     public static final String ANDROID_APP_URL = "http://goo.gl/fcEVWa";
     public static final String IOS_APP_URL = "http://goo.gl/VO6O6A";

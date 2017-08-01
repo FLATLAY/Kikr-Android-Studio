@@ -930,6 +930,14 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     private void validateInput() {
         Log.w("FragmentPUTag","validateInput()");
+        if(bmp == null)
+        {
+            Log.w("FragmentPUTag","NULL!");
+        }
+        else
+        {
+            Log.w("FragmentPUTag","NOT NULL!");
+        }
         description = descriptionEditText.getText().toString().trim();
         if (bmp == null && imageUrl == null && !isUpdate) { //If an image has been selected
             AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
@@ -956,7 +964,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                         }
                     } else {
                         progressbar.setVisibility(View.VISIBLE);
-                        Log.w("FragmentPUTag","Going in GetImage().execute();");
+                        Log.w("FragmentPUTag","Going in GetImage().execute(); **");
                         new GetImage().execute();
                     }
                 }
@@ -1141,6 +1149,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
             Log.w("FragmentPUTag","Image present");
             String width = bmp != null ? String.valueOf(bmp.getWidth()) : "";
             String height = bmp != null ? String.valueOf(bmp.getHeight()) : "";
+
             inspirationSectionApi.uploadImage(UserPreference.getInstance()
                             .getUserID(), image, "yes", description.trim(), taggedItem,
                     taggedProducts, width + ".000000", height + ".000000", imageUrl);
@@ -1211,9 +1220,16 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
         @Override
         protected void onPreExecute() {
+            if(bmp == null)
+            {
+                Log.w("FragmentPUTag","NULL!");
+            }
+            else
+            {
+                Log.w("FragmentPUTag","NOT NULL!");
+            }
             Log.w("FragmentPUTag","GetImage() onPreExecute()");
             imageUploadView.setImageBitmap(bmp);
-
             super.onPreExecute();
         }
 
@@ -1225,7 +1241,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
             if (isImage.equals("no")) {
                 return byteArray;
             } else {
-
                 return PictureUtils.getByteArray2(bmp);
             }
 
@@ -1235,7 +1250,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         protected void onPostExecute(byte[] result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-            Log.w("FragmentPUTag","Going in uploadInspiration()");
+            Log.w("FragmentPUTag","Going in uploadInspiration() 1");
             uploadInspiration(result);
         }
 
@@ -1267,7 +1282,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
             if (result != null) {
                 bmp = resizeBitmapFitXY(500, 500, result);
                 //bmp = result;
-                //imageUploadView.setImageBitmap(bmp);
+                imageUploadView.setImageBitmap(bmp);
             }
             if (mProgressBarDialog.isShowing())
                 mProgressBarDialog.dismiss();

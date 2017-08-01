@@ -54,7 +54,7 @@ public class ProductFeedApi extends AbsService{
 	
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>"+response);
+		Syso.info("In RegisterUserApi processResponse31>>"+response);
 		try {
 			ProductFeedRes productListResponse = JsonUtils.fromJson(response, ProductFeedRes.class);
 			if(productListResponse.getCode().equals(WebConstants.SUCCESS_CODE)){

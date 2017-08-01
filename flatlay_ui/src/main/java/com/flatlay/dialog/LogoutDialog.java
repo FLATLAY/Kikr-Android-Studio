@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.facebook.Session;
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.sessionstore.SessionStore;
@@ -77,10 +78,14 @@ public class LogoutDialog extends Dialog{
 					logoutUser();
 					UserPreference.getInstance().clearAllData();
 					HelpPreference.getInstance().clearAllData();
-					Session session = Session.getActiveSession();
-					if(session!=null)
-						 session.closeAndClearTokenInformation();
+
+					 AccessToken token = AccessToken.getCurrentAccessToken();
+					 if(token != null)
+					 {
+						 LoginManager.getInstance().logOut();
+					 }
 					SessionStore.resetTwitterLogin(mContext);
+
 					FavoriteDealsDAO dao = new FavoriteDealsDAO(DatabaseHelper.getDatabase());
 					dao.delete();
 

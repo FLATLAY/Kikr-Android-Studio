@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -819,6 +820,7 @@ public class FragmentTagList extends BaseFragment implements OnClickListener, Se
 	}
 
 	public void getUserList(String gender) {
+        Log.w("FragmentTagList","getUserList()");
 		isLoading=!isLoading;
 		mProgressBarDialog = new ProgressBarDialog(mContext);
 		if(pagenum>0)

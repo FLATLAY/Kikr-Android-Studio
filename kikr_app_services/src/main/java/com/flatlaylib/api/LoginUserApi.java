@@ -80,7 +80,7 @@ public class LoginUserApi extends AbsService {
 
     @Override
     protected void processResponse(String response) {
-        Syso.info("In RegisterUserApi processResponse>>" + response);
+        Syso.info("In RegisterUserApi processResponse8>>" + response);
         try {
             RegisterUserResponse userResponse = JsonUtils.fromJson(response, RegisterUserResponse.class);
             if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {

@@ -465,9 +465,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         return CameraInfo.CAMERA_FACING_BACK;
     }
 
-    /**
-     * Take a picture
-     */
+
     private void takePicture() {
         Log.w("CameraFragment","takePicture()");
         if (mIsSafeToTakePhoto) {
@@ -578,13 +576,12 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
             @Override
             protected Void doInBackground(Void... params) {
                 Bitmap image = BitmapFactory.decodeByteArray(data, 0, data.length);
-
                 image = rotatePicture(rotation, image);
                 //                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 //                image.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
                 //                String path = MediaStore.Images.Media.insertImage(mContext.getContentResolver(), image, "Title", null);
                 Uri url = resizeBitmapFitXY(image.getWidth(), image.getHeight(), image);
-                Log.w("Going to HomeActivity","startCropActivity()"+data.length);
+                Log.w("CameraFragment","Going into startCropActivity(): "+image.getHeight());
                 ((HomeActivity) getActivity()).startCropActivity(url);
                 return null;
             }
@@ -659,7 +656,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
 
             File file = new File(getActivity().getFilesDir(), "Image"
                     + new Random().nextInt() + ".jpeg");
-            FileOutputStream out = getActivity().openFileOutput(file.getName(), Context.MODE_WORLD_READABLE);
+            FileOutputStream out = getActivity().openFileOutput(file.getName(), Context.MODE_PRIVATE);
             background.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
@@ -682,7 +679,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
             File file = new File(getActivity().getFilesDir(), "Image"
                     + new Random().nextInt() + ".jpeg");
             FileOutputStream out = getActivity().openFileOutput(file.getName(),
-                    Context.MODE_WORLD_READABLE);
+                    Context.MODE_PRIVATE);
             mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();

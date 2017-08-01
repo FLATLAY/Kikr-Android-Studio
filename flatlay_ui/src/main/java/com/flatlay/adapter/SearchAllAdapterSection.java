@@ -108,7 +108,7 @@ public class SearchAllAdapterSection extends ArrayAdapter<Item> {
                 } else {
                     follow_btn.setVisibility(View.VISIBLE);
                 }
-                CommonUtility.setImage(mContext, item.getImg(), user_image, R.drawable.dum_user);
+                CommonUtility.setImage(mContext, item.getImg(), user_image, R.drawable.profile_icon);
                 v.setOnClickListener(new View.OnClickListener() {
 
                     @Override

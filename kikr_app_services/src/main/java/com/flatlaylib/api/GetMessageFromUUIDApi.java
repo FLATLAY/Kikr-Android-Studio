@@ -63,7 +63,7 @@ public class GetMessageFromUUIDApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse4>>" + response);
 		try {
 			GetMessageRes messageRes = JsonUtils.fromJson(response,GetMessageRes.class);
 			if (messageRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

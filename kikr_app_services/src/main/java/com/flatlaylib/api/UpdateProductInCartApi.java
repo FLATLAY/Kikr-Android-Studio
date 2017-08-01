@@ -100,7 +100,7 @@ public class UpdateProductInCartApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse12>>" + response);
 		try {
 			UpdateProductInCartRes updateProductInCartRes = JsonUtils.fromJson(response,UpdateProductInCartRes.class);
 			if (updateProductInCartRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

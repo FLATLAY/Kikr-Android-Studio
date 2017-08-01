@@ -97,9 +97,9 @@ public class FragmentActivityMonths extends BaseFragment implements OnClickListe
                 if (!TextUtils.isEmpty(activityRes.getUser_info().getUser_name()))
                     user_profile_name.setText(activityRes.getUser_info().getUser_name());
                 if (!TextUtils.isEmpty(activityRes.getUser_info().getProfile_pic()))
-                    CommonUtility.setImage(mContext, activityRes.getUser_info().getProfile_pic(), user_profile_image, R.drawable.dum_user);
+                    CommonUtility.setImage(mContext, activityRes.getUser_info().getProfile_pic(), user_profile_image, R.drawable.profile_icon);
                 if (!TextUtils.isEmpty(activityRes.getUser_info().getBackground_pic()))
-                    CommonUtility.setImage(mContext, activityRes.getUser_info().getBackground_pic(), bgProfileLayout, R.drawable.dum_user);
+                    CommonUtility.setImage(mContext, activityRes.getUser_info().getBackground_pic(), bgProfileLayout, R.drawable.profile_icon);
                 if (!TextUtils.isEmpty(activityRes.getTotal_payout()))
                     total_payout_text.setText("Total Activity = " + CommonUtility.getFormatedNum(activityRes.getTotal_payout() + " Credits"));
                 else

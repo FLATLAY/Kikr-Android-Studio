@@ -95,7 +95,7 @@ public class BrandListApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse52>>" + response);
 		try {
 			BrandListRes userResponse = JsonUtils.fromJson(response,BrandListRes.class);
 			if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {

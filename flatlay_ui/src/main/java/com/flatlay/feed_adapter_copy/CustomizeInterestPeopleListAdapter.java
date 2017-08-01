@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,6 +21,7 @@ import com.flatlay.ui.RoundImageView;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.bean.InterestSection;
 import com.flatlaylib.db.UserPreference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,7 +103,19 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter{
         }else{
             viewHolder.follow_btn.setVisibility(View.VISIBLE);
         }
-        CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.drawable.dum_user);
+        viewHolder.user_image.setVisibility(View.GONE);
+        //CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.user_image, R.mipmap.dum_user2);
+        viewHolder.user_image.setVisibility(View.VISIBLE);
+
+        Log.w("CIPLA:",""+getItem(position).getProfile_pic());
+
+        if (getItem(position).getProfile_pic().isEmpty()) {
+            viewHolder.user_image.setImageResource(R.drawable.profile_icon);
+        } else{
+            Picasso.with(mContext).load(getItem(position).getProfile_pic()).into(viewHolder.user_image);
+        }
+
+
         convertView.setOnClickListener(new OnClickListener() {
 
             @Override

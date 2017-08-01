@@ -16,8 +16,11 @@ import com.flatlay.activity.HomeActivity;
 import com.flatlay.fragment.FragmentInspirationDetail;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.bean.Inspiration;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import static com.flatlay.R.id.imageView;
 
 public class InspirationGridAdapter extends BaseAdapter{
 
@@ -64,9 +67,11 @@ public class InspirationGridAdapter extends BaseAdapter{
 			viewholder = (ViewHolder) convertView.getTag();
 		}
 		CommonUtility.setImage(mContext, getItem(position).getInspiration_image(), viewholder.inspirationImage, R.drawable.dum_list_item_product);
+		//Picasso.with(mContext).load(getItem(position).getInspiration_image()).transform(new RoundedTransformation(125, 4)).into(viewholder.inspirationImage);
 		convertView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				Log.w("InspirationGridAdapter","onClick()");
 				if (((HomeActivity) mContext).checkInternet()) {
 					addFragment(new FragmentInspirationDetail(getItem(position),true));
 				}

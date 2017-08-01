@@ -74,7 +74,7 @@ public class UpdateCurrentScreenApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse24>>" + response);
 		try {
 			UpdateCurrentScreenRes activityRes = JsonUtils.fromJson(response,UpdateCurrentScreenRes.class);
 			if (activityRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

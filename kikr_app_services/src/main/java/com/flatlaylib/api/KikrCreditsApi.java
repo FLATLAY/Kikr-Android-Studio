@@ -115,7 +115,7 @@ public class KikrCreditsApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse50>>" + response);
 		try {
 			KikrCreditsRes kikrCreditsRes = JsonUtils.fromJson(response,KikrCreditsRes.class);
 			if (kikrCreditsRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

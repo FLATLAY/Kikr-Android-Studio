@@ -112,7 +112,7 @@ public class FbTwFriendsApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse27>>" + response);
 		try {
 			FbTwFriendsRes fbTwFriendsRes = JsonUtils.fromJson(response,FbTwFriendsRes.class);
 			if (fbTwFriendsRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

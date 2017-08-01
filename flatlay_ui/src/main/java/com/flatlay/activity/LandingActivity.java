@@ -42,7 +42,6 @@ import com.flatlaylib.service.res.RegisterUserResponse;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.DeviceUtils;
 import com.flatlaylib.utils.Syso;
-import com.personagraph.api.PGAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +105,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
             imgOr.setVisibility(View.GONE);
             user_profile_name.setTypeface(null, Typeface.BOLD);
             user_profile_name.setTypeface(FontUtility.setProximanovaLight(this));
-            CommonUtility.setImage(context, referred_userprofilepic, user_profile_image, R.drawable.dum_user);
+            CommonUtility.setImage(context, referred_userprofilepic, user_profile_image, R.drawable.profile_icon);
             user_profile_name.setText(referred_username);
             earn250.setTypeface(FontUtility.setProximanovaLight(this));
             earn250.setVisibility(View.VISIBLE);
@@ -124,16 +123,12 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.emailButton:
-
-                if (CommonUtility.isOnline(context))
-                    PGAgent.logEvent("SIGNUP_VIA_EMAIL_CLICKED");
                 startActivity(SignUpActivity.class);
                 finish();
                 break;
             case R.id.facebookButton:
                 if (checkInternet()) {
                     isFromFacebook = true;
-                    PGAgent.logEvent("SIGNUP_VIA_FACEBOOK_CLICKED");
                     //Log.w("myApp", "Clicked here!");
                     social = UserPreference.FACEBOOK;
                     Intent i = new Intent(context, FbSignActivity.class);

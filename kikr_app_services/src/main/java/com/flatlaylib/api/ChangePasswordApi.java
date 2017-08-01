@@ -94,7 +94,7 @@ public class ChangePasswordApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse30>>" + response);
 		try {
 			ChangePasswordRes userResponse = JsonUtils.fromJson(response,ChangePasswordRes.class);
 			if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {

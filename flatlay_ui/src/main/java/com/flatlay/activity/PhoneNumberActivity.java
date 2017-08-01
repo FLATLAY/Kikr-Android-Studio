@@ -21,7 +21,6 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.RegisterUserResponse;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
-import com.personagraph.api.PGAgent;
 
 public class PhoneNumberActivity extends BaseActivity implements OnKeyListener {
 	private EditText mPhoneNumberEditText;
@@ -73,8 +72,6 @@ public class PhoneNumberActivity extends BaseActivity implements OnKeyListener {
 			if(number.length()==0){
 				AlertUtils.showToast(context, R.string.alert_phone_enter_number);
 			}else{
-				if(CommonUtility.isOnline(context))
-				PGAgent.logEvent("PHONE_NO_SUBMITTED");
 //				startActivity(PinAuthActivity.class);
 //				finish();
 				if(checkInternet())

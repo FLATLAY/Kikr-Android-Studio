@@ -140,7 +140,7 @@ public class EditProfileApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse44>>" + response);
 		try {
 			EditProfileRes activityRes = JsonUtils.fromJson(response,EditProfileRes.class);
 			if (activityRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

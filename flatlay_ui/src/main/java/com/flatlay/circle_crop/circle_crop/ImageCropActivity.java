@@ -434,7 +434,7 @@ public class ImageCropActivity extends AppCompatActivity {
 
 
             FileOutputStream out =openFileOutput(mFileTemp.getName(),
-                    Context.MODE_WORLD_READABLE);
+                    Context.MODE_PRIVATE);
             mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();

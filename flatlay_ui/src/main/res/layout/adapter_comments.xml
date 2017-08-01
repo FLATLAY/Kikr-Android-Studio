@@ -16,7 +16,7 @@
             android:layout_height="@dimen/inspiration_user_image"
             android:layout_margin="@dimen/padding_small"
             android:padding="@dimen/padding_small"
-            android:src="@drawable/dum_user" />
+            android:src="@drawable/profile_icon" />
 
 
         <LinearLayout

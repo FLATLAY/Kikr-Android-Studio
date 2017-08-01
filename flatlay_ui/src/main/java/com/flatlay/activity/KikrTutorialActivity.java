@@ -54,6 +54,7 @@ public class KikrTutorialActivity extends BaseActivity implements OnClickListene
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		Log.w("Activity","KikrTutorialActivity");
+        Branch.getAutoInstance(this);
 		CommonUtility.noTitleActivity(context);
 		UserPreference.getInstance().setCurrentScreen(Screen.CardScreen);
 		setContentView(R.layout.activity_kikr_tutorial);

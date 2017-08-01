@@ -86,7 +86,7 @@ public class CheckBrandStoreFollowStatusApi extends AbsService {
 
 	@Override
 	protected void processResponse(String response) {
-		Syso.info("In RegisterUserApi processResponse>>" + response);
+		Syso.info("In RegisterUserApi processResponse26>>" + response);
 		try {
 			CheckBrandStoreFollowStatusRes activityRes = JsonUtils.fromJson(response,CheckBrandStoreFollowStatusRes.class);
 			if (activityRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

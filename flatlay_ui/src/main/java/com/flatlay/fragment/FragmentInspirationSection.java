@@ -46,6 +46,7 @@ import com.flatlaylib.utils.Constants;
 import com.flatlaylib.utils.Syso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class FragmentInspirationSection extends BaseFragment implements OnClickListener, OnItemClickListener, ServiceCallback {
@@ -73,6 +74,7 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
     private List<ProfileCollectionList> collectionLists = new ArrayList<ProfileCollectionList>();
     public static boolean isPostUpload = false;
     boolean isFirstTimeFromMain=false;
+
 
     public FragmentInspirationSection(boolean isViewAll, String userId) {
 
@@ -246,9 +248,12 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
     public void initData() {
         if (checkInternet())
             getInspirationFeedList();
-        else
+        else {
+            Log.w("FragmentInspSection","showReloadOption()");
             showReloadOption();
+        }
     }
+
 
     @Override
     public void setData(Bundle bundle) {
@@ -338,7 +343,7 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
             inspirationAdapter = new InspirationAdapter(mContext, product_list, isViewAll, FragmentInspirationSection.this);
             inspirationList.setAdapter(inspirationAdapter);
             //Log.w("FragmentInspirationSec","8.2");
-            //inspirationAdapter.notifyDataSetChanged();
+            inspirationAdapter.notifyDataSetChanged();
             //Log.w("FragmentInspirationSec","after8.2");
 
         } else if (inspirationAdapter != null) {
@@ -385,6 +390,7 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
     private void showReloadOption() {
         showDataNotFound();
         TextView textView = getDataNotFound();
+        Log.w("showReloadOption","Text is: "+textView.getText().toString());
         Syso.info("text view>>" + textView);
         if (textView != null) {
             Syso.info("12233 inside text view text view>>" + textView);
@@ -397,6 +403,7 @@ public class FragmentInspirationSection extends BaseFragment implements OnClickL
                 }
             });
         }
+
     }
 
     protected void showReloadFotter() {

@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.facebook.Session;
+import com.facebook.AccessToken;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.activity.LandingActivity;
@@ -28,9 +30,6 @@ import net.londatiga.android.instagram.InstagramSession;
 
 import io.branch.referral.Branch;
 
-/**
- * Created by Tycho on 6/25/2016.
- */
 public class LogoutDialogWithTab extends Dialog {
 
     private TextView cancelTextView, okTextView;
@@ -52,6 +51,7 @@ public class LogoutDialogWithTab extends Dialog {
     }
 
     private void init() {
+        FacebookSdk.sdkInitialize(mContext);
         setContentView(R.layout.dialog_logout);
         setCancelable(true);
         WindowManager.LayoutParams lp = getWindow().getAttributes();
@@ -74,9 +74,12 @@ public class LogoutDialogWithTab extends Dialog {
                     logoutUser();
                     UserPreference.getInstance().clearAllData();
                     HelpPreference.getInstance().clearAllData();
-                    Session session = Session.getActiveSession();
-                    if (session != null)
-                        session.closeAndClearTokenInformation();
+
+                    AccessToken token = AccessToken.getCurrentAccessToken();
+                    if(token != null)
+                    {
+                        LoginManager.getInstance().logOut();
+                    }
                     SessionStore.resetTwitterLogin(mContext);
                     FavoriteDealsDAO dao = new FavoriteDealsDAO(DatabaseHelper.getDatabase());
                     dao.delete();

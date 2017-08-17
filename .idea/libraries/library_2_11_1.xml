@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="library-2.11.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/f59ac576958a66b8d8b63e6d930ebe73f11ccfa1/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/f59ac576958a66b8d8b63e6d930ebe73f11ccfa1/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.branch.sdk.android/library/2.11.1/1107b4e8e9f8b5c5ff4105e552c2e1ea6902539d/library-2.11.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

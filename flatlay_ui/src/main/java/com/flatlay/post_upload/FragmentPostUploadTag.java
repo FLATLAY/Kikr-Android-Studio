@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -44,6 +45,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 import com.github.gorbin.asne.core.SocialNetwork;
 import com.github.gorbin.asne.core.SocialNetworkManager;
 import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
@@ -127,6 +132,9 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     int networkId = 0;
     private PDKClient pdkClient;
 
+    private ShareDialog shareDialog;
+    private CallbackManager callbackManager;
+
     private List<ProfileCollectionList> collectionLists = new ArrayList<ProfileCollectionList>();
     private AdapterPostCollectionList collectionListAdapter;
 
@@ -171,7 +179,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     private CustomAutoCompleteView searchUserEditText;
     private List<InterestSection> list = new ArrayList<InterestSection>();
     private ArrayList<SearchUser> usersList = new ArrayList<SearchUser>();
-    //	private TextView textView;
+    // private TextView textView;
 
     private ArrayList<String> temp_usersList = new ArrayList<String>();
     private ArrayList<String> temp_usersListId = new ArrayList<String>();
@@ -180,9 +188,9 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     private float x = 0, y = 0;
     private RadioGroup tagRadioGroup;
     private RadioButton peopleBtn, storeBtn, brandBtn;
-    //	private String PEOPLE = "user";
-//	private String BRAND = "brand";
-//	private String STORE = "store";
+    // private String PEOPLE = "user";
+// private String BRAND = "brand";
+// private String STORE = "store";
     private String PRODUCT = "product";
     private String COLLECTION = "collection";
     private String isSelected;
@@ -272,6 +280,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     @Override
     public void initUI(Bundle savedInstanceState) {
         Log.w("FragmentPUTag","initUI");
+
         cab = this;
         mProgressBarDialog = new ProgressBarDialog(mContext);
         autoSuggestProduct = new AutoSuggestProduct(mContext);
@@ -380,6 +389,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
             }
         });
     }
+
 
     private void addProductToNewCollection(Product product) {
         Log.w("FragmentPUTag","addProductToNewCollection()");
@@ -930,14 +940,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     private void validateInput() {
         Log.w("FragmentPUTag","validateInput()");
-        if(bmp == null)
-        {
-            Log.w("FragmentPUTag","NULL!");
-        }
-        else
-        {
-            Log.w("FragmentPUTag","NOT NULL!");
-        }
         description = descriptionEditText.getText().toString().trim();
         if (bmp == null && imageUrl == null && !isUpdate) { //If an image has been selected
             AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
@@ -973,15 +975,87 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     private void sharePost() {
+
+        Log.w("FPUTag","sharePost()");
+
+        if(switchInstagram.isChecked()) {
+            postToInstagram();
+        }
+
+        if(switchFacebook.isChecked() || switchTwitter.isChecked()){
+            for (int i = 0; i < networkidarray.size(); i++) {
+                startProfile(networkidarray.get(i));
+            }
+        }
+
+        /*
         if (switchInstagram.isChecked() || switchTwitter.isChecked() || switchFacebook.isChecked()) {
             for (int i = 0; i < networkidarray.size(); i++) {
                 startProfile(networkidarray.get(i));
             }
-
         }
-        if (switchPinterest.isChecked())
-            onSavePin(imageServerUri, UserPreference.getInstance().getmPinterestBoardId(), descriptionEditText.getText().toString() + " " + SHARE_POST_LINK, imageServerUri);
+        */
+
+        if (switchPinterest.isChecked()) {
+            pintrestsharingimage();
+            onSavePin(mContext, imageServerUri, UserPreference.getInstance().getmPinterestBoardId(), descriptionEditText.getText().toString() + " " + SHARE_POST_LINK, imageServerUri);
+        }
     }
+
+    private void postToInstagram(){
+
+        Log.w("FragmentPUTag","shareToInstagram()"+imageUrl);
+        File media = new File(imageUrl);
+        Uri uri = Uri.fromFile(media);
+        String shareTEXT = descriptionEditText.getText().toString() + " " + SHARE_POST_LINK;
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("image/*");
+        shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.putExtra(Intent.EXTRA_TEXT,shareTEXT);
+        shareIntent.setPackage("com.instagram.android");
+        startActivity(Intent.createChooser(shareIntent, "Share to"));
+
+    }
+
+
+    int sucesssharecount = 0;
+
+    private void startProfile(final int networkId) {
+        Log.w("FragmentPUTag","startProfile");
+
+        String shareTEXT = descriptionEditText.getText().toString() + " " + SHARE_POST_LINK;
+        socialNetwork = FragmentPostUploadTag.mSocialNetworkManager.getSocialNetwork(networkId);
+        socialNetwork.requestCurrentPerson();
+        socialNetwork.requestPostPhoto(new File(imageUrl), shareTEXT, new OnPostingCompleteListener() {
+            @Override
+            public void onPostSuccessfully(int socialNetworkID) {
+                Log.w("FragmentPUTag", "You Posted Photo : " + networkId);
+                sucesssharecount++;
+                if (networkidarray.size() == sucesssharecount) {
+                    if (mProgressBarDialog.isShowing())
+                        mProgressBarDialog.dismiss();
+                    if (progressbar.getVisibility() != View.VISIBLE)
+                        progressbar.setVisibility(View.VISIBLE);
+                    Toast.makeText(getActivity(), "Image posted successfully", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onError(int socialNetworkID, String requestID, String errorMessage, Object data) {
+
+                if (mProgressBarDialog.isShowing())
+                    mProgressBarDialog.dismiss();
+                if (progressbar.getVisibility() != View.VISIBLE)
+                    progressbar.setVisibility(View.VISIBLE);
+                Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+    }
+
 
     private void createNewCollection() {
         final AddCollectionApi collectionApi = new AddCollectionApi(new ServiceCallback() {
@@ -1220,14 +1294,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
         @Override
         protected void onPreExecute() {
-            if(bmp == null)
-            {
-                Log.w("FragmentPUTag","NULL!");
-            }
-            else
-            {
-                Log.w("FragmentPUTag","NOT NULL!");
-            }
             Log.w("FragmentPUTag","GetImage() onPreExecute()");
             imageUploadView.setImageBitmap(bmp);
             super.onPreExecute();
@@ -1390,6 +1456,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     }
 
     private void callsocialsharing() {
+        Log.w("FragmentPUTag","callsocialsharing");
         //Get Keys for initiate SocialNetworks
         String TWITTER_CONSUMER_KEY = getActivity().getString(R.string.twitter_consumer_key);
         String TWITTER_CONSUMER_SECRET = getActivity().getString(R.string.twitter_consumer_secret);
@@ -1487,11 +1554,10 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
             }
         } else
             setShareClickable(true);
-
-
     }
 
     public void checkedSocialSharingLogin() {
+        Log.w("FragmentPUTag","checkedSocialSharingLogin");
         networkidarray.clear();
         if (UserPreference.getInstance().getmIsFacebookSignedIn()) {
             networkId = FacebookSocialNetwork.ID;
@@ -1511,7 +1577,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
             switchTwitter.setChecked(true);
             twitter.setImageResource(R.drawable.twittergreenicon);
             twittertext.setTextColor(Color.parseColor("#34BDC0"));
-
         } else {
             switchTwitter.setChecked(false);
             twitter.setImageResource(R.drawable.twitter);
@@ -1519,12 +1584,14 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         }
 
         if (UserPreference.getInstance().getmIsInstagramSignedIn()) {
+            Log.w("FragmentPUTag","Instagram Signed In");
             networkId = InstagramSocialNetwork.ID;
             switchInstagram.setChecked(true);
-            networkidarray.add(networkId);
+            //networkidarray.add(networkId);
             instagram.setImageResource(R.drawable.ig_selected);
             instagramtext.setTextColor(Color.parseColor("#34BDC0"));
         } else {
+            Log.w("FragmentPUTag","Instagram Not Signed In");
             switchInstagram.setChecked(false);
             instagram.setImageResource(R.drawable.instagram);
             instagramtext.setTextColor(Color.parseColor("#979797"));
@@ -1550,18 +1617,21 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                 if (isChecked && !UserPreference.getInstance().getmIsFacebookSignedIn()) {
                     switchFacebook.setChecked(false);
                     networkId = FacebookSocialNetwork.ID;
-
                     callSocialSharing();
 
                 } else if (!isChecked) {
+                    networkId = FacebookSocialNetwork.ID;
+                    if(networkidarray.contains(networkId)) {
+                        networkidarray.remove(new Integer(networkId));
+                    }
                     facebook.setImageResource(R.drawable.facebook);
                     facebooktext.setTextColor(Color.parseColor("#979797"));
                 } else if (isChecked) {
                     facebook.setImageResource(R.drawable.fb_selected);
                     facebooktext.setTextColor(Color.parseColor("#34BDC0"));
                 }
-
                 break;
+
             case R.id.switchtwitter:
 
                 if (isChecked && !UserPreference.getInstance().getmIsTwitterSignedIn()) {
@@ -1580,24 +1650,27 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
                 break;
             case R.id.switchInstagram:
-
+                Log.w("FragmentPUTag","switchInstagram");
                 if (isChecked && !UserPreference.getInstance().getmIsInstagramSignedIn()) {
                     switchInstagram.setChecked(false);
                     if (((HomeActivity) mContext).appInstalledOrNot("com.instagram.android")) {
+
                         networkId = InstagramSocialNetwork.ID;
-                        switchInstagram.setChecked(false);
-//                        callSocialSharing();
-//                        networkId = InstagramSocialNetwork.ID;
-//                        switchInstagram.setChecked(true);
-//                        networkidarray.add(networkId);
-//                        instagram.setImageResource(R.drawable.ig_selected);
-//                        instagramtext.setTextColor(Color.parseColor("#34BDC0"));
+                        callSocialSharing();
+                        switchInstagram.setChecked(true);
+
+                        instagram.setImageResource(R.drawable.ig_selected);
+                        instagramtext.setTextColor(Color.parseColor("#34BDC0"));
                     } else {
                         RedirectToPlayStore redirectToPlayStore = new RedirectToPlayStore(mContext, "instagram");
                         redirectToPlayStore.show();
                     }
 
                 } else if (!isChecked) {
+                    networkId = InstagramSocialNetwork.ID;
+                    if(networkidarray.contains(networkId)) {
+                        networkidarray.remove(new Integer(networkId));
+                    }
                     instagram.setImageResource(R.drawable.instagram);
                     instagramtext.setTextColor(Color.parseColor("#979797"));
                 } else if (isChecked) {
@@ -1606,20 +1679,29 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                 }
 
                 break;
-            case R.id.switchPinterest:
 
+            case R.id.switchPinterest:
                 if (isChecked && !UserPreference.getInstance().getmIsPinterestSignedIn()) {
+                    Log.w("FragmentPUTag","switchpinterest 1");
                     switchPinterest.setChecked(false);
-                    if (((HomeActivity) mContext).appInstalledOrNot("com.pinterest"))
+                    if (((HomeActivity) mContext).appInstalledOrNot("com.pinterest")) {
+                        Log.w("FragmentPUTag","switchpinterest 2");
                         pintrestsharingimage();
+                        switchPinterest.setChecked(true);
+                        pintrest.setImageResource(R.drawable.pin_selected);
+                        pintresttext.setTextColor(Color.parseColor("#34BDC0"));
+                    }
                     else {
+                        Log.w("FragmentPUTag","switchpinterest 3");
                         RedirectToPlayStore redirectToPlayStore = new RedirectToPlayStore(mContext, "pinterest");
                         redirectToPlayStore.show();
                     }
                 } else if (!isChecked) {
+                    Log.w("FragmentPUTag","switchpinterest 4");
                     pintrest.setImageResource(R.drawable.pinterest);
                     pintresttext.setTextColor(Color.parseColor("#979797"));
                 } else if (isChecked) {
+                    Log.w("FragmentPUTag","switchpinterest 5");
                     pintrest.setImageResource(R.drawable.pin_selected);
                     pintresttext.setTextColor(Color.parseColor("#34BDC0"));
                 }
@@ -1668,47 +1750,8 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         Toast.makeText(getActivity(), "ERROR: " + errorMessage, Toast.LENGTH_LONG).show();
     }
 
-    int sucesssharecount = 0;
-
-    private void startProfile(final int networkId) {
-
-        String shareTEXT = descriptionEditText.getText().toString() + " " + SHARE_POST_LINK;
-        socialNetwork = FragmentPostUploadTag.mSocialNetworkManager.getSocialNetwork(networkId);
-        socialNetwork.requestCurrentPerson();
-        socialNetwork.requestPostPhoto(new File(imageUrl), shareTEXT, new OnPostingCompleteListener() {
-            @Override
-            public void onPostSuccessfully(int socialNetworkID) {
-                Log.d(getClass().getName(), "You Posted Photo : " + networkId);
-                sucesssharecount++;
-                String msg = "";
-                if (networkidarray.size() == sucesssharecount) {
-                    if (mProgressBarDialog.isShowing())
-                        mProgressBarDialog.dismiss();
-                    if (progressbar.getVisibility() != View.VISIBLE)
-                        progressbar.setVisibility(View.VISIBLE);
-                    Toast.makeText(getActivity(), "Image posted successfully", Toast.LENGTH_LONG).show();
-
-                }
-            }
-
-            @Override
-            public void onError(int socialNetworkID, String requestID, String errorMessage, Object data) {
-
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
-                if (progressbar.getVisibility() != View.VISIBLE)
-                    progressbar.setVisibility(View.VISIBLE);
-                Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
-
-            }
-        });
-
-
-    }
-
-
-    public void onSavePin(String imageUrl, String boardId, String text, String linkUrl) {
-
+    public void onSavePin(Context c, String imageUrl, String boardId, String text, String linkUrl) {
+        Log.w("FPUTag","onSavePin()");
         if (!Utils.isEmpty(text) && !Utils.isEmpty(boardId) && !Utils.isEmpty(imageUrl)) {
             PDKClient.getInstance().createPin(text, boardId, imageUrl, linkUrl, new PDKCallback() {
                 @Override
@@ -1716,7 +1759,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                     Log.d(getClass().getName(), response.getData().toString());
                     Syso.info("12345678 >>> output" + response.getData().toString());
                     AlertUtils.showToast(mContext, "Shared Successfully");
-
                 }
 
                 @Override

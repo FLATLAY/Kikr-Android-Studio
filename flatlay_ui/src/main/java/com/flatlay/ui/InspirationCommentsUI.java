@@ -65,9 +65,9 @@ public class InspirationCommentsUI {
                 commentText.setText("");
 
             if (!TextUtils.isEmpty(data.get(i).getProfile_pic()))
-                CommonUtility.setImage(mContext, data.get(i).getProfile_pic(), userImage, R.drawable.dum_user_profile_img);
+                CommonUtility.setImage(mContext, data.get(i).getProfile_pic(), userImage, R.drawable.profile_icon);
             else
-                userImage.setImageResource(R.drawable.dum_user_profile_img);
+                userImage.setImageResource(R.drawable.profile_icon);
 
             if (UserPreference.getInstance().getUserID().equals(data.get(i).getUser_id())){
                deletecomment.setVisibility(View.GONE);

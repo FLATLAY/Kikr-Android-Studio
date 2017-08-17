@@ -20,10 +20,12 @@
 
     <string name="likes">likes</string>
 
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">5tQwAp0Z802BLmdF709OEsnLD</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">1RLaG0VSYdTXHfSRppPvVp3K7cE1T5q4QiUGLxrtbiFgv3t0W8</string>
 
     <string name="twitter_consumer_key">5tQwAp0Z802BLmdF709OEsnLD</string>
-     
     <string name="twitter_consumer_secret">1RLaG0VSYdTXHfSRppPvVp3K7cE1T5q4QiUGLxrtbiFgv3t0W8</string>
+
     <string name="clear_cache_menu">Clear Caches</string>
     <string name="clear_cache_complete_toast">Caches have been cleared</string>
     <string name="imageview_description">Image Thumbnail</string>
@@ -36,7 +38,7 @@
     <string name="app_name">FLATLAY</string>
     <string name="loading">LOADING...</string>
     <string name="facebook_app_id">1577144115912726</string>
-    <string name="no_internet"><![CDATA[No internet connection<br> <u>Try again</u>]]></string>
+    <string name="no_internet"><![CDATA[No internet connection,<br> <u>try again.</u>]]></string>
     <string name="no_data_found">No Collections Yet </string>
 
     <!-- landing screen strings -->
@@ -592,5 +594,7 @@
     <string name="toast_cannot_retrieve_selected_image">Cannot retrieve selected image</string>
     <string name="toast_cannot_retrieve_cropped_image">Cannot retrieve cropped image</string>
     <string name="toast_unexpected_error">Unexpected error</string>
+
+
 
 </resources>

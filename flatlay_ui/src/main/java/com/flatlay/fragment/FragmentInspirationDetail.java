@@ -161,7 +161,6 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         return mainView;
     }
 
-
     @Override
     public void initUI(Bundle savedInstanceState) {
         expand_collection = (RelativeLayout) mainView.findViewById(R.id.expand);
@@ -815,7 +814,6 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                 likeCountTextImage.setVisibility(View.VISIBLE);
                 likeCount.setVisibility(View.VISIBLE);
 
-
                 InspirationRes inspirationRes = (InspirationRes) object;
                 likeId = inspirationRes.getLike_id();
                 Log.w("FragmentInsDetail","handleOnSuccess"+likeId);
@@ -827,9 +825,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                 } else {
                     likeCount.setText((getInt(likeCount.getText().toString().trim()) + 1) + "");
                     likeCountTextImage.setImageResource(R.drawable.ic_heart_red);
-
                 }
-
             }
 
             @Override

@@ -1,6 +1,5 @@
 package com.flatlay;
 
-
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -33,7 +32,6 @@ public class FirebaseMsgService extends FirebaseMessagingService {
 
     private static final String TAG = "FirebaseMsgService";
 
-
     /**
      * Called when message is received.
      *
@@ -55,6 +53,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, "From: " + remoteMessage.getFrom());
+        String message = "";
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
@@ -63,15 +62,15 @@ public class FirebaseMsgService extends FirebaseMessagingService {
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
+            message = remoteMessage.getNotification().getBody();
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
 
-
-
-        Log.i(TAG, "Received message");
+        Log.i(TAG, "Received message"+message);
         Intent intent = new Intent(this, HomeActivity.class);
         dumpIntent(intent);
-        String message = "";
+        Log.w("FirebaseMsgService","intent"+intent.toString());
+
         String otherdata = "";
         String inspiration_id = null;
         String purchase_id = "";
@@ -91,7 +90,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
             }
         }
         try {
-            message = intent.getStringExtra("message");
+            //message = intent.getStringExtra("message");
             section = intent.getStringExtra("section");
             if (section != null && section.equalsIgnoreCase("follow")) {
                 inspiration_id = intent.getStringExtra("user_idsend");
@@ -101,27 +100,16 @@ public class FirebaseMsgService extends FirebaseMessagingService {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            message = "You received new message";
+            //message = "You received new message";
         }
         boolean isShowNotification = true;
         if (section != null && section.equalsIgnoreCase("placeorder")) {
-//			double finalValue = StringUtils.getDoubleValue(getFinalPrice(otherdata.toString()));
             isShowNotification = false;
-
-//			double finalValue = getFinalPrice(otherdata.toString());
-//			double savedValue = StringUtils.getDoubleValue(UserPreference.getInstance().getFinalPrice());
-//			double diffrence = finalValue-savedValue;
-//			Syso.info("uuuuuuuuuuuuu >>>>> Final value : "+finalValue+", Saved Final value>>"+savedValue+" Diff>>>"+diffrence);
-//			if(diffrence<=5){
-//				if(!TextUtils.isEmpty(UserPreference.getInstance().getPurchaseId())){
-//					isShowNotification = false;
-//					FragmentPlaceMyOrder myOrder = new FragmentPlaceMyOrder(otherdata, false);
-//					myOrder.confirmPuchase(UserPreference.getInstance().getPurchaseId());
-//				}
-//			}
         }
-        if (isShowNotification)
+        if (isShowNotification) {
+            Log.w("FirebaseMsgService","message"+message);
             generateCustomNotification(getBaseContext(), message, inspiration_id, section, otherdata);
+        }
 
     }
     // [END receive_message]
@@ -154,11 +142,6 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         }
         return price;
     }
-
-    /**
-     * Method called on receiving a deleted message
-     */
-
 
     private void generateNotification(Context context, String message, String inspiration_id, String section, String otherdata) {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
@@ -255,9 +238,14 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         SimpleDateFormat format=new SimpleDateFormat("hh:mm aa");
 
 
+        String hey = "Hey!";
+
+        Log.w("FirebaseMsgService","Notification Text: "+hey+message);
+        Log.w("FirebaseMsgService","Time: "+format.format(date));
+
         // Locate and set the Text into customnotificationtext.xml TextViews
         remoteViews.setTextViewText(R.id.title, "Flatlay");
-        remoteViews.setTextViewText(R.id.text, message);
+        remoteViews.setTextViewText(R.id.notificationText, message);
         remoteViews.setTextViewText(R.id.time, format.format(date));
 
 

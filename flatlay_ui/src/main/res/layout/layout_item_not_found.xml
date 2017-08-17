@@ -19,7 +19,7 @@
         android:layout_marginTop="10dp"
         android:clickable="true"
         android:gravity="center"
-        android:text="No internet conection \n Try Again"
+        android:text="No internet conection, \n try again."
         android:textSize="@dimen/large_text_size" />
 
 </LinearLayout>

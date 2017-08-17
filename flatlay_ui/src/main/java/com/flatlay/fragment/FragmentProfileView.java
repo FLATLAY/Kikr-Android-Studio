@@ -58,6 +58,7 @@ import com.flatlaylib.service.res.InterestSectionRes;
 import com.flatlaylib.service.res.MyProfileRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
+import com.squareup.picasso.Picasso;
 
 import org.apache.http.util.TextUtils;
 
@@ -809,8 +810,6 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                //   mProgressBarDialog.dismiss();
-                Log.w("FragmentProfileView","getUserProfileDetail 1");
                 getUserProfileDetail();
             }
         });
@@ -820,13 +819,15 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 
     private void setDetails() {
 
-        System.out.println("userDetails.get(0).getProfile_pic()    " + userDetails.get(0).getProfile_pic());
         if (!userDetails.get(0).getProfile_pic().equals("")) {
-            Log.w("FragmentProfileView","setDetails() first");
-            CommonUtility.setImage(mContext, userDetails.get(0).getProfile_pic(), user_profile_image, R.drawable.profile_icon);
-        }//////////
+            Picasso.with(mContext).load(userDetails.get(0).getProfile_pic()).into(user_profile_image);
+        }
+        else
+        {
+            Picasso.with(mContext).load(R.drawable.profile_icon).into(user_profile_image);
+        }
+
         if (!userDetails.get(0).getBackground_pic().equals("")) {
-            Log.w("FragmentProfileView","setDetails() second");
             CommonUtility.setImage(mContext, userDetails.get(0).getBackground_pic(), bgProfileLayout, R.drawable.flatlay_profile_bg_gradient_rect);
         }
         if (userDetails.get(0).getUsername() != null && !userDetails.get(0).getUsername().equals(""))
@@ -848,10 +849,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
             }
             photo_not_found.setVisibility(View.VISIBLE);
         } else {
-            // System.out.print("abhishek kumar verma");
-
             collection_list.setAdapter(new FragmentProfileCollectionAdapter(mContext, collectionLists, user_id, fragmentProfileView, null, null));
-
         }
         if(product_list.size()>0)
         {

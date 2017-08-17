@@ -34,7 +34,7 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/notificationText"
             style="Custom Notification Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

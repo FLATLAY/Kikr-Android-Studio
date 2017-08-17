@@ -146,7 +146,7 @@
 
     <!-- Settings section section -->
     <dimen name="settings_margin_rignt">25dp</dimen>
-    <dimen name="inspiration_user_image">50dp</dimen>
+    <dimen name="inspiration_user_image">35dp</dimen>
     <dimen name="inspiration_image">210dp</dimen>
 
     <!-- Arc Menu section -->

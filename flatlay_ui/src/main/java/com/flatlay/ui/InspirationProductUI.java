@@ -108,9 +108,11 @@ public class InspirationProductUI {
             LayoutParams layoutParams2 = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
 
-            layoutParams2.setMargins(18, 10, 18, 10);
-            convertView.setBackgroundColor(Color.parseColor("#ffffff"));
+            layoutParams2.setMargins(18, 18, 18, 18);
+            convertView.setBackgroundColor(Color.parseColor("#000000"));
             ((TextView) convertView.findViewById(R.id.textView1)).setTextColor(Color.parseColor("#6c6c6c"));
+            //convertView.findViewById(R.id.textView1).setBackgroundResource(R.drawable.graybordertextview);
+            convertView.setBackgroundResource(R.drawable.graybordertextview);
 
             convertView.setLayoutParams(layoutParams2);
             ll.addView(convertView);

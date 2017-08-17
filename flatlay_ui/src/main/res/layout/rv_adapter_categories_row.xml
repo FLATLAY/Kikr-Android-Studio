@@ -6,8 +6,7 @@
     android:layout_height="wrap_content"
     card_view:cardElevation="0dp"
     card_view:cardMaxElevation="0dp"
-    android:layout_marginBottom="0.5dp"
-    >
+    android:layout_marginBottom="0.5dp">
 
     <RelativeLayout
 

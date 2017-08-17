@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:gravity="center">
 
     <TextView
@@ -10,8 +9,9 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:gravity="center"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
         android:text="View All"
-        android:textColor="@color/white"
         android:textSize="@dimen/large_text_size" />
 
 

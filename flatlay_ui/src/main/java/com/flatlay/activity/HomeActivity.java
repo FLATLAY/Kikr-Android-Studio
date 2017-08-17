@@ -47,6 +47,7 @@ import com.braintreepayments.api.Braintree;
 import com.flatlay.KikrApp;
 import com.flatlay.KikrApp.TrackerName;
 import com.flatlay.R;
+import com.flatlay.adapter.InspirationAdapter;
 import com.flatlay.dialog.HelpInviteFriendsDialog;
 import com.flatlay.dialog.HelpKikrCardDialog;
 import com.flatlay.dialog.HelpSocialMediaDialog;
@@ -166,6 +167,8 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 import com.yalantis.ucrop.UCrop;
 
 
@@ -995,11 +998,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
         Log.e("home act", requestCode + "wefwe" + resultCode);
         if (requestCode == AppConstants.WALLETLIST && resultCode == RESULT_OK) {
-            //Log.w("onActivityResultHA","1");
+            Log.w("onActivityResultHA","1");
             loadFragment(new FragmentKikrWalletCard());
         }
         else if (requestCode == AppConstants.REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
-            //Log.w("onActivityResultHA","2");
+            Log.w("onActivityResultHA","2");
             String id = data.getStringExtra("id");
             String email = data.getStringExtra("email");
             String gender = data.getStringExtra("gender");
@@ -1010,7 +1013,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             String location = data.getStringExtra("location");
             connectWithFacebook(id, email, gender, name, username, birthday, profile_link, location);
         } else if (requestCode == AppConstants.REQUEST_CODE_TWIT_LOGIN && resultCode == RESULT_OK) {
-            //Log.w("onActivityResultHA","3");
+            Log.w("onActivityResultHA","3");
             String id = String.valueOf(data.getLongExtra("id", 0));
             String description = data.getStringExtra("description");
             String language = data.getStringExtra("language");
@@ -1024,7 +1027,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             connectWithTwitter(id, description, language, location, name, profile_image_url, screen_name, status, time_zone);
 
         } else if (requestCode == AppConstants.REQUEST_CODE_FB_FRIEND_LIST) {
-            //Log.w("onActivityResultHA","4");
+            Log.w("onActivityResultHA","4");
             ArrayList<FbUser> fbUsers = (ArrayList<FbUser>) data.getSerializableExtra("friend_list");
             if (fbUsers != null && fbUsers.size() > 0) {
                 uploadFbFriends(fbUsers);
@@ -1033,11 +1036,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
             }
         } else if (requestCode == AppConstants.REQUEST_CODE_TWIT_FRIEND_LIST) {
-            //Log.w("onActivityResultHA","5");
+            Log.w("onActivityResultHA","5");
             ArrayList<OauthItem> twitUsers = (ArrayList<OauthItem>) data.getSerializableExtra("friend_list");
             showTwitterFriendList(twitUsers);
         } else if (requestCode == PAYPAL_REQUEST_CODE) {
-            //Log.w("onActivityResultHA","6");
+            Log.w("onActivityResultHA","6");
             if (resultCode == RESULT_OK) {
                 System.out.println("in result ok");
                 AlertUtils.showToast(context, "Please wait...");
@@ -1053,7 +1056,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 braintree.finishPayWithPayPal(this, resultCode, data);
             }
         } else if (requestCode == AppConstants.REQUEST_CODE_MASKED_WALLET) {
-            //Log.w("onActivityResultHA","7");
+            Log.w("onActivityResultHA","7");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(
                     mFragmentStack.peek());
             ((FragmentPlaceMyOrder) fragment).onActivityResult(requestCode,
@@ -1081,7 +1084,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             handleCropResult(data);
         }
         if (requestCode == UCrop.RESULT_ERROR) {
-            //Log.w("onActivityResultHA","9");
+            Log.w("onActivityResultHA","9");
             handleCropError(data);
         }
 
@@ -1094,37 +1097,57 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
 
         if (requestCode == Crop.REQUEST_PICK) {
-            //Log.w("onActivityResultHA","16");
+            Log.w("onActivityResultHA","16");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
         if (requestCode == AppConstants.REQUEST_CODE_INSTAGRAM) {
-            //Log.w("onActivityResultHA","11");
+            Log.w("onActivityResultHA","11");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
 
         if (requestCode == AppConstants.REQUEST_CODE_TWIT_TO_FRIEND) {
-            //Log.w("onActivityResultHA","12");
+            Log.w("onActivityResultHA","12");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentMyFriends) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
         if (requestCode == AppConstants.REQUEST_CODE_EMAIL_CHANGE) {
-            //Log.w("onActivityResultHA","13");
+            Log.w("onActivityResultHA","13");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentSettings) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
         if (requestCode == HomeActivity.SHARING_CODE) {
-            //Log.w("onActivityResultHA","14");
+            Log.w("onActivityResultHA","14");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
             if (fragment != null) {
                 fragment.onActivityResult(requestCode, resultCode, data);
             }
-        } else {
+        }
+
+        else if (requestCode == TwitterAuthConfig.DEFAULT_AUTH_REQUEST_CODE)
+        {
+            Log.w("HomeActivity","onActivityResult Twitter 140");
+            //Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());;
+            //fragment.onActivityResult(requestCode, resultCode, data);
+
+            final TwitterAuthClient twitterAuthClient = new TwitterAuthClient();
+            if(twitterAuthClient.getRequestCode()==requestCode) {
+                twitterAuthClient.onActivityResult(requestCode, resultCode, data);
+            }
+
+        }
+        else if(requestCode == PDKClient.PDKCLIENT_REQUEST_CODE)
+        {
+            Log.w("HomeActivity","onActivityResult Pinterest 8772");
+            PDKClient.getInstance().onOauthResponse(requestCode, resultCode, data);
+        }
+        else
+            {
             Log.w("onActivityResultHA","15");
 
             if (data != null) {
@@ -1132,11 +1155,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 if (dataUri != null) {
                     String urlString = dataUri.toString();
                     if (urlString.contains("oauth://ASNE?oauth_token")) {
+                        Log.w("onActivityResultHA","21");
                         Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
                         if (fragment != null) {
                             fragment.onActivityResult(requestCode, resultCode, data);
                         }
                     } else if (urlString.contains("www.tychotechnologies.in")) {
+                        Log.w("onActivityResultHA","22");
                         Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
                         if (fragment != null) {
                             fragment.onActivityResult(requestCode, resultCode, data);
@@ -1144,13 +1169,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     }
                 }
             }
-        }
-
-        //PDKCLIENT_REQUEST_CODE
-        if (requestCode == PDKClient.PDKCLIENT_REQUEST_CODE) {
-
-            PDKClient.getInstance().onOauthResponse(requestCode, resultCode, data);
-            System.out.print("ajhsdgfagd fkaj");
         }
 
         if (requestCode == ProductSearchTagging.PRODUCT_SEARCH_TAG) {
@@ -1615,7 +1633,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     String link = shareimagename;
                     intent.putExtra(Intent.EXTRA_TEXT, link);
                     if (isOther) {
-                        Log.w("inside if", "inside if");
+                        Log.w("inside if", "inside if"+link);
                         startActivity(Intent.createChooser(intent, "Share"));
                     }
                     else {

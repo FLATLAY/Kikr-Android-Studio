@@ -88,6 +88,7 @@ public class FbSignActivity extends BaseActivity {
 
                         @Override
                         public void onCancel () {
+                            finish();
                             Log.w("FbSignActivity", "Login attempt cancelled.");
                         }
 

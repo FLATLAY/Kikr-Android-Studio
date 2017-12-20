@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -23,17 +24,17 @@ import com.flatlay.activity.HomeActivity;
 import com.flatlay.fragment.FragmentProfileView;
 import com.flatlay.ui.RoundImageView;
 import com.flatlay.utility.CommonUtility;
-import com.flatlaylib.bean.SearchStoreBrandUserRes;
+import com.flatlaylib.bean.SearchStoreProductUserRes;
 import com.flatlaylib.db.UserPreference;
 
 public class SearchAllAdapter extends BaseAdapter{
     private FragmentActivity mContext;
     private LayoutInflater mInflater;
     public boolean[] mSelectedItems;
-    private List<SearchStoreBrandUserRes.BrandsEntity> entityArrayList=new ArrayList<SearchStoreBrandUserRes.BrandsEntity>();
+    private List<SearchStoreProductUserRes.ProductsEntity> entityArrayList=new ArrayList<SearchStoreProductUserRes.ProductsEntity>();
     CustomizeFeedActivity customizeFeedActivity;
 
-    public SearchAllAdapter(FragmentActivity mContext,List<SearchStoreBrandUserRes.BrandsEntity> entityArrayList, CustomizeFeedActivity customizeFeedActivity) {
+    public SearchAllAdapter(FragmentActivity mContext,List<SearchStoreProductUserRes.ProductsEntity> entityArrayList, CustomizeFeedActivity customizeFeedActivity) {
         this.mContext=mContext;
         this.entityArrayList = entityArrayList;
         this.customizeFeedActivity = customizeFeedActivity;
@@ -43,7 +44,7 @@ public class SearchAllAdapter extends BaseAdapter{
         Log.w("Activity","SearchAllAdapter");
     }
 
-    public void setData(List<SearchStoreBrandUserRes.BrandsEntity> data){
+    public void setData(List<SearchStoreProductUserRes.ProductsEntity> data){
         this.entityArrayList.addAll(data);
     }
 
@@ -57,7 +58,7 @@ public class SearchAllAdapter extends BaseAdapter{
     }
 
     @Override
-    public SearchStoreBrandUserRes.BrandsEntity getItem(int index) {
+    public SearchStoreProductUserRes.ProductsEntity getItem(int index) {
         return entityArrayList.get(index);
     }
 
@@ -87,13 +88,21 @@ public class SearchAllAdapter extends BaseAdapter{
         }
         if(getItem(position).getIs_followed().equalsIgnoreCase("yes")){
             viewHolder.follow_btn.setText("FOLLOWED");
-            viewHolder.follow_btn.setBackground(mContext.getDrawable(R.drawable.btn_whitebg));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    viewHolder.follow_btn.setBackground(mContext.getDrawable(R.drawable.btn_whitebg));
+                }
+            }
             int imgResource = R.drawable.ic_check_following;
             viewHolder.follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
             viewHolder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.menu_option_background_selected));
         }else{
             viewHolder.follow_btn.setText("FOLLOW   ");
-            viewHolder.follow_btn.setBackground(mContext.getDrawable(R.drawable.btn_borderbg));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    viewHolder.follow_btn.setBackground(mContext.getDrawable(R.drawable.btn_borderbg));
+                }
+            }
             int imgResource = R.drawable.ic_add_follow;
             viewHolder.follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
             viewHolder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));

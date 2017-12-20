@@ -2,6 +2,7 @@
 package com.flatlay.adapter;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
+import com.flatlay.fragment.CustomizeFeedFragment;
 import com.flatlay.fragment.FragmentFeatured;
 import com.flatlay.fragment.FragmentProductBasedOnType;
 import com.flatlay.fragment.FragmentProfileView;
@@ -37,6 +39,8 @@ public class FeaturedTabAdapter extends BaseAdapter {
 
     private FragmentActivity mContext;
     private FragmentFeatured fragmentFeatured;
+//private CustomizeFeedFragment fragmentFeatured;
+
     private LayoutInflater mInflater;
     private List<FeaturedTabData> brandsArray;
     private List<FeaturedTabData> check;
@@ -98,11 +102,11 @@ public class FeaturedTabAdapter extends BaseAdapter {
         }
 
         FeaturedTabData featuredTabData = getItem(position);
-        viewholder.userNameTextView.setOnClickListener(new View.OnClickListener() {
+        viewholder.userNameTextView.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-               startProfilePage(position);
+                startProfilePage(position);
             }
         });
         viewholder.userImage.setOnClickListener(new OnClickListener() {
@@ -140,27 +144,31 @@ public class FeaturedTabAdapter extends BaseAdapter {
         viewholder.collectionCount.setText(getItem(position).getCollections_count() + " Collections");
 
 
-		if(getItem(position).getType().equals(USER))
-			CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);
+        if(getItem(position).getType().equals(USER))
+            CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);
 //        else
 //            CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);
 
-        CommonUtility.setImage(mContext, getItem(position).getItem_image(), viewholder.featuredLargeImage,  R.drawable.flatlay_profile_bg_gradient_rect);
+        CommonUtility.setImage(mContext, getItem(position).getItem_image(), viewholder.featuredLargeImage);
 
         final List<Product> data = getItem(position).getProducts();
         final List<Inspiration> feed = getItem(position).getInspiration_feed();
 
 
         if (getItem(position).getIs_followed() != null && getItem(position).getIs_followed().equals("yes")) {
-            viewholder.follow_btn.setText("FOLLOWING");
-            viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
+            viewholder.follow_btn.setText("Following");
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_borderbg));
+            }
 //            int imgResource = R.drawable.ic_check_following;
 //            viewholder.follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
             viewholder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
 
         } else {
-            viewholder.follow_btn.setText("  FOLLOW   ");
-            viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_borderbg));
+            viewholder.follow_btn.setText(" Follow + ");
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
+            }
 //            int imgResource = R.drawable.ic_add_follow;
 //            viewholder.follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
             viewholder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
@@ -205,15 +213,15 @@ public class FeaturedTabAdapter extends BaseAdapter {
         return convertView;
     }
 
-   public void startProfilePage(int pos)
-   {
-       if (getItem(pos).getType() != null) {
-           if (getItem(pos).getType().equals(USER))
-               addFragment(new FragmentProfileView(getItem(pos).getItem_id(), "no"));
-           else
-               addFragment(new FragmentProductBasedOnType(getItem(pos).getType(), getItem(pos).getItem_name(), getItem(pos).getItem_id()));
-       }
-   }
+    public void startProfilePage(int pos)
+    {
+        if (getItem(pos).getType() != null) {
+            if (getItem(pos).getType().equals(USER))
+                addFragment(new FragmentProfileView(getItem(pos).getItem_id(), "no"));
+            else
+                addFragment(new FragmentProductBasedOnType(getItem(pos).getType(), getItem(pos).getItem_name(), getItem(pos).getItem_id()));
+        }
+    }
 
     public class ViewHolder {
         TextView userNameTextView, viewAllTextView;

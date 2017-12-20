@@ -1,5 +1,7 @@
 package com.flatlay.activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -21,11 +23,12 @@ import android.widget.TextView;
 
 import com.flatlay.R;
 import com.flatlay.adapter.CustomizeFeedAllAdapter;
-import com.flatlay.adapter.CustomizeInterestBrandListAdapter;
+import com.flatlay.adapter.CustomizeInterestProductListAdapter;
 import com.flatlay.adapter.CustomizeInterestCategoryListAdapter;
 import com.flatlay.adapter.CustomizeInterestPeopleListAdapter;
 import com.flatlay.adapter.CustomizeInterestStoreListAdapter;
 import com.flatlay.bubble.ChipBubbleText;
+import com.flatlay.fragment.FragmentFeatured;
 import com.flatlay.model.Item;
 import com.flatlay.model.SearchResult;
 import com.flatlay.model.SectionItem;
@@ -33,16 +36,18 @@ import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.ui.RoundImageView;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.api.BrandListApi;
+import com.flatlaylib.api.ProductListApi;
 import com.flatlaylib.api.CategoryListApi;
 import com.flatlaylib.api.FollowUserApi;
 import com.flatlaylib.api.InterestSectionApi;
 import com.flatlaylib.api.SearchAllApi;
 import com.flatlaylib.bean.InterestSection;
-import com.flatlaylib.bean.SearchStoreBrandUserRes;
+import com.flatlaylib.bean.SearchStoreProductUserRes;
+//import com.flatlaylib.bean.SearchStoreBrandUserRes;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.ServiceCallback;
 import com.flatlaylib.service.ServiceException;
-import com.flatlaylib.service.res.BrandListRes;
+import com.flatlaylib.service.res.ProductListRes;
 import com.flatlaylib.service.res.CategoryRes;
 import com.flatlaylib.service.res.FollowUserRes;
 import com.flatlaylib.service.res.InterestSectionRes;
@@ -60,9 +65,9 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
     private ProgressBarDialog mProgressBarDialog;
     private List<InterestSection> interestList;
     private int pagenum = 0;
-    private Button interest_store_button, interest_brand_button, interest_people_button, all_button;
-   // private TextView interest_category_button;
-    private CustomizeInterestBrandListAdapter interestBrandListAdapter;
+    private Button interest_store_button, interest_product_button, interest_people_button, all_button;
+    // private TextView interest_category_button;
+    private CustomizeInterestProductListAdapter interestProductListAdapter;
     private CustomizeInterestCategoryListAdapter interestCategoryListAdapter;
     private CustomizeInterestStoreListAdapter interestStoreListAdapter;
     private CustomizeFeedActivity fragmentInterestSection;
@@ -85,14 +90,14 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
     FragmentActivity context;
     ImageView imgDelete;
     SectionItem sectionItem;
-    View all_button_active, interest_people_button_active, interest_store_button_active, interest_brand_button_active;
+    View all_button_active, interest_people_button_active, interest_store_button_active, interest_product_button_active;
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         Log.w("Activity:","CustomizeFeedActivity");
         requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-        setContentView(R.layout.customize_fragment_interest_section);
+        setContentView(R.layout.customize_fragment_interest_section2);
         this.context = (FragmentActivity) CustomizeFeedActivity.this;
         initLayout();
 
@@ -123,16 +128,16 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
         peopleHeaderView = getLayoutInflater().inflate(R.layout.interest_header, null);
         fragmentInterestSection = this;
         all_button_active = (View) findViewById(R.id.all_button_active);
-        interest_brand_button_active = (View) findViewById(R.id.interest_brand_button_active);
+        //interest_product_button_active = (View) findViewById(R.id.interest_product_button_active);
         interest_people_button_active = (View) findViewById(R.id.interest_people_button_active);
         interest_store_button_active = (View) findViewById(R.id.interest_store_button_active);
         imgDelete = (ImageView) findViewById(R.id.imgDelete);
         interestSectionList = (ListView) findViewById(R.id.interestSectionList);
         interest_store_button = (Button) findViewById(R.id.interest_store_button);
         all_button = (Button) findViewById(R.id.all_button);
-        interest_brand_button = (Button) findViewById(R.id.interest_brand_button);
+       // interest_product_button = (Button) findViewById(R.id.interest_product_button);
         interest_people_button = (Button) findViewById(R.id.interest_people_button);
-       // interest_category_button = (TextView) findViewById(R.id.interest_category_imageview);
+        // interest_category_button = (TextView) findViewById(R.id.interest_category_imageview);
         trendingGalsLinearLayout = (RoundImageView) peopleHeaderView.findViewById(R.id.trendingGalsLinearLayout);
         trendingGuysLinearLayout = (RoundImageView) peopleHeaderView.findViewById(R.id.trendingGuysLinearLayout);
         searchYourItemEditText = (MultiAutoCompleteTextView) findViewById(R.id.searchYourItemEditText);
@@ -161,9 +166,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
-//				   System.out.println("123456 in onScroll fvi"+firstVisibleItem+", vic"+visibleItemCount+", tic"+totalItemCount);
                 if (!isLoading && firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0) {
-//			    	System.out.println("123456 inside if page"+pagenum+" ,"+isSelected);
                     if (checkInternet()) {
                         pagenum++;
                         isFirstTime = false;
@@ -179,9 +182,9 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
 
     public void setClickListener() {
         interest_store_button.setOnClickListener(this);
-        interest_brand_button.setOnClickListener(this);
+        //interest_product_button.setOnClickListener(this);
         interest_people_button.setOnClickListener(this);
-       // interest_category_button.setOnClickListener(this);
+        // interest_category_button.setOnClickListener(this);
         trendingGalsLinearLayout.setOnClickListener(this);
         trendingGuysLinearLayout.setOnClickListener(this);
         searchYourItemEditText.setOnKeyListener(this);
@@ -218,10 +221,15 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                 if (interestSectionList.getHeaderViewsCount() != 0)
                     interestSectionList.removeHeaderView(peopleHeaderView);
                 interestSectionList.setAdapter(null);
+                // FragmentFeatured mFragmentFeatured = new FragmentFeatured();
+                // FragmentManager fragmentManager =getFragmentManager();
+                // FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+
                 all_button_active.setVisibility(View.INVISIBLE);
                 interest_store_button_active.setVisibility(View.VISIBLE);
                 interest_people_button_active.setVisibility(View.INVISIBLE);
-                interest_brand_button_active.setVisibility(View.INVISIBLE);
+                //interest_product_button_active.setVisibility(View.INVISIBLE);
                 if (searchYourItemEditText.getText().toString().equals(""))
                     if (checkInternet()) {
                         getStoreList();
@@ -243,43 +251,43 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                 }
 
                 break;
-            case R.id.interest_brand_button:
-                pagenum = 0;
-                isFirstTime = true;
-                isSelected = "brand";
-                isLoading = false;
-                isSearchActive = false;
-                //searchYourItemEditText.setText("");
-                interestSectionList.setAdapter(null);
-                searchYourItemEditText.setFocusableInTouchMode(true);
-                searchYourItemEditText.setFocusable(true);
-                if (interestSectionList.getHeaderViewsCount() != 0)
-                    interestSectionList.removeHeaderView(peopleHeaderView);
-                all_button_active.setVisibility(View.INVISIBLE);
-                interest_store_button_active.setVisibility(View.INVISIBLE);
-                interest_people_button_active.setVisibility(View.INVISIBLE);
-                interest_brand_button_active.setVisibility(View.VISIBLE);
-
-                if (searchYourItemEditText.getText().toString().equals(""))
-                    if (checkInternet()) {
-                        categoryGridView.setVisibility(View.GONE);
-                        interestSectionList.setVisibility(View.VISIBLE);
-                        getBrandList();
-                    } else
-                        showReloadOption();
-                else {
-                    if (checkInternet()) {
-                        interestSectionList.setAdapter(null);
-                        if (interestSectionList.getHeaderViewsCount() != 0)
-                            interestSectionList.removeHeaderView(peopleHeaderView);
-                        pagenum = 0;
-                        isSearchActive = true;
-                        isFirstTime = true;
-                        isLoading = false;
-                        search();
-                    }
-                }
-                break;
+//            case R.id.interest_product_button:
+//                pagenum = 0;
+//                isFirstTime = true;
+//                isSelected = "product";
+//                isLoading = false;
+//                isSearchActive = false;
+//                //searchYourItemEditText.setText("");
+//                interestSectionList.setAdapter(null);
+//                searchYourItemEditText.setFocusableInTouchMode(true);
+//                searchYourItemEditText.setFocusable(true);
+//                if (interestSectionList.getHeaderViewsCount() != 0)
+//                    interestSectionList.removeHeaderView(peopleHeaderView);
+//                all_button_active.setVisibility(View.INVISIBLE);
+//                interest_store_button_active.setVisibility(View.INVISIBLE);
+//                interest_people_button_active.setVisibility(View.INVISIBLE);
+//                interest_product_button_active.setVisibility(View.VISIBLE);
+//
+//                if (searchYourItemEditText.getText().toString().equals(""))
+//                    if (checkInternet()) {
+//                        categoryGridView.setVisibility(View.GONE);
+//                        interestSectionList.setVisibility(View.VISIBLE);
+//                        getProductList();
+//                    } else
+//                        showReloadOption();
+//                else {
+//                    if (checkInternet()) {
+//                        interestSectionList.setAdapter(null);
+//                        if (interestSectionList.getHeaderViewsCount() != 0)
+//                            interestSectionList.removeHeaderView(peopleHeaderView);
+//                        pagenum = 0;
+//                        isSearchActive = true;
+//                        isFirstTime = true;
+//                        isLoading = false;
+//                        search();
+//                    }
+//                }
+//                break;
             case R.id.interest_people_button:
                 isFirstTime = true;
                 isGuys = false;
@@ -297,7 +305,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                 all_button_active.setVisibility(View.INVISIBLE);
                 interest_store_button_active.setVisibility(View.INVISIBLE);
                 interest_people_button_active.setVisibility(View.VISIBLE);
-                interest_brand_button_active.setVisibility(View.INVISIBLE);
+               // interest_product_button_active.setVisibility(View.INVISIBLE);
 //			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
 //			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
                 if (searchYourItemEditText.getText().toString().equals(""))
@@ -337,7 +345,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                 all_button_active.setVisibility(View.VISIBLE);
                 interest_store_button_active.setVisibility(View.INVISIBLE);
                 interest_people_button_active.setVisibility(View.INVISIBLE);
-                interest_brand_button_active.setVisibility(View.INVISIBLE);
+              //  interest_product_button_active.setVisibility(View.INVISIBLE);
 //			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
 //			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
                 if (searchYourItemEditText.getText().toString().equals(""))
@@ -375,7 +383,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
 //				searchYourItemEditText.setFocusable(false);
 //				isSelected ="category";
 //				interest_store_button.setVisibility(View.GONE);
-//				interest_brand_button.setVisibility(View.GONE);
+//				interest_product_button.setVisibility(View.GONE);
 //				interest_people_button.setVisibility(View.GONE);
 //				if(checkInternet()){
 //					categoryGridView.setVisibility(View.VISIBLE);
@@ -391,10 +399,10 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
 //				searchYourItemEditText.setFocusable(true);
 //				isSelected ="store";
 //				interest_store_button.setVisibility(View.VISIBLE);
-//				interest_brand_button.setVisibility(View.VISIBLE);
+//				interest_product_button.setVisibility(View.VISIBLE);
 //				interest_people_button.setVisibility(View.VISIBLE);
 //				interest_store_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_active));
-//				interest_brand_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
+//				interest_product_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
 //				interest_people_button.setBackground(getResources().getDrawable(R.drawable.ic_interest_button_bg_inactive));
 //				if(checkInternet()){
 //					categoryGridView.setVisibility(View.GONE);
@@ -469,41 +477,41 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                 Syso.info("In handleOnSuccess>>" + object);
                 isLoading = !isLoading;
                 itemArrayList = new ArrayList<>();
-                SearchStoreBrandUserRes searchStoreBrandUserRes = (SearchStoreBrandUserRes) object;
-                sectionItem = new SectionItem("Brands");
+                SearchStoreProductUserRes searchStoreProductUserRes = (SearchStoreProductUserRes) object;
+                sectionItem = new SectionItem("Products");
                 itemArrayList.add(sectionItem);
-                for (int i = 0; i < searchStoreBrandUserRes.getBrands().size(); i++) {
+                for (int i = 0; i < searchStoreProductUserRes.getProducts().size(); i++) {
                     searchResult = new SearchResult();
-                    searchResult.setId(searchStoreBrandUserRes.getBrands().get(i).getId());
-                    searchResult.setName(searchStoreBrandUserRes.getBrands().get(i).getName());
-                    searchResult.setImg(searchStoreBrandUserRes.getBrands().get(i).getImg());
-                    searchResult.setDescription(searchStoreBrandUserRes.getBrands().get(i).getDescription());
-                    searchResult.setIs_followed(searchStoreBrandUserRes.getBrands().get(i).getIs_followed());
-                    searchResult.setLogo(searchStoreBrandUserRes.getBrands().get(i).getLogo());
-                    searchResult.setSection_name("brands");
+                    searchResult.setId(searchStoreProductUserRes.getProducts().get(i).getId());
+                    searchResult.setName(searchStoreProductUserRes.getProducts().get(i).getName());
+                    searchResult.setImg(searchStoreProductUserRes.getProducts().get(i).getImg());
+                    searchResult.setDescription(searchStoreProductUserRes.getProducts().get(i).getDescription());
+                    searchResult.setIs_followed(searchStoreProductUserRes.getProducts().get(i).getIs_followed());
+                    searchResult.setLogo(searchStoreProductUserRes.getProducts().get(i).getLogo());
+                    searchResult.setSection_name("products");
                     itemArrayList.add(searchResult);
                 }
                 sectionItem = new SectionItem("Stores");
                 itemArrayList.add(sectionItem);
-                for (int i = 0; i < searchStoreBrandUserRes.getStores().size(); i++) {
+                for (int i = 0; i < searchStoreProductUserRes.getStores().size(); i++) {
                     searchResult = new SearchResult();
-                    searchResult.setId(searchStoreBrandUserRes.getStores().get(i).getId());
-                    searchResult.setName(searchStoreBrandUserRes.getStores().get(i).getName());
-                    searchResult.setImg(searchStoreBrandUserRes.getStores().get(i).getImg());
-                    searchResult.setDescription(searchStoreBrandUserRes.getStores().get(i).getDescription());
-                    searchResult.setIs_followed(searchStoreBrandUserRes.getStores().get(i).getIs_followed());
+                    searchResult.setId(searchStoreProductUserRes.getStores().get(i).getId());
+                    searchResult.setName(searchStoreProductUserRes.getStores().get(i).getName());
+                    searchResult.setImg(searchStoreProductUserRes.getStores().get(i).getImg());
+                    searchResult.setDescription(searchStoreProductUserRes.getStores().get(i).getDescription());
+                    searchResult.setIs_followed(searchStoreProductUserRes.getStores().get(i).getIs_followed());
                     searchResult.setSection_name("stores");
                     itemArrayList.add(searchResult);
                 }
                 sectionItem = new SectionItem("People");
                 itemArrayList.add(sectionItem);
-                for (int i = 0; i < searchStoreBrandUserRes.getUsers().size(); i++) {
+                for (int i = 0; i < searchStoreProductUserRes.getUsers().size(); i++) {
                     searchResult = new SearchResult();
-                    searchResult.setId(searchStoreBrandUserRes.getUsers().get(i).getId());
-                    searchResult.setName(searchStoreBrandUserRes.getUsers().get(i).getName());
-                    searchResult.setImg(searchStoreBrandUserRes.getUsers().get(i).getImg());
-                    searchResult.setDescription(searchStoreBrandUserRes.getUsers().get(i).getDescription());
-                    searchResult.setIs_followed(searchStoreBrandUserRes.getUsers().get(i).getIs_followed());
+                    searchResult.setId(searchStoreProductUserRes.getUsers().get(i).getId());
+                    searchResult.setName(searchStoreProductUserRes.getUsers().get(i).getName());
+                    searchResult.setImg(searchStoreProductUserRes.getUsers().get(i).getImg());
+                    searchResult.setDescription(searchStoreProductUserRes.getUsers().get(i).getDescription());
+                    searchResult.setIs_followed(searchStoreProductUserRes.getUsers().get(i).getIs_followed());
                     searchResult.setSection_name("peoples");
                     itemArrayList.add(searchResult);
                 }
@@ -551,7 +559,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
         });
     }
 
-    private void getBrandList() {
+    private void getProductList() {
         isLoading = !isLoading;
         mProgressBarDialog = new ProgressBarDialog(CustomizeFeedActivity.this);
         if (pagenum > 0) {
@@ -559,7 +567,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
         } else
             mProgressBarDialog.show();
         final InterestSectionApi interestSectionApi = new InterestSectionApi(this);
-        interestSectionApi.getBrandList(Integer.toString(pagenum));
+        interestSectionApi.getProductList(Integer.toString(pagenum));
         interestSectionApi.execute();
         mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
@@ -721,11 +729,11 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
             showDataNotFound();
         else if (interestList.size() > 0 && isFirstTime) {
             hideDataNotFound();
-            interestBrandListAdapter = new CustomizeInterestBrandListAdapter(context, interestList, fragmentInterestSection);
-            interestSectionList.setAdapter(interestBrandListAdapter);
+            // interestProductListAdapter = new CustomizeInterestProductListAdapter(context, interestList, fragmentInterestSection);
+            interestSectionList.setAdapter(interestProductListAdapter);
         } else {
-            interestBrandListAdapter.setData(interestList);
-            interestBrandListAdapter.notifyDataSetChanged();
+            interestProductListAdapter.setData(interestList);
+            interestProductListAdapter.notifyDataSetChanged();
         }
     }
 
@@ -750,6 +758,72 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
     public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
     }
 
+    public void addProduct(String product_id, final View v) {
+//		v.findViewById(R.id.followButton).setVisibility(View.GONE);
+//		v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.VISIBLE);
+        final ProductListApi listApi = new ProductListApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
+//				if (v.findViewById(R.id.followButton)!=null) {
+//					v.findViewById(R.id.followButton).setVisibility(View.VISIBLE);
+//					v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
+//				}
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+//				if (v.findViewById(R.id.followButton)!=null) {
+//					v.findViewById(R.id.followButton).setVisibility(View.VISIBLE);
+//					v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
+//				}
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    ProductListRes response = (ProductListRes) object;
+                    AlertUtils.showToast(CustomizeFeedActivity.this, response.getMessage());
+                } else {
+                    AlertUtils.showToast(CustomizeFeedActivity.this, R.string.invalid_response);
+                }
+            }
+        });
+        listApi.addProducts(product_id);
+        listApi.execute();
+    }
+
+    public void deleteProduct(String product_id, final View v) {
+//		v.findViewById(R.id.followButton).setVisibility(View.GONE);
+//		v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.VISIBLE);
+        final ProductListApi listApi = new ProductListApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
+//				if (v.findViewById(R.id.followButton)!=null) {
+//					v.findViewById(R.id.followButton).setVisibility(View.VISIBLE);
+//					v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
+//				}
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+//				if (v.findViewById(R.id.followButton)!=null) {
+//					v.findViewById(R.id.followButton).setVisibility(View.VISIBLE);
+//					v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
+//				}
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    ProductListRes response = (ProductListRes) object;
+                    AlertUtils.showToast(CustomizeFeedActivity.this, response.getMessage());
+                } else {
+                    AlertUtils.showToast(CustomizeFeedActivity.this, R.string.invalid_response);
+                }
+            }
+        });
+        listApi.deleteProduct(product_id);
+        listApi.execute();
+    }
+
     public void addBrand(String brand_id, final View v) {
 //		v.findViewById(R.id.followButton).setVisibility(View.GONE);
 //		v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.VISIBLE);
@@ -772,7 +846,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
 //				}
                 Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
-                    BrandListRes response = (BrandListRes) object;
+                    ProductListRes response = (ProductListRes) object;
                     AlertUtils.showToast(CustomizeFeedActivity.this, response.getMessage());
                 } else {
                     AlertUtils.showToast(CustomizeFeedActivity.this, R.string.invalid_response);
@@ -805,7 +879,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
 //				}
                 Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
-                    BrandListRes response = (BrandListRes) object;
+                    ProductListRes response = (ProductListRes) object;
                     AlertUtils.showToast(CustomizeFeedActivity.this, response.getMessage());
                 } else {
                     AlertUtils.showToast(CustomizeFeedActivity.this, R.string.invalid_response);
@@ -815,6 +889,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
         listApi.deleteBrand(brand_id);
         listApi.execute();
     }
+
 
     public void addCategory(String catList, final View v) {
         v.findViewById(R.id.checkImageView).setVisibility(View.GONE);
@@ -1147,15 +1222,15 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                             interestStoreListAdapter.setData(interestList);
                             interestStoreListAdapter.notifyDataSetChanged();
                         }
-                    } else if (isSelected.equalsIgnoreCase("brand")) {
+                    } else if (isSelected.equalsIgnoreCase("product")) {
                         if (interestSectionRes.getData().size() > 0 && isFirstTime) {
                             interestList = interestSectionRes.getData();
-                            interestBrandListAdapter = new CustomizeInterestBrandListAdapter(context, interestList, fragmentInterestSection);
-                            interestSectionList.setAdapter(interestBrandListAdapter);
+                            interestProductListAdapter = new CustomizeInterestProductListAdapter(context, interestList, fragmentInterestSection);
+                            interestSectionList.setAdapter(interestProductListAdapter);
                         } else {
                             interestList = interestSectionRes.getData();
-                            interestBrandListAdapter.setData(interestList);
-                            interestBrandListAdapter.notifyDataSetChanged();
+                            interestProductListAdapter.setData(interestList);
+                            interestProductListAdapter.notifyDataSetChanged();
                         }
                     } else if (isSelected.equalsIgnoreCase("people")) {
                         if (interestSectionRes.getData().size() > 0 && isFirstTime) {
@@ -1204,8 +1279,8 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
 
         if (isSelected.equalsIgnoreCase("store")) {
             interestSectionApi.searchStore(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
-        } else if (isSelected.equalsIgnoreCase("brand")) {
-            interestSectionApi.searchBrand(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
+        } else if (isSelected.equalsIgnoreCase("product")) {
+            interestSectionApi.searchProduct(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
         } else if (isSelected.equalsIgnoreCase("people")) {
             interestSectionApi.searchUser(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
         } else {
@@ -1224,8 +1299,8 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
     public void loadData() {
         if (isSelected.equalsIgnoreCase("store") && !isSearchActive) {
             getStoreList();
-        } else if (isSelected.equalsIgnoreCase("brand") && !isSearchActive) {
-            getBrandList();
+        } else if (isSelected.equalsIgnoreCase("product") && !isSearchActive) {
+            getProductList();
         } else if (isSelected.equalsIgnoreCase("people") && isGuys && !isGals && !isSearchActive) {
             getUserList("male");
         } else if (isSelected.equalsIgnoreCase("people") && !isGuys && isGals && !isSearchActive) {
@@ -1327,4 +1402,3 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
         footerLayout.setVisibility(View.GONE);
     }
 }
-

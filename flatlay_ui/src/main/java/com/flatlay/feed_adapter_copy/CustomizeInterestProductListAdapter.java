@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ProgressBar;
@@ -24,46 +23,50 @@ import com.flatlaylib.bean.InterestSection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomizeInterestBrandListAdapter extends BaseAdapter {
+/**
+ * Created by RachelDi on 12/8/17.
+ */
+
+public class CustomizeInterestProductListAdapter extends BaseAdapter {
     private FragmentActivity mContext;
     private LayoutInflater inflater;
-    private List<InterestSection> brands = new ArrayList<InterestSection>();
+    private List<InterestSection> products = new ArrayList<InterestSection>();
     private CustomizeFeedFragment customizeFeedActivity;
     private FragmentProfileView fragmentProfileView;
     private boolean fromProfile = false;
 
-    public CustomizeInterestBrandListAdapter(FragmentActivity mContext, List<InterestSection> stores, CustomizeFeedFragment customizeFeedActivity) {
+    public CustomizeInterestProductListAdapter(FragmentActivity mContext, List<InterestSection> stores, CustomizeFeedFragment customizeFeedActivity) {
         this.mContext = mContext;
-        this.brands = stores;
+        this.products = stores;
         this.customizeFeedActivity = customizeFeedActivity;
         fromProfile = false;
         inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public CustomizeInterestBrandListAdapter(FragmentActivity mContext, List<InterestSection> stores, FragmentProfileView fragmentProfileView) {
+    public CustomizeInterestProductListAdapter(FragmentActivity mContext, List<InterestSection> stores, FragmentProfileView fragmentProfileView) {
         this.mContext = mContext;
-        this.brands = stores;
+        this.products = stores;
         this.fragmentProfileView = fragmentProfileView;
         fromProfile = true;
         inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public void setData(List<InterestSection> data) {
-        this.brands.addAll(data);
+        this.products.addAll(data);
     }
 
     public void addData(InterestSection data) {
-        this.brands.add(data);
+        this.products.add(data);
     }
 
     @Override
     public int getCount() {
-        return brands.size();
+        return products.size();
     }
 
     @Override
     public InterestSection getItem(int index) {
-        return brands.get(index);
+        return products.get(index);
     }
 
     @Override
@@ -79,18 +82,16 @@ public class CustomizeInterestBrandListAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.searchImageView = (SquareImageView) convertView.findViewById(R.id.searchImageView);
             viewHolder.progressBar_follow_brand = (ProgressBar) convertView.findViewById(R.id.progressBar_follow_brand);
-            viewHolder.brandNameTextView = (TextView) convertView.findViewById(R.id.brandNametextView);
+            viewHolder.productNameTextView = (TextView) convertView.findViewById(R.id.brandNametextView);
             viewHolder.follow_btn = (TextView) convertView.findViewById(R.id.follow_btn);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         if (fromProfile)
-            if (brands.get(position).getIs_followedbyviewer() != null && brands.get(position).getIs_followedbyviewer().equals("yes")) {
+            if (products.get(position).getIs_followedbyviewer() != null && products.get(position).getIs_followedbyviewer().equals("yes")) {
                 viewHolder.follow_btn.setText("FOLLOWING");
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    viewHolder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
-                }
+                viewHolder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
 //                int imgResource = R.drawable.ic_check_following;
 //                viewHolder.follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
                 viewHolder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
@@ -101,7 +102,7 @@ public class CustomizeInterestBrandListAdapter extends BaseAdapter {
 //                viewHolder.follow_btn.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
                 viewHolder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
             }
-        else if (brands.get(position).getIs_followed() != null && brands.get(position).getIs_followed().equals("yes")) {
+        else if (products.get(position).getIs_followed() != null && products.get(position).getIs_followed().equals("yes")) {
             viewHolder.follow_btn.setText("FOLLOWING");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 viewHolder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
@@ -118,46 +119,46 @@ public class CustomizeInterestBrandListAdapter extends BaseAdapter {
         }
 
         CommonUtility.setImage(mContext, getItem(position).getLogo(), viewHolder.searchImageView, R.drawable.ic_placeholder_brand);
-        if (!TextUtils.isEmpty(brands.get(position).getName())) {
-            viewHolder.brandNameTextView.setText(capitalizeFirstLetter(brands.get(position).getName()));
+        if (!TextUtils.isEmpty(products.get(position).getName())) {
+            viewHolder.productNameTextView.setText(capitalizeFirstLetter(products.get(position).getName()));
         }
 
-        viewHolder.follow_btn.setOnClickListener(new OnClickListener() {
+        viewHolder.follow_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (!fromProfile) {
-                    if (!TextUtils.isEmpty(brands.get(position).getIs_followed()) && customizeFeedActivity.checkInternet()) {
-                        if (brands.get(position).getIs_followed().equals("yes")) {
-                            brands.get(position).setIs_followed("no");
-                            customizeFeedActivity.deleteBrand(getItem(position).getId(), viewHolder.follow_btn);
+                    if (!TextUtils.isEmpty(products.get(position).getIs_followed()) && customizeFeedActivity.checkInternet()) {
+                        if (products.get(position).getIs_followed().equals("yes")) {
+                            products.get(position).setIs_followed("no");
+                            customizeFeedActivity.deleteProduct(getItem(position).getId(), viewHolder.follow_btn);
                             notifyDataSetChanged();
                         } else {
-                            brands.get(position).setIs_followed("yes");
-                            customizeFeedActivity.addBrand(getItem(position).getId(), viewHolder.follow_btn);
+                            products.get(position).setIs_followed("yes");
+                            customizeFeedActivity.addProduct(getItem(position).getId(), viewHolder.follow_btn);
                             notifyDataSetChanged();
                         }
                     }
                 } else {
-                    if (!TextUtils.isEmpty(brands.get(position).getIs_followedbyviewer()) && fragmentProfileView.checkInternet()) {
-                        if (brands.get(position).getIs_followedbyviewer().equals("yes")) {
-                            brands.get(position).setIs_followedbyviewer("no");
-                            fragmentProfileView.deleteBrand(getItem(position).getId(), viewHolder.follow_btn);
+                    if (!TextUtils.isEmpty(products.get(position).getIs_followedbyviewer()) && fragmentProfileView.checkInternet()) {
+                        if (products.get(position).getIs_followedbyviewer().equals("yes")) {
+                            products.get(position).setIs_followedbyviewer("no");
+                            fragmentProfileView.deleteProduct(getItem(position).getId(), viewHolder.follow_btn);
                             notifyDataSetChanged();
                         } else {
-                            brands.get(position).setIs_followedbyviewer("yes");
-                            fragmentProfileView.addBrand(getItem(position).getId(), viewHolder.follow_btn);
+                            products.get(position).setIs_followedbyviewer("yes");
+                            fragmentProfileView.addProduct(getItem(position).getId(), viewHolder.follow_btn);
                             notifyDataSetChanged();
                         }
                     }
                 }
             }
         });
-        convertView.setOnClickListener(new OnClickListener() {
+        convertView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                ((HomeActivity) mContext).addFragment(new FragmentProductBasedOnType("brand", getItem(position).getName(), getItem(position).getId()));
+                ((HomeActivity) mContext).addFragment(new FragmentProductBasedOnType("product", getItem(position).getName(), getItem(position).getId()));
             }
         });
         return convertView;
@@ -173,6 +174,8 @@ public class CustomizeInterestBrandListAdapter extends BaseAdapter {
         private SquareImageView searchImageView;
 
         private ProgressBar progressBar_follow_brand;
-        private TextView brandNameTextView, follow_btn;
+        private TextView productNameTextView, follow_btn;
     }
 }
+
+

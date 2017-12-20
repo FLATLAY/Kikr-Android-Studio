@@ -46,7 +46,7 @@ import com.flatlaylib.api.SearchAllApi;
 import com.flatlaylib.api.SearchApi;
 import com.flatlaylib.bean.BrandList;
 import com.flatlaylib.bean.Product;
-import com.flatlaylib.bean.SearchStoreBrandUserRes;
+import com.flatlaylib.bean.SearchStoreProductUserRes;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.ServiceCallback;
 import com.flatlaylib.service.ServiceException;
@@ -902,17 +902,17 @@ public class FragmentSearchAll extends BaseFragment implements View.OnClickListe
                 Syso.info("In handleOnSuccess>>" + object);
                 isLoading = !isLoading;
                 itemArrayList = new ArrayList<>();
-                SearchStoreBrandUserRes searchStoreBrandUserRes = (SearchStoreBrandUserRes) object;
+                SearchStoreProductUserRes searchStoreBrandUserRes = (SearchStoreProductUserRes) object;
                 sectionItem = new SectionItem("Brands");
                 itemArrayList.add(sectionItem);
-                for (int i = 0; i < searchStoreBrandUserRes.getBrands().size(); i++) {
+                for (int i = 0; i < searchStoreBrandUserRes.getProducts().size(); i++) {
                     searchResult = new SearchResult();
-                    searchResult.setId(searchStoreBrandUserRes.getBrands().get(i).getId());
-                    searchResult.setName(searchStoreBrandUserRes.getBrands().get(i).getName());
-                    searchResult.setImg(searchStoreBrandUserRes.getBrands().get(i).getImg());
-                    searchResult.setDescription(searchStoreBrandUserRes.getBrands().get(i).getDescription());
-                    searchResult.setIs_followed(searchStoreBrandUserRes.getBrands().get(i).getIs_followed());
-                    searchResult.setLogo(searchStoreBrandUserRes.getBrands().get(i).getLogo());
+                    searchResult.setId(searchStoreBrandUserRes.getProducts().get(i).getId());
+                    searchResult.setName(searchStoreBrandUserRes.getProducts().get(i).getName());
+                    searchResult.setImg(searchStoreBrandUserRes.getProducts().get(i).getImg());
+                    searchResult.setDescription(searchStoreBrandUserRes.getProducts().get(i).getDescription());
+                    searchResult.setIs_followed(searchStoreBrandUserRes.getProducts().get(i).getIs_followed());
+                    searchResult.setLogo(searchStoreBrandUserRes.getProducts().get(i).getLogo());
                     searchResult.setSection_name("brands");
                     itemArrayList.add(searchResult);
                 }
@@ -1213,3 +1213,4 @@ public class FragmentSearchAll extends BaseFragment implements View.OnClickListe
 
 
 }
+

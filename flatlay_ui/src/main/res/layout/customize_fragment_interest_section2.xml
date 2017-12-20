@@ -8,7 +8,6 @@
     android:orientation="vertical">
 
 
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -21,18 +20,18 @@
             style="@style/editTextSearchYourBank"
 
             android:layout_height="50dp"
+            android:layout_marginLeft="18dp"
             android:layout_weight="1"
             android:background="@null"
-            android:textCursorDrawable="@null"
             android:drawableLeft="@drawable/ic_search_white"
+            android:drawablePadding="5dp"
             android:gravity="center_vertical"
             android:hint="Search for People, Stores, Brands."
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:drawablePadding="5dp"
-            android:layout_marginLeft="18dp"
             android:textColor="@color/white"
             android:textColorHint="@color/app_text_color"
+            android:textCursorDrawable="@null"
             android:textSize="16dp"
             android:textStyle="italic" />
 
@@ -60,74 +59,29 @@
         android:background="#BF000000"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="vertical">-->
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            <!--<Button-->
+                <!--android:id="@+id/interest_product_button"-->
+                <!--style="@style/buttonInterestSection"-->
 
-            android:orientation="vertical">
+                <!--android:background="#80000000"-->
+                <!--android:text="Products" />-->
 
-            <Button
-                android:id="@+id/all_button"
-                style="@style/buttonInterestSection"
-                android:background="#80000000"
-                android:text="All" />
+            <!--<View-->
+                <!--android:id="@+id/interest_product_button_active"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="5dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:visibility="invisible" />-->
 
-            <View
-                android:id="@+id/all_button_active"
-                android:layout_width="wrap_content"
-                android:layout_height="5dp"
-                android:background="@color/white" />
-
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/interest_store_button"
-                style="@style/buttonInterestSection"
-
-                android:background="#80000000"
-                android:text="@string/store_text" />
-
-            <View
-                android:id="@+id/interest_store_button_active"
-                android:layout_width="wrap_content"
-                android:layout_height="5dp"
-                android:background="@color/white"
-                android:visibility="invisible" />
+        <!--</LinearLayout>-->
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/interest_brand_button"
-                style="@style/buttonInterestSection"
-
-                android:background="#80000000"
-                android:text="@string/brand_text" />
-
-            <View
-                android:id="@+id/interest_brand_button_active"
-                android:layout_width="wrap_content"
-                android:layout_height="5dp"
-                android:background="@color/white"
-                android:visibility="invisible" />
-
-        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -151,6 +105,33 @@
         </LinearLayout>
 
 
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/interest_store_button"
+                style="@style/buttonInterestSection"
+
+                android:background="#80000000"
+                android:text="Shops"/>
+            <!--android:text="@string/store_text" -->
+
+
+            <View
+                android:id="@+id/interest_store_button_active"
+                android:layout_width="wrap_content"
+                android:layout_height="5dp"
+                android:background="@color/white"
+                android:visibility="invisible" />
+
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
 
@@ -160,12 +141,12 @@
         android:background="@color/app_text_color" />
 
     <LinearLayout
+        android:id="@+id/layoutPeopleStoreBrand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layoutPeopleStoreBrand"
-        android:visibility="gone"
         android:background="#BF000000"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="fill_parent"
@@ -180,9 +161,9 @@
 
         <LinearLayout
 
+            android:id="@+id/threetab"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/threetab"
 
             >
 
@@ -267,28 +248,18 @@
         layout="@layout/no_result_found_for_search_product"
         android:visibility="gone" />
 
-    <!--<ListView-->
-    <!--android:id="@+id/interestSectionList"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:cacheColorHint="#00000000"-->
-    <!--android:divider="@null"-->
-    <!--android:headerDividersEnabled="false"-->
-
-    <!--android:listSelector="@android:color/transparent"-->
-    <!--android:scrollbars="vertical"></ListView>-->
-
-
     <ListView
-        android:id="@+id/featuredList"
+        android:id="@+id/interestSectionList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cacheColorHint="#00000000"
-        android:divider="#ffffff"
-        android:dividerHeight="8dp"
+        android:divider="@null"
+        android:headerDividersEnabled="false"
+
         android:listSelector="@android:color/transparent"
-        android:scrollbarSize="1dp"
-        android:scrollbars="vertical"></ListView>
+        android:scrollbars="vertical">
+
+    </ListView>
 
     <GridView
         android:id="@+id/categoryGridView"
@@ -303,5 +274,18 @@
         android:id="@+id/footer"
         layout="@layout/footer"
         android:visibility="visible" />
+
+
+    <LinearLayout
+        android:id="@+id/up"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#00FFFF"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

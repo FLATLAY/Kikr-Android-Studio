@@ -34,7 +34,7 @@ public class FragmentDiscoverNew extends BaseFragment implements OnPageChangeLis
     ViewPager mViewPager;
     String[] titalName = new String[]{"Trending", "Featured", "Collections"};
     private ActionBar actionBar;
-    LinearLayout option1_LinearLayout, option2_LinearLayout, option3_LinearLayout, cart_tab_LinearLayout;
+    LinearLayout option1_LinearLayout, option2_LinearLayout, cart_tab_LinearLayout;
     private boolean isInspiration = false;
     LinearLayout[] optionArray;// = new TextView[]{option1TextView,option2TextVie,option3TextView};
     public static int currentTab = 0;
@@ -67,16 +67,16 @@ public class FragmentDiscoverNew extends BaseFragment implements OnPageChangeLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         Syso.info("uuuuuuuuuuu in onCreateView");
-        View view = inflater.inflate(R.layout.discover_fragment_new, null);
+        View view = inflater.inflate(R.layout.discover_fragment_new2, null);
 
         mViewPager = (ViewPager) view.findViewById(R.id.pager);
 
 
         option1_LinearLayout = (LinearLayout) view.findViewById(R.id.option1);
         option2_LinearLayout = (LinearLayout) view.findViewById(R.id.option2);
-        option3_LinearLayout = (LinearLayout) view.findViewById(R.id.option3);
+        //option3_LinearLayout = (LinearLayout) view.findViewById(R.id.option3);
         cart_tab_LinearLayout = (LinearLayout) view.findViewById(cart_tab);
-        optionArray = new LinearLayout[]{option1_LinearLayout, option2_LinearLayout, option3_LinearLayout};
+        optionArray = new LinearLayout[]{option1_LinearLayout, option2_LinearLayout};
 
         initData();
 

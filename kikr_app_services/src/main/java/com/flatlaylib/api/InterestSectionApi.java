@@ -38,7 +38,7 @@ public class InterestSectionApi extends AbsService {
 		Gson gson = new Gson();
 		requestValue = gson.toJson(maps);
 	}
-	
+
 	public void getStoreListFollowed(String user_id, String pagenum, String viewer_id) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "getstores";
 		requestType = WebConstants.HTTP_METHOD_POST;
@@ -62,7 +62,7 @@ public class InterestSectionApi extends AbsService {
 		Gson gson = new Gson();
 		requestValue = gson.toJson(maps);
 	}
-	
+
 	public void unFollowStore(String userid,String store_id) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "deleteuserstore";
 		requestType = WebConstants.HTTP_METHOD_POST;
@@ -86,7 +86,7 @@ public class InterestSectionApi extends AbsService {
 		Gson gson = new Gson();
 		requestValue = gson.toJson(maps);
 	}
-	
+
 	public void searchBrand(String userid,String search_text,String pagenum) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "searchbrand";
 		requestType = WebConstants.HTTP_METHOD_POST;
@@ -98,7 +98,20 @@ public class InterestSectionApi extends AbsService {
 		Gson gson = new Gson();
 		requestValue = gson.toJson(maps);
 	}
-	
+
+	public void searchProduct(String userid,String search_text,String pagenum) {
+		this.METHOD_NAME = WebConstants.HOST_FILE + "searchproduct";
+		requestType = WebConstants.HTTP_METHOD_POST;
+		Map<String, String> comment = new HashMap<String, String>();
+		comment.put("user_id", userid);
+		comment.put("search_text", search_text);
+		comment.put("pagenum", pagenum);
+		Map[] maps = new Map[] { comment };
+		Gson gson = new Gson();
+		requestValue = gson.toJson(maps);
+	}
+
+
 	public void searchStore(String userid,String search_text,String pagenum) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "searchstore";
 		requestType = WebConstants.HTTP_METHOD_POST;
@@ -110,7 +123,7 @@ public class InterestSectionApi extends AbsService {
 		Gson gson = new Gson();
 		requestValue = gson.toJson(maps);
 	}
-	
+
 	public void searchCategory(String userid,String search_text,String pagenum) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "searchcategory";
 		requestType = WebConstants.HTTP_METHOD_POST;
@@ -122,7 +135,7 @@ public class InterestSectionApi extends AbsService {
 		Gson gson = new Gson();
 		requestValue = gson.toJson(maps);
 	}
-	
+
 	public void getCategoryList(String pagenum) {
 		this.METHOD_NAME=WebConstants.HOST_FILE+"getcategories";
 		requestType=WebConstants.HTTP_METHOD_POST;
@@ -144,7 +157,19 @@ public class InterestSectionApi extends AbsService {
 		Gson gson=new Gson();
 		requestValue=gson.toJson(maps);
 	}
-	
+
+	public void getProductList(String pagenum) {
+		this.METHOD_NAME = WebConstants.HOST_FILE + "getproducts";
+		requestType = WebConstants.HTTP_METHOD_POST;
+		Map<String, String> comment = new HashMap<String, String>();
+		comment.put("user_id", UserPreference.getInstance().getUserID());
+		comment.put("pagenum", pagenum);
+		Map[] maps=new Map[]{comment};
+		Gson gson=new Gson();
+		requestValue=gson.toJson(maps);
+	}
+
+
 	public void getBrandListFollowed(String user_id, String pagenum, String viewer_id) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "getbrands";
 		requestType = WebConstants.HTTP_METHOD_POST;
@@ -157,7 +182,7 @@ public class InterestSectionApi extends AbsService {
 		Gson gson=new Gson();
 		requestValue=gson.toJson(maps);
 	}
-	
+
 	public void getAllKikrUserList(String userid,String page_no,String gender) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "getuserlist";
 		requestType = WebConstants.HTTP_METHOD_POST;
@@ -169,7 +194,7 @@ public class InterestSectionApi extends AbsService {
 		Gson gson = new Gson();
 		requestValue = gson.toJson(maps);
 	}
-	
+
 	@Override
 	public String getActionName() {
 		return METHOD_NAME;

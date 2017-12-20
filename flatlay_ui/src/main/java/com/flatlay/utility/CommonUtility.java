@@ -230,7 +230,14 @@ public class CommonUtility {
         return displayMetrics.heightPixels;
     }
 
-
+    public static void setImage(Activity context, String url, ImageView imageView) {
+//		AQuery aQuery = new AQuery(context);
+//		Bitmap preset = BitmapFactory.decodeResource(context.getResources(), placeholder);
+//		aQuery.id(imageView).image(url, true, true, 0, placeholder, preset, AQuery.FADE_IN_NETWORK, 0);
+//		Glide.with(context).load(url).placeholder(placeholder).crossFade().into(imageView);
+        UrlImageViewHelper.setUrlDrawable(imageView, url);
+//		UrlImageViewHelper.setUseBitmapScaling(true);
+    }
 
     public static void setImage(Activity context, String url, ImageView imageView, int placeholder) {
 //		AQuery aQuery = new AQuery(context);

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -41,6 +42,7 @@ import com.flatlaylib.api.FollowUserApi;
 import com.flatlaylib.api.InspirationFeedApi;
 import com.flatlaylib.api.InterestSectionApi;
 import com.flatlaylib.api.MyProfileApi;
+import com.flatlaylib.api.ProductListApi;
 import com.flatlaylib.bean.FollowerList;
 import com.flatlaylib.bean.Inspiration;
 import com.flatlaylib.bean.InterestSection;
@@ -691,7 +693,9 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                 AlertUtils.showToast(mContext, R.string.user_followed_successfully);
                 isFollowed = true;
                 follow_btn.setText("FOLLOWING");
-                follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
+                }
 
                 follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
                 refreshProfile();
@@ -853,7 +857,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         }
         if(product_list.size()>0)
         {
-           imagesList.setVisibility(View.VISIBLE);
+            imagesList.setVisibility(View.VISIBLE);
             photo_not_found.setVisibility(View.GONE);
         }
 //        collection_button.setText(collectionLists.size() + "\nCollections");
@@ -893,7 +897,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
             backarrowlayout.setVisibility(View.VISIBLE);
             follow_btn.setText("FOLLOW ");
             follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_borderbg));
-           // refreshProfile();
+            // refreshProfile();
             follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
         }
     }
@@ -1198,6 +1202,29 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         listApi.execute();
     }
 
+    public void deleteProduct(String product_id, final View v) {
+        final ProductListApi listApi = new ProductListApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    BrandListRes response = (BrandListRes) object;
+                    AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    AlertUtils.showToast(mContext, R.string.invalid_response);
+                }
+            }
+        });
+        listApi.deleteProduct(product_id);
+        listApi.execute();
+    }
+
     public void addBrand(String brand_id, final View v) {
 //		v.findViewById(R.id.followButton).setVisibility(View.GONE);
 //		v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.VISIBLE);
@@ -1230,6 +1257,40 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         listApi.addBrands(brand_id);
         listApi.execute();
     }
+
+    public void addProduct(String product_id, final View v) {
+//		v.findViewById(R.id.followButton).setVisibility(View.GONE);
+//		v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.VISIBLE);
+        final ProductListApi listApi = new ProductListApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
+//				if (v.findViewById(R.id.followButton)!=null) {
+//					v.findViewById(R.id.followButton).setVisibility(View.VISIBLE);
+//					v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
+//				}
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+//				if (v.findViewById(R.id.followButton)!=null) {
+//					v.findViewById(R.id.followButton).setVisibility(View.VISIBLE);
+//					v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
+//				}
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    BrandListRes response = (BrandListRes) object;
+                    AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    AlertUtils.showToast(mContext, R.string.invalid_response);
+                }
+            }
+        });
+        listApi.addProducts(product_id);
+        listApi.execute();
+    }
+
 
     private void getInspirationFeedList() {
 

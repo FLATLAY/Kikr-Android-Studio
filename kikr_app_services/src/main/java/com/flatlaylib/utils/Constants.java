@@ -11,7 +11,8 @@ public class Constants {
     public interface WebConstants {
 
         //String SOICIAL_TOKEN = "EAAWaZA3rJ4BYBAA7gOuWgkCeO8ShpLZCLuRJY1hDTZBeCQTRAfZAcQh2yuzuZBy3D8Bt3RdKKBqoCLrW6QxEtFlLh6spdUvH4Edq4xcaNZCU3p6GBsNkcARxw5Be3xXZBZBaxYOcZC6dQoemklErS3DRZAZA26gAU4j72nrZAsqxFCZCaaqoYlZBxNcG8e3iDpkEYpchdyqhyijZAxJuwZDZD";
-        String SOICIAL_TOKEN = "EAACJtDlQuJ4BALu4uNO16mc4hbsVS0DZBtGdHyX7tjktZCTtfZBEbW8oUdflwsypguEK6nggh1gRcwpYZAPzYDuCiLR1DOXAZBVUZBCHQ4hL7DTaw0PZCUGc0gWslQEySslnOwVRmiRx3HPUaSsK5LJcqxzRBr950QZD";
+        String SOICIAL_TOKEN = "EAAZAXFuh8J2UBAKTKTnGeVaRNJO2Irvuvmb35zgl6bGr8zZATJVy78BQebeDyMOr9h7IUrt4BONnKMXHPh2sLxPYS5wHPYkpZCoXwVDgAmHCqcSN4ZAoDXVSWGT3Pm72g58y0pXnOAH8bPpZCXqtkFBQ4u2qATrx1NzAiNmcvZCwZDZD";
+        //String SOICIAL_TOKEN = "EAAZAXFuh8J2UBAN3LZAMJp15Xw0c12rvA6UVpwZAmsUeSRqZCfemHUo0fMMY2wsI0u0AYuKPya8eoQEcSZCKmvYARmvG5zgKFA9QX1i5dUhQCtzueZB9ZCxyw6a99AXJO8TJqA5Ugc5UkWLnqHtvNjZAwvLn1bZCYhqGyWY91YDxvZAwZDZD";
         int NETWORK_ERROR = 10000;
         int FAILED_ERROR = 10001;
         String SUCCESS_CODE = "0000";
@@ -28,7 +29,7 @@ public class Constants {
         String HTTP_METHOD_GET = "GET";
         String HTTP_METHOD_PUT = "PUT";
 
-//		String HOST_API = "http://23.227.167.180/api/"; 
+//		String HOST_API = "http://23.227.167.180/api/";
 //		String DEFAULT_IP = "23.227.167.180"; //104.131.58.147
 
         //String DEFAULT_IP = "http://api.kikr.io/";
@@ -36,16 +37,16 @@ public class Constants {
 
         // String DEFAULT_IP = "http://v1.kikr.io/";
 
-        // this default_ip with chaged url of client 
+        // this default_ip with chaged url of client
         String DEFAULT_IP = "https://v1.flat-lay.com/";
 
 
         //String DEFAULT_IP = "http://v1.kikrapp.com/";
 
-//		String HOST_API = "http://104.131.58.147/api/"; 
+//		String HOST_API = "http://104.131.58.147/api/";
 
         String HOST_FILE = "";
-//		String HOST_FILE = "mobile.php/"; 
+//		String HOST_FILE = "mobile.php/";
 //		String HOST_IMAGE = "http://eyetea.my/ice/";
 
         boolean isLive = false;

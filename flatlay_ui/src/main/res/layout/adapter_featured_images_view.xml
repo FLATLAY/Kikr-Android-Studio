@@ -4,16 +4,20 @@
 
     android:layout_height="wrap_content"
 
-    android:background="@color/white">
+    android:background="@color/transparent">
     >
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activity_product_list_product_image"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/discover_list_small_item_height"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:src="@drawable/dum_list_item_product" />
+        android:src="@drawable/dum_list_item_product"
+        app:riv_border_width="0dp"
+        app:riv_corner_radius="7dp"
+
+        />
 
 
 </LinearLayout>

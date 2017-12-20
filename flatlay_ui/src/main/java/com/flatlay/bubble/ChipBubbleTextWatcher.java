@@ -11,7 +11,7 @@ import com.flatlay.model.Item;
 import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.AppConstants;
 import com.flatlaylib.api.SearchAllApi;
-import com.flatlaylib.bean.SearchStoreBrandUserRes;
+import com.flatlaylib.bean.SearchStoreProductUserRes;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.ServiceCallback;
 import com.flatlaylib.service.ServiceException;
@@ -151,11 +151,11 @@ public class ChipBubbleTextWatcher implements TextWatcher {
                 if (AppConstants.isBubbleApiCall)
                     AppConstants.isBubbleApiCall = false;
                 itemArrayList = new ArrayList<>();
-                SearchStoreBrandUserRes searchStoreBrandUserRes = (SearchStoreBrandUserRes) object;
-                autoSuggestArray = new String[searchStoreBrandUserRes.getBrands().size() + searchStoreBrandUserRes.getStores().size() + searchStoreBrandUserRes.getUsers().size()];
-                for (int i = 0; i < searchStoreBrandUserRes.getBrands().size(); i++) {
+                SearchStoreProductUserRes searchStoreBrandUserRes = (SearchStoreProductUserRes) object;
+                autoSuggestArray = new String[searchStoreBrandUserRes.getProducts().size() + searchStoreBrandUserRes.getStores().size() + searchStoreBrandUserRes.getUsers().size()];
+                for (int i = 0; i < searchStoreBrandUserRes.getProducts().size(); i++) {
 
-                    autoSuggestArray[j++] = searchStoreBrandUserRes.getBrands().get(i).getName();
+                    autoSuggestArray[j++] = searchStoreBrandUserRes.getProducts().get(i).getName();
 
                 }
                 for (int i = 0; i < searchStoreBrandUserRes.getStores().size(); i++) {

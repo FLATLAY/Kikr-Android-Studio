@@ -204,6 +204,7 @@ public class InspirationAdapter extends BaseAdapter {
             viewholder.likeCount = (TextView) convertView.findViewById(R.id.likeCount);
             viewholder.staticLikes = (TextView) convertView.findViewById(R.id.staticLikes);
             viewholder.descriptionArrow2 = (ImageView) convertView.findViewById(R.id.descriptionArrow2);
+            viewholder.descriptionArrow2.setVisibility(View.INVISIBLE);
             viewholder.follow_btn = (Button) convertView.findViewById(R.id.follow_btn);
             viewholder.contentContainer = (RelativeLayout) convertView.findViewById(R.id.content_contain);
             viewholder.overlay = (LinearLayout) convertView.findViewById(R.id.overlay);
@@ -253,7 +254,7 @@ public class InspirationAdapter extends BaseAdapter {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
-                            holder.inspirationImage.setClickable(false);
+                            // holder.inspirationImage.setClickable(false);
                             Log.w("InspirationAdapter","Clicked the arrow 3!"+getItem(position).getUsername()+"*****"+getItem(position).toString());
 
                         }
@@ -267,15 +268,15 @@ public class InspirationAdapter extends BaseAdapter {
                         @Override
                         public void onAnimationStart(Animator animation) {
                             super.onAnimationStart(animation);
-                            holder.descriptionArrow2.startAnimation(b);
+                            //holder.descriptionArrow2.startAnimation(b);
                             Log.w("InspirationAdapter","Clicked the arrow 5!"+getItem(position).getUsername()+"*****"+getItem(position).toString());
                         }
 
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
-                            holder.inspirationImage.setClickable(true);
-                            holder.contentContainer.setVisibility(View.INVISIBLE);
+                            // holder.inspirationImage.setClickable(true);
+                            //holder.contentContainer.setVisibility(View.INVISIBLE);
                             Log.w("InspirationAdapter","Clicked the arrow 6!"+getItem(position).getUsername()+"*****"+getItem(position).toString());
                         }
                     });
@@ -555,6 +556,7 @@ public class InspirationAdapter extends BaseAdapter {
         viewholder.productInflaterLayout.removeAllViews();
 
         if (data != null && data.size() > 0) {
+            viewholder.descriptionArrow2.setVisibility(View.VISIBLE);
             viewholder.noProductTextView.setVisibility(View.GONE);
             viewholder.productInflaterLayout.addView(new InspirationProductUI(mContext, getItem(position), convertView).getView());
         }

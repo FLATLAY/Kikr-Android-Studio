@@ -9,10 +9,12 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:gravity="center"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:text="View All"
-        android:textSize="@dimen/large_text_size" />
+        android:background="@drawable/btn_borderbg"
+        android:textSize="@dimen/large_text_size"
+        android:textColor="@color/white"/>
 
 
 </RelativeLayout>

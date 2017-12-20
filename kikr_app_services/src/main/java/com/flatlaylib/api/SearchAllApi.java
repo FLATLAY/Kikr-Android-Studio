@@ -6,9 +6,10 @@ import java.util.Map;
 
 import org.apache.http.NameValuePair;
 
+import com.flatlaylib.bean.SearchStoreProductUserRes;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import com.flatlaylib.bean.SearchStoreBrandUserRes;
+import com.flatlaylib.bean.SearchStoreProductUserRes;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.AbsService;
 import com.flatlaylib.service.ServiceCallback;
@@ -57,7 +58,7 @@ public class SearchAllApi extends AbsService {
     @Override
     public String getJsonRequest() {
 
-            return requestValue;
+        return requestValue;
 
     }
     @Override
@@ -68,7 +69,7 @@ public class SearchAllApi extends AbsService {
     protected void processResponse(String response) {
         Syso.info("In RegisterUserApi processResponse20>>" + response);
         try {
-            SearchStoreBrandUserRes userResponse = JsonUtils.fromJson(response, SearchStoreBrandUserRes.class);
+            SearchStoreProductUserRes userResponse = JsonUtils.fromJson(response, SearchStoreProductUserRes.class);
             if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {
                 isValidResponse = true;
             }

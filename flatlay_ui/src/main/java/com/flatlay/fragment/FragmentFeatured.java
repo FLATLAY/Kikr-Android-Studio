@@ -50,7 +50,6 @@ public class FragmentFeatured extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        fragmentFeatured = this;
         mainView = inflater.inflate(R.layout.fragment_featured, null);
         return mainView;
     }
@@ -132,14 +131,14 @@ public class FragmentFeatured extends BaseFragment {
                     if (product_list.size() == 0 && isFirstTime) {
                         showDataNotFound();
                     } else if (product_list.size() > 0 && isFirstTime) {
-                        featuredTabAdapter = new FeaturedTabAdapter(mContext, product_list, fragmentFeatured);
+                        //featuredTabAdapter = new FeaturedTabAdapter(mContext, product_list, fragmentFeatured);
                         featuredList.setAdapter(featuredTabAdapter);
                     } else if (featuredTabAdapter != null) {
                         //  featuredTabAdapter.setData(product_list);
                         featuredTabAdapter.notifyDataSetChanged();
                     }
                     else {
-                        featuredTabAdapter = new FeaturedTabAdapter(mContext, product_list, fragmentFeatured);
+                        //featuredTabAdapter = new FeaturedTabAdapter(mContext, product_list, fragmentFeatured);
                         featuredList.setAdapter(featuredTabAdapter);
                     }
 

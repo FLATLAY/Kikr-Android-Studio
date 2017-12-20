@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter;
 import com.flatlay.model.Item;
 import com.flatlay.ui.ProgressBarDialog;
 import com.flatlaylib.api.SearchAllApi;
-import com.flatlaylib.bean.SearchStoreBrandUserRes;
+import com.flatlaylib.bean.SearchStoreProductUserRes;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.ServiceCallback;
 import com.flatlaylib.service.ServiceException;
@@ -73,21 +73,21 @@ public class AutoSuggestApi {
                 Syso.info("In handleOnSuccess>>" + object);
                 int j = 0;
                 itemArrayList = new ArrayList<>();
-                SearchStoreBrandUserRes searchStoreBrandUserRes = (SearchStoreBrandUserRes) object;
-                autoSuggestArray = new String[searchStoreBrandUserRes.getBrands().size() + searchStoreBrandUserRes.getStores().size() + searchStoreBrandUserRes.getUsers().size()];
-                for (int i = 0; i < searchStoreBrandUserRes.getBrands().size(); i++) {
+                SearchStoreProductUserRes searchStoreProductUserRes = (SearchStoreProductUserRes) object;
+                autoSuggestArray = new String[searchStoreProductUserRes.getProducts().size() + searchStoreProductUserRes.getStores().size() + searchStoreProductUserRes.getUsers().size()];
+                for (int i = 0; i < searchStoreProductUserRes.getProducts().size(); i++) {
 
-                    autoSuggestArray[j++] = searchStoreBrandUserRes.getBrands().get(i).getName();
-
-                }
-                for (int i = 0; i < searchStoreBrandUserRes.getStores().size(); i++) {
-
-                    autoSuggestArray[j++] = searchStoreBrandUserRes.getStores().get(i).getName();
+                    autoSuggestArray[j++] = searchStoreProductUserRes.getProducts().get(i).getName();
 
                 }
-                for (int i = 0; i < searchStoreBrandUserRes.getUsers().size(); i++) {
+                for (int i = 0; i < searchStoreProductUserRes.getStores().size(); i++) {
 
-                    autoSuggestArray[j++] = searchStoreBrandUserRes.getUsers().get(i).getName();
+                    autoSuggestArray[j++] = searchStoreProductUserRes.getStores().get(i).getName();
+
+                }
+                for (int i = 0; i < searchStoreProductUserRes.getUsers().size(); i++) {
+
+                    autoSuggestArray[j++] = searchStoreProductUserRes.getUsers().get(i).getName();
 
                 }
 

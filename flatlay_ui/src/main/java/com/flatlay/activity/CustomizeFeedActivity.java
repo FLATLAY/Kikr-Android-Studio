@@ -146,6 +146,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
         setClickListener();
         setupData();
 
+
     }
 
 

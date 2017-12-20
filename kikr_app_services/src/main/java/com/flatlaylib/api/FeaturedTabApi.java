@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
@@ -35,6 +36,7 @@ public class FeaturedTabApi extends AbsService {
         comment.put("pagenum", pagenum);
         Gson gson = new Gson();
         requestValue = gson.toJson(comment);
+
     }
 
     @Override
@@ -59,8 +61,16 @@ public class FeaturedTabApi extends AbsService {
 
     @Override
     public String getJsonRequest() {
+//        try {
+//            return requestValue;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            JSONArray array = new JSONArray();
+//            return array.toString();
+//        }
         try {
             return requestValue;
+
         } catch (Exception e) {
             e.printStackTrace();
             JSONArray array = new JSONArray();
@@ -117,5 +127,42 @@ public class FeaturedTabApi extends AbsService {
             Syso.error(e);
             isValidResponse = false;
         }
+    }
+
+    public void searchUser(String userid, String search_text, String pagenum) {
+        this.METHOD_NAME = WebConstants.HOST_FILE + "searchuser";
+        requestType = WebConstants.HTTP_METHOD_POST;
+        Map<String, String> comment = new HashMap<String, String>();
+        comment.put("user_id", userid);
+        comment.put("search_type", "username");
+        comment.put("search_text", search_text);
+        comment.put("pagenum", pagenum);
+       // Map[] maps = new Map[]{comment};
+        Gson gson = new Gson();
+        requestValue = gson.toJson(comment);
+    }
+
+    public void searchStore(String user_id, String search_text, String pagenum) {
+        this.METHOD_NAME = WebConstants.HOST_FILE + "searchstore";
+        requestType = WebConstants.HTTP_METHOD_POST;
+        Map<String, String> comment = new HashMap<String, String>();
+        comment.put("user_id", user_id);
+        comment.put("search_text", search_text);
+        comment.put("pagenum", pagenum);
+       // Map[] maps = new Map[]{comment};
+        Gson gson = new Gson();
+        requestValue = gson.toJson(comment);
+    }
+
+    public void getAllKikrUserList(String user_id, String pagenum, String gender) {
+        this.METHOD_NAME = WebConstants.HOST_FILE + "getuserlist";
+        requestType = WebConstants.HTTP_METHOD_POST;
+        Map<String, String> comment = new HashMap<String, String>();
+        comment.put("user_id", user_id);
+        comment.put("pagenum", pagenum);
+        comment.put("gender", gender);
+       // Map[] maps = new Map[]{comment};
+        Gson gson = new Gson();
+        requestValue = gson.toJson(comment);
     }
 }

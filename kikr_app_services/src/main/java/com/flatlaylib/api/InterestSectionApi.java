@@ -18,180 +18,181 @@ import com.flatlaylib.utils.Constants.WebConstants;
 import com.flatlaylib.utils.JsonUtils;
 import com.flatlaylib.utils.Syso;
 
-public class InterestSectionApi extends AbsService {
+		public class InterestSectionApi extends AbsService {
 
-	private String requestValue;
-	private String requestType;
+			private String requestValue;
+			private String requestType;
 
-	public InterestSectionApi(ServiceCallback serviceCallback) {
-		super();
-		this.mServiceCallback = serviceCallback;
-	}
+			public InterestSectionApi(ServiceCallback serviceCallback) {
+				super();
+				this.mServiceCallback = serviceCallback;
+			}
 
-	public void getStoreList(String pagenum) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "getstores";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id",UserPreference.getInstance().getUserID());
-		comment.put("pagenum",pagenum);
-		Map[] maps = new Map[] { comment };
-		Gson gson = new Gson();
-		requestValue = gson.toJson(maps);
-	}
+			public void getStoreList(String pagenum) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "getstores";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id",UserPreference.getInstance().getUserID());
+				comment.put("pagenum",pagenum);
+				Map[] maps = new Map[] { comment };
+				Gson gson = new Gson();
+				requestValue = gson.toJson(maps);
+			}
 
-	public void getStoreListFollowed(String user_id, String pagenum, String viewer_id) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "getstores";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id",user_id);
-		comment.put("pagenum",pagenum);
-		comment.put("onlyfollowed","yes");
-		comment.put("viewer_id",viewer_id);
-		Map[] maps = new Map[] { comment };
-		Gson gson = new Gson();
-		requestValue = gson.toJson(maps);
-	}
+			public void getStoreListFollowed(String user_id, String pagenum, String viewer_id) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "getstores";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id",user_id);
+				comment.put("pagenum",pagenum);
+				comment.put("onlyfollowed","yes");
+				comment.put("viewer_id",viewer_id);
+				Map[] maps = new Map[] { comment };
+				Gson gson = new Gson();
+				requestValue = gson.toJson(maps);
+			}
 
-	public void followStore(String userid,String store_id) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "adduserstore";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id",userid);
-		comment.put("store_id", store_id);
-		Map[] maps = new Map[] { comment };
-		Gson gson = new Gson();
-		requestValue = gson.toJson(maps);
-	}
+			public void followStore(String userid,String store_id) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "adduserstore";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id",userid);
+				comment.put("store_id", store_id);
+				Map[] maps = new Map[] { comment };
+				Gson gson = new Gson();
+				requestValue = gson.toJson(maps);
+			}
 
-	public void unFollowStore(String userid,String store_id) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "deleteuserstore";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id",userid);
-		comment.put("store_id", store_id);
-		Map[] maps = new Map[] { comment };
-		Gson gson = new Gson();
-		requestValue = gson.toJson(maps);
-	}
+			public void unFollowStore(String userid,String store_id) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "deleteuserstore";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id",userid);
+				comment.put("store_id", store_id);
+				Map[] maps = new Map[] { comment };
+				Gson gson = new Gson();
+				requestValue = gson.toJson(maps);
+			}
 
-	public void searchUser(String userid,String search_text,String pagenum) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "searchuser";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id", userid);
-		comment.put("search_type", "username");
-		comment.put("search_text", search_text);
-		comment.put("pagenum", pagenum);
-		Map[] maps = new Map[] { comment };
-		Gson gson = new Gson();
-		requestValue = gson.toJson(maps);
-	}
+			public void searchUser(String userid,String search_text,String pagenum) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "searchuser";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id", userid);
+				comment.put("search_type", "username");
+				comment.put("search_text", search_text);
+				comment.put("pagenum", pagenum);
+				Map[] maps = new Map[] { comment };
+				Gson gson = new Gson();
+				requestValue = gson.toJson(maps);
+			}
 
-	public void searchBrand(String userid,String search_text,String pagenum) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "searchbrand";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id", userid);
-		comment.put("search_text", search_text);
-		comment.put("pagenum", pagenum);
-		Map[] maps = new Map[] { comment };
-		Gson gson = new Gson();
-		requestValue = gson.toJson(maps);
-	}
+			public void searchBrand(String userid,String search_text,String pagenum) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "searchbrand";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id", userid);
+				comment.put("search_text", search_text);
+				comment.put("pagenum", pagenum);
+				Map[] maps = new Map[] { comment };
+				Gson gson = new Gson();
+				requestValue = gson.toJson(maps);
+			}
 
-	public void searchProduct(String userid,String search_text,String pagenum) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "searchproduct";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id", userid);
-		comment.put("search_text", search_text);
-		comment.put("pagenum", pagenum);
-		Map[] maps = new Map[] { comment };
-		Gson gson = new Gson();
-		requestValue = gson.toJson(maps);
-	}
-
-
-	public void searchStore(String userid,String search_text,String pagenum) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "searchstore";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id", userid);
-		comment.put("search_text", search_text);
-		comment.put("pagenum", pagenum);
-		Map[] maps = new Map[] { comment };
-		Gson gson = new Gson();
-		requestValue = gson.toJson(maps);
-	}
-
-	public void searchCategory(String userid,String search_text,String pagenum) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "searchcategory";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id", userid);
-		comment.put("search_text", search_text);
-		comment.put("pagenum", pagenum);
-		Map[] maps = new Map[] { comment };
-		Gson gson = new Gson();
-		requestValue = gson.toJson(maps);
-	}
-
-	public void getCategoryList(String pagenum) {
-		this.METHOD_NAME=WebConstants.HOST_FILE+"getcategories";
-		requestType=WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id", UserPreference.getInstance().getUserID());
-		comment.put("pagenum", pagenum);
-		Map[] maps=new Map[]{comment};
-		Gson gson=new Gson();
-		requestValue=gson.toJson(maps);
-	}
-
-	public void getBrandList(String pagenum) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "getbrands";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id", UserPreference.getInstance().getUserID());
-		comment.put("pagenum", pagenum);
-		Map[] maps=new Map[]{comment};
-		Gson gson=new Gson();
-		requestValue=gson.toJson(maps);
-	}
-
-	public void getProductList(String pagenum) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "getproducts";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id", UserPreference.getInstance().getUserID());
-		comment.put("pagenum", pagenum);
-		Map[] maps=new Map[]{comment};
-		Gson gson=new Gson();
-		requestValue=gson.toJson(maps);
-	}
+			public void searchProduct(String userid,String search_text,String pagenum) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "searchproduct";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id", userid);
+				comment.put("search_text", search_text);
+				comment.put("pagenum", pagenum);
+				Map[] maps = new Map[] { comment };
+				Gson gson = new Gson();
+				requestValue = gson.toJson(maps);
+			}
 
 
-	public void getBrandListFollowed(String user_id, String pagenum, String viewer_id) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "getbrands";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id", user_id);
-		comment.put("pagenum", pagenum);
-		comment.put("onlyfollowed","yes");
-		comment.put("viewer_id",viewer_id);
-		Map[] maps=new Map[]{comment};
-		Gson gson=new Gson();
-		requestValue=gson.toJson(maps);
-	}
+			public String searchStore(String userid,String search_text,String pagenum) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "searchstore";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id", userid);
+				comment.put("search_text", search_text);
+				comment.put("pagenum", pagenum);
+				Map[] maps = new Map[] { comment };
+				Gson gson = new Gson();
+				requestValue = gson.toJson(maps);
+				return requestValue;
+			}
 
-	public void getAllKikrUserList(String userid,String page_no,String gender) {
-		this.METHOD_NAME = WebConstants.HOST_FILE + "getuserlist";
-		requestType = WebConstants.HTTP_METHOD_POST;
-		Map<String, String> comment = new HashMap<String, String>();
-		comment.put("user_id", userid);
-		comment.put("pagenum", page_no);
-		comment.put("gender", gender);
-		Map[] maps = new Map[] { comment };
-		Gson gson = new Gson();
+			public void searchCategory(String userid,String search_text,String pagenum) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "searchcategory";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id", userid);
+				comment.put("search_text", search_text);
+				comment.put("pagenum", pagenum);
+				Map[] maps = new Map[] { comment };
+				Gson gson = new Gson();
+				requestValue = gson.toJson(maps);
+			}
+
+			public void getCategoryList(String pagenum) {
+				this.METHOD_NAME=WebConstants.HOST_FILE+"getcategories";
+				requestType=WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id", UserPreference.getInstance().getUserID());
+				comment.put("pagenum", pagenum);
+				Map[] maps=new Map[]{comment};
+				Gson gson=new Gson();
+				requestValue=gson.toJson(maps);
+			}
+
+			public void getBrandList(String pagenum) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "getbrands";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id", UserPreference.getInstance().getUserID());
+				comment.put("pagenum", pagenum);
+				Map[] maps=new Map[]{comment};
+				Gson gson=new Gson();
+				requestValue=gson.toJson(maps);
+			}
+
+			public void getProductList(String pagenum) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "getproducts";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id", UserPreference.getInstance().getUserID());
+				comment.put("pagenum", pagenum);
+				Map[] maps=new Map[]{comment};
+				Gson gson=new Gson();
+				requestValue=gson.toJson(maps);
+			}
+
+
+			public void getBrandListFollowed(String user_id, String pagenum, String viewer_id) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "getbrands";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id", user_id);
+				comment.put("pagenum", pagenum);
+				comment.put("onlyfollowed","yes");
+				comment.put("viewer_id",viewer_id);
+				Map[] maps=new Map[]{comment};
+				Gson gson=new Gson();
+				requestValue=gson.toJson(maps);
+			}
+
+			public void getAllKikrUserList(String userid,String page_no,String gender) {
+				this.METHOD_NAME = WebConstants.HOST_FILE + "getuserlist";
+				requestType = WebConstants.HTTP_METHOD_POST;
+				Map<String, String> comment = new HashMap<String, String>();
+				comment.put("user_id", userid);
+				comment.put("pagenum", page_no);
+				comment.put("gender", gender);
+				Map[] maps = new Map[] { comment };
+				Gson gson = new Gson();
 		requestValue = gson.toJson(maps);
 	}
 

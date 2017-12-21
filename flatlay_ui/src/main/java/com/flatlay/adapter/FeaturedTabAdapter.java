@@ -1,4 +1,3 @@
-
 package com.flatlay.adapter;
 
 import android.content.Context;
@@ -28,6 +27,7 @@ import com.flatlay.ui.RoundImageView;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.bean.FeaturedTabData;
 import com.flatlaylib.bean.Inspiration;
+import com.flatlaylib.bean.InterestSection;
 import com.flatlaylib.bean.Product;
 
 import org.apache.http.util.TextUtils;
@@ -42,15 +42,15 @@ public class FeaturedTabAdapter extends BaseAdapter {
 //private CustomizeFeedFragment fragmentFeatured;
 
     private LayoutInflater mInflater;
-    private List<FeaturedTabData> brandsArray;
-    private List<FeaturedTabData> check;
+    private List<InterestSection> brandsArray;
+    private List<InterestSection> check;
     //	List<Product> data;
 //	enum ItemType{brand,store,user};
     String BRAND = "brand";
     String STORE = "store";
     String USER = "user";
 
-    public FeaturedTabAdapter(FragmentActivity context, List<FeaturedTabData> brandsArray, FragmentFeatured fragmentFeatured) {
+    public FeaturedTabAdapter(FragmentActivity context, List<InterestSection> brandsArray, FragmentFeatured fragmentFeatured) {
         super();
         this.mContext = context;
         this.fragmentFeatured = fragmentFeatured;
@@ -59,7 +59,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
         Log.w("Activity","FeaturedTabAdapter");
     }
 
-    public void setData(List<FeaturedTabData> data) {
+    public void setData(List<InterestSection> data) {
         brandsArray.addAll(data);
     }
 
@@ -69,7 +69,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
     }
 
     @Override
-    public FeaturedTabData getItem(int index) {
+    public InterestSection getItem(int index) {
 
         return brandsArray.get(index);
     }
@@ -101,7 +101,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
             viewholder = (ViewHolder) convertView.getTag();
         }
 
-        FeaturedTabData featuredTabData = getItem(position);
+        //FeaturedTabData featuredTabData = getItem(position);
         viewholder.userNameTextView.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -144,7 +144,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
         viewholder.collectionCount.setText(getItem(position).getCollections_count() + " Collections");
 
 
-        if(getItem(position).getType().equals(USER))
+     //   if(getItem(position).getType().equals(USER))
             CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);
 //        else
 //            CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);

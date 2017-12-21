@@ -24,6 +24,7 @@ import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.UiUpdate;
 import com.flatlaylib.bean.FeaturedTabData;
 import com.flatlaylib.bean.Inspiration;
+import com.flatlaylib.bean.InterestSection;
 import com.flatlaylib.bean.Product;
 
 import java.util.List;
@@ -31,18 +32,18 @@ import java.util.List;
 public class FeaturedTabUi {
     FragmentActivity mContext;
     List<Product> data;
-    private List<FeaturedTabData> brandsArray;
+    private List<InterestSection> brandsArray;
     List<Inspiration> feed;
     LayoutInflater mInflater;
     FragmentFeatured fragmentFeatured;
-    FeaturedTabData featuredTabData;
+    InterestSection featuredTabData;
     private ProgressBarDialog mProgressBarDialog;
     View view;
     String USER = "user";
 
     float lastX = 0, lastY = 0;
 
-    public FeaturedTabUi(FragmentActivity context,List<FeaturedTabData> brandsArray, FeaturedTabData featuredTabData, FragmentFeatured fragmentFeatured, View convertView) {
+    public FeaturedTabUi(FragmentActivity context, List<InterestSection> brandsArray, InterestSection featuredTabData, FragmentFeatured fragmentFeatured, View convertView) {
         super();
         this.mContext = context;
         this.brandsArray = brandsArray;
@@ -57,7 +58,7 @@ public class FeaturedTabUi {
 
     public View getView() {
         LinearLayout ll = new LinearLayout(mContext);
-       // LayoutParams layoutParams = new LinearLayout.LayoutParams((CommonUtility.getDeviceWidth(mContext) / 3) - 40, LinearLayout.LayoutParams.WRAP_CONTENT);
+        // LayoutParams layoutParams = new LinearLayout.LayoutParams((CommonUtility.getDeviceWidth(mContext) / 3) - 40, LinearLayout.LayoutParams.WRAP_CONTENT);
         LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(5,0,5,0);
         int size = 0;

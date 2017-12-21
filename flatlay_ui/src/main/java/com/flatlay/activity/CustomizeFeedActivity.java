@@ -90,6 +90,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
     FragmentActivity context;
     ImageView imgDelete;
     SectionItem sectionItem;
+
     View all_button_active, interest_people_button_active, interest_store_button_active, interest_product_button_active;
 
     @Override
@@ -609,7 +610,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                     showDataNotFound();
                 else if (interestList.size() > 0 && isFirstTime) {
                     hideDataNotFound();
-                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(context, interestList, fragmentInterestSection);
+                  //  interestStoreListAdapter = new CustomizeInterestStoreListAdapter(context, interestList, fragmentFeatured);
                     interestSectionList.setAdapter(interestStoreListAdapter);
                 } else {
                     interestStoreListAdapter.setData(interestList);
@@ -1216,7 +1217,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                     if (isSelected.equalsIgnoreCase("store")) {
                         if (interestSectionRes.getData().size() > 0 && isFirstTime) {
                             interestList = interestSectionRes.getData();
-                            interestStoreListAdapter = new CustomizeInterestStoreListAdapter(context, interestList, fragmentInterestSection);
+                            //interestStoreListAdapter = new CustomizeInterestStoreListAdapter(context, interestList, fragmentInterestSection);
                             interestSectionList.setAdapter(interestStoreListAdapter);
                         } else {
                             interestList = interestSectionRes.getData();

@@ -2,42 +2,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/layout_customize"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="#e5e5e5"
-        android:gravity="center_horizontal"
-        android:padding="10dp">
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/layout_customize"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:background="#e5e5e5"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:padding="10dp"-->
+        <!--android:visibility="invisible">-->
 
-        <LinearLayout
-            android:id="@+id/llCustomize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true">
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/llCustomize"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_alignParentTop="true">&ndash;&gt;-->
 
-            <ImageView
-                android:id="@+id/imgCustomize"
-                android:layout_width="30dp"
+            <!--&lt;!&ndash;&lt;!&ndash;<ImageView&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;android:id="@+id/imgCustomize"&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;android:layout_width="30dp"&ndash;&gt;&ndash;&gt;-->
 
-                android:layout_height="30dp"
+                <!--&lt;!&ndash;&lt;!&ndash;android:layout_height="30dp"&ndash;&gt;&ndash;&gt;-->
 
-                android:src="@drawable/customizeyourfeedimage" />
-        </LinearLayout>
+                <!--&lt;!&ndash;&lt;!&ndash;android:src="@drawable/customizeyourfeedimage" />&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/llCustomize"
-            android:text="Customize "
-            android:textColor="#545454"
-            android:textSize="20dp" />
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginLeft="10dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toRightOf="@+id/llCustomize"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="Customize "&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textColor="#545454"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textSize="20dp" />&ndash;&gt;-->
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 
     <TextView
         android:id="@+id/loadingTextView"
@@ -53,7 +54,6 @@
         android:id="@+id/discoverList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/layout_customize"
         android:cacheColorHint="#00000000"
         android:divider="@null"
 
@@ -83,51 +83,58 @@
 
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/customizewhiteimage"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentTop="true"
-               android:layout_toLeftOf="@+id/customizeTitle"
-                android:padding="5dp"
-                android:layout_marginTop="3dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/customizewhiteimage" />
-
-            <TextView
-                android:id="@+id/customizeTitle"
-                android:layout_width="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:paddingTop="8dp"
-                android:text="Customize"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <!--<ImageView-->
+                <!--android:id="@+id/customizewhiteimage"-->
+                <!--android:layout_width="35dp"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:layout_alignParentTop="true"-->
+               <!--android:layout_toLeftOf="@+id/customizeTitle"-->
+                <!--android:padding="5dp"-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:scaleType="fitCenter"-->
+                <!--android:src="@drawable/customizewhiteimage"-->
+                <!--android:visibility="invisible"/>-->
 
 
-            <ImageView
-                android:id="@+id/imgDelete"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="right"
-                android:layout_toRightOf="@+id/customizeTitle"
-                android:padding="5dp"
-                android:layout_marginTop="3dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/delete" />
+            <!--<TextView-->
+                <!--android:id="@+id/customizeTitle"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:gravity="center"-->
+                <!--android:paddingTop="8dp"-->
+                <!--android:text="Customize"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="20sp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:visibility="invisible"/>-->
+
+
+
+            <!--<ImageView-->
+                <!--android:id="@+id/imgDelete"-->
+                <!--android:layout_width="35dp"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_gravity="right"-->
+                <!--android:layout_toRightOf="@+id/customizeTitle"-->
+                <!--android:padding="5dp"-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:scaleType="fitCenter"-->
+                <!--android:src="@drawable/delete"-->
+                <!--android:visibility="invisible"/>-->
 
 
             <fragment
                 android:id="@+id/interest_fragment"
                 class="com.flatlay.fragment.CustomizeFeedFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/imgDelete"></fragment>
+                android:layout_height="match_parent">
+                <!--android:layout_below="@+id/imgDelete">-->
+
+            </fragment>
         </RelativeLayout>
 
 

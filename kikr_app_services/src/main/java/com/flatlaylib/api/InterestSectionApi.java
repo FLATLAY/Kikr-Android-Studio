@@ -112,7 +112,7 @@ import com.flatlaylib.utils.Syso;
 			}
 
 
-			public String searchStore(String userid,String search_text,String pagenum) {
+			public void searchStore(String userid,String search_text,String pagenum) {
 				this.METHOD_NAME = WebConstants.HOST_FILE + "searchstore";
 				requestType = WebConstants.HTTP_METHOD_POST;
 				Map<String, String> comment = new HashMap<String, String>();
@@ -122,7 +122,6 @@ import com.flatlaylib.utils.Syso;
 				Map[] maps = new Map[] { comment };
 				Gson gson = new Gson();
 				requestValue = gson.toJson(maps);
-				return requestValue;
 			}
 
 			public void searchCategory(String userid,String search_text,String pagenum) {

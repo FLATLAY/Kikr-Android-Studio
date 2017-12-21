@@ -18,13 +18,13 @@ import com.flatlaylib.utils.Constants.WebConstants;
 import com.flatlaylib.utils.JsonUtils;
 import com.flatlaylib.utils.Syso;
 
-public class FeaturedTabApi extends AbsService {
+public class FeaturedTabApi extends InterestSectionApi {
 
     private String requestValue;
     private String requestType;
 
     public FeaturedTabApi(ServiceCallback serviceCallback) {
-        super();
+        super(serviceCallback);
         this.mServiceCallback = serviceCallback;
     }
 
@@ -38,6 +38,18 @@ public class FeaturedTabApi extends AbsService {
         requestValue = gson.toJson(comment);
 
     }
+
+//    public void getFeaturedTabData2(String user_id,String search_text, String pagenum) {
+//        this.METHOD_NAME = WebConstants.HOST_FILE + "getfeaturedtabdata2";
+//        requestType = WebConstants.HTTP_METHOD_POST;
+//        Map<String, String> comment = new HashMap<String, String>();
+//        comment.put("user_id", user_id);
+//        comment.put("search_text", search_text);
+//        comment.put("pagenum", pagenum);
+//        Gson gson = new Gson();
+//        requestValue = gson.toJson(comment);
+//
+//    }
 
     @Override
     public String getActionName() {
@@ -61,13 +73,6 @@ public class FeaturedTabApi extends AbsService {
 
     @Override
     public String getJsonRequest() {
-//        try {
-//            return requestValue;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            JSONArray array = new JSONArray();
-//            return array.toString();
-//        }
         try {
             return requestValue;
 
@@ -128,41 +133,41 @@ public class FeaturedTabApi extends AbsService {
             isValidResponse = false;
         }
     }
-
-    public void searchUser(String userid, String search_text, String pagenum) {
-        this.METHOD_NAME = WebConstants.HOST_FILE + "searchuser";
-        requestType = WebConstants.HTTP_METHOD_POST;
-        Map<String, String> comment = new HashMap<String, String>();
-        comment.put("user_id", userid);
-        comment.put("search_type", "username");
-        comment.put("search_text", search_text);
-        comment.put("pagenum", pagenum);
-       // Map[] maps = new Map[]{comment};
-        Gson gson = new Gson();
-        requestValue = gson.toJson(comment);
-    }
-
-    public void searchStore(String user_id, String search_text, String pagenum) {
-        this.METHOD_NAME = WebConstants.HOST_FILE + "searchstore";
-        requestType = WebConstants.HTTP_METHOD_POST;
-        Map<String, String> comment = new HashMap<String, String>();
-        comment.put("user_id", user_id);
-        comment.put("search_text", search_text);
-        comment.put("pagenum", pagenum);
-       // Map[] maps = new Map[]{comment};
-        Gson gson = new Gson();
-        requestValue = gson.toJson(comment);
-    }
-
-    public void getAllKikrUserList(String user_id, String pagenum, String gender) {
-        this.METHOD_NAME = WebConstants.HOST_FILE + "getuserlist";
-        requestType = WebConstants.HTTP_METHOD_POST;
-        Map<String, String> comment = new HashMap<String, String>();
-        comment.put("user_id", user_id);
-        comment.put("pagenum", pagenum);
-        comment.put("gender", gender);
-       // Map[] maps = new Map[]{comment};
-        Gson gson = new Gson();
-        requestValue = gson.toJson(comment);
-    }
+//
+//    public void searchUser(String userid, String search_text, String pagenum) {
+//        this.METHOD_NAME = WebConstants.HOST_FILE + "searchuser";
+//        requestType = WebConstants.HTTP_METHOD_POST;
+//        Map<String, String> comment = new HashMap<String, String>();
+//        comment.put("user_id", userid);
+//        comment.put("search_type", "username");
+//        comment.put("search_text", search_text);
+//        comment.put("pagenum", pagenum);
+//       // Map[] maps = new Map[]{comment};
+//        Gson gson = new Gson();
+//        requestValue = gson.toJson(comment);
+//    }
+//
+//    public void searchStore(String user_id, String search_text, String pagenum) {
+//        this.METHOD_NAME = WebConstants.HOST_FILE + "searchstore";
+//        requestType = WebConstants.HTTP_METHOD_POST;
+//        Map<String, String> comment = new HashMap<String, String>();
+//        comment.put("user_id", user_id);
+//        comment.put("search_text", search_text);
+//        comment.put("pagenum", pagenum);
+//        Map[] maps = new Map[]{comment};
+//        Gson gson = new Gson();
+//        requestValue = gson.toJson(maps);
+//    }
+//
+//    public void getAllKikrUserList(String user_id, String pagenum, String gender) {
+//        this.METHOD_NAME = WebConstants.HOST_FILE + "getuserlist";
+//        requestType = WebConstants.HTTP_METHOD_POST;
+//        Map<String, String> comment = new HashMap<String, String>();
+//        comment.put("user_id", user_id);
+//        comment.put("pagenum", pagenum);
+//        comment.put("gender", gender);
+//       // Map[] maps = new Map[]{comment};
+//        Gson gson = new Gson();
+//        requestValue = gson.toJson(comment);
+  //  }
 }

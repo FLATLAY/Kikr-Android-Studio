@@ -172,7 +172,7 @@ public class FragmentTransferKikrCredits extends BaseFragment implements OnClick
 		}
 		return selectedUserId;
 	}
-	
+
 	private String getselectedUserName() {
 		String selectedUserId="";
 		if (selectedItems.size()>0) {

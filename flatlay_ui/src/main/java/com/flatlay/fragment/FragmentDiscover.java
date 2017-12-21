@@ -51,7 +51,7 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener, S
     private TextView loadingTextView;
     RelativeLayout layoutCustomize;
     FrameLayout customization_view;
-    ImageView hide_customize_view;
+    //ImageView hide_customize_view;
     CustomizeFeedFragment customizeFeedFragment;
     ImageView imgDelete;
 
@@ -74,39 +74,41 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener, S
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.layout_customize:
-                // startActivity(CustomizeFeedActivity.class);
-                //addFragment(new CustomizeFeedFragment());
-                customization_view.setVisibility(View.VISIBLE);
-                CustomizeFeedFragment.customizeFeedFragment.initData();
-                break;
-            case R.id.imgDelete:
-                customization_view.setVisibility(View.GONE);
-                if (CustomizeFeedFragment.searchYourItemEditText != null)
-                    CustomizeFeedFragment.searchYourItemEditText.setText("");
-                break;
-
-            default:
-                return;
-
-
-        }
+//        switch (v.getId()) {
+//            case R.id.layout_customize:
+//                // startActivity(CustomizeFeedActivity.class);
+//                //addFragment(new CustomizeFeedFragment());
+//                customization_view.setVisibility(View.VISIBLE);
+//                CustomizeFeedFragment.customizeFeedFragment.initData();
+//                break;
+//            case R.id.imgDelete:
+//                customization_view.setVisibility(View.GONE);
+//                if (CustomizeFeedFragment.searchYourItemEditText != null)
+//                    CustomizeFeedFragment.searchYourItemEditText.setText("");
+//                break;
+//
+//            default:
+//                return;
+//
+//
+//        }
     }
 
     @Override
     public void initUI(Bundle savedInstanceState) {
-        hide_customize_view = (ImageView) mainView.findViewById(R.id.imgDelete);
+        //hide_customize_view = (ImageView) mainView.findViewById(R.id.imgDelete);
         customization_view = (FrameLayout) mainView.findViewById(R.id.layout_customization);
-        layoutCustomize = (RelativeLayout) mainView.findViewById(R.id.layout_customize);
+        //layoutCustomize = (RelativeLayout) mainView.findViewById(R.id.layout_customize);
         discoverList = (ListView) mainView.findViewById(R.id.discoverList);
         loaderView = View.inflate(mContext, R.layout.footer, null);
         loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
         customizeFeedFragment = (CustomizeFeedFragment) getFragmentManager().findFragmentById(R.id.interest_fragment);
         // imgDelete = (ImageView)mainView.findViewById(R.id.imgDelete);
+        customization_view.setVisibility(View.VISIBLE);
     }
 
     public void initData() {
+        CustomizeFeedFragment.customizeFeedFragment.initData();
         if (checkInternet())
             getBrandAndProductList();
         else
@@ -239,8 +241,8 @@ public class FragmentDiscover extends BaseFragment implements OnClickListener, S
 
     @Override
     public void setClickListener() {
-        layoutCustomize.setOnClickListener(this);
-        hide_customize_view.setOnClickListener(this);
+//        layoutCustomize.setOnClickListener(this);
+        //hide_customize_view.setOnClickListener(this);
         //  imgDelete.setOnClickListener(this);
     }
 

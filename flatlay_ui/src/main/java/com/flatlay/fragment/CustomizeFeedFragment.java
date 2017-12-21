@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -61,46 +63,31 @@ import java.util.List;
 
 
 public class CustomizeFeedFragment extends FragmentFeatured implements View.OnClickListener, ServiceCallback, AdapterView.OnItemClickListener, MultiAutoCompleteTextView.OnEditorActionListener {
-
-
     private ListView interestSectionList;
     private ProgressBarDialog mProgressBarDialog;
-    private List<FeaturedTabData> interestList;
+    private List<InterestSection> interestList;
     private int pagenum = 0;
-    private Button interest_store_button, interest_people_button, people_all_button, people_guys_button, people_gals_button;
-
+    //private Button interest_store_button, interest_people_button, people_all_button, people_guys_button, people_gals_button;
     private FeaturedTabAdapter interestProductListAdapter;
-    private FeaturedTabAdapter interestCategoryListAdapter;
-    private FeaturedTabAdapter interestStoreListAdapter;
+    private CustomizeInterestStoreListAdapter interestStoreListAdapter;
     private CustomizeFeedFragment fragmentFeedFragment;
-    private CustomizeFeedAllAdapter searchAllAdapter;
-    private FeaturedTabAdapter interestPeopleListAdapter;
+    private CustomizeInterestPeopleListAdapter interestPeopleListAdapter;
     private View peopleHeaderView;
     private RoundImageView trendingGalsLinearLayout, trendingGuysLinearLayout;
-    private boolean isShown = false;
     public static MultiAutoCompleteTextView searchYourItemEditText;
     private String isSelected = "All";
     private boolean isLoading = false;
     private boolean isGuys = false;
     private boolean isGals = false;
     private boolean isFirstTime = true;
-    SearchResult searchResult;
-    ArrayList<Item> itemArrayList, peopleList, productList, storeList;
-
     private boolean isSearchActive = false;
     private GridView categoryGridView;
     private TextView noDataGalGuy;
-    SectionItem sectionItem;
     private View loaderView;
-    private int firstVisibleItem = 0, visibleItemCount = 0, totalItemCount = 0;
-
     private FragmentFeatured fragmentFeatured;
-
     private FeaturedTabAdapter featuredTabAdapter;
-
     private List<FeaturedTabData> product_list = new ArrayList<FeaturedTabData>();
-    View interest_people_button_active, interest_store_button_active, interest_product_button_active, people_all_button_active, people_guys_button_active, people_gals_button_active;
-
+    View interest_people_button_active, interest_store_button_active, people_all_button_active, people_guys_button_active, people_gals_button_active;
     View mainView;
     LinearLayout layoutPeople, threetab;
     private TextView loadingTextView;
@@ -119,26 +106,22 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         return mainView;
     }
 
-
     @Override
     public void initUI(Bundle savedInstanceState) {
         peopleHeaderView = mContext.getLayoutInflater().inflate(R.layout.interest_header, null);
         fragmentFeedFragment = this;
-        interest_people_button_active = (View) mainView.findViewById(R.id.interest_people_button_active);
-        interest_store_button_active = (View) mainView.findViewById(R.id.interest_store_button_active);
-
-        people_all_button_active = (View) mainView.findViewById(R.id.people_all_button_active);
-        people_guys_button_active = (View) mainView.findViewById(R.id.people_guys_button_active);
-        people_gals_button_active = (View) mainView.findViewById(R.id.people_gals_button_active);
-
-        people_all_button = (Button) mainView.findViewById(R.id.people_all_button);
-        people_guys_button = (Button) mainView.findViewById(R.id.people_guys_button);
-        people_gals_button = (Button) mainView.findViewById(R.id.people_gals_button);
-
+        //interest_people_button_active = (View) mainView.findViewById(R.id.interest_people_button_active);
+        //interest_store_button_active = (View) mainView.findViewById(R.id.interest_store_button_active);
+        //people_all_button_active = (View) mainView.findViewById(R.id.people_all_button_active);
+        // people_guys_button_active = (View) mainView.findViewById(R.id.people_guys_button_active);
+        //people_gals_button_active = (View) mainView.findViewById(R.id.people_gals_button_active);
+        // people_all_button = (Button) mainView.findViewById(R.id.people_all_button);
+        //  people_guys_button = (Button) mainView.findViewById(R.id.people_guys_button);
+        //people_gals_button = (Button) mainView.findViewById(R.id.people_gals_button);
         layoutPeople = (LinearLayout) mainView.findViewById(R.id.layoutPeopleStoreBrand);
-        threetab = (LinearLayout) mainView.findViewById(R.id.threetab);
-        interest_store_button = (Button) mainView.findViewById(R.id.interest_store_button);
-        interest_people_button = (Button) mainView.findViewById(R.id.interest_people_button);
+        //threetab = (LinearLayout) mainView.findViewById(R.id.threetab);
+        // interest_store_button = (Button) mainView.findViewById(R.id.interest_store_button);
+        // interest_people_button = (Button) mainView.findViewById(R.id.interest_people_button);
         trendingGalsLinearLayout = (RoundImageView) peopleHeaderView.findViewById(R.id.trendingGalsLinearLayout);
         trendingGuysLinearLayout = (RoundImageView) peopleHeaderView.findViewById(R.id.trendingGuysLinearLayout);
         searchYourItemEditText = (MultiAutoCompleteTextView) mainView.findViewById(R.id.searchYourItemEditText);
@@ -147,6 +130,8 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
         loaderView = View.inflate(mContext, R.layout.footer, null);
         interestSectionList = (ListView) mainView.findViewById(R.id.interestSectionList);
+        // getStoreList();
+
     }
 
     public void initData() {
@@ -156,20 +141,22 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         pagenum = 0;
         isLoading = false;
         isSearchActive = false;
-        isSelected = "All";
+        isSelected = "people";
         searchYourItemEditText.setFocusableInTouchMode(true);
         searchYourItemEditText.setFocusable(true);
+
         interestSectionList.setAdapter(featuredTabAdapter);
         if (interestSectionList.getHeaderViewsCount() == 0)
             interestSectionList.removeHeaderView(peopleHeaderView);
-        interest_store_button_active.setVisibility(View.INVISIBLE);
-        interest_people_button_active.setVisibility(View.INVISIBLE);
+        //interest_store_button_active.setVisibility(View.INVISIBLE);
+        //  interest_people_button_active.setVisibility(View.INVISIBLE);
         layoutPeople.setVisibility(View.GONE);
+        getStoreList();
+
     }
 
     @Override
     public void setData(Bundle bundle) {
-
         if (checkInternet()) {
             pagenum++;
             isFirstTime = false;
@@ -177,51 +164,8 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         } else {
             showReloadFotter();
         }
+        //getStoreList();
 
-//        if (checkInternet()) {
-//
-//            getAll();
-//        } else
-//            showReloadOption();
-
-//        interestSectionList.setOnScrollListener(new AbsListView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(AbsListView view,
-//                                             int scrollState) {
-//            }
-//
-//            @Override
-//            public void onScroll(AbsListView view, int firstVisibleItem,
-//                                 int visibleItemCount, int totalItemCount) {
-//                CustomizeFeedFragment.this.firstVisibleItem=firstVisibleItem;
-//                CustomizeFeedFragment.this.visibleItemCount=visibleItemCount;
-//                CustomizeFeedFragment.this.totalItemCount=totalItemCount;
-//                if (!isLoading && firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0) {
-//
-//                    if (checkInternet()) {
-//                        pagenum++;
-//                        isFirstTime = false;
-//                        getFeaturedTabData();
-//                    } else {
-//                        showReloadFotter();
-//                    }
-//                }
-//            }
-//        });
-
-//        interest_people_button_active.setOnClickListener(new AbsListView.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                if (checkInternet()) {
-//                        pagenum++;
-//                        isFirstTime = false;
-//                        getFeaturedTabData();
-//                    } else {
-//                        showReloadFotter();
-//                    }
-//            }
-//        });
     }
 
     private void getFeaturedTabData() {
@@ -233,7 +177,6 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
             loadingTextView.setVisibility(View.VISIBLE);
             mProgressBarDialog.show();
         }
-
 
         final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
 
@@ -248,21 +191,26 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                     }
                     hideDataNotFound();
                     isLoading = !isLoading;
+                    Syso.info("In handleOnSuccess>>" + object);
                     FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
                     product_list.addAll(featuredTabApiRes.getData());
+                    List<InterestSection> list = new ArrayList<>();
+                    list.addAll(product_list);
                     if (featuredTabApiRes.getData().size() < 1) {
                         isLoading = true;
                     }
                     if (product_list.size() == 0 && isFirstTime) {
                         showDataNotFound();
                     } else if (product_list.size() > 0 && isFirstTime) {
-                        featuredTabAdapter = new FeaturedTabAdapter(mContext, product_list, fragmentFeatured);
+                        featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
                         interestSectionList.setAdapter(featuredTabAdapter);
                     } else if (featuredTabAdapter != null) {
-                        featuredTabAdapter = new FeaturedTabAdapter(mContext, product_list, fragmentFeatured);
+                        //  featuredTabAdapter.setData(product_list);
+                        //featuredTabAdapter.notifyDataSetChanged();
+                        featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
                         interestSectionList.setAdapter(featuredTabAdapter);
                     } else {
-                        featuredTabAdapter = new FeaturedTabAdapter(mContext, product_list, fragmentFeatured);
+                        featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
                         interestSectionList.setAdapter(featuredTabAdapter);
                     }
 
@@ -277,8 +225,10 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                     interestSectionList.removeFooterView(loaderView);
                 } else {
                     loadingTextView.setVisibility(View.GONE);
+//					mProgressBarDialog.dismiss();
                 }
                 isLoading = !isLoading;
+                Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     FeaturedTabApiRes response = (FeaturedTabApiRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
@@ -305,198 +255,143 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
     }
 
+    private void removeFocus() {
+        searchYourItemEditText.setText("Search for People, Stores, Products.");
+        searchYourItemEditText.clearFocus();
+    }
+
     public void setClickListener() {
-        interest_store_button.setOnClickListener(this);
-        interest_people_button.setOnClickListener(this);
+        //interest_store_button.setOnClickListener(this);
+        //interest_product_button.setOnClickListener(this);
+        //interest_people_button.setOnClickListener(this);
+        // interest_category_button.setOnClickListener(this);
         trendingGalsLinearLayout.setOnClickListener(this);
         trendingGuysLinearLayout.setOnClickListener(this);
         searchYourItemEditText.setOnEditorActionListener(this);
-        people_all_button.setOnClickListener(this);
-        people_gals_button.setOnClickListener(this);
-        people_guys_button.setOnClickListener(this);
+        //people_all_button.setOnClickListener(this);
+        //people_gals_button.setOnClickListener(this);
+        //people_guys_button.setOnClickListener(this);
+
+//        all_button.setOnClickListener(this);
+//        String[] values = {"All", "Zeeshan", "Anshumaan", "Ajay", "Vinod", "himanshu", "Abhishek"};
+//
+//
+//        ChipBubbleText cp = new ChipBubbleText(mContext, searchYourItemEditText, values, 1);
+//        cp.setChipColor("#07948c");
+//        cp.setChipTextColor(R.color.white);
+//        cp.setChipTextSize(20);
+//
+//        cp.initialize();
+
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+
+
+        // Checks whether a hardware keyboard is available
         if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
+            //Toast.makeText(this, "keyboard visible", Toast.LENGTH_SHORT).show();
         } else if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_YES) {
+            //removeFocus();
         }
     }
 
     @Override
     public void onClick(View v) {
         hideProductNotFound();
-        switch (v.getId()) {
+    }
+    // removeFocus();
+    //hideFotter();
+//        switch (v.getId()) {
 
-            case R.id.interest_store_button:
-                isFirstTime = true;
-                pagenum = 0;
-                isSelected = "store";
-                isLoading = false;
-                isSearchActive = false;
-                searchYourItemEditText.setFocusableInTouchMode(true);
-                searchYourItemEditText.setFocusable(true);
-                if (interestSectionList.getHeaderViewsCount() != 0)
-                    interestSectionList.removeHeaderView(peopleHeaderView);
-                interestSectionList.setAdapter(featuredTabAdapter);
-                interest_store_button_active.setVisibility(View.VISIBLE);
-                interest_people_button_active.setVisibility(View.INVISIBLE);
-                layoutPeople.setVisibility(View.GONE);
-                if (searchYourItemEditText.getText().toString().equals(""))
-                    if (checkInternet()) {
-                        getStoreList();
-                        categoryGridView.setVisibility(View.GONE);
-                        interestSectionList.setVisibility(View.VISIBLE);
-                    }else
-                     showReloadOption();
-                    else {
-                        if (checkInternet()) {
-                            interestSectionList.setAdapter(featuredTabAdapter);
-                            if (interestSectionList.getHeaderViewsCount() != 0)
-                                interestSectionList.removeHeaderView(peopleHeaderView);
-                            pagenum = 0;
-                            isSearchActive = true;
-                            isFirstTime = true;
-                            isLoading = false;
-                            search();
-                        }
-                    }
-                break;
-            case R.id.interest_people_button:
-                isFirstTime = true;
-                isGuys = false;
-                isGals = false;
-                pagenum = 0;
-                isLoading = false;
-                isSearchActive = false;
-                isSelected = "people";
-                searchYourItemEditText.setFocusableInTouchMode(true);
-                searchYourItemEditText.setFocusable(true);
-                interestSectionList.setAdapter(featuredTabAdapter);
-                if (interestSectionList.getHeaderViewsCount() == 0)
-                    interestSectionList.removeHeaderView(peopleHeaderView);
-                interest_store_button_active.setVisibility(View.INVISIBLE);
-                interest_people_button_active.setVisibility(View.VISIBLE);
-                layoutPeople.setVisibility(View.VISIBLE);
-                threetab.setVisibility(View.GONE);
-                if (searchYourItemEditText.getText().toString().equals(""))
-                    if (checkInternet()) {
-                        categoryGridView.setVisibility(View.GONE);
-                        interestSectionList.setVisibility(View.VISIBLE);
-                        //getUserList("all");
-                    } else
-                        showReloadOption();
-                else {
-                    if (checkInternet()) {
-                        interestSectionList.setAdapter(featuredTabAdapter);
-                        if (interestSectionList.getHeaderViewsCount() != 0)
-                            interestSectionList.removeHeaderView(peopleHeaderView);
-                        pagenum = 0;
-                        isSearchActive = true;
-                        isFirstTime = true;
-                        isLoading = false;
-                        search();
-                    }
-                }
-                break;
-//            case R.id.all_button:
+//            case R.id.interest_store_button:
 //                isFirstTime = true;
-//                isGuys = false;
-//                isGals = false;
 //                pagenum = 0;
+//                isSelected = "store";
 //                isLoading = false;
 //                isSearchActive = false;
-//                isSelected = "All";
+//                //searchYourItemEditText.setText("");
 //                searchYourItemEditText.setFocusableInTouchMode(true);
 //                searchYourItemEditText.setFocusable(true);
-//                interestSectionList.setAdapter(featuredTabAdapter);
-//                if (interestSectionList.getHeaderViewsCount() == 0)
+//                if (interestSectionList.getHeaderViewsCount() != 0)
 //                    interestSectionList.removeHeaderView(peopleHeaderView);
-//                interest_store_button_active.setVisibility(View.INVISIBLE);
+//                // interestSectionList.setAdapter(featuredTabAdapter);
+//                interest_store_button_active.setVisibility(View.VISIBLE);
 //                interest_people_button_active.setVisibility(View.INVISIBLE);
+//                // interest_product_button_active.setVisibility(View.INVISIBLE);
 //                layoutPeople.setVisibility(View.GONE);
 //                if (searchYourItemEditText.getText().toString().equals(""))
 //                    if (checkInternet()) {
+//                        getStoreList();
 //                        categoryGridView.setVisibility(View.GONE);
 //                        interestSectionList.setVisibility(View.VISIBLE);
-//                        getAll();
 //                    } else
 //                        showReloadOption();
 //                else {
 //                    if (checkInternet()) {
-//                        interestSectionList.setAdapter(featuredTabAdapter);
+//                        //interestSectionList.setAdapter(featuredTabAdapter);
 //                        if (interestSectionList.getHeaderViewsCount() != 0)
 //                            interestSectionList.removeHeaderView(peopleHeaderView);
 //                        pagenum = 0;
 //                        isSearchActive = true;
 //                        isFirstTime = true;
 //                        isLoading = false;
-//                        getAll();
+//                        search();
 //                    }
 //                }
+//
 //                break;
-//            case R.id.interest_category_imageview:
-//                break;
-            case R.id.people_gals_button:
-                isFirstTime = true;
-                pagenum = 0;
-                isGuys = false;
-                isGals = true;
-                isLoading = false;
-                isSearchActive = false;
-                searchYourItemEditText.setFocusableInTouchMode(true);
-                searchYourItemEditText.setFocusable(true);
-                interestSectionList.setAdapter(featuredTabAdapter);
-                people_all_button_active.setVisibility(View.INVISIBLE);
-                people_guys_button_active.setVisibility(View.INVISIBLE);
-                people_gals_button_active.setVisibility(View.VISIBLE);
-                if (checkInternet())
-                    getUserList("female");
-                else
-                    showReloadOption();
-                break;
-            case R.id.people_guys_button:
-                isFirstTime = true;
-                pagenum = 0;
-                isGuys = true;
-                isGals = false;
-                isLoading = false;
-                isSearchActive = false;
-                searchYourItemEditText.setFocusableInTouchMode(true);
-                searchYourItemEditText.setFocusable(true);
-                interestSectionList.setAdapter(featuredTabAdapter);
-                people_all_button_active.setVisibility(View.INVISIBLE);
-                people_guys_button_active.setVisibility(View.VISIBLE);
-                people_gals_button_active.setVisibility(View.INVISIBLE);
-                if (checkInternet())
-                    getUserList("male");
-                else
-                    showReloadOption();
-                break;
 
-            case R.id.people_all_button:
-                isFirstTime = true;
-                pagenum = 0;
-                isGuys = true;
-                isGals = false;
-                isLoading = false;
-                isSearchActive = false;
-                searchYourItemEditText.setFocusableInTouchMode(true);
-                searchYourItemEditText.setFocusable(true);
-                interestSectionList.setAdapter(featuredTabAdapter);
-                people_all_button_active.setVisibility(View.VISIBLE);
-                people_guys_button_active.setVisibility(View.INVISIBLE);
-                people_gals_button_active.setVisibility(View.INVISIBLE);
-                if (checkInternet())
-                    getUserList("all");
-                //else
-                    showReloadOption();
-                break;
-            default:
-                break;
-        }
-    }
+//
+//            case R.id.interest_people_button:
+//                isFirstTime = true;
+//                isGuys = false;
+//                isGals = false;
+//                pagenum = 0;
+//                isLoading = false;
+//                isSearchActive = false;
+//                isSelected = "people";
+//                //searchYourItemEditText.setText("");
+//                searchYourItemEditText.setFocusableInTouchMode(true);
+//                searchYourItemEditText.setFocusable(true);
+//                interestSectionList.setAdapter(null);
+//                if (interestSectionList.getHeaderViewsCount() == 0)
+//                    interestSectionList.removeHeaderView(peopleHeaderView);
+//                //all_button_active.setVisibility(View.INVISIBLE);
+//                interest_store_button_active.setVisibility(View.INVISIBLE);
+//                interest_people_button_active.setVisibility(View.VISIBLE);
+//                //interest_product_button_active.setVisibility(View.INVISIBLE);
+//                layoutPeople.setVisibility(View.VISIBLE);
+//                threetab.setVisibility(View.GONE);
+////			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
+////			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
+//                if (!searchYourItemEditText.getText().toString().equals(""))
+////                    if (checkInternet()) {
+////                        categoryGridView.setVisibility(View.GONE);
+////                        interestSectionList.setVisibility(View.VISIBLE);
+////                        getUserList("all");
+////                    } else
+////                        showReloadOption();
+////               else {
+////                    if (checkInternet()) {
+////                        interestSectionList.setAdapter(null);
+////                        if (interestSectionList.getHeaderViewsCount() != 0)
+////                            interestSectionList.removeHeaderView(peopleHeaderView);
+////                        pagenum = 0;
+////                        isSearchActive = true;
+////                        isFirstTime = true;
+////                        isLoading = false;
+////                        search();
+////                    }
+////                }
+//                    break;
+//            default:
+//                break;
+//        }
+//    }
+
 
 //    public void getAll() {
 //        isLoading = !isLoading;
@@ -508,7 +403,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 //            peopleList = new ArrayList<>();
 //            storeList = new ArrayList<>();
 //            productList = new ArrayList<>();
-//            itemArrayList = new ArrayList<>();
+//            itemArrayList=new ArrayList<>();
 //            sectionItem = new SectionItem("Products");
 //
 //            productList.add(sectionItem);
@@ -550,6 +445,20 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 //                    peopleList.add(searchResult);
 //                }
 //
+//
+////                for (int i = 0; i < searchStoreProductUserRes.getProducts().size(); i++) {
+////                    searchResult = new SearchResult();
+////                    searchResult.setId(searchStoreProductUserRes.getProducts().get(i).getId());
+////                    searchResult.setName(searchStoreProductUserRes.getProducts().get(i).getName());
+////                    searchResult.setImg(searchStoreProductUserRes.getProducts().get(i).getImg());
+////                    searchResult.setDescription(searchStoreProductUserRes.getProducts().get(i).getDescription());
+////                    searchResult.setIs_followed(searchStoreProductUserRes.getProducts().get(i).getIs_followed());
+////                    searchResult.setLogo(searchStoreProductUserRes.getProducts().get(i).getLogo());
+////                    searchResult.setSection_name("products");
+////                    productList.add(searchResult);
+////                }
+//
+//
 //                for (int i = 0; i < searchStoreProductUserRes.getStores().size(); i++) {
 //                    searchResult = new SearchResult();
 //                    searchResult.setId(searchStoreProductUserRes.getStores().get(i).getId());
@@ -587,7 +496,14 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 //                else {
 //                    hideFotter();
 //                }
+//                Syso.info("In handleOnFailure>>" + object);
 //                isLoading = !isLoading;
+//                if (object != null) {
+////                    InterestSectionRes response = (InterestSectionRes) object;
+////                    AlertUtils.showToast(CustomizeFeedActivity.this, response.getMessage());
+//                } else {
+//                    // AlertUtils.showToast(CustomizeFeedActivity.this, R.string.invalid_response);
+//                }
 //            }
 //        });
 //        searchAllApi.searchStoreBrandPeople(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
@@ -606,6 +522,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 //        isLoading = !isLoading;
 //        mProgressBarDialog = new ProgressBarDialog(mContext);
 //        if (pagenum > 0) {
+//            //showFotter();
 //        } else
 //            mProgressBarDialog.show();
 //        final InterestSectionApi interestSectionApi = new InterestSectionApi(this);
@@ -625,15 +542,14 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         mProgressBarDialog = new ProgressBarDialog(mContext);
         if (pagenum > 0) {
             //showFotter();
-
         } else
             mProgressBarDialog.show();
 
 //        final InterestSectionApi interestSectionApi = new InterestSectionApi(new ServiceCallback() {
-            final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
+        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
 
 
-                @Override
+            @Override
             public void handleOnSuccess(Object object) {
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
@@ -644,30 +560,25 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                 Syso.info("In handleOnSuccess>>" + object);
                 isLoading = !isLoading;
 //                InterestSectionRes interestSectionRes = (InterestSectionRes) object;
-                    FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
-
-                    interestList = featuredTabApiRes.getData();
-                if (interestList.size() < 10) {
+                // FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
+                // interestList.addAll(featuredTabApiRes.getData());
+                List<InterestSection> list = new ArrayList<>();
+                list.addAll(product_list);
+                if (list.size() < 10) {
                     isLoading = true;
                 }
-                if (interestList.size() == 0 && isFirstTime)
+                if (list.size() == 0 && isFirstTime)
                     showProductNotFound();
-                else if (interestList.size() > 0 && isFirstTime) {
+                else if (list.size() > 0 && isFirstTime) {
                     hideProductNotFound();
-//                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, interestList, fragmentFeedFragment);
-                    featuredTabAdapter = new FeaturedTabAdapter(mContext, product_list, fragmentFeatured);
-
-//                    interestSectionList.setAdapter(interestStoreListAdapter);
-                    interestSectionList.setAdapter(featuredTabAdapter);
-
+                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, list, fragmentFeedFragment);
+                    interestSectionList.setAdapter(interestStoreListAdapter);
                 } else {
-//                    interestStoreListAdapter.setData(interestList);
-//                    interestStoreListAdapter.notifyDataSetChanged();
-
-                    featuredTabAdapter = new FeaturedTabAdapter(mContext, product_list, fragmentFeatured);
-
+                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, list, fragmentFeedFragment);
 //                    interestSectionList.setAdapter(interestStoreListAdapter);
                     interestSectionList.setAdapter(featuredTabAdapter);
+//                    interestStoreListAdapter.setData(list);
+//                    interestStoreListAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -681,71 +592,73 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                 Syso.info("In handleOnFailure>>" + object);
                 isLoading = !isLoading;
                 if (object != null) {
-//                    InterestSectionRes response = (InterestSectionRes) object;
                     FeaturedTabApiRes response = (FeaturedTabApiRes) object;
-
                     AlertUtils.showToast(mContext, response.getMessage());
                 } else {
                     //AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
-//        interestSectionApi.getStoreList(Integer.toString(pagenum));
-//        interestSectionApi.execute();
-
-        listApi.getFeaturedTabData(UserPreference.getInstance().getUserID(), String.valueOf(pagenum));
+        listApi.getStoreList(Integer.toString(pagenum));
         listApi.execute();
 
         mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
                 isLoading = !isLoading;
-//                interestSectionApi.cancel();
                 listApi.cancel();
-
             }
         });
     }
 
     @Override
     public void handleOnSuccess(Object object) {
-        if (mProgressBarDialog.isShowing())
-            mProgressBarDialog.dismiss();
-        else {
-            hideFotter();
-        }
-        hideProductNotFound();
-        isLoading = !isLoading;
-//        InterestSectionRes interestSectionApi = (InterestSectionRes) object;
-        FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
-
-        interestList = featuredTabApiRes.getData();
-        if (interestList.size() < 10) {
-            isLoading = true;
-        }
-        if (interestList.size() == 0 && isFirstTime)
-            showProductNotFound();
-        else if (interestList.size() > 0 && isFirstTime) {
-            hideProductNotFound();
-            //interestProductListAdapter = new CustomizeInterestProductListAdapter(mContext, interestList, fragmentFeedFragment);
-            interestSectionList.setAdapter(featuredTabAdapter);
-        } else {
-            interestProductListAdapter.setData(interestList);
-            interestProductListAdapter.notifyDataSetChanged();
-        }
+//        if (mProgressBarDialog.isShowing())
+//            mProgressBarDialog.dismiss();
+//        else {
+//            hideFotter();
+//        }
+//        hideProductNotFound();
+//        isLoading = !isLoading;
+//        Syso.info("In handleOnSuccess>>" + object);
+////        InterestSectionRes interestSectionApi = (InterestSectionRes) object;
+//        FeaturedTabApiRes FeaturedTabApiRes = (FeaturedTabApiRes) object;
+//        interestList.addAll(FeaturedTabApiRes.getData());
+//        List<InterestSection> list = new ArrayList<>();
+//        list.addAll(interestList);
+//        if (list.size() < 10) {
+//            isLoading = true;
+//        }
+//        if (list.size() == 0 && isFirstTime)
+//            showProductNotFound();
+//        else if (list.size() > 0 && isFirstTime) {
+//            hideProductNotFound();
+////            interestProductListAdapter = new CustomizeInterestProductListAdapter(mContext, interestList, fragmentFeedFragment);
+//            interestProductListAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeedFragment);
+//
+//            interestSectionList.setAdapter(interestProductListAdapter);
+//        } else {
+//            interestProductListAdapter.setData(interestList);
+//            interestProductListAdapter.notifyDataSetChanged();
+        //      }
     }
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
         if (mProgressBarDialog.isShowing())
             mProgressBarDialog.dismiss();
-
+        else {
+            // hideFotter();
+        }
+        Syso.info("In handleOnFailure>>" + object);
         isLoading = !isLoading;
         if (object != null) {
-//            InterestSectionRes response = (InterestSectionRes) object;
+            //InterestSectionRes response = (InterestSectionRes) object;
             FeaturedTabApiRes response = (FeaturedTabApiRes) object;
 
             AlertUtils.showToast(mContext, response.getMessage());
+        } else {
+            //AlertUtils.showToast(mContext, R.string.invalid_response);
         }
     }
 
@@ -760,6 +673,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
             @Override
             public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
             }
@@ -768,9 +682,12 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
             public void handleOnFailure(ServiceException exception, Object object) {
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
+                Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     ProductListRes response = (ProductListRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    // AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
@@ -785,6 +702,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
             @Override
             public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
             }
@@ -793,9 +711,12 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
             public void handleOnFailure(ServiceException exception, Object object) {
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
+                Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     ProductListRes response = (ProductListRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    // AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
@@ -810,6 +731,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
             @Override
             public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
             }
@@ -818,9 +740,12 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
             public void handleOnFailure(ServiceException exception, Object object) {
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
+                Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     ProductListRes response = (ProductListRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    // AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
@@ -835,6 +760,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
             @Override
             public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
             }
@@ -843,15 +769,19 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
             public void handleOnFailure(ServiceException exception, Object object) {
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
+                Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     ProductListRes response = (ProductListRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    // AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
         listApi.deleteBrand(brand_id);
         listApi.execute();
     }
+
 
     public void addCategory(String catList, final View v) {
         v.findViewById(R.id.checkImageView).setVisibility(View.GONE);
@@ -860,6 +790,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
             @Override
             public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
                 if (v.findViewById(R.id.checkImageView) != null) {
                     v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
                     v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
@@ -868,6 +799,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
+                Syso.info("In handleOnFailure>>" + object);
                 if (v.findViewById(R.id.checkImageView) != null) {
                     v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
                     v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
@@ -875,6 +807,8 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                 if (object != null) {
                     CategoryRes response = (CategoryRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    // AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
@@ -889,6 +823,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
             @Override
             public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
                 if (v.findViewById(R.id.checkImageView) != null) {
                     v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
                     v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
@@ -897,6 +832,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
+                Syso.info("In handleOnFailure>>" + object);
                 if (v.findViewById(R.id.checkImageView) != null) {
                     v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
                     v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
@@ -904,6 +840,8 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                 if (object != null) {
                     CategoryRes response = (CategoryRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    //AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
@@ -912,17 +850,27 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     }
 
     public void followUser(String id, final View v) {
+//		v.findViewById(R.id.checkImageView).setVisibility(View.GONE);
+//		v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.VISIBLE);
         final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
+//				v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
+//				v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
+//				v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
+//				v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
+                Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     FollowUserRes response = (FollowUserRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    // AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
@@ -938,17 +886,26 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     }
 
     public void unFollowUser(String id, final View v) {
+//		v.findViewById(R.id.checkImageView).setVisibility(View.GONE);
+//		v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.VISIBLE);
         final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
+//				v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
+//				v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
+//				v.findViewById(R.id.checkImageView).setVisibility(View.VISIBLE);
+//				v.findViewById(R.id.progressBar_follow_brand).setVisibility(View.GONE);
+                Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     FollowUserRes response = (FollowUserRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    // AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
@@ -979,9 +936,12 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
             public void handleOnFailure(ServiceException exception, Object object) {
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
+                Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     InterestSectionRes response = (InterestSectionRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    //AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
@@ -1011,9 +971,12 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
             public void handleOnFailure(ServiceException exception, Object object) {
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
+                Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     InterestSectionRes response = (InterestSectionRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    //AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
@@ -1029,92 +992,104 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     }
 
 
-    public void getUserList(String gender) {
-        isLoading = !isLoading;
-        mProgressBarDialog = new ProgressBarDialog(mContext);
-        if (pagenum > 0) {
-        } else
-            mProgressBarDialog.show();
+//    public void getUserList(String gender) {
+//        Log.w("CustomizeFeedFragment", "getUserList()");
+//        isLoading = !isLoading;
+//        mProgressBarDialog = new ProgressBarDialog(mContext);
+//        if (pagenum > 0) {
+//            //showFotter();
+//        } else
+//            mProgressBarDialog.show();
 //        final InterestSectionApi followUserApi = new InterestSectionApi(new ServiceCallback() {
-            final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
-
-
-                @Override
-            public void handleOnSuccess(Object object) {
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
-                else {
-                    hideFotter();
-                }
-                hideProductNotFound();
-                isLoading = !isLoading;
+//
+//            @Override
+//            public void handleOnSuccess(Object object) {
+//                Log.w("CustomizeFeedFragment", "handleOnSuccess()");
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
+//                else {
+//                    hideFotter();
+//                }
+//                Log.w("CustomizeFeedFragment", "handleOnSuccess() 2");
+//                hideProductNotFound();
+//                isLoading = !isLoading;
+//                Syso.info("In handleOnSuccess>>" + object);
 //                InterestSectionRes followUserRes = (InterestSectionRes) object;
-                FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
-
-                interestList = featuredTabApiRes.getData();
-                if (interestList.size() < 10) {
-                    isLoading = true;
-                }
-                if (interestList.size() == 0 && isFirstTime) {
-                    hideProductNotFound();
-                    noDataGalGuy.setVisibility(View.VISIBLE);
-                    if (interestSectionList.getHeaderViewsCount() == 0)
-                        interestSectionList.removeHeaderView(peopleHeaderView);
-                    interestPeopleListAdapter = new FeaturedTabAdapter(mContext, interestList, fragmentFeatured);
-                    interestSectionList.setAdapter(interestPeopleListAdapter);
-                    showProductNotFound();
-                } else if (interestList.size() > 0 && isFirstTime) {
-                    hideProductNotFound();
-                    noDataGalGuy.setVisibility(View.GONE);
-                    if (interestSectionList.getHeaderViewsCount() == 0)
-                        interestSectionList.removeHeaderView(peopleHeaderView);
-                    interestPeopleListAdapter = new FeaturedTabAdapter(mContext, interestList, fragmentFeatured);
-                    interestSectionList.setAdapter(interestPeopleListAdapter);
-                } else {
-                    if (interestSectionList.getHeaderViewsCount() == 0)
-                        interestSectionList.removeHeaderView(peopleHeaderView);
-                    interestPeopleListAdapter.setData(interestList);
-                    interestPeopleListAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void handleOnFailure(ServiceException exception, Object object) {
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
-                else {
-                }
-                isLoading = !isLoading;
-                if (object != null) {
+//
+//                interestList = followUserRes.getData();
+//                if (interestList.size() < 10) {
+//                    isLoading = true;
+//                }
+//                if (interestList.size() == 0 && isFirstTime) {
+//                    Log.w("CustomizeFeedFragment", "handleOnSuccess() 3");
+//                    hideProductNotFound();
+//                    noDataGalGuy.setVisibility(View.VISIBLE);
+//                    if (interestSectionList.getHeaderViewsCount() == 0)
+//                        interestSectionList.removeHeaderView(peopleHeaderView);
+////                    interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, interestList, fragmentFeedFragment);
+//                    interestPeopleListAdapter = new FeaturedTabAdapter(mContext, interestList, fragmentFeedFragment);
+//                    interestSectionList.setAdapter(interestPeopleListAdapter);
+//                    showProductNotFound();
+//                } else if (interestList.size() > 0 && isFirstTime) {
+//                    Log.w("CustomizeFeedFragment", "handleOnSuccess() 4");
+//                    hideProductNotFound();
+//                    noDataGalGuy.setVisibility(View.GONE);
+//                    if (interestSectionList.getHeaderViewsCount() == 0)
+//                        interestSectionList.removeHeaderView(peopleHeaderView);
+////                    interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, interestList, fragmentFeedFragment);
+//                    interestPeopleListAdapter = new FeaturedTabAdapter(mContext, interestList, fragmentFeedFragment);
+//
+//                    interestSectionList.setAdapter(interestPeopleListAdapter);
+//                } else {
+//                    Log.w("CustomizeFeedFragment", "handleOnSuccess() 5");
+//                    if (interestSectionList.getHeaderViewsCount() == 0)
+//                        interestSectionList.removeHeaderView(peopleHeaderView);
+//                    interestPeopleListAdapter.setData(interestList);
+//                    interestPeopleListAdapter.notifyDataSetChanged();
+//                }
+//            }
+//
+//            @Override
+//            public void handleOnFailure(ServiceException exception, Object object) {
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
+//                else {
+//                    //hideFotter();
+//                }
+//                isLoading = !isLoading;
+//                Syso.info("In handleOnFailure>>" + object);
+//                if (object != null) {
 //                    InterestSectionRes response = (InterestSectionRes) object;
-                    FeaturedTabApiRes response = (FeaturedTabApiRes) object;
+//                    AlertUtils.showToast(mContext, response.getMessage());
+//                } else {
+//                    //AlertUtils.showToast(mContext, R.string.invalid_response);
+//                }
+//            }
+//        });
+//        followUserApi.getAllKikrUserList(UserPreference.getInstance().getUserID(), Integer.toString(pagenum), gender);
+//        followUserApi.execute();
+//
+//        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                isLoading = !isLoading;
+//                followUserApi.cancel();
+//            }
+//        });
+//    }
 
-                    AlertUtils.showToast(mContext, response.getMessage());
-                }
-            }
-        });
-        listApi.getAllKikrUserList(UserPreference.getInstance().getUserID(), Integer.toString(pagenum), gender);
-        listApi.execute();
-        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                isLoading = !isLoading;
-                listApi.cancel();
-            }
-        });
-    }
 
     private void search() {
+
         mProgressBarDialog = new ProgressBarDialog(mContext);
         if (pagenum > 0) {
             showFotter();
         } else
             mProgressBarDialog.show();
         isLoading = !isLoading;
-//        final InterestSectionApi interestSectionApi = new InterestSectionApi(new ServiceCallback() {
-        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
-
-        @Override
+//        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
+        final InterestSectionApi interestSectionApi = new InterestSectionApi(new ServiceCallback() {
+            @Override
             public void handleOnSuccess(Object object) {
                 try {
                     if (mProgressBarDialog.isShowing())
@@ -1122,67 +1097,45 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                     else {
                         hideFotter();
                     }
+
                     hideProductNotFound();
+                    Syso.info("In handleOnSuccess>>" + object);
                     isLoading = !isLoading;
 
-//                    InterestSectionRes interestSectionRes = (InterestSectionRes) object;
-                    FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
-                    //product_list.addAll(featuredTabApiRes.getData());
+                    InterestSectionRes interestSectionRes = (InterestSectionRes) object;
 
-                    interestList = new ArrayList<FeaturedTabData>();
+                    List<InterestSection> list = new ArrayList<>();
 
-                    interestList.addAll(featuredTabApiRes.getData());
-
-                    if (interestList.size() < 10) {
+                    list.addAll(interestSectionRes.getData());
+                    if (interestSectionRes.getData().size() < 1) {
                         isLoading = true;
                     }
-                    if (interestList.size() == 0 && isFirstTime) {
-                        showProductNotFound();
+                    if (interestSectionRes.getData().size() == 0 && isFirstTime) {
+                        showDataNotFound();
                     } else {
-                        hideProductNotFound();
-                        if (isSelected.equalsIgnoreCase("store")) {
-                            if (interestList.size() > 0 && isFirstTime) {
-                               // interestStoreListAdapter = new FeaturedTabAdapter(mContext, interestList, fragmentFeedFragment);
-                                featuredTabAdapter = new FeaturedTabAdapter(mContext, interestList, fragmentFeatured);
-
-                                interestSectionList.setAdapter(featuredTabAdapter);
-                            } else {
-                            //    interestStoreListAdapter.setData(interestList);
-                             //   interestStoreListAdapter.notifyDataSetChanged();
-                                featuredTabAdapter = new FeaturedTabAdapter(mContext, interestList, fragmentFeatured);
-                                interestSectionList.setAdapter(featuredTabAdapter);
-
-                            }
-//                        } else if (isSelected.equalsIgnoreCase("product")) {
-//                            if (featuredTabApiRes.getData().size() > 0 && isFirstTime) {
-//                                interestList = featuredTabApiRes.getData();
-//                                interestProductListAdapter = new FeaturedTabAdapter(mContext, interestList, fragmentFeedFragment);
-//                                interestSectionList.setAdapter(interestProductListAdapter);
-//                            } else {
-//                                interestList = featuredTabApiRes.getData();
-//                                interestProductListAdapter.setData(interestList);
-//                                interestProductListAdapter.notifyDataSetChanged();
-//                            }
-                        } else if (isSelected.equalsIgnoreCase("people")) {
-                            if (featuredTabApiRes.getData().size() > 0 && isFirstTime) {
-                                if (interestSectionList.getHeaderViewsCount() == 0)
-                                    interestSectionList.removeHeaderView(peopleHeaderView);
-                                interestList = featuredTabApiRes.getData();
-                                interestPeopleListAdapter = new FeaturedTabAdapter(mContext, interestList, fragmentFeatured);
+//                        if (isSelected.equalsIgnoreCase("store")) {
+                            if (interestSectionRes.getData().size() > 0 && isFirstTime) {
+                                interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, list, fragmentFeedFragment);
                                 interestSectionList.setAdapter(interestPeopleListAdapter);
+
                             } else {
-                                interestPeopleListAdapter.setData(interestList);
-                                interestPeopleListAdapter.notifyDataSetChanged();
+                                interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, list, fragmentFeedFragment);
+                                interestSectionList.setAdapter(interestPeopleListAdapter);
                             }
-                        } else {
-                            if (featuredTabApiRes.getData().size() > 0 && isFirstTime) {
-                                interestCategoryListAdapter = new FeaturedTabAdapter(mContext, interestList, fragmentFeatured);
-                                categoryGridView.setAdapter(interestCategoryListAdapter);
-                            } else {
-                                interestCategoryListAdapter.setData(interestList);
-                                interestCategoryListAdapter.notifyDataSetChanged();
-                            }
-                        }
+//                        } else if (isSelected.equalsIgnoreCase("people")) {
+//                            if (interestSectionRes.getData().size() > 0 && isFirstTime) {
+//
+//                                if (interestSectionList.getHeaderViewsCount() == 0)
+//                                    interestSectionList.removeHeaderView(peopleHeaderView);
+//                                interestPeopleListAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeedFragment);
+//                                interestSectionList.setAdapter(interestPeopleListAdapter);
+//
+//                            } else {
+//
+//                                interestPeopleListAdapter.setData(list);
+//                                interestPeopleListAdapter.notifyDataSetChanged();
+//                            }
+//                        }
                     }
                 } catch (Exception ex) {
 
@@ -1191,54 +1144,54 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
+
                 if (mProgressBarDialog.isShowing())
                     mProgressBarDialog.dismiss();
                 else {
+                    //hideFotter();
                 }
                 isLoading = !isLoading;
+                Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
-                   // InterestSectionRes response = (InterestSectionRes) object;
-                    FeaturedTabApiRes response = (FeaturedTabApiRes) object;
+                    InterestSectionRes response = (InterestSectionRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
-
+                } else {
+                     AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
 
-        if (isSelected.equalsIgnoreCase("store")) {
-         //   listApi.getFeaturedTabData(UserPreference.getInstance().getUserID(),Integer.toString(pagenum));
-             listApi.searchStore(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
-//        } else if (isSelected.equalsIgnoreCase("product")) {
-//            interestSectionApi.searchProduct(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
-        } else if (isSelected.equalsIgnoreCase("people")) {
-           // listApi.searchUser(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
-        }
-        listApi.execute();
+
+//        if (isSelected.equalsIgnoreCase("store")) {
+        interestSectionApi.searchUser(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
+//        } else if (isSelected.equalsIgnoreCase("people")) {
+//            interestSectionApi.searchUser(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
+//        }
+        interestSectionApi.execute();
         mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
                 isLoading = !isLoading;
-                listApi.cancel();
+                interestSectionApi.cancel();
             }
         });
     }
 
     public void loadData() {
-        if (isSelected.equalsIgnoreCase("store") && !isSearchActive) {
+//        if (isSelected.equalsIgnoreCase("store") && !isSearchActive) {
             getStoreList();
-//        } else if (isSelected.equalsIgnoreCase("product") && !isSearchActive) {
-//            getProductList();
-        } else if (isSelected.equalsIgnoreCase("people") && isGuys && !isGals && !isSearchActive) {
-            getUserList("male");
-        } else if (isSelected.equalsIgnoreCase("people") && !isGuys && isGals && !isSearchActive) {
-            getUserList("female");
-        } else if (isSelected.equalsIgnoreCase("people") && !isGuys && !isGals && !isSearchActive) {
-            getUserList("all");
+//        } else if (isSelected.equalsIgnoreCase("people") && isGuys && !isGals && !isSearchActive) {
+//            getUserList("male");
+//        } else if (isSelected.equalsIgnoreCase("people") && !isGuys && isGals && !isSearchActive) {
+//            getUserList("female");
+//        } else if (isSelected.equalsIgnoreCase("people") && !isGuys && !isGals && !isSearchActive) {
+//            getUserList("all");
 //        } else if (isSelected.equalsIgnoreCase("all") && !isSearchActive) {
-//            getAll();
-        } else if (isSearchActive) {
-            search();
-        }
+//            //   getAll();
+//        }
+//        else if (isSearchActive) {
+//            search();
+//        }
     }
 
     private void showReloadOption() {
@@ -1263,6 +1216,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
             TextView textView = (TextView) layout.findViewById(R.id.noDataFoundTextView);
             textView.setTextColor(Color.parseColor("#ffffff"));
             textView.setText("Result not found.");
+            // interestSectionList.setVisibility(View.GONE);
         } catch (NullPointerException exception) {
             exception.printStackTrace();
         }
@@ -1303,27 +1257,55 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         }
     }
 
+
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_SEARCH ||
                 event.getAction() == KeyEvent.ACTION_DOWN &&
                         event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
             CommonUtility.hideSoftKeyboard(mContext);
-            if (checkInternet()) {
-                interestSectionList.setAdapter(featuredTabAdapter);
-                if (interestSectionList.getHeaderViewsCount() != 0)
-                    interestSectionList.removeHeaderView(peopleHeaderView);
-                pagenum = 0;
-                isSearchActive = true;
-                isFirstTime = true;
-                isLoading = false;
-//                if (isSelected.equalsIgnoreCase("All"))
-//                    getAll();
-//                else
+
+            if (searchYourItemEditText.getText().toString().equals(""))
+                if (checkInternet()) {
+                    getStoreList();
+                    categoryGridView.setVisibility(View.GONE);
+                    interestSectionList.setVisibility(View.VISIBLE);
+                } else
+                    showReloadOption();
+            else {
+
+                if (checkInternet()) {
+                    if (interestSectionList.getHeaderViewsCount() != 0)
+                        interestSectionList.removeHeaderView(peopleHeaderView);
+                    pagenum = 0;
+                    isSearchActive = true;
+                    isFirstTime = true;
+                    isLoading = false;
                     search();
-                return true;
+                }
             }
+            return true;
+
         }
+
+
+//            if (checkInternet()) {
+//                interestSectionList.setAdapter(null);
+//                if (interestSectionList.getHeaderViewsCount() != 0)
+//                    interestSectionList.removeHeaderView(peopleHeaderView);
+//                pagenum = 0;
+//                isSearchActive = true;
+//                isFirstTime = true;
+//                isLoading = false;
+//                if (isSelected.equalsIgnoreCase("All"))
+//                    // getAll();
+//                    // else
+//                    search();
+//                return true;
+//
+//            }
+
+
         return false;
     }
 }

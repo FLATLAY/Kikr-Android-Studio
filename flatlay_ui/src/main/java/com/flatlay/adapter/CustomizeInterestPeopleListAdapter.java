@@ -75,6 +75,7 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter{
             viewHolder.user_image = (RoundImageView) convertView.findViewById(R.id.user_image);
             viewHolder.user_name = (TextView) convertView.findViewById(R.id.user_name);
             viewHolder.follow_btn = (TextView) convertView.findViewById(R.id.follow_btn);
+            viewHolder.follow_btn.bringToFront();
             viewHolder.progressBar_follow_brand=(ProgressBar) convertView.findViewById(R.id.progressBar_follow_brand);
             convertView.setTag(viewHolder);
         } else {

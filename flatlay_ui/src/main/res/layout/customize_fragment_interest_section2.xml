@@ -173,19 +173,19 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/people_all_button"
-                    style="@style/buttonInterestSection"
-                    android:background="#80000000"
+                <!--<Button-->
+                    <!--android:id="@+id/people_all_button"-->
+                    <!--style="@style/buttonInterestSection"-->
+                    <!--android:background="#80000000"-->
 
-                    android:text="All" />
+                    <!--android:text="All" />-->
 
-                <View
-                    android:id="@+id/people_all_button_active"
-                    android:layout_width="wrap_content"
-                    android:layout_height="5dp"
-                    android:background="@color/white"
-                    android:visibility="visible" />
+                <!--<View-->
+                    <!--android:id="@+id/people_all_button_active"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="5dp"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:visibility="visible" />-->
 
             </LinearLayout>
 
@@ -195,19 +195,19 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/people_guys_button"
-                    style="@style/buttonInterestSection"
+                <!--<Button-->
+                    <!--android:id="@+id/people_guys_button"-->
+                    <!--style="@style/buttonInterestSection"-->
 
-                    android:background="#80000000"
-                    android:text="Guys" />
+                    <!--android:background="#80000000"-->
+                    <!--android:text="Guys" />-->
 
-                <View
-                    android:id="@+id/people_guys_button_active"
-                    android:layout_width="wrap_content"
-                    android:layout_height="5dp"
-                    android:background="@color/white"
-                    android:visibility="invisible" />
+                <!--<View-->
+                    <!--android:id="@+id/people_guys_button_active"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="5dp"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:visibility="invisible" />-->
 
 
             </LinearLayout>

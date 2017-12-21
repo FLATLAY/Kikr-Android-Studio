@@ -99,6 +99,7 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
             viewHolder.follow_btn_layout = (LinearLayout) convertView.findViewById(R.id.follow_btn_layout);
             viewHolder.userImage = (RoundImageView) convertView.findViewById(R.id.userImage);
             viewHolder.follow_btn = (TextView) convertView.findViewById(R.id.follow_btn);
+            viewHolder.follow_btn.bringToFront();
             viewHolder.product_layout = (HorizontalScrollView) convertView.findViewById(R.id.productLayout);
             viewHolder.product_inflater_layout = (LinearLayout) convertView.findViewById(R.id.productInflaterLayout);
             viewHolder.collectionCount = (TextView) convertView.findViewById(R.id.collection_count);

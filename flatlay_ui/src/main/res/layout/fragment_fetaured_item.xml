@@ -21,44 +21,21 @@
                 android:id="@+id/featuredImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
+                android:background="@color/transparent"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/dum_list_item_product" />
+                android:src="@drawable/dum_list_item_product"
+                android:visibility="invisible"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <LinearLayout
-                    android:id="@+id/follow_btn_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <TextView
-                    android:id="@+id/follow_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_borderbg"
-                    android:gravity="center_vertical"
-                    android:padding="6dp"
-                    android:text="FOLLOW  "
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/small_text_size"
-                    android:textStyle="bold" />
-                    </LinearLayout>
 
                     <LinearLayout
 
@@ -84,6 +61,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:background="@color/transparent"
                             android:orientation="vertical"
                             android:padding="@dimen/padding_small">
 
@@ -95,6 +73,32 @@
                                 android:textColor="@color/white"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
+
+                            <!--<LinearLayout-->
+                            <!--android:id="@+id/follow_btn_layout"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:layout_alignParentTop="true"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:orientation="vertical"-->
+                            <!--android:layout_marginRight="10dp"-->
+                            <!--android:layout_marginTop="10dp">-->
+
+
+                            <!--<TextView-->
+                            <!--android:id="@+id/follow_btn"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+
+                            <!--android:background="@drawable/btn_borderbg"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:padding="6dp"-->
+                            <!--android:text="FOLLOW  "-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:textSize="@dimen/small_text_size"-->
+                            <!--android:textStyle="bold" />-->
+                            <!--</LinearLayout>-->
+                            <!--/>-->
 
                             <TextView
                                 android:id="@+id/tvDescription"
@@ -140,6 +144,34 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/follow_btn_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+
+
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/follow_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_borderbg"
+                            android:gravity="center_vertical"
+                            android:padding="6dp"
+                            android:text="FOLLOW  "
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/small_text_size"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
                 </RelativeLayout>
             </FrameLayout>
 

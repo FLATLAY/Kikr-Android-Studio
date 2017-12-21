@@ -80,6 +80,7 @@ public class CustomizeFeedAllAdapterN extends BaseAdapter {
             viewHolder.progressBar_follow_brand = (ProgressBar) convertView.findViewById(R.id.progressBar_follow_brand);
             viewHolder.brandNameTextView = (TextView) convertView.findViewById(R.id.brandNametextView);
             viewHolder.follow_btn = (TextView) convertView.findViewById(R.id.follow_btn);
+            viewHolder.follow_btn.bringToFront();
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();

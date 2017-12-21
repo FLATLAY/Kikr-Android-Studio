@@ -18,6 +18,7 @@ import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.api.FeaturedTabApi;
 import com.flatlaylib.bean.FeaturedTabData;
+import com.flatlaylib.bean.InterestSection;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.ServiceCallback;
 import com.flatlaylib.service.ServiceException;
@@ -37,7 +38,7 @@ public class FragmentFeatured extends BaseFragment {
     public boolean isOpen = false;
     private ProgressBarDialog mProgressBarDialog;
     int page = 0;
-    private List<FeaturedTabData> product_list = new ArrayList<FeaturedTabData>();
+    private List<InterestSection> product_list = new ArrayList<InterestSection>();
     private boolean isLoading = false;
     private boolean isFirstTime = true;
     private FragmentFeatured fragmentFeatured;

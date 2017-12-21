@@ -92,6 +92,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
             viewholder.follow_btn_layout = (LinearLayout) convertView.findViewById(R.id.follow_btn_layout);
             viewholder.userImage = (RoundImageView) convertView.findViewById(R.id.userImage);
             viewholder.follow_btn = (TextView) convertView.findViewById(R.id.follow_btn);
+            viewholder.follow_btn.bringToFront();
             viewholder.product_layout = (HorizontalScrollView) convertView.findViewById(R.id.productLayout);
             viewholder.product_inflater_layout = (LinearLayout) convertView.findViewById(R.id.productInflaterLayout);
             viewholder.collectionCount = (TextView) convertView.findViewById(R.id.collection_count);

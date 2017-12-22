@@ -66,7 +66,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     private ListView interestSectionList;
     private ProgressBarDialog mProgressBarDialog;
     private List<InterestSection> interestList;
-    private int pagenum = 0;
+    private Integer pagenum = -1;
     //private Button interest_store_button, interest_people_button, people_all_button, people_guys_button, people_gals_button;
     private FeaturedTabAdapter interestProductListAdapter;
     private CustomizeInterestStoreListAdapter interestStoreListAdapter;
@@ -88,7 +88,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     private FeaturedTabAdapter featuredTabAdapter;
     private List<InterestSection> product_list = new ArrayList<InterestSection>();
     private List<InterestSection> product_list2 = new ArrayList<InterestSection>();
-
+    private int firstVisibleItem = 0, visibleItemCount = 0, totalItemCount = 0;
     View interest_people_button_active, interest_store_button_active, people_all_button_active, people_guys_button_active, people_gals_button_active;
     View mainView;
     LinearLayout layoutPeople, threetab;
@@ -132,7 +132,6 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
         loaderView = View.inflate(mContext, R.layout.footer, null);
         interestSectionList = (ListView) mainView.findViewById(R.id.interestSectionList);
-        // getStoreList();
 
     }
 
@@ -140,7 +139,6 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         isFirstTime = true;
         isGuys = false;
         isGals = false;
-        pagenum = 0;
         isLoading = false;
         isSearchActive = false;
         isSelected = "people";
@@ -154,8 +152,8 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         //  interest_people_button_active.setVisibility(View.INVISIBLE);
         layoutPeople.setVisibility(View.GONE);
         getStoreList();
-
     }
+
 
     @Override
     public void setData(Bundle bundle) {
@@ -166,17 +164,45 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         } else {
             showReloadFotter();
         }
-        //getStoreList();
+        interestSectionList.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view,
+                                             int scrollState) {
+                // Do nothing
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
+                // removeFocus();
+//				   System.out.println("123456 in onScroll fvi"+firstVisibleItem+", vic"+visibleItemCount+", tic"+totalItemCount);
+//                CustomizeFeedFragment.this.firstVisibleItem = firstVisibleItem;
+//                CustomizeFeedFragment.this.visibleItemCount = visibleItemCount;
+//                CustomizeFeedFragment.this.totalItemCount = totalItemCount;
+                if (firstVisibleItem + visibleItemCount == totalItemCount&&totalItemCount>0) {
+//			    	System.out.println("123456 inside if page"+pagenum+" ,"+isSelected);
+
+                    if (checkInternet()) {
+                        pagenum++;
+                        isFirstTime = false;
+                        getFeaturedTabData();
+                    } else {
+                        showReloadFotter();
+                    }
+                }
+            }
+        });
 
     }
 
     private void getFeaturedTabData() {
+       // updatePageNum();
         mProgressBarDialog = new ProgressBarDialog(mContext);
         isLoading = !isLoading;
         if (!isFirstTime) {
             showFotter();
         } else {
-            loadingTextView.setVisibility(View.VISIBLE);
+            //   loadingTextView.setVisibility(View.VISIBLE);
             mProgressBarDialog.show();
         }
 
@@ -195,9 +221,10 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                     isLoading = !isLoading;
                     Syso.info("In handleOnSuccess>>" + object);
                     FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
-                    product_list.addAll(featuredTabApiRes.getData());
+                    // product_list.
+                    // product_list.addAll(featuredTabApiRes.getData());
                     List<InterestSection> list = new ArrayList<>();
-                    list.addAll(product_list);
+                    list.addAll(featuredTabApiRes.getData());
                     if (featuredTabApiRes.getData().size() < 1) {
                         isLoading = true;
                     }
@@ -205,10 +232,9 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                         showDataNotFound();
                     } else if (product_list.size() > 0 && isFirstTime) {
                         featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
+
                         interestSectionList.setAdapter(featuredTabAdapter);
                     } else if (featuredTabAdapter != null) {
-                        //  featuredTabAdapter.setData(product_list);
-                        //featuredTabAdapter.notifyDataSetChanged();
                         featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
                         interestSectionList.setAdapter(featuredTabAdapter);
                     } else {
@@ -251,88 +277,14 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         });
     }
 
-    private void getFeaturedTabData2() {
-        mProgressBarDialog = new ProgressBarDialog(mContext);
-        isLoading = !isLoading;
-        if (!isFirstTime) {
-            showFotter();
-        } else {
-            loadingTextView.setVisibility(View.VISIBLE);
-            mProgressBarDialog.show();
-        }
-
-        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
-
-            @Override
-            public void handleOnSuccess(Object object) {
-                try {
-                    if (!isFirstTime) {
-                        hideFotter();
-                    } else {
-                        loadingTextView.setVisibility(View.GONE);
-                        mProgressBarDialog.dismiss();
-                    }
-                    hideDataNotFound();
-                    isLoading = !isLoading;
-                    Syso.info("In handleOnSuccess>>" + object);
-                    FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
-                    product_list2.addAll(featuredTabApiRes.getData());
-                    List<InterestSection> list = new ArrayList<>();
-                    list.addAll(product_list2);
-                    if (featuredTabApiRes.getData().size() < 1) {
-                        isLoading = true;
-                    }
-                    if (product_list2.size() == 0 && isFirstTime) {
-                        showDataNotFound();
-                    } else if (product_list.size() > 0 && isFirstTime) {
-                        featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
-                        interestSectionList.setAdapter(featuredTabAdapter);
-                    } else if (featuredTabAdapter != null) {
-                        //  featuredTabAdapter.setData(product_list);
-                        //featuredTabAdapter.notifyDataSetChanged();
-                        featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
-                        interestSectionList.setAdapter(featuredTabAdapter);
-                    } else {
-                        featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
-                        interestSectionList.setAdapter(featuredTabAdapter);
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void handleOnFailure(ServiceException exception, Object object) {
-                if (!isFirstTime) {
-                    interestSectionList.removeFooterView(loaderView);
-                } else {
-                    loadingTextView.setVisibility(View.GONE);
-//					mProgressBarDialog.dismiss();
-                }
-                isLoading = !isLoading;
-                Syso.info("In handleOnFailure>>" + object);
-                if (object != null) {
-                    FeaturedTabApiRes response = (FeaturedTabApiRes) object;
-                    AlertUtils.showToast(mContext, response.getMessage());
-                } else {
-                    AlertUtils.showToast(mContext, R.string.invalid_response);
-                }
-            }
-        });
-        listApi.searchUser(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
-        listApi.execute();
-
-        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                showDataNotFound();
-                listApi.cancel();
-            }
-        });
-    }
-
-
+//    public void updatePageNum(){
+//        int newPageNum = pagenum + 1;
+//        this.pagenum = newPageNum;
+//    }
+//
+//    public void resetPageNum(){
+//        this.pagenum = -1;
+//    }
 
     @Override
     public void refreshData(Bundle bundle) {
@@ -340,7 +292,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     }
 
     private void removeFocus() {
-        searchYourItemEditText.setText("Search for People, Stores, Products.");
+        searchYourItemEditText.setText("Search for Creators.");
         searchYourItemEditText.clearFocus();
     }
 
@@ -624,11 +576,11 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     private void getStoreList() {
         isLoading = !isLoading;
         mProgressBarDialog = new ProgressBarDialog(mContext);
-        if (pagenum > 0) {
+        if (pagenum > -1) {
             //showFotter();
         } else
             mProgressBarDialog.show();
-
+      //  pagenum++;
 //        final InterestSectionApi interestSectionApi = new InterestSectionApi(new ServiceCallback() {
         final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
 
@@ -646,25 +598,27 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 //                InterestSectionRes interestSectionRes = (InterestSectionRes) object;
                 // FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
                 // interestList.addAll(featuredTabApiRes.getData());
-                List<InterestSection> list = new ArrayList<>();
-                list.addAll(product_list);
-                if (list.size() < 10) {
+//                List<InterestSection> list = new ArrayList<>();
+//                list.addAll(product_list);
+                InterestSectionRes interestSectionRes = (InterestSectionRes) object;
+                interestList = interestSectionRes.getData();
+                if (interestList.size() < 10) {
                     isLoading = true;
                 }
-                if (list.size() == 0 && isFirstTime)
+                if (interestList.size() == 0 && isFirstTime)
                     showProductNotFound();
-                else if (list.size() > 0 && isFirstTime) {
+                else if (interestList.size() > 0 && isFirstTime) {
                     hideProductNotFound();
-                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, list, fragmentFeedFragment);
+                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, interestList, fragmentFeedFragment);
                     interestSectionList.setAdapter(interestStoreListAdapter);
+
                 } else {
-                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, list, fragmentFeedFragment);
-//                    interestSectionList.setAdapter(interestStoreListAdapter);
-                    interestSectionList.setAdapter(featuredTabAdapter);
-//                    interestStoreListAdapter.setData(list);
-//                    interestStoreListAdapter.notifyDataSetChanged();
+                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, interestList, fragmentFeedFragment);
+                    interestSectionList.setAdapter(interestStoreListAdapter);
                 }
+
             }
+
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
@@ -686,7 +640,9 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         listApi.getStoreList(Integer.toString(pagenum));
         listApi.execute();
 
-        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener()
+
+        {
             @Override
             public void onCancel(DialogInterface dialog) {
                 isLoading = !isLoading;
@@ -1164,16 +1120,13 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
 
     private void search() {
-
         mProgressBarDialog = new ProgressBarDialog(mContext);
-        if (pagenum > 0) {
+        if (pagenum > -1) {
             showFotter();
         } else
             mProgressBarDialog.show();
         isLoading = !isLoading;
-
-        //getFeaturedTabData2();
-    //    final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
+        //    final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
         final InterestSectionApi interestSectionApi = new InterestSectionApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
@@ -1189,7 +1142,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                     isLoading = !isLoading;
 
                     InterestSectionRes interestSectionRes = (InterestSectionRes) object;
-                   // FeaturedTabApiRes interestSectionRes = (FeaturedTabApiRes) object;
+                    // FeaturedTabApiRes interestSectionRes = (FeaturedTabApiRes) object;
 
 
                     List<InterestSection> list = new ArrayList<>();
@@ -1202,14 +1155,14 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                         showDataNotFound();
                     } else {
 //                        if (isSelected.equalsIgnoreCase("store")) {
-                            if (interestSectionRes.getData().size() > 0 && isFirstTime) {
-                                interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, list, fragmentFeedFragment);
-                                interestSectionList.setAdapter(interestPeopleListAdapter);
+                        if (interestSectionRes.getData().size() > 0 && isFirstTime) {
+                            interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, list, fragmentFeedFragment);
+                            interestSectionList.setAdapter(interestPeopleListAdapter);
 
-                            } else {
-                                interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, list, fragmentFeedFragment);
-                                interestSectionList.setAdapter(interestPeopleListAdapter);
-                            }
+                        } else {
+                            interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, list, fragmentFeedFragment);
+                            interestSectionList.setAdapter(interestPeopleListAdapter);
+                        }
 //                        } else if (isSelected.equalsIgnoreCase("people")) {
 //                            if (interestSectionRes.getData().size() > 0 && isFirstTime) {
 //
@@ -1244,7 +1197,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                     InterestSectionRes response = (InterestSectionRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
                 } else {
-                     AlertUtils.showToast(mContext, R.string.invalid_response);
+                    AlertUtils.showToast(mContext, R.string.invalid_response);
                 }
             }
         });
@@ -1267,7 +1220,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
     public void loadData() {
 //        if (isSelected.equalsIgnoreCase("store") && !isSearchActive) {
-            getStoreList();
+        getStoreList();
 //        } else if (isSelected.equalsIgnoreCase("people") && isGuys && !isGals && !isSearchActive) {
 //            getUserList("male");
 //        } else if (isSelected.equalsIgnoreCase("people") && !isGuys && isGals && !isSearchActive) {
@@ -1396,4 +1349,5 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
         return false;
     }
+
 }

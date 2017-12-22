@@ -34,9 +34,9 @@ import com.flatlaylib.utils.Syso;
 				Map<String, String> comment = new HashMap<String, String>();
 				comment.put("user_id",UserPreference.getInstance().getUserID());
 				comment.put("pagenum",pagenum);
-				Map[] maps = new Map[] { comment };
+				//Map[] maps = new Map[] { comment };
 				Gson gson = new Gson();
-				requestValue = gson.toJson(maps);
+				requestValue = gson.toJson(comment);
 			}
 
 			public void getStoreListFollowed(String user_id, String pagenum, String viewer_id) {
@@ -225,6 +225,7 @@ import com.flatlaylib.utils.Syso;
 			return array.toString();
 		}
 	}
+
 
 	@Override
 	protected void processResponse(String response) {

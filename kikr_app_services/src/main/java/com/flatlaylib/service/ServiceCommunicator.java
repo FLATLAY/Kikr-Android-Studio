@@ -107,7 +107,9 @@ public class ServiceCommunicator {
                 HttpClient httpClient = getNewHttpClient(httpParameters);
                 String auth = UserPreference.getInstance().getUserID() + " , " + UserPreference.getInstance().getAccessToken();
                 Log.w("my-App","Http Request");
+
                 String urlString = service.getHost() + service.getActionName();
+
                 String token=UserPreference.getInstance().getAccessToken();
                 Syso.info(TAG + " urlString = ", urlString);
                 Syso.debug(TAG, urlString);

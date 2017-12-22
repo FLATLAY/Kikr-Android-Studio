@@ -42,15 +42,15 @@ public class FeaturedTabAdapter extends BaseAdapter {
 //private CustomizeFeedFragment fragmentFeatured;
 
     private LayoutInflater mInflater;
-    private List<InterestSection> brandsArray;
-    private List<InterestSection> check;
+    private List<FeaturedTabData> brandsArray;
+    private List<FeaturedTabData> check;
     //	List<Product> data;
 //	enum ItemType{brand,store,user};
     String BRAND = "brand";
     String STORE = "store";
     String USER = "user";
 
-    public FeaturedTabAdapter(FragmentActivity context, List<InterestSection> brandsArray, FragmentFeatured fragmentFeatured) {
+    public FeaturedTabAdapter(FragmentActivity context, List<FeaturedTabData> brandsArray, FragmentFeatured fragmentFeatured) {
         super();
         this.mContext = context;
         this.fragmentFeatured = fragmentFeatured;
@@ -59,7 +59,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
         Log.w("Activity","FeaturedTabAdapter");
     }
 
-    public void setData(List<InterestSection> data) {
+    public void setData(List<FeaturedTabData> data) {
         brandsArray.addAll(data);
     }
 
@@ -69,7 +69,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
     }
 
     @Override
-    public InterestSection getItem(int index) {
+    public FeaturedTabData getItem(int index) {
 
         return brandsArray.get(index);
     }

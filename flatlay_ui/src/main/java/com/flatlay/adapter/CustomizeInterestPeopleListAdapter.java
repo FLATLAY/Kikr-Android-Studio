@@ -255,7 +255,7 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter{
         });
 
         viewHolder.product_inflater_layout.removeAllViews();
-        viewHolder.product_inflater_layout.addView(new FeaturedTabUi(mContext, followUsers, getItem(position), fragmentFeatured, convertView).getView());
+       // viewHolder.product_inflater_layout.addView(new FeaturedTabUi(mContext, followUsers, getItem(position), fragmentFeatured, convertView).getView());
         viewHolder.product_layout.post(new Runnable() {
             @Override
             public void run() {

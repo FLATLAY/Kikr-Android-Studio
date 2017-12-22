@@ -160,7 +160,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         if (checkInternet()) {
             pagenum++;
             isFirstTime = false;
-            getFeaturedTabData();
+            //getFeaturedTabData();
         } else {
             showReloadFotter();
         }
@@ -185,7 +185,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                     if (checkInternet()) {
                         pagenum++;
                         isFirstTime = false;
-                        getFeaturedTabData();
+                        loadData();
                     } else {
                         showReloadFotter();
                     }
@@ -202,7 +202,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         if (!isFirstTime) {
             showFotter();
         } else {
-            //   loadingTextView.setVisibility(View.VISIBLE);
+           // loadingTextView.setVisibility(View.VISIBLE);
             mProgressBarDialog.show();
         }
 
@@ -223,8 +223,8 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                     FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
                     // product_list.
                     // product_list.addAll(featuredTabApiRes.getData());
-                    List<InterestSection> list = new ArrayList<>();
-                    list.addAll(featuredTabApiRes.getData());
+                    List<FeaturedTabData> list = featuredTabApiRes.getData();
+                    //list.addAll(featuredTabApiRes.getData());
                     if (featuredTabApiRes.getData().size() < 1) {
                         isLoading = true;
                     }
@@ -265,7 +265,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                 }
             }
         });
-        listApi.getFeaturedTabData(UserPreference.getInstance().getUserID(), String.valueOf(pagenum));
+       // listApi.getFeaturedTabData(UserPreference.getInstance().getUserID(), String.valueOf(pagenum));
         listApi.execute();
 
         mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -572,6 +572,90 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 //            }
 //        });
 //    }
+
+    private void getStoreList2() {
+        isLoading = !isLoading;
+        mProgressBarDialog = new ProgressBarDialog(mContext);
+        if (pagenum > -1) {
+            //showFotter();
+        } else
+            mProgressBarDialog.show();
+        //  pagenum++;
+//        final InterestSectionApi interestSectionApi = new InterestSectionApi(new ServiceCallback() {
+        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
+
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                if (mProgressBarDialog.isShowing())
+                    mProgressBarDialog.dismiss();
+                else {
+                    hideFotter();
+                }
+                hideProductNotFound();
+                Syso.info("In handleOnSuccess>>" + object);
+                isLoading = !isLoading;
+//                InterestSectionRes interestSectionRes = (InterestSectionRes) object;
+                // FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
+                // interestList.addAll(featuredTabApiRes.getData());
+//                List<InterestSection> list = new ArrayList<>();
+//                list.addAll(product_list);
+                InterestSectionRes interestSectionRes = (InterestSectionRes) object;
+                interestList = interestSectionRes.getData();
+                if (interestList.size() < 10) {
+                    isLoading = true;
+                }
+                if (interestList.size() == 0 && isFirstTime)
+                    showProductNotFound();
+                else if (interestList.size() > 0 && isFirstTime) {
+                    hideProductNotFound();
+                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, interestList, fragmentFeedFragment);
+                    interestSectionList.setAdapter(interestStoreListAdapter);
+
+                } else {
+                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, interestList, fragmentFeedFragment);
+                    interestSectionList.setAdapter(interestStoreListAdapter);
+                }
+
+            }
+
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                if (mProgressBarDialog.isShowing())
+                    mProgressBarDialog.dismiss();
+                else {
+                    hideFotter();
+                }
+                Syso.info("In handleOnFailure>>" + object);
+                isLoading = !isLoading;
+                if (object != null) {
+                    FeaturedTabApiRes response = (FeaturedTabApiRes) object;
+                    AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    //AlertUtils.showToast(mContext, R.string.invalid_response);
+                }
+            }
+        });
+        listApi.getStoreList(Integer.toString(3));
+        listApi.execute();
+
+        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener()
+
+        {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                isLoading = !isLoading;
+                listApi.cancel();
+            }
+        });
+    }
+
+
+
+
+
+
 
     private void getStoreList() {
         isLoading = !isLoading;
@@ -1147,21 +1231,25 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 
                     List<InterestSection> list = new ArrayList<>();
 
-                    list.addAll(interestSectionRes.getData());
-                    if (interestSectionRes.getData().size() < 1) {
+                    list = interestSectionRes.getData();
+                    if (list.size() < 1) {
                         isLoading = true;
                     }
-                    if (interestSectionRes.getData().size() == 0 && isFirstTime) {
+                    if (list.size() == 0 && isFirstTime) {
                         showDataNotFound();
                     } else {
 //                        if (isSelected.equalsIgnoreCase("store")) {
-                        if (interestSectionRes.getData().size() > 0 && isFirstTime) {
+                        if (list.size() > 0 && isFirstTime) {
+                            if (interestSectionList.getHeaderViewsCount() == 0)
+                                    interestSectionList.removeHeaderView(peopleHeaderView);
                             interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, list, fragmentFeedFragment);
                             interestSectionList.setAdapter(interestPeopleListAdapter);
 
                         } else {
-                            interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, list, fragmentFeedFragment);
-                            interestSectionList.setAdapter(interestPeopleListAdapter);
+//                            interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, list, fragmentFeedFragment);
+//                            interestSectionList.setAdapter(interestPeopleListAdapter);
+                            interestPeopleListAdapter.setData(list);
+                                interestPeopleListAdapter.notifyDataSetChanged();
                         }
 //                        } else if (isSelected.equalsIgnoreCase("people")) {
 //                            if (interestSectionRes.getData().size() > 0 && isFirstTime) {
@@ -1219,8 +1307,11 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     }
 
     public void loadData() {
-//        if (isSelected.equalsIgnoreCase("store") && !isSearchActive) {
-        getStoreList();
+        //if (isSelected.equalsIgnoreCase("search")) {
+            search();
+       // }else{
+            //getFeaturedTabData();
+        //}
 //        } else if (isSelected.equalsIgnoreCase("people") && isGuys && !isGals && !isSearchActive) {
 //            getUserList("male");
 //        } else if (isSelected.equalsIgnoreCase("people") && !isGuys && isGals && !isSearchActive) {
@@ -1305,7 +1396,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                 event.getAction() == KeyEvent.ACTION_DOWN &&
                         event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
             CommonUtility.hideSoftKeyboard(mContext);
-
+isSelected = "search";
             if (searchYourItemEditText.getText().toString().equals(""))
                 if (checkInternet()) {
                     getStoreList();

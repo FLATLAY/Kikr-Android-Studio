@@ -157,7 +157,7 @@ public class CustomizeInterestStoreListAdapter extends BaseAdapter {
             viewHolder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
         }
         viewHolder.product_inflater_layout.removeAllViews();
-        viewHolder.product_inflater_layout.addView(new FeaturedTabUi(mContext,  stores, getItem(position), fragmentFeatured, convertView).getView());
+       // viewHolder.product_inflater_layout.addView(new FeaturedTabUi(mContext,  stores, getItem(position), fragmentFeatured, convertView).getView());
         viewHolder.product_layout.post(new Runnable() {
             @Override
             public void run() {

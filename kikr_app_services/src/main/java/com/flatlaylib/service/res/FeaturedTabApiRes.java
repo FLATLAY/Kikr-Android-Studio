@@ -8,7 +8,7 @@ import com.flatlaylib.bean.InterestSection;
 public class FeaturedTabApiRes {
 	String code;
 	String message;
-	List<InterestSection> data;
+	List<FeaturedTabData> data;
 	
 	/**
 	 * @return the code
@@ -37,13 +37,13 @@ public class FeaturedTabApiRes {
 	/**
 	 * @return the data
 	 */
-	public List<InterestSection> getData() {
+	public List<FeaturedTabData> getData() {
 		return data;
 	}
 	/**
 	 * @param data the data to set
 	 */
-	public void setData(List<InterestSection> data) {
+	public void setData(List<FeaturedTabData> data) {
 		this.data = data;
 	}
 	

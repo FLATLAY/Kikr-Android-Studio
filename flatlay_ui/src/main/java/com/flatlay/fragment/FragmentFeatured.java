@@ -38,7 +38,7 @@ public class FragmentFeatured extends BaseFragment {
     public boolean isOpen = false;
     private ProgressBarDialog mProgressBarDialog;
     int page = 0;
-    private List<InterestSection> product_list = new ArrayList<InterestSection>();
+    private List<FeaturedTabData> product_list = new ArrayList<FeaturedTabData>();
     private boolean isLoading = false;
     private boolean isFirstTime = true;
     private FragmentFeatured fragmentFeatured;

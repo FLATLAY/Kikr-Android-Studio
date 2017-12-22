@@ -32,18 +32,18 @@ import java.util.List;
 public class FeaturedTabUi {
     FragmentActivity mContext;
     List<Product> data;
-    private List<InterestSection> brandsArray;
+    private List<FeaturedTabData> brandsArray;
     List<Inspiration> feed;
     LayoutInflater mInflater;
     FragmentFeatured fragmentFeatured;
-    InterestSection featuredTabData;
+    FeaturedTabData featuredTabData;
     private ProgressBarDialog mProgressBarDialog;
     View view;
     String USER = "user";
 
     float lastX = 0, lastY = 0;
 
-    public FeaturedTabUi(FragmentActivity context, List<InterestSection> brandsArray, InterestSection featuredTabData, FragmentFeatured fragmentFeatured, View convertView) {
+    public FeaturedTabUi(FragmentActivity context, List<FeaturedTabData> brandsArray, FeaturedTabData featuredTabData, FragmentFeatured fragmentFeatured, View convertView) {
         super();
         this.mContext = context;
         this.brandsArray = brandsArray;

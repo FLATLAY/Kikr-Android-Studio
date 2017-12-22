@@ -83,6 +83,7 @@ public class FeaturedTabApi extends InterestSectionApi{
         }
     }
 
+
     @Override
     protected void processResponse(String response) {
         Syso.info("In RegisterUserApi processResponse16>>" + response);

@@ -207,7 +207,7 @@ public class CustomizeInterestStoreListAdapter extends BaseAdapter {
 
         viewHolder.product_layout.scrollTo(0, 0);
         viewHolder.product_inflater_layout.removeAllViews();
-        viewHolder.product_inflater_layout.addView(new FeaturedTabUi(mContext,  stores, getItem(position), fragmentFeatured, convertView).getView());
+       // viewHolder.product_inflater_layout.addView(new FeaturedTabUi(mContext,  stores, getItem(position), fragmentFeatured, convertView).getView());
         viewHolder.product_layout.post(new Runnable() {
             @Override
             public void run() {

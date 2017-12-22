@@ -86,7 +86,9 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     private View loaderView;
     private FragmentFeatured fragmentFeatured;
     private FeaturedTabAdapter featuredTabAdapter;
-    private List<FeaturedTabData> product_list = new ArrayList<FeaturedTabData>();
+    private List<InterestSection> product_list = new ArrayList<InterestSection>();
+    private List<InterestSection> product_list2 = new ArrayList<InterestSection>();
+
     View interest_people_button_active, interest_store_button_active, people_all_button_active, people_guys_button_active, people_gals_button_active;
     View mainView;
     LinearLayout layoutPeople, threetab;
@@ -248,6 +250,88 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
             }
         });
     }
+
+    private void getFeaturedTabData2() {
+        mProgressBarDialog = new ProgressBarDialog(mContext);
+        isLoading = !isLoading;
+        if (!isFirstTime) {
+            showFotter();
+        } else {
+            loadingTextView.setVisibility(View.VISIBLE);
+            mProgressBarDialog.show();
+        }
+
+        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                try {
+                    if (!isFirstTime) {
+                        hideFotter();
+                    } else {
+                        loadingTextView.setVisibility(View.GONE);
+                        mProgressBarDialog.dismiss();
+                    }
+                    hideDataNotFound();
+                    isLoading = !isLoading;
+                    Syso.info("In handleOnSuccess>>" + object);
+                    FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
+                    product_list2.addAll(featuredTabApiRes.getData());
+                    List<InterestSection> list = new ArrayList<>();
+                    list.addAll(product_list2);
+                    if (featuredTabApiRes.getData().size() < 1) {
+                        isLoading = true;
+                    }
+                    if (product_list2.size() == 0 && isFirstTime) {
+                        showDataNotFound();
+                    } else if (product_list.size() > 0 && isFirstTime) {
+                        featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
+                        interestSectionList.setAdapter(featuredTabAdapter);
+                    } else if (featuredTabAdapter != null) {
+                        //  featuredTabAdapter.setData(product_list);
+                        //featuredTabAdapter.notifyDataSetChanged();
+                        featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
+                        interestSectionList.setAdapter(featuredTabAdapter);
+                    } else {
+                        featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
+                        interestSectionList.setAdapter(featuredTabAdapter);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                if (!isFirstTime) {
+                    interestSectionList.removeFooterView(loaderView);
+                } else {
+                    loadingTextView.setVisibility(View.GONE);
+//					mProgressBarDialog.dismiss();
+                }
+                isLoading = !isLoading;
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    FeaturedTabApiRes response = (FeaturedTabApiRes) object;
+                    AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    AlertUtils.showToast(mContext, R.string.invalid_response);
+                }
+            }
+        });
+        listApi.searchUser(UserPreference.getInstance().getUserID(), searchYourItemEditText.getText().toString().trim(), Integer.toString(pagenum));
+        listApi.execute();
+
+        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                showDataNotFound();
+                listApi.cancel();
+            }
+        });
+    }
+
 
 
     @Override
@@ -1087,7 +1171,9 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         } else
             mProgressBarDialog.show();
         isLoading = !isLoading;
-//        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
+
+        //getFeaturedTabData2();
+    //    final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
         final InterestSectionApi interestSectionApi = new InterestSectionApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
@@ -1103,6 +1189,8 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                     isLoading = !isLoading;
 
                     InterestSectionRes interestSectionRes = (InterestSectionRes) object;
+                   // FeaturedTabApiRes interestSectionRes = (FeaturedTabApiRes) object;
+
 
                     List<InterestSection> list = new ArrayList<>();
 

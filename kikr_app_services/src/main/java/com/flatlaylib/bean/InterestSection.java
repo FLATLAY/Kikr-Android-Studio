@@ -81,9 +81,9 @@ public class InterestSection{
 		return products;
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
+//	public void setProducts(List<Product> products) {
+//		this.products = products;
+//	}
 
 	public List<Inspiration> getInspiration_feed() {
 		return inspiration_feed;

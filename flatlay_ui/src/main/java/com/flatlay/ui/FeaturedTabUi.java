@@ -63,7 +63,7 @@ public class FeaturedTabUi {
         layoutParams.setMargins(5,0,5,0);
         int size = 0;
         if (data != null)
-            size = data.size();
+           size = data.size();
         if (feed != null)
             size = feed.size();
         for (int i = 0; i < size; i++) {
@@ -75,7 +75,7 @@ public class FeaturedTabUi {
             if ((data != null && data.size() > i) || (feed != null && feed.size() > i)) {
                 if (data != null)
                     CommonUtility.setImage(mContext, data.get(i).getProductimageurl(), activity_product_list_product_image, R.drawable.dum_list_item_product);
-                else if (feed != null)
+                if (feed != null)
                     CommonUtility.setImage(mContext, feed.get(i).getInspiration_image(), activity_product_list_product_image, R.drawable.dum_list_item_product);
 
 

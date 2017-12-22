@@ -40,22 +40,22 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
     private FragmentActivity mContext;
     private LayoutInflater mInflater;
     public boolean[] mSelectedItems;
-    private List<InterestSection> followUsers = new ArrayList<InterestSection>();
+    private List<InterestSection> products = new ArrayList<InterestSection>();
     //  CustomizeFeedFragment customizeFeedActivity;
     private FragmentFeatured fragmentFeatured;
 
 
-    public CustomizeInterestPeopleListAdapter(FragmentActivity mContext, List<InterestSection> followUsers, FragmentFeatured fragmentFeatured) {
+    public CustomizeInterestPeopleListAdapter(FragmentActivity mContext, List<InterestSection> products, FragmentFeatured fragmentFeatured) {
         this.mContext = mContext;
-        this.followUsers = followUsers;
+        this.products = products;
         this.fragmentFeatured = fragmentFeatured;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mSelectedItems = new boolean[followUsers.size()];
+        mSelectedItems = new boolean[products.size()];
         Arrays.fill(mSelectedItems, false);
     }
 
     public void setData(List<InterestSection> data) {
-        this.followUsers.addAll(data);
+        this.products.addAll(data);
     }
 
     public boolean[] getSelectedItems() {
@@ -64,12 +64,12 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return followUsers.size();
+        return products.size();
     }
 
     @Override
     public InterestSection getItem(int index) {
-        return followUsers.get(index);
+        return products.get(index);
     }
 
     @Override
@@ -213,7 +213,7 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
 
         CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewHolder.userImage, R.drawable.dum_list_item_product);
         CommonUtility.setImage(mContext, getItem(position).getItem_image(), viewHolder.featuredLargeImage);
-
+        InterestSection aa = getItem(position);
         final List<Product> data = getItem(position).getProducts();
         final List<Inspiration> feed = getItem(position).getInspiration_feed();
         if (getItem(position).getIs_followed() != null && getItem(position).getIs_followed().equals("yes")) {
@@ -253,7 +253,7 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
         });
 
         viewHolder.product_inflater_layout.removeAllViews();
-        viewHolder.product_inflater_layout.addView(new FeaturedTabUi(mContext, followUsers, getItem(position), fragmentFeatured, convertView).getView());
+        viewHolder.product_inflater_layout.addView(new FeaturedTabUi(mContext, products, getItem(position), fragmentFeatured, convertView).getView());
         viewHolder.product_layout.post(new Runnable() {
             @Override
             public void run() {

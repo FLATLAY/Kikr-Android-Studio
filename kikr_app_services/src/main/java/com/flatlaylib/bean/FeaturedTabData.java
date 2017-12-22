@@ -66,9 +66,9 @@ public class FeaturedTabData extends InterestSection {
 //	public void setItem_image(String item_image) {
 //		this.item_image = item_image;
 //	}
-////	public List<Product> getProducts() {
-////		return products;
-////	}
+//	public List<Product> getProducts() {
+//		return products;
+//	}
 ////	public void setProducts(List<Product> products) {
 ////		this.products = products;
 ////	}

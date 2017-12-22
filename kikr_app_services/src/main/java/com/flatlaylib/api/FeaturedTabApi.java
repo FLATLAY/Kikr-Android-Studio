@@ -18,7 +18,7 @@ import com.flatlaylib.utils.Constants.WebConstants;
 import com.flatlaylib.utils.JsonUtils;
 import com.flatlaylib.utils.Syso;
 
-public class FeaturedTabApi extends InterestSectionApi {
+public class FeaturedTabApi extends InterestSectionApi{
 
     private String requestValue;
     private String requestType;
@@ -36,8 +36,8 @@ public class FeaturedTabApi extends InterestSectionApi {
         comment.put("pagenum", pagenum);
         Gson gson = new Gson();
         requestValue = gson.toJson(comment);
-
     }
+
 
 //    public void getFeaturedTabData2(String user_id,String search_text, String pagenum) {
 //        this.METHOD_NAME = WebConstants.HOST_FILE + "getfeaturedtabdata2";

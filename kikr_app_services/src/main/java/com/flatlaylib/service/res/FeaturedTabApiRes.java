@@ -3,11 +3,12 @@ package com.flatlaylib.service.res;
 import java.util.List;
 
 import com.flatlaylib.bean.FeaturedTabData;
+import com.flatlaylib.bean.InterestSection;
 
 public class FeaturedTabApiRes {
 	String code;
 	String message;
-	List<FeaturedTabData> data;
+	List<InterestSection> data;
 	
 	/**
 	 * @return the code
@@ -36,13 +37,13 @@ public class FeaturedTabApiRes {
 	/**
 	 * @return the data
 	 */
-	public List<FeaturedTabData> getData() {
+	public List<InterestSection> getData() {
 		return data;
 	}
 	/**
 	 * @param data the data to set
 	 */
-	public void setData(List<FeaturedTabData> data) {
+	public void setData(List<InterestSection> data) {
 		this.data = data;
 	}
 	

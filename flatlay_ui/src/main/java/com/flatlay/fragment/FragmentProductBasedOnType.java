@@ -197,6 +197,9 @@ public class FragmentProductBasedOnType extends BaseFragment implements OnClickL
 //            }
 //        }
         filterUserID = UserPreference.getInstance().getUserID();
+        if (item_type == null){
+            item_type = "user";
+        }
         filterType = item_type.equals("people") ? "user" : item_type;
         filterName = item_name;
         filterCategoryType = "";

@@ -61,8 +61,12 @@ public class AppConstants {
     }
 
 
-    public static final String TERMS_OF_USE_URL =  "https://flat-lay.com/#/terms";
-    public static final String PRIVACY_POLICY_URL = "https://flat-lay.com/#/privacy";
+//     public static final String TERMS_OF_USE_URL =  "https://flat-lay.com/#/terms";
+    public static final String TERMS_OF_USE_URL =  "https://flat-lay.com/terms";
+
+//     public static final String PRIVACY_POLICY_URL = "https://flat-lay.com/#/privacy";
+    public static final String PRIVACY_POLICY_URL = "https://flat-lay.com/privacy";
+
 
   //  String uriPath = "android.resource://com.kikr/"+ R.raw.flatlaylegal;
     public static final String LEGAL_URL = "file:///android_asset/flatlaylegalfile.html";

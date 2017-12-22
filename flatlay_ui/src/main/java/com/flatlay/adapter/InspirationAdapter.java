@@ -87,7 +87,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class InspirationAdapter extends BaseAdapter {
 
-    static String SHARE_POST_LINK = "Find it @FLATLAY http://flat-lay.com/#/flatlay/";
+    static String SHARE_POST_LINK = "Find it @FLATLAY http://flat-lay.com/flatlay/";
     static String SHARE_POST_LINK2 = "http://flat-lay.com/flatlay/";
     String postlink;
     private FragmentActivity mContext;

@@ -41,7 +41,7 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     public boolean[] mSelectedItems;
     private List<InterestSection> followUsers = new ArrayList<InterestSection>();
-    //    CustomizeFeedFragment customizeFeedActivity;
+    //  CustomizeFeedFragment customizeFeedActivity;
     private FragmentFeatured fragmentFeatured;
 
 
@@ -199,7 +199,7 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
 //        });
 
 
-        String name = getItem(position).getName();
+        String name = getItem(position).getUsername();
         if (!org.apache.http.util.TextUtils.isEmpty(name))
             viewHolder.userNameTextView.setText(name);
         else
@@ -324,11 +324,11 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
     }
 
     public void startProfilePage(int pos) {
-        if (getItem(pos).getType() != null) {
+      //  if (getItem(pos).getType() != null) {
 
             addFragment(new FragmentProfileView(getItem(pos).getId(), "no"));
-            addFragment(new FragmentProductBasedOnType(getItem(pos).getType(), getItem(pos).getName(), getItem(pos).getId()));
-        }
+        //    addFragment(new FragmentProductBasedOnType(getItem(pos).getType(), getItem(pos).getName(), getItem(pos).getId()));
+      //  }
     }
 
     public class ViewHolder {

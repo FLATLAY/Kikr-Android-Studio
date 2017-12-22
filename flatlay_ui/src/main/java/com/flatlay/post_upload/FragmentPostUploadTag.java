@@ -116,7 +116,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     private ProgressBar progressBarCollection;
 
 
-    static String SHARE_POST_LINK = "Find it @FLATLAY http://flat-lay.com/#/flatlay/";
+    static String SHARE_POST_LINK = "Find it @FLATLAY http://flat-lay.com/flatlay/";
     public static final int ADD_COLLECTION = 001;
     public static final int TAG_PRODUCT = 002;
     int click;

@@ -314,7 +314,7 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                     if (checkInternet()) {
                         categoryGridView.setVisibility(View.GONE);
                         interestSectionList.setVisibility(View.VISIBLE);
-                        getUserList("all");
+                       // getUserList("all");
                     } else
                         showReloadOption();
                 else {
@@ -429,9 +429,9 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                 interestSectionList.setAdapter(null);
 //			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.app_background));
 //			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
-                if (checkInternet())
-                    getUserList("female");
-                else
+                //if (checkInternet())
+                 //   getUserList("female");
+                //else
                     showReloadOption();
                 break;
             case R.id.trendingGuysLinearLayout:
@@ -447,9 +447,9 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                 interestSectionList.setAdapter(null);
 //			trendingGalsLinearLayout.setBackgroundColor(getResources().getColor(R.color.white));
 //			trendingGuysLinearLayout.setBackgroundColor(getResources().getColor(R.color.app_background));
-                if (checkInternet())
-                    getUserList("male");
-                else
+               // if (checkInternet())
+                    //getUserList("male");
+               // else
                     showReloadOption();
                 break;
             default:
@@ -1109,82 +1109,87 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
     }
 
 
-    public void getUserList(String gender) {
-        Log.w("CustomizeFeedActivity","getUserList()");
-        isLoading = !isLoading;
-        mProgressBarDialog = new ProgressBarDialog(CustomizeFeedActivity.this);
-        if (pagenum > 0) {
-            //showFotter();
-        } else
-            mProgressBarDialog.show();
-        final InterestSectionApi followUserApi = new InterestSectionApi(new ServiceCallback() {
-
-            @Override
-            public void handleOnSuccess(Object object) {
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
-                else {
-                    hideFutter();
-                }
-                hideDataNotFound();
-                isLoading = !isLoading;
-                Syso.info("In handleOnSuccess>>" + object);
-                InterestSectionRes followUserRes = (InterestSectionRes) object;
-                interestList = followUserRes.getData();
-                if (interestList.size() < 10) {
-                    isLoading = true;
-                }
-                if (interestList.size() == 0 && isFirstTime) {
-                    hideDataNotFound();
-                    noDataGalGuy.setVisibility(View.VISIBLE);
-                    if (interestSectionList.getHeaderViewsCount() == 0)
-                        interestSectionList.removeHeaderView(peopleHeaderView);
-                    interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(context, interestList, fragmentInterestSection);
-                    interestSectionList.setAdapter(interestPeopleListAdapter);
-                    //showDataNotFound();
-                } else if (interestList.size() > 0 && isFirstTime) {
-                    hideDataNotFound();
-                    noDataGalGuy.setVisibility(View.GONE);
-                    if (interestSectionList.getHeaderViewsCount() == 0)
-                        interestSectionList.removeHeaderView(peopleHeaderView);
-                    interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(context, interestList, fragmentInterestSection);
-                    interestSectionList.setAdapter(interestPeopleListAdapter);
-                } else {
-                    if (interestSectionList.getHeaderViewsCount() == 0)
-                        interestSectionList.removeHeaderView(peopleHeaderView);
-                    interestPeopleListAdapter.setData(interestList);
-                    interestPeopleListAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void handleOnFailure(ServiceException exception, Object object) {
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
-                else {
-                    //hideFotter();
-                }
-                isLoading = !isLoading;
-                Syso.info("In handleOnFailure>>" + object);
-                if (object != null) {
-                    InterestSectionRes response = (InterestSectionRes) object;
-                    AlertUtils.showToast(CustomizeFeedActivity.this, response.getMessage());
-                } else {
-                    AlertUtils.showToast(CustomizeFeedActivity.this, R.string.invalid_response);
-                }
-            }
-        });
-        followUserApi.getAllKikrUserList(UserPreference.getInstance().getUserID(), Integer.toString(pagenum), gender);
-        followUserApi.execute();
-
-        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                isLoading = !isLoading;
-                followUserApi.cancel();
-            }
-        });
-    }
+    //public void getUserList(String gender) {
+//        Log.w("CustomizeFeedActivity","getUserList()");
+//        isLoading = !isLoading;
+//        mProgressBarDialog = new ProgressBarDialog(CustomizeFeedActivity.this);
+//        if (pagenum > 0) {
+//            //showFotter();
+//        } else
+//            mProgressBarDialog.show();
+//        final InterestSectionApi followUserApi = new InterestSectionApi(new ServiceCallback() {
+//
+//            @Override
+//            public void handleOnSuccess(Object object) {
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
+//                else {
+//                    hideFutter();
+//                }
+//                hideDataNotFound();
+//                isLoading = !isLoading;
+//                Syso.info("In handleOnSuccess>>" + object);
+//                InterestSectionRes followUserRes = (InterestSectionRes) object;
+//                interestList = followUserRes.getData();
+//                if (interestList.size() < 10) {
+//                    isLoading = true;
+//                }
+//                if (interestList.size() == 0 && isFirstTime) {
+//                    //hideDataNotFound();
+//                    noDataGalGuy.setVisibility(View.VISIBLE);
+//                    if (interestSectionList.getHeaderViewsCount() == 0)
+//                       // interestSectionList.removeHeaderView(peopleHeaderView);
+//                        showDataNotFound();
+//
+//                  //   interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(context, interestList, fragmentInterestSection);
+//
+//                    interestSectionList.setAdapter(interestPeopleListAdapter);
+//                    //showDataNotFound();
+//                } else if (interestList.size() > 0 && isFirstTime) {
+//                    //hideDataNotFound();
+//                    noDataGalGuy.setVisibility(View.GONE);
+//                    if (interestSectionList.getHeaderViewsCount() == 0)
+//                        interestSectionList.removeHeaderView(peopleHeaderView);
+//                    showDataNotFound();
+//
+//                    // interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(context, interestList, fragmentInterestSection);
+//                    interestSectionList.setAdapter(interestPeopleListAdapter);
+//                } else {
+//                    if (interestSectionList.getHeaderViewsCount() == 0)
+//                        interestSectionList.removeHeaderView(peopleHeaderView);
+//                    interestPeopleListAdapter.setData(interestList);
+//                    interestPeopleListAdapter.notifyDataSetChanged();
+//                }
+//            }
+//
+//            @Override
+//            public void handleOnFailure(ServiceException exception, Object object) {
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
+//                else {
+//                    //hideFotter();
+//                }
+//                isLoading = !isLoading;
+//                Syso.info("In handleOnFailure>>" + object);
+//                if (object != null) {
+//                    InterestSectionRes response = (InterestSectionRes) object;
+//                    AlertUtils.showToast(CustomizeFeedActivity.this, response.getMessage());
+//                } else {
+//                    AlertUtils.showToast(CustomizeFeedActivity.this, R.string.invalid_response);
+//                }
+//            }
+//        });
+//        followUserApi.getAllKikrUserList(UserPreference.getInstance().getUserID(), Integer.toString(pagenum), gender);
+//        followUserApi.execute();
+//
+//        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                isLoading = !isLoading;
+//                followUserApi.cancel();
+//            }
+//        });
+//    }
 
 
     private void search() {
@@ -1236,10 +1241,11 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
                         }
                     } else if (isSelected.equalsIgnoreCase("people")) {
                         if (interestSectionRes.getData().size() > 0 && isFirstTime) {
+                            showDataNotFound();
                             if (interestSectionList.getHeaderViewsCount() == 0)
                                 interestSectionList.removeHeaderView(peopleHeaderView);
                             interestList = interestSectionRes.getData();
-                            interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(context, interestList, fragmentInterestSection);
+                            //interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(context, interestList, fragmentInterestSection);
                             interestSectionList.setAdapter(interestPeopleListAdapter);
                         } else {
                             interestList = interestSectionRes.getData();
@@ -1304,11 +1310,11 @@ public class CustomizeFeedActivity extends FragmentActivity implements View.OnCl
         } else if (isSelected.equalsIgnoreCase("product") && !isSearchActive) {
             getProductList();
         } else if (isSelected.equalsIgnoreCase("people") && isGuys && !isGals && !isSearchActive) {
-            getUserList("male");
+          //  getUserList("male");
         } else if (isSelected.equalsIgnoreCase("people") && !isGuys && isGals && !isSearchActive) {
-            getUserList("female");
+         //   getUserList("female");
         } else if (isSelected.equalsIgnoreCase("people") && !isGuys && !isGals && !isSearchActive) {
-            getUserList("all");
+          //  getUserList("all");
         } else if (isSearchActive) {
             search();
         } else if (!isSearchActive) {

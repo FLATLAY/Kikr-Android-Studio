@@ -143,7 +143,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         return price;
     }
 
-    private void generateNotification(Context context, String message, String inspiration_id, String section, String otherdata) {
+    public void generateNotification(Context context, String message, String inspiration_id, String section, String otherdata) {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
         notificationBuilder.setSmallIcon(R.drawable.small_logo);
         notificationBuilder.setTicker(message);
@@ -151,17 +151,17 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         notificationBuilder.setContentText(message);
         notificationBuilder.setAutoCancel(true);
 
-        Intent intent = new Intent(context, HomeActivity.class);
-        if (!TextUtils.isEmpty(otherdata)) {
-            intent.putExtra("otherdata", otherdata);
-        }
-        if (!TextUtils.isEmpty(inspiration_id)) {
-            intent.putExtra("inspiration_id", inspiration_id);
-        }
-        intent.putExtra("section", section);
-        intent.setData(Uri.parse(section));
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_ONE_SHOT);
-        notificationBuilder.setContentIntent(pendingIntent);
+      //  Intent intent = new Intent(context, HomeActivity.class);
+//        if (!TextUtils.isEmpty(otherdata)) {
+//            intent.putExtra("otherdata", otherdata);
+//        }
+//        if (!TextUtils.isEmpty(inspiration_id)) {
+//            intent.putExtra("inspiration_id", inspiration_id);
+//        }
+//        intent.putExtra("section", section);
+//        intent.setData(Uri.parse(section));
+//        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_ONE_SHOT);
+     //   notificationBuilder.setContentIntent(pendingIntent);
         Notification notification = notificationBuilder.build();
         notification.defaults |= Notification.DEFAULT_SOUND;
         notification.defaults |= Notification.DEFAULT_VIBRATE;

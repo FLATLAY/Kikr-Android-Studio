@@ -30,7 +30,7 @@
             android:background="@android:color/transparent"
              android:layout_marginLeft="5dp"
             android:gravity="center"
-            android:hint="Search for People, Stores &amp; Brands"
+            android:hint="Search Products"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:padding="5dp"
@@ -38,6 +38,7 @@
             android:textStyle="italic"
             />
 
+        <!--android:hint="Search for People, Stores &amp; Brands"-->
 
 
     </RelativeLayout>

@@ -334,8 +334,9 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
             case R.id.backarrowlayout:
                 Log.w("FragmentProfileView","Back Button Pressed!");
                 //((HomeActivity) mContext).onBackPressed();
-                Intent intent = new Intent(mContext, HomeActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(mContext, HomeActivity.class);
+                ((HomeActivity) mContext).onBackPressed();
+               // startActivity(intent);
                 break;
             case R.id.invite:
                 Log.w("FragmentProfileView","R.id.invite");

@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "349707998897",
-    "firebase_url": "https://flatlay-9e497.firebaseio.com",
-    "project_id": "flatlay-9e497",
-    "storage_bucket": "flatlay-9e497.appspot.com"
+    "project_number": "189062898920",
+    "firebase_url": "https://secondtest-ef93b.firebaseio.com",
+    "project_id": "secondtest-ef93b",
+    "storage_bucket": "secondtest-ef93b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:349707998897:android:bf55f525166a0837",
+        "mobilesdk_app_id": "1:189062898920:android:bf55f525166a0837",
         "android_client_info": {
           "package_name": "com.flatlay"
         }
       },
       "oauth_client": [
         {
-          "client_id": "349707998897-9pmpkmflih02vv7vnbhp65m08omot9nn.apps.googleusercontent.com",
+          "client_id": "189062898920-anmnoinfshb5kjrb6ku4csak3egiknj8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flatlay",
+            "certificate_hash": "eab0edc81341ad18c4f65ac919f68108ffac9b70"
+          }
+        },
+        {
+          "client_id": "189062898920-olff6h19g485nvqfj2730cocq51ua0bm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAHTzsvM-7f1dyJhshScZw44-n5ao8kw4s"
+          "current_key": "AIzaSyDNmo5SfKBP8HgSLg-ZOfarlzPascckOFY"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "189062898920-olff6h19g485nvqfj2730cocq51ua0bm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

@@ -323,7 +323,7 @@ public class FragmentSearchAll extends BaseFragment implements View.OnClickListe
     @Override
     public void setData(Bundle bundle) {
 
-        multiAutoCompleteTextView.setHint("Search for People, Store & Brands.");
+        multiAutoCompleteTextView.setHint("Search Products.");
 
 
         listSearch.setOnScrollListener(new AbsListView.OnScrollListener() {

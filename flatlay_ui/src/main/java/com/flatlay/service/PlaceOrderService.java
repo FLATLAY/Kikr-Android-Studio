@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.flatlay.GCMAlarmReceiver;
 import com.flatlay.R;
@@ -23,6 +24,7 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.CartRes;
 import com.flatlaylib.utils.StringUtils;
 import com.flatlaylib.utils.Syso;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,11 +53,13 @@ public class PlaceOrderService extends IntentService{
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Syso.info("UUUUUUUUUUUU >>>>>> in onHandleIntent : " + intent);
-        if(intent!=null){
-            if(intent.hasExtra("purchase_id")&&intent.hasExtra("cartId"))
-                purchaseStatus(intent.getStringExtra("purchase_id"),intent.getStringExtra("cartId"));
-        }
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.i("lalala", "FCM Registration Token: " + token);
+//        Syso.info("UUUUUUUUUUUU >>>>>> in onHandleIntent : " + intent);
+//        if(intent!=null){
+//            if(intent.hasExtra("purchase_id")&&intent.hasExtra("cartId"))
+//                purchaseStatus(intent.getStringExtra("purchase_id"),intent.getStringExtra("cartId"));
+//        }
     }
 
 //    private void setNextHandler(final String purchase_id,final String cartId) {

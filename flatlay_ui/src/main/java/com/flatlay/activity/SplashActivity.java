@@ -13,6 +13,8 @@ import android.util.Log;
 import android.widget.ProgressBar;
 
 import com.flatlay.R;
+import com.flatlay.service.PlaceOrderService;
+import com.flatlay.service.TestNotifications;
 import com.flatlay.utility.AppConstants.Screen;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.bean.LikeInfo;
@@ -52,6 +54,9 @@ public class SplashActivity extends Activity {
 //		}
 		//setNotification();
 //		facebookKey();
+		Intent intent = new Intent(this, PlaceOrderService.class);
+		startService(intent);
+		TestNotifications.pushFCMNotification();
 	}
 
 	private void facebookKey() {

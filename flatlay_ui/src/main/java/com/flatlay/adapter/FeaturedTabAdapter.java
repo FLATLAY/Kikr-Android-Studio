@@ -179,6 +179,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
             public void onClick(View v) {
                 if (getItem(position).getIs_followed() != null) {
                     if (getItem(position).getIs_followed().equals("no")) {
+                        //add a notifications he
                         getItem(position).setIs_followed("yes");
                         notifyDataSetChanged();
                         ((HomeActivity) mContext).followUser(getItem(position).getItem_id());

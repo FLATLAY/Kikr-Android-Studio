@@ -236,7 +236,7 @@ public class CommonUtility {
 //		aQuery.id(imageView).image(url, true, true, 0, placeholder, preset, AQuery.FADE_IN_NETWORK, 0);
 //		Glide.with(context).load(url).placeholder(placeholder).crossFade().into(imageView);
         UrlImageViewHelper.setUrlDrawable(imageView, url);
-		UrlImageViewHelper.setUseBitmapScaling(false);
+		UrlImageViewHelper.setUseBitmapScaling(true);
     }
 
     public static void setImage(Activity context, String url, ImageView imageView, int placeholder) {
@@ -245,7 +245,7 @@ public class CommonUtility {
 //		aQuery.id(imageView).image(url, true, true, 0, placeholder, preset, AQuery.FADE_IN_NETWORK, 0);
 //		Glide.with(context).load(url).placeholder(placeholder).crossFade().into(imageView);
         UrlImageViewHelper.setUrlDrawable(imageView, url, placeholder);
-		UrlImageViewHelper.setUseBitmapScaling(false);
+		UrlImageViewHelper.setUseBitmapScaling(true);
     }
 
     public static void setImagePicasso(Activity context, String url, ImageView imageView, final ProgressBar progressBar) {

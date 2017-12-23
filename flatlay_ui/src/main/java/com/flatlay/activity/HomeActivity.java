@@ -3,6 +3,8 @@ package com.flatlay.activity;
 import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,6 +27,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -157,6 +160,7 @@ import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.pinterest.android.pdk.PDKCallback;
 import com.pinterest.android.pdk.PDKClient;
 import com.pinterest.android.pdk.PDKException;
@@ -239,6 +243,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private TextView dealTextview, orderTextView, walletTextView, kikrCreditTextView, viewProfileTextView, kikrGuideTextView, viewSearchTextView;
 
     LinearLayout tab_layout, cart_tab, search_tab, upload_post_tab, profile_tab, message_tab;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -309,7 +314,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         if (getIntent().getStringExtra("profile_collection") != null) {
             addFragment(new FragmentProfileView(getIntent().getStringExtra("profile_collection"), "no"));
         }
-
+      //  PushTest.pushFCMNotification();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
     }
 
     public double getCredits() {

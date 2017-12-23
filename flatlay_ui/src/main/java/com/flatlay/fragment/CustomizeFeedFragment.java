@@ -1,5 +1,6 @@
 package com.flatlay.fragment;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -23,6 +24,7 @@ import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
 import com.flatlay.BaseFragment;
+import com.flatlay.FirebaseMsgService;
 import com.flatlay.R;
 import com.flatlay.adapter.CustomizeInterestBrandListAdapter;
 import com.flatlay.adapter.FeaturedTabAdapter;
@@ -84,6 +86,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     private GridView categoryGridView;
     private TextView noDataGalGuy;
     private View loaderView;
+//    private View aabutton;
     private FragmentFeatured fragmentFeatured;
     private FeaturedTabAdapter featuredTabAdapter;
     private List<InterestSection> product_list = new ArrayList<InterestSection>();
@@ -132,7 +135,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
         loaderView = View.inflate(mContext, R.layout.footer, null);
         interestSectionList = (ListView) mainView.findViewById(R.id.interestSectionList);
-
+//        aabutton = (Button) mainView.findViewById(R.id.aabutton);
     }
 
     public void initData() {
@@ -307,6 +310,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
         trendingGalsLinearLayout.setOnClickListener(this);
         trendingGuysLinearLayout.setOnClickListener(this);
         searchYourItemEditText.setOnEditorActionListener(this);
+//        aabutton.setOnClickListener(this);
         //people_all_button.setOnClickListener(this);
         //people_gals_button.setOnClickListener(this);
         //people_guys_button.setOnClickListener(this);
@@ -341,10 +345,15 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     public void onClick(View v) {
         hideProductNotFound();
     }
-    // removeFocus();
-    //hideFotter();
 //        switch (v.getId()) {
-
+//            case R.id.aabutton:
+//                new FirebaseMsgService().generateNotification(mContext, "hello", "2", "", "");
+//        }
+//    }
+//     removeFocus();
+//    hideFotter();
+//        switch (v.getId()) {
+//
 //            case R.id.interest_store_button:
 //                isFirstTime = true;
 //                pagenum = 0;
@@ -576,83 +585,83 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
 //        });
 //    }
 
-    private void getStoreList() {
-        isLoading = !isLoading;
-        mProgressBarDialog = new ProgressBarDialog(mContext);
-        if (pagenum > -1) {
-            //showFotter();
-        } else
-            mProgressBarDialog.show();
-        //  pagenum++;
-//        final InterestSectionApi interestSectionApi = new InterestSectionApi(new ServiceCallback() {
-        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
-
-
-            @Override
-            public void handleOnSuccess(Object object) {
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
-                else {
-                    hideFotter();
-                }
-                hideProductNotFound();
-                Syso.info("In handleOnSuccess>>" + object);
-                isLoading = !isLoading;
+//    private void getStoreList() {
+//        isLoading = !isLoading;
+//        mProgressBarDialog = new ProgressBarDialog(mContext);
+//        if (pagenum > -1) {
+//            //showFotter();
+//        } else
+//            mProgressBarDialog.show();
+//        //  pagenum++;
+////        final InterestSectionApi interestSectionApi = new InterestSectionApi(new ServiceCallback() {
+//        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
+//
+//
+//            @Override
+//            public void handleOnSuccess(Object object) {
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
+//                else {
+//                    hideFotter();
+//                }
+//                hideProductNotFound();
+//                Syso.info("In handleOnSuccess>>" + object);
+//                isLoading = !isLoading;
+////                InterestSectionRes interestSectionRes = (InterestSectionRes) object;
+//                // FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
+//                // interestList.addAll(featuredTabApiRes.getData());
+////                List<InterestSection> list = new ArrayList<>();
+////                list.addAll(product_list);
 //                InterestSectionRes interestSectionRes = (InterestSectionRes) object;
-                // FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
-                // interestList.addAll(featuredTabApiRes.getData());
-//                List<InterestSection> list = new ArrayList<>();
-//                list.addAll(product_list);
-                InterestSectionRes interestSectionRes = (InterestSectionRes) object;
-                interestList = interestSectionRes.getData();
-                if (interestList.size() < 10) {
-                    isLoading = true;
-                }
-                if (interestList.size() == 0 && isFirstTime)
-                    showProductNotFound();
-                else if (interestList.size() > 0 && isFirstTime) {
-                    hideProductNotFound();
-                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, interestList, fragmentFeedFragment);
-                    interestSectionList.setAdapter(interestStoreListAdapter);
-
-                } else {
-                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, interestList, fragmentFeedFragment);
-                    interestSectionList.setAdapter(interestStoreListAdapter);
-                }
-
-            }
-
-
-            @Override
-            public void handleOnFailure(ServiceException exception, Object object) {
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
-                else {
-                    hideFotter();
-                }
-                Syso.info("In handleOnFailure>>" + object);
-                isLoading = !isLoading;
-                if (object != null) {
-                    FeaturedTabApiRes response = (FeaturedTabApiRes) object;
-                    AlertUtils.showToast(mContext, response.getMessage());
-                } else {
-                    //AlertUtils.showToast(mContext, R.string.invalid_response);
-                }
-            }
-        });
-        listApi.getStoreList(Integer.toString(pagenum));
-        listApi.execute();
-
-        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener()
-
-        {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                isLoading = !isLoading;
-                listApi.cancel();
-            }
-        });
-    }
+//                interestList = interestSectionRes.getData();
+//                if (interestList.size() < 10) {
+//                    isLoading = true;
+//                }
+//                if (interestList.size() == 0 && isFirstTime)
+//                    showProductNotFound();
+//                else if (interestList.size() > 0 && isFirstTime) {
+//                    hideProductNotFound();
+//                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, interestList, fragmentFeedFragment);
+//                    interestSectionList.setAdapter(interestStoreListAdapter);
+//
+//                } else {
+//                    interestStoreListAdapter = new CustomizeInterestStoreListAdapter(mContext, interestList, fragmentFeedFragment);
+//                    interestSectionList.setAdapter(interestStoreListAdapter);
+//                }
+//
+//            }
+//
+//
+//            @Override
+//            public void handleOnFailure(ServiceException exception, Object object) {
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
+//                else {
+//                    hideFotter();
+//                }
+//                Syso.info("In handleOnFailure>>" + object);
+//                isLoading = !isLoading;
+//                if (object != null) {
+//                    FeaturedTabApiRes response = (FeaturedTabApiRes) object;
+//                    AlertUtils.showToast(mContext, response.getMessage());
+//                } else {
+//                    //AlertUtils.showToast(mContext, R.string.invalid_response);
+//                }
+//            }
+//        });
+//        listApi.getStoreList(Integer.toString(pagenum));
+//        listApi.execute();
+//
+//        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener()
+//
+//        {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                isLoading = !isLoading;
+//                listApi.cancel();
+//            }
+//        });
+//    }
 
     @Override
     public void handleOnSuccess(Object object) {

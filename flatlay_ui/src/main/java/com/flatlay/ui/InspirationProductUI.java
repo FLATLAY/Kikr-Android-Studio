@@ -102,7 +102,7 @@ public class InspirationProductUI {
                 }
             });
         }
-        if (data.size() > 3) {
+        if (data.size() > 0) {
             RelativeLayout convertView = (RelativeLayout) mInflater.inflate(R.layout.layout_load_more, null);
 
             LayoutParams layoutParams2 = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);

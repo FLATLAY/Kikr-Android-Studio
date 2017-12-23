@@ -204,7 +204,7 @@ public class InspirationAdapter extends BaseAdapter {
             viewholder.likeCount = (TextView) convertView.findViewById(R.id.likeCount);
             viewholder.staticLikes = (TextView) convertView.findViewById(R.id.staticLikes);
             viewholder.descriptionArrow2 = (ImageView) convertView.findViewById(R.id.descriptionArrow2);
-            viewholder.descriptionArrow2.setVisibility(View.INVISIBLE);
+           // viewholder.descriptionArrow2.setVisibility(View.INVISIBLE);
             viewholder.follow_btn = (Button) convertView.findViewById(R.id.follow_btn);
             viewholder.contentContainer = (RelativeLayout) convertView.findViewById(R.id.content_contain);
             viewholder.overlay = (LinearLayout) convertView.findViewById(R.id.overlay);
@@ -232,13 +232,14 @@ public class InspirationAdapter extends BaseAdapter {
 
 
         viewholder.descriptionArrow2.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final ViewHolder holder = viewholder;
+                @Override
+                public void onClick(View v) {
+                    final ViewHolder holder = viewholder;
 
-                Log.w("InspirationAdapter","Clicked the arrow 1!"+getItem(position).getUsername()+"*****"+getItem(position).toString());
+                    Log.w("InspirationAdapter","Clicked the arrow 1!"+getItem(position).getUsername()+"*****"+getItem(position).toString());
 
-                if(holder.contentContainer.getVisibility() == View.INVISIBLE) {
+
+                    if(holder.contentContainer.getVisibility() == View.INVISIBLE) {
 
                     holder.overlay.animate().translationY(-380).setDuration(400).setListener(new AnimatorListenerAdapter() {
 
@@ -254,7 +255,7 @@ public class InspirationAdapter extends BaseAdapter {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
-                            // holder.inspirationImage.setClickable(false);
+                             holder.inspirationImage.setClickable(false);
                             Log.w("InspirationAdapter","Clicked the arrow 3!"+getItem(position).getUsername()+"*****"+getItem(position).toString());
 
                         }
@@ -268,15 +269,15 @@ public class InspirationAdapter extends BaseAdapter {
                         @Override
                         public void onAnimationStart(Animator animation) {
                             super.onAnimationStart(animation);
-                            //holder.descriptionArrow2.startAnimation(b);
+                            holder.descriptionArrow2.startAnimation(b);
                             Log.w("InspirationAdapter","Clicked the arrow 5!"+getItem(position).getUsername()+"*****"+getItem(position).toString());
                         }
 
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
-                            // holder.inspirationImage.setClickable(true);
-                            //holder.contentContainer.setVisibility(View.INVISIBLE);
+                             holder.inspirationImage.setClickable(true);
+                            holder.contentContainer.setVisibility(View.INVISIBLE);
                             Log.w("InspirationAdapter","Clicked the arrow 6!"+getItem(position).getUsername()+"*****"+getItem(position).toString());
                         }
                     });
@@ -555,10 +556,14 @@ public class InspirationAdapter extends BaseAdapter {
         List<Product> data = getItem(position).getProducts();
         viewholder.productInflaterLayout.removeAllViews();
 
-        if (data != null && data.size() > 0) {
-            viewholder.descriptionArrow2.setVisibility(View.VISIBLE);
+        if (data == null || data.size() < 1) {
+            viewholder.descriptionArrow2.setVisibility(View.INVISIBLE);
+           // viewholder.noProductTextView.setVisibility(View.GONE);
+            viewholder.productInflaterLayout.addView(new InspirationProductUI(mContext, getItem(position), convertView).getView());
+        }else{
             viewholder.noProductTextView.setVisibility(View.GONE);
             viewholder.productInflaterLayout.addView(new InspirationProductUI(mContext, getItem(position), convertView).getView());
+
         }
 
         viewholder.productLayout.scrollTo(0, 0);

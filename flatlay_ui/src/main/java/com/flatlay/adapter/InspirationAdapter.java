@@ -561,6 +561,7 @@ public class InspirationAdapter extends BaseAdapter {
            // viewholder.noProductTextView.setVisibility(View.GONE);
             viewholder.productInflaterLayout.addView(new InspirationProductUI(mContext, getItem(position), convertView).getView());
         }else{
+            viewholder.descriptionArrow2.setVisibility(View.VISIBLE);
             viewholder.noProductTextView.setVisibility(View.GONE);
             viewholder.productInflaterLayout.addView(new InspirationProductUI(mContext, getItem(position), convertView).getView());
 

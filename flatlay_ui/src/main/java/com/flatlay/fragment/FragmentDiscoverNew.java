@@ -80,14 +80,16 @@ public class FragmentDiscoverNew extends BaseFragment implements OnPageChangeLis
 
         initData();
 
-        option1_LinearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Log.w("FragmentDiscoverNew","CLICKED!");
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                startActivity(intent);
-            }
-        });
+//        option1_LinearLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Log.w("FragmentDiscoverNew","CLICKED!");
+//                Intent intent = new Intent(getActivity(), HomeActivity.class);
+//                startActivity(intent);
+//                startActivity(HomeActivity.class);
+//
+//            }
+//        });
 
         return view;
 

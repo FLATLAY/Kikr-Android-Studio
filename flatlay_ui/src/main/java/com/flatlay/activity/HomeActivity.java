@@ -244,6 +244,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     LinearLayout tab_layout, cart_tab, search_tab, upload_post_tab, profile_tab, message_tab;
     private FirebaseAnalytics mFirebaseAnalytics;
+    private boolean isFirstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -316,6 +317,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
       //  PushTest.pushFCMNotification();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        isFirstTime = true;
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
     }
 
     public double getCredits() {

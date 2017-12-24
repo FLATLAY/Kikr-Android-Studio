@@ -12,6 +12,14 @@ android {
         multiDexEnabled = true
     }
 
+
+        configurations {
+            all*.exclude group: 'com.google.code.gson', module: 'gson'
+        }
+
+
+
+
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'

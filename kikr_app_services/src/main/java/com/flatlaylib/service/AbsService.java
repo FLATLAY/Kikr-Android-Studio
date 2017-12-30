@@ -60,7 +60,7 @@ public abstract class AbsService implements IService {
     @Override
     public String getHost() {
         return Constants.getServerIp();
-//		return WebConstants.HOST_API;
+	//	return WebConstants.HOST_API;
     }
 
 

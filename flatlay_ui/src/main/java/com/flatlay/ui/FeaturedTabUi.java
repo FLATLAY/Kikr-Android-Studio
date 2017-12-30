@@ -74,10 +74,10 @@ public class FeaturedTabUi {
 
             if ((data != null && data.size() > i) || (feed != null && feed.size() > i)) {
                 if (data != null)
-                    CommonUtility.setImage(mContext, data.get(i).getProductimageurl(), activity_product_list_product_image, R.drawable.dum_list_item_product);
+                    CommonUtility.setImage(mContext, data.get(i).getProductimageurl(), activity_product_list_product_image);
                 if (feed != null)
-                    CommonUtility.setImage(mContext, feed.get(i).getInspiration_image(), activity_product_list_product_image, R.drawable.dum_list_item_product);
-
+                    CommonUtility.setImage(mContext, feed.get(i).getInspiration_image(), activity_product_list_product_image);
+                activity_product_list_product_image.setVisibility(View.VISIBLE);
 
                 convertView.setOnClickListener(new OnClickListener() {
 
@@ -162,6 +162,7 @@ public class FeaturedTabUi {
                     }
                 }
             });
+
         }
         return ll;
     }

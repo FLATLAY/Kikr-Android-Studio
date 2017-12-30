@@ -235,6 +235,10 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
             viewHolder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
         }
 
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("message");
+//        myRef.setValue("Hello, World!");
+
         viewHolder.follow_btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -253,7 +257,7 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
         });
 
         viewHolder.product_inflater_layout.removeAllViews();
-       // viewHolder.product_inflater_layout.addView(new FeaturedTabUi(mContext, products, getItem(position), fragmentFeatured, convertView).getView());
+        // viewHolder.product_inflater_layout.addView(new FeaturedTabUi(mContext, products, getItem(position), fragmentFeatured, convertView).getView());
         viewHolder.product_layout.post(new Runnable() {
             @Override
             public void run() {
@@ -324,11 +328,11 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
     }
 
     public void startProfilePage(int pos) {
-      //  if (getItem(pos).getType() != null) {
+        //  if (getItem(pos).getType() != null) {
 
-            addFragment(new FragmentProfileView(getItem(pos).getId(), "no"));
+        addFragment(new FragmentProfileView(getItem(pos).getId(), "no"));
         //    addFragment(new FragmentProductBasedOnType(getItem(pos).getType(), getItem(pos).getName(), getItem(pos).getId()));
-      //  }
+        //  }
     }
 
     public class ViewHolder {
@@ -352,5 +356,6 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
     private void addFragment(Fragment fragment) {
         ((HomeActivity) mContext).addFragment(fragment);
     }
+
 }
 

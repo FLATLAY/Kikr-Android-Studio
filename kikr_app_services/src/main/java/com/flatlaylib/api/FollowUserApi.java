@@ -1,5 +1,7 @@
 package com.flatlaylib.api;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +27,8 @@ public class FollowUserApi extends AbsService {
 
 	public FollowUserApi(ServiceCallback serviceCallback) {
 		super();
+		this.serviceName = "followuser";
+
 		this.mServiceCallback = serviceCallback;
 	}
 
@@ -51,7 +55,7 @@ public class FollowUserApi extends AbsService {
 		Gson gson = new Gson();
 		requestValue = gson.toJson(maps);
 	}
-	
+
 	public void unFollowUser(String userid,String following_user_id) {
 
 		this.METHOD_NAME = WebConstants.HOST_FILE + "unfollowuser";
@@ -82,7 +86,9 @@ public class FollowUserApi extends AbsService {
 
 	@Override
 	public String getHeader() {
+
 		return "Bearer " + UserPreference.getInstance().getAccessToken();
+
 	}
 
 	@Override

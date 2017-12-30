@@ -1,7 +1,13 @@
 package com.flatlay.adapter;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
@@ -13,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.flatlay.FirebaseMsgService;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.fragment.FragmentInspirationDetail;
@@ -20,6 +27,7 @@ import com.flatlay.fragment.FragmentProfileView;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.bean.FollowingKikrModel;
 import com.flatlaylib.bean.Inspiration;
+import com.flatlaylib.db.UserPreference;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -39,6 +47,7 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
     private Context context;
     String likeinsp = "likeinsp";
     String commentinsp = "commentinsp";
+
 
     public KikrFollowingAdapter(Context context, ArrayList<FollowingKikrModel.DataBean> followingList) {
         this.followingList = followingList;
@@ -76,7 +85,6 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
         {
             userName = userString.split(" is following")[0];
             notitification = userString.split(userName+" ")[1];
-
         }
 
         /*
@@ -127,6 +135,8 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
             }
             time = CommonUtility.messageCenter(calServer,calLocal);
             viewHolder.followingsubstring.append("   " +time.toString());
+//            viewHolder.followingsubstring.append("   " +calculteTimeDiff(time));
+
 
 
             viewHolder.follower_user_image.setOnClickListener(new View.OnClickListener() {
@@ -212,8 +222,23 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
         //  this is used for to show item in gridview
         viewHolder.gridview.setAdapter(new FollowingImagesSet(context));
 
+      //  sendNotification("hello","yes");
 
     }
+
+//    private String calculteTimeDiff(String time) {
+//        Integer t = -Integer.parseInt(time);
+//        if (t > (3600)){
+//            return (t/3600) + "hours ago";
+//        }else if (){
+//            return (t) + "hour ago";
+//        }else if(){
+//            return (t) +
+//        }else(){
+//
+//        }
+//        return null;
+//    }
 
     @Override
     public int getItemCount() {
@@ -288,6 +313,5 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
     private void addFragment(Fragment fragment) {
         ((HomeActivity) context).addFragment(fragment);
     }
-
 
 }

@@ -14,6 +14,7 @@
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:src="@drawable/dum_list_item_product"
+        android:visibility="invisible"
         app:riv_border_width="0dp"
         app:riv_corner_radius="7dp"
 

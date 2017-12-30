@@ -1,7 +1,14 @@
 package com.flatlay.fragment;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +22,7 @@ import android.widget.TextView;
 import android.util.Log;
 
 import com.flatlay.BaseFragment;
+import com.flatlay.FirebaseMsgService;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.adapter.KikrFollowingAdapter;
@@ -34,6 +42,7 @@ public class FollowinginstagramScreen extends BaseFragment implements View.OnCli
     private View mainView;
     RecyclerView recyclerView;
     TextView loadingTextView;
+
     int page = 0;
     Button invite;
     private List<Inspiration> product_list = new ArrayList<Inspiration>();
@@ -137,7 +146,7 @@ public class FollowinginstagramScreen extends BaseFragment implements View.OnCli
                         recyclerView.setVisibility(View.VISIBLE);
                         for (int i = 0; i < followinglist.size(); i++) {
                             Log.w("Here: ", followinglist.get(i).getMessage() + UserPreference.getInstance().getUserName());
-
+                         //   new FirebaseMsgService().sendNotification2("hello","yes");
                             String userString = followinglist.get(i).getMessage();
                             String notificationType = followinglist.get(i).getType();
                             String userName = "";
@@ -168,7 +177,6 @@ public class FollowinginstagramScreen extends BaseFragment implements View.OnCli
             Log.w("FIScreen", "getFollowingInstagramList() ");
             messageCenterApi.followinginstagram("0", "1");
             messageCenterApi.execute();
-
 
     }
 
@@ -233,4 +241,5 @@ public class FollowinginstagramScreen extends BaseFragment implements View.OnCli
 
 
     }
+
 }

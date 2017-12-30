@@ -552,7 +552,7 @@ public class InspirationAdapter extends BaseAdapter {
 
 
         CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.profile_icon);
-        CommonUtility.setImage(mContext, getItem(position).getInspiration_image(), viewholder.inspirationImage, R.drawable.dum_list_item_product);
+        CommonUtility.setImage(mContext, getItem(position).getInspiration_image(), viewholder.inspirationImage);
         List<Product> data = getItem(position).getProducts();
         viewholder.productInflaterLayout.removeAllViews();
 

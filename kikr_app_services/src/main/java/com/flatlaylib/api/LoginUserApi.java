@@ -1,5 +1,8 @@
 package com.flatlaylib.api;
 
+import android.content.Intent;
+
+import com.flatlaylib.bean.FeaturedTabData;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.flatlaylib.db.UserPreference;
@@ -10,6 +13,7 @@ import com.flatlaylib.utils.Constants;
 import com.flatlaylib.utils.Constants.WebConstants;
 import com.flatlaylib.utils.JsonUtils;
 import com.flatlaylib.utils.Syso;
+import com.paypal.android.sdk.payments.LoginActivity;
 
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
@@ -83,7 +87,8 @@ public class LoginUserApi extends AbsService {
         Syso.info("In RegisterUserApi processResponse8>>" + response);
         try {
             RegisterUserResponse userResponse = JsonUtils.fromJson(response, RegisterUserResponse.class);
-            if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {
+
+            if (userResponse!= null && userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {
                 isValidResponse = true;
                 String userId = userResponse.getId();
                 String token = userResponse.gettoken();

@@ -29,11 +29,14 @@ import com.flatlaylib.bean.FeaturedTabData;
 import com.flatlaylib.bean.Inspiration;
 import com.flatlaylib.bean.InterestSection;
 import com.flatlaylib.bean.Product;
+import com.squareup.picasso.Picasso;
 
 import org.apache.http.util.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.flatlay.R.id.user_profile_image;
 
 public class FeaturedTabAdapter extends BaseAdapter {
 
@@ -145,10 +148,11 @@ public class FeaturedTabAdapter extends BaseAdapter {
         viewholder.collectionCount.setText(getItem(position).getCollections_count() + " Collections");
 
 
-     //   if(getItem(position).getType().equals(USER))
+        if(getItem(position).getProfile_pic().equals(""))
+
+            Picasso.with(mContext).load(R.drawable.profile_icon).into(viewholder.userImage);
+        else
             CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);
-//        else
-//            CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);
 
         CommonUtility.setImage(mContext, getItem(position).getItem_image(), viewholder.featuredLargeImage);
 
@@ -199,7 +203,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
     convertView.setLayoutParams(layoutParams2);
 }*/
         viewholder.product_inflater_layout.addView(new FeaturedTabUi(mContext,  brandsArray, getItem(position), fragmentFeatured, convertView).getView());
-
+        viewholder.product_inflater_layout.setVisibility(View.VISIBLE);
 
         viewholder.product_layout.post(new Runnable() {
             @Override
@@ -210,7 +214,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
 
 
         viewholder.product_layout.scrollTo(0, 0);
-
+        viewholder.product_layout.setVisibility(View.VISIBLE);
 
         return convertView;
     }

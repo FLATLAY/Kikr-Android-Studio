@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
@@ -61,10 +62,22 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         }
 
         // Check if message contains a notification payload.
+
+
+
+       // this is commented by rachel----------------------------change back later
         if (remoteMessage.getNotification() != null) {
             message = remoteMessage.getNotification().getBody();
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
+
+       // String notificationTitle = null, notificationBody = null;
+
+//        if (remoteMessage.getNotification() != null) {
+//            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+//            notificationTitle = remoteMessage.getNotification().getTitle();
+//            notificationBody = remoteMessage.getNotification().getBody();
+//        }
 
         Log.i(TAG, "Received message"+message);
         Intent intent = new Intent(this, HomeActivity.class);
@@ -110,7 +123,6 @@ public class FirebaseMsgService extends FirebaseMessagingService {
             Log.w("FirebaseMsgService","message"+message);
             generateCustomNotification(getBaseContext(), message, inspiration_id, section, otherdata);
         }
-
     }
     // [END receive_message]
 
@@ -235,13 +247,13 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         // Locate and set the Image into customnotificationtext.xml ImageViews
         remoteViews.setImageViewResource(R.id.image, R.drawable.round_logo);
         Date date = new Date();
-        SimpleDateFormat format=new SimpleDateFormat("hh:mm aa");
+        SimpleDateFormat format = new SimpleDateFormat("hh:mm aa");
 
 
         String hey = "Hey!";
 
-        Log.w("FirebaseMsgService","Notification Text: "+hey+message);
-        Log.w("FirebaseMsgService","Time: "+format.format(date));
+        Log.w("FirebaseMsgService", "Notification Text: " + hey + message);
+        Log.w("FirebaseMsgService", "Time: " + format.format(date));
 
         // Locate and set the Text into customnotificationtext.xml TextViews
         remoteViews.setTextViewText(R.id.title, "Flatlay");
@@ -266,6 +278,5 @@ public class FirebaseMsgService extends FirebaseMessagingService {
 
 
     }
-
 
 }

@@ -57,7 +57,7 @@ public class OrderProcessingDialog extends Dialog{
 		okTextView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				fragmentPlaceMyOrder.purchaseStatus(purchaseId);
+			//	fragmentPlaceMyOrder.purchaseStatus(purchaseId);
 				Intent i = new Intent(mContext, PlaceOrderService.class);
 				i.putExtra("purchase_id",purchaseId);
 				i.putExtra("cartId",cartId);

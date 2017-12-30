@@ -1,7 +1,10 @@
 package com.flatlay.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -12,15 +15,19 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.ProgressBar;
 
+import com.flatlay.FirebaseMsgService;
 import com.flatlay.R;
+import com.flatlay.flFirebaseInstanceIDService;
 import com.flatlay.service.PlaceOrderService;
-import com.flatlay.service.TestNotifications;
 import com.flatlay.utility.AppConstants.Screen;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.bean.LikeInfo;
 import com.flatlaylib.bean.Product;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.utils.Syso;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,16 +54,21 @@ public class SplashActivity extends Activity {
 		setContentView(R.layout.activity_splash);
         Branch.getAutoInstance(this);
 		Syso.info("Device Token>> "+CommonUtility.getDeviceTocken(context));
-//		if(TextUtils.isEmpty(AppPreference.getInstance().getServerIp())&&CommonUtility.isOnline(context)){
+//		if (getIntent().getExtras() != null) {
+//			// Call your NotificationActivity here..
+//			Intent intent = new Intent(SplashActivity.this, FirebaseMsgService.class);
+//			startActivity(intent);
+//		}
+////		if(TextUtils.isEmpty(AppPreference.getInstance().getServerIp())&&CommonUtility.isOnline(context)){
 //			getServerIp();
 //		}else{
 		//	handler.postDelayed(runnable, SPLASH_DISPLAY_TIME);
 //		}
 		//setNotification();
 //		facebookKey();
-		Intent intent = new Intent(this, PlaceOrderService.class);
-		startService(intent);
-		TestNotifications.pushFCMNotification();
+		//Intent intent = new Intent(this, flFirebaseInstanceIDService.class);
+	//	startService(intent);
+
 	}
 
 	private void facebookKey() {
@@ -245,8 +257,8 @@ public class SplashActivity extends Activity {
 	
 	@Override
 	protected void onResume() {
-	    super.onResume();
-	    if (Branch.isAutoDeepLinkLaunch(this)) {
+		super.onResume();
+		if (Branch.isAutoDeepLinkLaunch(this)) {
 	        try {
 	            String autoDeeplinkedValue = Branch.getInstance().getLatestReferringParams().getString("auto_deeplink_key_1");
 	            Log.e("Resume deep", "Launched by Branch on auto deep linking! " +  autoDeeplinkedValue);
@@ -271,4 +283,17 @@ public class SplashActivity extends Activity {
 			startActivity(i);
 		}
 	}
+
+//	Dialog errorDialog;
+//
+//	public void checkGooglePlayServicesAvailability() {
+//		int statusCode = GooglePlayServicesUtil
+//				.isGooglePlayServicesAvailable(this);
+//		if (statusCode == ConnectionResult.SUCCESS) {
+//			Log.d("Is Google Play service?", "" + statusCode);
+//		} else {
+//
+//			GooglePlayServicesUtil.getErrorDialog(statusCode, this, 0).show();
+//		}
+//	}
 }

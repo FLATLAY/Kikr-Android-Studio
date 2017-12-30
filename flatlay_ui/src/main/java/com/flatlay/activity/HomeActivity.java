@@ -47,6 +47,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.braintreepayments.api.Braintree;
+import com.flatlay.FirebaseMsgService;
 import com.flatlay.KikrApp;
 import com.flatlay.KikrApp.TrackerName;
 import com.flatlay.R;
@@ -161,6 +162,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.pinterest.android.pdk.PDKCallback;
 import com.pinterest.android.pdk.PDKClient;
 import com.pinterest.android.pdk.PDKException;
@@ -318,6 +320,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
       //  PushTest.pushFCMNotification();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         isFirstTime = true;
+//        if (getIntent().getExtras() != null) {
+//            // Call your NotificationActivity here..
+//            Intent intent = new Intent(HomeActivity.this, FirebaseMsgService.class);
+//            startActivity(intent);
+//        }
     }
 
     @Override

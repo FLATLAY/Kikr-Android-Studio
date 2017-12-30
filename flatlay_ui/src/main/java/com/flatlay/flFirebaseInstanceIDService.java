@@ -48,6 +48,7 @@ public class flFirebaseInstanceIDService extends FirebaseInstanceIdService {
      */
     private void sendRegistrationToServer(String token) {
         SharedPreferences preferences = getBaseContext().getSharedPreferences("device_pref", Context.MODE_PRIVATE);
+
         preferences.edit().putString("deviceId", token).commit();
 
         // TODO: Implement this method to send token to your app server.

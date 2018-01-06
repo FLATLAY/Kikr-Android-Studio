@@ -116,6 +116,10 @@ dependencies {
 //    compile 'com.google.firebase:firebase-database:9.4.0'
     testCompile 'junit:junit:4.12'
     androidTestCompile 'com.android.support:multidex-instrumentation:1.0.1'
+    compile project(path: ':kikr_app_services')
+    compile project(path: ':kikr_app_services')
+    compile project(path: ':kikr_app_services')
+    compile project(path: ':kikr_app_services')
 }
 
 

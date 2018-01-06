@@ -34,6 +34,7 @@ import com.squareup.picasso.Picasso;
 import org.apache.http.util.TextUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.flatlay.R.id.user_profile_image;
@@ -42,7 +43,6 @@ public class FeaturedTabAdapter extends BaseAdapter {
 
     private FragmentActivity mContext;
     private FragmentFeatured fragmentFeatured;
-//private CustomizeFeedFragment fragmentFeatured;
 
     private LayoutInflater mInflater;
     private List<FeaturedTabData> brandsArray;
@@ -52,6 +52,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
     String BRAND = "brand";
     String STORE = "store";
     String USER = "user";
+    HashMap<Integer, View> m = new HashMap<Integer, View>();
 
     public FeaturedTabAdapter(FragmentActivity context, List<FeaturedTabData> brandsArray, FragmentFeatured fragmentFeatured) {
         super();
@@ -59,7 +60,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
         this.fragmentFeatured = fragmentFeatured;
         this.brandsArray = brandsArray;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Log.w("Activity","FeaturedTabAdapter");
+        Log.w("Activity", "FeaturedTabAdapter");
     }
 
     public void setData(List<FeaturedTabData> data) {
@@ -85,9 +86,11 @@ public class FeaturedTabAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder viewholder;
+
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.fragment_fetaured_item, null);
             viewholder = new ViewHolder();
+            convertView = mInflater.inflate(R.layout.fragment_fetaured_item, null);
+            //  viewholder = new ViewHolder();
             viewholder.userNameTextView = (TextView) convertView.findViewById(R.id.userName);
             viewholder.featuredLargeImage = (ImageView) convertView.findViewById(R.id.featuredImage);
             viewholder.descriptionTextView = (TextView) convertView.findViewById(R.id.tvDescription);
@@ -140,15 +143,14 @@ public class FeaturedTabAdapter extends BaseAdapter {
         if (!TextUtils.isEmpty(getItem(position).getItem_description())) {
             viewholder.descriptionTextView.setText(getItem(position).getItem_description());
             viewholder.descriptionTextView.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             viewholder.descriptionTextView.setVisibility(View.GONE);
         }
         viewholder.followersCount.setText(getItem(position).getFollowers_count() + " Followers");
         viewholder.collectionCount.setText(getItem(position).getCollections_count() + " Collections");
 
 
-        if(getItem(position).getProfile_pic().equals(""))
+        if (getItem(position).getProfile_pic().equals(""))
 
             Picasso.with(mContext).load(R.drawable.profile_icon).into(viewholder.userImage);
         else
@@ -202,25 +204,33 @@ public class FeaturedTabAdapter extends BaseAdapter {
     layoutParams2.setMargins(0, 0, 0, 15);
     convertView.setLayoutParams(layoutParams2);
 }*/
-        viewholder.product_inflater_layout.addView(new FeaturedTabUi(mContext,  brandsArray, getItem(position), fragmentFeatured, convertView).getView());
+
+        View v = m.get(position);
+        if (v != null) {
+            if(v.getParent()!=null){
+            ((ViewGroup)v.getParent()).removeView(v);}
+            viewholder.product_inflater_layout.addView(v);
+        } else {
+            View view = new FeaturedTabUi(mContext, brandsArray, getItem(position), fragmentFeatured, convertView).getView();
+            viewholder.product_inflater_layout.addView(view);
+            m.put(position, view);
+        }
         viewholder.product_inflater_layout.setVisibility(View.VISIBLE);
 
-        viewholder.product_layout.post(new Runnable() {
-            @Override
-            public void run() {
-                viewholder.product_layout.scrollTo(150, 0);
-            }
-        });
+//        viewholder.product_layout.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                viewholder.product_layout.scrollTo(150, 0);
+//            }
+//        });
 
 
         viewholder.product_layout.scrollTo(0, 0);
         viewholder.product_layout.setVisibility(View.VISIBLE);
-
         return convertView;
     }
 
-    public void startProfilePage(int pos)
-    {
+    public void startProfilePage(int pos) {
         if (getItem(pos).getType() != null) {
             if (getItem(pos).getType().equals(USER))
                 addFragment(new FragmentProfileView(getItem(pos).getItem_id(), "no"));
@@ -229,7 +239,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
         }
     }
 
-    public class ViewHolder {
+    public static class ViewHolder {
         TextView userNameTextView, viewAllTextView;
         ImageView featuredLargeImage;
         RoundImageView userImage;

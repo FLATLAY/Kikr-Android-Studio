@@ -27,6 +27,7 @@ import com.flatlaylib.bean.Inspiration;
 import com.flatlaylib.bean.InterestSection;
 import com.flatlaylib.bean.Product;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class FeaturedTabUi {
@@ -40,7 +41,6 @@ public class FeaturedTabUi {
     private ProgressBarDialog mProgressBarDialog;
     View view;
     String USER = "user";
-
     float lastX = 0, lastY = 0;
 
     public FeaturedTabUi(FragmentActivity context, List<FeaturedTabData> brandsArray, FeaturedTabData featuredTabData, FragmentFeatured fragmentFeatured, View convertView) {
@@ -52,7 +52,6 @@ public class FeaturedTabUi {
         this.featuredTabData = featuredTabData;
         this.data = this.featuredTabData.getProducts();
         this.feed = this.featuredTabData.getInspiration_feed();
-
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

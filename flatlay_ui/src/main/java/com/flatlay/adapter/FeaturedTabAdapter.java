@@ -52,7 +52,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
     String BRAND = "brand";
     String STORE = "store";
     String USER = "user";
-    HashMap<Integer, View> m = new HashMap<Integer, View>();
+   // HashMap<Integer, View> m = new HashMap<Integer, View>();
 
     public FeaturedTabAdapter(FragmentActivity context, List<FeaturedTabData> brandsArray, FragmentFeatured fragmentFeatured) {
         super();
@@ -153,8 +153,11 @@ public class FeaturedTabAdapter extends BaseAdapter {
         if (getItem(position).getProfile_pic().equals(""))
 
             Picasso.with(mContext).load(R.drawable.profile_icon).into(viewholder.userImage);
-        else
-            CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);
+        else{
+            Picasso.with(mContext).load(getItem(position).getProfile_pic()).resize(150,150).into(viewholder.userImage);
+
+        }
+            //CommonUtility.setImage(mContext, getItem(position).getProfile_pic(), viewholder.userImage, R.drawable.dum_list_item_product);
 
         CommonUtility.setImage(mContext, getItem(position).getItem_image(), viewholder.featuredLargeImage);
 
@@ -205,16 +208,16 @@ public class FeaturedTabAdapter extends BaseAdapter {
     convertView.setLayoutParams(layoutParams2);
 }*/
 
-        View v = m.get(position);
-        if (v != null) {
-            if(v.getParent()!=null){
-            ((ViewGroup)v.getParent()).removeView(v);}
-            viewholder.product_inflater_layout.addView(v);
-        } else {
+//        View v = m.get(position);
+//        if (v != null) {
+//            if(v.getParent()!=null){
+//                ((ViewGroup)v.getParent()).removeView(v);}
+//            viewholder.product_inflater_layout.addView(v);
+//        } else {
             View view = new FeaturedTabUi(mContext, brandsArray, getItem(position), fragmentFeatured, convertView).getView();
             viewholder.product_inflater_layout.addView(view);
-            m.put(position, view);
-        }
+           // m.put(position, view);
+       // }
         viewholder.product_inflater_layout.setVisibility(View.VISIBLE);
 
 //        viewholder.product_layout.post(new Runnable() {

@@ -9,10 +9,12 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
 import android.os.IBinder;
 import android.provider.MediaStore.Images;
 import android.provider.Settings.Secure;
@@ -42,6 +44,11 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -236,7 +243,7 @@ public class CommonUtility {
 //		aQuery.id(imageView).image(url, true, true, 0, placeholder, preset, AQuery.FADE_IN_NETWORK, 0);
 //		Glide.with(context).load(url).placeholder(placeholder).crossFade().into(imageView);
         UrlImageViewHelper.setUrlDrawable(imageView, url);
-		UrlImageViewHelper.setUseBitmapScaling(true);
+		UrlImageViewHelper.setUseBitmapScaling(false);
     }
 
     public static void setImage(Activity context, String url, ImageView imageView, int placeholder) {
@@ -245,7 +252,11 @@ public class CommonUtility {
 //		aQuery.id(imageView).image(url, true, true, 0, placeholder, preset, AQuery.FADE_IN_NETWORK, 0);
 //		Glide.with(context).load(url).placeholder(placeholder).crossFade().into(imageView);
         UrlImageViewHelper.setUrlDrawable(imageView, url, placeholder);
-		UrlImageViewHelper.setUseBitmapScaling(true);
+		UrlImageViewHelper.setUseBitmapScaling(false);
+    }
+
+    public static void setImage(Activity context, ImageView imageView, String url){
+        Picasso.with(context) .load(url) .resize(180, 180) .into(imageView);
     }
 
     public static void setImagePicasso(Activity context, String url, ImageView imageView, final ProgressBar progressBar) {
@@ -331,11 +342,51 @@ public class CommonUtility {
         String path = "";
         if (inImage != null) {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            inImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
             path = Images.Media.insertImage(context.getContentResolver(),
                     inImage, "Title", null);
         }
         return Uri.parse(path);
+    }
+
+    private static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+            int width = image.getWidth();
+            int height = image.getHeight();
+
+            float bitmapRatio = (float)width / (float) height;
+            if (bitmapRatio > 1) {
+                width = maxSize;
+                height = (int) (width / bitmapRatio);
+            } else {
+                height = maxSize;
+                width = (int) (height * bitmapRatio);
+            }
+            return Bitmap.createScaledBitmap(image, width, height, true);
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+              //  Picasso.with(context) .load(url) .resize(10, 10) .into(imageView)
+
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 
     public static String getFormatedNum(String price) {

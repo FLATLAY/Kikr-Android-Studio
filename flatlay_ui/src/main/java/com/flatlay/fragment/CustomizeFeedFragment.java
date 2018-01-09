@@ -28,6 +28,7 @@ import com.flatlay.FirebaseMsgService;
 import com.flatlay.R;
 import com.flatlay.adapter.CustomizeInterestBrandListAdapter;
 import com.flatlay.adapter.FeaturedTabAdapter;
+import com.flatlay.adapter.InterestStoreListAdapter;
 import com.flatlay.feed_adapter_copy.CustomizeFeedAllAdapter;
 import com.flatlay.feed_adapter_copy.CustomizeInterestProductListAdapter;
 import com.flatlay.feed_adapter_copy.CustomizeInterestCategoryListAdapter;
@@ -87,7 +88,7 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
     private TextView noDataGalGuy;
     private View loaderView;
 //    private View aabutton;
-    private FragmentFeatured fragmentFeatured;
+    private CustomizeFeedFragment fragmentFeatured;
     private FeaturedTabAdapter featuredTabAdapter;
     private List<InterestSection> product_list = new ArrayList<InterestSection>();
     private List<InterestSection> product_list2 = new ArrayList<InterestSection>();
@@ -227,14 +228,13 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
                     // product_list.
                     // product_list.addAll(featuredTabApiRes.getData());
                     List<FeaturedTabData> list = featuredTabApiRes.getData();
-                    if (list.size() < 1) {
+                    if (list.size() < 10) {
                         isLoading = true;
                     }
                     if (list.size() == 0 && isFirstTime) {
                         showDataNotFound();
                     } else if (product_list.size() > 0 && isFirstTime) {
                         featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
-
                         interestSectionList.setAdapter(featuredTabAdapter);
                     } else if (featuredTabAdapter != null) {
 //                        featuredTabAdapter = new FeaturedTabAdapter(mContext, list, fragmentFeatured);
@@ -1227,6 +1227,9 @@ public class CustomizeFeedFragment extends FragmentFeatured implements View.OnCl
             }
         });
     }
+
+
+
 
     public void loadData() {
        if (isSelected.equalsIgnoreCase("search")) {

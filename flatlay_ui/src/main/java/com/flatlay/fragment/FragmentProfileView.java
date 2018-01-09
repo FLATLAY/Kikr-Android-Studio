@@ -455,7 +455,6 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
                         Log.w("R.id.collectionlayout","4");
                     }
 
-
                     imagesList.setVisibility(View.GONE);
 
                     follower_button.setImageResource(R.drawable.followeruser);

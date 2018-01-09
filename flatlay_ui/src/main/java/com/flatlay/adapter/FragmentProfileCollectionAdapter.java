@@ -48,7 +48,7 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
         this.fragmentProfileView = fragmentProfileView;
         this.inspirationCollectionListDialog = inspirationCollectionListDialog;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Log.w("Activity","FragmentProfileCollectionAdapter");
+        Log.w("Activity", "FragmentProfileCollectionAdapter");
     }
 
     @Override
@@ -108,7 +108,7 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
         }
         viewHolder.collection_name.setText(getItem(position).getName());
         viewHolder.collection_name_inspiration.setText(getItem(position).getName());
-     viewHolder.collection_created_at.setText(CommonUtility.setChangeDateFormat(getItem(position).getDate()));
+        viewHolder.collection_created_at.setText(CommonUtility.setChangeDateFormat(getItem(position).getDate()));
         List<ImageView> images = new ArrayList<ImageView>();
         images.add(viewHolder.collection_image_1);
         images.add(viewHolder.collection_image_2);

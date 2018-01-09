@@ -67,7 +67,8 @@ public class InspirationGridAdapter extends BaseAdapter{
 			viewholder = (ViewHolder) convertView.getTag();
 		}
 //		CommonUtility.setImage(mContext, getItem(position).getInspiration_image(), viewholder.inspirationImage, R.drawable.dum_list_item_product);
-		CommonUtility.setImage(mContext, getItem(position).getInspiration_image(), viewholder.inspirationImage);
+	//	CommonUtility.setImage(mContext, getItem(position).getInspiration_image(), viewholder.inspirationImage);
+		CommonUtility.setImage(mContext, viewholder.inspirationImage, getItem(position).getInspiration_image());
 		//Picasso.with(mContext).load(getItem(position).getInspiration_image()).transform(new RoundedTransformation(125, 4)).into(viewholder.inspirationImage);
 		convertView.setOnClickListener(new OnClickListener() {
 			@Override

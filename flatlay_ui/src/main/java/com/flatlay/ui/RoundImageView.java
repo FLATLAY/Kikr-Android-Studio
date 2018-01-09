@@ -14,6 +14,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
+
 public class RoundImageView extends ImageView {
 
 	public RoundImageView(Context context) {
@@ -45,7 +47,8 @@ public class RoundImageView extends ImageView {
 		if(b==null)
 			return;
 		Bitmap bitmap = b.copy(Bitmap.Config.ARGB_8888, true);
-
+		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
 		int w = getWidth(), h = getHeight();
 		if(bitmap!=null){
 			Bitmap roundBitmap = getCroppedBitmap(bitmap, w);

@@ -170,7 +170,7 @@ public class PictureUtils {
 		
 		Log.e("img size new byte aray","width:" + newwidth + "height:" + newheight);
 	    Bitmap resizedImage = Bitmap.createScaledBitmap(bitmap, newwidth , newheight, true);
-	    resizedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+	    resizedImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
 		byte[] byteArray = stream.toByteArray();
 		return byteArray;
 	}
@@ -183,7 +183,7 @@ public class PictureUtils {
 
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 	    Bitmap resizedImage = Bitmap.createScaledBitmap(bitmap,  bitmap.getWidth() , bitmap.getHeight(), true);
-	    resizedImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
+	    resizedImage.compress(Bitmap.CompressFormat.PNG, 5, stream);
 		byte[] byteArray = stream.toByteArray();
 		try {
 			stream.close();
@@ -453,7 +453,7 @@ public class PictureUtils {
 
 				// write the compressed bitmap at the destination specified by
 				// filename.
-				scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+				scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -599,7 +599,7 @@ public class PictureUtils {
 
 			// write the compressed bitmap at the destination specified by
 			// filename.
-			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
 		  return bitmap;
 		  } 
 		  catch (Exception e) {
@@ -670,7 +670,7 @@ public class PictureUtils {
 
 				// write the compressed bitmap at the destination specified by
 				// filename.
-				bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+				bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
 			  return bitmap;
 			  } 
 			  catch (Exception e) {

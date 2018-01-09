@@ -20,7 +20,7 @@
             <ImageView
                 android:id="@+id/featuredImage"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:background="@color/transparent"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
@@ -34,7 +34,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="fill_parent">
 
 
                     <LinearLayout
@@ -190,7 +190,7 @@
             android:id="@+id/productLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:scrollbarSize="2dp"
             android:scrollbars="none">
 
@@ -199,8 +199,83 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:visibility="invisible"
-                android:background="@color/transparent"></LinearLayout>
+                android:visibility="visible"
+                android:background="@color/transparent">
+
+
+                <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/activity_product_list_product_image1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/discover_list_small_item_height"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dum_list_item_product"
+                    android:visibility="visible"
+                    app:riv_border_width="0dp"
+                    app:riv_corner_radius="7dp"
+                    />
+
+                <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/activity_product_list_product_image2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/discover_list_small_item_height"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dum_list_item_product"
+                    android:visibility="visible"
+                    app:riv_border_width="0dp"
+                    app:riv_corner_radius="7dp"
+                    />
+
+                <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/activity_product_list_product_image3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/discover_list_small_item_height"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dum_list_item_product"
+                    android:visibility="visible"
+                    app:riv_border_width="0dp"
+                    app:riv_corner_radius="7dp"
+                    />
+
+                <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/activity_product_list_product_image4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/discover_list_small_item_height"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dum_list_item_product"
+                    android:visibility="visible"
+                    app:riv_border_width="0dp"
+                    app:riv_corner_radius="7dp"
+                    />
+
+                <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/activity_product_list_product_image5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/discover_list_small_item_height"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dum_list_item_product"
+                    android:visibility="visible"
+                    app:riv_border_width="0dp"
+                    app:riv_corner_radius="7dp"
+                    />
+
+                <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/activity_product_list_product_image6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/discover_list_small_item_height"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dum_list_item_product"
+                    android:visibility="visible"
+                    app:riv_border_width="0dp"
+                    app:riv_corner_radius="7dp"
+                    />
+
+            </LinearLayout>
         </HorizontalScrollView>
 
         <ProgressBar

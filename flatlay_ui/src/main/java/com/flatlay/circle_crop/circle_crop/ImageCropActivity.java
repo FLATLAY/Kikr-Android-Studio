@@ -181,7 +181,7 @@ public class ImageCropActivity extends AppCompatActivity {
         Bitmap inImage=BitmapFactory.decodeStream(uri);
 
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        inImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "temporary_holder.jpg", null);
         return getRealPathFromURI(Uri.parse(path));
     }
@@ -435,7 +435,7 @@ public class ImageCropActivity extends AppCompatActivity {
 
             FileOutputStream out =openFileOutput(mFileTemp.getName(),
                     Context.MODE_PRIVATE);
-            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            mBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
             out.close();
             //get absolute path
@@ -478,7 +478,7 @@ public class ImageCropActivity extends AppCompatActivity {
             try {
                 outputStream = mContentResolver.openOutputStream(mSaveUri);
                 if (outputStream != null) {
-                    croppedImage.compress(mOutputFormat, 100, outputStream);
+                    croppedImage.compress(mOutputFormat, 90, outputStream);
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();

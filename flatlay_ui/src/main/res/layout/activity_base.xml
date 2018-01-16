@@ -13,12 +13,6 @@
         android:id="@+id/textHeader"
         layout="@layout/app_text_header"
         android:visibility="gone" />
-    <!--
-        <include
-        android:id="@+id/imageHeader"
-        layout="@layout/app_image_header"
-        android:visibility="gone" />
-    -->
 
     <FrameLayout
         android:id="@+id/baseFrameLayout"

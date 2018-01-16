@@ -62,9 +62,10 @@
 
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
         <activity
-            android:name="com.flatlay.activity.SplashActivity"
+            android:name="com.flatlay.BaseActivityWithVideo"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="io.branch.sdk.auto_link_keys"
@@ -91,117 +92,112 @@
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>
 
-        <activity android:name="com.flatlay.GalleryImagewithSpinner.ImageDetailActivity"></activity>
+        <!--<activity android:name="com.flatlay.GalleryImagewithSpinner.ImageDetailActivity"></activity>-->
 
-        <activity
-            android:name="com.flatlay.activity.LandingActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.SignUpActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.PinActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.HomeActivity"
-            android:screenOrientation="portrait"
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.SignUpActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.PinActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.HomeActivity"-->
+            <!--android:screenOrientation="portrait"-->
 
-            android:windowSoftInputMode="adjustPan">
+            <!--android:windowSoftInputMode="adjustPan">-->
 
-        </activity>
+        <!--</activity>-->
 
-        <activity
-            android:name="com.yalantis.ucrop.UCropActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppCompat" />
-        <activity
-            android:name="com.flatlay.circle_crop.circle_crop.ImageCropActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppCompat" />
+        <!--<activity-->
+            <!--android:name="com.yalantis.ucrop.UCropActivity"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/AppCompat" />-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.circle_crop.circle_crop.ImageCropActivity"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/AppCompat" />-->
 
-        <activity
-            android:name="com.flatlay.activity.PinterestLoginActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.PinterestLoginActivity"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar">-->
+            <!--<intent-filter android:autoVerify="true">-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="flatlay.app.link" />
-                <data android:scheme="https" android:host="flatlay-alternate.app.link" />
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="android.intent.category.BROWSABLE" />-->
+                <!--<data android:scheme="https" android:host="flatlay.app.link" />-->
+                <!--<data android:scheme="https" android:host="flatlay-alternate.app.link" />-->
 
-                <data android:scheme="pdk4803833610914245485" />
-            </intent-filter>
-        </activity>
+                <!--<data android:scheme="pdk4803833610914245485" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
 
 
-        <activity
-            android:name="com.flatlay.activity.PinAuthActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.CustomizeFeedActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.EditProfileActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.KikrLearnMoreActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.DiscoverDetailActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.PhoneNumberActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.LoginActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.WalletPinActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.DealWebViewActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.FollowCategoriesActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.FollowBrandsActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.FollowStoreActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.PinAuthActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.CustomizeFeedActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.EditProfileActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.KikrLearnMoreActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.DiscoverDetailActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.PhoneNumberActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.LoginActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.WalletPinActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.DealWebViewActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.FollowCategoriesActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.FollowBrandsActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.FollowStoreActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
         <activity
             android:name="com.flatlay.activity.EmailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
@@ -212,40 +208,40 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
         <activity android:name="com.facebook.LoginActivity"></activity>
-        <activity
-            android:name="com.flatlay.twitter.TwitterOAuthActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name="com.flatlay.activity.AddBankActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.ForgotPassword"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.googlewallet.CheckoutActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.googlewallet.ConfirmationActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.googlewallet.OrderCompleteActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.KikrTutorialActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+        <!--<activity-->
+            <!--android:name="com.flatlay.twitter.TwitterOAuthActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.AddBankActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.ForgotPassword"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.googlewallet.CheckoutActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.googlewallet.ConfirmationActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.googlewallet.OrderCompleteActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.KikrTutorialActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
 
         <!--  <activity
               android:name="com.flatlay.ibeacon.RangingActivity"
@@ -254,11 +250,11 @@
               android:windowSoftInputMode="stateHidden|adjustPan" >
           </activity>-->
 
-        <activity
-            android:name="com.flatlay.activity.ResetPassword"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.ResetPassword"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
 
         <!-- <activity
              android:name="com.flatlay.activity.ProductBasedOnBrandActivity"
@@ -271,60 +267,69 @@
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.ChangeWalletPinActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.ChangeWalletPinActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
         <activity
             android:name="com.flatlay.activity.ChangeEmailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.DefaultLifestyleImagesActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.ImageViewActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.LearnMoreOutsideUSActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.ProductDetailWebViewActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.RegisterEmailOnSkipActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.FollowCategoriesNewActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.InstagramLoginActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
-        <activity
-            android:name="com.flatlay.activity.IntroductionPagerActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            >
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.DefaultLifestyleImagesActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.ImageViewActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.LearnMoreOutsideUSActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.ProductDetailWebViewActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.RegisterEmailOnSkipActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.FollowCategoriesNewActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.InstagramLoginActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.IntroductionPagerActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"-->
+            <!--&gt;-->
 
-        </activity>
+        <!--</activity>-->
+
+        <!--<activity-->
+            <!--android:name="com.flatlay.activity.IntroductionActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@android:style/Theme.NoTitleBar"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"-->
+            <!--&gt;-->
+        <!--</activity>-->
 
         <activity android:name="com.flatlay.post_upload.ProductSearchTagging"
             android:screenOrientation="portrait"></activity>

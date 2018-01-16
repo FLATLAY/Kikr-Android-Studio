@@ -83,7 +83,8 @@ public class LoginUserApi extends AbsService {
         Syso.info("In RegisterUserApi processResponse8>>" + response);
         try {
             RegisterUserResponse userResponse = JsonUtils.fromJson(response, RegisterUserResponse.class);
-            if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {
+
+            if (userResponse!= null && userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {
                 isValidResponse = true;
                 String userId = userResponse.getId();
                 String token = userResponse.gettoken();
@@ -96,7 +97,6 @@ public class LoginUserApi extends AbsService {
             Syso.error(e);
             isValidResponse = false;
         }
-
     }
 
 

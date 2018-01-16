@@ -47,7 +47,7 @@
     <dimen name="signup_margin_top">20dp</dimen>
     <dimen name="follow_text_height">30dp</dimen>
 
-    <!-- login screen dimens -->
+    <!-- login2 screen dimens -->
     <dimen name="login_forgot_pass_padding">10dp</dimen>
 
     <!-- Landing screen dimens -->

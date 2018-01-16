@@ -80,8 +80,6 @@ public class ChangePasswordActivity extends BaseActivity implements OnKeyListene
 		}
 	}
 
-	
-
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		

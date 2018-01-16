@@ -69,7 +69,6 @@ public abstract class BaseActivity extends FragmentActivity {
         setParantClickListener();
         hideFutter();
         hideIcons();
-//		setupFontStyle(layout);
     }
 
     private void hideIcons() {
@@ -78,7 +77,6 @@ public abstract class BaseActivity extends FragmentActivity {
         ImageView menuRightImageView = (ImageView) findViewById(R.id.menuRightImageView);
         menuRightImageView.setVisibility(View.GONE);
     }
-
 
     public void setContentView(LinearLayout layout) {
         super.setContentView(layout);
@@ -145,9 +143,6 @@ public abstract class BaseActivity extends FragmentActivity {
         getCartText().setVisibility(View.GONE);
     }
 
-    public TextView getHeaderTextView() {
-        return (TextView) findViewById(R.id.headerNameTextView);
-    }
 
     public TextView getCartText() {
         return (TextView) findViewById(R.id.txtCartCount);
@@ -157,35 +152,16 @@ public abstract class BaseActivity extends FragmentActivity {
         return (ImageView) findViewById(R.id.homeImageView);
     }
 
-    public ImageView getHeaderImageView() {
-        return (ImageView) findViewById(R.id.headerImageView);
-    }
-
     public ImageView getRightButton() {
         return (ImageView) findViewById(R.id.menuRightImageView);
-    }
-
-    public TextView getRightTextView() {
-        return (TextView) findViewById(R.id.menuRightTextView);
     }
 
     public TextView getRightText() {
         return (TextView) findViewById(R.id.menuRightText);
     }
 
-
-    public ImageView getLeftImageView() {
-        return (ImageView) findViewById(R.id.backIcon);
-    }
-
     public TextView getLeftTextView() {
         return (TextView) findViewById(R.id.leftTextView);
-    }
-
-
-    protected int getScreenWidth() {
-        getWindowManager().getDefaultDisplay().getMetrics(mDisplayMetrics);
-        return mDisplayMetrics.widthPixels;
     }
 
 
@@ -302,26 +278,5 @@ public abstract class BaseActivity extends FragmentActivity {
         Intent intent = new Intent(AppConstants.ACTION_GO_TO_HOME);
         sendBroadcast(intent);
     }
-
-    public void setupFontStyle(View view) {
-        if (view instanceof EditText) {
-            EditText editText = (EditText) view;
-            editText.setTypeface(FontUtility.setProximanovaLight(context));
-        } else if (view instanceof TextView) {
-            TextView textView = (TextView) view;
-            textView.setTypeface(FontUtility.setProximanovaLight(context));
-        } else if (view instanceof Button) {
-            Button button = (Button) view;
-            button.setTypeface(FontUtility.setProximanovaLight(context));
-        }
-        // If a layout container, iterate over children and seed recursion.
-        if (view instanceof ViewGroup) {
-            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
-                View innerView = ((ViewGroup) view).getChildAt(i);
-                setupFontStyle(innerView);
-            }
-        }
-    }
-
 
 }

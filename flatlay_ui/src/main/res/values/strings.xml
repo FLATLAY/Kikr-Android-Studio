@@ -9,6 +9,13 @@
     <string name="splashsecondscreen">SECONDSCREEN</string>
     <string name="splashthirdscreen">THIRDSCREEN</string>
     <string name="splashfourthscreen">FOURTHSCREEN</string>
+
+    <string name="intruductionscreen">INTRODUCTIONSCREEN</string>
+    <string name="intruductionscreen2">INTRODUCTIONSCREEN2</string>
+    <string name="intruductionscreen3">INTRODUCTIONSCREEN3</string>
+    <string name="intruductionscreen4">INTRODUCTIONSCREEN4</string>
+
+
     <string name="notification_error_ssl_cert_invalid"> SSL Certificate Invalid</string>
 
     <string name="icon_heart">&#xf08a;</string>
@@ -62,12 +69,14 @@
     <string name="email">Email</string>
     <string name="skip">Skip</string>
     <string name="password">Password</string>
+    <string name="retypeEmail">Re-type Email</string>
+
     <string name="male">male</string>
     <string name="female">female</string>
     <string name="next">Next</string>
     <string name="already_signedup">Already signed up with Email?</string>
 
-    <!-- login screen strings -->
+    <!-- login2 screen strings -->
     <string name="forgot_password">forgot password?</string>
 
     <!-- pin screen strings -->

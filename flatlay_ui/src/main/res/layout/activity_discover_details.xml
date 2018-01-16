@@ -309,7 +309,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="3dp"
             android:layout_weight="1.5"
-            android:background="@drawable/blue_corner_button"
+            android:background="@drawable/green_corner_button"
             android:drawableLeft="@drawable/shopping_icon"
             android:paddingLeft="15dp"
             android:text="ADD TO CART"

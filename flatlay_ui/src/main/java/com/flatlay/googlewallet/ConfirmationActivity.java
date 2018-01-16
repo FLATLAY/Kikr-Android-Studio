@@ -40,7 +40,7 @@ public class ConfirmationActivity extends BikestoreFragmentActivity implements O
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // no need to show login menu on confirmation screen
+        // no need to show login2 menu on confirmation screen
         return false;
     }
 

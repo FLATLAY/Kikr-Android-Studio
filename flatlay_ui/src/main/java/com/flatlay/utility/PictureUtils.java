@@ -33,7 +33,6 @@ import android.widget.ImageView;
 
 import com.flatlay.activity.EditProfileActivity;
 import com.flatlay.activity.HomeActivity;
-import com.flatlay.fragment.FragmentInspirationImage;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
@@ -44,14 +43,14 @@ public class PictureUtils {
 	public static final int REQUEST_CODE_GALLERY = 2;
 	public static final int REQUEST_CODE_DEFAULT_LIST = 3;
 	public static final int REQUEST_CODE_VIDEO = 4;
-	
+
 	public static final String APP_DIR_MAIN = "SpotPog/images/";
 	public static final String FILE_NAME = "pic_temp";
-	
-	
-	
+
+
+
 	public static void showAddPictureAlert(final FragmentActivity context,final EditProfileActivity editProfileActivity) {
-		
+
 	//	final CharSequence[] Type = { "Take New Photo", "Browse Gallery", "Import from Facebook", "Import from Twitter","Cancel" };
 		final CharSequence[] Type = { "Browse Gallery", "Import from Facebook", "Import from Twitter","Import from Instagram","Cancel" };
 
@@ -62,25 +61,25 @@ public class PictureUtils {
 			public void onClick(DialogInterface dialog, int pos) {
 			//	if (pos == 0) {
 			//		PictureUtils.openCamera(context);
-			//	} 
+			//	}
 				 if (pos == 0) {
 					PictureUtils.openGallery(context);
-				} 
+				}
 				else if (pos == 1) {
 					editProfileActivity.getFBProfilePic();
-				} 
+				}
 				else if (pos == 2) {
 					editProfileActivity.twitterLoogedIn();
 				}else if (pos == 3) {
 					editProfileActivity.instagramLoogedIn();
-				}  
+				}
 			}
 		});
 		builder.show();
 	}
-	
+
 	public static void showAddPictureAlert2(final FragmentActivity context,final EditProfileActivity editProfileActivity) {
-		
+
 		//final CharSequence[] Type = { "Choose from default Images","Take New Photo", "Browse Gallery","Cancel" };
 		final CharSequence[] Type = { "Choose from default Images", "Browse Gallery","Import from Instagram","Cancel" };
 
@@ -102,30 +101,11 @@ public class PictureUtils {
 		});
 		builder.show();
 	}
-	
-	public static void showAddPictureAlert(final FragmentActivity context,final FragmentInspirationImage fragmentUploadInspiration) {
-		
-		final CharSequence[] Type = { "Take New Photo", "Browse Gallery","Import from Instagram", "Cancel" };
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle("Add profile picture");
-		builder.setItems(Type, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int pos) {
-				if (pos == 0) {
-					fragmentUploadInspiration.openCamera();
-				} else if(pos==1){
-					fragmentUploadInspiration.openGallery();
-				}else if(pos==2){
-					fragmentUploadInspiration.loadInstagramPic();
-				}
-			}
-		});
-		builder.show();
-	}
-	
+
+
 	public static void openCamera(FragmentActivity context) {
-		
+
 		Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
 		if(isSDPresent){
 			Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -142,15 +122,15 @@ public class PictureUtils {
 			AlertUtils.showToast(context, "SD Card not available.");
 		}
 	}
-	
+
 	private static void openGallery(FragmentActivity context){
-		
+
 		Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 		context.startActivityForResult(intent, REQUEST_CODE_GALLERY);
 	}
-	
+
 	public static byte[] getByteArray(Bitmap bitmap) {
-		
+
 		if(bitmap == null){
 			return null;
 		}
@@ -162,12 +142,12 @@ public class PictureUtils {
 //		int newheight = (int) (bitmap.getHeight() * 0.20);
 		int newwidth=(int)bitmap.getWidth();
 		int newheight=(int)bitmap.getHeight();
-		
+
 		if(newwidth > 400 || newheight > 400) {
 			newwidth = (int) (bitmap.getWidth() * 0.70);
 			newheight = (int) (bitmap.getHeight() * 0.70);
 		}
-		
+
 		Log.e("img size new byte aray","width:" + newwidth + "height:" + newheight);
 	    Bitmap resizedImage = Bitmap.createScaledBitmap(bitmap, newwidth , newheight, true);
 	    resizedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -193,13 +173,13 @@ public class PictureUtils {
 		return byteArray;
 	}
 
-	
+
 	public static Bitmap createScaledImage(File mFile) {
 
 		Bitmap bitmap = null;
 		ExifInterface exif;
 		try {
-			
+
 			Syso.info("1111===="+mFile.getPath());
 			exif = new ExifInterface(mFile.getPath());
 			int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
@@ -221,12 +201,12 @@ public class PictureUtils {
 			Syso.info("2222===="+mFile.getPath());
 			options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 			Bitmap bmp = BitmapFactory.decodeStream(new FileInputStream(mFile), null, options);
-			
+
 			Syso.info("123456789  2222==== Width:"+bmp.getWidth()+", Height:"+bmp.getHeight()+", ww:"+options.outWidth+", hh:"+options.outHeight);
 			bitmap = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), mat, true);
 			Syso.info("123456789  2222==== Width:"+bitmap.getWidth()+", Height:"+bitmap.getHeight());
 			Syso.info("===="+bitmap);
-		} 
+		}
 		catch (Exception e) {
 			Syso.error(e);
 		}
@@ -236,7 +216,7 @@ public class PictureUtils {
 		else
 			return null;
 	}
-	
+
 	public static File createDirectory(){
 		Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
 
@@ -257,7 +237,7 @@ public class PictureUtils {
 	        return mainDir;
 		}
 	}
-	
+
 	// Checks if SD Card is available for read and write
 	public static boolean isSDCardWritable() {
 	  String status = Environment.getExternalStorageState();
@@ -266,13 +246,13 @@ public class PictureUtils {
 	   }
 	  return false;
 	}
-	
+
 	public static File getFileFromUri(Context context, Uri uri){
-		
+
 		if (uri == null) {
 			return null;
 		}
-		
+
 		String[] filePath = { MediaStore.Images.Media.DATA };
 		Cursor c = context.getContentResolver().query(uri, filePath, null, null, null);
 		c.moveToFirst();
@@ -283,7 +263,7 @@ public class PictureUtils {
 		Syso.debug("image Path", picturePath + "");
 		return file;
 	}
-	
+
 	public static void showGalleryImage(FragmentActivity context, Uri uri) {
 		System.out.println("uri>>>>"+uri.toString());
 		if (uri.toString().startsWith("content://com.google.android.apps.photos.content")) {
@@ -303,12 +283,12 @@ public class PictureUtils {
 			}
 		}
 	}
-	
+
 	 public static String SaveImageToDevice(Bitmap mImage) {
 		 String mImagePath = null;
 	      File mediaStorageDir = new File(android.os.Environment
 	                    .getExternalStorageDirectory(), APP_DIR_MAIN);
-	              
+
 	               if (!mediaStorageDir.exists()) {
 	          if (!mediaStorageDir.mkdirs()) {
 	           Log.d("/kikr/Profile Image", "Oops! Failed create "
@@ -317,7 +297,7 @@ public class PictureUtils {
 	               }
 	       String timeStamp = new SimpleDateFormat("yyyyMMdd HHmmss",
 	         Locale.getDefault()).format(new Date());
-	       
+
 	             File mediaFile;
 	        mediaFile = new File(mediaStorageDir.getPath() + File.separator
 	          + timeStamp
@@ -329,18 +309,18 @@ public class PictureUtils {
 	         out.flush();
 	         out.close();
 	         mImage.recycle();
-	         
+
 	         mImagePath = mediaFile.getAbsolutePath();
 	      return mImagePath;
-	         
+
 	        } catch (Exception e) {
 	         e.printStackTrace();
 	        }
 			return mImagePath;
-	       
+
 	    }
-	 
-	 
+
+
 	 public static Bitmap compressImage(String filePath) {
 
 			Bitmap scaledBitmap = null;
@@ -402,7 +382,7 @@ public class PictureUtils {
 				options.inSampleSize = calculateInSampleSize(options, actualWidth,actualHeight);
 
 				// inJustDecodeBounds set to false to load the actual bitmap
-				options.inJustDecodeBounds = false; 
+				options.inJustDecodeBounds = false;
 
 				// this options allow android to claim the bitmap memory if it runs
 				// low
@@ -461,7 +441,7 @@ public class PictureUtils {
 			return scaledBitmap;
 
 		}
-		
+
 		public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
 			final int height = options.outHeight;
 			final int width = options.outWidth;
@@ -481,8 +461,8 @@ public class PictureUtils {
 			Syso.info("Sample size: "+inSampleSize);
 			return inSampleSize;
 		}
-		
-		
+
+
 		public static int calculateInSampleSize2( BitmapFactory.Options options, int reqWidth, int reqHeight) {
 	    // Raw height and width of image
 	    final int height = options.outHeight;
@@ -503,8 +483,8 @@ public class PictureUtils {
 	    Syso.info("12345678 inSampleSize:"+inSampleSize+", height:"+height+", width:"+width);
 	    return inSampleSize;
 	}
-		
-		
+
+
 		public static Bitmap convertFileIntoBitmap(FragmentActivity context, File file)
 		 {
 		  if(PictureUtils.getImageSize(file.length()) > 1)
@@ -515,11 +495,11 @@ public class PictureUtils {
 		  else
 		  {
 			  System.out.println("Small size");
-		   return  getSampledBitmap(context,file); 
-		  }  
+		   return  getSampledBitmap(context,file);
+		  }
 		 }
-		
-		public static Bitmap getSampledBitmap(FragmentActivity context, File file) 
+
+		public static Bitmap getSampledBitmap(FragmentActivity context, File file)
 		 {
 		  Bitmap bitmap = null;
 		  String filename = null;
@@ -601,15 +581,15 @@ public class PictureUtils {
 			// filename.
 			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
 		  return bitmap;
-		  } 
+		  }
 		  catch (Exception e) {
 			  e.printStackTrace();
 			Syso.error(context.getClass().getSimpleName());
 		   return bitmap;
 		  }
-		  
+
 		 }
-		
+
 		public static Bitmap getBitmap(FragmentActivity context, File file){
 
 			  Bitmap bitmap = null;
@@ -672,21 +652,21 @@ public class PictureUtils {
 				// filename.
 				bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
 			  return bitmap;
-			  } 
+			  }
 			  catch (Exception e) {
 				  e.printStackTrace();
 				Syso.error(context.getClass().getSimpleName());
 			   return bitmap;
 			  }
 		}
-		 
+
 		 public static long getImageSize(long bytes)
 		 {
 		  long sizeInMb = bytes / (1024 * 1024);
 		  return sizeInMb;
 		 }
-		
-		
+
+
 	@SuppressWarnings("deprecation")
 	public static void setChatImageBackground(ImageView layout, Drawable drawable) {
 		if (android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.JELLY_BEAN) {
@@ -695,8 +675,8 @@ public class PictureUtils {
 			layout.setBackground(drawable);
 		}
 	}
-	
-	
+
+
 	public static byte[] convertFileIntoByte(File file)
 	 {
 	  FileInputStream fileInputStream = null;
@@ -712,23 +692,23 @@ public class PictureUtils {
 	  }
 	  return bFile;
 	 }
-	
-	public static Bitmap scaleDownBitmap(Bitmap photo, int newHeight, FragmentActivity context) 
+
+	public static Bitmap scaleDownBitmap(Bitmap photo, int newHeight, FragmentActivity context)
 	 {
-	   final float densityMultiplier = context.getResources().getDisplayMetrics().density;        
+	   final float densityMultiplier = context.getResources().getDisplayMetrics().density;
 	   int h = (int) (newHeight*densityMultiplier);
 	   int w = (int) (h * photo.getWidth()/((double) photo.getHeight()));
 	   photo  = Bitmap.createScaledBitmap(photo, w, h, true);
 	   return photo;
 	 }
-	
+
 	public static void setImageData(FragmentActivity context, Bitmap bitmap) {
 		if (context instanceof EditProfileActivity)
 			((EditProfileActivity) context).setImage(bitmap);
 		else if (context instanceof HomeActivity)
 			((HomeActivity) context).setimage(bitmap);
 	}
-	
+
 	public static Bitmap scaleImage(Bitmap bitmap)
 	{
 	    // Get current dimensions AND the desired bounding box
@@ -741,7 +721,7 @@ public class PictureUtils {
 
 	    // Determine how much to scale: the dimension requiring less scaling is
 	    // closer to the its side. This way the image always stays inside your
-	    // bounding box AND either x/y axis touches it.  
+	    // bounding box AND either x/y axis touches it.
 	    float xScale = ((float) bounding) / width;
 	    float yScale = ((float) bounding) / height;
 	    float scale = (xScale <= yScale) ? xScale : yScale;
@@ -753,7 +733,7 @@ public class PictureUtils {
 	    Matrix matrix = new Matrix();
 	    matrix.postScale(scale, scale);
 
-	    // Create a new bitmap and convert it to a format understood by the ImageView 
+	    // Create a new bitmap and convert it to a format understood by the ImageView
 	    Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
 	    width = scaledBitmap.getWidth(); // re-use
 	    height = scaledBitmap.getHeight(); // re-use

@@ -147,7 +147,7 @@ public abstract class BaseFragment extends Fragment {
 	}
 	
 	public void hideFotter(){
-		((HomeActivity) mContext).hideFutter();
+		//((HomeActivity) mContext).hideFutter();
 	}
 	
 	public void showFotter(){

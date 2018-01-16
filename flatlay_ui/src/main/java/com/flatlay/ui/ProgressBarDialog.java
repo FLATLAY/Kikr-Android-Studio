@@ -2,7 +2,6 @@ package com.flatlay.ui;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -17,9 +16,6 @@ public class ProgressBarDialog extends Dialog {
 
 	private TextView mTxtMessage;
 	private ImageView imageView1;
-	boolean isGreen = false;
-	private Handler handler = new Handler();
-	private Runnable r;
 
 	public ProgressBarDialog(Context context) {
 		super(context, R.style.AdvanceDialogTheme);
@@ -37,16 +33,16 @@ public class ProgressBarDialog extends Dialog {
 		setCancelable(true);
 		
 		WindowManager.LayoutParams lp = getWindow().getAttributes();  
-		lp.dimAmount=0.45f; // Dim level. 0.0 - no dim, 1.0 - completely opaque
+		lp.dimAmount=0.45f;
 		getWindow().setAttributes(lp);
 		mTxtMessage = (TextView) findViewById(R.id.dialogProgress_txtMessage);
 		mTxtMessage.setVisibility(View.GONE);
 		imageView1 = (ImageView) findViewById(R.id.imageView1);
-		final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
-	    animation.setDuration(300); // duration - half a second
-	    animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
-	    animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
-	    animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+		final Animation animation = new AlphaAnimation(1, 0);
+	    animation.setDuration(300);
+	    animation.setInterpolator(new LinearInterpolator());
+	    animation.setRepeatCount(Animation.INFINITE);
+	    animation.setRepeatMode(Animation.REVERSE);
 	    imageView1.startAnimation(animation);
 	}
 

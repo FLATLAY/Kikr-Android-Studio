@@ -1,21 +1,22 @@
 package com.flatlay.activity;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.flatlay.BaseActivity;
+import com.flatlay.BaseFragment;
 import com.flatlay.R;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
 import com.flatlaylib.api.RegisterUserApi;
@@ -26,124 +27,165 @@ import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
 import com.flatlaylib.utils.StringUtils;
 
-public class ForgotPassword extends BaseActivity implements OnKeyListener,
-		OnClickListener,ServiceCallback {
-	private EditText mEmailEditText;
-	private ProgressBarDialog progressBarDialog;
-	private ImageView backArrowImageView;
-	private RelativeLayout signUpHeaderRelativeLayout;
-	private String email;
+public class ForgotPassword extends BaseFragment implements OnKeyListener,
+        OnClickListener, ServiceCallback {
+    private EditText mEmailEditText;
+    private String email;
+    private TextView mBackToLanding, mForgotPassword;
+    private Button mReset;
+    private View mainView;
 
-	@Override
-	protected void onCreate(Bundle bundle) {
-		super.onCreate(bundle);
-		Log.w("Activity:","ForgotPasswordActivity");
-		CommonUtility.noTitleActivity(context);
-		setContentView(R.layout.activity_email);
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        mainView = inflater.inflate(R.layout.activity_email2, container, false);
+        return mainView;
+    }
 
-	@Override
-	public void initLayout() {
-		mEmailEditText = (EditText) findViewById(R.id.emailEditText);
-		backArrowImageView=(ImageView) findViewById(R.id.backArrowImageView);
-		signUpHeaderRelativeLayout=(RelativeLayout) findViewById(R.id.signUpHeaderRelativeLayout);
-	}
+    @Override
+    public void initUI(Bundle savedInstanceState){
+        mEmailEditText = (EditText) mainView.findViewById(R.id.emailEditText);
+        mEmailEditText.setTypeface(FontUtility.setProximanovaLight(getActivity()));
+        mForgotPassword = (TextView) mainView.findViewById(R.id.forgotPassword);
+        mBackToLanding = (TextView) mainView.findViewById(R.id.backToLanding);
+        mBackToLanding.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+        mReset = (Button) mainView.findViewById(R.id.resetButton);
+        ForgotPassTextWatcher watcher = new ForgotPassTextWatcher();
+        mEmailEditText.addTextChangedListener(watcher);
+        setUpTextType();
+    }
 
-	@Override
-	public void setupData() {}
+    public void setUpTextType() {
+        mEmailEditText.setTypeface(FontUtility.setMontserratLight(getActivity()));
+        mForgotPassword.setTypeface(FontUtility.setMontserratLight(getActivity()));
+        mBackToLanding.setTypeface(FontUtility.setMontserratLight(getActivity()));
+    }
 
-	@Override
-	public void headerView() {
-		hideHeader();
-		signUpHeaderRelativeLayout.setVisibility(View.VISIBLE);
-	}
+    @Override
+    public void setClickListener() {
+        mEmailEditText.setOnKeyListener(this);
+        mBackToLanding.setOnClickListener(this);
+        mReset.setOnClickListener(this);
+    }
 
-	@Override
-	public void setUpTextType() {
-		mEmailEditText.setTypeface(FontUtility.setProximanovaSemibold(context));
-	}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.backToLanding:
+                CommonUtility.hideSoftKeyboard(getActivity());
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.baseFrameLayout, new LoginActivity(), null)
+                        .addToBackStack(null)
+                        .commit();
+                break;
+            case R.id.resetButton:
+                CommonUtility.hideSoftKeyboard(getActivity());
+                validateUserInput();
+                break;
+        }
+    }
 
-	@Override
-	public void setClickListener() {
-		mEmailEditText.setOnKeyListener(this);
-		backArrowImageView.setOnClickListener(this);
-	}
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-	@Override
-	public void onClick(View v) {
-		switch(v.getId()){
-		case R.id.backArrowImageView:
-			CommonUtility.hideSoftKeyboard(context);
-			finish();
-			break;
-		}
-	}
+        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+            validateUserInput();
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		
-		if ((event.getAction() == KeyEvent.ACTION_DOWN)&& (keyCode == KeyEvent.KEYCODE_ENTER)) {
-			validateUserInput();
-			return true;
-		}
-		return false;
-	}
-	
-	private void validateUserInput() {
+    private void validateUserInput() {
 
-		boolean isValid = true;
-		 email = mEmailEditText.getText().toString().trim();
+        boolean isValid = true;
+        email = mEmailEditText.getText().toString().trim();
 
-		if (email.length() == 0) {
-			isValid = false;
-			mEmailEditText.requestFocus();
-			AlertUtils.showToast(context, R.string.alert_register_email);
-		} else if (!StringUtils.isEmailValid(email)) {
-			isValid = false;
-			mEmailEditText.requestFocus();
-			AlertUtils.showToast(context,R.string.alert_register_email_verification);
-		} 
+        if (email.length() == 0) {
+            isValid = false;
+            mEmailEditText.requestFocus();
+            this.mEmailEditText.setBackgroundResource(R.drawable.flatlayloginboardernew3);
+            AlertUtils.showToast(getActivity(), R.string.alert_register_email);
+        } else if (!StringUtils.isEmailValid(email)) {
+            isValid = false;
+            mEmailEditText.requestFocus();
+            this.mEmailEditText.setBackgroundResource(R.drawable.flatlayloginboardernew3);
+            AlertUtils.showToast(getActivity(), R.string.alert_register_email_verification);
+        }
 
-		if (isValid&&checkInternet()) {
-			doAuthanticate(email);
-		}
+        if (isValid && checkInternet()) {
+            this.mEmailEditText.setBackgroundResource(R.drawable.flatlayloginboardernew2);
+            this.mBackToLanding.setTextColor(Color.WHITE);
+            doAuthanticate(email);
+        }
 
-	}
+    }
 
-	private void doAuthanticate(String email) {
+    private void doAuthanticate(String email) {
+        final RegisterUserApi service = new RegisterUserApi(this);
+        service.forgotPassword(email);
+        service.execute();
+    }
 
-		progressBarDialog = new ProgressBarDialog(context);
-		progressBarDialog.show();
-		final RegisterUserApi service = new RegisterUserApi(this);
-		service.forgotPassword(email);
-		service.execute();
+    @Override
+    public void setData(Bundle bundle) {
 
-		progressBarDialog.setOnCancelListener(new OnCancelListener() {
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				service.cancel();
-			}
-		});
-	}
-	
-	@Override
-	public void handleOnSuccess(Object object) {
-		progressBarDialog.dismiss();
-		Syso.info("In handleOnSuccess>>"+object);
-		startActivity(new Intent(this,ResetPassword.class).putExtra("email", email));
-		finish();
-		AlertUtils.showToast(context, R.string.alert_email_has_sent);
-	}
+    }
 
-	@Override
-	public void handleOnFailure(ServiceException exception,Object object) {
-		progressBarDialog.dismiss();
-		Syso.info("In handleOnFailure>>"+object);
-		if(object!=null){
-			RegisterUserResponse response=(RegisterUserResponse) object;
-			AlertUtils.showToast(context,response.getMessage());
-		}else{
-			AlertUtils.showToast(context,R.string.invalid_response);
-		}
-	}
+    @Override
+    public void refreshData(Bundle bundle) {
+
+    }
+
+    @Override
+    public void handleOnSuccess(Object object) {
+        Syso.info("In handleOnSuccess>>" + object);
+        Bundle bundle = new Bundle();
+        bundle.putString("email", email);
+        ResetPassword reset = new ResetPassword();
+        reset.setArguments(bundle);
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.baseFrameLayout, reset, null)
+                .addToBackStack(null)
+                .commit();
+
+        AlertUtils.showToast(getActivity(), R.string.alert_email_has_sent);
+    }
+
+    @Override
+    public void handleOnFailure(ServiceException exception, Object object) {
+        Syso.info("In handleOnFailure>>" + object);
+        if (object != null) {
+            RegisterUserResponse response = (RegisterUserResponse) object;
+            AlertUtils.showToast(getActivity(), response.getMessage());
+        } else {
+            AlertUtils.showToast(getActivity(), R.string.invalid_response);
+        }
+    }
+
+    private class ForgotPassTextWatcher implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String email = mEmailEditText.getText().toString();
+
+            if (email != null && email.length() != 0 && CommonUtility.isEmailValid(email)) {
+                mReset.setTextColor(Color.WHITE);
+            } else
+                mReset.setTextColor(Color.GRAY);
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    }
+
 }
+
+

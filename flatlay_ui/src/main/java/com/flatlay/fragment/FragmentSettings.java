@@ -26,8 +26,6 @@ import com.flatlay.activity.EditProfileActivity;
 import com.flatlay.dialog.RemoveSocialAccountDialog;
 import com.flatlay.dialog.WelcomeDialog;
 import com.flatlay.ui.ProgressBarDialog;
-import com.flatlay.ui.SettingsAddressList;
-import com.flatlay.ui.SettingsCardList;
 import com.flatlay.utility.AppConstants;
 import com.flatlaylib.api.AddressApi;
 import com.flatlaylib.api.CardInfoApi;
@@ -345,7 +343,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 					CardInfoRes cardInfoRes = (CardInfoRes) object;
 					cardListLayout.setVisibility(View.VISIBLE);
 					cardListLayout.removeAllViews();
-					cardListLayout.addView(new SettingsCardList(mContext, cardInfoRes.getData(),fragmentSettings).getView());
+					//cardListLayout.addView(new SettingsCardList(mContext, cardInfoRes.getData(),fragmentSettings).getView());
 					if(cardInfoRes.getData().size()>0)
 						noCardFound.setVisibility(View.GONE);
 					else
@@ -388,7 +386,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 					AddressRes addressRes = (AddressRes) object;
 					addressListLayout.setVisibility(View.VISIBLE);
 					addressListLayout.removeAllViews();
-					addressListLayout.addView(new SettingsAddressList(mContext, addressRes.getData(),fragmentSettings).getView());
+					//addressListLayout.addView(new SettingsAddressList(mContext, addressRes.getData(),fragmentSettings).getView());
 
 					//Log.w("getAddressList","Address stuff"+addressRes.getData().toString());
 					//SharedPreferences.Editor editor = userSettings.edit();

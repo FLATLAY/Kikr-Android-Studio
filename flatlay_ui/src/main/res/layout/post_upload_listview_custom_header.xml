@@ -26,19 +26,19 @@
 
     </FrameLayout>
 
-    <com.flatlay.activity.MultiLineEditText
-        android:id="@+id/etDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageUploadView"
-        android:layout_marginTop="3dp"
-        android:background="@color/white"
-        android:hint="Enter a Description "
-        android:imeOptions="actionDone"
-        android:inputType="textCapSentences|textMultiLine"
-        android:padding="10dp"
+    <!--<com.flatlay.activity.MultiLineEditText-->
+        <!--android:id="@+id/etDescription"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/imageUploadView"-->
+        <!--android:layout_marginTop="3dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:hint="Enter a Description "-->
+        <!--android:imeOptions="actionDone"-->
+        <!--android:inputType="textCapSentences|textMultiLine"-->
+        <!--android:padding="10dp"-->
 
-        />
+        <!--/>-->
 
     <LinearLayout
         android:layout_width="match_parent"

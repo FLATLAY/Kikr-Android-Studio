@@ -5,24 +5,25 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
-import android.net.Uri;
+
 import android.os.Bundle;
+
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.VideoView;
 import android.util.Log;
 
-import com.flatlay.BaseActivity;
+import com.flatlay.BaseFragment;
 import com.flatlay.R;
+
 import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.ui.RoundImageView;
 import com.flatlay.utility.AppConstants;
@@ -37,7 +38,6 @@ import com.flatlaylib.db.HelpPreference;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.ServiceCallback;
 import com.flatlaylib.service.ServiceException;
-import com.flatlaylib.service.res.ConnectWithFacebookRes;
 import com.flatlaylib.service.res.RegisterUserResponse;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.DeviceUtils;
@@ -46,182 +46,149 @@ import com.flatlaylib.utils.Syso;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
 
-public class LandingActivity extends BaseActivity implements OnClickListener, ServiceCallback {
+public class LandingActivity extends BaseFragment implements OnClickListener, ServiceCallback {
     private ProgressBarDialog progressBarDialog;
-    private Button mFacebookButton, mEmailButton, mSkipButton, mLoginButton;
+    private Button mFacebookButton, mEmailButton, mLoginButton;
     private final int REQUEST_CODE_FB_LOGIN = 1000;
-    private final int REQUEST_CODE_TWIT_LOGIN = 1001;
     private final String DEFAULT_GENDER = "male";
     private String social;
     private String mEmail;
     private String mProfilePic;
     private String mUsername;
     private String name;
-    private VideoView vedio;
     private String birthday;
     private String location;
     private String gender;
     private String id;
     private String profileLink;
     private boolean isFromFacebook = false;
-    private LinearLayout layoutReferred, optionLayout;
+    private LinearLayout layoutReferred;
     private RoundImageView user_profile_image;
     private TextView user_profile_name;
-    private ImageView imgOr;
     public static String referred_userid = "-1";
     private String referred_username;
-    private String referred_usermail;
     private String referred_userprofilepic;
-    private TextView earn250, kikrIntroductionTextView;
+    private TextView earn250;
     SharedPreferences userSettings;
     SharedPreferences temp;
-
+    private View mainView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.w("Activity","LandingActivity");
-        CommonUtility.noTitleActivity(context);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_landing);
-        Log.w("myApp", "In LandingActivity");
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        mainView = inflater.inflate(R.layout.landing2, container, false);
 
-        temp = getSharedPreferences("fromRemove", 0);
-        userSettings = getSharedPreferences("UserSettings", 0);
+        temp = getActivity().getSharedPreferences("fromRemove", 0);
+        userSettings = getActivity().getSharedPreferences("UserSettings", 0);
         SharedPreferences.Editor editor = userSettings.edit();
         editor.putString("isSet", "False");
         editor.apply();
-
-
-        if (getIntent().getStringExtra("referred_userid") != null) {
-            referred_userid = getIntent().getStringExtra("referred_userid");
-            referred_username = getIntent().getStringExtra("referred_username");
-            referred_usermail = getIntent().getStringExtra("referred_usermail");
-            referred_userprofilepic = getIntent().getStringExtra("referred_userprofilepic");
-            layoutReferred.setVisibility(View.VISIBLE);
-            mSkipButton.setVisibility(View.GONE);
-            imgOr.setVisibility(View.GONE);
-            user_profile_name.setTypeface(null, Typeface.BOLD);
-            user_profile_name.setTypeface(FontUtility.setProximanovaLight(this));
-            CommonUtility.setImage(context, referred_userprofilepic, user_profile_image, R.drawable.profile_icon);
-            user_profile_name.setText(referred_username);
-            earn250.setTypeface(FontUtility.setProximanovaLight(this));
-            earn250.setVisibility(View.VISIBLE);
-        } else {
-            earn250.setVisibility(View.GONE);
-            layoutReferred.setVisibility(View.INVISIBLE);
-            mEmailButton.setVisibility(View.VISIBLE);
-            //		mSkipButton.setVisibility(View.VISIBLE);
-            //		imgOr.setVisibility(View.VISIBLE);
-        }
-
+        return mainView;
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.emailButton:
-                startActivity(SignUpActivity.class);
-                finish();
+                CommonUtility.hideSoftKeyboard(getActivity());
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                    .replace(R.id.baseFrameLayout, new SignUpActivity(), null)
+                    .addToBackStack(null)
+                    .commit();
                 break;
             case R.id.facebookButton:
                 if (checkInternet()) {
                     isFromFacebook = true;
-                    //Log.w("myApp", "Clicked here!");
                     social = UserPreference.FACEBOOK;
-                    Intent i = new Intent(context, FbSignActivity.class);
+                    Intent i = new Intent(getActivity(), FbSignActivity.class);
                     i.putExtra("getFriendList", false);
                     i.putExtra("getProfilePic", false);
                     startActivityForResult(i, REQUEST_CODE_FB_LOGIN);
                 }
                 break;
             case R.id.loginButton:
-                CommonUtility.hideSoftKeyboard(context);
-                startActivity(LoginActivity.class);
-                finish();
+                CommonUtility.hideSoftKeyboard(getActivity());
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.baseFrameLayout, new LoginActivity(), null)
+                        .addToBackStack(null)
+                        .commit();
                 break;
-            case R.id.kikrIntroductionTextView:
-                startActivity(IntroductionPagerActivity.class);
+            case R.id.earn250:
+                CommonUtility.hideSoftKeyboard(getActivity());
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.baseFrameLayout, new IntroductionActivity(), null)
+                        .addToBackStack(null)
+                        .commit();
                 break;
-        }
-
-    }
-
-    @Override
-    public void initLayout() {
-        mFacebookButton = (Button) findViewById(R.id.facebookButton);
-        mEmailButton = (Button) findViewById(R.id.emailButton);
-        mSkipButton = (Button) findViewById(R.id.skipButton);
-        layoutReferred = (LinearLayout) findViewById(R.id.layoutReferred);
-        user_profile_image = (RoundImageView) findViewById(R.id.user_profile_image);
-        user_profile_name = (TextView) findViewById(R.id.user_profile_name);
-        optionLayout = (LinearLayout) findViewById(R.id.optionLayout);
-        imgOr = (ImageView) findViewById(R.id.imgOr);
-        earn250 = (TextView) findViewById(R.id.earn250);
-        mLoginButton = (Button) findViewById(R.id.loginButton);
-        kikrIntroductionTextView = (TextView) findViewById(R.id.kikrIntroductionTextView);
-        vedio = (VideoView) findViewById(R.id.vedio);
-
-    }
-
-    @Override
-    public void setupData() {
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        videostart();
-    }
-
-    public void videostart() {
-
-        try {
-            vedio.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                public void onCompletion(MediaPlayer mp) {
-                    mp.setLooping(true);
-                    vedio.start(); //TODO: need to make transition seamless.
-                    //need to be replaced by youtube
-                }
-            });
-
-            String uriPath = "android.resource://com.flatlay/" + R.raw.flatlay_guide;
-            vedio.setVideoPath(uriPath);
-            Uri uri = Uri.parse(uriPath);
-            vedio.setVideoURI(uri);
-            vedio.requestFocus();
-            vedio.start();
-        } catch (Exception e) {
-
         }
     }
 
     @Override
-    public void headerView() {
-        hideHeader();
+    public void initUI(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.w("Activity", "LandingActivity");
+        temp = getActivity().getSharedPreferences("fromRemove", 0);
+        userSettings = getActivity().getSharedPreferences("UserSettings", 0);
+        SharedPreferences.Editor editor = userSettings.edit();
+        editor.putString("isSet", "False");
+        editor.apply();
+        mFacebookButton = (Button) mainView.findViewById(R.id.facebookButton);
+        mEmailButton = (Button) mainView.findViewById(R.id.emailButton);
+        layoutReferred = (LinearLayout) mainView.findViewById(R.id.layoutReferred);
+        user_profile_image = (RoundImageView) mainView.findViewById(R.id.user_profile_image);
+        user_profile_name = (TextView) mainView.findViewById(R.id.user_profile_name);
+        earn250 = (TextView) mainView.findViewById(R.id.earn250);
+        earn250.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+        mLoginButton = (Button) mainView.findViewById(R.id.loginButton);
+
+        if (getActivity().getIntent().getStringExtra("referred_userid") != null) {
+            referred_userid = getActivity().getIntent().getStringExtra("referred_userid");
+            referred_username = getActivity().getIntent().getStringExtra("referred_username");
+            referred_userprofilepic = getActivity().getIntent().getStringExtra("referred_userprofilepic");
+            layoutReferred.setVisibility(View.VISIBLE);
+            user_profile_name.setTypeface(null, Typeface.BOLD);
+            CommonUtility.setImage(getActivity(), referred_userprofilepic, user_profile_image, R.drawable.profile_icon);
+            user_profile_name.setText(referred_username);
+            earn250.setVisibility(View.VISIBLE);
+        } else {
+            mEmailButton.setVisibility(View.VISIBLE);
+        }
+        setUpTextType();
     }
 
     @Override
+    public void setData(Bundle bundle) {
+
+    }
+
+    @Override
+    public void refreshData(Bundle bundle) {
+
+    }
+
     public void setUpTextType() {
-        mFacebookButton.setTypeface(FontUtility.setProximanovaLight(context));
-         mEmailButton.setTypeface(FontUtility.setProximanovaLight(context));
-        mSkipButton.setTypeface(FontUtility.setProximanovaLight(context));
+        mFacebookButton.setTypeface(FontUtility.setMontserratRegular(getActivity()));
+        mEmailButton.setTypeface(FontUtility.setMontserratRegular(getActivity()));
+        mLoginButton.setTypeface(FontUtility.setMontserratRegular(getActivity()));
+        earn250.setTypeface(FontUtility.setMontserratLight(getActivity()));
     }
 
     @Override
     public void setClickListener() {
         mFacebookButton.setOnClickListener(this);
         mEmailButton.setOnClickListener(this);
-        mSkipButton.setOnClickListener(this);
-        kikrIntroductionTextView.setOnClickListener(this);
         mLoginButton.setOnClickListener(this);
+        earn250.setOnClickListener(this);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
             isFromFacebook = true;
@@ -239,13 +206,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
             UserPreference.getInstance().setmIsFacebookSignedIn(true);
             registerViaFbSocial(id, g);
         }
-//        else if (requestCode == REQUEST_CODE_TWIT_LOGIN && resultCode == RESULT_OK) {
-//            isFromTwitter = true;
-//            id = String.valueOf(data.getLongExtra("id", 0));
-//            mProfilePic = data.getStringExtra("profile_image_url");
-//            mUsername = data.getStringExtra("screen_name");
-//            registerViaSocial(id, DEFAULT_GENDER);
-//        }
+
         else if (requestCode == AppConstants.REQUEST_CODE_FB_FRIEND_LIST) {
             ArrayList<FbUser> fbUsers = (ArrayList<FbUser>) data.getSerializableExtra("friend_list");
             System.out.println("123456789 " + fbUsers);
@@ -263,11 +224,11 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
 
 
     private void registerViaFbSocial(String id, String g) {
-        progressBarDialog = new ProgressBarDialog(context);
+        progressBarDialog = new ProgressBarDialog(getActivity());
         progressBarDialog.show();
 
         final RegisterUserApi service = new RegisterUserApi(this);
-        service.registerViaFbSocial(mEmail, social, id, g, DeviceUtils.getPhoneModel(), CommonUtility.getDeviceTocken(context), "Dummy", "android", CommonUtility.getDeviceId(context));
+        service.registerViaFbSocial(mEmail, social, id, g, DeviceUtils.getPhoneModel(), CommonUtility.getDeviceTocken(getActivity()), "Dummy", "android", CommonUtility.getDeviceId(getActivity()));
         service.execute();
 
         progressBarDialog.setOnCancelListener(new OnCancelListener() {
@@ -276,8 +237,6 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
                 service.cancel();
             }
         });
-
-
     }
 
 
@@ -306,11 +265,9 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
                 if (isFromFacebook && checkInternet()) {
                     connectWithFacebook(id, mEmail, gender, name, mUsername, birthday, profileLink, location);
                 }
-//				startActivity(EditProfileActivity.class,bundle);
             }
             UserPreference.getInstance().setPassword();
         }
-//		finish();
     }
 
     @Override
@@ -337,17 +294,11 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
                     showHome(current_screen);
                 } else
                     startActivity(HomeActivity.class);
-//				if (isFromFacebook && checkInternet()) {
-//					connectWithFacebook(id, mEmail, gender, name, mUsername, birthday, profileLink, location);
-//				} else if (isFromTwitter && checkInternet()){
-//					twitterInfoUpload();
-//				}
-
             } else {
-                AlertUtils.showToast(context, response.getMessage());
+                AlertUtils.showToast(getActivity(), response.getMessage());
             }
         } else {
-            AlertUtils.showToast(context, R.string.invalid_response);
+            AlertUtils.showToast(getActivity(), R.string.invalid_response);
         }
     }
 
@@ -362,35 +313,20 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
     }
 
     public void test(View v) {
-//		startActivity(FollowCategoriesActivity.class);
     }
 
     private void showHome(String currentScreen) {
-        Intent i = null;
-        if (currentScreen.equals(Screen.HomeScreen)) {
-            i = new Intent(context, HomeActivity.class);
-        } else if (currentScreen.equals(Screen.EmailScreen)) {
-            i = new Intent(context, EmailActivity.class);
-        } else if (currentScreen.equals(Screen.UserNameScreen)) {
-            i = new Intent(context, EditProfileActivity.class);
-        } else if (currentScreen.equals(Screen.CategoryScreen)) {
-            i = new Intent(context, FollowCategoriesActivity.class);
-        } else if (currentScreen.equals(Screen.BrandScreen)) {
-            i = new Intent(context, FollowBrandsActivity.class);
-        } else if (currentScreen.equals(Screen.StoreScreen)) {
-            i = new Intent(context, FollowStoreActivity.class);
-        } else if (currentScreen.equals(Screen.CardScreen)) {
-            i = new Intent(context, KikrTutorialActivity.class);
-        } else {
-            i = new Intent(context, HomeActivity.class);
-        }
-        startActivity(i);
-        finish();
+
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.baseFrameLayout, new LandingActivity(), null)
+                .addToBackStack(null)
+                .commit();
     }
 
 
     private void connectWithFacebook(final String id, final String email, final String gender, final String name, final String username, final String birthday, final String profile_link, final String location) {
-        progressBarDialog = new ProgressBarDialog(context);
+        progressBarDialog = new ProgressBarDialog(getActivity());
         progressBarDialog.show();
 
         final ConnectWithFacebookApi service = new ConnectWithFacebookApi(
@@ -402,7 +338,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
                         if (object != null) {
                             getFBFriendList();
                         } else {
-                            AlertUtils.showToast(context, R.string.invalid_response);
+                            AlertUtils.showToast(getActivity(), R.string.invalid_response);
                         }
                     }
 
@@ -410,20 +346,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
                     public void handleOnFailure(ServiceException exception, Object object) {
                         progressBarDialog.dismiss();
                         if (object != null) {
-                            ConnectWithFacebookRes facebookRes = (ConnectWithFacebookRes) object;
-                            String message = facebookRes.getMessage();
-//							AlertUtils.showToast(context, message);
-//							showDialog("Failed to Fetch Information", new Method() {
-//								public void execute() {
                             getFBFriendList();
-//								}
-//							}, new Method() {
-//								public void execute() {
-//									connectWithFacebook(id, email, gender, name, username, birthday, profile_link, location);
-//								}
-//							});
-//						} else {
-//							AlertUtils.showToast(context,R.string.invalid_response);
                         }
                     }
                 });
@@ -439,14 +362,14 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
     }
 
     private void getFBFriendList() {
-        Intent i = new Intent(context, FbSignActivity.class);
+        Intent i = new Intent(getActivity(), FbSignActivity.class);
         i.putExtra("getFriendList", true);
         i.putExtra("getProfilePic", false);
         startActivityForResult(i, AppConstants.REQUEST_CODE_FB_FRIEND_LIST);
     }
 
     private void uploadFbFriends(final List<FbUser> fbusers) {
-        progressBarDialog = new ProgressBarDialog(context);
+        progressBarDialog = new ProgressBarDialog(getActivity());
         progressBarDialog.show();
         final FbTwFriendsApi service = new FbTwFriendsApi(
                 new ServiceCallback() {
@@ -489,7 +412,7 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
     }
 
     private void showDialog(String message, final Method method1, final Method method2) {
-        new AlertDialog.Builder(context)
+        new AlertDialog.Builder(getActivity())
                 .setTitle("Alert")
                 .setMessage(message)
                 .setPositiveButton("Next", new DialogInterface.OnClickListener() {
@@ -499,7 +422,6 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
                 })
                 .setNegativeButton("Retry", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
                         method2.execute();
                     }
                 })
@@ -511,4 +433,6 @@ public class LandingActivity extends BaseActivity implements OnClickListener, Se
         void execute();
     }
 
+
 }
+

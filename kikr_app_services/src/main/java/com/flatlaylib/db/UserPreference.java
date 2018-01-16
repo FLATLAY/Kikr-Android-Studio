@@ -11,8 +11,6 @@ import com.flatlaylib.utils.Syso;
 public class UserPreference {
 
     public static String FACEBOOK = "facebook";
-    public static String TWIITER = "twitter";
-    public static String EMAIL = "email";
     private static String PIC_FILENAME = "Kikr.file_name";
 
     private String TAG = this.getClass().getSimpleName();
@@ -109,18 +107,6 @@ public class UserPreference {
         }
     }
 
-    public String getTwotapCartID() {
-        return mPrefs.getString(mTwotapCartId, "");
-    }
-
-    public void setTwotapCartID(String value) {
-        Syso.debug("mTwotapCartId = ", value);
-        if (value != null) {
-            mPrefsEditor.putString(mTwotapCartId, value);
-            mPrefsEditor.commit();
-        }
-    }
-
     public String getUserID() {
         return mPrefs.getString(mUserId, "");
     }
@@ -151,10 +137,6 @@ public class UserPreference {
         Syso.debug("mConnectedByTwitter = ", value);
         mPrefsEditor.putBoolean(mConnectedByTwitter, value);
         mPrefsEditor.commit();
-    }
-
-    public boolean getIsTwitterConnected() {
-        return mPrefs.getBoolean(mConnectedByTwitter, false);
     }
 
     public boolean getCheckedIsConnected() {
@@ -223,19 +205,6 @@ public class UserPreference {
         mPrefsEditor.putString(mPinterestBoardId, boardId);
         mPrefsEditor.commit();
     }
-
-
-    public boolean getIsFbConnected() {
-        return mPrefs.getBoolean(mConnectedByFB, false);
-    }
-
-
-    public void setIsCheckBluetooth(boolean value) {
-        Syso.debug("mCheckedIsConnected = ", value);
-        mPrefsEditor.putBoolean(mIsCheckBluetooth, value);
-        mPrefsEditor.commit();
-    }
-
     public boolean getIsRefreshProfile() {
         return mPrefs.getBoolean(mIsRefreshProfile, false);
     }
@@ -301,10 +270,6 @@ public class UserPreference {
             mPrefsEditor.putString(mBgImage, value);
             mPrefsEditor.commit();
         }
-    }
-
-    public String getBgImage() {
-        return mPrefs.getString(mBgImage, "");
     }
 
     public void setProfilePic(String value) {

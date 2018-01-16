@@ -30,7 +30,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class FbSignActivity extends BaseActivity {
@@ -55,8 +54,6 @@ public class FbSignActivity extends BaseActivity {
         setContentView(R.layout.activity_fb_sign_in);
         btnFacebookLogin = (LoginButton) findViewById(R.id.authButton);
         hideHeader();
-
-
     }
 
     @Override
@@ -88,6 +85,7 @@ public class FbSignActivity extends BaseActivity {
 
                         @Override
                         public void onCancel () {
+                            finish();
                             Log.w("FbSignActivity", "Login attempt cancelled.");
                         }
 
@@ -95,14 +93,13 @@ public class FbSignActivity extends BaseActivity {
                         public void onError (FacebookException e){
                             e.printStackTrace();
                             Log.w("FbSignActivity", "Login attempt failed.");
-                            AlertUtils.showToast(context, "Facebook login failed.");
+                            AlertUtils.showToast(context, "Facebook login2 failed.");
                             finish();
                             return;
                         }
                     }
             );
         }
-        //uiHelper.onResume();
     }
 
     @Override
@@ -135,7 +132,6 @@ public class FbSignActivity extends BaseActivity {
         GraphRequest me = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
             @Override
             public void onCompleted(JSONObject user, GraphResponse response) {
-                //Log.w("my-App","onCompleted");
                 if (user != null) {
                     if (isGetFriendList) {
                         Log.w("FbSignActivity","1");
@@ -160,7 +156,6 @@ public class FbSignActivity extends BaseActivity {
         });
         Bundle params = me.getParameters();
         params.putString("fields", "email,name");
-        //Log.w("my-App","5");
         me.setParameters(params);
         me.executeAsync();
     }
@@ -212,7 +207,6 @@ public class FbSignActivity extends BaseActivity {
             ex.printStackTrace();
         }
 
-
         URL url = null;
         try {
             url = new URL("http://graph.facebook.com/" + fb_id + "/picture?type=large");
@@ -220,23 +214,6 @@ public class FbSignActivity extends BaseActivity {
             e.printStackTrace();
         }
         String address = "";
-
-        /*
-        String birthday = graphUser.getBirthday() != null ? graphUser.getBirthday() : "";
-        String link = graphUser.getLink() != null ? graphUser.getLink() : "";
-        GraphPlace graphPlace = graphUser.getLocation();
-        GraphLocation location = graphPlace != null ? graphPlace.getLocation() : null;
-
-        if (location != null) {
-            String street = location.getStreet() != null ? location.getStreet() : "";
-            String city = location.getCity() != null ? location.getCity() : "";
-            String state = location.getState() != null ? location.getState() : "";
-            String country = location.getCountry() != null ? location.getCountry() : "";
-            String zipCode = location.getZip() != null ? location.getZip() : "";
-            address = street + " " + city + " " + state + " " + country + " " + zipCode;
-        }
-*/
-
         Intent intent = new Intent();
         intent.putExtra("id", fb_id);
         intent.putExtra("email", email);
@@ -249,32 +226,8 @@ public class FbSignActivity extends BaseActivity {
         intent.putExtra("profile_pic", url.toString());
         setResult(RESULT_OK, intent);
         Syso.info("address>>" + address);
-
-        //getDetailsFromFacebook(graphUser);
         finish();
 
-    }
-
-    //Duplicate
-    private void getDetailsFromFacebook(JSONObject graphUser) {
-
-        Log.w("FbSignActivity","getDetailsFromFacebook");
-        /*
-        String id = graphUser.getId();
-        String Birthday = graphUser.getBirthday();
-        String Link = graphUser.getLink();
-        GraphPlace Location = graphUser.getLocation();
-        String Name = graphUser.getName();
-        String Username = graphUser.getUsername();
-        String Gender = (String) graphUser.getProperty("gender");
-        Syso.info(id + "\n");
-        Syso.info(Birthday + "\n");
-        Syso.info(Link + "\n");
-        Syso.info("Location>>" + Location + "\n");
-        Syso.info(Name + "\n");
-        Syso.info(Username + "\n");
-        Syso.info(Gender + "\n");
-        */
     }
 
     @Override
@@ -340,29 +293,6 @@ public class FbSignActivity extends BaseActivity {
 
     private ArrayList<FbUser> getResults(GraphResponse response) {
         Log.w("FbSignActivity","getResults");
-        /*
-        GraphMultiResult multiResult = response.getGraphObjectAs(GraphMultiResult.class);
-        GraphObjectList<GraphObject> data = multiResult.getData();
-        List<GraphUser> graphUsers = data.castToListOf(GraphUser.class);
-        ArrayList<FbUser> friendList = new ArrayList<FbUser>();
-        try {
-            for (int i = 0; i < graphUsers.size(); i++) {
-                FbUser fbUser = new FbUser();
-                GraphUser graphUser = graphUsers.get(i);
-
-                String id = graphUser.getId();
-                JSONObject json = graphUser.getInnerJSONObject();
-                String url = json.getJSONObject("picture").getJSONObject("data").getString("url");
-                String friendName = graphUser.getName();
-                fbUser.setFb_id(id);
-                fbUser.setName(friendName);
-                fbUser.setProfile_pic(url);
-                friendList.add(fbUser);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        */
         return null;
     }
 

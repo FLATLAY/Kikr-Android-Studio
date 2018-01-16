@@ -1,6 +1,5 @@
 package com.flatlay.activity;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,7 +24,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.flatlay.BaseActivity;
 import com.flatlay.R;
@@ -153,10 +151,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 currentSelectedImage = "bg";
                 PictureUtils.showAddPictureAlert2(context, editProfileActivity);
                 break;
-            case R.id.kikr_learn_more:
-                Intent intent = new Intent(this, LearnMoreOutsideUSActivity.class);
-                startActivity(intent);
-                break;
+
             case R.id.descriptionTextView:
                 String text = descriptionTextView.getText().toString();
                 String desc = text.equalsIgnoreCase(getResources().getString(R.string.add_description)) ? "" : text;
@@ -274,8 +269,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                         performNewCrop(picUri);
                     } else
                         performCropGallery(picUri);
-
-                    //PictureUtils.showGalleryImage(context, uri);
                 }
             } else if (requestCode == PictureUtils.REQUEST_CODE_DEFAULT_LIST) {
                 needToUpdateBg = true;
@@ -290,7 +283,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                     profilePic = url;
                     mImageBitmap = null;
                     new DownloadImage().execute(profilePic);
-                    // CommonUtility.setImage(context, url, user_profile_image, R.drawable.dum_user);
                 }
             } else if (requestCode == REQUEST_CODE_TWIT_PIC) {
                 needToUpdatePic = true;
@@ -298,28 +290,21 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 mImageBitmap = null;
                 if (profilePic != null) {
                     new DownloadImage().execute(profilePic);
-                    // CommonUtility.setImage(context, profilePic, user_profile_image, R.drawable.dum_user);
                 }
             } else if (requestCode == CROP_PIC) {
-                // get the returned data
                 String filePath = Environment.getExternalStorageDirectory()
                         + "/temporary_holder.jpg";
-
-
                 Bitmap thumbnail = null;
                 try {
                     thumbnail = BitmapFactory.decodeStream(getContentResolver().openInputStream(Utils.path));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-                //Bitmap thePic = extras.getParcelable("data");
                 setImage(thumbnail);
                 mImageBitmap = thumbnail;
             }
             else if(requestCode==UCrop.REQUEST_CROP)
             {
-//                String filePath = Environment.getExternalStorageDirectory()
-//                        + "/temporary_holder.jpg";
                 String filePath = Environment.getExternalStorageDirectory()
                         + "/temporary_holder.jpg";
 
@@ -329,13 +314,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
         }
 
-//			if (bitmap != null) {
-//				//				mImgProfilePic.setScaleType(ScaleType.CENTER_CROP);
-//				user_profile_image.setImageBitmap(bitmap);
-//				user_profile_image.setTag(bitmap);
-//				mImageBitmap = bitmap;
-//			} 
-//		}
     }
 
     private void  performCropGallery(Uri picUri)
@@ -350,7 +328,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            // Create a progressdialog
             mProgressBarDialog = new ProgressBarDialog(context);
             mProgressBarDialog.show();
         }
@@ -363,11 +340,8 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
             Bitmap bitmap = null;
             try {
-                // Download Image from URL
                 InputStream input = new java.net.URL(imageURL).openStream();
-                // Decode Bitmap
                 bitmap = BitmapFactory.decodeStream(input);
-                //  String path = MediaStore.Images.Media.insertImage(mContext.getContentResolver(), bitmap, "Title", null);
                 url = bitmapToUriConverter(bitmap);
 
 
@@ -379,14 +353,12 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
         @Override
         protected void onPostExecute(Uri result) {
-            // Set the bitmap into ImageView
             if (result != null) {
                 Utils.path=result;
                 performNewCrop(result);
             }
             else
                 Syso.info("Could not download the image, Please try again.");
-            // Close progressdialog
             mProgressBarDialog.dismiss();
         }
     }
@@ -394,12 +366,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     public Uri bitmapToUriConverter(Bitmap mBitmap) {
         Uri uri = null;
         try {
-//            final BitmapFactory.Options options = new BitmapFactory.Options();
-//            // Calculate inSampleSize
-//            options.inSampleSize = calculateInSampleSize2(options, 300, 300);
-//
-//            // Decode bitmap with inSampleSize set
-//            options.inJustDecodeBounds = false;
             Bitmap newBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth(), mBitmap.getHeight(),
                     true);
             File file = new File(getFilesDir(), "Image"
@@ -409,7 +375,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
             newBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
-            //get absolute path
             String realPath = file.getAbsolutePath();
             File f = new File(realPath);
             uri = Uri.fromFile(f);
@@ -425,37 +390,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         Intent cropIntent = new Intent(EditProfileActivity.this, ImageCropActivity.class);
         cropIntent.putExtra("imagePath", imgUri);
         startActivityForResult(cropIntent, CROP_PIC);
-    }
-
-    private void performCrop() {
-        // take care of exceptions
-        try {
-            // call the standard crop action intent (the user device may not
-            // support it)
-            Intent cropIntent = new Intent("com.android.camera.action.CROP");
-            // indicate image type and Uri
-            cropIntent.setDataAndType(picUri, "image/*");
-            // set crop properties
-            cropIntent.putExtra("crop", "true");
-            // indicate aspect of desired crop
-            cropIntent.putExtra("aspectX", 1);
-            cropIntent.putExtra("aspectY", 1);
-            // indicate output X and Y
-            cropIntent.putExtra("outputX", 200);
-            cropIntent.putExtra("outputY", 200);
-            // retrieve data on return
-            cropIntent.putExtra("scale", false);
-            cropIntent.putExtra("return-data", true);
-            // start the activity - we handle returning in onActivityResult
-            startActivityForResult(cropIntent, CROP_PIC);
-        }
-        // respond to users whose devices do not support the crop action
-        catch (ActivityNotFoundException anfe) {
-            Toast toast = Toast.makeText(this,
-                    "This device doesn't support the crop action!",
-                    Toast.LENGTH_SHORT);
-            toast.show();
-        }
     }
 
     private void validateUserInput() {
@@ -503,14 +437,11 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     }
 
     private void doRegister() {
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
         final EditProfileApi uploadProfileImage = new EditProfileApi(
                 new ServiceCallback() {
 
                     @Override
                     public void handleOnSuccess(Object object) {
-                        // mProgressBarDialog.dismiss();
                         needToUpdateName = false;
                         UserPreference.getInstance().setUserName(newUsername);
                         upload();
@@ -519,7 +450,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                     @Override
                     public void handleOnFailure(ServiceException exception,
                                                 Object object) {
-                        // mProgressBarDialog.dismiss();
                         if (object != null) {
                             EditProfileRes editProfileRes = (EditProfileRes) object;
                             AlertUtils.showToast(context, editProfileRes.getMessage());
@@ -532,20 +462,16 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
     private void uploadImage() {
         final byte[] profileImage = PictureUtils.getByteArray(mImageBitmap);
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
         final EditProfileApi editProfileApi = new EditProfileApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                // mProgressBarDialog.dismiss();
                 needToUpdatePic = false;
                 upload();
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                // mProgressBarDialog.dismiss();
             }
         });
         if (profileImage != null) {
@@ -561,20 +487,16 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
     private void uploadBgImage() {
         final byte[] bgImage = PictureUtils.getByteArray(mBgImageBitmap);
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
         final EditProfileApi editProfileApi = new EditProfileApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                //  mProgressBarDialog.dismiss();
                 needToUpdateBg = false;
                 upload();
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                // mProgressBarDialog.dismiss();
             }
         });
         if (bgImage != null) {
@@ -614,7 +536,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         if (isEditProfile) {
             finish();
         } else {
-            //
         }
     }
 
@@ -714,7 +635,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                     mImageBitmap = null;
                     profilePic = url;
                     new DownloadImage().execute(profilePic);
-                    //CommonUtility.setImage(context, profilePic, user_profile_image, R.drawable.dum_user);
                 }
 
                 @Override
@@ -763,79 +683,12 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
     public void startCropActivity(@NonNull Uri uri) {
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
-       // UCrop uCrop = UCrop.of(uri, mDestinationUri);
-
-        //uCrop = basisConfig(uCrop);
-      // uCrop = advancedConfig(uCrop);
-
-        //uCrop.start(context);
         CropImage.activity(uri)
                 .setRequestedSize(700, 700, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
-                //.setMaxCropResultSize(2000, 2000)
                 .setFixAspectRatio(true)
                 .setAspectRatio(1,1)
                 .setOutputUri(mDestinationUri)
                 .start(context);
     }
 
-
-    private UCrop basisConfig(@NonNull UCrop uCrop) {
-
-        //uCrop = uCrop.withAspectRatio(1, 1);
-        try {
-            float ratioX = Float.valueOf(2);
-            float ratioY = Float.valueOf(1);
-            if (ratioX > 0 && ratioY > 0) {
-                uCrop = uCrop.withAspectRatio(ratioX, ratioY);
-            }
-        } catch (NumberFormatException e) {
-            Log.d("UCrop", "Number please");
-
-        }
-
-
-        return uCrop;
-    }
-
-
-    private UCrop advancedConfig(@NonNull UCrop uCrop) {
-        UCrop.Options options = new UCrop.Options();
-
-
-        options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
-
-        options.setCompressionQuality(100);
-
-      //  options.setHideBottomControls(false);
-        options.setFreeStyleCropEnabled(true);
-
-
-        return uCrop.withOptions(options);
-    }
-
-    private void handleCropResult(@NonNull Intent result) {
-
-        if (result != null) {
-            onActivityResult(UCrop.REQUEST_CROP, RESULT_OK
-                    , result);
-        } else
-            AlertUtils.showToast(EditProfileActivity.this, R.string.toast_cannot_retrieve_cropped_image);
-//        final Uri resultUri = UCrop.getOutput(result);
-//        if (resultUri != null) {
-//            ResultActivity.startWithUri(SampleActivity.this, resultUri);
-//        } else {
-//            Toast.makeText(SampleActivity.this, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show();
-//        }
-    }
-
-    @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
-    private void handleCropError(@NonNull Intent result) {
-        final Throwable cropError = UCrop.getError(result);
-        if (cropError != null) {
-            Log.e("UCrop Error", "handleCropError: ", cropError);
-            Toast.makeText(EditProfileActivity.this, cropError.getMessage(), Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(EditProfileActivity.this, R.string.toast_unexpected_error, Toast.LENGTH_SHORT).show();
-        }
-    }
 }

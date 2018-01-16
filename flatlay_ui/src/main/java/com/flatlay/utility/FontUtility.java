@@ -13,6 +13,11 @@ public class FontUtility {
 	private static final Hashtable<String, Typeface> proximanovaRegular = new Hashtable<String, Typeface>();
 	private static final Hashtable<String, Typeface> proximanovaSemiBold = new Hashtable<String, Typeface>();
 
+	private static final Hashtable<String, Typeface> montserratLight = new Hashtable<String, Typeface>();
+	private static final Hashtable<String, Typeface> montserratRegular = new Hashtable<String, Typeface>();
+	private static final Hashtable<String, Typeface> montserratSemiBold = new Hashtable<String, Typeface>();
+
+
 	public static Typeface setProximanovaLight(Activity context) {
 
 		String name = "proximanova-light.otf";
@@ -22,6 +27,18 @@ public class FontUtility {
 				proximanovaLight.put(name, t);
 			}
 			return proximanovaLight.get(name);
+		}
+	}
+
+	public static Typeface setMontserratLight(Activity context) {
+
+		String name = "Montserrat-Light.otf";
+		synchronized (montserratLight) {
+			if (!montserratLight.containsKey(name)) {
+				Typeface t = Typeface.createFromAsset(context.getAssets(), name);
+				montserratLight.put(name, t);
+			}
+			return montserratLight.get(name);
 		}
 	}
 
@@ -36,6 +53,19 @@ public class FontUtility {
 			return proximanovaRegular.get(name);
 		}
 	}
+
+	public static Typeface setMontserratRegular(Activity context) {
+
+		String name = "Montserrat-Regular.otf";
+		synchronized (montserratRegular) {
+			if (!montserratRegular.containsKey(name)) {
+				Typeface t = Typeface.createFromAsset(context.getAssets(), name);
+				montserratRegular.put(name, t);
+			}
+			return montserratRegular.get(name);
+		}
+	}
+
 
 	public static Typeface setProximanovaSemibold(Activity context) {
 

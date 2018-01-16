@@ -40,9 +40,6 @@ public class EmailActivity extends BaseActivity implements OnKeyListener,
 		checkEmail();
 		if(CommonUtility.isOnline(context))
 			updateScreen(Screen.EmailScreen);
-
-
-
 	}
 
 	@Override

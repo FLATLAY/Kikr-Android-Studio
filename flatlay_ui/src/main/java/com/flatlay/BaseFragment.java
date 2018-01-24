@@ -147,7 +147,8 @@ public abstract class BaseFragment extends Fragment {
 	}
 	
 	public void hideFotter(){
-		//((HomeActivity) mContext).hideFutter();
+		LinearLayout footerLayout = (LinearLayout) (getActivity().findViewById(R.id.footer));
+		footerLayout.setVisibility(View.GONE);
 	}
 	
 	public void showFotter(){

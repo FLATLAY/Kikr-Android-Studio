@@ -12,7 +12,7 @@
         android:adjustViewBounds="true"
         android:contentDescription="@null"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_splash" />
+        android:src="@drawable/bg_btn_landing" />
 
     <TextView
         android:id="@+id/setPinTextView"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/landing_margin_side"
         android:layout_marginRight="@dimen/landing_margin_side"
-        android:background="@drawable/bg_button_signup"
+        android:background="@drawable/bg_btn_landing"
         android:gravity="center"
         android:paddingBottom="10dp"
         android:text="@string/enter_pin"
@@ -42,7 +42,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="5dp"
             android:layout_weight=".25"
-            android:background="@drawable/bg_button_mobilenumber"
+            android:background="@drawable/bg_btn_landing"
             android:gravity="center"
             android:imeOptions="flagNavigateNext"
             android:inputType="numberPassword"
@@ -57,7 +57,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight=".25"
-            android:background="@drawable/bg_button_mobilenumber"
+            android:background="@drawable/bg_btn_landing"
             android:gravity="center"
             android:imeOptions="flagNavigateNext"
             android:inputType="numberPassword"
@@ -71,7 +71,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight=".25"
-            android:background="@drawable/bg_button_mobilenumber"
+            android:background="@drawable/bg_btn_landing"
             android:gravity="center"
             android:imeOptions="flagNavigateNext"
             android:inputType="numberPassword"
@@ -86,7 +86,7 @@
             android:layout_height="50dp"
             android:layout_marginRight="5dp"
             android:layout_weight=".25"
-            android:background="@drawable/bg_button_mobilenumber"
+            android:background="@drawable/bg_btn_landing"
             android:gravity="center"
             android:inputType="numberPassword"
             android:maxLength="1"

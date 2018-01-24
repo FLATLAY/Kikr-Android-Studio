@@ -2,23 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/dataNotFoundTextView"
-        style="@style/dataNotFoundTextView"
-        android:text="No category found"
-        android:visibility="gone" />
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:gravity="center">
 
-    <ListView
-        android:id="@+id/categoryGridView"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:horizontalSpacing="0dp"
-        android:numColumns="2"
-        android:scrollingCache="false"
-        android:animationCache="false"
-        android:smoothScrollbar="true" />
+        <ListView
+            android:id="@+id/categoryGridView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:animationCache="false"
+            android:horizontalSpacing="0dp"
+            android:numColumns="2"
+            android:scrollingCache="false"
+            android:smoothScrollbar="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#CC000000"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/green_corner_button"
+            android:clickable="true"
+            android:fontFamily="Montserrat"
+            android:gravity="center"
+            android:text="NEXT"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
 
 </LinearLayout>

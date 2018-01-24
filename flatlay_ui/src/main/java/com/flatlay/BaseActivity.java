@@ -138,9 +138,9 @@ public abstract class BaseActivity extends FragmentActivity {
 
     public void setBackHeader() {
 
-        getLeftTextView().setVisibility(View.VISIBLE);
-        getRightButton().setVisibility(View.GONE);
-        getCartText().setVisibility(View.GONE);
+//        getLeftTextView().setVisibility(View.VISIBLE);
+//        getRightButton().setVisibility(View.GONE);
+//        getCartText().setVisibility(View.GONE);
     }
 
 

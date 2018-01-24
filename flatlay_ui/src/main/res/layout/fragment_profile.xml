@@ -103,7 +103,7 @@
                     android:layout_height="25dp"
                     android:clickable="false"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/followinguser"/>
+                    android:src="@drawable/facebook1"/>
 
                 <ImageView
                     android:id="@+id/up_arrow_image_second"
@@ -130,7 +130,7 @@
                     android:layout_height="25dp"
                     android:clickable="false"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/followeruser"/>
+                    android:src="@drawable/facebook1"/>
 
                 <ImageView
                     android:id="@+id/up_arrow_image_third"
@@ -189,7 +189,7 @@
                     android:layout_width="150dp"
                     android:layout_height="132dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/bg_nocollection" />
+                    android:src="@drawable/bg_btn_landing" />
 
                 <TextView
                     android:id="@+id/tvEarnCreditText"

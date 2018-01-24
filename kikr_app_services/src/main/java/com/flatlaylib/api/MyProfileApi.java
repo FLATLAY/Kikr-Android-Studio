@@ -42,6 +42,7 @@ public class MyProfileApi extends AbsService {
 		requestValue = gson.toJson(maps);
 	}
 
+
 	public void getCollectionDetail(String user_id, String following_id, String collection_id) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "getcollectiondetail";
 		requestType = WebConstants.HTTP_METHOD_POST;
@@ -77,9 +78,10 @@ public class MyProfileApi extends AbsService {
 	@Override
 	public String getJsonRequest() {
 		try {
-			JSONArray array = new JSONArray(requestValue);
-			return array.toString();
-		} catch (JSONException e) {
+			//JSONArray array = new JSONArray(requestValue);
+			//return array.toString();
+			return requestValue;
+		} catch (Exception e) {
 			e.printStackTrace();
 			JSONArray array = new JSONArray();
 			return array.toString();

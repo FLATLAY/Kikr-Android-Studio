@@ -1,167 +1,511 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_text_color"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-
-    <LinearLayout
-        android:id="@+id/uploadButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#34BDC0"
-        android:gravity="center"
-        android:padding="@dimen/padding_large">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/margin_large"
-
-            android:drawablePadding="5dp"
-            android:gravity="center_vertical"
-            android:text="@string/invite_friends"
-            android:textColor="@color/white"
-            android:textSize="@dimen/large_text_size" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/loadingTextView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        android:gravity="center"
-        android:text="Loading...\nPlease Wait"
-        android:textColor="@color/btn_green"
-        />
+        android:layout_height="match_parent">
 
-    <View style="@style/cartViewStyle" />
-
-    <include
-        android:id="@+id/itemNotFound"
-        layout="@layout/layout_item_not_found"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/loadingTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Loading...\nPlease Wait"
-        android:textColor="@color/btn_green"
-        android:visibility="gone" />
-
-    <ListView
-        android:id="@+id/inspirationList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/white"
-
-        android:cacheColorHint="#00000000"
-        android:divider="@null"
-        android:listSelector="@android:color/transparent"
-        android:scrollbarSize="1dp"
-        android:scrollbars="vertical"></ListView>
-
-    <FrameLayout
-        android:id="@+id/createcollection_alert"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#CC000000"
-        android:visibility="gone">
-
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#CC000000"
-            android:padding="10dp">
+            android:background="@color/white"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imgDelete"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="right"
-
-                android:padding="5dp"
-                android:src="@drawable/delete" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/imgDelete"
-                android:layout_marginTop="15dp"
-                android:background="#CC000000"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:padding="7dp"
-                    android:text="Collections are used to tag your photos. Without them, your photos won't influence purchases."
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="18dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/netural" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="190dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@drawable/square_linear_layout"
-                    android:gravity="center"
-                    android:orientation="vertical"
-
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center"
-                        android:text="To upload your first post" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:gravity="center"
-                        android:text="you have to have a collection to tag it with" />
-
-                    <Button
-                        android:id="@+id/btnCreateMyCollection"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="30dp"
-                        android:background="@drawable/createcollection_btnbg"
-                        android:drawableLeft="@drawable/ic_add_follow"
-                        android:drawablePadding="5dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:text="Create A Collection"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                android:layout_weight="1">
 
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/uploadButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#34BDC0"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_large"
+
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/margin_large"
+
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/invite_friends"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/large_text_size"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/loadingTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Loading...\nPlease Wait"
+                    android:textColor="@color/btn_green"
+                    android:visibility="gone" />
+
+                <View style="@style/cartViewStyle" />
+
+                <include
+                    android:id="@+id/itemNotFound"
+                    layout="@layout/layout_item_not_found"
+                    android:visibility="gone" />
+
+                <ListView
+                    android:id="@+id/inspirationList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:cacheColorHint="#00000000"
+                    android:divider="@null"
+                    android:listSelector="@android:color/transparent"
+                    android:scrollbars="none"></ListView>
+
+                <FrameLayout
+                    android:id="@+id/createcollection_alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#CC000000"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#CC000000"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/imgDelete"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_gravity="right"
+
+                            android:padding="5dp"
+                            android:src="@drawable/delete" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/imgDelete"
+                            android:layout_marginTop="15dp"
+                            android:background="#CC000000"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:padding="7dp"
+                                android:text="Collections are used to tag your photos. Without them, your photos won't influence purchases."
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/netural" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="190dp"
+                                android:layout_marginTop="40dp"
+                                android:background="@drawable/square_linear_layout"
+                                android:gravity="center"
+                                android:orientation="vertical"
+
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:gravity="center"
+                                    android:text="To upload your first post" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12dp"
+                                    android:gravity="center"
+                                    android:text="you have to have a collection to tag it with" />
+
+                                <Button
+                                    android:id="@+id/btnCreateMyCollection"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="30dp"
+                                    android:background="@drawable/createcollection_btnbg"
+                                    android:drawableLeft="@drawable/ic_add_follow"
+                                    android:drawablePadding="5dp"
+                                    android:paddingLeft="15dp"
+                                    android:paddingRight="15dp"
+                                    android:text="Create A Collection"
+                                    android:textColor="#ffffff"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/bottomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:id="@+id/uploadLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/image_upload_post"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/cards_teal_circle" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image_upload_post2"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/cards_white_circle"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/uploadChoice"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@id/uploadLayout"
+                android:visibility="invisible">
+
+                <HorizontalScrollView
+                    android:id="@+id/productsScrollView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/productLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/fashioniconlayout"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_centerVertical="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/fashionicon"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/fashion"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/beautyiconlayout"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/beautyicon"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/beauty"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/fitnessiconlayout"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/tabborder"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/fitnessicon"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/fitness"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/foodiconlayout"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/foodicon"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/food"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/techiconlayout"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/techicon"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/tech"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/photographyiconlayout"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/photographyicon"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/photography"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/homeiconlayout"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/homeicon"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/home"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/occasioniconlayout"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/occasionicon"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/occasions"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/traveliconlayout"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/travelicon"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/travel"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/cameraLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/image_camera"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/camera_icons_teal_circle" />
+            </RelativeLayout>
+
         </RelativeLayout>
-    </FrameLayout>
 
+        <RelativeLayout
+            android:id="@+id/tabLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/topdrawer"
+            android:gravity="center">
 
+            <LinearLayout
+                android:id="@+id/profile_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_pic"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/linearLayout2"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/profile_icon"
+                    app:civ_border_color="#6FE5CC"
+                    app:civ_border_width="1dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/search_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/topsearch"
+                    android:hint="Search"
+                    android:textColorHint="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cart_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp">
+
+                <ImageView
+                    android:id="@+id/cart"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/cart_icon_kopie" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>
+

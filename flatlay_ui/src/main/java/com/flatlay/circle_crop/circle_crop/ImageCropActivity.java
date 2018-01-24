@@ -111,13 +111,13 @@ public class ImageCropActivity extends AppCompatActivity {
                     ExifInterface.ORIENTATION_NORMAL);
             switch (orientation) {
                 case ExifInterface.ORIENTATION_ROTATE_270:
-                    rotate = 270;
+                    rotate = 0;
                     break;
                 case ExifInterface.ORIENTATION_ROTATE_180:
-                    rotate = 180;
+                    rotate = 0;
                     break;
                 case ExifInterface.ORIENTATION_ROTATE_90:
-                    rotate = 90;
+                    rotate = 0;
                     break;
             }
         } catch (Exception e) {
@@ -431,8 +431,6 @@ public class ImageCropActivity extends AppCompatActivity {
     public Uri bitmapToUriConverter(Bitmap mBitmap) {
         Uri uri = null;
         try {
-
-
             FileOutputStream out =openFileOutput(mFileTemp.getName(),
                     Context.MODE_PRIVATE);
             mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);

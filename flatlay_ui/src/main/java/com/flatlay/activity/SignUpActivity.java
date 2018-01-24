@@ -3,12 +3,9 @@ package com.flatlay.activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Color;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +14,8 @@ import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
 
-import com.flatlay.BaseActivity;
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
 import com.flatlay.ui.ProgressBarDialog;
@@ -239,14 +233,11 @@ public class SignUpActivity extends BaseFragment implements OnClickListener, OnK
             setHelpPreference();
             Bundle bundle = new Bundle();
             bundle.putString("email", "");
-            CommonUtility.hideSoftKeyboard(getActivity());
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.baseFrameLayout, new IntroductionActivity(), null)
-                    .addToBackStack(null)
-                    .commit();
+            //what about gender? password??
+            startActivity(EditProfileActivity.class,bundle);
         }
-        //finish();
+        //necessary?
+        getActivity().finish();
     }
 
     private void setUserPreferences(RegisterUserResponse response) {
@@ -321,305 +312,3 @@ public class SignUpActivity extends BaseFragment implements OnClickListener, OnK
 
 }
 
-//public class SignUpActivity extends BaseActivity implements OnClickListener, OnKeyListener, ServiceCallback {
-//    private EditText mEmailEditText, mPasswordEditText, mreemailEditText;
-//    private ProgressBarDialog mProgressBarDialog;
-//    private TextView mMaleTextView, mFemaleTextView, mbackToLanding, mSignUp;
-//    private boolean mIsMaleSelected = true;
-//    private boolean ratherNotSelected = false;
-//    private VideoView vedio;
-//    private Button mNextButton;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        CommonUtility.noTitleActivity(context);
-//        setContentView(R.layout.signup2);
-//        setOnKeyListener();
-//        vedio = (VideoView) findViewById(R.id.vedio);
-//
-//    }
-//
-//    private void setOnKeyListener() {
-//        mPasswordEditText.setOnKeyListener(this);
-//    }
-//
-//    @Override
-//    public void onClick(View v) {
-//
-//        switch (v.getId()) {
-//            case R.id.backToLanding:
-//                CommonUtility.hideSoftKeyboard(context);
-//                goBack();
-//                break;
-//            case R.id.nextButton:
-//                CommonUtility.hideSoftKeyboard(context);
-//                validateUserInput();
-//                break;
-//            case R.id.maleTextView:
-//                mIsMaleSelected = true;
-//                ratherNotSelected = false;
-//                resetGender();
-//                break;
-//            case R.id.femaleTextView:
-//                mIsMaleSelected = false;
-//                ratherNotSelected = false;
-//                resetGender();
-//                break;
-//        }
-//    }
-//
-//    private void goBack() {
-//        startActivity(LandingActivity.class);
-//        finish();
-//    }
-//
-//    private void resetGender() {
-//        // TODO Auto-generated method stub
-//        if (mIsMaleSelected) {
-//            mMaleTextView.setTextColor(getResources().getColor(R.color.btn_green));
-//            mFemaleTextView.setTextColor(getResources().getColor(R.color.black));
-//            mMaleTextView.setBackgroundResource(R.drawable.flatlayloginboardernew1);
-//            mFemaleTextView.setBackgroundResource(R.drawable.flatlayloginboardernew2);
-//
-//        } else {
-//            mMaleTextView.setTextColor(getResources().getColor(R.color.black));
-//            mFemaleTextView.setTextColor(getResources().getColor(R.color.btn_green));
-//            mMaleTextView.setBackgroundResource(R.drawable.flatlayloginboardernew2);
-//            mFemaleTextView.setBackgroundResource(R.drawable.flatlayloginboardernew1);
-//        }
-//    }
-//
-//    @Override
-//    public void initLayout() {
-//        mEmailEditText = (EditText) findViewById(R.id.emailEditText);
-//        mPasswordEditText = (EditText) findViewById(R.id.passwordEditText);
-//        mreemailEditText = (EditText) findViewById(R.id.reemailEditText);
-//        mMaleTextView = (TextView) findViewById(R.id.maleTextView);
-//        mFemaleTextView = (TextView) findViewById(R.id.femaleTextView);
-//        mbackToLanding = (TextView) findViewById(R.id.backToLanding);
-//        mNextButton = (Button) findViewById(R.id.nextButton);
-//        mSignUp = (TextView) findViewById(R.id.signUpText);
-//        SignUpTextWatcher watcher = new SignUpTextWatcher();
-//        mEmailEditText.addTextChangedListener(watcher);
-//        mPasswordEditText.addTextChangedListener(watcher);
-//        mreemailEditText.addTextChangedListener(watcher);
-//    }
-//
-//    @Override
-//    public void setupData() {
-//
-//    }
-//
-//    @Override
-//    public void headerView() {
-//        hideHeader();
-//    }
-//
-//    @Override
-//    public void setUpTextType() {
-//        mEmailEditText.setTypeface(FontUtility.setMontserratLight(context));
-//        mreemailEditText.setTypeface(FontUtility.setMontserratLight(context));
-//        mPasswordEditText.setTypeface(FontUtility.setMontserratLight(context));
-//        mMaleTextView.setTypeface(FontUtility.setMontserratLight(context));
-//        mFemaleTextView.setTypeface(FontUtility.setMontserratLight(context));
-//        mbackToLanding.setTypeface(FontUtility.setMontserratLight(context));
-//        mNextButton.setTypeface(FontUtility.setMontserratLight(this));
-//        mSignUp.setTypeface(FontUtility.setMontserratLight(this));
-//    }
-//
-//    @Override
-//    public void setClickListener() {
-//        mbackToLanding.setOnClickListener(this);
-//        mMaleTextView.setOnClickListener(this);
-//        mFemaleTextView.setOnClickListener(this);
-//        mNextButton.setOnClickListener(this);
-//    }
-//
-//    @Override
-//    public boolean onKey(View v, int keyCode, KeyEvent event) {
-//        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-//            CommonUtility.hideSoftKeyboard(context);
-//            validateUserInput();
-//            return true;
-//        }
-//        return false;
-//    }
-//
-//    private void validateUserInput() {
-//
-//        boolean isValid = true;
-//        String email = mEmailEditText.getText().toString().trim();
-//        String reemail = mEmailEditText.getText().toString().trim();
-//        String password = mPasswordEditText.getText().toString().trim();
-//        String gender = mIsMaleSelected ? "male" : "female";
-//        if (ratherNotSelected)
-//            gender = "rather not";
-//        if (email.length() == 0) {
-//            isValid = false;
-//            mEmailEditText.requestFocus();
-//            this.mEmailEditText.setBackgroundResource(R.drawable.flatlayloginboardernew3);
-//            AlertUtils.showToast(context, R.string.alert_register_email);
-//        } else if (!CommonUtility.isEmailValid(email)) {
-//            isValid = false;
-//            mEmailEditText.requestFocus();
-//            this.mEmailEditText.setBackgroundResource(R.drawable.flatlayloginboardernew3);
-//            AlertUtils.showToast(context,
-//                    R.string.alert_register_email_verification);
-//        } else if (!reemail.equals(email)) {
-//            mreemailEditText.requestFocus();
-//            this.mreemailEditText.setBackgroundResource(R.drawable.flatlayloginboardernew3);
-//            AlertUtils.showToast(context,
-//                    "Email does not match");
-//        } else if (password.length() == 0) {
-//            isValid = false;
-//            mPasswordEditText.requestFocus();
-//            this.mPasswordEditText.setBackgroundResource(R.drawable.flatlayloginboardernew3);
-//            AlertUtils.showToast(context, R.string.alert_register_password);
-//        } else if (password.length() < AppConstants.PASSWORD_MIN_LENGTH) {
-//            isValid = false;
-//            mPasswordEditText.requestFocus();
-//            this.mPasswordEditText.setBackgroundResource(R.drawable.flatlayloginboardernew3);
-//            AlertUtils.showToast(context, R.string.alert_register_password_length);
-//        }
-//
-//        if (isValid && checkInternet()) {
-//            this.mNextButton.setTextColor(Color.WHITE);
-//            this.mEmailEditText.setBackgroundResource(R.drawable.flatlayloginboardernew2);
-//            this.mreemailEditText.setBackgroundResource(R.drawable.flatlayloginboardernew2);
-//            this.mPasswordEditText.setBackgroundResource(R.drawable.flatlayloginboardernew2);
-//            registerViaEamil(email, password, gender);
-//        }
-//
-//    }
-//
-//
-//    protected void showPinScreen() {
-//        startActivity(PinAuthActivity.class);
-//    }
-//
-//    private void registerViaEamil(String email, String password, String gender) {
-//
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
-//
-//        final RegisterUserApi service = new RegisterUserApi(this);
-//        service.registerViaEmail(email, password, gender, DeviceUtils.getPhoneModel(), CommonUtility.getDeviceTocken(context), Screen.UserNameScreen, "android", CommonUtility.getDeviceId(context));
-//        service.execute();
-//
-//        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                service.cancel();
-//            }
-//        });
-//    }
-//
-//    @Override
-//    public void handleOnSuccess(Object object) {
-//        mProgressBarDialog.dismiss();
-//        Syso.info("In handleOnSuccess>>" + object);
-//        if (object != null) {
-//            RegisterUserResponse response = (RegisterUserResponse) object;
-//            setUserPreferences(response);
-//            setHelpPreference();
-//            Bundle bundle = new Bundle();
-//            bundle.putString("email", "");
-//            //startActivity(EditProfileActivity.class,bundle);
-//        }
-//        finish();
-//    }
-//
-//    private void setUserPreferences(RegisterUserResponse response) {
-//        UserPreference.getInstance().setUserID(response.getId());
-//        UserPreference.getInstance().setCurrentScreen(Screen.UserNameScreen);
-//        UserPreference.getInstance().setAccessToken(response.gettoken());
-//        UserPreference.getInstance().setIsCreateWalletPin(true);
-//        UserPreference.getInstance().setcheckedIsConnected(true);
-//        UserPreference.getInstance().setEmail(mEmailEditText.getText().toString().trim());
-//        UserPreference.getInstance().setCartID(response.getCart_id());
-//        UserPreference.getInstance().setPassword();
-//    }
-//
-//    private void setHelpPreference() {
-//        HelpPreference.getInstance().setHelpCart("yes");
-//        HelpPreference.getInstance().setHelpCollection("yes");
-//        HelpPreference.getInstance().setHelpInspiration("yes");
-//        HelpPreference.getInstance().setHelpKikrCards("yes");
-//        HelpPreference.getInstance().setHelpPinMenu("yes");
-//        HelpPreference.getInstance().setHelpSideMenu("yes");
-//        HelpPreference.getInstance().setHelpFriendsSideMenu("yes");
-//    }
-//
-//    @Override
-//    public void handleOnFailure(ServiceException exception, Object object) {
-//        mProgressBarDialog.dismiss();
-//        Syso.info("In handleOnFailure>>" + object);
-//        if (object != null) {
-//            RegisterUserResponse response = (RegisterUserResponse) object;
-//            AlertUtils.showToast(context, response.getMessage());
-//        } else {
-//            AlertUtils.showToast(context, R.string.invalid_response);
-//        }
-//    }
-//
-//    @Override
-//    public void onBackPressed() {
-//        goBack();
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        videostart();
-//    }
-//
-//    public void videostart() {
-//
-//        try {
-//            vedio.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//                public void onCompletion(MediaPlayer mp) {
-//                    mp.setLooping(true);
-//                    vedio.start(); //TODO: need to make transition seamless.
-//                    //need to be replaced by youtube
-//                }
-//            });
-//
-//            String uriPath = "android.resource://com.flatlay/" + R.raw.flatlay_guide;
-//            vedio.setVideoPath(uriPath);
-//            Uri uri = Uri.parse(uriPath);
-//            vedio.setVideoURI(uri);
-//            vedio.requestFocus();
-//            vedio.start();
-//        } catch (Exception e) {
-//
-//        }
-//    }
-//
-//    private class SignUpTextWatcher implements TextWatcher {
-//        @Override
-//        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//        }
-//
-//        @Override
-//        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//            String email = mEmailEditText.getText().toString();
-//            String password = mPasswordEditText.getText().toString();
-//            String reEmail = mreemailEditText.getText().toString();
-//
-//            if (email != null && email.length() != 0 && CommonUtility.isEmailValid(email)
-//                    && password != null && password.length() != 0 && password.length() >= AppConstants.PASSWORD_MIN_LENGTH
-//                    && reEmail != null && reEmail.equals(email)) {
-//                mNextButton.setTextColor(Color.WHITE);
-//            } else
-//                mNextButton.setTextColor(Color.GRAY);
-//        }
-//
-//        @Override
-//        public void afterTextChanged(Editable editable) {
-//
-//        }
-//    }
-//
-//}

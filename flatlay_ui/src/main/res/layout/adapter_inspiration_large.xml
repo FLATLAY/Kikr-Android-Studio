@@ -14,6 +14,7 @@
         card_view:cardUseCompatPadding="true"
         card_view:cardCornerRadius="9dp">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,7 +84,7 @@
                     android:layout_marginRight="7dp"
                     app:riv_corner_radius="7dp"
                     app:riv_border_width="1dp"
-                    app:riv_border_color="#999A9A"/>
+                    app:riv_border_color="@color/black"/>
 
 
                 <TextView
@@ -156,7 +157,7 @@
                         android:layout_centerVertical="true"
                         android:background="@color/white"
                         android:layout_gravity="bottom"
-                        android:layout_marginTop="385dp"
+                        android:layout_marginTop="250dp"
                         android:orientation="vertical">
 
                         <RelativeLayout
@@ -188,8 +189,8 @@
                                 <de.hdodenhof.circleimageview.CircleImageView
                                     xmlns:app="http://schemas.android.com/apk/res-auto"
                                     android:id="@+id/userImage"
-                                    android:layout_width="@dimen/inspiration_user_image"
-                                    android:layout_height="@dimen/inspiration_user_image"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true"
                                     android:layout_alignTop="@+id/linearLayout2"
@@ -216,7 +217,7 @@
                                     android:padding="@dimen/padding_tiny"
                                     android:text="User Name"
                                     android:textColor="@color/black"
-                                    android:textSize="18dp" />
+                                    android:textSize="13dp" />
 
                             </LinearLayout>
 
@@ -231,8 +232,8 @@
 
                                 <ImageView
                                     android:id="@+id/likeCountTextImage"
-                                    android:layout_width="35dp"
-                                    android:layout_height="28dp"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
                                     android:layout_marginTop="5dp"
                                     android:layout_toRightOf="@+id/userImage"
                                     android:gravity="center"
@@ -240,9 +241,8 @@
 
                                 <ImageView
                                     android:id="@+id/CommentCountTextImage"
-                                    android:layout_width="35dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginLeft="8dp"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
                                     android:layout_marginRight="8dp"
                                     android:layout_marginTop="5dp"
                                     android:layout_toRightOf="@+id/likeCountTextImage"
@@ -311,7 +311,7 @@
                                         android:textColor="@android:color/black"
                                         android:textSize="14dp"
                                         android:textStyle="bold"
-                                        android:visibility="visible" />
+                                        android:visibility="gone" />
 
                                     <TextView
                                         android:id="@+id/staticLikes"
@@ -324,8 +324,7 @@
                                         android:textColor="@android:color/black"
                                         android:textSize="14dp"
                                         android:textStyle="bold"
-                                        android:visibility="visible" />
-
+                                        android:visibility="gone" />
 
                                 </LinearLayout>
 
@@ -342,7 +341,6 @@
                                 android:paddingLeft="12dp"
                                 android:paddingRight="12dp"
                                 android:weightSum="1">
-
 
                                 <LinearLayout
                                     android:id="@+id/onlyShares"
@@ -361,8 +359,8 @@
 
                                         <ImageView
                                             android:id="@+id/fb_share"
-                                            android:layout_width="27dp"
-                                            android:layout_height="25dp"
+                                            android:layout_width="19dp"
+                                            android:layout_height="19dp"
                                             android:layout_marginTop="5dp"
                                             android:gravity="center"
                                             android:src="@drawable/facebooklogoo" />
@@ -370,41 +368,38 @@
 
                                         <ImageView
                                             android:id="@+id/tw_share"
-                                            android:layout_width="27dp"
-                                            android:layout_height="25dp"
+                                            android:layout_width="19dp"
+                                            android:layout_height="19dp"
                                             android:layout_marginTop="5dp"
                                             android:layout_marginLeft="10dp"
                                             android:layout_toRightOf="@+id/fb_share"
                                             android:gravity="center"
                                             android:src="@drawable/twitterlogoo" />
 
-
                                         <com.twitter.sdk.android.core.identity.TwitterLoginButton
                                             android:id="@+id/tw_real_share"
-                                            android:layout_width="27dp"
-                                            android:layout_height="25dp"
+                                            android:layout_width="19dp"
+                                            android:layout_height="19dp"
                                             android:layout_marginTop="5dp"
                                             android:layout_marginLeft="10dp"
                                             android:gravity="center"
                                             android:layout_toRightOf="@+id/fb_share"
                                             android:visibility="gone"/>
 
-
                                         <ImageView
                                             android:id="@+id/pin_share"
-                                            android:layout_width="27dp"
-                                            android:layout_height="25dp"
+                                            android:layout_width="19dp"
+                                            android:layout_height="19dp"
                                             android:layout_marginTop="5dp"
                                             android:layout_marginLeft="10dp"
                                             android:layout_toRightOf="@+id/userImage"
                                             android:gravity="center"
                                             android:src="@drawable/pinterestlogoo" />
 
-
                                         <ImageView
                                             android:id="@+id/gen_share"
-                                            android:layout_width="27dp"
-                                            android:layout_height="25dp"
+                                            android:layout_width="19dp"
+                                            android:layout_height="19dp"
                                             android:layout_marginTop="5dp"
                                             android:layout_marginLeft="10dp"
                                             android:layout_toRightOf="@+id/pin_share"

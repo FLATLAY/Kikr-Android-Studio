@@ -24,14 +24,14 @@ import com.flatlaylib.utils.Syso;
 
 public class ContextMenuView extends FrameLayout {
 
-    private static final int[] ITEM_DRAWABLES = {R.drawable.likewhite, R.drawable.ic_add_collection_unselect,
-            R.drawable.ic_cart_unselect, R.drawable.sharewhite};
+    private static final int[] ITEM_DRAWABLES = {R.drawable.gray_heart_3x, R.drawable.gray_plus,
+            R.drawable.gray_cart_3x, R.drawable.gray_store, R.drawable.share_grey_kopie_2x};
 
 
     private static final int[] ITEM_DRAWABLES_SELECTED = {R.drawable.likegreen, R.drawable.ic_add_collection_selected,
             R.drawable.ic_cart_selected, R.drawable.sharegreen};
-    private static final String[] ITEM_NAMES = {"Like", "Add to Collection", "Add to Cart", "Share"};
-    private static final String[] ITEM_NAMES2 = {"Unlike", "Add to Collection ", "Add to Cart", "Share"};
+    private static final String[] ITEM_NAMES = {"Like", "Add to Collection", "Add to Cart","View On Store Site", "Share"};
+    private static final String[] ITEM_NAMES2 = {"Unlike", "Add to Collection ", "Add to Cart", "View On Store Site","Share"};
 
 
     ArcLayout arcLayout;

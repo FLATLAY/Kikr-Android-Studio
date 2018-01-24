@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Connect with facebook"
+            android:text="Connect with facebook2"
             android:textColor="#007AFF"
             android:textSize="18dp"
             android:textStyle="bold" />

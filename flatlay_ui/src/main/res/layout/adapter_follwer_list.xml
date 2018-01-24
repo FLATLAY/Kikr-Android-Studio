@@ -19,7 +19,7 @@
             android:layout_width="@dimen/discover_bottom_height"
             android:layout_height="@dimen/discover_bottom_height"
             android:scaleType="center"
-            android:src="@drawable/followeruser" />
+            android:src="@drawable/facebook1"/>
 
         <TextView
             android:id="@+id/follower_user_name"

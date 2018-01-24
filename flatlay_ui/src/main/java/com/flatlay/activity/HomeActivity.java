@@ -1,26 +1,36 @@
 package com.flatlay.activity;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -31,20 +41,30 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.braintreepayments.api.Braintree;
+import com.flatlay.FirebaseMsgService;
 import com.flatlay.KikrApp;
 import com.flatlay.KikrApp.TrackerName;
 import com.flatlay.R;
+
 import com.flatlay.dialog.LogoutDialogWithTab;
 import com.flatlay.dialog.PostUploadTagDialog;
+
+import com.flatlay.fragment.FragmentDiscoverNew;
+
+import com.flatlay.fragment.FragmentInspirationSection;
+import com.flatlay.fragment.FragmentSettings;
 
 import com.flatlay.menu.ArcLayout;
 import com.flatlay.menu.ContextMenuView;
 import com.flatlay.post_upload.FragmentPostUploadTag;
+import com.flatlay.post_upload.ProductSearchTagging;
 import com.flatlay.sessionstore.SessionStore;
 import com.flatlay.twitter.OauthItem;
 import com.flatlay.twitter.TwitterOAuthActivity;
@@ -56,11 +76,18 @@ import com.flatlay.utility.MarshmallowPermissions;
 import com.flatlay.utility.UiUpdate;
 import com.flatlaylib.api.BraintreePaymentApi;
 import com.flatlaylib.api.CartApi;
+import com.flatlaylib.api.ConnectWithFacebookApi;
 import com.flatlaylib.api.ConnectWithTwitterApi;
 import com.flatlaylib.api.FbTwFriendsApi;
+import com.flatlaylib.api.FollowUserApi;
+import com.flatlaylib.api.GetConnectedWithSocialApi;
+import com.flatlaylib.api.GetUUIDApi;
 import com.flatlaylib.api.InspirationSectionApi;
+import com.flatlaylib.api.KikrCreditsApi;
+import com.flatlaylib.api.TwoTapApi;
 import com.flatlaylib.api.UpdateCurrentScreenApi;
 import com.flatlaylib.api.WalletPinApi;
+import com.flatlaylib.bean.FbUser;
 import com.flatlaylib.bean.Product;
 import com.flatlaylib.bean.ProductFeedItem;
 import com.flatlaylib.bean.TwitterFriendList;
@@ -68,33 +95,54 @@ import com.flatlaylib.bean.Uuid;
 import com.flatlaylib.db.DatabaseHelper;
 import com.flatlaylib.db.HelpPreference;
 import com.flatlaylib.db.UserPreference;
+import com.flatlaylib.db.dao.UuidDAO;
 import com.flatlaylib.service.ServiceCallback;
 import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.BraintreePaymentRes;
 import com.flatlaylib.service.res.CartRes;
+import com.flatlaylib.service.res.ConnectWithFacebookRes;
 import com.flatlaylib.service.res.ConnectWithTwitterRes;
-
+import com.flatlaylib.service.res.FollowUserRes;
+import com.flatlaylib.service.res.GetConnectedWithSocialRes;
+import com.flatlaylib.service.res.GetUUIDRes;
 import com.flatlaylib.service.res.InspirationRes;
+import com.flatlaylib.service.res.KikrCreditsRes;
 import com.flatlaylib.service.res.WalletPinRes;
 import com.flatlaylib.utils.AlertUtils;
+import com.flatlaylib.utils.StringUtils;
 import com.flatlaylib.utils.Syso;
 import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.pinterest.android.pdk.PDKCallback;
 import com.pinterest.android.pdk.PDKClient;
-;
+import com.pinterest.android.pdk.PDKException;
+import com.pinterest.android.pdk.PDKResponse;
+import com.pinterest.android.pdk.Utils;
+import com.soundcloud.android.crop.Crop;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.identity.TwitterAuthClient;
+import com.yalantis.ucrop.UCrop;
+
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
 import io.branch.referral.BranchShortLinkBuilder;
@@ -112,6 +160,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     public static TextView gallery, camera, instagram;
     private FragmentActivity context;
     View viewHeader;
+
+    //private CircleImageView profile_pic;
 
     private ActionBar actionBar;
     private TextView menuRightTextView;
@@ -150,19 +200,24 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private TextView logoutTextView, supportTextView, settingsTextView, inviteTextView, kikrChatTextView, checkInTextView;
     private TextView dealTextview, orderTextView, walletTextView, kikrCreditTextView, viewProfileTextView, kikrGuideTextView, viewSearchTextView;
 
-    LinearLayout tab_layout, cart_tab, search_tab, upload_post_tab, profile_tab, message_tab;
+    //RelativeLayout tab_layout1;
+
+    //LinearLayout cart_tab, search_tab, profile_tab;
     private FirebaseAnalytics mFirebaseAnalytics;
     private boolean isFirstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.w("Activity","HomeActivity");
+        Log.w("Activity", "HomeActivity");
         setContentView(R.layout.activity_home);
         if (homeActivtyList != null) {
             homeActivtyList.add(this);
         }
         UserPreference.getInstance().setCurrentScreen(Screen.HomeScreen);
+
+
+        // Branch Init
         Branch.getInstance().initSession(new Branch.BranchReferralInitListener() {
             // Branch Link Data
             @Override
@@ -183,6 +238,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
         setActionBar();
         if (UserPreference.getInstance().getIsCheckBluetooth())
+
             inItMethods();
         addMenuLayouts();
         if (AppConstants.isFromTutorial) {
@@ -191,6 +247,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 updateScreen(Screen.HomeScreen);
         }
         registerHomeReceiver();
+        // Syso.info("IP address:"+CommonUtility.getIpAddress(context));
+
         Tracker t = ((KikrApp) getApplication()).getTracker(TrackerName.APP_TRACKER);
         t.setScreenName("HomeActivity");
         t.send(new HitBuilders.ScreenViewBuilder().build());
@@ -199,20 +257,27 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
         if (settings.getBoolean("my_first_time", true)) {
             firstTime = true;
+            // record the fact that the app has been started at least once
             settings.edit().putBoolean("my_first_time", false).commit();
         }
 
+        // getKikrCredits();
         Product prod = (Product) getIntent().getSerializableExtra("productobj");
         if (prod != null) {
             Bundle bundle = new Bundle();
             bundle.putSerializable("data", prod);
-            Log.w("HomeActivity","FragmentDiscoverDetail()");
         }
 
         if (getIntent().getStringExtra("profile_collection") != null) {
         }
+        //  PushTest.pushFCMNotification();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         isFirstTime = true;
+//        if (getIntent().getExtras() != null) {
+//            // Call your NotificationActivity here..
+//            Intent intent = new Intent(HomeActivity.this, FirebaseMsgService.class);
+//            startActivity(intent);
+//        }
     }
 
     @Override
@@ -225,9 +290,54 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         return kikrCredit;
     }
 
+    private void getKikrCredits() {
+        final KikrCreditsApi creditsApi = new KikrCreditsApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
+                final KikrCreditsRes kikrCreditsRes = (KikrCreditsRes) object;
+                kikrCredit = StringUtils.getDoubleValue(kikrCreditsRes.getAmount());
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    KikrCreditsRes response = (KikrCreditsRes) object;
+                    AlertUtils.showToast(context, response.getMessage());
+                } else {
+                    AlertUtils.showToast(context, R.string.invalid_response);
+                }
+            }
+        });
+        creditsApi.getKikrCredits(UserPreference.getInstance().getUserID());
+        creditsApi.execute();
+    }
 
     double localCount;
     Runnable runnable;
+
+    protected void showKikrCredit() {
+        totalCredits.setVisibility(View.VISIBLE);
+        localCount = 0;
+        final Handler handler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+//				totalCredits.setText(localCount+" Cr");
+                totalCredits.setText(Math.round(localCount) + " Cr");
+                localCount += kikrCredit / 20;
+                if (localCount <= kikrCredit)
+                    handler.postDelayed(runnable, 50);
+                else
+                    totalCredits.setText(Math.round(kikrCredit) + " Cr");
+//                Syso.info("===================== kikrCredit: "+kikrCredit+",localCount:"+localCount);
+
+            }
+        };
+        handler.postDelayed(runnable, 1);
+    }
 
     public void inItMethods() {
         initLayout();
@@ -242,6 +352,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         layouts.add(menuConnectWithFacebookLayout);
         layouts.add(menuKikrCreditsLayout);
         layouts.add(menuActivityLayout);
+        //layouts.add(menuMyFriendsLayout);
         layouts.add(menuInviteFriendsLayout);
         layouts.add(menuCheckInLayout);
         layouts.add(menuSupportLayout);
@@ -312,6 +423,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         postuploadtagbackTextView.setOnClickListener(this);
         menuSearchImageView.setOnClickListener(this);
         menuRightTextView.setOnClickListener(this);
+
+
     }
 
 
@@ -325,23 +438,87 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         actionBar.hide();
     }
 
+    public void hideBackButtonvalue() {
+        menuBackTextView.setVisibility(View.GONE);
+
+        camera.setVisibility(View.GONE);
+        gallery.setVisibility(View.GONE);
+        instagram.setVisibility(View.GONE);
+        mstatus.setVisibility(View.GONE);
+        crossarrow.setVisibility(View.GONE);
+        homeImageView.setVisibility(View.VISIBLE);
+    }
 
     private void startUploadPostSection() {
-
+       // cart_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+      //  profile_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+       // upload_post_tab.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
+       // search_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+
+
+        }
+    }
+
+    public void checkPermissions() {
+
+        if (Build.VERSION.SDK_INT >= 23) {
+
+            if (checkSelfPermission(Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MarshmallowPermissions.CAMERA_PERMISSION_REQUEST_CODE);
+            } else if (checkSelfPermission(Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.CAMERA},
+                        MarshmallowPermissions.CAMERA_PERMISSION_REQUEST_CODE);
+            } else if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        MarshmallowPermissions.CAMERA_PERMISSION_REQUEST_CODE);
+            } else if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MarshmallowPermissions.CAMERA_PERMISSION_REQUEST_CODE);
+            } else {
+                Log.w("HomeActivity", "Here1");
+                startUploadPostSection();
+
+            }
+        } else
+            startUploadPostSection();
 
     }
 
+    public void fbLogIn() {
+        Intent i = new Intent(context, FbSignActivity.class);
+        i.putExtra("getFriendList", false);
+        i.putExtra("getProfilePic", false);
+        startActivityForResult(i, AppConstants.REQUEST_CODE_FB_LOGIN);
+    }
+
+
+    private void openProfileHelpScreen() {
+        if (HelpPreference.getInstance().getHelpSideMenu().equals("yes")) {
+            HelpPreference.getInstance().setHelpSideMenu("no");
+        }
+    }
+
+    private void openFriendsHelpScreen() {
+        if (HelpPreference.getInstance().getHelpFriendsSideMenu().equals("yes")) {
+            HelpPreference.getInstance().setHelpFriendsSideMenu("no");
+        }
+    }
+
     public void initLayout() {
-        tab_layout = (LinearLayout) findViewById(R.id.tabLayout);
-        cart_tab = (LinearLayout) findViewById(R.id.cart_tab);
-        profile_tab = (LinearLayout) findViewById(R.id.profile_tab);
-        upload_post_tab = (LinearLayout) findViewById(R.id.upload_post_tab);
-        message_tab = (LinearLayout) findViewById(R.id.message_tab);
-        search_tab = (LinearLayout) findViewById(R.id.search_tab);
+       // tab_layout1 = (RelativeLayout) findViewById(R.id.tabLayout1);
+       // cart_tab = (LinearLayout) findViewById(R.id.cart_layout);
+        //profile_tab = (LinearLayout) findViewById(R.id.profile_tab);
+        //upload_post_tab = (LinearLayout) findViewById(R.id.upload_post_tab);
+        //search_tab = (LinearLayout) findViewById(R.id.search_tab);
+        //profile_pic = (CircleImageView) findViewById(R.id.profile_pic);
         menuSearchLayout = (LinearLayout) findViewById(R.id.menuSearchLayout);
         menuProfileLayout = (LinearLayout) findViewById(R.id.menuProfileLayout);
         menuConnectWithTwitterLayout = (LinearLayout) findViewById(R.id.menuConnectWithTwitterLayout);
@@ -358,7 +535,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         kikerWalletLayout = (LinearLayout) findViewById(R.id.kikerWalletLayout);
         menuProfileOptionLayout = (LinearLayout) findViewById(R.id.menuProfileOptionLayout);
         menuInterestsLayout = (LinearLayout) findViewById(R.id.menuInterestsLayout);
-        menuInterestsLayout.setVisibility(View.INVISIBLE);
         twitterView = findViewById(R.id.twitterView);
         fbView = findViewById(R.id.fbView);
         menuDealImageView = (ImageView) findViewById(R.id.menuDealImageView);
@@ -393,21 +569,71 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         kikrGuideTextView = (TextView) findViewById(R.id.kikrGuideTextView);
         viewSearchTextView = (TextView) findViewById(R.id.viewSearchTextView);
 
-        cart_tab.setOnClickListener(this);
-        search_tab.setOnClickListener(this);
-        message_tab.setOnClickListener(this);
-        profile_tab.setOnClickListener(this);
-        upload_post_tab.setOnClickListener(this);
+       // cart_tab.setOnClickListener(this);
+        //search_tab.setOnClickListener(this);
+        //profile_tab.setOnClickListener(this);
+        //upload_post_tab.setOnClickListener(this);
+
         CommonUtility.hideSoftKeyboard(this);
     }
 
     public void setupData() {
+        if (getIntent().getStringExtra("inspiration_id") != null) {
+            if (!TextUtils.isEmpty(getIntent().getStringExtra("inspiration_id")) && getIntent().getStringExtra("section").equals("likeinsp") || getIntent().getStringExtra("section").equals("commentinsp")) {
+                String id = getIntent().getStringExtra("inspiration_id");
+                cleanActivity();
+            } else if (getIntent().getStringExtra("section").equals("follow")) {
+                cleanActivity();
+            }
+        } else if (getIntent().getStringExtra("section") != null) {
+            if (getIntent().getStringExtra("section").equals("placeorder")) {
+                UserPreference.getInstance().setIsNotificationClicked(true);
+                String otherdata = getIntent().getStringExtra("otherdata");
+                Log.w("HomeActivity", "FragmentPlaceMyOrder()");
+                cleanActivity();
+            } else if (getIntent().getStringExtra("section").equals("commission") || getIntent().getStringExtra("section").equals("collectionwithfiveproducts") || getIntent().getStringExtra("section").equals("invite")) {
+                cleanActivity();
+            } else if (getIntent().getStringExtra("section").equals("twotap")) {
+                String otherdata = getIntent().getStringExtra("otherdata");
+                try {
+                    JSONObject jsonObject = new JSONObject(otherdata);
+                    String msg = jsonObject.getString("message");
+                    showMessage(msg, true);
+                    cleanActivity();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (getIntent().getStringExtra("section").equals("cancel")) {
+                String otherdata = getIntent().getStringExtra("message");
+                showMessage(otherdata, false);
+                cleanActivity();
+            }
+        } else {
+            addFragment(new FragmentInspirationSection());
 
+            if (UserPreference.getInstance().getCheckedIsConnected()
+                    && CommonUtility.isOnline(context)) {
+                checkStatusOFSocial();
+            }
+        }
+        if (checkInternet()) {
+            // getCartList();
+        }
+    }
+
+    private void showMessage(String otherdata, boolean isLoadOrderDeatil) {
+        try {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(
+                mFragmentStack.peek());
 
     }
 
@@ -421,6 +647,31 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 }
             }
         }
+    }
+
+    private void getCartList() {
+        CartApi cartApi = new CartApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
+                CartRes cartRes = (CartRes) object;
+                List<Product> productLists = cartRes.getData();
+                if (productLists.size() > 0) {
+                    UserPreference.getInstance().setCartCount(
+                            String.valueOf(productLists.size()));
+                    refreshCartCount();
+                }
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception,
+                                        Object object) {
+
+            }
+        });
+        cartApi.getCartList(UserPreference.getInstance().getUserID());
+        cartApi.execute();
     }
 
     public void setClickListener() {
@@ -450,12 +701,279 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         finish();
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+
+    public void inviteFriends() {
+
+        String uriPath = "android.resource://com.flatlay/" + R.drawable.flatlayhomeimage;
+        Uri uri = Uri.parse("android.resource://com.flatlay/" + R.drawable.flatlayhomeimage);
+        String logo = uri.toString();
+        System.out.print(logo);
+        System.out.print(logo);
+
+        Bitmap bitmapImageLocal = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.flatlayhomeimage);
+
+        final String app_title = getResources().getString(R.string.app_name);
+        BranchShortLinkBuilder shortUrlBuilder = new BranchShortLinkBuilder(this)
+                .addTag("referral")
+                .addParameters("userid", UserPreference.getInstance().getUserID())
+                .addParameters("usermail", UserPreference.getInstance().getEmail())
+                .addParameters("username", UserPreference.getInstance().getUserName())
+                .addParameters("userprofilepic", UserPreference.getInstance().getProfilePic())
+                .addParameters("$og_title", getResources().getString(R.string.come_join))
+                .addParameters("$og_description", getResources().getString(R.string.text_join) + "#" + app_title);
+
+        shortUrlBuilder.generateShortUrl(new Branch.BranchLinkCreateListener() {
+            @Override
+            public void onLinkCreate(String url, BranchError error) {
+
+                if (error != null) {
+                    Log.e("Branch Error", "Branch create short url failed. Caused by -" + error.getMessage());
+                    AlertUtils.showToast(context, "Failed to generate referral link. Try again.");
+                } else {
+
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, context.getResources().getString(R.string.come_join));
+                    intent.putExtra(Intent.EXTRA_TEXT, context.getResources().getString(R.string.text_join) + " #" + app_title + " \n" + url);
+
+                    startActivity(Intent.createChooser(intent, "Earn 25 credits for each sign up !"));
+                    Log.i("Branch", "Got a Branch URL 1 " + url);
+                }
+            }
+        });
 
     }
 
+    public String BitMapToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String temp = Base64.encodeToString(b, Base64.DEFAULT);
+        return temp;
+    }
+
+    private void openWalletList() {
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.w("HomeActivity", "onActivityResult" + CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE);
+
+        Log.e("home act", requestCode + "wefwe" + resultCode);
+        if (requestCode == AppConstants.WALLETLIST && resultCode == RESULT_OK) {
+            Log.w("onActivityResultHA", "1");
+        } else if (requestCode == AppConstants.REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
+            Log.w("onActivityResultHA", "2");
+            String id = data.getStringExtra("id");
+            String email = data.getStringExtra("email");
+            String gender = data.getStringExtra("gender");
+            String name = data.getStringExtra("name");
+            String username = data.getStringExtra("username");
+            String birthday = data.getStringExtra("birthday");
+            String profile_link = data.getStringExtra("profile_link");
+            String location = data.getStringExtra("location");
+            connectWithFacebook(id, email, gender, name, username, birthday, profile_link, location);
+        } else if (requestCode == AppConstants.REQUEST_CODE_TWIT_LOGIN && resultCode == RESULT_OK) {
+            Log.w("onActivityResultHA", "3");
+            String id = String.valueOf(data.getLongExtra("id", 0));
+            String description = data.getStringExtra("description");
+            String language = data.getStringExtra("language");
+            String location = data.getStringExtra("location");
+            String profile_image_url = data.getStringExtra("profile_image_url");
+            String name = data.getStringExtra("name");
+            String screen_name = data.getStringExtra("screen_name");
+            String status = data.getStringExtra("status");
+            String time_zone = data.getStringExtra("time_zone");
+
+            connectWithTwitter(id, description, language, location, name, profile_image_url, screen_name, status, time_zone);
+
+        } else if (requestCode == AppConstants.REQUEST_CODE_FB_FRIEND_LIST) {
+            Log.w("onActivityResultHA", "4");
+            ArrayList<FbUser> fbUsers = (ArrayList<FbUser>) data.getSerializableExtra("friend_list");
+            if (fbUsers != null && fbUsers.size() > 0) {
+                uploadFbFriends(fbUsers);
+            } else {
+                UserPreference.getInstance().setIsFbConnected(true);
+
+            }
+        } else if (requestCode == AppConstants.REQUEST_CODE_TWIT_FRIEND_LIST) {
+            Log.w("onActivityResultHA", "5");
+            ArrayList<OauthItem> twitUsers = (ArrayList<OauthItem>) data.getSerializableExtra("friend_list");
+            showTwitterFriendList(twitUsers);
+        } else if (requestCode == PAYPAL_REQUEST_CODE) {
+            Log.w("onActivityResultHA", "6");
+            if (resultCode == RESULT_OK) {
+                System.out.println("in result ok");
+                AlertUtils.showToast(context, "Please wait...");
+                braintree
+                        .addListener(new Braintree.PaymentMethodNonceListener() {
+                            public void onPaymentMethodNonce(
+                                    String paymentMethodNonce) {
+                                // Syso.info("aaaaaaaaaaaaaaa payment nonce::"+paymentMethodNonce);
+                                if (checkInternet())
+                                    saveCheckout(paymentMethodNonce);
+                            }
+                        });
+                braintree.finishPayWithPayPal(this, resultCode, data);
+            }
+        } else if (requestCode == AppConstants.REQUEST_CODE_MASKED_WALLET) {
+            Log.w("onActivityResultHA", "7");
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(
+                    mFragmentStack.peek());
+
+        }
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            Log.w("onActivityResultHA", "30");
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                Log.w("HomeActivity", "Going to handleCropResult2" + resultUri);
+
+                handleCropResult2(data, resultUri);
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                handleCropError2(data);
+
+            }
+        }
+
+        if (requestCode == UCrop.REQUEST_CROP) {
+            Log.w("onActivityResultHA", "8");
+            handleCropResult(data);
+        }
+        if (requestCode == UCrop.RESULT_ERROR) {
+            Log.w("onActivityResultHA", "9");
+            handleCropError(data);
+        }
+
+
+        if (requestCode == Crop.REQUEST_CROP) {
+            Log.w("onActivityResultHA", "10");
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+
+        }
+
+        if (requestCode == Crop.REQUEST_PICK) {
+            Log.w("onActivityResultHA", "16");
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+
+        }
+        if (requestCode == AppConstants.REQUEST_CODE_INSTAGRAM) {
+            Log.w("onActivityResultHA", "11");
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+
+        }
+
+        if (requestCode == AppConstants.REQUEST_CODE_TWIT_TO_FRIEND) {
+            Log.w("onActivityResultHA", "12");
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+
+        }
+        if (requestCode == AppConstants.REQUEST_CODE_EMAIL_CHANGE) {
+            Log.w("onActivityResultHA", "13");
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+            ((FragmentSettings) fragment).onActivityResult(requestCode,
+                    resultCode, data);
+        }
+        if (requestCode == HomeActivity.SHARING_CODE) {
+            Log.w("onActivityResultHA", "14");
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
+            if (fragment != null) {
+                fragment.onActivityResult(requestCode, resultCode, data);
+            }
+        } else if (requestCode == TwitterAuthConfig.DEFAULT_AUTH_REQUEST_CODE) {
+            Log.w("HomeActivity", "onActivityResult Twitter 140");
+            //Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());;
+            //fragment.onActivityResult(requestCode, resultCode, data);
+
+            final TwitterAuthClient twitterAuthClient = new TwitterAuthClient();
+            if (twitterAuthClient.getRequestCode() == requestCode) {
+                twitterAuthClient.onActivityResult(requestCode, resultCode, data);
+            }
+
+        } else if (requestCode == PDKClient.PDKCLIENT_REQUEST_CODE) {
+            Log.w("HomeActivity", "onActivityResult Pinterest 8772");
+            PDKClient.getInstance().onOauthResponse(requestCode, resultCode, data);
+        } else {
+            Log.w("onActivityResultHA", "15");
+
+            if (data != null) {
+                Uri dataUri = data.getData();
+                if (dataUri != null) {
+                    String urlString = dataUri.toString();
+                    if (urlString.contains("oauth://ASNE?oauth_token")) {
+                        Log.w("onActivityResultHA", "21");
+                        Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
+                        if (fragment != null) {
+                            fragment.onActivityResult(requestCode, resultCode, data);
+                        }
+                    } else if (urlString.contains("www.tychotechnologies.in")) {
+                        Log.w("onActivityResultHA", "22");
+                        Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
+                        if (fragment != null) {
+                            fragment.onActivityResult(requestCode, resultCode, data);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (requestCode == ProductSearchTagging.PRODUCT_SEARCH_TAG) {
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+            ((FragmentPostUploadTag) fragment).onActivityResult(requestCode,
+                    resultCode, data);
+            System.out.print("ProductSearchTagging item clicked");
+        }
+
+
+    }
+
+    private void uploadFbFriends(List<FbUser> fbusers) {
+        progressBarDialog = new ProgressBarDialog(context);
+        progressBarDialog.show();
+        final FbTwFriendsApi service = new FbTwFriendsApi(
+                new ServiceCallback() {
+
+                    @Override
+                    public void handleOnSuccess(Object object) {
+                        progressBarDialog.dismiss();
+                        AlertUtils.showToast(context, R.string.alert_connected_with_fb);
+                        UserPreference.getInstance().setIsFbConnected(true);
+
+                    }
+
+                    @Override
+                    public void handleOnFailure(ServiceException exception, Object object) {
+                        progressBarDialog.dismiss();
+
+                    }
+                });
+        service.addFacebookFriend(UserPreference.getInstance().getUserID(),
+                fbusers);
+        service.execute();
+    }
+
+    private void getFBFriendList() {
+        Intent i = new Intent(context, FbSignActivity.class);
+        i.putExtra("getFriendList", true);
+        i.putExtra("getProfilePic", false);
+        startActivityForResult(i, AppConstants.REQUEST_CODE_FB_FRIEND_LIST);
+    }
+
+    public void twitterLoogedIn() {
+        boolean logedIn = SessionStore.isTwitterLogedIn(context);
+        if (logedIn) {
+            new GetTwitterInfo().execute();
+        } else {
+            Intent intent = new Intent(context, TwitterOAuthActivity.class);
+            intent.putExtra("is_get_list", false);
+            startActivityForResult(intent, AppConstants.REQUEST_CODE_TWIT_LOGIN);
+        }
+    }
 
     private void getTwitterFriendList() {
         boolean logedIn = SessionStore.isTwitterLogedIn(context);
@@ -579,6 +1097,58 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         });
     }
 
+    private void checkStatusOFSocial() {
+
+        final GetConnectedWithSocialApi service = new GetConnectedWithSocialApi(
+                new ServiceCallback() {
+
+                    @Override
+                    public void handleOnSuccess(Object object) {
+                        UserPreference.getInstance().setcheckedIsConnected(
+                                false);
+                        if (object != null) {
+                            GetConnectedWithSocialRes connectedWithSocialRes = (GetConnectedWithSocialRes) object;
+                            String fbStatus = connectedWithSocialRes.getFacebookid();
+                            String twitterStatus = connectedWithSocialRes.getTwitter();
+                            if (fbStatus.equalsIgnoreCase("yes")) {
+                                UserPreference.getInstance().setIsFbConnected(
+                                        true);
+                                UserPreference.getInstance().setPassword();
+                            } else {
+                                UserPreference.getInstance().setIsFbConnected(
+                                        false);
+                            }
+                            if (twitterStatus.equalsIgnoreCase("yes")) {
+                                UserPreference.getInstance()
+                                        .setIsTwitterConnected(true);
+                                UserPreference.getInstance().setPassword();
+                            } else {
+                                UserPreference.getInstance()
+                                        .setIsTwitterConnected(false);
+                            }
+
+                        } else {
+                            AlertUtils.showToast(context,
+                                    R.string.invalid_response);
+                        }
+                    }
+
+                    @Override
+                    public void handleOnFailure(ServiceException exception,
+                                                Object object) {
+
+                        if (object != null) {
+                        } else {
+                            AlertUtils.showToast(context,
+                                    R.string.invalid_response);
+                        }
+                    }
+                });
+        service.getStatusOfSocial(UserPreference.getInstance().getUserID());
+        service.execute();
+
+    }
+
     public void getTwitterInfo(User user) {
         try {
             long userId = user.getId();
@@ -639,6 +1209,53 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         service.execute();
     }
 
+    private void connectWithFacebook(String id, String email, String gender,
+                                     String name, String username, String birthday, String profile_link,
+                                     String location) {
+        progressBarDialog = new ProgressBarDialog(context);
+        progressBarDialog.show();
+
+        final ConnectWithFacebookApi service = new ConnectWithFacebookApi(
+                new ServiceCallback() {
+
+                    @Override
+                    public void handleOnSuccess(Object object) {
+
+                        progressBarDialog.dismiss();
+                        if (object != null) {
+                            getFBFriendList();
+                        } else {
+                            AlertUtils.showToast(context,
+                                    R.string.invalid_response);
+                        }
+                    }
+
+                    @Override
+                    public void handleOnFailure(ServiceException exception, Object object) {
+
+                        progressBarDialog.dismiss();
+                        if (object != null) {
+                            ConnectWithFacebookRes facebookRes = (ConnectWithFacebookRes) object;
+                            String message = facebookRes.getMessage();
+                            AlertUtils.showToast(context, message);
+                            getFBFriendList();
+                        } else {
+                            AlertUtils.showToast(context,
+                                    R.string.invalid_response);
+                        }
+                    }
+                });
+        service.connectWithFacebook(id, gender, birthday, profile_link, location, name, username);
+        service.execute();
+        progressBarDialog.setOnCancelListener(new OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                service.cancel();
+            }
+        });
+    }
+
+
     public void shareProduct(final Product product, final boolean isOther) {
         AlertUtils.showToast(context, "Please wait...");
         BranchShortLinkBuilder shortUrlBuilder = new BranchShortLinkBuilder(this)
@@ -655,6 +1272,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 .addParameters("discounttype", product.getDiscounttype())
                 .addParameters("saleprice", product.getSaleprice())
                 .addParameters("retailprice", product.getRetailprice())
+                //.addParameters("brand", product.getBrand())
                 .addParameters("shippingcost", product.getShippingcost())
                 .addParameters("keywords", product.getKeywords())
                 .addParameters("manufacturename", product.getManufacturename())
@@ -683,6 +1301,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 .addParameters("$og_title", product.getProductname())
                 .addParameters("$og_description", product.getShortproductdesc())
                 .addParameters("$og_image_url", product.getProductimageurl());
+        // Get URL Asynchronously
         shortUrlBuilder.generateShortUrl(new Branch.BranchLinkCreateListener() {
 
             @Override
@@ -703,12 +1322,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     String link = "Check out the " + product.getProductname() + " on #Flatlay  " + url;
-                    Log.w("link: ",""+link);
+                    Log.w("link: ", "" + link);
                     intent.putExtra(Intent.EXTRA_TEXT, link);
                     if (isOther)
                         startActivity(Intent.createChooser(intent, "Share"));
                     else {
-
+//
                     }
                 }
             }
@@ -721,9 +1340,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         BranchShortLinkBuilder shortUrlBuilder = new BranchShortLinkBuilder(this)
 
                 .addParameters("product_url", imageUrl);
-        Log.w("temp","CREATING BRANCH LINK!"+imageUrl);
-        Log.w("temp","CREATING BRANCH LINK!"+shareimagename);
+        Log.w("temp", "CREATING BRANCH LINK!" + imageUrl);
+        Log.w("temp", "CREATING BRANCH LINK!" + shareimagename);
 
+        // Get URL Asynchronously
         shortUrlBuilder.generateShortUrl(new Branch.BranchLinkCreateListener() {
 
             @Override
@@ -737,7 +1357,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     if (isOther)
                         startActivity(Intent.createChooser(intent, "Share"));
                     else {
-
+//
                     }
                 } else {
                     Log.i("Branch", "Got a Branch URL 3 " + url);
@@ -747,10 +1367,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     String link = shareimagename;
                     intent.putExtra(Intent.EXTRA_TEXT, link);
                     if (isOther) {
-                        Log.w("inside if", "inside if"+link);
+                        Log.w("inside if", "inside if" + link);
                         startActivity(Intent.createChooser(intent, "Share"));
-                    }
-                    else {
+                    } else {
+                        Log.w("inside else", "inside else");
+//							loginPinterest(link, url, product.getProductimageurl());
+                        Log.w("inside else", "" + link);
+                        Log.w("inside else", "" + url);
+                        Log.w("inside else", "" + imageUrl);
 
                     }
                 }
@@ -769,6 +1393,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 .addParameters("$og_description", UserPreference.getInstance().getUserName() + " would like to share their " + collectionname + " collections with you.")
                 .addParameters("$og_image_url", UserPreference.getInstance().getProfilePic());
 
+        // Get URL Asynchronously
         shortUrlBuilder.generateShortUrl(new Branch.BranchLinkCreateListener() {
 
             @Override
@@ -784,7 +1409,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     Log.i("Branch", "Got a Branch URL 4 " + url);
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
-                    Log.w("Collection Name:",""+collectionname);
+                    Log.w("Collection Name:", "" + collectionname);
                     intent.putExtra(Intent.EXTRA_TEXT, "Check out the " + collectionname + " collections of " + UserPreference.getInstance().getUserName() + " on #FLATLAY " + url);
 
                     startActivity(Intent.createChooser(intent, "Share"));
@@ -793,10 +1418,55 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         });
     }
 
-    public void addFragment(Fragment fragment) {
-        Log.w("HomeActivity","addFragment()");
-        try {
+    private void getUUIDList() {
+        final GetUUIDApi service = new GetUUIDApi(new ServiceCallback() {
 
+            @Override
+            public void handleOnSuccess(Object object) {
+                GetUUIDRes uuidRes = (GetUUIDRes) object;
+                List<Uuid> uuidLists = uuidRes.getUuid_list();
+                for (int i = 0; i < uuidLists.size(); i++) {
+                    UuidDAO dao = new UuidDAO(DatabaseHelper.getDatabase());
+                    dao.insertOrUpdate(uuidLists.get(i));
+                }
+                UuidDAO dao = new UuidDAO(DatabaseHelper.getDatabase());
+                System.out.println("List>>" + dao.getList());
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+            }
+        });
+        service.getUUIDList(AppConstants.APP_ID);
+        service.execute();
+    }
+
+    public void addFragment(Fragment fragment) {
+        Log.w("HomeActivity", "addFragment()");
+        //Thread.dumpStack();
+        try {
+            mContent = fragment;
+            FragmentTransaction transaction = getSupportFragmentManager()
+                    .beginTransaction();
+            System.out.println("1111 added>>" + mContent.toString());
+            if (mFragmentStack.size() > 0) {
+                Fragment currentFragment = getSupportFragmentManager()
+                        .findFragmentByTag(mFragmentStack.peek());
+                if (currentFragment != null)
+                    transaction.hide(currentFragment);
+                mFragmentStack.add(mContent.toString());
+                transaction.add(R.id.frame_container, fragment, mContent.toString());
+                transaction.addToBackStack(mContent.toString());
+            } else {
+                mFragmentStack.add(mContent.toString());
+                transaction.replace(R.id.frame_container, fragment, mContent.toString());
+                transaction.addToBackStack(mContent.toString());
+                transaction.commit();
+            }
+
+
+            checkBackButton(fragment);
+            checkRightButton(fragment);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -817,26 +1487,106 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         welcome.show();
                     }
                 });
+
+//                showActionBar();
+//                tab_layout.setVisibility(View.GONE);
             } else {
                 hideActionBar();
-                tab_layout.setVisibility(View.VISIBLE);
+                //tab_layout1.setVisibility(View.VISIBLE);
+
             }
 
 
             hideFutter();
             CommonUtility.hideSoftKeyboard(this);
+            if (mFragmentStack.size() == 1) {
+
+                if (fragment instanceof FragmentDiscoverNew) {
+                    if (backPressedToExitOnce) {
+                        finish();
+                    } else {
+                        this.backPressedToExitOnce = true;
+                        AlertUtils.showToast(context, "Press again to exit");
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                backPressedToExitOnce = false;
+                            }
+                        }, 2000);
+                    }
+                } else {
+                    hideAllFragment();
+                    addFragment(new FragmentDiscoverNew());
+                }
+            } else {
+
+
+                if (fragment instanceof FragmentPostUploadTag) {
+                    //  gallery.setVisibility(View.VISIBLE);
+                    postuploadtagbackTextView.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            PostUploadTagDialog welcome = new PostUploadTagDialog(homeActivity);
+                            welcome.show();
+                        }
+                    });
+
+                } else {
+                    removeFragment();
+                    super.onBackPressed();
+
+                }
+            }
+            fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
+
+
+//    public void ontagBack() {
+//        try {
+//
+//            left.closeMenu();
+//            hideFutter();
+//            if (mFragmentStack.size() == 1) {
+//                Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+//                if (fragment instanceof FragmentPostUploadTab) {
+//                    if (backPressedToExitOnce) {
+//                        finish();
+//                    } else {
+//                        this.backPressedToExitOnce = true;
+//                        AlertUtils.showToast(context, "Press again to exit");
+//                        new Handler().postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                backPressedToExitOnce = false;
+//                            }
+//                        }, 2000);
+//                    }
+//                } else {
+//                   // hideAllFragment();
+//                    addFragment(new FragmentPostUploadTab());
+//                }
+//            } else {
+//               // removeFragment();
+//                super.onBackPressed();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
 
 
     public void backpostuploadtad() {
 
         showActionBar();
-        tab_layout.setVisibility(View.GONE);
-
+        //tab_layout1.setVisibility(View.GONE);
         mstatus.setVisibility(View.VISIBLE);
         crossarrow.setVisibility(View.VISIBLE);
         menuBackTextView.setVisibility(View.GONE);
@@ -853,7 +1603,26 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void removeFragment() {
+        try {
+            // remove the current fragment from the stack.
+            String fold = mFragmentStack.pop();
+            Fragment f2 = getSupportFragmentManager().findFragmentByTag(fold);
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            // get fragment that is to be shown (in our case fragment1).
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+            // This time I set an animation with no fade in, so the user doesn't
+            // wait for the animation in back press
+            // transaction.setCustomAnimations(R.anim.slide_right_in,
+            // R.anim.slide_right_out);
+            // We must use the show() method.
 
+            mContent = fragment;
+            checkBackButton(fragment);
+            checkRightButton(fragment);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void hideAllFragment() {
@@ -957,17 +1726,47 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         braintreePaymentApi.execute();
     }
 
+    private void saveCheckout(String paymentMethodNonce) {
+        progressBarDialog = new ProgressBarDialog(context);
+        progressBarDialog.show();
+        final BraintreePaymentApi braintreePaymentApi = new BraintreePaymentApi(
+                new ServiceCallback() {
+                    @Override
+                    public void handleOnSuccess(Object object) {
+                        progressBarDialog.dismiss();
+                        AlertUtils.showToast(context, R.string.payment_success_text);
+                        createCart();
+                    }
+
+                    @Override
+                    public void handleOnFailure(ServiceException exception, Object object) {
+                        progressBarDialog.dismiss();
+                        AlertUtils.showToast(context, R.string.payment_fail_text);
+                    }
+                });
+        braintreePaymentApi.saveCheckout(UserPreference.getInstance()
+                        .getUserID(), CommonUtility.getDeviceId(context),
+                paymentMethodNonce);
+        braintreePaymentApi.execute();
+
+    }
+
     public void createCart() {
+//		progressBarDialog = new ProgressBarDialog(context);
+//		progressBarDialog.show();
         final CartApi cartApi = new CartApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
+//				progressBarDialog.dismiss();
                 CartRes cartRes = (CartRes) object;
                 UserPreference.getInstance().setCartID(cartRes.getCart_id());
+//				loadFragment(new FragmentDiscover());
             }
 
             @Override
             public void handleOnFailure(ServiceException exception,
                                         Object object) {
+//				progressBarDialog.dismiss();
             }
         });
         cartApi.createCart(UserPreference.getInstance().getUserID());
@@ -975,8 +1774,72 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     }
 
-    private void registerHomeReceiver() {
+    public void showBackButton() {
+        menuBackTextView.setVisibility(View.VISIBLE);
+        postuploadtagbackTextView.setVisibility(View.GONE);
+        menuRightImageView.setVisibility(View.VISIBLE);
+        uploadphoto.setVisibility(View.GONE);
+        menuTextCartCount.setVisibility(View.VISIBLE);
+        homeImageView.setVisibility(View.VISIBLE);
+        photouploadnext.setVisibility(View.GONE);
+        postUploadWithTag.setVisibility(View.GONE);
 
+    }
+
+    public void hideBackButton() {
+        postuploadtagbackTextView.setVisibility(View.GONE);
+        menuBackTextView.setVisibility(View.GONE);
+        menuRightImageView.setVisibility(View.VISIBLE);
+        camera.setVisibility(View.GONE);
+        gallery.setVisibility(View.GONE);
+        menuTextCartCount.setVisibility(View.VISIBLE);
+        mstatus.setVisibility(View.GONE);
+        photouploadnext.setVisibility(View.GONE);
+        instagram.setVisibility(View.GONE);
+        crossarrow.setVisibility(View.GONE);
+        postUploadWithTag.setVisibility(View.GONE);
+        homeImageView.setVisibility(View.VISIBLE);
+    }
+
+    private void checkBackButton(Fragment fragment) {
+
+    }
+
+    private void checkRightButton(Fragment fragment) {
+
+    }
+
+    private void showRightButton() {
+        menuRightTextView.setVisibility(View.VISIBLE);
+        menuSearchImageView.setVisibility(View.GONE);
+        menuRightImageView.setVisibility(View.GONE);
+    }
+
+    private void hideRightButton() {
+        menuRightTextView.setVisibility(View.GONE);
+        menuSearchImageView.setVisibility(View.GONE);
+        menuRightImageView.setVisibility(View.VISIBLE);
+    }
+
+    private void registerHomeReceiver() {
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Handler handler = new Handler();
+                Runnable runnable = new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // TODO Auto-generated method stub
+                        loadFragment(new FragmentDiscoverNew());
+                    }
+                };
+                handler.postDelayed(runnable, 100);
+            }
+        };
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(AppConstants.ACTION_GO_TO_HOME);
+        registerReceiver(receiver, filter);
     }
 
     @Override
@@ -1002,7 +1865,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 progressBarDialog.dismiss();
                 if (object != null) {
                     WalletPinRes response = (WalletPinRes) object;
+                    if (!TextUtils.isEmpty(response.getPin_created()) && response.getPin_created().equals("yes")) {
+                        UserPreference.getInstance().setIsCreateWalletPin(false);
 
+                    } else {
+
+                    }
                 }
             }
 
@@ -1033,6 +1901,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     }
 
+    // ================================= Context Menu==========================================
     float lastX = 0, lastY = 0;
     View centarlView;
     TextView lableTextView;
@@ -1059,6 +1928,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     (int) getResources().getDimension(R.dimen.menuChildSize),
                     (int) getResources().getDimension(R.dimen.menuChildSize));
             view.setLayoutParams(params);
+            //view.setImageResource(R.drawable.contextual_origin_pulser);
             centarlView = view;
             contextMenuBg.addView(centarlView);
         }
@@ -1068,6 +1938,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         float height = centarlView.getMeasuredHeight();
         Syso.info("9999999 centarlView>>>>> lastX:" + lastX + ", lastY:"
                 + lastY + ", width:" + widht + ", height:" + height);
+        // centarlView.setX((float) (lastX-(widht/3)));
+        // centarlView.setY((float) (lastY-1.1*height));
+
         centarlView.setX((float) (lastX - (0.3 * widht)));
         centarlView.setY((float) (lastY - 1.2 * height));
         Syso.info("9999999 centarlView 2>>>>> XX:" + centarlView.getX()
@@ -1091,6 +1964,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         // TODO Auto-generated method stub
         float x = ev.getX();
         float y = ev.getY();
+//		Syso.info("1111111111111111   Dispatch>>>>>  X :" + x + ", y:" + y);
         lastX = x;
         lastY = y;
         if (isMenuShowing()) {
@@ -1117,6 +1991,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         float height = centarlView.getMeasuredHeight();
         Syso.info("9999999 centarlView>>>>> lastX:" + lastX + ", lastY:"
                 + lastY + ", width:" + widht + ", height:" + height);
+        // centarlView.setX((float) (lastX-(widht/3)));
+        // centarlView.setY((float) (lastY-1.1*height));
 
         centarlView.setX((float) (lastX - (0.3 * widht)));
         centarlView.setY((float) (lastY - 1.2 * height));
@@ -1195,7 +2071,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         });
         String fromUserId = product.getFrom_user_id() == null ? "" : product.getFrom_user_id();
         String fromCollection = product.getFrom_collection_id() == null ? "" : product.getFrom_collection_id();
-        Log.w("HomeActivity",""+product.getQuantity());
+        Log.w("HomeActivity", "" + product.getQuantity());
         cartApi.addToCart(UserPreference.getInstance().getUserID(), product.getId(), "1", UserPreference.getInstance().getCartID(), fromUserId, fromCollection, "", "", product.getSelected_values());
         cartApi.execute();
     }
@@ -1250,14 +2126,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         mProgressBarDialog.dismiss();
                     }
                 });
-        if (TextUtils.isEmpty(product.getLike_info().getLike_id()))
-        {
-            Log.w("HomeActivity","postLike()");
+        if (TextUtils.isEmpty(product.getLike_info().getLike_id())) {
+            Log.w("HomeActivity", "postLike()");
             inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), product.getId(), "product");
-        }
-        else
-        {
-            Log.w("HomeActivity","removeLike()");
+        } else {
+            Log.w("HomeActivity", "removeLike()");
             inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), product.getLike_info().getLike_id());
         }
         inspirationSectionApi.execute();
@@ -1276,10 +2149,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void checkForCrashes() {
+        //CrashManager.register(this, "3ec40bcb125d3ad0f770b3d424bcf913");
     }
 
     private void checkForUpdates() {
-
+        // Remove this for store builds!
+        // UpdateManager.register(this, "3ec40bcb125d3ad0f770b3d424bcf913");
     }
 
     @Override
@@ -1315,22 +2190,134 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         menuTextCartCount.setVisibility(View.VISIBLE);
     }
 
+    public void purchaseStatus(String purchase_id) {
+        progressBarDialog = new ProgressBarDialog(context);
+        progressBarDialog.show();
+        TwoTapApi twoTapApi = new TwoTapApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                Syso.info("success:   " + object);
+                progressBarDialog.dismiss();
+                try {
+                    JSONObject jsonObject = new JSONObject(object.toString());
+                    if (jsonObject.getString("message").equalsIgnoreCase("done")) {
+                        UserPreference.getInstance().setPurchaseId("");
+                        Log.w("HomeActivity", "FragmentUserCart()");
+                    } else {
+                        AlertUtils.showToast(context, "Your previous order is still being processed. You should receive confirmation on the status shortly.");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                progressBarDialog.dismiss();
+            }
+        });
+        twoTapApi.purchaseStatus(purchase_id);
+        twoTapApi.execute();
+    }
+
+    public void followUser(String user_id) {
+        mProgressBarDialog = new ProgressBarDialog(context);
+        mProgressBarDialog.show();
+
+        final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                mProgressBarDialog.dismiss();
+                Syso.info("In handleOnSuccess>>" + object);
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                mProgressBarDialog.dismiss();
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    FollowUserRes response = (FollowUserRes) object;
+                    AlertUtils.showToast(context, response.getMessage());
+                } else {
+                    AlertUtils.showToast(context, R.string.invalid_response);
+                }
+            }
+        });
+        followUserApi.followUser(UserPreference.getInstance().getUserID(), user_id);
+        followUserApi.execute();
+
+        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                followUserApi.cancel();
+            }
+        });
+    }
+
+    public void unFollowUser(String user_id) {
+        mProgressBarDialog = new ProgressBarDialog(context);
+        mProgressBarDialog.show();
+
+        final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                mProgressBarDialog.dismiss();
+
+                Syso.info("In handleOnSuccess>>" + object);
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                mProgressBarDialog.dismiss();
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    FollowUserRes response = (FollowUserRes) object;
+                    AlertUtils.showToast(context, response.getMessage());
+                } else {
+                    AlertUtils.showToast(context, R.string.invalid_response);
+                }
+            }
+        });
+        followUserApi.unFollowUser(UserPreference.getInstance().getUserID(), user_id);
+        followUserApi.execute();
+
+        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                followUserApi.cancel();
+            }
+        });
+    }
+
+    //  cropping functions
+
     private Uri mDestinationUri;
 
     public void startCropActivity(@NonNull Uri uri) {
-        Log.w("HomeActivity","startCropActivity()");
+        Log.w("HomeActivity", "startCropActivity()");
 
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
         String filePath = Environment.getExternalStorageDirectory()
                 + "/temporary_holder.jpg";
 
-        Log.w("startCropActHA","****2: "+uri.toString());
+        Log.w("startCropActHA", "****2: " + uri.toString());
 
+        /*
+        UCrop uCrop = UCrop.of(uri, mDestinationUri);
+        uCrop = basisConfig(uCrop);
+        uCrop = advancedConfig(uCrop);
+        uCrop.withMaxResultSize(500,500);
+        uCrop.start(context);
+        */
 
         CropImage.activity(uri)
                 .setRequestedSize(800, 800, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
+                //.setMaxCropResultSize(2000, 2000)
                 .setFixAspectRatio(true)
-                .setAspectRatio(1,1)
+                .setAspectRatio(1, 1)
                 .setAllowCounterRotation(true)
                 .setAllowRotation(true)
                 .setOutputUri(mDestinationUri)
@@ -1339,19 +2326,132 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void startCropActivityForMedia(@NonNull Uri uri) {
-        Log.w("HomeActivity","startCropActivityForMedia()");
+        Log.w("HomeActivity", "startCropActivityForMedia()");
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
         CropImage.activity(uri)
                 .setRequestedSize(700, 700, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
+                //.setMaxCropResultSize(2000, 2000)
                 .setFixAspectRatio(true)
                 .setAllowCounterRotation(true)
                 .setAllowRotation(true)
-                .setAspectRatio(1,1)
+                .setAspectRatio(1, 1)
                 .setOutputUri(mDestinationUri)
                 .start(context);
 
     }
 
+    private UCrop basisConfig(@NonNull UCrop uCrop) {
+
+        //uCrop = uCrop.withAspectRatio(1, 1);
+        try {
+            float ratioX = Float.valueOf(1);
+            float ratioY = Float.valueOf(1);
+            if (ratioX > 0 && ratioY > 0) {
+                uCrop = uCrop.withAspectRatio(ratioX, ratioY);
+            }
+        } catch (NumberFormatException e) {
+            Log.d("UCrop", "Number please");
+        }
+        return uCrop;
+    }
+
+
+    private UCrop advancedConfig(@NonNull UCrop uCrop) {
+
+        UCrop.Options options = new UCrop.Options();
+        options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
+        options.setCompressionQuality(100);
+        options.setHideBottomControls(false);
+        options.setFreeStyleCropEnabled(true);
+        options.setMaxBitmapSize(500);
+
+        return uCrop.withOptions(options);
+    }
+
+
+    private void handleCropResult(@NonNull Intent result) {
+
+        if (result != null) {
+            Log.w("handleCropResultHA", "Here");
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+
+        } else
+            AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
+//        final Uri resultUri = UCrop.getOutput(result);
+//        if (resultUri != null) {
+//            ResultActivity.startWithUri(SampleActivity.this, resultUri);
+//        } else {
+//            Toast.makeText(SampleActivity.this, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show();
+//        }
+    }
+
+
+    private void handleCropResult2(@NonNull Intent result, Uri resultUri) {
+
+        if (result != null) {
+            Log.w("HomeActivity", "handleCropResult2()");
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+
+        } else
+            AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
+    }
+
+
+    @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
+    private void handleCropError(@NonNull Intent result) {
+        final Throwable cropError = UCrop.getError(result);
+        if (cropError != null) {
+            Log.e("UCrop Error", "handleCropError: ", cropError);
+            Toast.makeText(HomeActivity.this, cropError.getMessage(), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(HomeActivity.this, R.string.toast_unexpected_error, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void handleCropError2(@NonNull Intent result) {
+        Toast.makeText(HomeActivity.this, "handleCropError2" + result, Toast.LENGTH_LONG).show();
+        /*
+        final Throwable cropError = UCrop.getError(result);
+        if (cropError != null) {
+            Log.e("UCrop Error", "handleCropError: ", cropError);
+            Toast.makeText(HomeActivity.this, cropError.getMessage(), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(HomeActivity.this, R.string.toast_unexpected_error, Toast.LENGTH_SHORT).show();
+        }
+        */
+    }
+
+
+    public void onSavePin(String imageUrl, String boardId, String text, String linkUrl) {
+
+        if (!Utils.isEmpty(text) && !Utils.isEmpty(boardId) && !Utils.isEmpty(imageUrl)) {
+            PDKClient.getInstance().createPin(text, boardId, imageUrl, linkUrl, new PDKCallback() {
+                @Override
+                public void onSuccess(PDKResponse response) {
+                    Log.d(getClass().getName(), response.getData().toString());
+                    Syso.info("12345678 >>> output" + response.getData().toString());
+                    AlertUtils.showToast(context, "Shared Successfully");
+                    // finish();
+                }
+
+                @Override
+                public void onFailure(PDKException exception) {
+                    Log.e(getClass().getName(), exception.getDetailMessage());
+                    Syso.info("12345678 >>> output" + exception.getDetailMessage());
+                    try {
+                        JSONObject jsonObject = new JSONObject(exception.getDetailMessage());
+                        AlertUtils.showToast(context, jsonObject.getString("message"));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        AlertUtils.showToast(context, exception.getDetailMessage());
+                    }
+                    finish();
+                }
+            });
+        } else {
+            Toast.makeText(this, "Required fields cannot be empty", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public void logoutscreen() {
         LogoutDialogWithTab logoutDialog = new LogoutDialogWithTab(context, homeActivity);
@@ -1362,9 +2462,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == MarshmallowPermissions.CAMERA_PERMISSION_REQUEST_CODE) {
+            // BEGIN_INCLUDE(permission_result)
+            // Received permission result for camera permission.
             Log.i("Camera permission", "Received response for Camera permission request.");
 
+            // Check if the only required permission has been granted
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Camera permission has been granted, preview can be displayed
                 Log.i("Camera permission", "CAMERA permission has now been granted. Showing preview.");
                 startUploadPostSection();
 
@@ -1377,7 +2481,21 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 AlertUtils.showToast(this, "Camera or read/write storage permission was not granted.");
 
             }
+            // END_INCLUDE(permission_result)
 
         }
     }
+
+    public boolean appInstalledOrNot(String uri) {
+        PackageManager pm = getPackageManager();
+        boolean app_installed;
+        try {
+            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
+            app_installed = true;
+        } catch (PackageManager.NameNotFoundException e) {
+            app_installed = false;
+        }
+        return app_installed;
+    }
+
 }

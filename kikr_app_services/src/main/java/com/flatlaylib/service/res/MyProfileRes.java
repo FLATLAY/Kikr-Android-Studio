@@ -25,6 +25,52 @@ public class MyProfileRes {
 	List<FollowerList> following_list;
 	List<UserData> user_data;
 
+	String instagram;
+	String facebook;
+	String twitter;
+	String pinterest;
+	String youtube;
+
+	public String getInstagram() {
+		return instagram;
+	}
+
+	public void setInstagram(String instagram) {
+		this.instagram = instagram;
+	}
+
+	public String getFacebook() {
+		return facebook;
+	}
+
+	public void setFacebook(String facebook) {
+		this.facebook = facebook;
+	}
+
+	public String getTwitter() {
+		return twitter;
+	}
+
+	public void setTwitter(String twitter) {
+		this.twitter = twitter;
+	}
+
+	public String getPinterest() {
+		return pinterest;
+	}
+
+	public void setPinterest(String pinterest) {
+		this.pinterest = pinterest;
+	}
+
+	public String getYoutube() {
+		return youtube;
+	}
+
+	public void setYoutube(String youtube) {
+		this.youtube = youtube;
+	}
+
 	/**
 	 * @return the user_data
 	 */

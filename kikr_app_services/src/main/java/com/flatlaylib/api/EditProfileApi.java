@@ -1,5 +1,7 @@
 package com.flatlaylib.api;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +46,22 @@ public class EditProfileApi extends AbsService {
 		requestValue = gson.toJson(maps);
 	}
 
+	public void updateUserSocial(String user_id, String fb, String ins, String twi, String pin, String tube){
+		Log.e("1122334", UserPreference.getInstance().getEmail());
+		this.METHOD_NAME = WebConstants.HOST_FILE + "updateuser";
+		requestType = WebConstants.HTTP_METHOD_POST;
+		Map<String, String> comment = new HashMap<String, String>();
+		comment.put("user_id", user_id);
+		comment.put("instagram", ins);
+		comment.put("pinterest", pin);
+		comment.put("facebook", fb);
+		comment.put("twitter", twi);
+		comment.put("youtube", tube);
+		//Map[] maps = new Map[] { comment };
+		Gson gson = new Gson();
+		requestValue = gson.toJson(comment);
+	}
+
 	public void uploadImage(String user_id,byte[] profile_pic) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "uploaduserimageprofile";
 		requestType = WebConstants.HTTP_METHOD_POST;
@@ -67,7 +85,18 @@ public class EditProfileApi extends AbsService {
 		Gson gson = new Gson();
 		requestValue = gson.toJson(maps);
 	}
-	
+
+//	public void getProfileByUserName(String username){
+//		this.METHOD_NAME = WebConstants.HOST_FILE + "0/"+"username";
+//		requestType = WebConstants.HTTP_METHOD_POST;
+//		Map<String, String> comment = new HashMap<String, String>();
+//		comment.put("username", username);
+//		Map[] maps = new Map[] { comment };
+//		Gson gson = new Gson();
+//		requestValue = gson.toJson(maps);
+//
+//	}
+//
 	public void uploadBgImage(String user_id,byte[] background_pic) {
 		this.METHOD_NAME = WebConstants.HOST_FILE + "uploadbackgroundimage";
 		requestType = WebConstants.HTTP_METHOD_POST;
@@ -129,9 +158,10 @@ public class EditProfileApi extends AbsService {
 	@Override
 	public String getJsonRequest() {
 		try {
-			JSONArray array = new JSONArray(requestValue);
-			return array.toString();
-		} catch (JSONException e) {
+			//JSONArray array = new JSONArray(requestValue);
+			//return array.toString();
+			return requestValue;
+		} catch (Exception e) {
 			e.printStackTrace();
 			JSONArray array = new JSONArray();
 			return array.toString();

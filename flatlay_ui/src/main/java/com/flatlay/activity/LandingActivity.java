@@ -224,6 +224,8 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
 
     private void registerViaFbSocial(String id, String g) {
+        Log.e("aaaaa","ccccc");
+
         progressBarDialog = new ProgressBarDialog(getActivity());
         progressBarDialog.show();
 
@@ -242,6 +244,8 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
     @Override
     public void handleOnSuccess(Object object) {
+        Log.e("aaaaa","bbbbb");
+
         progressBarDialog.dismiss();
         Syso.info("In handleOnSuccess>>" + object);
         if (object != null) {
@@ -273,18 +277,24 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
 
+        Log.e("aaaaa22","aaaa");
+
         progressBarDialog.dismiss();
         Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;
             if (response.getMessage().equals("userexist") && response.getId() != null) {
-                UserPreference.getInstance().setUserID(response.getId());
-                UserPreference.getInstance().setEmail(response.getEmail());
-                UserPreference.getInstance().setUserName(response.getUsername());
-                UserPreference.getInstance().setCartID(response.getCart_id());
-                UserPreference.getInstance().setProfilePic(response.getProfile_pic());
-                UserPreference.getInstance().setBgImage(response.getBackground_pic());
-                UserPreference.getInstance().setAccessToken(response.gettoken());
+                Log.e("aaaaa22:obj",object.toString());
+
+                Log.e("aaaaa22:id",response.getId());
+
+                //UserPreference.getInstance().setUserID(response.getId());
+                //UserPreference.getInstance().setEmail(response.getEmail());
+                //UserPreference.getInstance().setUserName(response.getUsername());
+               // UserPreference.getInstance().setCartID(response.getCart_id());
+                //UserPreference.getInstance().setProfilePic(response.getProfile_pic());
+                //UserPreference.getInstance().setBgImage(response.getBackground_pic());
+              //  UserPreference.getInstance().setAccessToken(response.gettoken());
                 if (social.equals(UserPreference.FACEBOOK))
                     UserPreference.getInstance().setIsFbConnected(true);
                 UserPreference.getInstance().setIsCreateWalletPin(true);
@@ -317,11 +327,12 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
     private void showHome(String currentScreen) {
 
-        getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.baseFrameLayout, new LandingActivity(), null)
-                .addToBackStack(null)
-                .commit();
+//        getActivity().getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.baseFrameLayout, new LandingActivity(), null)
+//                .addToBackStack(null)
+//                .commit();
+        startActivity(HomeActivity.class);
     }
 
 

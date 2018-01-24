@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -223,20 +224,13 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
 
             UserPreference.getInstance().setEmail(response.getEmail());
             UserPreference.getInstance().setAccessToken(response.gettoken());
+            UserPreference.getInstance().setAccessToken(response.gettoken());
             UserPreference.getInstance().setUserName(response.getUsername());
             UserPreference.getInstance().setCartID(response.getCart_id());
             UserPreference.getInstance().setProfilePic(response.getProfile_pic());
             UserPreference.getInstance().setBgImage(response.getBackground_pic());
 
-            if (!TextUtils.isEmpty(currentScreen)) {
-                CommonUtility.hideSoftKeyboard(getActivity());
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.baseFrameLayout, new IntroductionActivity(), null)
-                        .addToBackStack(null)
-                        .commit();
-            } else {
-            }
+            startActivity(HomeActivity.class);
             UserPreference.getInstance().setPassword();
         }
     }

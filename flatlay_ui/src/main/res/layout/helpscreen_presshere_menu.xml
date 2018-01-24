@@ -2,139 +2,183 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/parentRL"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <RelativeLayout
-        android:id="@+id/mainRL1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" 
-        android:padding="@dimen/padding_large"
-        android:layout_marginTop="@dimen/margin_xlarge">
-
-        <ImageView
-            android:id="@+id/pinGuideIV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/pin_guide" />
-    </RelativeLayout>
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp" >
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/likeRL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/arch_margin" >
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp">
 
-            <ImageView
-                android:id="@+id/likeIV"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/likewhite" />
+            <RelativeLayout
+                android:id="@+id/likeRL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/arch_margin">
 
-            <TextView
-                android:id="@+id/lekeTV"
+                <ImageView
+                    android:id="@+id/likeIV"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:gravity="center_horizontal"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/gray_heart_3x" />
+
+                <TextView
+                    android:id="@+id/likeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toLeftOf="@+id/likeIV"
+                    android:layout_marginRight="7dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/flatlayloginboardernew4"
+                    android:padding="1dp"
+                    android:text="   Like   "
+                    android:textSize="11dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/discoverRL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/arch_margin">
+
+                <ImageView
+                    android:id="@+id/discoverIV"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/gray_plus" />
+
+                <TextView
+                    android:id="@+id/discoverTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
+                    android:layout_toLeftOf="@+id/discoverIV"
+                    android:layout_marginRight="7dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/flatlayloginboardernew4"
+                    android:padding="1dp"
+                    android:text="  Add to Collection  "
+                    android:textSize="11dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/checkoutRL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/arch_margin">
+
+                <ImageView
+                    android:id="@+id/checkoutIV"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/gray_cart_3x" />
+
+                <TextView
+                    android:id="@+id/checkoutTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/black"
+                    android:layout_above="@id/checkoutIV"
+                    android:background="@drawable/flatlayloginboardernew4"
+                    android:padding="1dp"
+                    android:text="  Add to Cart  "
+                    android:textSize="11dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/storeRL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/arch_margin">
+
+                <ImageView
+                    android:id="@+id/storeIV"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/gray_store" />
+
+                <TextView
+                    android:id="@+id/storeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/storeIV"
+                    android:layout_marginLeft="7dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/flatlayloginboardernew4"
+                    android:padding="1dp"
+                    android:text="  View On Store Site  "
+                    android:textSize="11dp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/shareRL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/arch_margin">
+
+                <ImageView
+                    android:id="@+id/shareIV"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/share_grey_kopie_2x" />
+
+                <TextView
+                    android:id="@+id/shareTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/shareIV"
+                    android:layout_marginLeft="7dp"
+                    android:padding="1dp"
+                    android:textColor="@color/black"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/flatlayloginboardernew4"
+                    android:text="   Share   "
+                    android:textSize="11dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mainRL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="6dp"
-                android:layout_toRightOf="@+id/likeIV"
-                android:padding="5dp"
-                android:text="Like"
-                android:textSize="16sp" />
-        </RelativeLayout>
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
 
-        <RelativeLayout
-            android:id="@+id/discoverRL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/arch_margin" >
-
-            <ImageView
-                android:id="@+id/discoverIV"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_add_collection_unselect" />
-
-            <TextView
-                android:id="@+id/discoverTV"
-                android:layout_marginLeft="6dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/discoverIV"
-                android:padding="5dp"
-                android:text="Add to Collection"
-                android:textSize="16sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/checkoutRL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/arch_margin" >
-
-            <ImageView
-                android:id="@+id/checkoutIV"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_cart_unselect" />
-
-            <TextView
-                android:id="@+id/checkoutTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/checkoutIV"
-                android:padding="5dp"
-                android:text="Add to Cart"
-                android:textSize="16sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/shareRL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/arch_margin" >
-
-            <ImageView
-                android:id="@+id/shareIV"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/sharewhite" />
-
-            <TextView
-                android:id="@+id/shareTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/shareIV"
-                android:padding="5dp"
-                android:text="Share"
-                android:textSize="16sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/mainRL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true" >
-
-            <ImageView
-                android:id="@+id/img1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/bg_btn_discover" />
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:clickable="true"
+                    android:src="@drawable/center_circle" />
+            </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
 

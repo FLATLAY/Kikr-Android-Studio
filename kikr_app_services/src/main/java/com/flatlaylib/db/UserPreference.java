@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.flatlaylib.AppContext;
 import com.flatlaylib.utils.Syso;
@@ -21,6 +22,14 @@ public class UserPreference {
     private final String mCartId = "mCartId";
     private final String mTwotapCartId = "mTwotapCartId";
     private final String mUserName = "mUserName";
+
+    private final String mUserFb = "mUserFb";
+    private final String mUserIns = "mUserIns";
+
+    private final String mUserTube = "mUserTube";
+    private final String mUserTwi = "mUserTwi";
+    private final String mUserPin = "mUserPin";
+
     private final String mProfilePic = "mProfilePic";
     private final String mBgImage = "mBgImage";
     private final String mEmailId = "mEmailId";
@@ -81,7 +90,6 @@ public class UserPreference {
         setCartCount(String.valueOf(count > 0 ? count : 0));
     }
 
-
     public String getCartCount() {
         return mPrefs.getString(cartCount, "");
     }
@@ -93,7 +101,6 @@ public class UserPreference {
             mPrefsEditor.commit();
         }
     }
-
 
     public String getCartID() {
         return mPrefs.getString(mCartId, "");
@@ -209,7 +216,6 @@ public class UserPreference {
         return mPrefs.getBoolean(mIsRefreshProfile, false);
     }
 
-
     public void setIsRefreshProfile(boolean value) {
         Syso.debug("mCheckedIsConnected = ", value);
         mPrefsEditor.putBoolean(mIsRefreshProfile, value);
@@ -273,13 +279,17 @@ public class UserPreference {
     }
 
     public void setProfilePic(String value) {
+        Log.e("Profile", "lalaa1001:"+UserPreference.getInstance().getProfilePic());
+
         if (value != null) {
             mPrefsEditor.putString(mProfilePic, value);
+            Log.e("Profile", "lalaa44"+UserPreference.getInstance().getProfilePic());
             mPrefsEditor.commit();
         }
     }
 
     public String getProfilePic() {
+        Log.e("Profile", "lalaa4455:"+mPrefs.getString(mProfilePic, ""));
         return mPrefs.getString(mProfilePic, "");
     }
 
@@ -292,6 +302,62 @@ public class UserPreference {
 
     public String getUserName() {
         return mPrefs.getString(mUserName, "");
+    }
+
+
+    public void setUserFb(String value) {
+        if (value != null) {
+            mPrefsEditor.putString(mUserFb, value);
+            mPrefsEditor.commit();
+        }
+    }
+
+    public String getUserFb() {
+        return mPrefs.getString(mUserFb, "");
+    }
+
+    public void setUserIns(String value) {
+        if (value != null) {
+            mPrefsEditor.putString(mUserIns, value);
+            mPrefsEditor.commit();
+        }
+    }
+
+    public String getUserIns() {
+        return mPrefs.getString(mUserIns, "");
+    }
+
+    public void setUserTube(String value) {
+        if (value != null) {
+            mPrefsEditor.putString(mUserTube, value);
+            mPrefsEditor.commit();
+        }
+    }
+
+    public String getUserTube() {
+        return mPrefs.getString(mUserTube, "");
+    }
+
+    public void setUserPin(String value) {
+        if (value != null) {
+            mPrefsEditor.putString(mUserPin, value);
+            mPrefsEditor.commit();
+        }
+    }
+
+    public String getUserPin() {
+        return mPrefs.getString(mUserPin, "");
+    }
+
+    public void setUserTwi(String value) {
+        if (value != null) {
+            mPrefsEditor.putString(mUserTwi, value);
+            mPrefsEditor.commit();
+        }
+    }
+
+    public String getUserTwi() {
+        return mPrefs.getString(mUserTwi, "");
     }
 
     public void setFinalPrice(String value) {

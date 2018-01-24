@@ -104,22 +104,22 @@
             <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
             <!--android:screenOrientation="portrait"-->
             <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
-        <!--<activity-->
-            <!--android:name="com.flatlay.activity.HomeActivity"-->
-            <!--android:screenOrientation="portrait"-->
+        <activity
+            android:name="com.flatlay.activity.HomeActivity"
+            android:screenOrientation="portrait"
 
-            <!--android:windowSoftInputMode="adjustPan">-->
+            android:windowSoftInputMode="adjustPan">
 
-        <!--</activity>-->
+        </activity>
 
         <!--<activity-->
             <!--android:name="com.yalantis.ucrop.UCropActivity"-->
             <!--android:screenOrientation="portrait"-->
             <!--android:theme="@style/AppCompat" />-->
-        <!--<activity-->
-            <!--android:name="com.flatlay.circle_crop.circle_crop.ImageCropActivity"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:theme="@style/AppCompat" />-->
+        <activity
+            android:name="com.flatlay.circle_crop.circle_crop.ImageCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat" />
 
         <!--<activity-->
             <!--android:name="com.flatlay.activity.PinterestLoginActivity"-->
@@ -148,11 +148,11 @@
             <!--android:screenOrientation="portrait"-->
             <!--android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"-->
             <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
-        <!--<activity-->
-            <!--android:name="com.flatlay.activity.EditProfileActivity"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <activity
+            android:name="com.flatlay.activity.PinGuideActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
         <!--<activity-->
             <!--android:name="com.flatlay.activity.KikrLearnMoreActivity"-->
             <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
@@ -302,11 +302,17 @@
             <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
             <!--android:screenOrientation="portrait"-->
             <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
-        <!--<activity-->
-            <!--android:name="com.flatlay.activity.FollowCategoriesNewActivity"-->
-            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <activity
+            android:name="com.flatlay.activity.FollowCategoriesNewActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+
+        <activity
+            android:name="com.flatlay.activity.EditProfileActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
         <!--<activity-->
             <!--android:name="com.flatlay.activity.InstagramLoginActivity"-->
             <!--android:configChanges="keyboard|keyboardHidden|orientation"-->

@@ -141,11 +141,11 @@ public class FbSignActivity extends BaseActivity {
                         }
                     } else if (isGetProfilePic) {
                         Log.w("FbSignActivity","2");
-                        getProfilePic(user);
                     } else {
                         Log.w("FbSignActivity","3");
                         buildUserDataAndDoSignIn(user);
                     }
+                    getProfilePic(user);
                 } else {
                     Log.w("FbSignActivity","4");
                     AlertUtils.showToast(context,
@@ -161,7 +161,7 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private void getProfilePic(JSONObject user) {
-        Log.w("FbSignActivity","getProfilePic");
+        Log.e("FbSignActivity2","getProfilePic");
         URL url = null;
         String fb_id = "";
         try {
@@ -171,11 +171,13 @@ public class FbSignActivity extends BaseActivity {
         }
         try {
             url = new URL("http://graph.facebook.com/" + fb_id + "/picture?type=large");
+            UserPreference.getInstance().setProfilePic(url.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
         Intent intent = new Intent();
         intent.putExtra("profile_pic", url.toString());
+        UserPreference.getInstance().setProfilePic(url.toString());
         setResult(RESULT_OK, intent);
         finish();
     }

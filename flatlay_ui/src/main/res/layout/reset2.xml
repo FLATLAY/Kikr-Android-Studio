@@ -3,197 +3,179 @@
     android:layout_height="fill_parent"
     android:background="#40000000">
 
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="#40000000">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#40000000"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="60dp"
+            android:layout_weight="2"
+
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/logoImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal|top"
+                    android:src="@drawable/round_beta_flatlay_ic" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout6"
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <ImageView
+                    android:id="@+id/logoImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal|top"
+                    android:src="@drawable/flatlay_text_white_transparent" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout20"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="21.56dp"
+            android:layout_marginRight="21.56dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="8"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/optionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/black_corner_button"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/resetPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="Montserrat"
+                    android:text="RESET PASSWORD"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <RelativeLayout
+                    android:id="@+id/linearLayout1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/signUpHeaderRelativeLayout"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="60dp"
-                        android:layout_weight="2"
-
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp">
+                        <EditText
+                            android:id="@+id/resetPinEditText"
+                            style="@style/editTextSignup"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/flatlayloginboardernew2"
+                            android:ems="10"
+                            android:fontFamily="Montserrat"
+                            android:hint="Reset Pin"
+                            android:inputType="textEmailAddress"
+                            android:textSize="18dp"></EditText>
 
-                            <ImageView
-                                android:id="@+id/logoImage"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_gravity="center_horizontal|top"
-                                android:src="@drawable/round_beta_flatlay_ic" />
-                        </LinearLayout>
+                        <EditText
+                            android:id="@+id/passwordEditText"
+                            style="@style/editTextSignup"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:background="@drawable/flatlayloginboardernew2"
+                            android:ems="10"
+                            android:fontFamily="Montserrat"
+                            android:hint="New Password"
+                            android:inputType="textEmailAddress"
+                            android:textSize="18dp"></EditText>
 
-                        <LinearLayout
-                            android:id="@+id/layout6"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp">
+                        <EditText
+                            android:id="@+id/confirmPasswordEditText"
+                            style="@style/editTextSignup"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:background="@drawable/flatlayloginboardernew2"
+                            android:ems="10"
+                            android:fontFamily="Montserrat"
+                            android:hint="Confirm Password"
+                            android:inputType="textEmailAddress"
+                            android:textSize="18dp"></EditText>
 
-                            <ImageView
-                                android:id="@+id/logoImageView"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_gravity="center_horizontal|top"
-                                android:src="@drawable/flatlay_text_white_transparent" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layout20"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginLeft="21.56dp"
-                        android:layout_marginRight="21.56dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="8"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:id="@+id/optionLayout"
+                        <Button
+                            android:id="@+id/resetButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="20dp"
-                            android:background="@drawable/black_corner_button"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/resetPassword"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="20dp"
-                                android:layout_marginTop="20dp"
-                                android:fontFamily="Montserrat"
-                                android:text="RESET PASSWORD"
-                                android:textColor="@color/white"
-                                android:textSize="18dp" />
-
-                            <RelativeLayout
-                                android:id="@+id/linearLayout1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/signUpHeaderRelativeLayout"
-                                android:layout_marginLeft="7dp"
-                                android:layout_marginRight="7dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <EditText
-                                        android:id="@+id/resetPinEditText"
-                                        style="@style/editTextSignup"
-                                        android:layout_height="wrap_content"
-                                        android:background="@drawable/flatlayloginboardernew2"
-                                        android:ems="10"
-                                        android:fontFamily="Montserrat"
-                                        android:hint="Reset Pin"
-                                        android:inputType="textEmailAddress"
-                                        android:textSize="18dp"></EditText>
-
-                                    <EditText
-                                        android:id="@+id/passwordEditText"
-                                        style="@style/editTextSignup"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="7dp"
-                                        android:background="@drawable/flatlayloginboardernew2"
-                                        android:ems="10"
-                                        android:fontFamily="Montserrat"
-                                        android:hint="New Password"
-                                        android:inputType="textEmailAddress"
-                                        android:textSize="18dp"></EditText>
-
-                                    <EditText
-                                        android:id="@+id/confirmPasswordEditText"
-                                        style="@style/editTextSignup"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="7dp"
-                                        android:background="@drawable/flatlayloginboardernew2"
-                                        android:ems="10"
-                                        android:fontFamily="Montserrat"
-                                        android:hint="Confirm Password"
-                                        android:inputType="textEmailAddress"
-                                        android:textSize="18dp"></EditText>
-
-                                    <Button
-                                        android:id="@+id/resetButton"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
-                                        android:background="@drawable/green_corner_button"
-                                        android:clickable="true"
-                                        android:fontFamily="Montserrat"
-                                        android:text="Done"
-                                        android:textColor="@color/gray"
-                                        android:textSize="18dp" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="45dp"
-                                    android:layout_alignParentBottom="true"
-                                    android:layout_centerHorizontal="true"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/resendPinButton"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerHorizontal="true"
-                                        android:layout_gravity="center"
-                                        android:layout_marginBottom="15dp"
-                                        android:layout_marginRight="25dp"
-                                        android:fontFamily="Montserrat"
-                                        android:gravity="center"
-                                        android:text="Resend Pin?"
-                                        android:textColor="@color/white"
-                                        android:textSize="18dp" />
-
-                                    <TextView
-                                        android:id="@+id/backToLanding"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerHorizontal="true"
-                                        android:layout_gravity="center"
-                                        android:layout_marginBottom="15dp"
-                                        android:layout_marginLeft="25dp"
-                                        android:fontFamily="Montserrat"
-                                        android:gravity="center"
-                                        android:text="Back"
-                                        android:textColor="@color/white"
-                                        android:textSize="18dp" />
-
-                                </LinearLayout>
-                            </RelativeLayout>
-                        </LinearLayout>
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/green_corner_button"
+                            android:clickable="true"
+                            android:fontFamily="Montserrat"
+                            android:text="Done"
+                            android:textColor="@color/gray"
+                            android:textSize="18dp" />
                     </LinearLayout>
-                </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/resendPinButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginRight="25dp"
+                            android:fontFamily="Montserrat"
+                            android:gravity="center"
+                            android:text="Resend Pin?"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/backToLanding"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="25dp"
+                            android:fontFamily="Montserrat"
+                            android:gravity="center"
+                            android:text="Back"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
-    </FrameLayout>
+    </LinearLayout>
 </RelativeLayout>

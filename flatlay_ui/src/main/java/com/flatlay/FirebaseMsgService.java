@@ -122,10 +122,6 @@ public class FirebaseMsgService extends FirebaseMessagingService {
 
 
 
-
-
-
-
     /**
      * Method called on Receiving a new message
      */
@@ -145,7 +141,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
 
     private void generateNotification(Context context, String message, String inspiration_id, String section, String otherdata) {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
-        notificationBuilder.setSmallIcon(R.drawable.small_logo);
+        notificationBuilder.setSmallIcon(R.drawable.imgpsh_smallsize);
         notificationBuilder.setTicker(message);
         notificationBuilder.setContentTitle(context.getString(R.string.app_name));
         notificationBuilder.setContentText(message);
@@ -222,7 +218,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 // Set Icon
-                .setSmallIcon(R.drawable.round_logo)
+                .setSmallIcon(R.drawable.imgpsh_smallsize)
                 // Set Ticker Message
                 .setTicker("Flatlay")
                 // Dismiss Notification
@@ -233,10 +229,9 @@ public class FirebaseMsgService extends FirebaseMessagingService {
                 .setContent(remoteViews);
 
         // Locate and set the Image into customnotificationtext.xml ImageViews
-        remoteViews.setImageViewResource(R.id.image, R.drawable.round_logo);
+        remoteViews.setImageViewResource(R.id.image, R.drawable.imgpsh_smallsize);
         Date date = new Date();
         SimpleDateFormat format=new SimpleDateFormat("hh:mm aa");
-
 
         String hey = "Hey!";
 

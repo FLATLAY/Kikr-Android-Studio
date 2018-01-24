@@ -12,7 +12,7 @@
             android:id="@+id/activity_product_list_product_image"
             android:src="@drawable/dum_list_item_product"
             android:layout_width="wrap_content"
-            android:layout_height="145dp"
+            android:layout_height="80dp"
             android:adjustViewBounds="true"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"

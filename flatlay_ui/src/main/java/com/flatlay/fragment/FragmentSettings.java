@@ -25,7 +25,6 @@ import com.flatlay.activity.ChangeWalletPinActivity;
 import com.flatlay.activity.EditProfileActivity;
 import com.flatlay.dialog.RemoveSocialAccountDialog;
 import com.flatlay.dialog.WelcomeDialog;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.AppConstants;
 import com.flatlaylib.api.AddressApi;
 import com.flatlaylib.api.CardInfoApi;
@@ -59,7 +58,6 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 	private TextView noCardFound;
 	private TextView usernameText;
 	private LinearLayout fbAccountLayout,twitterAccountLayout,instagramAccountLayout,pinterestAccountLayout;
-	private ProgressBarDialog progressBarDialog;
 	private FragmentSettings fragmentSettings;
 	private List<NotificationSetting> data = new ArrayList<NotificationSetting>();
 	private HashMap<String, Boolean> settingStatus = new HashMap<String, Boolean>();
@@ -332,13 +330,13 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 	}
 
 	public void getCardList(final boolean isLoadNot) {
-		progressBarDialog = new ProgressBarDialog(mContext);
-		progressBarDialog.show();
+//		progressBarDialog = new ProgressBarDialog(mContext);
+//		progressBarDialog.show();
 		final CardInfoApi cardInfoApi = new CardInfoApi(new ServiceCallback() {
 
 			@Override
 			public void handleOnSuccess(Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				if (object != null) {
 					CardInfoRes cardInfoRes = (CardInfoRes) object;
 					cardListLayout.setVisibility(View.VISIBLE);
@@ -361,7 +359,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				if(object!=null){
 					CardInfoRes cardInfoRes=(CardInfoRes) object;
 					AlertUtils.showToast(mContext, cardInfoRes.getMessage());
@@ -375,13 +373,13 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 	}
 
 	public void getAddressList(final boolean isLoadNot) {
-		progressBarDialog = new ProgressBarDialog(mContext);
-		progressBarDialog.show();
+//		progressBarDialog = new ProgressBarDialog(mContext);
+//		progressBarDialog.show();
 		final AddressApi addressApi = new AddressApi(new ServiceCallback() {
 
 			@Override
 			public void handleOnSuccess(Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				if (object != null) {
 					AddressRes addressRes = (AddressRes) object;
 					addressListLayout.setVisibility(View.VISIBLE);
@@ -411,7 +409,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				if(object!=null){
 					AddressRes addressRes=(AddressRes) object;
 					AlertUtils.showToast(mContext, addressRes.getMessage());
@@ -478,13 +476,13 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
 
 	public void getNotificationStatus() {
-		progressBarDialog = new ProgressBarDialog(mContext);
-		progressBarDialog.show();
+//		progressBarDialog = new ProgressBarDialog(mContext);
+//		progressBarDialog.show();
 		final NotificationSettingsApi notificationSettingsApi = new NotificationSettingsApi(new ServiceCallback() {
 
 			@Override
 			public void handleOnSuccess(Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				if (object != null) {
 					NotificationSettingRes notificationSettingRes = (NotificationSettingRes) object;
 					if (!TextUtils.isEmpty(notificationSettingRes.getEmail())) {
@@ -557,7 +555,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				if(object!=null){
 					NotificationSettingRes notificationSettingRes = (NotificationSettingRes) object;
 					AlertUtils.showToast(mContext, notificationSettingRes.getMessage());
@@ -621,14 +619,14 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
 	private void checkKikrWalletPin() {
 
-		progressBarDialog = new ProgressBarDialog(mContext);
-		progressBarDialog.show();
+//		progressBarDialog = new ProgressBarDialog(mContext);
+//		progressBarDialog.show();
 
 		final WalletPinApi service = new WalletPinApi(new ServiceCallback() {
 
 			@Override
 			public void handleOnSuccess(Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				if(object!=null){
 					WalletPinRes response=(WalletPinRes) object;
 					if(!TextUtils.isEmpty(response.getPin_created())&&response.getPin_created().equals("yes")){
@@ -646,7 +644,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				if(object!=null){
 					WalletPinRes response=(WalletPinRes) object;
 					AlertUtils.showToast(mContext,response.getMessage());
@@ -658,25 +656,25 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		service.checkKikrWalletPin(UserPreference.getInstance().getUserID());
 		service.execute();
 
-		progressBarDialog.setOnCancelListener(new OnCancelListener() {
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				service.cancel();
-			}
-		});
+		//progressBarDialog.setOnCancelListener(new OnCancelListener() {
+//			@Override
+//			public void onCancel(DialogInterface dialog) {
+//				service.cancel();
+//			}
+//		});
 	}
 
 
 	private void checkPassword() {
 
-		progressBarDialog = new ProgressBarDialog(mContext);
-		progressBarDialog.show();
+//		progressBarDialog = new ProgressBarDialog(mContext);
+//		progressBarDialog.show();
 
 		final ChangePasswordApi service = new ChangePasswordApi(new ServiceCallback() {
 
 			@Override
 			public void handleOnSuccess(Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				if(object!=null){
 					ChangePasswordRes response=(ChangePasswordRes) object;
 					if(!TextUtils.isEmpty(response.getPassword_created())&&response.getPassword_created().equals("yes")){
@@ -693,7 +691,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
 			@Override
 			public void handleOnFailure(ServiceException exception, Object object) {
-				progressBarDialog.dismiss();
+			//	progressBarDialog.dismiss();
 				if(object!=null){
 					WalletPinRes response=(WalletPinRes) object;
 					AlertUtils.showToast(mContext,response.getMessage());
@@ -705,11 +703,11 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 		service.checkPasswordCreated(UserPreference.getInstance().getUserID());
 		service.execute();
 
-		progressBarDialog.setOnCancelListener(new OnCancelListener() {
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				service.cancel();
-			}
-		});
+//		progressBarDialog.setOnCancelListener(new OnCancelListener() {
+//			@Override
+//			public void onCancel(DialogInterface dialog) {
+//				service.cancel();
+//			}
+//		});
 	}
 }

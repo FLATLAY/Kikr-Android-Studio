@@ -12,6 +12,7 @@ import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewConfigurationCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -48,6 +49,7 @@ public class MyCirclePageIndicator extends View implements PageIndicator {
     private int mActivePointerId = INVALID_POINTER;
     private boolean mIsDragging;
 
+    private int index=0;
 
     public MyCirclePageIndicator(Context context) {
         this(context, null);
@@ -61,20 +63,17 @@ public class MyCirclePageIndicator extends View implements PageIndicator {
         super(context, attrs, defStyle);
         if (isInEditMode()) return;
 
-        //Load defaults from resources
         final Resources res = getResources();
         final int defaultPageColor = res.getColor(com.viewpagerindicator.R.color.default_circle_indicator_page_color);
         final int defaultFillColor = res.getColor(com.viewpagerindicator.R.color.default_circle_indicator_fill_color);
         final int defaultOrientation = res.getInteger(com.viewpagerindicator.R.integer.default_circle_indicator_orientation);
         final int defaultStrokeColor = res.getColor(com.viewpagerindicator.R.color.default_circle_indicator_stroke_color);
-//        final float defaultStrokeWidth = res.getDimension(com.viewpagerindicator.R.dimen.default_circle_indicator_stroke_width);
         final float defaultStrokeWidth = 0;
 
         final float defaultRadius = res.getDimension(com.viewpagerindicator.R.dimen.default_circle_indicator_radius) * 2;
         final boolean defaultCentered = res.getBoolean(com.viewpagerindicator.R.bool.default_circle_indicator_centered);
         final boolean defaultSnap = res.getBoolean(com.viewpagerindicator.R.bool.default_circle_indicator_snap);
 
-        //Retrieve styles attributes
         TypedArray a = context.obtainStyledAttributes(attrs, com.viewpagerindicator.R.styleable.CirclePageIndicator, defStyle, 0);
 
         mCentered = a.getBoolean(com.viewpagerindicator.R.styleable.CirclePageIndicator_centered, defaultCentered);
@@ -194,9 +193,11 @@ public class MyCirclePageIndicator extends View implements PageIndicator {
         }
 
         if (mCurrentPage >= count) {
+
             setCurrentItem(count - 1);
             return;
         }
+        Log.e("huihui",String.valueOf(count));
 
         int longSize;
         int longPaddingBefore;
@@ -231,7 +232,6 @@ public class MyCirclePageIndicator extends View implements PageIndicator {
 
         }
 
-        //Draw stroked circles
         for (int iLoop = 0; iLoop < count; iLoop++) {
             float drawLong = longOffset + (iLoop * threeRadius);
 
@@ -242,18 +242,15 @@ public class MyCirclePageIndicator extends View implements PageIndicator {
                 dX = shortOffset;
                 dY = drawLong;
             }
-            // Only paint fill if not completely transparent
             if (mPaintPageFill.getAlpha() > 0) {
                 canvas.drawCircle(dX, dY, pageFillRadius, mPaintPageFill);
             }
 
-            // Only paint stroke if a stroke width was non-zero
             if (pageFillRadius != mRadius) {
                 canvas.drawCircle(dX, dY, mRadius, mPaintStroke);
             }
         }
 
-        //Draw the filled circle according to the current scroll
         float cx = (mSnap ? mSnapPage : mCurrentPage) * threeRadius;
         if (!mSnap) {
             cx += mPageOffset * threeRadius;
@@ -453,14 +450,11 @@ public class MyCirclePageIndicator extends View implements PageIndicator {
         int specSize = MeasureSpec.getSize(measureSpec);
 
         if ((specMode == MeasureSpec.EXACTLY) || (mViewPager == null)) {
-            //We were told how big to be
             result = specSize;
         } else {
-            //Calculate the width according the views count
             final int count = mViewPager.getAdapter().getCount();
             result = (int)(getPaddingLeft() + getPaddingRight()
                     + (count * 2 * mRadius) + (count - 1) * mRadius + 1);
-            //Respect AT_MOST value if that was what is called for by measureSpec
             if (specMode == MeasureSpec.AT_MOST) {
                 result = Math.min(result, specSize);
             }
@@ -481,12 +475,9 @@ public class MyCirclePageIndicator extends View implements PageIndicator {
         int specSize = MeasureSpec.getSize(measureSpec);
 
         if (specMode == MeasureSpec.EXACTLY) {
-            //We were told how big to be
             result = specSize;
         } else {
-            //Measure the height
             result = (int)(2 * mRadius + getPaddingTop() + getPaddingBottom() + 1);
-            //Respect AT_MOST value if that was what is called for by measureSpec
             if (specMode == MeasureSpec.AT_MOST) {
                 result = Math.min(result, specSize);
             }

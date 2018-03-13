@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_gravity="center"
-        android:src="@drawable/kikr_trace_logo" />
+        android:src="@drawable/profile_icon" />
 
     <TextView
         android:id="@+id/groupTextView"

@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.flatlay.R;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.api.EditProfileDescriptionApi;
 import com.flatlaylib.db.UserPreference;
@@ -26,7 +25,6 @@ import com.flatlaylib.utils.AlertUtils;
 public class EditUserDescriptionDialog extends Dialog implements TextView.OnEditorActionListener {
     private FragmentActivity mContext;
     private EditText editText;
-    private ProgressBarDialog mProgressBarDialog;
     //	private Inspiration inspiration;
     private String description;
     private TextView descriptionTextView;
@@ -99,14 +97,14 @@ public class EditUserDescriptionDialog extends Dialog implements TextView.OnEdit
     }
 
     private void updateDescription(final String description) {
-        mProgressBarDialog = new ProgressBarDialog(mContext);
-        mProgressBarDialog.show();
+//        mProgressBarDialog = new ProgressBarDialog(mContext);
+//        mProgressBarDialog.show();
 
         final EditProfileDescriptionApi editProfileApi = new EditProfileDescriptionApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                mProgressBarDialog.dismiss();
+              //  mProgressBarDialog.dismiss();
                 CommonRes commonRes = (CommonRes) object;
                // AlertUtils.showToast(mContext, "DescriUpdated");
                 UserPreference.getInstance().setIsRefreshProfile(true);
@@ -116,7 +114,7 @@ public class EditUserDescriptionDialog extends Dialog implements TextView.OnEdit
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                mProgressBarDialog.dismiss();
+               // mProgressBarDialog.dismiss();
                 if (object != null) {
                     CommonRes response = (CommonRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
@@ -128,12 +126,12 @@ public class EditUserDescriptionDialog extends Dialog implements TextView.OnEdit
         editProfileApi.editDescription(UserPreference.getInstance().getUserID(), description);
         editProfileApi.execute();
 
-        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                editProfileApi.cancel();
-            }
-        });
+//        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                editProfileApi.cancel();
+//            }
+//        });
     }
 
 

@@ -1,14 +1,10 @@
 package com.flatlay.activity;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +18,6 @@ import android.widget.TextView;
 
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
 import com.flatlaylib.api.LoginUserApi;
@@ -38,11 +33,10 @@ import com.flatlaylib.utils.Syso;
 
 public class LoginActivity extends BaseFragment implements OnClickListener, OnKeyListener, ServiceCallback {
     private View mainView;
-    private TextView mBackButton, mLogin;
-    private TextView mForgotPassword;
+    private TextView mBackButton, mLogin,mForgotPassword;
     private Button mLoginButton;
     private EditText mEmailEditText, mPasswordEditText;
-    private ProgressBarDialog progressBarDialog;
+    //private ProgressBarDialog progressBarDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -194,26 +188,15 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
     }
 
     private void loginViaEamil(String email, String password) {
-        progressBarDialog = new ProgressBarDialog(getActivity());
-        progressBarDialog.show();
-
         final LoginUserApi service = new LoginUserApi(this);
         service.loginViaEmail(email, password, DeviceUtils.getPhoneModel(),
                 CommonUtility.getDeviceTocken(getActivity()), "android",
                 CommonUtility.getDeviceId(getActivity()));
         service.execute();
-
-        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
     }
 
     @Override
     public void handleOnSuccess(Object object) {
-        progressBarDialog.dismiss();
         Syso.info("In handleOnSuccess>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;
@@ -237,7 +220,7 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
-        progressBarDialog.dismiss();
+       // progressBarDialog.dismiss();
         Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;

@@ -13,13 +13,17 @@
         android:layout_marginBottom="@dimen/padding_small"
         android:orientation="horizontal" >
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <TextView
             android:id="@+id/collection_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padding_large"
             android:layout_weight="1"
-            android:text="@string/add_collection_text"
+            android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="@dimen/large_text_size" />
 
         <ImageView
@@ -27,8 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/add_collection_image_height"
             android:layout_marginLeft="@dimen/padding_large"
+            android:layout_alignParentRight="true"
             android:layout_weight="1"
-            android:src="@drawable/ic_add_collection" />
+            android:src="@drawable/squareplus" />
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

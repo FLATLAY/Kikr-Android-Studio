@@ -46,7 +46,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="130dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_wallet_pocket"
+                android:src="@drawable/profile_icon"
                 android:visibility="gone" />
 
             <TextView

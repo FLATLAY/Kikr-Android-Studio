@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left|bottom"
             android:padding="@dimen/padding_large"
-            android:src="@drawable/ic_star_line"
+            android:src="@drawable/profile_icon"
             android:visibility="gone" />
 
         <TextView

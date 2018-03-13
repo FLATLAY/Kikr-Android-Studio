@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_large"
-                android:src="@drawable/ic_star_line" />
+                android:src="@drawable/profile_icon" />
 
             <TextView
                 android:id="@+id/activity_product_list_product_name"

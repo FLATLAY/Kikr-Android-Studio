@@ -183,6 +183,8 @@
     <string name="share_product_text">Share Product</string>
     <string name="no_friends_found_msg">Friends not found</string>
     <string name="user_followed_successfully">User followed.</string>
+    <string name="user_unfollowed_successfully">User unfollowed.</string>
+
 
     <!-- Interest Section -->
     <string name="store_text">Stores</string>

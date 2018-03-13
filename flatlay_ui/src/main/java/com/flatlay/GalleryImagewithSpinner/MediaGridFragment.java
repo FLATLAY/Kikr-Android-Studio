@@ -37,7 +37,6 @@ import com.flatlay.GallerychacheKikr.ImageCache;
 import com.flatlay.GallerychacheKikr.ImageWorker;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
-import com.flatlay.ui.ProgressBarDialog;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -99,7 +98,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
     private FolderAdapter folderAdapter;
 
     private ImagesInFolderAdapter imagesAdapter;
-    private ProgressBarDialog mProgressBarDialog;
 
     public MediaGridFragment() {
         // Required empty public constructor
@@ -251,8 +249,8 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
                 public void onItemClick(AdapterView<?> arg0, View arg1, final int position,
                                         long arg3) {
 
-                    mProgressBarDialog = new ProgressBarDialog(mContext);
-                    mProgressBarDialog.show();
+//                    mProgressBarDialog = new ProgressBarDialog(mContext);
+//                    mProgressBarDialog.show();
                     // Cursor  c1 = (Cursor ) arg0.getItemAtPosition(position);
                     new AsyncTask<Void, Void, Void>() {
                         @Override
@@ -268,8 +266,8 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
                         @Override
                         protected void onPostExecute(Void aVoid) {
                             super.onPostExecute(aVoid);
-                            if (mProgressBarDialog.isShowing())
-                                mProgressBarDialog.dismiss();
+//                            if (mProgressBarDialog.isShowing())
+//                                mProgressBarDialog.dismiss();
                         }
                     }.execute();
 

@@ -19,7 +19,7 @@
                 android:layout_height="@dimen/discover_list_item_height"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/dum_gap" />
+                android:src="@drawable/profile_icon" />
 
             <ImageView
                 android:layout_width="fill_parent"

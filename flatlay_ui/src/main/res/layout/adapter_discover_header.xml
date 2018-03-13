@@ -27,7 +27,7 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@null"
                 android:scaleType="fitCenter"
-                android:src="@drawable/dum_items_beats" />
+                android:src="@drawable/profile_icon" />
         </LinearLayout>
 
         <RelativeLayout

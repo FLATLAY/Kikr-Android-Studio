@@ -40,6 +40,19 @@ public class InspirationFeedApi extends AbsService {
 		requestValue = gson.toJson(comment);
 	}
 
+	public void searchFeedByCategory(String user_id,String pagenum,String search_text) {
+		this.METHOD_NAME = WebConstants.HOST_FILE + "searchinspirationwithproducts";
+		requestType = WebConstants.HTTP_METHOD_POST;
+		Map<String, String> comment = new HashMap<String, String>();
+		comment.put("user_id", user_id);
+		comment.put("pagenum", pagenum);
+		comment.put("search_text", search_text);
+		Map[] maps = new Map[] { comment };
+		Gson gson = new Gson();
+		requestValue = gson.toJson(comment);
+	}
+
+
 	@Override
 	public String getActionName() {
 		return METHOD_NAME;

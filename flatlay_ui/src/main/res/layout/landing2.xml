@@ -12,9 +12,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="60dp"
             android:layout_weight="2"
+            android:orientation="vertical"></LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
             android:orientation="vertical">
 
             <LinearLayout
@@ -43,15 +47,21 @@
                     android:layout_gravity="center_horizontal|top"
                     android:src="@drawable/flatlay_text_white_transparent" />
             </LinearLayout>
-
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"></LinearLayout>
 
         <LinearLayout
             android:id="@+id/layout20"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8"
+            android:layout_weight="4"
             android:orientation="vertical">
+
 
             <RelativeLayout
                 android:id="@+id/optionLayout"
@@ -60,18 +70,16 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/layout24"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="21.56dp"
                     android:layout_marginRight="21.56dp"
-
-                    android:layout_marginTop="180dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:layout_marginTop="30dp"
                         android:orientation="horizontal">
 
                         <Button
@@ -113,23 +121,29 @@
                         android:text="FACEBOOK"
                         android:textColor="@color/white"
                         android:textSize="18dp" />
-
                 </LinearLayout>
-
-                <TextView
-                    android:id="@+id/earn250"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="30dp"
-                    android:fontFamily="Montserrat"
-                    android:gravity="center"
-                    android:text="How it works"
-                    android:textColor="@color/white"
-                    android:textSize="18dp" />
             </RelativeLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/earn250"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:fontFamily="Montserrat"
+                android:gravity="center"
+                android:text="How it works"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

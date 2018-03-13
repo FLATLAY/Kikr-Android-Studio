@@ -85,13 +85,4 @@
             layout="@layout/footer"
             android:visibility="gone" />
     </LinearLayout>
-
-
-    <com.flatlay.menu.ContextMenuView
-        android:id="@+id/contextMenuBg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#55000000"
-        android:visibility="gone"></com.flatlay.menu.ContextMenuView>
-
 </RelativeLayout>

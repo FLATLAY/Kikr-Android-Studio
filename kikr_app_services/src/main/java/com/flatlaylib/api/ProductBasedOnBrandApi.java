@@ -1,5 +1,7 @@
 package com.flatlaylib.api;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +62,8 @@ public class ProductBasedOnBrandApi extends AbsService{
 	}
 	
 	public void getProductsBasedOnCollectionList(String user_id, String pageno,String collection_id) {
+		Log.e("collection_id", "88");
+
 		this.METHOD_NAME = WebConstants.HOST_FILE + "getproductsbycollection";
 		Map<String, String> comment = new HashMap<String, String>();
 		comment.put("user_id", user_id);

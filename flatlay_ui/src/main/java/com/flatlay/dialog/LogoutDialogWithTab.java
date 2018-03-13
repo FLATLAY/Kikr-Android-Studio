@@ -14,7 +14,6 @@ import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.activity.LandingActivity;
 import com.flatlay.sessionstore.SessionStore;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.AppConstants;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.api.LogoutApi;
@@ -35,7 +34,6 @@ public class LogoutDialogWithTab extends Dialog {
     private TextView cancelTextView, okTextView;
     private HomeActivity homeActivity;
     private Context mContext;
-    ProgressBarDialog progressBarDialog;
 
     public LogoutDialogWithTab(Context mContext, HomeActivity homeActivity) {
         super(mContext, R.style.AdvanceDialogTheme);

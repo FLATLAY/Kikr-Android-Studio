@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/wallet_pocket_margin"
             android:contentDescription="@null"
-            android:src="@drawable/ic_wallet_pocket_half" />
+            android:src="@drawable/profile_icon" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/wallet_pocket_margin"
             android:contentDescription="@null"
-            android:src="@drawable/ic_wallet_pocket_half" />
+            android:src="@drawable/profile_icon" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/wallet_pocket_margin"
             android:contentDescription="@null"
-            android:src="@drawable/ic_wallet_pocket_half" />
+            android:src="@drawable/profile_icon" />
     </RelativeLayout>
    
 

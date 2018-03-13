@@ -1,14 +1,9 @@
 package com.flatlay.activity;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Color;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +12,10 @@ import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
 
-import com.flatlay.BaseActivity;
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.AppConstants;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
@@ -33,17 +24,14 @@ import com.flatlaylib.service.ServiceCallback;
 import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.RegisterUserResponse;
 import com.flatlaylib.utils.AlertUtils;
-import com.flatlaylib.utils.StringUtils;
 import com.flatlaylib.utils.Syso;
 
 public class ResetPassword extends BaseFragment implements OnKeyListener,
         OnClickListener, ServiceCallback {
 
     private EditText resetPinEditText, passwordEditText, confirmPasswordEditText;
-    private ProgressBarDialog progressBarDialog;
-    private TextView resendPinButton;
-    boolean resend = false;
-    private TextView mResetPass, mbackToLanding;
+    private boolean resend = false;
+    private TextView mResetPass, mbackToLanding,resendPinButton;
     private Button mReset;
     private View mainView;
 
@@ -102,18 +90,18 @@ public class ResetPassword extends BaseFragment implements OnKeyListener,
     }
 
     private void doAuthanticate() {
-        progressBarDialog = new ProgressBarDialog(getActivity());
-        progressBarDialog.show();
+//        progressBarDialog = new ProgressBarDialog(getActivity());
+//        progressBarDialog.show();
         final RegisterUserApi service = new RegisterUserApi(this);
         service.forgotPassword(getArguments().getString("email"));
         service.execute();
 
-        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
+//        progressBarDialog.setOnCancelListener(new OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                service.cancel();
+//            }
+//        });
     }
 
     @Override
@@ -160,19 +148,19 @@ public class ResetPassword extends BaseFragment implements OnKeyListener,
 
     private void doAuthanticate(String resetpin, String password) {
 
-        progressBarDialog = new ProgressBarDialog(getActivity());
-        progressBarDialog.show();
+//        progressBarDialog = new ProgressBarDialog(getActivity());
+//        progressBarDialog.show();
         final RegisterUserApi service = new RegisterUserApi(this);
         service.resetPassword(getArguments().getString("email"), resetpin,
                 password);
         service.execute();
 
-        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
+//        progressBarDialog.setOnCancelListener(new OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                service.cancel();
+//            }
+//        });
     }
 
     public void setUpTextType() {
@@ -186,7 +174,7 @@ public class ResetPassword extends BaseFragment implements OnKeyListener,
 
     @Override
     public void handleOnSuccess(Object object) {
-        progressBarDialog.dismiss();
+//        progressBarDialog.dismiss();
         Syso.info("In handleOnSuccess>>" + object);
         if (resend) {
             resend = false;
@@ -198,7 +186,7 @@ public class ResetPassword extends BaseFragment implements OnKeyListener,
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
-        progressBarDialog.dismiss();
+//        progressBarDialog.dismiss();
         Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;

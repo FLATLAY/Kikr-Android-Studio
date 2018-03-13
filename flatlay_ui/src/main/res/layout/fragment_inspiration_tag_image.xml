@@ -44,7 +44,7 @@
             style="@style/editTextSearchYourBank"
             android:layout_margin="@dimen/padding_large"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_search"
+            android:drawableLeft="@drawable/profile_icon"
             android:hint="Start typing slowly..."
             android:inputType="text"
             android:visibility="visible" />

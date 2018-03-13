@@ -24,7 +24,7 @@
             android:layout_weight="1"
             android:background="@null"
             android:textCursorDrawable="@null"
-            android:drawableLeft="@drawable/ic_search_white"
+            android:drawableLeft="@drawable/profile_icon"
             android:gravity="center_vertical"
             android:hint="Search for People, Stores, Brands."
             android:imeOptions="actionSearch"

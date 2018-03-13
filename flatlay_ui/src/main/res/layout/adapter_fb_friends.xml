@@ -15,7 +15,7 @@
             android:layout_width="@dimen/addBank_image_size"
             android:layout_height="@dimen/addBank_image_size"
             android:scaleType="center"
-            android:src="@drawable/dum_add_bank_image" />
+            android:src="@drawable/profile_icon" />
 
         <TextView
             android:id="@+id/user_name"

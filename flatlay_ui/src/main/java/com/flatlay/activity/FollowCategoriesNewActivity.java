@@ -3,23 +3,19 @@ package com.flatlay.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.flatlay.BaseActivity;
 import com.flatlay.R;
 import com.flatlay.adapter.FollowCategoryNewAdapter;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.AppConstants.Screen;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
@@ -35,19 +31,18 @@ import com.flatlaylib.utils.Syso;
 public class FollowCategoriesNewActivity extends BaseActivity implements OnClickListener, ServiceCallback {
     private ListView listView;
     private FollowCategoryNewAdapter categoryAdapter;
-  //  public static TextView mRightText;
-   // private ProgressBarDialog mProgressBarDialog;
+    private LinearLayout backIconLayout;
+    //  public static TextView mRightText;
+    // private ProgressBarDialog mProgressBarDialog;
     //private TextView mDataNotFoundTextView;
     private int pagenum = 0;
-    private boolean isLoading = false;
-    private boolean isFirstTime = true;
+    private boolean isLoading = false, isFirstTime = true, isFromHome = false;
     public static int selectedCount = 0;
     private Button nextButton;
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        Log.w("Activity:", "FollowCategoriesNewActivity");
         CommonUtility.noTitleActivity(context);
         UserPreference.getInstance().setCurrentScreen(Screen.CategoryScreen);
         setContentView(R.layout.activity_follow_categories_new);
@@ -64,6 +59,8 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
     public void initLayout() {
         listView = (ListView) findViewById(R.id.categoryGridView);
         nextButton = (Button) findViewById(R.id.nextButton);
+        backIconLayout = (LinearLayout) findViewById(R.id.backIconLayout);
+
         //	mDataNotFoundTextView=(TextView) findViewById(R.id.dataNotFoundTextView);
     }
 
@@ -90,6 +87,25 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
             }
         });
 
+        if (getIntent().hasExtra("isFromHome")) {
+            isFromHome = getIntent().getBooleanExtra("isFromHome", false);
+            if (isFromHome) {
+                backIconLayout.setVisibility(View.VISIBLE);
+                nextButton.setText("SAVE");
+                nextButton.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onBackPressed();
+                    }
+                });
+            }
+        } else {
+            if (selectedCount > 0)
+                goToNextScreen();
+            else
+                AlertUtils.showToast(context, "Follow at least 1 category.");
+        }
+
     }
 
     @Override
@@ -105,7 +121,8 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
 
     @Override
     public void setClickListener() {
-        nextButton.setOnClickListener(this);
+//        nextButton.setOnClickListener(this);
+        backIconLayout.setOnClickListener(this);
     }
 
     private void showReloadOption() {
@@ -125,11 +142,15 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.nextButton:
-                if (selectedCount > 0)
-                    goToNextScreen();
-                else
-                    AlertUtils.showToast(context, "Follow at least 1 category.");
+//            case R.id.nextButton:
+//                if (selectedCount > 0)
+//                    goToNextScreen();
+//                else
+//                    AlertUtils.showToast(context, "Follow at least 1 category.");
+//                break;
+
+            case R.id.backIconLayout:
+                onBackPressed();
                 break;
         }
 
@@ -137,11 +158,11 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
 
     private void getCategoryList() {
         isLoading = !isLoading;
-      //  mProgressBarDialog = new ProgressBarDialog(context);
+        //  mProgressBarDialog = new ProgressBarDialog(context);
         if (pagenum > 0)
             showFooter();
         //else
-         //   mProgressBarDialog.show();
+        //   mProgressBarDialog.show();
 
         final CategoryListApi listApi = new CategoryListApi(this);
         listApi.getCategoryList(Integer.toString(pagenum));
@@ -162,10 +183,9 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
 //        if (mProgressBarDialog.isShowing())
 //            mProgressBarDialog.dismiss();
 //        else
-            hideFutter();
+        hideFutter();
         hideDataNotFound();
         isLoading = !isLoading;
-        Syso.info("In handleOnSuccess>>" + object);
         CategoryRes categoryRes = (CategoryRes) object;
         List<Category> categories = categoryRes.getData();
         if (categories.size() < 10) {
@@ -226,12 +246,12 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
     }
 
     private void goToNextScreen() {
-		startActivity(PinGuideActivity.class);
+        startActivity(PinGuideActivity.class);
 //		finish();
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         finish();
     }
 
@@ -240,7 +260,7 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
 //        if (mProgressBarDialog.isShowing())
 //            mProgressBarDialog.dismiss();
 //        else
-            hideFutter();
+        hideFutter();
         isLoading = !isLoading;
         Syso.info("In handleOnFailure>>" + object);
         if (object != null) {

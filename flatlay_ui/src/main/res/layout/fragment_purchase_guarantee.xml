@@ -129,7 +129,7 @@
                 android:visibility="gone"
                 android:layout_marginBottom="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_xlarge"
-                android:src="@drawable/kikr_trace_logo" />
+                android:src="@drawable/profile_icon" />
             
             <TextView
                 android:id="@+id/happyShopping"

@@ -51,7 +51,7 @@ public class HelpPressMenuDialog extends Dialog {
         setContentView(R.layout.helpscreen_presshere_menu);
         setCanceledOnTouchOutside(true);
         WindowManager.LayoutParams lp = getWindow().getAttributes();
-        // lp.dimAmount = 0.9f;
+
         getWindow().setAttributes(lp);
         setCancelable(true);
         img1 = (ImageView) findViewById(R.id.img1);

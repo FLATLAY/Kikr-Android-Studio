@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/add_favorite_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,7 +32,8 @@
         android:id="@+id/webview1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/add_favorite_layout" />
+        android:layout_below="@+id/add_favorite_layout"
+        android:layout_marginTop="70dp" />
 
     <ProgressBar
         android:id="@+id/progressBarWebView"
@@ -42,92 +43,334 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:visibility="gone" />
-        
-    
+
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
-
-        <LinearLayout
-            android:id="@+id/overlay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone" >
-
-            <TextView
-                android:id="@+id/thirdparty"
-                android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:background="@color/aquamarine2"
-                android:gravity="center"
-                android:padding="16dp"
-                android:lineSpacingExtra="4dp"
-                android:text="You are currently on a 3rd party site.\nAdd it in the Flatlay cart to earn credits!"
-                android:textColor="@color/app_text_color"
-                android:textSize="@dimen/large_text_size"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/usekikr"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/aquamarine2"
-                android:gravity="center"
-                android:paddingBottom="8dp"
-                android:text="Use your Flatlay Pin Button"
-                android:textColor="@color/app_text_color"
-                android:textStyle="bold"
-                android:textSize="@dimen/large_text_size" />
-            <TextView
-                android:id="@+id/usekikrs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/aquamarine2"
-                android:gravity="center"
-                android:paddingBottom="8dp"
-                android:text=""
-                android:textColor="@color/app_text_color"
-                android:textStyle="bold"
-                android:textSize="@dimen/large_text_size" />
-            
-            <TextView
-                android:id="@+id/learnMore"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/aquamarine2"
-                android:gravity="center"
-                android:paddingBottom="16dp"
-                android:text="Learn More"
-                android:textColor="@color/app_text_color"
-                android:textSize="@dimen/medium_text_size" />
-
-            <TextView
-                android:id="@+id/dismiss"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/background_webviewbuttons"
-                android:gravity="center"
-                android:text="HIDE"
-                android:textColor="@color/app_text_color"
-                android:textSize="@dimen/large_text_size" />
-        </LinearLayout>
-        
-        <ImageButton
+        <ImageView
             android:id="@+id/btnBubble"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="170dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/rounded_button"
+            android:layout_marginTop="170dp"
             android:gravity="center"
             android:padding="16dp"
-            android:src="@drawable/flatlaystoreview"
+            android:src="@drawable/round_beta_flatlay_ic"
             android:visibility="visible" />
     </FrameLayout>
+
+    <com.flatlay.utility.MyMaterialContentOverflow4 xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/overflow1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/topdrawer"
+        app:buttonDrawable="@drawable/back_icon"
+        app:buttonPosition="left"
+        app:contentColor="@color/white"
+        app:fabButtonColor="@color/white">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/infoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="70dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="180dp"
+                android:background="@drawable/btn_simple_white_border2"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fadeScrollbars="false"
+                    android:scrollbarSize="3dp"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbarThumbVertical="@drawable/white_scroll_bar">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/text2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="You are currently on a 3rd party site.\nAdd it in the Flatlay cart to earn credits!"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="15dp" />
+
+                            <ImageView
+                                android:id="@+id/roundlogo"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/round_beta_flatlay_ic" />
+
+                            <TextView
+                                android:id="@+id/text4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/text5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/text6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/text3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="Use your Flatlay Pin Button"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="15dp" />
+
+
+                            <TextView
+                                android:id="@+id/text7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="Learn More"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/text9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/text8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/green_corner_button"
+                                android:padding="10dp"
+                                android:text="          Hide          "
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="10dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </ScrollView>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/contactLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="230dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/contacttext1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Customer Support"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dip"
+                        android:layout_marginTop="5dip"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/contacttext2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Terms of Use"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dip"
+                        android:layout_marginTop="5dip"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/contacttext3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Privacy Statement"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dip"
+                        android:layout_marginTop="5dip"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/contacttext4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Legal"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dip"
+                        android:layout_marginTop="5dip"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/contacttext8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/green_corner_button"
+                        android:padding="10dp"
+                        android:text="          Hide          "
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="29dp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+
+    </com.flatlay.utility.MyMaterialContentOverflow4>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/topdrawer5">
+
+            <LinearLayout
+                android:id="@+id/backIconLayout"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/backIconn"
+                    android:layout_width="16dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/back_icon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/flatlay_text_white_transparent" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <com.flatlay.menu.ContextMenuView
+        android:id="@+id/contextMenuBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#55000000"
+        android:visibility="gone"></com.flatlay.menu.ContextMenuView>
 
 </RelativeLayout>

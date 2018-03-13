@@ -2,11 +2,9 @@ package com.flatlay.chip;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import com.flatlay.R;
 import com.flatlay.model.Item;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlaylib.api.SearchApi;
 import com.flatlaylib.bean.Product;
 import com.flatlaylib.db.UserPreference;
@@ -21,7 +19,6 @@ import java.util.List;
 
 
 public class AutoSuggestProduct {
-    ProgressBarDialog mProgressBarDialog;
     Context mContext;
     ArrayList<Item> itemArrayList;
     String[] autoSuggestArray = null;
@@ -30,7 +27,6 @@ public class AutoSuggestProduct {
     int j = 0;
     List<Product> data2;
     SearchApi searchApi;
-    ProgressBar progressBar;
 
     public boolean isStringExist(String str) {
         for (String s : previousSearchedText) {
@@ -59,9 +55,7 @@ public class AutoSuggestProduct {
     }
 
 
-    public void search(final String searchString, final TagsEditText tagsEditText, final ProgressBar progressBar) {
-        progressBar.setVisibility(View.VISIBLE);
-        this.progressBar = progressBar;
+    public void search(final String searchString, final TagsEditText tagsEditText) {
 
         searchApi = new SearchApi(new ServiceCallback() {
 
@@ -79,17 +73,10 @@ public class AutoSuggestProduct {
                     tagsEditText.setAdapter(new ProductAutoCompleteAdapter(mContext, R.layout.product_auto_suggest_items, data2));
                     tagsEditText.showDropDown();
                 }
-                if (progressBar.getVisibility() == View.VISIBLE)
-                    progressBar.setVisibility(View.GONE);
-
-
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                if (progressBar.getVisibility() == View.VISIBLE)
-                    progressBar.setVisibility(View.GONE);
-
                 Syso.info("In handleOnFailure>>" + object);
 
                 if (object != null) {
@@ -107,8 +94,6 @@ public class AutoSuggestProduct {
     }
 
     public void cancelExecution() {
-        if (progressBar.getVisibility() == View.VISIBLE)
-            progressBar.setVisibility(View.GONE);
         searchApi.cancel();
 
     }

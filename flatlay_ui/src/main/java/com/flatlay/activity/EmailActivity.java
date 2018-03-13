@@ -1,7 +1,5 @@
 package com.flatlay.activity;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -12,7 +10,6 @@ import android.widget.EditText;
 
 import com.flatlay.BaseActivity;
 import com.flatlay.R;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
 import com.flatlay.utility.AppConstants.Screen;
@@ -28,7 +25,6 @@ import com.flatlaylib.utils.StringUtils;
 public class EmailActivity extends BaseActivity implements OnKeyListener,
 		OnClickListener {
 	private EditText mEmailEditText;
-	private ProgressBarDialog progressBarDialog;
 
 	@Override
 	protected void onCreate(Bundle bundle) {
@@ -114,13 +110,13 @@ public class EmailActivity extends BaseActivity implements OnKeyListener,
 
 	private void doAuthanticate(String email) {
 
-		progressBarDialog = new ProgressBarDialog(context);
-		progressBarDialog.show();
+//		progressBarDialog = new ProgressBarDialog(context);
+//		progressBarDialog.show();
 		final RegisterUserApi service = new RegisterUserApi(new ServiceCallback() {
 
 			@Override
 			public void handleOnSuccess(Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				Syso.info("In handleOnSuccess>>"+object);
 				String email="",username="",profilepic="";
 				if(getIntent().hasExtra("email")){
@@ -143,7 +139,7 @@ public class EmailActivity extends BaseActivity implements OnKeyListener,
 
 			@Override
 			public void handleOnFailure(ServiceException exception,Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				Syso.info("In handleOnFailure>>"+object);
 				if(object!=null){
 					RegisterUserResponse response=(RegisterUserResponse) object;
@@ -157,12 +153,12 @@ public class EmailActivity extends BaseActivity implements OnKeyListener,
 		service.updateEmail(UserPreference.getInstance().getUserID(), email);
 		service.execute();
 
-		progressBarDialog.setOnCancelListener(new OnCancelListener() {
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				service.cancel();
-			}
-		});
+		//progressBarDialog.setOnCancelListener(new OnCancelListener() {
+//			@Override
+//			public void onCancel(DialogInterface dialog) {
+//				service.cancel();
+//			}
+//		});
 	}
 	
 	@Override

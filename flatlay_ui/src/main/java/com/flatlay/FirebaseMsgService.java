@@ -128,16 +128,16 @@ public class FirebaseMsgService extends FirebaseMessagingService {
 
 
 
-    public double getFinalPrice(String string) {
-        double price = 0;
-        try {
-            JSONObject jsonObject = new JSONObject(string);
-            price = jsonObject.getDouble("finalprice");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return price;
-    }
+//    public double getFinalPrice(String string) {
+//        double price = 0;
+//        try {
+//            JSONObject jsonObject = new JSONObject(string);
+//            price = jsonObject.getDouble("finalprice");
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        return price;
+//    }
 
     private void generateNotification(Context context, String message, String inspiration_id, String section, String otherdata) {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);

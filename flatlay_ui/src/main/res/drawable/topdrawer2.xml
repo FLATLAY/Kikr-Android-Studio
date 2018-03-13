@@ -6,7 +6,7 @@
             <item >
                 <shape>
                     <gradient android:angle="270"
-                        android:endColor="#BF000000" android:startColor="#BF000000" />
+                        android:endColor="#B3000000" android:startColor="#B3000000" />
                     <!--<stroke android:width="2dp" android:color="@color/splashcolor" />-->
                     <corners android:bottomRightRadius="0dp" android:bottomLeftRadius="0dp"
                         android:topLeftRadius="10dp" android:topRightRadius="10dp" />

@@ -18,7 +18,6 @@ import com.flatlay.BaseActivity;
 import com.flatlay.R;
 import com.flatlay.adapter.ProductTaggingListAdapter;
 import com.flatlay.chip.AutoSuggestProduct;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.api.SearchApi;
 import com.flatlaylib.bean.Product;
@@ -38,7 +37,6 @@ import java.util.List;
 
 public class ProductSearchTagging extends BaseActivity implements MultiAutoCompleteTextView.OnEditorActionListener, AdapterView.OnItemClickListener {
 
-    ProgressBarDialog mProgressBarDialog;
     AutoSuggestProduct autoSuggestProduct;
     MultiAutoCompleteTextView multiAutoCompleteTextView;
     ListView listView;
@@ -63,7 +61,7 @@ public class ProductSearchTagging extends BaseActivity implements MultiAutoCompl
     @Override
     public void initLayout() {
 
-        mProgressBarDialog = new ProgressBarDialog(context);
+       // mProgressBarDialog = new ProgressBarDialog(context);
         autoSuggestProduct = new AutoSuggestProduct(context);
         multiAutoCompleteTextView = (MultiAutoCompleteTextView) findViewById(R.id.searchMultiText);
         listView = (ListView) findViewById(R.id.listView_main);
@@ -160,16 +158,16 @@ public class ProductSearchTagging extends BaseActivity implements MultiAutoCompl
 
         if (pageno > 0)
             showFooter();
-        else
-            mProgressBarDialog.show();
+        //else
+           // mProgressBarDialog.show();
 
         final SearchApi searchApi = new SearchApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
-                else
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
+//                else
                     hideFutter();
                 noDataFoundTextView.setVisibility(View.GONE);
                 CommonUtility.hideSoftKeyboard(context);
@@ -198,9 +196,9 @@ public class ProductSearchTagging extends BaseActivity implements MultiAutoCompl
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
-                else
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
+//                else
                     hideFutter();
                 CommonUtility.hideSoftKeyboard(context);
 
@@ -217,13 +215,13 @@ public class ProductSearchTagging extends BaseActivity implements MultiAutoCompl
         searchApi.searchProduct(UserPreference.getInstance().getUserID(), searchString, Integer.toString(pageno));
         searchApi.execute();
 
-        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                isLoading = !isLoading;
-                searchApi.cancel();
-            }
-        });
+//        mProgressBarDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                isLoading = !isLoading;
+//                searchApi.cancel();
+//            }
+//        });
     }
 
     /**

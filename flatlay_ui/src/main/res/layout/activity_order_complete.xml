@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/padding_large"
-            android:drawableRight="@drawable/wallet_logo"
+            android:drawableRight="@drawable/profile_icon"
             android:gravity="center_vertical"
             android:text="@string/secured_by" />
 

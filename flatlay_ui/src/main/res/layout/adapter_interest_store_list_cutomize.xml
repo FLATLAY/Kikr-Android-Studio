@@ -31,7 +31,7 @@
                 android:scaleType="centerInside"
                 android:layout_gravity="center"
                 android:visibility="visible"
-                android:src="@drawable/ic_profile_bg" />
+                android:src="@drawable/profile_icon" />
 
             <!--<ImageView-->
             <!--android:id="@+id/checkImageView1"-->

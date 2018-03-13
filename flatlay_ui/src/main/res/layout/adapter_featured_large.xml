@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/discover_list_item_height"
         android:scaleType="centerCrop"
-        android:src="@drawable/linesplaceholder" />
+        android:src="@drawable/profile_icon" />
 
     <LinearLayout
         android:layout_width="match_parent"

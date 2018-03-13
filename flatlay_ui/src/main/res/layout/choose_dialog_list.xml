@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sharebackground2"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_simple_white_border2"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/collection_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="190dp"
+            android:divider="@color/white"
+            android:dividerHeight="1.5dp"
+            android:scrollbars="none"></ListView>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/white" />
+
+        <ImageView
+            android:id="@+id/more_items_arrow"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:visibility="invisible"
+            android:src="@drawable/backarrow90" />
+
+        <Button
+            android:id="@+id/doneButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_teal_bar"
+            android:clickable="true"
+            android:fontFamily="Montserrat"
+            android:text="   DONE   "
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+</LinearLayout>

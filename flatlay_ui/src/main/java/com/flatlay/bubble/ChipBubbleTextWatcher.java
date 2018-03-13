@@ -8,7 +8,6 @@ import android.widget.MultiAutoCompleteTextView;
 
 import com.flatlay.R;
 import com.flatlay.model.Item;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.AppConstants;
 import com.flatlaylib.api.SearchAllApi;
 import com.flatlaylib.bean.SearchStoreBrandUserRes;
@@ -29,7 +28,6 @@ public class ChipBubbleTextWatcher implements TextWatcher {
     private int error = 0;
     ArrayList<Item> itemArrayList;
     String[] autoSuggestArray = null;
-    private ProgressBarDialog mProgressBarDialog;
     String checkApiCall = "";
 
     public ChipBubbleTextWatcher(Context context, MultiAutoCompleteTextView multiAutoCompleteTextView, ChipPropery chipPropery) {
@@ -139,8 +137,8 @@ public class ChipBubbleTextWatcher implements TextWatcher {
 
 
     public void getAll(String searchString) {
-        mProgressBarDialog = new ProgressBarDialog(context);
-        mProgressBarDialog.show();
+//        mProgressBarDialog = new ProgressBarDialog(context);
+//        mProgressBarDialog.show();
         final SearchAllApi searchAllApi = new SearchAllApi(new ServiceCallback() {
 
             @Override
@@ -176,16 +174,16 @@ public class ChipBubbleTextWatcher implements TextWatcher {
                 multiAutoCompleteTextView.showDropDown();
                 multiAutoCompleteTextView.requestFocus();
                 chipBubbleText.initialize();
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
 
 
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
                 Syso.info("In handleOnFailure>>" + object);
 
                 if (object != null) {

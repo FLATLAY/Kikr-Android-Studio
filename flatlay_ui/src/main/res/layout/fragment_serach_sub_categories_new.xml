@@ -58,7 +58,7 @@ android:theme="@android:style/Theme"
                             android:layout_height="25dp"
                             android:scaleType="fitXY"
 
-                            android:src="@drawable/kikrhighlight" />
+                            android:src="@drawable/profile_icon" />
 
 
                         <com.flatlay.utility.AutoTextSize

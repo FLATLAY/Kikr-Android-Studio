@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_large"
 
-            android:background="@drawable/view_activity"
+            android:background="@drawable/profile_icon"
             android:paddingTop="5dp"
 
             android:textColor="@color/white"

@@ -16,7 +16,7 @@
             android:id="@+id/imgLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/kikr_trace_logo"
+            android:src="@drawable/profile_icon"
             android:layout_margin="16dp"
             android:visibility="visible" />
         

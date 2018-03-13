@@ -38,9 +38,10 @@ public abstract class BaseFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.w("Activity","BaseFragment");
-		Syso.debug("BaseFragment - onCreate = ", this.getClass().getSimpleName());
-		mContext = getActivity();
+			Log.w("Activity", "BaseFragment");
+			Syso.debug("BaseFragment - onCreate = ", this.getClass().getSimpleName());
+			mContext = getActivity();
+
 	}
 	
 	@Override
@@ -56,7 +57,7 @@ public abstract class BaseFragment extends Fragment {
 		initUI(savedInstanceState);	
 		setData(getArguments()); 
 		setClickListener();
-		hideFotter();
+//		hideFotter();
 	}
 	
 	@Override
@@ -148,7 +149,7 @@ public abstract class BaseFragment extends Fragment {
 	
 	public void hideFotter(){
 		LinearLayout footerLayout = (LinearLayout) (getActivity().findViewById(R.id.footer));
-		footerLayout.setVisibility(View.GONE);
+//		footerLayout.setVisibility(View.GONE);
 	}
 	
 	public void showFotter(){

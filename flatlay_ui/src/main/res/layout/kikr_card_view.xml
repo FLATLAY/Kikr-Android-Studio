@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="@null"
         android:padding="20dp"
-        android:src="@drawable/ic_signal" />
+        android:src="@drawable/profile_icon" />
 
     <ImageView
         android:id="@+id/kikrCardImageView"

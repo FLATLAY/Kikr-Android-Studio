@@ -2,7 +2,6 @@ package com.flatlay.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
@@ -24,7 +23,6 @@ import android.util.Log;
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
 
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.ui.RoundImageView;
 import com.flatlay.utility.AppConstants;
 import com.flatlay.utility.AppConstants.Screen;
@@ -49,30 +47,17 @@ import java.util.List;
 import static android.app.Activity.RESULT_OK;
 
 public class LandingActivity extends BaseFragment implements OnClickListener, ServiceCallback {
-    private ProgressBarDialog progressBarDialog;
     private Button mFacebookButton, mEmailButton, mLoginButton;
     private final int REQUEST_CODE_FB_LOGIN = 1000;
     private final String DEFAULT_GENDER = "male";
-    private String social;
-    private String mEmail;
-    private String mProfilePic;
-    private String mUsername;
-    private String name;
-    private String birthday;
-    private String location;
-    private String gender;
-    private String id;
-    private String profileLink;
+    private String social, mEmail, mProfilePic, mUsername, name, birthday, location, gender, id,
+            profileLink, referred_username, referred_userprofilepic;
     private boolean isFromFacebook = false;
     private LinearLayout layoutReferred;
     private RoundImageView user_profile_image;
-    private TextView user_profile_name;
+    private TextView user_profile_name, earn250;
     public static String referred_userid = "-1";
-    private String referred_username;
-    private String referred_userprofilepic;
-    private TextView earn250;
-    SharedPreferences userSettings;
-    SharedPreferences temp;
+    private SharedPreferences userSettings, temp;
     private View mainView;
 
     @Override
@@ -80,7 +65,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
                              Bundle savedInstanceState) {
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mainView = inflater.inflate(R.layout.landing2, container, false);
-
+        Log.e("Landing", "LandingStarted");
         temp = getActivity().getSharedPreferences("fromRemove", 0);
         userSettings = getActivity().getSharedPreferences("UserSettings", 0);
         SharedPreferences.Editor editor = userSettings.edit();
@@ -96,9 +81,9 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
                 CommonUtility.hideSoftKeyboard(getActivity());
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                    .replace(R.id.baseFrameLayout, new SignUpActivity(), null)
-                    .addToBackStack(null)
-                    .commit();
+                        .replace(R.id.baseFrameLayout, new SignUpActivity(), null)
+                        .addToBackStack(null)
+                        .commit();
                 break;
             case R.id.facebookButton:
                 if (checkInternet()) {
@@ -132,7 +117,6 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
     @Override
     public void initUI(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.w("Activity", "LandingActivity");
         temp = getActivity().getSharedPreferences("fromRemove", 0);
         userSettings = getActivity().getSharedPreferences("UserSettings", 0);
         SharedPreferences.Editor editor = userSettings.edit();
@@ -205,9 +189,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
             profileLink = data.getStringExtra("profile_link");
             UserPreference.getInstance().setmIsFacebookSignedIn(true);
             registerViaFbSocial(id, g);
-        }
-
-        else if (requestCode == AppConstants.REQUEST_CODE_FB_FRIEND_LIST) {
+        } else if (requestCode == AppConstants.REQUEST_CODE_FB_FRIEND_LIST) {
             ArrayList<FbUser> fbUsers = (ArrayList<FbUser>) data.getSerializableExtra("friend_list");
             System.out.println("123456789 " + fbUsers);
             if (fbUsers != null && fbUsers.size() > 0)
@@ -224,30 +206,14 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
 
     private void registerViaFbSocial(String id, String g) {
-        Log.e("aaaaa","ccccc");
-
-        progressBarDialog = new ProgressBarDialog(getActivity());
-        progressBarDialog.show();
-
         final RegisterUserApi service = new RegisterUserApi(this);
         service.registerViaFbSocial(mEmail, social, id, g, DeviceUtils.getPhoneModel(), CommonUtility.getDeviceTocken(getActivity()), "Dummy", "android", CommonUtility.getDeviceId(getActivity()));
         service.execute();
-
-        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
     }
 
 
     @Override
     public void handleOnSuccess(Object object) {
-        Log.e("aaaaa","bbbbb");
-
-        progressBarDialog.dismiss();
-        Syso.info("In handleOnSuccess>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;
             UserPreference.getInstance().setUserID(response.getId());
@@ -276,25 +242,16 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
-
-        Log.e("aaaaa22","aaaa");
-
-        progressBarDialog.dismiss();
-        Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;
             if (response.getMessage().equals("userexist") && response.getId() != null) {
-                Log.e("aaaaa22:obj",object.toString());
-
-                Log.e("aaaaa22:id",response.getId());
-
-                //UserPreference.getInstance().setUserID(response.getId());
-                //UserPreference.getInstance().setEmail(response.getEmail());
-                //UserPreference.getInstance().setUserName(response.getUsername());
-               // UserPreference.getInstance().setCartID(response.getCart_id());
-                //UserPreference.getInstance().setProfilePic(response.getProfile_pic());
-                //UserPreference.getInstance().setBgImage(response.getBackground_pic());
-              //  UserPreference.getInstance().setAccessToken(response.gettoken());
+                UserPreference.getInstance().setUserID(response.getId());
+                UserPreference.getInstance().setEmail(response.getEmail());
+                UserPreference.getInstance().setUserName(response.getUsername());
+                UserPreference.getInstance().setCartID(response.getCart_id());
+                //  UserPreference.getInstance().setProfilePic(response.getProfile_pic());
+                UserPreference.getInstance().setBgImage(response.getBackground_pic());
+                UserPreference.getInstance().setAccessToken(response.gettoken());
                 if (social.equals(UserPreference.FACEBOOK))
                     UserPreference.getInstance().setIsFbConnected(true);
                 UserPreference.getInstance().setIsCreateWalletPin(true);
@@ -325,6 +282,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
     public void test(View v) {
     }
 
+
     private void showHome(String currentScreen) {
 
 //        getActivity().getSupportFragmentManager()
@@ -337,15 +295,12 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
 
     private void connectWithFacebook(final String id, final String email, final String gender, final String name, final String username, final String birthday, final String profile_link, final String location) {
-        progressBarDialog = new ProgressBarDialog(getActivity());
-        progressBarDialog.show();
 
         final ConnectWithFacebookApi service = new ConnectWithFacebookApi(
                 new ServiceCallback() {
 
                     @Override
                     public void handleOnSuccess(Object object) {
-                        progressBarDialog.dismiss();
                         if (object != null) {
                             getFBFriendList();
                         } else {
@@ -355,7 +310,6 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
-                        progressBarDialog.dismiss();
                         if (object != null) {
                             getFBFriendList();
                         }
@@ -363,13 +317,6 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
                 });
         service.connectWithFacebook(id, gender, birthday, profile_link, location, name, username);
         service.execute();
-
-        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
     }
 
     private void getFBFriendList() {
@@ -380,14 +327,11 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
     }
 
     private void uploadFbFriends(final List<FbUser> fbusers) {
-        progressBarDialog = new ProgressBarDialog(getActivity());
-        progressBarDialog.show();
         final FbTwFriendsApi service = new FbTwFriendsApi(
                 new ServiceCallback() {
 
                     @Override
                     public void handleOnSuccess(Object object) {
-                        progressBarDialog.dismiss();
                         Bundle bundle = new Bundle();
                         bundle.putString("email", mEmail);
                         bundle.putString("username", mUsername);
@@ -398,7 +342,6 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
                     @Override
                     public void handleOnFailure(ServiceException exception,
                                                 Object object) {
-                        progressBarDialog.dismiss();
                         showDialog("Failed to upload Facebook friends", new Method() {
                             public void execute() {
                                 Bundle bundle = new Bundle();
@@ -443,7 +386,5 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
     public static interface Method {
         void execute();
     }
-
-
 }
 

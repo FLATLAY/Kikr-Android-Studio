@@ -7,6 +7,9 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+
+import com.flatlay.fragment.FragmentInspirationDetail;
+
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -28,6 +31,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -48,7 +52,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.braintreepayments.api.Braintree;
-import com.flatlay.FirebaseMsgService;
 import com.flatlay.KikrApp;
 import com.flatlay.KikrApp.TrackerName;
 import com.flatlay.R;
@@ -57,18 +60,16 @@ import com.flatlay.dialog.LogoutDialogWithTab;
 import com.flatlay.dialog.PostUploadTagDialog;
 
 import com.flatlay.fragment.FragmentDiscoverNew;
-
+import com.flatlay.fragment.FragmentProfileView;
 import com.flatlay.fragment.FragmentInspirationSection;
 import com.flatlay.fragment.FragmentSettings;
 
 import com.flatlay.menu.ArcLayout;
-import com.flatlay.menu.ContextMenuView;
 import com.flatlay.post_upload.FragmentPostUploadTag;
 import com.flatlay.post_upload.ProductSearchTagging;
 import com.flatlay.sessionstore.SessionStore;
 import com.flatlay.twitter.OauthItem;
 import com.flatlay.twitter.TwitterOAuthActivity;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.AppConstants;
 import com.flatlay.utility.AppConstants.Screen;
 import com.flatlay.utility.CommonUtility;
@@ -88,6 +89,7 @@ import com.flatlaylib.api.TwoTapApi;
 import com.flatlaylib.api.UpdateCurrentScreenApi;
 import com.flatlaylib.api.WalletPinApi;
 import com.flatlaylib.bean.FbUser;
+import com.flatlaylib.bean.Inspiration;
 import com.flatlaylib.bean.Product;
 import com.flatlaylib.bean.ProductFeedItem;
 import com.flatlaylib.bean.TwitterFriendList;
@@ -153,58 +155,49 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     public static final String SOCIAL_NETWORK_TAG = "SocialIntegrationMain.SOCIAL_NETWORK_TAG";
     public static int SHARING_CODE = 64206;
     public static PDKClient pdkClient;
-
     public static Spinner mstatus;
     public static TextView uploadphoto, menuBackTextView, postuploadtagbackTextView;
     public static ImageView photouploadnext, homeImageView, menuRightImageView, crossarrow, postUploadWithTag;
     public static TextView gallery, camera, instagram;
-    private FragmentActivity context;
-    View viewHeader;
-
+    private FragmentActivity context,mActivity;
+    private View viewHeader;
     //private CircleImageView profile_pic;
-
-    private ActionBar actionBar;
-    private TextView menuRightTextView;
+    private android.support.v7.app.ActionBar actionBar;
     public static TextView menuTextCartCount;
     public static ImageView menuSearchImageView;
-    private LinearLayout menuSearchLayout, menuProfileLayout, menuConnectWithTwitterLayout, menuConnectWithFacebookLayout, menuKikrCreditsLayout, menuActivityLayout, kikerWalletLayout, kikrGuideLayout;
-    private LinearLayout menuMyFriendsLayout, menuInviteFriendsLayout, menuCheckInLayout, menuSupportLayout, menuSettingsLayout, menuLogoutoptionLayout, menuProfileOptionLayout;
-    private LinearLayout inspirationLayout, discoverLayout, menuDealLayout;
-    private LinearLayout menuMyFriendsOptionLayout, menuOrdersLayout, menuChatLayout;
-    private LinearLayout menuSettingsOptionLayout, menuDealOptionLayout, menuConnectWithInstagramLayout, menuInterestsLayout;
-    private ImageView menuMyFriendsLayoutImageView;
-    private ImageView menuProfileLayoutImageView, menuDealImageView, menuSettingsLayoutImageView;
-    private ProgressBarDialog progressBarDialog;
-    public static ArrayList<Activity> activities = new ArrayList<Activity>();
+    private LinearLayout menuSearchLayout, menuProfileLayout, menuConnectWithTwitterLayout,
+            menuConnectWithFacebookLayout, menuKikrCreditsLayout, menuActivityLayout,
+            kikerWalletLayout, kikrGuideLayout,menuMyFriendsLayout, menuInviteFriendsLayout,
+            menuCheckInLayout, menuSupportLayout, menuSettingsLayout, menuLogoutoptionLayout,
+            menuProfileOptionLayout, inspirationLayout, discoverLayout, menuDealLayout,
+            menuMyFriendsOptionLayout, menuOrdersLayout, menuChatLayout,
+            menuSettingsOptionLayout, menuDealOptionLayout, menuConnectWithInstagramLayout,
+            menuInterestsLayout;
+    private ImageView menuMyFriendsLayoutImageView,menuProfileLayoutImageView,
+            menuDealImageView, menuSettingsLayoutImageView;
+    // private ProgressBarDialog progressBarDialog;
     public List<ProductFeedItem> list;
     private ArrayList<LinearLayout> layouts = new ArrayList<LinearLayout>();
     public Stack<String> mFragmentStack;
     private Fragment mContent;
-    private boolean backPressedToExitOnce = false;
     private HomeActivity homeActivity;
-    int PAYPAL_REQUEST_CODE = 0;
+    private int PAYPAL_REQUEST_CODE = 0,creditsCounter = 0;
     private Braintree braintree;
     private BroadcastReceiver receiver;
     private View twitterView, fbView;
     private ScrollView menuScrollView;
-    private ContextMenuView contextMenuBg;
-    private boolean isProfile = false;
-    private boolean firstTime = false;
+    private boolean isProfile = false, firstTime = false,isFirstTime,backPressedToExitOnce = false;
     private static ArrayList<Activity> homeActivtyList = new ArrayList<Activity>();
-    private TextView totalCredits;
-    private int creditsCounter = 0;
-    private TextView txtShop;
-    private TextView txtFeed;
+    public static ArrayList<Activity> activities = new ArrayList<Activity>();
     private double kikrCredit = 0;
     private List<TextView> textViews = new ArrayList<>();
-    private TextView logoutTextView, supportTextView, settingsTextView, inviteTextView, kikrChatTextView, checkInTextView;
-    private TextView dealTextview, orderTextView, walletTextView, kikrCreditTextView, viewProfileTextView, kikrGuideTextView, viewSearchTextView;
-
+    private TextView logoutTextView, supportTextView, settingsTextView, inviteTextView,
+            kikrChatTextView, checkInTextView, dealTextview, orderTextView, walletTextView,
+            kikrCreditTextView, viewProfileTextView, kikrGuideTextView, viewSearchTextView,
+            totalCredits, txtShop, txtFeed,menuRightTextView;
     //RelativeLayout tab_layout1;
-
     //LinearLayout cart_tab, search_tab, profile_tab;
     private FirebaseAnalytics mFirebaseAnalytics;
-    private boolean isFirstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -269,6 +262,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
 
         if (getIntent().getStringExtra("profile_collection") != null) {
+            addFragment(new FragmentProfileView(getIntent().getStringExtra("profile_collection"), "no"));
+
         }
         //  PushTest.pushFCMNotification();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -388,16 +383,16 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void setActionBar() {
-        actionBar = getActionBar();
-        actionBar.hide();
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setDisplayHomeAsUpEnabled(false);
+//        actionBar = getSupportActionBar();
+//        actionBar.hide();
+//        actionBar.setDisplayShowHomeEnabled(true);
+//        actionBar.setDisplayShowCustomEnabled(true);
+//        actionBar.setDisplayShowTitleEnabled(false);
+//        actionBar.setDisplayHomeAsUpEnabled(false);
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         viewHeader = inflater.inflate(R.layout.app_discover_header, null);
-        actionBar.setCustomView(viewHeader, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+//        actionBar.setCustomView(viewHeader, new android.support.v7.app.ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         crossarrow = (ImageView) findViewById(R.id.crossarrow);
         postUploadWithTag = (ImageView) viewHeader.findViewById(R.id.postUploadWithTag);
         mstatus = (Spinner) findViewById(R.id.mstatus);
@@ -415,7 +410,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         homeImageView = (ImageView) viewHeader.findViewById(R.id.homeImageView);
         menuSearchImageView = (ImageView) viewHeader.findViewById(R.id.menuSearchImageView);
         menuTextCartCount = (TextView) viewHeader.findViewById(R.id.txtCartCount);
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+//        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 
         menuRightImageView.setOnClickListener(this);
         homeImageView.setOnClickListener(this);
@@ -423,19 +418,17 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         postuploadtagbackTextView.setOnClickListener(this);
         menuSearchImageView.setOnClickListener(this);
         menuRightTextView.setOnClickListener(this);
-
-
     }
 
 
     public void showActionBar() {
-        actionBar.show();
+//        actionBar.show();
         menuRightImageView.setVisibility(View.VISIBLE);
         menuTextCartCount.setVisibility(View.VISIBLE);
     }
 
     public void hideActionBar() {
-        actionBar.hide();
+//        actionBar.hide();
     }
 
     public void hideBackButtonvalue() {
@@ -450,10 +443,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void startUploadPostSection() {
-       // cart_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-      //  profile_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-       // upload_post_tab.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
-       // search_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+        // cart_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+        //  profile_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+        // upload_post_tab.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
+        // search_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
     }
 
     @Override
@@ -513,8 +506,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void initLayout() {
-       // tab_layout1 = (RelativeLayout) findViewById(R.id.tabLayout1);
-       // cart_tab = (LinearLayout) findViewById(R.id.cart_layout);
+        // tab_layout1 = (RelativeLayout) findViewById(R.id.tabLayout1);
+        // cart_tab = (LinearLayout) findViewById(R.id.cart_layout);
         //profile_tab = (LinearLayout) findViewById(R.id.profile_tab);
         //upload_post_tab = (LinearLayout) findViewById(R.id.upload_post_tab);
         //search_tab = (LinearLayout) findViewById(R.id.search_tab);
@@ -546,7 +539,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         menuDealLayout = (LinearLayout) findViewById(R.id.menuDealLayout);
         menuConnectWithInstagramLayout = (LinearLayout) findViewById(R.id.menuConnectWithInstagramLayout);
         menuScrollView = (ScrollView) findViewById(R.id.menuScrollView);
-        contextMenuBg = (ContextMenuView) findViewById(R.id.contextMenuBg);
         menuOrdersLayout = (LinearLayout) findViewById(R.id.menuOrdersLayout);
         menuMyFriendsOptionLayout = (LinearLayout) findViewById(R.id.menuMyFriendsOptionLayout);
         menuMyFriendsLayoutImageView = (ImageView) findViewById(R.id.menuMyFriendsLayoutImageView);
@@ -569,7 +561,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         kikrGuideTextView = (TextView) findViewById(R.id.kikrGuideTextView);
         viewSearchTextView = (TextView) findViewById(R.id.viewSearchTextView);
 
-       // cart_tab.setOnClickListener(this);
+        // cart_tab.setOnClickListener(this);
         //search_tab.setOnClickListener(this);
         //profile_tab.setOnClickListener(this);
         //upload_post_tab.setOnClickListener(this);
@@ -581,15 +573,16 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         if (getIntent().getStringExtra("inspiration_id") != null) {
             if (!TextUtils.isEmpty(getIntent().getStringExtra("inspiration_id")) && getIntent().getStringExtra("section").equals("likeinsp") || getIntent().getStringExtra("section").equals("commentinsp")) {
                 String id = getIntent().getStringExtra("inspiration_id");
+                addFragment(new FragmentInspirationDetail(id));
                 cleanActivity();
             } else if (getIntent().getStringExtra("section").equals("follow")) {
+                addFragment(new FragmentProfileView(getIntent().getStringExtra("inspiration_id"), "no"));
                 cleanActivity();
             }
         } else if (getIntent().getStringExtra("section") != null) {
             if (getIntent().getStringExtra("section").equals("placeorder")) {
                 UserPreference.getInstance().setIsNotificationClicked(true);
                 String otherdata = getIntent().getStringExtra("otherdata");
-                Log.w("HomeActivity", "FragmentPlaceMyOrder()");
                 cleanActivity();
             } else if (getIntent().getStringExtra("section").equals("commission") || getIntent().getStringExtra("section").equals("collectionwithfiveproducts") || getIntent().getStringExtra("section").equals("invite")) {
                 cleanActivity();
@@ -611,7 +604,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             }
         } else {
             addFragment(new FragmentInspirationSection());
-
             if (UserPreference.getInstance().getCheckedIsConnected()
                     && CommonUtility.isOnline(context)) {
                 checkStatusOFSocial();
@@ -675,9 +667,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void setClickListener() {
-        crossarrow.setOnClickListener(this);
-        postUploadWithTag.setOnClickListener(this);
-
+//        crossarrow.setOnClickListener(this);
+//        postUploadWithTag.setOnClickListener(this);
+//
 
     }
 
@@ -693,13 +685,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
     }
 
-    public void showLoginHome() {
-        Intent i = new Intent(context, LandingActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
-        finish();
-    }
+//    public void showLoginHome() {
+//        Intent i = new Intent(context, LandingActivity.class);
+//        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(i);
+//        finish();
+//    }
 
 
     public void inviteFriends() {
@@ -933,14 +925,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void uploadFbFriends(List<FbUser> fbusers) {
-        progressBarDialog = new ProgressBarDialog(context);
-        progressBarDialog.show();
+//        progressBarDialog = new ProgressBarDialog(context);
+//        progressBarDialog.show();
         final FbTwFriendsApi service = new FbTwFriendsApi(
                 new ServiceCallback() {
 
                     @Override
                     public void handleOnSuccess(Object object) {
-                        progressBarDialog.dismiss();
+                        //progressBarDialog.dismiss();
                         AlertUtils.showToast(context, R.string.alert_connected_with_fb);
                         UserPreference.getInstance().setIsFbConnected(true);
 
@@ -948,7 +940,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
-                        progressBarDialog.dismiss();
+                        //progressBarDialog.dismiss();
 
                     }
                 });
@@ -1002,8 +994,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBarDialog = new ProgressBarDialog(context);
-            progressBarDialog.show();
+//            progressBarDialog = new ProgressBarDialog(context);
+//            progressBarDialog.show();
         }
 
         @Override
@@ -1014,7 +1006,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         @Override
         protected void onPostExecute(User user) {
             super.onPostExecute(user);
-            progressBarDialog.dismiss();
+            // progressBarDialog.dismiss();
             System.out.println("Twitter id>>" + user);
             if (user != null) {
                 getTwitterInfo(user);
@@ -1030,8 +1022,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBarDialog = new ProgressBarDialog(context);
-            progressBarDialog.show();
+//            progressBarDialog = new ProgressBarDialog(context);
+//            progressBarDialog.show();
         }
 
         @Override
@@ -1042,7 +1034,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         @Override
         protected void onPostExecute(ArrayList<OauthItem> result) {
             super.onPostExecute(result);
-            progressBarDialog.dismiss();
+            //   progressBarDialog.dismiss();
             System.out.println("Twitter friend list>>" + result);
             showTwitterFriendList(result);
         }
@@ -1051,8 +1043,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     private void connectWithTwitter(String userId, String description, String language, String location, String name, String profile_image_url, String screen_name, String status,
                                     String time_zone) {
-        progressBarDialog = new ProgressBarDialog(context);
-        progressBarDialog.show();
+//        progressBarDialog = new ProgressBarDialog(context);
+//        progressBarDialog.show();
 
         final ConnectWithTwitterApi service = new ConnectWithTwitterApi(
                 new ServiceCallback() {
@@ -1060,7 +1052,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     @Override
                     public void handleOnSuccess(Object object) {
 
-                        progressBarDialog.dismiss();
+                        //progressBarDialog.dismiss();
                         if (object != null) {
                             getTwitterFriendList();
                         } else {
@@ -1073,7 +1065,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     public void handleOnFailure(ServiceException exception,
                                                 Object object) {
 
-                        progressBarDialog.dismiss();
+                        // progressBarDialog.dismiss();
                         if (object != null) {
                             ConnectWithTwitterRes facebookRes = (ConnectWithTwitterRes) object;
                             String message = facebookRes.getMessage();
@@ -1089,12 +1081,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 profile_image_url, name, screen_name, status, time_zone);
         service.execute();
 
-        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
+//        progressBarDialog.setOnCancelListener(new OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                service.cancel();
+//            }
+//        });
     }
 
     private void checkStatusOFSocial() {
@@ -1186,14 +1178,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void uploadTwitterFriends(List<TwitterFriendList> data) {
-        progressBarDialog = new ProgressBarDialog(context);
-        progressBarDialog.show();
+//        progressBarDialog = new ProgressBarDialog(context);
+//        progressBarDialog.show();
         final FbTwFriendsApi service = new FbTwFriendsApi(
                 new ServiceCallback() {
 
                     @Override
                     public void handleOnSuccess(Object object) {
-                        progressBarDialog.dismiss();
+                        // progressBarDialog.dismiss();
                         AlertUtils.showToast(context, R.string.alert_connected_with_twitter);
                         UserPreference.getInstance().setIsTwitterConnected(true);
 
@@ -1201,7 +1193,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
-                        progressBarDialog.dismiss();
+                        // progressBarDialog.dismiss();
 
                     }
                 });
@@ -1212,8 +1204,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private void connectWithFacebook(String id, String email, String gender,
                                      String name, String username, String birthday, String profile_link,
                                      String location) {
-        progressBarDialog = new ProgressBarDialog(context);
-        progressBarDialog.show();
+//        progressBarDialog = new ProgressBarDialog(context);
+//        progressBarDialog.show();
 
         final ConnectWithFacebookApi service = new ConnectWithFacebookApi(
                 new ServiceCallback() {
@@ -1221,7 +1213,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     @Override
                     public void handleOnSuccess(Object object) {
 
-                        progressBarDialog.dismiss();
+                        //progressBarDialog.dismiss();
                         if (object != null) {
                             getFBFriendList();
                         } else {
@@ -1233,7 +1225,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
 
-                        progressBarDialog.dismiss();
+                        //progressBarDialog.dismiss();
                         if (object != null) {
                             ConnectWithFacebookRes facebookRes = (ConnectWithFacebookRes) object;
                             String message = facebookRes.getMessage();
@@ -1247,12 +1239,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 });
         service.connectWithFacebook(id, gender, birthday, profile_link, location, name, username);
         service.execute();
-        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
+        // progressBarDialog.setOnCancelListener(new OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                service.cancel();
+//            }
+//        });
     }
 
 
@@ -1442,8 +1434,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void addFragment(Fragment fragment) {
-        Log.w("HomeActivity", "addFragment()");
-        //Thread.dumpStack();
         try {
             mContent = fragment;
             FragmentTransaction transaction = getSupportFragmentManager()
@@ -1452,19 +1442,19 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             if (mFragmentStack.size() > 0) {
                 Fragment currentFragment = getSupportFragmentManager()
                         .findFragmentByTag(mFragmentStack.peek());
-                if (currentFragment != null)
+                if (currentFragment != null) {
                     transaction.hide(currentFragment);
+                }
                 mFragmentStack.add(mContent.toString());
                 transaction.add(R.id.frame_container, fragment, mContent.toString());
                 transaction.addToBackStack(mContent.toString());
+                transaction.commit();
             } else {
                 mFragmentStack.add(mContent.toString());
                 transaction.replace(R.id.frame_container, fragment, mContent.toString());
                 transaction.addToBackStack(mContent.toString());
                 transaction.commit();
             }
-
-
             checkBackButton(fragment);
             checkRightButton(fragment);
 
@@ -1473,11 +1463,41 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
     }
 
+    public void addFragmentRequestResult(Fragment fragment) {
+        try {
+            mContent = fragment;
+            FragmentTransaction transaction = getSupportFragmentManager()
+                    .beginTransaction();
+            System.out.println("1111 added>>" + mContent.toString());
+            if (mFragmentStack.size() > 0) {
+                Fragment currentFragment = getSupportFragmentManager()
+                        .findFragmentByTag(mFragmentStack.peek());
+                if (currentFragment != null) {
+                    transaction.hide(currentFragment);
+                }
+                mFragmentStack.add(mContent.toString());
+                transaction.add(R.id.frame_container, fragment, mContent.toString());
+                transaction.addToBackStack(mContent.toString());
+                transaction.commit();
+            } else {
+                mFragmentStack.add(mContent.toString());
+                transaction.replace(R.id.frame_container, fragment, mContent.toString());
+                transaction.addToBackStack(mContent.toString());
+                transaction.commit();
+            }
+            checkBackButton(fragment);
+            checkRightButton(fragment);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
     public void onBackPressed() {
         try {
-            Fragment fragment;
-            fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             if (fragment instanceof FragmentPostUploadTag) {
 
                 postuploadtagbackTextView.setOnClickListener(new OnClickListener() {
@@ -1491,36 +1511,32 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 //                showActionBar();
 //                tab_layout.setVisibility(View.GONE);
             } else {
-                hideActionBar();
+//                hideActionBar();
                 //tab_layout1.setVisibility(View.VISIBLE);
 
             }
-
-
             hideFutter();
             CommonUtility.hideSoftKeyboard(this);
             if (mFragmentStack.size() == 1) {
-
-                if (fragment instanceof FragmentDiscoverNew) {
-                    if (backPressedToExitOnce) {
+                if (fragment instanceof FragmentInspirationSection || fragment instanceof LandingActivity) {
+//                    if (backPressedToExitOnce) {
                         finish();
-                    } else {
-                        this.backPressedToExitOnce = true;
-                        AlertUtils.showToast(context, "Press again to exit");
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                backPressedToExitOnce = false;
-                            }
-                        }, 2000);
-                    }
+//                    } else {
+//                        this.backPressedToExitOnce = true;
+//                        AlertUtils.showToast(context, "Press again to exit");
+//                        new Handler().postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                backPressedToExitOnce = false;
+//                            }
+//                        }, 2000);
+//                    }
                 } else {
                     hideAllFragment();
-                    addFragment(new FragmentDiscoverNew());
+                    addFragment(new FragmentInspirationSection());
+//                    getSupportFragmentManager().findFragmentByTag(mFragmentStack.lastElement()).onResume();
                 }
             } else {
-
-
                 if (fragment instanceof FragmentPostUploadTag) {
                     //  gallery.setVisibility(View.VISIBLE);
                     postuploadtagbackTextView.setOnClickListener(new OnClickListener() {
@@ -1534,7 +1550,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 } else {
                     removeFragment();
                     super.onBackPressed();
-
                 }
             }
             fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
@@ -1606,17 +1621,18 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         try {
             // remove the current fragment from the stack.
             String fold = mFragmentStack.pop();
+            Log.e("back",fold);
             Fragment f2 = getSupportFragmentManager().findFragmentByTag(fold);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             // get fragment that is to be shown (in our case fragment1).
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+            Log.e("backk",mFragmentStack.peek());
+
             // This time I set an animation with no fade in, so the user doesn't
             // wait for the animation in back press
             // transaction.setCustomAnimations(R.anim.slide_right_in,
             // R.anim.slide_right_out);
             // We must use the show() method.
-
-            mContent = fragment;
             checkBackButton(fragment);
             checkRightButton(fragment);
 
@@ -1644,28 +1660,28 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void showFooter() {
-        LinearLayout footerLayout = (LinearLayout) findViewById(R.id.footer);
-        footerLayout.setVisibility(View.VISIBLE);
-        LinearLayout footerLayout1 = (LinearLayout) findViewById(R.id.footer_layout);
-        TextView textView = (TextView) findViewById(R.id.reloadTextView);
-        footerLayout1.setVisibility(View.VISIBLE);
-        textView.setVisibility(View.GONE);
+//        LinearLayout footerLayout = (LinearLayout) findViewById(R.id.footer);
+//        footerLayout.setVisibility(View.VISIBLE);
+//        LinearLayout footerLayout1 = (LinearLayout) findViewById(R.id.footer_layout);
+//        TextView textView = (TextView) findViewById(R.id.reloadTextView);
+//        footerLayout1.setVisibility(View.VISIBLE);
+//        textView.setVisibility(View.GONE);
     }
 
     public TextView getReloadFotter() {
-        LinearLayout layout = (LinearLayout) findViewById(R.id.footer);
-        layout.setVisibility(View.VISIBLE);
-        LinearLayout footerLayout = (LinearLayout) findViewById(R.id.footer_layout);
+//        LinearLayout layout = (LinearLayout) findViewById(R.id.footer);
+//        layout.setVisibility(View.VISIBLE);
+        //LinearLayout footerLayout = (LinearLayout) findViewById(R.id.footer_layout);
         TextView textView = (TextView) findViewById(R.id.reloadTextView);
-        footerLayout.setVisibility(View.GONE);
+        // footerLayout.setVisibility(View.GONE);
         textView.setVisibility(View.VISIBLE);
         textView.setText(Html.fromHtml(getResources().getString(R.string.no_internet)));
         return textView;
     }
 
     public void hideFutter() {
-        LinearLayout footerLayout = (LinearLayout) findViewById(R.id.footer);
-        footerLayout.setVisibility(View.GONE);
+//        LinearLayout footerLayout = (LinearLayout) findViewById(R.id.footer);
+//        footerLayout.setVisibility(View.GONE);
     }
 
     public void updateScreen(String current_screen) {
@@ -1704,13 +1720,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void getTokenfromClient() {
-        progressBarDialog = new ProgressBarDialog(context);
-        progressBarDialog.show();
+//        progressBarDialog = new ProgressBarDialog(context);
+//        progressBarDialog.show();
         final BraintreePaymentApi braintreePaymentApi = new BraintreePaymentApi(
                 new ServiceCallback() {
                     @Override
                     public void handleOnSuccess(Object object) {
-                        progressBarDialog.dismiss();
+                        //progressBarDialog.dismiss();
                         BraintreePaymentRes braintreePaymentRes = (BraintreePaymentRes) object;
                         String clientToken = braintreePaymentRes.getClient_token();
                         braintree = Braintree.getInstance(context, clientToken);
@@ -1719,7 +1735,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
-                        progressBarDialog.dismiss();
+                        //progressBarDialog.dismiss();
                     }
                 });
         braintreePaymentApi.getClientToken(UserPreference.getInstance().getUserID(), CommonUtility.getDeviceId(context));
@@ -1727,20 +1743,20 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void saveCheckout(String paymentMethodNonce) {
-        progressBarDialog = new ProgressBarDialog(context);
-        progressBarDialog.show();
+//        progressBarDialog = new ProgressBarDialog(context);
+//        progressBarDialog.show();
         final BraintreePaymentApi braintreePaymentApi = new BraintreePaymentApi(
                 new ServiceCallback() {
                     @Override
                     public void handleOnSuccess(Object object) {
-                        progressBarDialog.dismiss();
+                        //  progressBarDialog.dismiss();
                         AlertUtils.showToast(context, R.string.payment_success_text);
                         createCart();
                     }
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
-                        progressBarDialog.dismiss();
+                        // progressBarDialog.dismiss();
                         AlertUtils.showToast(context, R.string.payment_fail_text);
                     }
                 });
@@ -1831,7 +1847,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     @Override
                     public void run() {
                         // TODO Auto-generated method stub
-                        loadFragment(new FragmentDiscoverNew());
+                        loadFragment(new FragmentInspirationSection());
                     }
                 };
                 handler.postDelayed(runnable, 100);
@@ -1853,16 +1869,17 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
     }
 
+
     private void checkKikrWalletPin() {
 
-        progressBarDialog = new ProgressBarDialog(context);
-        progressBarDialog.show();
+//        progressBarDialog = new ProgressBarDialog(context);
+//        progressBarDialog.show();
 
         final WalletPinApi service = new WalletPinApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                progressBarDialog.dismiss();
+                // progressBarDialog.dismiss();
                 if (object != null) {
                     WalletPinRes response = (WalletPinRes) object;
                     if (!TextUtils.isEmpty(response.getPin_created()) && response.getPin_created().equals("yes")) {
@@ -1877,7 +1894,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             @Override
             public void handleOnFailure(ServiceException exception,
                                         Object object) {
-                progressBarDialog.dismiss();
+                //progressBarDialog.dismiss();
                 if (object != null) {
                     WalletPinRes response = (WalletPinRes) object;
                     AlertUtils.showToast(context, response.getMessage());
@@ -1889,12 +1906,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         service.checkKikrWalletPin(UserPreference.getInstance().getUserID());
         service.execute();
 
-        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
+        //progressBarDialog.setOnCancelListener(new OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                service.cancel();
+//            }
+//        });
     }
 
     public void setimage(Bitmap bitmap) {
@@ -1904,181 +1921,274 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     // ================================= Context Menu==========================================
     float lastX = 0, lastY = 0;
     View centarlView;
+    View centarlView2;
     TextView lableTextView;
 
-    public void showContextMenu(Product product, UiUpdate uiUpdate) {
-        contextMenuBg.setVisibility(View.VISIBLE);
-        contextMenuBg.setProduct(product, this);
-        contextMenuBg.setUiUpdate(uiUpdate);
-        showCentralOption();
-    }
+    int menuIndex = 0;
 
-    public void showContextMenuNoMidCircle(Product product, UiUpdate uiUpdate) {
-        contextMenuBg.setVisibility(View.VISIBLE);
-        contextMenuBg.setProduct(product, this);
-        contextMenuBg.setUiUpdate(uiUpdate);
-        contextMenuBg.unSelectIcons();
-        showCentralOptionNoMidCircle();
-    }
+//    public void showContextMenu(Product product, UiUpdate uiUpdate) {
+//        contextMenuBg.setVisibility(View.VISIBLE);
+//        contextMenuBg.setProduct(product, this);
+//        contextMenuBg.setUiUpdate(uiUpdate);
+//        menuIndex = 1;
+//        showCentralOption();
+//    }
+//
+//    public void showContextMenu2(Inspiration inspiration, UiUpdate uiUpdate) {
+//        contextMenuBg2.setVisibility(View.VISIBLE);
+//        contextMenuBg2.setInspiration(inspiration, this);
+//        contextMenuBg2.setUiUpdate(uiUpdate);
+//        menuIndex = 0;
+//        showCentralOption2();
+//    }
+//
+//
+//    public void showContextMenuNoMidCircle(Product product, UiUpdate uiUpdate) {
+//        contextMenuBg.setVisibility(View.VISIBLE);
+//        contextMenuBg.setProduct(product, this);
+//        contextMenuBg.setUiUpdate(uiUpdate);
+//        contextMenuBg.unSelectIcons();
+//        // showCentralOptionNoMidCircle();
+//    }
 
-    public void showCentralOptionNoMidCircle() {
-        if (centarlView == null) {
-            ImageView view = new ImageView(context);
-            LayoutParams params = new LayoutParams(
-                    (int) getResources().getDimension(R.dimen.menuChildSize),
-                    (int) getResources().getDimension(R.dimen.menuChildSize));
-            view.setLayoutParams(params);
-            //view.setImageResource(R.drawable.contextual_origin_pulser);
-            centarlView = view;
-            contextMenuBg.addView(centarlView);
-        }
-        centarlView.setVisibility(View.INVISIBLE);
-        centarlView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
-        float widht = centarlView.getMeasuredWidth();
-        float height = centarlView.getMeasuredHeight();
-        Syso.info("9999999 centarlView>>>>> lastX:" + lastX + ", lastY:"
-                + lastY + ", width:" + widht + ", height:" + height);
-        // centarlView.setX((float) (lastX-(widht/3)));
-        // centarlView.setY((float) (lastY-1.1*height));
+//    public void showCentralOptionNoMidCircle() {
+//        if (centarlView == null) {
+//            ImageView view = new ImageView(context);
+//            LayoutParams params = new LayoutParams(
+//                    (int) getResources().getDimension(R.dimen.menuChildSize),
+//                    (int) getResources().getDimension(R.dimen.menuChildSize));
+//            view.setLayoutParams(params);
+//            //view.setImageResource(R.drawable.contextual_origin_pulser);
+//            centarlView = view;
+//            contextMenuBg.addView(centarlView);
+//        }
+//        centarlView.setVisibility(View.INVISIBLE);
+//        centarlView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+//        float widht = centarlView.getMeasuredWidth();
+//        float height = centarlView.getMeasuredHeight();
+//        Syso.info("9999999 centarlView>>>>> lastX:" + lastX + ", lastY:"
+//                + lastY + ", width:" + widht + ", height:" + height);
+//        // centarlView.setX((float) (lastX-(widht/3)));
+//        // centarlView.setY((float) (lastY-1.1*height));
+//
+//        centarlView.setX((float) (lastX - (0.3 * widht)));
+//        centarlView.setY((float) (lastY - 1.2 * height));
+//        Syso.info("9999999 centarlView 2>>>>> XX:" + centarlView.getX()
+//                + ", YY:" + centarlView.getY());
+//        contextMenuBg.setXY(lastX, lastY);
+//        Syso.info("Touch point>>> lastX:" + lastX + ", lastY:" + lastY
+//                + " , ViewX:" + centarlView.getX() + ", ViewY:"
+//                + centarlView.getY() + ",widht:" + widht + ",height:" + height);
+//    }
 
-        centarlView.setX((float) (lastX - (0.3 * widht)));
-        centarlView.setY((float) (lastY - 1.2 * height));
-        Syso.info("9999999 centarlView 2>>>>> XX:" + centarlView.getX()
-                + ", YY:" + centarlView.getY());
-        contextMenuBg.setXY(lastX, lastY);
-        Syso.info("Touch point>>> lastX:" + lastX + ", lastY:" + lastY
-                + " , ViewX:" + centarlView.getX() + ", ViewY:"
-                + centarlView.getY() + ",widht:" + widht + ",height:" + height);
-    }
+//    public void hideContextMenu() {
+//        contextMenuBg.setVisibility(View.GONE);
+//    }
+//
+//    public void hideContextMenu2() {
+//        contextMenuBg2.setVisibility(View.GONE);
+//    }
+//
+//
+//    public boolean isMenuShowing() {
+//        return contextMenuBg.getVisibility() == View.VISIBLE ? true : false;
+//    }
+//
+//    public boolean isMenuShowing2() {
+//        return contextMenuBg2.getVisibility() == View.VISIBLE ? true : false;
+//    }
+//
+//
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        // TODO Auto-generated method stub
+//        float x = ev.getX();
+//        float y = ev.getY();
+////		Syso.info("1111111111111111   Dispatch>>>>>  X :" + x + ", y:" + y);
+//        lastX = x;
+//        lastY = y;
+//        if (isMenuShowing()) {
+//           // if (menuIndex == 0)
+//                return contextMenuBg.dispatchTouchEvent(ev);
+//            //else
+//              //  return contextMenuBg2.dispatchTouchEvent(ev);
+//        } else {
+//            return super.dispatchTouchEvent(ev);
+//        }
+//    }
 
-    public void hideContextMenu() {
-        contextMenuBg.setVisibility(View.GONE);
-    }
+//    public void showCentralOption() {
+//        if (centarlView == null) {
+//            ImageView view = new ImageView(context);
+//            LayoutParams params = new LayoutParams(
+//                    (int) getResources().getDimension(R.dimen.menuChildSize),
+//                    (int) getResources().getDimension(R.dimen.menuChildSize));
+//            view.setLayoutParams(params);
+//            view.setImageResource(R.drawable.contextual_origin_pulser);
+//            centarlView = view;
+//            contextMenuBg.addView(centarlView);
+//
+//        }
+//        centarlView.setVisibility(View.VISIBLE);
+//        centarlView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+//        float widht = centarlView.getMeasuredWidth();
+//        float height = centarlView.getMeasuredHeight();
+//        Syso.info("9999999 centarlView>>>>> lastX:" + lastX + ", lastY:"
+//                + lastY + ", width:" + widht + ", height:" + height);
+//        // centarlView.setX((float) (lastX-(widht/3)));
+//        // centarlView.setY((float) (lastY-1.1*height));
+//
+//        centarlView.setX((float) (lastX - (0.3 * widht)));
+//        centarlView.setY((float) (lastY - 1.2 * height));
+//        Syso.info("9999999 centarlView 2>>>>> XX:" + centarlView.getX()
+//                + ", YY:" + centarlView.getY());
+//        contextMenuBg.setXY(lastX, lastY);
+//
+//        Syso.info("Touch point>>> lastX:" + lastX + ", lastY:" + lastY
+//                + " , ViewX:" + centarlView.getX() + ", ViewY:"
+//                + centarlView.getY() + ",widht:" + widht + ",height:" + height);
+//    }
+//
+//    public void showCentralOption2() {
+//        if (centarlView2 == null) {
+//            ImageView view = new ImageView(context);
+//            LayoutParams params = new LayoutParams(
+//                    (int) getResources().getDimension(R.dimen.menuChildSize),
+//                    (int) getResources().getDimension(R.dimen.menuChildSize));
+//            view.setLayoutParams(params);
+//            view.setImageResource(R.drawable.contextual_origin_pulser);
+//            centarlView2 = view;
+//            contextMenuBg2.addView(centarlView2);
+//        }
+//        centarlView2.setVisibility(View.VISIBLE);
+//        centarlView2.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+//        float widht = centarlView2.getMeasuredWidth();
+//        float height = centarlView2.getMeasuredHeight();
+//        Syso.info("9999999 centarlView2>>>>> lastX:" + lastX + ", lastY:"
+//                + lastY + ", width:" + widht + ", height:" + height);
+//        // centarlView.setX((float) (lastX-(widht/3)));
+//        // centarlView.setY((float) (lastY-1.1*height));
+//
+//        centarlView2.setX((float) (lastX - (0.3 * widht)));
+//        centarlView2.setY((float) (lastY - 1.2 * height));
+//        Syso.info("9999999 centarlView2 2>>>>> XX:" + centarlView2.getX()
+//                + ", YY:" + centarlView2.getY());
+//        contextMenuBg2.setXY(lastX, lastY);
+//        Syso.info("Touch point>>> lastX:" + lastX + ", lastY:" + lastY
+//                + " , ViewX:" + centarlView2.getX() + ", ViewY:"
+//                + centarlView2.getY() + ",widht:" + widht + ",height:" + height);
+//    }
+//
+//
+//    public void showLableTextView(String value, float x, float y) {
+//        if (lableTextView == null) {
+//            lableTextView = new TextView(context);
+//            LayoutParams params = new LayoutParams(
+//                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+//            lableTextView.setLayoutParams(params);
+//            lableTextView.setBackgroundResource(R.drawable.black_round_ract);
+//            lableTextView.setTextColor(Color.WHITE);
+//            contextMenuBg.addView(lableTextView);
+//
+//        }
+//        lableTextView.setText(value);
+//        lableTextView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+//        int widht = lableTextView.getMeasuredWidth();
+//        int height = lableTextView.getMeasuredHeight();
+//        ArcLayout arcLayout = contextMenuBg.getArcLayout();
+//
+//
+//        if (arcLayout != null) {
+//            lableTextView.setX(arcLayout.getX() + x - widht / 2);
+//            lableTextView.setY(arcLayout.getY() + y
+//                    - getResources().getDimension(R.dimen.lable_distance));
+//            Syso.info("987654321  Touch point>>> value:" + value + ", x:" + x
+//                    + ", y:" + y + ", arcLayout.getLeft():"
+//                    + arcLayout.getLeft() + ", arcLayout.getTop():"
+//                    + arcLayout.getTop());
+//        }
+//
+//        lableTextView.setVisibility(View.VISIBLE);
+//    }
+//
+//    public void showLableTextView2(String value, float x, float y) {
+//        if (lableTextView == null) {
+//            lableTextView = new TextView(context);
+//            LayoutParams params = new LayoutParams(
+//                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+//            lableTextView.setLayoutParams(params);
+//            lableTextView.setBackgroundResource(R.drawable.black_round_ract);
+//            lableTextView.setTextColor(Color.WHITE);
+//            contextMenuBg2.addView(lableTextView);
+//
+//        }
+//        lableTextView.setText(value);
+//        lableTextView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+//        int widht = lableTextView.getMeasuredWidth();
+//        int height = lableTextView.getMeasuredHeight();
+//        ArcLayout arcLayout = contextMenuBg2.getArcLayout();
+//
+//
+//        if (arcLayout != null) {
+//            lableTextView.setX(arcLayout.getX() + x - widht / 2);
+//            lableTextView.setY(arcLayout.getY() + y
+//                    - getResources().getDimension(R.dimen.lable_distance));
+//            Syso.info("987654321  Touch point>>> value:" + value + ", x:" + x
+//                    + ", y:" + y + ", arcLayout.getLeft():"
+//                    + arcLayout.getLeft() + ", arcLayout.getTop():"
+//                    + arcLayout.getTop());
+//        }
+//
+//        lableTextView.setVisibility(View.VISIBLE);
+//    }
+//
+//
+//    public void hideLableTextView() {
+//        if (lableTextView != null) {
+//            lableTextView.setVisibility(View.GONE);
+//        }
+//    }
 
-    public boolean isMenuShowing() {
-        return contextMenuBg.getVisibility() == View.VISIBLE ? true : false;
-    }
+//    private ProgressBarDialog mProgressBarDialog;
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        // TODO Auto-generated method stub
-        float x = ev.getX();
-        float y = ev.getY();
-//		Syso.info("1111111111111111   Dispatch>>>>>  X :" + x + ", y:" + y);
-        lastX = x;
-        lastY = y;
-        if (isMenuShowing()) {
-            return contextMenuBg.dispatchTouchEvent(ev);
-        } else {
-            return super.dispatchTouchEvent(ev);
-        }
-    }
+//    public void addProductToCart(Product product) {
+//        final CartApi cartApi = new CartApi(new ServiceCallback() {
+//
+//            @Override
+//            public void handleOnSuccess(Object object) {
+//                //  mProgressBarDialog.dismiss();
+//                if (object != null) {
+//                    CartRes response = (CartRes) object;
+//                    UserPreference.getInstance().incCartCount();
+//                    refreshCartCount();
+//                    AlertUtils.showToast(context, "Added to cart");
+//                }
+//            }
+//
+//            @Override
+//            public void handleOnFailure(ServiceException exception,
+//                                        Object object) {
+//                //mProgressBarDialog.dismiss();
+//                Syso.info("In handleOnFailure>>" + object);
+//                if (object != null) {
+//                    CartRes response = (CartRes) object;
+//                    AlertUtils.showToast(context, response.getMessage());
+//                } else {
+//                    AlertUtils.showToast(context, R.string.invalid_response);
+//                }
+//            }
+//        });
+//        String fromUserId = product.getFrom_user_id() == null ? "" : product.getFrom_user_id();
+//        String fromCollection = product.getFrom_collection_id() == null ? "" : product.getFrom_collection_id();
+//        Log.w("HomeActivity", "" + product.getQuantity());
+//        cartApi.addToCart(UserPreference.getInstance().getUserID(), product.getId(), "1", UserPreference.getInstance().getCartID(), fromUserId, fromCollection, "", "", product.getSelected_values());
+//        cartApi.execute();
+//    }
 
-    public void showCentralOption() {
-        if (centarlView == null) {
-            ImageView view = new ImageView(context);
-            LayoutParams params = new LayoutParams(
-                    (int) getResources().getDimension(R.dimen.menuChildSize),
-                    (int) getResources().getDimension(R.dimen.menuChildSize));
-            view.setLayoutParams(params);
-            view.setImageResource(R.drawable.contextual_origin_pulser);
-            centarlView = view;
-            contextMenuBg.addView(centarlView);
-        }
-        centarlView.setVisibility(View.VISIBLE);
-        centarlView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
-        float widht = centarlView.getMeasuredWidth();
-        float height = centarlView.getMeasuredHeight();
-        Syso.info("9999999 centarlView>>>>> lastX:" + lastX + ", lastY:"
-                + lastY + ", width:" + widht + ", height:" + height);
-        // centarlView.setX((float) (lastX-(widht/3)));
-        // centarlView.setY((float) (lastY-1.1*height));
-
-        centarlView.setX((float) (lastX - (0.3 * widht)));
-        centarlView.setY((float) (lastY - 1.2 * height));
-        Syso.info("9999999 centarlView 2>>>>> XX:" + centarlView.getX()
-                + ", YY:" + centarlView.getY());
-        contextMenuBg.setXY(lastX, lastY);
-        Syso.info("Touch point>>> lastX:" + lastX + ", lastY:" + lastY
-                + " , ViewX:" + centarlView.getX() + ", ViewY:"
-                + centarlView.getY() + ",widht:" + widht + ",height:" + height);
-    }
-
-    public void showLableTextView(String value, float x, float y) {
-        if (lableTextView == null) {
-            lableTextView = new TextView(context);
-            LayoutParams params = new LayoutParams(
-                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            lableTextView.setLayoutParams(params);
-            lableTextView.setBackgroundResource(R.drawable.black_round_ract);
-            lableTextView.setTextColor(Color.WHITE);
-            contextMenuBg.addView(lableTextView);
-        }
-        lableTextView.setText(value);
-        lableTextView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
-        int widht = lableTextView.getMeasuredWidth();
-        int height = lableTextView.getMeasuredHeight();
-        ArcLayout arcLayout = contextMenuBg.getArcLayout();
-        if (arcLayout != null) {
-            lableTextView.setX(arcLayout.getX() + x - widht / 2);
-            lableTextView.setY(arcLayout.getY() + y
-                    - getResources().getDimension(R.dimen.lable_distance));
-            Syso.info("987654321  Touch point>>> value:" + value + ", x:" + x
-                    + ", y:" + y + ", arcLayout.getLeft():"
-                    + arcLayout.getLeft() + ", arcLayout.getTop():"
-                    + arcLayout.getTop());
-        }
-
-        lableTextView.setVisibility(View.VISIBLE);
-    }
-
-    public void hideLableTextView() {
-        if (lableTextView != null) {
-            lableTextView.setVisibility(View.GONE);
-        }
-    }
-
-    private ProgressBarDialog mProgressBarDialog;
-
-    public void addProductToCart(Product product) {
-        mProgressBarDialog = new ProgressBarDialog(context);
-        mProgressBarDialog.show();
-        final CartApi cartApi = new CartApi(new ServiceCallback() {
-
-            @Override
-            public void handleOnSuccess(Object object) {
-                mProgressBarDialog.dismiss();
-                if (object != null) {
-                    CartRes response = (CartRes) object;
-                    UserPreference.getInstance().incCartCount();
-                    refreshCartCount();
-                    AlertUtils.showToast(context, response.getMessage());
-                }
-            }
-
-            @Override
-            public void handleOnFailure(ServiceException exception,
-                                        Object object) {
-                mProgressBarDialog.dismiss();
-                Syso.info("In handleOnFailure>>" + object);
-                if (object != null) {
-                    CartRes response = (CartRes) object;
-                    AlertUtils.showToast(context, response.getMessage());
-                } else {
-                    AlertUtils.showToast(context, R.string.invalid_response);
-                }
-            }
-        });
-        String fromUserId = product.getFrom_user_id() == null ? "" : product.getFrom_user_id();
-        String fromCollection = product.getFrom_collection_id() == null ? "" : product.getFrom_collection_id();
-        Log.w("HomeActivity", "" + product.getQuantity());
-        cartApi.addToCart(UserPreference.getInstance().getUserID(), product.getId(), "1", UserPreference.getInstance().getCartID(), fromUserId, fromCollection, "", "", product.getSelected_values());
-        cartApi.execute();
-    }
 
     public void likeInspiration(final Product product, final UiUpdate uiUpdate) {
-        mProgressBarDialog = new ProgressBarDialog(context);
-        mProgressBarDialog.show();
+//        mProgressBarDialog = new ProgressBarDialog(context);
+//        mProgressBarDialog.show();
         Syso.info("123 like id: " + product.getLike_info().getLike_id()
                 + ", count:" + product.getLike_info().getLike_count());
         final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(
@@ -2086,7 +2196,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
                     @Override
                     public void handleOnSuccess(Object object) {
-                        mProgressBarDialog.dismiss();
+                        //   mProgressBarDialog.dismiss();
 
                         InspirationRes inspirationRes = (InspirationRes) object;
                         String likeId = inspirationRes.getLike_id();
@@ -2099,6 +2209,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                                                     .getLike_info()
                                                     .getLike_count()) - 1)
                                                     + "");
+                            AlertUtils.showToast(context, "Unliked");
                         } else {
                             product.getLike_info().setLike_id(likeId);
                             product.getLike_info()
@@ -2107,6 +2218,63 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                                                     .getLike_info()
                                                     .getLike_count()) + 1)
                                                     + "");
+                            AlertUtils.showToast(context, "Liked");
+                        }
+                        if (uiUpdate != null) {
+                            uiUpdate.updateUi();
+                        }
+//                        AlertUtils.showToast(context, inspirationRes.getMessage());
+                    }
+
+                    @Override
+                    public void handleOnFailure(ServiceException exception,
+                                                Object object) {
+                        if (object != null) {
+                            InspirationRes inspirationRes = (InspirationRes) object;
+                            String message = inspirationRes.getMessage();
+                            AlertUtils.showToast(context, message);
+                        } else {
+                            AlertUtils.showToast(context, R.string.invalid_response);
+                        }
+                        //mProgressBarDialog.dismiss();
+                    }
+                });
+        if (TextUtils.isEmpty(product.getLike_info().getLike_id())) {
+            Log.w("HomeActivity", "postLike()");
+            inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), product.getId(), "product");
+        } else {
+            Log.w("HomeActivity", "removeLike()");
+            inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), product.getLike_info().getLike_id());
+        }
+        inspirationSectionApi.execute();
+    }
+
+    public void likeInspiration2(final Inspiration inspiration, final UiUpdate uiUpdate) {
+//        mProgressBarDialog = new ProgressBarDialog(context);
+//        mProgressBarDialog.show();
+        Syso.info("123 like id: " + inspiration.getLike_id()
+                + ", count:" + inspiration.getLike_count());
+        final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(
+                new ServiceCallback() {
+
+                    @Override
+                    public void handleOnSuccess(Object object) {
+                        //   mProgressBarDialog.dismiss();
+
+                        InspirationRes inspirationRes = (InspirationRes) object;
+                        String likeId = inspirationRes.getLike_id();
+
+                        if (TextUtils.isEmpty(likeId)) {
+                            inspiration.setLike_id("");
+                            inspiration.setLike_count(
+                                    (CommonUtility.getInt(inspiration.getLike_count()) - 1)
+                                            + "");
+                        } else {
+                            inspiration.setLike_id(likeId);
+                            inspiration.setLike_count(
+                                    (CommonUtility.getInt(inspiration
+                                            .getLike_count()) + 1)
+                                            + "");
                         }
                         if (uiUpdate != null) {
                             uiUpdate.updateUi();
@@ -2123,22 +2291,24 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         } else {
                             AlertUtils.showToast(context, R.string.invalid_response);
                         }
-                        mProgressBarDialog.dismiss();
+                        //mProgressBarDialog.dismiss();
                     }
                 });
-        if (TextUtils.isEmpty(product.getLike_info().getLike_id())) {
+        if (TextUtils.isEmpty(inspiration.getLike_id())) {
             Log.w("HomeActivity", "postLike()");
-            inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), product.getId(), "product");
+            inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), inspiration.getInspiration_id(), "inspiration");
         } else {
             Log.w("HomeActivity", "removeLike()");
-            inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), product.getLike_info().getLike_id());
+            inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), inspiration.getLike_id());
         }
         inspirationSectionApi.execute();
     }
 
-    public void setDescription() {
-
-    }
+//    public void setDescription() {
+//        if (mActivity instanceof FragmentInspirationDetail) {
+//            ((FragmentInspirationDetail) mActivity).setDescription();
+//        }
+//    }
 
 
     @Override
@@ -2191,14 +2361,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void purchaseStatus(String purchase_id) {
-        progressBarDialog = new ProgressBarDialog(context);
-        progressBarDialog.show();
+//        progressBarDialog = new ProgressBarDialog(context);
+//        progressBarDialog.show();
         TwoTapApi twoTapApi = new TwoTapApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
                 Syso.info("success:   " + object);
-                progressBarDialog.dismiss();
+                // progressBarDialog.dismiss();
                 try {
                     JSONObject jsonObject = new JSONObject(object.toString());
                     if (jsonObject.getString("message").equalsIgnoreCase("done")) {
@@ -2214,7 +2384,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                progressBarDialog.dismiss();
+                // progressBarDialog.dismiss();
             }
         });
         twoTapApi.purchaseStatus(purchase_id);
@@ -2222,20 +2392,20 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void followUser(String user_id) {
-        mProgressBarDialog = new ProgressBarDialog(context);
-        mProgressBarDialog.show();
+//        mProgressBarDialog = new ProgressBarDialog(context);
+//        mProgressBarDialog.show();
 
         final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                mProgressBarDialog.dismiss();
+                //mProgressBarDialog.dismiss();
                 Syso.info("In handleOnSuccess>>" + object);
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                mProgressBarDialog.dismiss();
+                // mProgressBarDialog.dismiss();
                 Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     FollowUserRes response = (FollowUserRes) object;
@@ -2248,30 +2418,30 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         followUserApi.followUser(UserPreference.getInstance().getUserID(), user_id);
         followUserApi.execute();
 
-        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                followUserApi.cancel();
-            }
-        });
+//        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                followUserApi.cancel();
+//            }
+//        });
     }
 
     public void unFollowUser(String user_id) {
-        mProgressBarDialog = new ProgressBarDialog(context);
-        mProgressBarDialog.show();
+//        mProgressBarDialog = new ProgressBarDialog(context);
+//        mProgressBarDialog.show();
 
         final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                mProgressBarDialog.dismiss();
+                // mProgressBarDialog.dismiss();
 
                 Syso.info("In handleOnSuccess>>" + object);
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                mProgressBarDialog.dismiss();
+                // mProgressBarDialog.dismiss();
                 Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     FollowUserRes response = (FollowUserRes) object;
@@ -2284,12 +2454,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         followUserApi.unFollowUser(UserPreference.getInstance().getUserID(), user_id);
         followUserApi.execute();
 
-        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                followUserApi.cancel();
-            }
-        });
+//        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                followUserApi.cancel();
+//            }
+//        });
     }
 
     //  cropping functions

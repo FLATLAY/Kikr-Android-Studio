@@ -24,7 +24,7 @@
 
                 android:layout_height="30dp"
 
-                android:src="@drawable/customizeyourfeedimage" />
+                android:src="@drawable/profile_icon" />
         </LinearLayout>
 
         <TextView
@@ -92,7 +92,7 @@
                 android:padding="5dp"
                 android:layout_marginTop="3dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/customizewhiteimage" />
+                android:src="@drawable/profile_icon" />
 
             <TextView
                 android:id="@+id/customizeTitle"

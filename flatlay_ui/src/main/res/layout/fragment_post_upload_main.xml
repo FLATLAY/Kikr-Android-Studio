@@ -156,7 +156,7 @@
                 android:id="@+id/instagram"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/instagram" />
+                android:src="@drawable/profile_icon" />
         </LinearLayout>
 
 

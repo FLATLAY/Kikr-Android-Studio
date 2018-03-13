@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.flatlay"
     android:versionCode="32"
     android:versionName="2.2.0">
@@ -43,6 +44,8 @@
         android:icon="@drawable/flatlayround"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:persistent="true"
+        tools:replace="android:label"
         android:theme="@style/AppTheme">
         <!-- [START firebase_service] -->
         <service
@@ -64,6 +67,7 @@
         <activity
             android:name="com.flatlay.BaseActivityWithVideo"
             android:label="@string/app_name"
+            android:launchMode="standard"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait">
@@ -72,7 +76,6 @@
                 android:value="@integer/deeplinkrequestcode" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -107,8 +110,13 @@
         <activity
             android:name="com.flatlay.activity.HomeActivity"
             android:screenOrientation="portrait"
-
+            android:theme="@style/AppCompat"
+            android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name=".HomeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
 
         </activity>
 
@@ -119,7 +127,17 @@
         <activity
             android:name="com.flatlay.circle_crop.circle_crop.ImageCropActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppCompat" />
+            android:theme="@style/Theme.AppCompat" />
+
+        <!--<activity-->
+            <!--android:name="com.flatlay.fragment.FragmentInspirationDetail"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/AppCompat" />-->
+
+        <!--<activity-->
+            <!--android:name="com.flatlay.fragment.FragmentDiscoverDetail"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/AppCompat" />-->
 
         <!--<activity-->
             <!--android:name="com.flatlay.activity.PinterestLoginActivity"-->
@@ -292,11 +310,12 @@
             <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
             <!--android:screenOrientation="portrait"-->
             <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
-        <!--<activity-->
-            <!--android:name="com.flatlay.activity.ProductDetailWebViewActivity"-->
-            <!--android:configChanges="keyboard|keyboardHidden|orientation"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:windowSoftInputMode="stateHidden|adjustPan"></activity>-->
+        <activity
+            android:name="com.flatlay.activity.ProductDetailWebViewActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
         <!--<activity-->
             <!--android:name="com.flatlay.activity.RegisterEmailOnSkipActivity"-->
             <!--android:configChanges="keyboard|keyboardHidden|orientation"-->

@@ -8,7 +8,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.flatlay.R;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlaylib.api.AddressApi;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.ServiceCallback;
@@ -20,7 +19,6 @@ import com.flatlaylib.utils.Syso;
 public class RemoveSocialAccountDialog extends Dialog{
 	private TextView cancelTextView,okTextView;
 	private Context mContext;
-	private ProgressBarDialog progressBarDialog;
 	private String addressId;
 
 	public RemoveSocialAccountDialog(Context mContext) {
@@ -60,14 +58,14 @@ public class RemoveSocialAccountDialog extends Dialog{
 	
 	private void deleteAddress() {
 
-		progressBarDialog = new ProgressBarDialog(mContext);
-		progressBarDialog.show();
+//		progressBarDialog = new ProgressBarDialog(mContext);
+//		progressBarDialog.show();
 		final AddressApi service = new AddressApi(new ServiceCallback() {
 
 		
 			@Override
 			public void handleOnSuccess(Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				Syso.info("In handleOnSuccess>>"+object);
 				if(object!=null){
 					dismiss();
@@ -76,7 +74,7 @@ public class RemoveSocialAccountDialog extends Dialog{
 
 			@Override
 			public void handleOnFailure(ServiceException exception,Object object) {
-				progressBarDialog.dismiss();
+				//progressBarDialog.dismiss();
 				Syso.info("In handleOnFailure>>"+object);
 				if(object!=null){
 					AddressRes response=(AddressRes) object;
@@ -90,12 +88,12 @@ public class RemoveSocialAccountDialog extends Dialog{
 		service.removeAddress(UserPreference.getInstance().getUserID(), addressId);
 		service.execute();
 
-		progressBarDialog.setOnCancelListener(new OnCancelListener() {
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				service.cancel();
-			}
-		});
+		//progressBarDialog.setOnCancelListener(new OnCancelListener() {
+//			@Override
+//			public void onCancel(DialogInterface dialog) {
+//				service.cancel();
+//			}
+//		});
 	}
 	
 	

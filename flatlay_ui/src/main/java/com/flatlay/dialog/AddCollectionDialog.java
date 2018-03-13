@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.AppConstants;
 import com.flatlaylib.api.AddCollectionApi;
 import com.flatlaylib.service.ServiceCallback;
@@ -23,7 +22,7 @@ public class AddCollectionDialog extends Dialog  implements ServiceCallback{
 	private Context mContext;
 	private EditText add_collectionEditText;
 	private TextView cancelTextView,okTextView;
-	private ProgressBarDialog mProgressBarDialog;
+	//private ProgressBarDialog mProgressBarDialog;
 //	private FragmentDiscover fragmentDiscover;
 	private String productId;
 	private CollectionListDialog collectionListDialog;
@@ -86,24 +85,24 @@ public class AddCollectionDialog extends Dialog  implements ServiceCallback{
 	}
 
 	private void addCollection(String collectionname) {
-		mProgressBarDialog = new ProgressBarDialog(mContext);
-		mProgressBarDialog.show();
+//		mProgressBarDialog = new ProgressBarDialog(mContext);
+//		mProgressBarDialog.show();
 		
 		final AddCollectionApi collectionApi = new AddCollectionApi(this);
 		collectionApi.addNewCollection(collectionname);
 		collectionApi.execute();
 		
-		mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				collectionApi.cancel();
-			}
-		});		
+		//mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
+//			@Override
+//			public void onCancel(DialogInterface dialog) {
+//				collectionApi.cancel();
+//			}
+//		});
 	}
 	
 	@Override
 	public void handleOnSuccess(Object object) {
-		mProgressBarDialog.dismiss();
+		//mProgressBarDialog.dismiss();
 		Syso.info("In handleOnSuccess>>" + object);
 			AddCollectionApiRes collectionApiRes=(AddCollectionApiRes) object;
 			AlertUtils.showToast(mContext, collectionApiRes.getMessage());
@@ -113,7 +112,7 @@ public class AddCollectionDialog extends Dialog  implements ServiceCallback{
 
 	@Override
 	public void handleOnFailure(ServiceException exception, Object object) {
-		mProgressBarDialog.dismiss();
+		//mProgressBarDialog.dismiss();
 		Syso.info("In handleOnFailure>>" + object);
 		if (object != null) {
 			AddCollectionApiRes response = (AddCollectionApiRes) object;

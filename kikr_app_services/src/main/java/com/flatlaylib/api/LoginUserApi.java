@@ -35,7 +35,6 @@ public class LoginUserApi extends AbsService {
         Constants.email = email;
         Constants.pwd = password;
 
-
         Map<String, String> comment = new HashMap<String, String>();
         comment.put("email", email);
         comment.put("password", password);

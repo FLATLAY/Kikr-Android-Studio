@@ -5,7 +5,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 
 import com.flatlay.model.Item;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlaylib.api.SearchAllApi;
 import com.flatlaylib.bean.SearchStoreBrandUserRes;
 import com.flatlaylib.db.UserPreference;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
  * Created by anshumaan on 6/5/2016.
  */
 public class AutoSuggestApi {
-    ProgressBarDialog mProgressBarDialog;
     Context mContext;
     ArrayList<Item> itemArrayList;
     String[] autoSuggestArray = null;
@@ -63,8 +61,8 @@ public class AutoSuggestApi {
         this.tagsEditText = tagsEditText;
         Syso.info("Auto suggest api calling.", searchString);
         previousSearchedText[i++] = searchString;
-        mProgressBarDialog = new ProgressBarDialog(mContext);
-        mProgressBarDialog.show();
+        //mProgressBarDialog = new ProgressBarDialog(mContext);
+        //mProgressBarDialog.show();
         final SearchAllApi searchAllApi = new SearchAllApi(new ServiceCallback() {
 
             @Override
@@ -103,9 +101,9 @@ public class AutoSuggestApi {
                 }
 
 
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
-
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
+//
 
 
 
@@ -113,8 +111,8 @@ public class AutoSuggestApi {
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
                 Syso.info("In handleOnFailure>>" + object);
 
 

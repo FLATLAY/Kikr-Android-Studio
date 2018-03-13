@@ -10,12 +10,11 @@
         android:orientation="horizontal"
         android:id="@+id/layoutComment">
 
-        <com.flatlay.ui.RoundImageView
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/userImage"
-            android:layout_width="@dimen/inspiration_user_image"
-            android:layout_height="@dimen/inspiration_user_image"
-            android:layout_margin="@dimen/padding_small"
-            android:padding="@dimen/padding_small"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
             android:src="@drawable/profile_icon" />
 
 
@@ -24,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/user_image"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="75dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginRight="50dp"
             android:orientation="vertical"
             android:paddingBottom="@dimen/padding_large"

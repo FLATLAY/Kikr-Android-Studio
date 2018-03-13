@@ -156,7 +156,7 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/menuRightImageView"
         android:contentDescription="@null"
-        android:src="@drawable/ic_search"
+        android:src="@drawable/profile_icon"
         android:visibility="gone" />
 
     <ImageView

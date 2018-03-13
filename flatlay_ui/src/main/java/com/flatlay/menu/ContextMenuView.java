@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -11,36 +12,49 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.flatlay.BaseActivity;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
+import com.flatlay.activity.ProductDetailWebViewActivity;
 import com.flatlay.dialog.CollectionListDialog;
 import com.flatlay.dialog.CreateAccountDialog;
 import com.flatlay.dialog.ShareDialog;
+import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.UiUpdate;
+import com.flatlaylib.api.InspirationSectionApi;
 import com.flatlaylib.bean.Product;
 import com.flatlaylib.db.UserPreference;
+import com.flatlaylib.service.ServiceCallback;
+import com.flatlaylib.service.ServiceException;
+import com.flatlaylib.service.res.InspirationRes;
+import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
+
+/**
+ * Created by RachelDi on 2/22/18.
+ */
 
 public class ContextMenuView extends FrameLayout {
 
-    private static final int[] ITEM_DRAWABLES = {R.drawable.gray_heart_3x, R.drawable.gray_plus,
-            R.drawable.gray_cart_3x, R.drawable.gray_store, R.drawable.share_grey_kopie_2x};
+    private static final int[] ITEM_DRAWABLES = {R.drawable.small_gray_heart, R.drawable.small_gray_plus,
+            R.drawable.small_gray_cart, R.drawable.small_gray_kopie};
 
 
-    private static final int[] ITEM_DRAWABLES_SELECTED = {R.drawable.likegreen, R.drawable.ic_add_collection_selected,
-            R.drawable.ic_cart_selected, R.drawable.sharegreen};
-    private static final String[] ITEM_NAMES = {"Like", "Add to Collection", "Add to Cart","View On Store Site", "Share"};
-    private static final String[] ITEM_NAMES2 = {"Unlike", "Add to Collection ", "Add to Cart", "View On Store Site","Share"};
+    private static final int[] ITEM_DRAWABLES_SELECTED = {R.drawable.likegreen, R.drawable.greenplus,
+            R.drawable.ic_cart_selected, R.drawable.sharegreen1};
+    private static final String[] ITEM_NAMES = {"Like", "Add to Collection", "Add to Cart", "Share"};
+    private static final String[] ITEM_NAMES2 = {"Unlike", "Add to Collection ", "Add to Cart", "Share"};
 
 
-    ArcLayout arcLayout;
-    int lastSelectedPos = -1;
-    int angle = 120;
-    int fromAng = 210;
+    private ArcLayout arcLayout;
+    private int lastSelectedPos = -1, angle = 120, fromAng = 210;
     private Product product;
-    private HomeActivity mContext;
-    UiUpdate uiUpdate;
+    private ProductDetailWebViewActivity mContext;
+    private UiUpdate uiUpdate;
+    private String postlink;
+    private static String SHARE_POST_LINK = "Find it @FLATLAY http://flat-lay.com/product/";
 
     public ContextMenuView(Context context) {
         super(context);
@@ -60,18 +74,13 @@ public class ContextMenuView extends FrameLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         // TODO Auto-generated method stub
-        Syso.info("12345 : in dispatch touch event");
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Syso.info(">>>>ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Syso.info(">>>>ACTION_MOVE");
                 checkSelection(ev);
                 break;
             case MotionEvent.ACTION_UP:
-                Syso.info(">>>>ACTION_UP");
-//			itemDidDisappear();
                 setVisibility(View.GONE);
                 if (lastSelectedPos != -1) {
                     itemDidDisappear();
@@ -90,7 +99,6 @@ public class ContextMenuView extends FrameLayout {
         View selectedView = null;
         for (int i = 0; i < childCount; i++) {
             View v = arcLayout.getChildAt(i);
-//			Syso.info("X :"+v.getX()+",  Y:"+v.getY()+", XX:"+arcLayout.getX()+", YY"+arcLayout.getY());
             Rect rect = new Rect();
             v.getLocalVisibleRect(rect);
             Rect rect2 = new Rect();
@@ -98,8 +106,6 @@ public class ContextMenuView extends FrameLayout {
             rect2.right = rect2.left + rect.right;
             rect2.top = (int) (v.getY() + arcLayout.getY() + arcLayout.getMeasuredHeight() / 2 - rect.bottom);
             rect2.bottom = rect2.top + rect.bottom;
-//			Syso.info("99999999999 1: Left :"+i+">"+ rect.left+",Right :"+ rect.right+",Top :"+ rect.top+",Bottom :"+ rect.bottom);
-//			Syso.info("99999999999 2: Left :"+ rect2.left+",Right :"+ rect2.right+",Top :"+ rect2.top+",Bottom :"+ rect2.bottom);
             if (rect2.contains((int) ev.getX(), (int) ev.getY())) {
                 selectedView = v;
             }
@@ -117,12 +123,9 @@ public class ContextMenuView extends FrameLayout {
                 ImageView view = (ImageView) v;
                 view.setImageResource(ITEM_DRAWABLES_SELECTED[i]);
                 mContext.showLableTextView(getName(i), (view.getLeft() + view.getRight()) / 2, view.getTop());
-//			 bindItemAnimation(selectedView, true, 100);
-//			 lastView=selectedView;
                 lastSelectedPos = i;
             } else {
                 ((ImageView) v).setImageResource(ITEM_DRAWABLES[i]);
-//			 bindItemAnimation(v, false, 100);
             }
         }
         if (selectedView == null) {
@@ -142,19 +145,15 @@ public class ContextMenuView extends FrameLayout {
     public void inIt(Context context) {
         arcLayout = new ArcLayout(context);
         arcLayout.setChildSize((int) getResources().getDimension(R.dimen.menuChildSize));
-//		int angel=145;
-//		int fromAng=190;
         arcLayout.setArc(fromAng, fromAng + angle);
         for (int i = 0; i < ITEM_DRAWABLES.length; i++) {
             ImageView item = new ImageView(context);
             item.setImageResource(ITEM_DRAWABLES[i]);
-        //    item.setBackgroundResource(R.drawable.bg_btn_discover);
             arcLayout.addView(item);
             item.setOnTouchListener(new OnTouchListener() {
 
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    Syso.info("View touched>>>>>>>");
                     return false;
                 }
             });
@@ -163,15 +162,11 @@ public class ContextMenuView extends FrameLayout {
     }
 
     public void setXY(float x, float y) {
-//		int angel=145;
         arcLayout.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
         int widht = arcLayout.getMeasuredWidth();
         int height = arcLayout.getMeasuredHeight();
-        Syso.info("Angle>>> before x " + arcLayout.getX() + ", before Y:" + arcLayout.getY());
         arcLayout.setX(x - widht / 2);
         arcLayout.setY((float) (y - 0.75 * height)); //h+h/5
-        Syso.info("Angle>>> Size: width " + arcLayout.getMeasuredWidth() + ", width :" + getWidth() + ", height:" + getHeight() + ", X:" + getX() + ", Y:" + getY());
-        Syso.info("Angle>>> after x " + arcLayout.getX() + ", after Y:" + arcLayout.getY());
         Rect menuRect = new Rect((int) arcLayout.getX(), (int) arcLayout.getY(), (int) arcLayout.getX() + widht, (int) arcLayout.getY() + height);
         Rect deviceRect = new Rect(0, 0, getWidth(), getHeight());
         int angleFrom = calculateAngle(menuRect, deviceRect);
@@ -181,7 +176,6 @@ public class ContextMenuView extends FrameLayout {
 
     private int calculateAngle(Rect menuRect, Rect deviceRect) {
         boolean isCutInLeft = false, isCutInRight = false, isCutInTop = false, isCutInBottom = false;
-//		int angel=160;
         if (menuRect.left - deviceRect.left < 0) {
             isCutInLeft = true;
         }
@@ -194,7 +188,6 @@ public class ContextMenuView extends FrameLayout {
         if (deviceRect.bottom - menuRect.bottom < 0) {
             isCutInBottom = true;
         }
-        Syso.info("Angle>>>  isCutInLeft:" + isCutInLeft + ",isCutInRight:" + isCutInRight + ",isCutInTop:" + isCutInTop + ",isCutInBottom:" + isCutInBottom);
 
         if (!isCutInLeft && !isCutInRight && !isCutInTop && !isCutInBottom) {
             return fromAng;
@@ -226,17 +219,6 @@ public class ContextMenuView extends FrameLayout {
         arcLayout.switchState(false);
     }
 
-//	public void onItemTouch(){
-//		 final int itemCount = mArcLayout.getChildCount();
-//         for (int i = 0; i < itemCount; i++) {
-//             View item = mArcLayout.getChildAt(i);
-//             if (viewClicked != item) {
-//                 bindItemAnimation(item, false, 300);
-//             }
-//         }
-//         mArcLayout.invalidate();
-//	}
-
     private Animation bindItemAnimation(final View child, final boolean isClicked, final long duration) {
         Animation animation = createItemDisapperAnimation(duration, isClicked, child);
         child.setAnimation(animation);
@@ -253,16 +235,14 @@ public class ContextMenuView extends FrameLayout {
             animationSet.addAnimation(new ScaleAnimation(1.0f, isClicked ? 1.3f : 1.0f, 1.0f, isClicked ? 1.3f : 1.0f,
                     Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f));
         }
-//	        animationSet.addAnimation(new AlphaAnimation(1.0f, 0.0f));
 
         animationSet.setDuration(duration);
-//	        animationSet.setInterpolator(new DecelerateInterpolator());
         animationSet.setFillAfter(true);
 
         return animationSet;
     }
 
-    public void setProduct(Product product, HomeActivity mContext) {
+    public void setProduct(Product product, ProductDetailWebViewActivity mContext) {
         this.product = product;
         this.mContext = mContext;
     }
@@ -289,10 +269,9 @@ public class ContextMenuView extends FrameLayout {
                         CreateAccountDialog createAccountDialog = new CreateAccountDialog(mContext);
                         createAccountDialog.show();
                     } else {
-                        mContext.likeInspiration(product, uiUpdate);
+                        likeInspiration(product, uiUpdate);
                     }
 
-//			AlertUtils.showToast(getContext(), "Like option selected");
                 break;
             case 1:
                 if (mContext.checkInternet()) {
@@ -305,21 +284,17 @@ public class ContextMenuView extends FrameLayout {
                     }
 
                 }
-//			AlertUtils.showToast(getContext(), "Add to collection option selected");
                 break;
             case 2:
                 if (mContext.checkInternet()) {
-                    //ProductVariableOption.getInstance(mContext, product).getCartId();
 
-                    mContext.addProductToCart(product);
+//                    mContext.addProductToCart(product);
                 }
-//			AlertUtils.showToast(getContext(), "Checkout option selected");
                 break;
             case 3:
-//			AlertUtils.showToast(getContext(), "Share option selected");
-                ShareDialog dialog = new ShareDialog(mContext, (HomeActivity) mContext, product);
+                postlink = SHARE_POST_LINK + product.getId();
+                ShareDialog dialog = new ShareDialog(mContext, product.getProductimageurl(), postlink);
                 dialog.show();
-//			mContext.shareProduct(product);
                 break;
         }
     }
@@ -327,4 +302,61 @@ public class ContextMenuView extends FrameLayout {
     public ArcLayout getArcLayout() {
         return arcLayout;
     }
+
+    public void likeInspiration(final Product product, final UiUpdate uiUpdate) {
+        final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(
+                new ServiceCallback() {
+
+                    @Override
+                    public void handleOnSuccess(Object object) {
+
+                        InspirationRes inspirationRes = (InspirationRes) object;
+                        String likeId = inspirationRes.getLike_id();
+
+                        if (TextUtils.isEmpty(likeId)) {
+                            product.getLike_info().setLike_id("");
+                            product.getLike_info()
+                                    .setLike_count(
+                                            (CommonUtility.getInt(product
+                                                    .getLike_info()
+                                                    .getLike_count()) - 1)
+                                                    + "");
+                            AlertUtils.showToast(mContext, "Unliked");
+                        } else {
+                            product.getLike_info().setLike_id(likeId);
+                            product.getLike_info()
+                                    .setLike_count(
+                                            (CommonUtility.getInt(product
+                                                    .getLike_info()
+                                                    .getLike_count()) + 1)
+                                                    + "");
+                            AlertUtils.showToast(mContext, "Liked");
+                        }
+                        if (uiUpdate != null) {
+                            uiUpdate.updateUi();
+                        }
+                    }
+
+                    @Override
+                    public void handleOnFailure(ServiceException exception,
+                                                Object object) {
+                        if (object != null) {
+                            InspirationRes inspirationRes = (InspirationRes) object;
+                            String message = inspirationRes.getMessage();
+                            AlertUtils.showToast(mContext, message);
+                        } else {
+                            AlertUtils.showToast(mContext, R.string.invalid_response);
+                        }
+                    }
+                });
+        if (TextUtils.isEmpty(product.getLike_info().getLike_id())) {
+            inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), product.getId(), "product");
+        } else {
+            inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), product.getLike_info().getLike_id());
+        }
+        inspirationSectionApi.execute();
+    }
+
+
 }
+

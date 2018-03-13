@@ -67,7 +67,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@drawable/shadow"
+                android:background="@drawable/profile_icon"
                 android:visibility="visible" />
 
         </LinearLayout>
@@ -90,7 +90,7 @@
             android:adjustViewBounds="true"
             android:padding="@dimen/padding_small"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_up_gray_arrow"
+            android:src="@drawable/profile_icon"
             android:textColor="@color/app_text_color"
             android:textSize="@dimen/large_text_size" />
 
@@ -141,7 +141,7 @@
                     android:layout_height="35dp"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/button_add_to_cart"
-                    android:drawableLeft="@drawable/ic_singleproductspage_addtocollections"
+                    android:drawableLeft="@drawable/profile_icon"
                     android:gravity="center"
                     android:padding="@dimen/padding_small"
                     android:src="@drawable/ic_discover_btn_checkout"
@@ -196,7 +196,7 @@
                             android:adjustViewBounds="true"
                             android:background="@drawable/round_ract_wide"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ic_singleproductspage_menu"
+                            android:src="@drawable/profile_icon"
                             android:textColor="@color/app_text_color"
                             android:textSize="@dimen/large_text_size" />
 
@@ -271,7 +271,7 @@
             android:layout_marginLeft="5dp"
             android:layout_weight="1.5"
             android:background="@drawable/green_corner_button"
-            android:drawableLeft="@drawable/shopping_icon"
+            android:drawableLeft="@drawable/profile_icon"
             android:paddingLeft="15dp"
             android:text="ADD TO CART"
             android:textColor="@color/white"

@@ -1,7 +1,5 @@
 package com.flatlay.activity;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,7 +16,6 @@ import android.widget.TextView;
 
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.AppConstants;
 import com.flatlay.utility.AppConstants.Screen;
 import com.flatlay.utility.CommonUtility;
@@ -35,10 +32,8 @@ import com.flatlaylib.utils.Syso;
 
 public class SignUpActivity extends BaseFragment implements OnClickListener, OnKeyListener, ServiceCallback {
     private EditText mEmailEditText, mPasswordEditText, mreemailEditText;
-    private ProgressBarDialog mProgressBarDialog;
     private TextView mMaleTextView, mFemaleTextView, mbackToLanding, mSignUp;
-    private boolean mIsMaleSelected = true;
-    private boolean ratherNotSelected = false;
+    private boolean mIsMaleSelected = true, ratherNotSelected = false;
     private Button mNextButton;
     private View mainView;
 
@@ -208,24 +203,24 @@ public class SignUpActivity extends BaseFragment implements OnClickListener, OnK
 
     private void registerViaEamil(String email, String password, String gender) {
 
-        mProgressBarDialog = new ProgressBarDialog(getActivity());
-        mProgressBarDialog.show();
+//        mProgressBarDialog = new ProgressBarDialog(getActivity());
+//        mProgressBarDialog.show();
 
         final RegisterUserApi service = new RegisterUserApi(this);
         service.registerViaEmail(email, password, gender, DeviceUtils.getPhoneModel(), CommonUtility.getDeviceTocken(getActivity()), Screen.UserNameScreen, "android", CommonUtility.getDeviceId(getActivity()));
         service.execute();
 
-        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                service.cancel();
-            }
-        });
+       // mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                service.cancel();
+//            }
+//        });
     }
 
     @Override
     public void handleOnSuccess(Object object) {
-        mProgressBarDialog.dismiss();
+      //  mProgressBarDialog.dismiss();
         Syso.info("In handleOnSuccess>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;
@@ -263,7 +258,7 @@ public class SignUpActivity extends BaseFragment implements OnClickListener, OnK
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
-        mProgressBarDialog.dismiss();
+        //mProgressBarDialog.dismiss();
         Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;

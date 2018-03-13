@@ -12,11 +12,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 
-import com.flatlay.ui.ProgressBarDialog;
-
 public class PhotosImageTask extends AsyncTask<Void, Void, Bitmap> {
 
-	ProgressBarDialog pleaseWaitDialog;
 		Uri imageUrl;
 		Bitmap bmp;
 		FragmentActivity context;
@@ -30,20 +27,20 @@ public class PhotosImageTask extends AsyncTask<Void, Void, Bitmap> {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			pleaseWaitDialog = new ProgressBarDialog(context);
-			pleaseWaitDialog.show();   //("Select Image");
-		    pleaseWaitDialog.setOnCancelListener(new OnCancelListener() {
-			  @Override
-			  public void onCancel(DialogInterface dialog) {
-				cancel(true);
-			  }
-		    });
+//			pleaseWaitDialog = new ProgressBarDialog(context);
+//			pleaseWaitDialog.show();   //("Select Image");
+//		    pleaseWaitDialog.setOnCancelListener(new OnCancelListener() {
+//			  @Override
+//			  public void onCancel(DialogInterface dialog) {
+//				cancel(true);
+//			  }
+//		    });
 		}
 
 		@Override
 	protected void onCancelled() {
 		super.onCancelled();
-		pleaseWaitDialog.dismiss();
+		//pleaseWaitDialog.dismiss();
 	}
 	
 		@Override
@@ -70,7 +67,7 @@ public class PhotosImageTask extends AsyncTask<Void, Void, Bitmap> {
 				bmp =  PictureUtils.scaleDownBitmap(result, 600, context);	
 				PictureUtils.setImageData(context, bmp);
 		    } 
-			pleaseWaitDialog.dismiss();
+			//pleaseWaitDialog.dismiss();
 	    }
 		
 	}

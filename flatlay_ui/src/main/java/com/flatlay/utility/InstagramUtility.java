@@ -19,7 +19,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.flatlay.model.InstagramImage;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
@@ -86,7 +85,7 @@ public class InstagramUtility {
 
     public class DownloadTask extends AsyncTask<URL, Integer, Long> {
         ArrayList<InstagramImage> photoList;
-        ProgressBarDialog barDialog;
+        //ProgressBarDialog barDialog;
 
         protected void onCancelled() {
 
@@ -94,8 +93,8 @@ public class InstagramUtility {
 
         protected void onPreExecute() {
 //    		if(isShowLoader){
-            barDialog = new ProgressBarDialog(mContext);
-            barDialog.show();
+//            barDialog = new ProgressBarDialog(mContext);
+//            barDialog.show();
 //    		}
         }
 
@@ -137,8 +136,8 @@ public class InstagramUtility {
         }
 
         protected void onPostExecute(Long result) {
-            if (barDialog != null)
-                barDialog.dismiss();
+           // if (barDialog != null)
+              //  barDialog.dismiss();
             if (photoList == null) {
                 AlertUtils.showToast(mContext, "No Photos Available");
             } else {

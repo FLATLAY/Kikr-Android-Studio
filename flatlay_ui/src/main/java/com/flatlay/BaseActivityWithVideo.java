@@ -1,9 +1,11 @@
 package com.flatlay;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
@@ -15,6 +17,7 @@ import com.flatlay.activity.LandingActivity;
 import com.flatlay.activity.LoginActivity;
 import com.flatlay.activity.SignUpActivity;
 import com.flatlay.utility.CommonUtility;
+import com.flatlaylib.utils.AlertUtils;
 
 import java.util.Stack;
 
@@ -22,17 +25,23 @@ import java.util.Stack;
  * Created by RachelDi on 1/12/18.
  */
 
-public class BaseActivityWithVideo extends BaseActivity{
+public class BaseActivityWithVideo extends BaseActivity {
     protected VideoView vedio;
     public Stack<String> mFragmentStack;
     private Fragment mContent;
+    private boolean backPressedToExitOnce = false;
 
     private FragmentManager manager;
     public FragmentTransaction transaction = getSupportFragmentManager()
             .beginTransaction();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish();
+            return;
+        }
         CommonUtility.noTitleActivity(context);
         context = this;
         manager = getFragmentManager();
@@ -92,16 +101,40 @@ public class BaseActivityWithVideo extends BaseActivity{
 //                    transaction.commit();
 //
 //            } else {
-                mFragmentStack.add(mContent.toString());
-                transaction.replace(R.id.baseFrameLayout, fragment, mContent.toString());
-                transaction.addToBackStack(mContent.toString());
-                transaction.commit();
+            mFragmentStack.add(mContent.toString());
+            transaction.replace(R.id.baseFrameLayout, fragment, mContent.toString());
+            transaction.addToBackStack(mContent.toString());
+            transaction.commit();
             //}
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+
+        if (fragment instanceof LandingActivity) {
+            if (backPressedToExitOnce) {
+                finish();
+            } else {
+                this.backPressedToExitOnce = true;
+                AlertUtils.showToast(context, "Press again to exit");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        backPressedToExitOnce = false;
+                    }
+                }, 2000);
+            }
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
 
     @Override
     public void initLayout() {

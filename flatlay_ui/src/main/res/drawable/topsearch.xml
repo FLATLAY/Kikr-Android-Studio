@@ -5,8 +5,8 @@
             <item >
                 <shape>
                     <gradient android:angle="270"
-                        android:endColor="#4c4c4c" android:startColor="#4c4c4c" />
-                    <!--<stroke android:width="2dp" android:color="@color/splashcolor" />-->
+                        android:endColor="#B34c4c4c" android:startColor="#B34c4c4c" />
+                    <stroke android:width="2dp" android:color="@color/white" />
                     <corners android:radius="30dp" />
                     <padding android:bottom="5dp" android:left="10dp"
                         android:right="10dp" android:top="5dp" />

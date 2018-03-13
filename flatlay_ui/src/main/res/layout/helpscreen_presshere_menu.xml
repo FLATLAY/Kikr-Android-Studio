@@ -28,7 +28,7 @@
                     android:gravity="center_horizontal"
                     android:layout_centerInParent="true"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/gray_heart_3x" />
+                    android:src="@drawable/small_gray_heart" />
 
                 <TextView
                     android:id="@+id/likeTV"
@@ -58,7 +58,7 @@
                     android:layout_height="32dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/gray_plus" />
+                    android:src="@drawable/small_gray_plus" />
 
                 <TextView
                     android:id="@+id/discoverTV"
@@ -90,7 +90,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="7dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/gray_cart_3x" />
+                    android:src="@drawable/small_gray_cart" />
 
                 <TextView
                     android:id="@+id/checkoutTV"
@@ -118,7 +118,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/gray_store" />
+                    android:src="@drawable/small_gray_store" />
 
                 <TextView
                     android:id="@+id/storeTV"
@@ -148,7 +148,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/share_grey_kopie_2x" />
+                    android:src="@drawable/small_gray_kopie" />
 
                 <TextView
                     android:id="@+id/shareTV"

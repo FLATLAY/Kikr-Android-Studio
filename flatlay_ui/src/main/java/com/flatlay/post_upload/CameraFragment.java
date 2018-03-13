@@ -41,7 +41,6 @@ import com.desmond.squarecamera.ResizeAnimation;
 import com.desmond.squarecamera.SquareCameraPreview;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
 
@@ -569,8 +568,8 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
     public void onPictureTaken(final byte[] data, Camera camera) {
         Log.w("CameraFragment","onPictureTaken");
         final int rotation = getPhotoRotation();
-        final ProgressBarDialog mProgressBarDialog = new ProgressBarDialog(getActivity());
-        mProgressBarDialog.show();
+//        final ProgressBarDialog mProgressBarDialog = new ProgressBarDialog(getActivity());
+//        mProgressBarDialog.show();
 
         AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
             @Override
@@ -591,8 +590,8 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
                 Log.w("CameraFragment","Back from startCropActivity/doInBackground()");
                 super.onPostExecute(aVoid);
                 //takePhotoBtn.setEnabled(true);
-                if (mProgressBarDialog.isShowing())
-                    mProgressBarDialog.dismiss();
+//                if (mProgressBarDialog.isShowing())
+//                    mProgressBarDialog.dismiss();
                 onStop();
             }
         };

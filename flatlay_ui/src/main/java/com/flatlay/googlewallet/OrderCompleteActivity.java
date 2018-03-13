@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.flatlay.BaseActivity;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.api.CartApi;
 import com.flatlaylib.db.UserPreference;
@@ -18,7 +17,6 @@ import com.flatlaylib.service.res.CartRes;
 
 
 public class OrderCompleteActivity extends BaseActivity implements OnClickListener{
-	private ProgressBarDialog progressBarDialog;
 	private TextView return_to_shopping;
     
     @Override
@@ -77,13 +75,13 @@ public class OrderCompleteActivity extends BaseActivity implements OnClickListen
 	}
 
 	public void createCart() {
-		progressBarDialog = new ProgressBarDialog(context);
-		progressBarDialog.show();
+//		progressBarDialog = new ProgressBarDialog(context);
+//		progressBarDialog.show();
 		final CartApi cartApi = new CartApi(
 				new ServiceCallback() {
 					@Override
 					public void handleOnSuccess(Object object) {
-						progressBarDialog.dismiss();
+						//progressBarDialog.dismiss();
 						CartRes cartRes = (CartRes) object;
 						UserPreference.getInstance().setCartID(cartRes.getCart_id());
 						 goToHome();
@@ -92,7 +90,7 @@ public class OrderCompleteActivity extends BaseActivity implements OnClickListen
 
 					@Override
 					public void handleOnFailure(ServiceException exception,Object object) {
-						progressBarDialog.dismiss();
+						//progressBarDialog.dismiss();
 					}
 				});
 		cartApi.createCart(UserPreference.getInstance().getUserID());

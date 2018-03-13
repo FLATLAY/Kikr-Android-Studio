@@ -78,6 +78,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
     private OnPhotoTapListener mPhotoTapListener;
     private OnViewTapListener mViewTapListener;
     private OnLongClickListener mLongClickListener;
+
     private int mIvTop, mIvRight, mIvBottom, mIvLeft;
     private FlingRunnable mCurrentFlingRunnable;
     private int mScrollEdge = EDGE_BOTH;
@@ -85,7 +86,6 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
     private ScaleType mScaleType = ScaleType.FIT_CENTER;
     public PhotoViewAttacher(ImageView imageView) {
         mImageView = new WeakReference<>(imageView);
-
         imageView.setDrawingCacheEnabled(true);
         imageView.setOnTouchListener(this);
 

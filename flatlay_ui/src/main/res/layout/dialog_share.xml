@@ -3,44 +3,53 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
-    android:background="@drawable/sharebackground"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/otherButton"
-            android:layout_width="@dimen/share_button_width"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:layout_weight="1"
-            android:background="@drawable/shareotherbackground"
-            android:padding="5dp"
-            android:src="@drawable/cancelicon"
-            android:text="Share"
-            android:textColor="@color/white"
-            android:textSize="@dimen/large_text_size" />
-    </LinearLayout>
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@drawable/btn_simple_teal_border"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/cancellayout"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/otherButton"
+                android:layout_width="@dimen/share_button_width"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:layout_weight="1"
+                android:background="@drawable/shareotherbackground"
+                android:padding="5dp"
+                android:src="@drawable/cancelicon"
+                android:text="Share"
+                android:textColor="@color/white"
+                android:textSize="@dimen/large_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Close"
-            android:textSize="16dp"
 
-            android:textAlignment="center"
-            android:textColor="@color/white"/>
+            android:background="@drawable/my_teal_bar">
+
+            <TextView
+                android:id="@+id/cancellayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Close"
+                android:textAlignment="center"
+
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

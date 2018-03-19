@@ -39,7 +39,6 @@ public class InspirationCommentsUI {
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-
     public View getView() {
 
         LinearLayout ll = new LinearLayout(mContext);

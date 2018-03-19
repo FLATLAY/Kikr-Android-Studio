@@ -195,7 +195,7 @@ public class InspirationProductUI {
             TextView text = (TextView) convertView.findViewById(R.id.textView1);
             if (index == 1) {
                 RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(500, 500);
-                layoutParams2.setMargins(15, 15, 15, 15);
+                layoutParams2.setMargins(0, 15, 15, 15);
                 text.setTextSize(25);
                 convertView.setLayoutParams(layoutParams2);
             }
@@ -203,7 +203,7 @@ public class InspirationProductUI {
                 RelativeLayout.LayoutParams layoutParams2 =
                         new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT);
-                layoutParams2.setMargins(15, 15, 15, 15);
+                layoutParams2.setMargins(0, 15, 15, 15);
                 convertView.setLayoutParams(layoutParams2);
             }
             text.setTypeface(FontUtility.setMontserratLight(mContext));

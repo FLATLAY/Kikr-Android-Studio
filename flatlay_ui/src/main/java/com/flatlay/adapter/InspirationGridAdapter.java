@@ -47,6 +47,16 @@ public class InspirationGridAdapter extends BaseAdapter {
         Log.w("Activity","InspirationGridAdapter");
     }
 
+//    public InspirationGridAdapter(FragmentActivity context, List<Inspiration> inspirations, int index) {
+//        super();
+//        this.mContext = context;
+//        this.inspirations = inspirations;
+//        this.index=index;
+//        this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        Log.w("Activity","InspirationGridAdapter");
+//    }
+
+
     public void setData(List<Inspiration> data){
         this.inspirations=data;
     }
@@ -114,7 +124,7 @@ public class InspirationGridAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkInternet()) {
+                if (((HomeActivity)mContext).checkInternet()) {
                     addFragment(new FragmentInspirationDetail(getItem(position),
                             getItem(position).getLike_id()));//                    Inspiration inspiration = getItem(position);
 //                    Gson gson = new Gson();
@@ -150,14 +160,14 @@ public class InspirationGridAdapter extends BaseAdapter {
         return convertView;
     }
     
-    public boolean checkInternet() {
-        if (CommonUtility.isOnline(mContext)) {
-            return true;
-        } else {
-            CommonUtility.showNoInternetAlert(mContext);
-            return false;
-        }
-    }
+//    public boolean checkInternet() {
+//        if (CommonUtility.isOnline(mContext)) {
+//            return true;
+//        } else {
+//            CommonUtility.showNoInternetAlert(mContext);
+//            return false;
+//        }
+//    }
 
     public class ViewHolder {
         private ImageView inspirationImage,backarrow90;

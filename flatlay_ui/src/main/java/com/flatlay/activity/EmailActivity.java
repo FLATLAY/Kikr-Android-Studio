@@ -29,7 +29,6 @@ public class EmailActivity extends BaseActivity implements OnKeyListener,
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
-		Log.w("Activity:","EmailActivity");
 		UserPreference.getInstance().setCurrentScreen(Screen.EmailScreen);
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_email);

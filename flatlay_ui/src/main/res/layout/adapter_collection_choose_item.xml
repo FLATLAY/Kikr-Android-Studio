@@ -19,7 +19,6 @@
                 android:id="@+id/collection_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_large"
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:textColor="@color/white"

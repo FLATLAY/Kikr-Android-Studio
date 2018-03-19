@@ -99,7 +99,7 @@ public class MyMaterialContentOverflow4 extends FrameLayout {
 
         FrameLayout contentFrame = createContentFrame(context, contentColor);
 
-        FloatingActionButton fab = createFab(context, buttonDrawable, buttonColor, buttonPosition);
+//        FloatingActionButton fab = createFab(context, buttonDrawable, buttonColor, buttonPosition);
         FrameLayout layout1 = new FrameLayout(context);
 
         backarrow90 = new ImageView(context);
@@ -113,7 +113,7 @@ public class MyMaterialContentOverflow4 extends FrameLayout {
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT , 100);
         FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(
-                50, 50);
+                70, 70);
         params.gravity = Gravity.CENTER | Gravity.BOTTOM;
         params2.gravity = Gravity.CENTER;
         layout1.addView(backarrow90,params2);
@@ -150,81 +150,81 @@ public class MyMaterialContentOverflow4 extends FrameLayout {
     }
 
 
-    private FloatingActionButton createFab(Context context, int buttonDrawable, int buttonColor, int buttonPosition) {
-        fab = new TintFloatingActionButton(context);
-
-        int fabElevationInPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
-
-        LayoutParams fabLayoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        fabMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics());
-
-        if (buttonPosition == RIGHT) {
-            fabLayoutParams.gravity = Gravity.END | Gravity.BOTTOM;
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                fabLayoutParams.setMarginEnd(fabMargin);
-            } else {
-                fabLayoutParams.rightMargin = fabMargin;
-            }
-
-        } else if (buttonPosition == CENTER) {
-            fabLayoutParams.gravity = Gravity.CENTER | Gravity.BOTTOM;
-        } else {
-            fabLayoutParams.gravity = Gravity.START | Gravity.BOTTOM;
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                fabLayoutParams.setMarginStart(fabMargin);
-            } else {
-                fabLayoutParams.leftMargin = fabMargin;
-            }
-
-        }
-
-        fabLayoutParams.bottomMargin = fabMargin;
-        fabLayoutParams.topMargin = fabMargin;
-
-        if (buttonDrawable > 0) {
-
-            fab.setImageDrawable(ContextCompat.getDrawable(context, buttonDrawable));
-        }
-
-        if (buttonColor > 0) {
-            ViewCompat.setBackgroundTintList(fab, ContextCompat.getColorStateList(context, buttonColor));
-        }
-
-        ViewCompat.setElevation(fab, fabElevationInPixels);
-
-        fab.setLayoutParams(fabLayoutParams);
-
-        fab.setTag("FAB");
-
-        this.addView(fab);
-
-        fab.setVisibility(INVISIBLE);
-
-        return fab;
-    }
+//    private FloatingActionButton createFab(Context context, int buttonDrawable, int buttonColor, int buttonPosition) {
+//        fab = new TintFloatingActionButton(context);
+//
+//        int fabElevationInPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
+//
+//        LayoutParams fabLayoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//
+//        fabMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics());
+//
+//        if (buttonPosition == RIGHT) {
+//            fabLayoutParams.gravity = Gravity.END | Gravity.BOTTOM;
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//                fabLayoutParams.setMarginEnd(fabMargin);
+//            } else {
+//                fabLayoutParams.rightMargin = fabMargin;
+//            }
+//
+//        } else if (buttonPosition == CENTER) {
+//            fabLayoutParams.gravity = Gravity.CENTER | Gravity.BOTTOM;
+//        } else {
+//            fabLayoutParams.gravity = Gravity.START | Gravity.BOTTOM;
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//                fabLayoutParams.setMarginStart(fabMargin);
+//            } else {
+//                fabLayoutParams.leftMargin = fabMargin;
+//            }
+//
+//        }
+//
+//        fabLayoutParams.bottomMargin = fabMargin;
+//        fabLayoutParams.topMargin = fabMargin;
+//
+//        if (buttonDrawable > 0) {
+//
+//            fab.setImageDrawable(ContextCompat.getDrawable(context, buttonDrawable));
+//        }
+//
+//        if (buttonColor > 0) {
+//            ViewCompat.setBackgroundTintList(fab, ContextCompat.getColorStateList(context, buttonColor));
+//        }
+//
+//        ViewCompat.setElevation(fab, fabElevationInPixels);
+//
+//        fab.setLayoutParams(fabLayoutParams);
+//
+//        fab.setTag("FAB");
+//
+//        this.addView(fab);
+//
+//        fab.setVisibility(INVISIBLE);
+//
+//        return fab;
+//    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
         setPadding(0, 0, 0, 0);
 
-        int utilizedWidth = getPaddingLeft() + getPaddingRight();
+        int utilizedWidth = 0;
 
-        int utilizedHeight = getPaddingTop() + getPaddingBottom();
+        int utilizedHeight = 0;
 
-        MarginLayoutParams fabLayoutParams = (MarginLayoutParams) fab.getLayoutParams();
-
-        measureChildWithMargins(
-                fab,
-                widthMeasureSpec,
-                utilizedWidth,
-                heightMeasureSpec,
-                utilizedHeight);
-
-        utilizedHeight += (fab.getMeasuredHeight() / 2) + fabLayoutParams.topMargin;
+//        MarginLayoutParams fabLayoutParams = (MarginLayoutParams) fab.getLayoutParams();
+//
+//        measureChildWithMargins(
+//                fab,
+//                widthMeasureSpec,
+//                utilizedWidth,
+//                heightMeasureSpec,
+//                utilizedHeight);
+//
+//        utilizedHeight = (fab.getMeasuredHeight() / 2) + fabLayoutParams.topMargin;
 
 
         measureChildWithMargins(
@@ -234,13 +234,11 @@ public class MyMaterialContentOverflow4 extends FrameLayout {
                 heightMeasureSpec,
                 utilizedHeight);
 
-        utilizedHeight += contentFrame.getMeasuredHeight();
-
+        utilizedHeight = contentFrame.getMeasuredHeight();
 
         setMeasuredDimension(
                 resolveSize(contentFrame.getMeasuredWidth(), widthMeasureSpec),
                 resolveSize(utilizedHeight, heightMeasureSpec));
-
     }
 
     @Override
@@ -268,7 +266,7 @@ public class MyMaterialContentOverflow4 extends FrameLayout {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        fabTotalHeight = fab.getHeight() +
+        fabTotalHeight = backarrow90.getHeight() +
                 fabMargin + /*bottom margin*/
                 fabMargin;  /*top margin*/
 

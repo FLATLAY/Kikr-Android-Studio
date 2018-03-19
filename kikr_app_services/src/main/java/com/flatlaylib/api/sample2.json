@@ -1,0 +1,17 @@
+{
+  "users":
+  [{"id": "", "name": "", "description": "", "img": "", "followers_count": "", "collections_count": "", "prodcount": "", "is_followed": ""}],
+  "code": "",
+  "flatlays": {
+    "code": "",
+    "data":
+    [{"inspiration_id": "", "user_id": "", "username": "", "profile_pic": "", "dateadded": "", "description": "", "inspiration_image": "", "image_width": "", "image_height": "", "is_image": "", "like_count": "", "followers_count": "", "collections_count": "", "prodcount": "", "item_id": "", "item_xy": "", "item_type": "", "item_name": "", "product_id": "", "product_xy": "", "product_name": "",
+        "poducts":
+        [{"id": "", "prosperantproductId": "", "upc": "", "primarycategory": "", "producturl": "", "affiliateurl": "", "affiliateurlforsharing": "", "productimageurl": "", "shortproductdesc": "", "longproductdesc": "", "percentOff": "", "saleprice": "", "retailprice": "", "brand": "", "productname": "", "isbn": "", "currency": "", "merchantid": "", "merchantname": "", "from_collection_id": "", "fromuserid": "", "like_info": {"like_count": "", "like_id": ""}}],
+        "comment_count": "", "following_count": "", "like_id": "", "is_followed": ""}]},
+  "products":
+  [{"id": "", "prosperantproductId": "", "upc": "", "primarycategory": "", "producturl": "", "affiliateurl": "", "affiliateurlforsharing": "", "productimageurl": "", "shortproductdesc": "", "longproductdesc": "", "percentOff": "", "saleprice": "", "retailprice": "", "brand": "", "productname": "", "isbn": "", "currency": "", "merchantid": "", "merchantname": "", "like_info": {"like_count": "", "like_id": ""}}],
+  "stores": [],
+  "brands":
+  [{"id": "", "name": "", "description": "", "img": "", "logo": "", "followers_count": "", "is_followed": ""}]
+}

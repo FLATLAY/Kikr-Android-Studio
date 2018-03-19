@@ -90,6 +90,17 @@
                 <data android:scheme="https" android:host="flatlay-alternate.app.link" />
             </intent-filter>
 
+            <intent-filter android:autoVerify="true">
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" android:host="flatlay.app.link" />
+            <data android:scheme="https" android:host="flatlay-alternate.app.link" />
+
+            <data android:scheme="pdk4803833610914245485" />
+            </intent-filter>
+
         </activity>
 
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"

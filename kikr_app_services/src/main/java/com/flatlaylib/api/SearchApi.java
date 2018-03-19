@@ -50,6 +50,8 @@ public class SearchApi extends AbsService {
 		Gson gson=new Gson();
 		requestValue=gson.toJson(maps);
 	}
+
+
 	
 	@Override
 	public String getActionName() {

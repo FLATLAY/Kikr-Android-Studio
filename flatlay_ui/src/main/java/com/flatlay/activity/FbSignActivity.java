@@ -62,23 +62,17 @@ public class FbSignActivity extends BaseActivity {
         Log.w("FbSignActivity", "onResume()");
         AccessToken token = AccessToken.getCurrentAccessToken();
         if (token != null && !token.isExpired()) {
-
-            Log.w("FbSignActivity", "11");
             getFacebookMeInfo(token);
 
         } else if (isFirstTime) {
-
-            Log.w("FbSignActivity", "12");
             isFirstTime = false;
             btnFacebookLogin.setReadPermissions(Arrays.asList("public_profile", "email"));
             btnFacebookLogin.performClick();
             btnFacebookLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                         @Override
                         public void onSuccess(LoginResult loginResult) {
-                            Log.w("FbSignActivity","onSuccess of registerCallback");
                             String accessToken = loginResult.getAccessToken().getToken();
                             if (loginResult.getAccessToken() != null && !loginResult.getAccessToken().isExpired()) {
-                                Log.w("FbSignActivity","FbLogged in...Token = " + accessToken);
                                 getFacebookMeInfo(loginResult.getAccessToken());
                             }
                         }
@@ -86,14 +80,12 @@ public class FbSignActivity extends BaseActivity {
                         @Override
                         public void onCancel () {
                             finish();
-                            Log.w("FbSignActivity", "Login attempt cancelled.");
                         }
 
                         @Override
                         public void onError (FacebookException e){
                             e.printStackTrace();
-                            Log.w("FbSignActivity", "Login attempt failed.");
-                            AlertUtils.showToast(context, "Facebook login2 failed.");
+                            AlertUtils.showToast(context, "Facebook login failed.");
                             finish();
                             return;
                         }
@@ -105,25 +97,21 @@ public class FbSignActivity extends BaseActivity {
     @Override
     public void onPause() {
         super.onPause();
-        Log.w("FbSignActivity", "onPause()");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.w("FbSignActivity", "onDestroy()");
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.w("FbSignActivity", "onSaveInstanceState()");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.w("FbSignActivity", "onActivityResult()");
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -134,20 +122,16 @@ public class FbSignActivity extends BaseActivity {
             public void onCompleted(JSONObject user, GraphResponse response) {
                 if (user != null) {
                     if (isGetFriendList) {
-                        Log.w("FbSignActivity","1");
                         AccessToken token = AccessToken.getCurrentAccessToken();
                         if (token != null && !token.isExpired()) {
                             requestMyAppFacebookFriends(token);
                         }
                     } else if (isGetProfilePic) {
-                        Log.w("FbSignActivity","2");
                     } else {
-                        Log.w("FbSignActivity","3");
                         buildUserDataAndDoSignIn(user);
                     }
                     getProfilePic(user);
                 } else {
-                    Log.w("FbSignActivity","4");
                     AlertUtils.showToast(context,
                             "Error in getting Facebook Profile Data.");
                     finish();
@@ -161,7 +145,6 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private void getProfilePic(JSONObject user) {
-        Log.e("FbSignActivity2","getProfilePic");
         URL url = null;
         String fb_id = "";
         try {
@@ -183,14 +166,13 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private void buildUserDataAndDoSignIn(JSONObject graphUser) {
-        Log.w("FbSignActivity","buildUserDataAndDoSignIn:"+graphUser.toString());
 
-        String fb_id = "", name = "", email="", username = "", gender = "", birthday = "", link = "", location = "";
+        String fb_id = "", name = "", email="", username = "", gender = "", birthday = "", link = "",
+                location = "";
 
         try {
             fb_id = graphUser.getString("id");
             name = graphUser.getString("name");
-            Log.w("FbSignActivity","Name: "+name);
             email = graphUser.getString("email");
             UserPreference.getInstance().setEmail(name);
             UserPreference.getInstance().setEmail(email);
@@ -234,7 +216,6 @@ public class FbSignActivity extends BaseActivity {
 
     @Override
     public void initLayout() {
-        Log.w("FbSignActivity","initLayout");
         btnFacebookLogin = (LoginButton) findViewById(R.id.authButton);
         btnFacebookLogin.setReadPermissions(Arrays.asList("email", "user_friends"));
     }
@@ -257,7 +238,6 @@ public class FbSignActivity extends BaseActivity {
 
     private GraphRequest createRequest(AccessToken accessToken) {
 
-        Log.w("FbSignActivity","createRequest");
         GraphRequest request = GraphRequest.newGraphPathRequest(accessToken, "me/friends", null);
 
         Set<String> fields = new HashSet<String>();
@@ -274,7 +254,6 @@ public class FbSignActivity extends BaseActivity {
 
     private void requestMyAppFacebookFriends(AccessToken accessToken) {
 
-        Log.w("FbSignActivity","requestMyAppFacebookFriends");
         GraphRequest friendsRequest = createRequest(accessToken);
         friendsRequest.setCallback(new GraphRequest.Callback() {
 
@@ -294,7 +273,6 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private ArrayList<FbUser> getResults(GraphResponse response) {
-        Log.w("FbSignActivity","getResults");
         return null;
     }
 

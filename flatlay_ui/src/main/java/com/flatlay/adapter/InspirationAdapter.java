@@ -55,15 +55,21 @@ import com.flatlaylib.service.res.InspirationRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
 import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.pinterest.android.pdk.PDKCallback;
 import com.pinterest.android.pdk.PDKClient;
 import com.pinterest.android.pdk.PDKException;
 import com.pinterest.android.pdk.PDKResponse;
 import com.pinterest.android.pdk.Utils;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.twitter.sdk.android.tweetcomposer.ComposerActivity;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import org.json.JSONObject;
@@ -71,7 +77,11 @@ import org.json.JSONObject;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 import android.os.Handler;
 
@@ -105,13 +115,16 @@ public class InspirationAdapter extends BaseAdapter {
     private ImageView facebook, twitter, instagram, pintrest, largeheart, instagramselected,
             twittergreenimage, fbselected, pintrestselected;
     private int networkId = 0, longClickDuration = 1000;
-    private static final int ANIMATION_DURATION = 450;
+    private static final int ANIMATION_DURATION = 450, MAX_ENTRIES = 5;
     private Animation zoominout;
     private FragmentInspirationSection allInspirationSectionFragment;
     private HashMap<String, String> follow_map = new HashMap<String, String>();
     private long then, lastDownUp = -1, currentUp = -1;
 
-    public InspirationAdapter(FragmentActivity context, List<Inspiration> inspirations, boolean isViewAll, FragmentInspirationSection allInspirationSectionFragment) {
+
+    public InspirationAdapter(FragmentActivity context, List<Inspiration> inspirations,
+                              boolean isViewAll,
+                              FragmentInspirationSection allInspirationSectionFragment) {
         super();
         this.allInspirationSectionFragment = allInspirationSectionFragment;
         this.mContext = context;
@@ -177,8 +190,9 @@ public class InspirationAdapter extends BaseAdapter {
         }
 
         Typeface font = Typeface.createFromAsset(mContext.getAssets(), "Montserrat-Regular.ttf");
-        zoominout = AnimationUtils.loadAnimation(mContext, R.anim.zoominout);
+//        zoominout = AnimationUtils.loadAnimation(mContext, R.anim.zoominout);
         if (convertView == null) {
+            Log.e("convertview", "<<<<");
             convertView = mInflater.inflate(R.layout.adapter_inspiration_large, null);
             viewholder = new ViewHolder();
             viewholder.fb_share = (ImageView) convertView.findViewById(R.id.fb_share);
@@ -196,7 +210,7 @@ public class InspirationAdapter extends BaseAdapter {
 //                viewholder.like_heart.setSelected(false);
 //                islikes.put(getItem(position).getInspiration_id(), true);
 //            }
-            //  viewholder.tw_real_share = (TwitterLoginButton) convertView.findViewById(R.id.tw_real_share);
+            viewholder.tw_real_share = (TwitterLoginButton) convertView.findViewById(R.id.tw_real_share);
             viewholder.pin_share = (ImageView) convertView.findViewById(R.id.pin_share);
             viewholder.commentCount = (TextView) convertView.findViewById(R.id.commentcount);
             viewholder.gen_share = (ImageView) convertView.findViewById(R.id.gen_share);
@@ -223,6 +237,7 @@ public class InspirationAdapter extends BaseAdapter {
             viewholder.CommentCountTextImage = (ImageView) convertView.findViewById(R.id.CommentCountTextImage);
             viewholder.linearLayout2 = (LinearLayout) convertView.findViewById(R.id.linearLayout2);
             viewholder.largeheart = (ImageView) convertView.findViewById(R.id.largeheart);
+            viewholder.overlay.animate().translationY(0).setDuration(400);
             convertView.setTag(viewholder);
         } else {
             viewholder = (ViewHolder) convertView.getTag();
@@ -234,7 +249,7 @@ public class InspirationAdapter extends BaseAdapter {
         viewholder.staticLikes.setTypeface(FontUtility.setMontserratLight(mContext));
         viewholder.largeheart.setVisibility(View.GONE);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                60, 60);
+                70, 70);
         viewholder.descriptionArrow2.setLayoutParams(params);
         if (getItem(position).getLike_id() == null || getItem(position).getLike_id().length() == 0) {
             viewholder.like_heart.setSelected(true);
@@ -243,22 +258,31 @@ public class InspirationAdapter extends BaseAdapter {
             viewholder.like_heart.setSelected(false);
             islikes.put(getItem(position).getInspiration_id(), true);
         }
-        viewholder.contentContainer.setVisibility(View.INVISIBLE);
-        viewholder.overlay.animate().translationY(0).setDuration(10).setListener(new AnimatorListenerAdapter() {
+//        viewholder.contentContainer.setVisibility(View.INVISIBLE);
+//        viewholder.overlay.animate().translationY(0).setDuration(10).setListener(new AnimatorListenerAdapter() {
+//
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//                super.onAnimationEnd(animation);
+////                viewholder.contentContainer.setVisibility(View.INVISIBLE);
+//            }
+//        });
 
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                viewholder.contentContainer.setVisibility(View.INVISIBLE);
-            }
-        });
+
+        Log.e("convertvieww", "" + convertView.getY());
+        if (convertView.getY() < 0 || convertView.getY() > 1000) {
+            viewholder.descriptionArrow2.clearAnimation();
+            viewholder.overlay.animate().translationY(0).setDuration(400);
+        }
 
         viewholder.descriptionArrow2_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final ViewHolder holder = viewholder;
+//                if (holder.contentContainer.getVisibility() == View.INVISIBLE) {
 
-                if (holder.contentContainer.getVisibility() == View.INVISIBLE) {
+                if (holder.overlay.getTranslationY() == 0) {
+
                     int height = holder.contentContainer.getHeight();
 
                     holder.overlay.animate().translationY(0 - height).setDuration(400).setListener(new AnimatorListenerAdapter() {
@@ -266,16 +290,16 @@ public class InspirationAdapter extends BaseAdapter {
                         @Override
                         public void onAnimationStart(Animator animation) {
                             super.onAnimationStart(animation);
-                            holder.contentContainer.setVisibility(View.VISIBLE);
-                            holder.descriptionArrow2.startAnimation(a);
+//                            holder.contentContainer.setVisibility(View.VISIBLE);
+                            Log.e("convertview", "rotate1");
 
+                            holder.descriptionArrow2.startAnimation(a);
                         }
 
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
                             // holder.inspirationImage.setClickable(false);
-
                         }
                     });
                 } else {
@@ -285,13 +309,15 @@ public class InspirationAdapter extends BaseAdapter {
                         public void onAnimationStart(Animator animation) {
                             super.onAnimationStart(animation);
                             holder.descriptionArrow2.startAnimation(b);
+                            Log.e("convertview", "rotate2");
+
                         }
 
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
                             holder.inspirationImage.setClickable(true);
-                            holder.contentContainer.setVisibility(View.INVISIBLE);
+//                            holder.contentContainer.setVisibility(View.INVISIBLE);
                         }
                     });
                 }
@@ -311,6 +337,7 @@ public class InspirationAdapter extends BaseAdapter {
                 if (com.facebook.share.widget.ShareDialog.canShow(ShareLinkContent.class)) {
                     ShareLinkContent content = new ShareLinkContent.Builder()
                             .setContentUrl(Uri.parse(postlink))
+                            .setContentDescription("Find it @FLATLAY "+postlink)
                             //.setContentTitle("Hi")
                             //.setContentDescription("Hello")
                             //.setImageUrl(Uri.parse(getItem(position).getInspiration_image()))
@@ -322,21 +349,21 @@ public class InspirationAdapter extends BaseAdapter {
         });
 
 
-//        viewholder.tw_real_share.setCallback(new Callback<TwitterSession>() {
-//
-//            @Override
-//            public void success(Result<TwitterSession> result) {
-//                Log.w("InspirationAdapter", "Twitter Login Sucess");
-//                Toast.makeText(mContext, "Twitter Login Success", Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            @Override
-//            public void failure(TwitterException exception) {
-//                Log.w("InspirationAdapter", "Twitter Login Failure");
-//                Toast.makeText(mContext, "Twitter Login Failed", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        viewholder.tw_real_share.setCallback(new Callback<TwitterSession>() {
+
+            @Override
+            public void success(Result<TwitterSession> result) {
+                Log.w("InspirationAdapter", "Twitter Login Sucess");
+                Toast.makeText(mContext, "Twitter Login Success", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                Log.w("InspirationAdapter", "Twitter Login Failure");
+                Toast.makeText(mContext, "Twitter Login Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         viewholder.tw_share.setOnClickListener(new View.OnClickListener() {
@@ -350,27 +377,29 @@ public class InspirationAdapter extends BaseAdapter {
                 viewholder.fb_share.setImageResource(R.drawable.facebooklogoo);
 
                 if (TwitterCore.getInstance().getSessionManager().getActiveSession() == null) {
-                    //   viewholder.tw_real_share.performClick();
+                       viewholder.tw_real_share.performClick();
                 } else {
                     postlink = SHARE_POST_LINK2 + getItem(position).getInspiration_id();
 
                     final TwitterSession session = TwitterCore.getInstance().getSessionManager()
                             .getActiveSession();
                     try {
-                        URL postlink_to_url = new URL(postlink);
+//                        URL postlink_to_url = new URL(postlink);
 
-                        /*
+
                         final Intent intent = new ComposerActivity.Builder(mContext)
                                 .session(session)
-                                .text(postlink)
+                                .image(Uri.parse(getItem(position).getInspiration_image()))
+                                .text("Find it @FLATLAY "+postlink)
                                 .createIntent();
                         mContext.startActivity(intent);
-                        */
 
-                        TweetComposer.Builder builder = new TweetComposer.Builder(mContext)
-                                .url(postlink_to_url)
-                                .text(getItem(position).getDescription());
-                        builder.show();
+
+//                        TweetComposer.Builder builder = new TweetComposer.Builder(mContext)
+//                                .url(postlink_to_url)
+//                                .text(getItem(position).getDescription())
+//                                .image(Uri.parse(getItem(position).getInspiration_image()));
+//                        builder.show();
 
 
                     } catch (Exception e) {
@@ -396,9 +425,14 @@ public class InspirationAdapter extends BaseAdapter {
                 pdkClient.login(mContext, scopes, new PDKCallback() {
                     @Override
                     public void onSuccess(PDKResponse response) {
+                        Log.e("Pinterest","yeah");
+
                         Log.d(getClass().getName(), response.getData().toString());
                         getBoardList(null, null, null);
-                        onSavePin(mContext, getItem(position).getInspiration_image(), UserPreference.getInstance().getmPinterestBoardId(), getItem(position).getDescription() + ". Find it at " + postlink, postlink);
+                        onSavePin(mContext, getItem(position).getInspiration_image(),
+                                UserPreference.getInstance().getmPinterestBoardId(),
+                                getItem(position).getDescription() + ". Find it @FLATLAY " + postlink,
+                                postlink);
                     }
 
                     @Override
@@ -469,7 +503,6 @@ public class InspirationAdapter extends BaseAdapter {
         viewholder.like_heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("likeid--adapter--like 1", "" + islikes.get(getItem(position).getInspiration_id()));
                 if (UserPreference.getInstance().getPassword() == "" ||
                         UserPreference.getInstance().getEmail() == "" ||
                         UserPreference.getInstance().getUserName() == "") {
@@ -560,7 +593,7 @@ public class InspirationAdapter extends BaseAdapter {
                 if (((HomeActivity) mContext).checkInternet()) {
 
                     addFragment(new FragmentInspirationDetail(getItem(position),
-                            islikes.get(getItem(position).getInspiration_id())));
+                            islikes.get(getItem(position).getInspiration_id()), false));
 //                    Inspiration inspiration = getItem(position);
 //                    Gson gson = new Gson();
 //                    String inspirationAsAString = gson.toJson(inspiration);
@@ -579,6 +612,29 @@ public class InspirationAdapter extends BaseAdapter {
             }
         });
 
+        viewholder.CommentCountTextImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (((HomeActivity) mContext).checkInternet()) {
+                    addFragment(new FragmentInspirationDetail(getItem(position),
+                            islikes.get(getItem(position).getInspiration_id()), true));
+
+                }
+            }
+        });
+
+        viewholder.commentCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (((HomeActivity) mContext).checkInternet()) {
+                    addFragment(new FragmentInspirationDetail(getItem(position),
+                            islikes.get(getItem(position).getInspiration_id()), true));
+                }
+            }
+        });
+
         viewholder.inspirationImage.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(final View v) {
@@ -587,8 +643,6 @@ public class InspirationAdapter extends BaseAdapter {
                         .addAction("Like", R.drawable.small_gray_heart, new MyBubbleActions2.Callback() {
                             @Override
                             public void doAction() {
-                                Log.e("likeid--long", "onclick");
-
                                 //  Toast.makeText(v.getContext(), "Like", Toast.LENGTH_SHORT).show();
                                 if (UserPreference.getInstance().getPassword() == ""
                                         || UserPreference.getInstance().getEmail() == ""
@@ -602,24 +656,20 @@ public class InspirationAdapter extends BaseAdapter {
                                         new Handler().postDelayed(new Runnable() {
                                             public void run() {
                                                 currentUp = System.currentTimeMillis();
-                                                Log.e("likeid--difference", "" + (currentUp - lastDownUp));
                                                 if (currentUp - lastDownUp > 600) {
                                                     likeInspiration(position);
                                                 }
                                             }
                                         }, 100);
-                                        Log.e("likeid-in click", "" + islikes.get(getItem(position).getInspiration_id()));
                                         if (!islikes.get(getItem(position).getInspiration_id())) {
                                             viewholder.like_heart.setSelected(false);
                                             viewholder.like_heart.likeAnimation();
                                             islikes.put(getItem(position).getInspiration_id(), true);
-                                            Log.e("likeid-in click-now", "" + islikes.get(getItem(position).getInspiration_id()));
                                             getItem(position).setLike_count((getInt(getItem(position).getLike_count()) + 1) + "");
                                             viewholder.likeCount.setText(getItem(position).getLike_count());
                                         } else {
                                             viewholder.like_heart.setSelected(true);
                                             islikes.put(getItem(position).getInspiration_id(), false);
-                                            Log.e("likeid-in click-now", "" + islikes.get(getItem(position).getInspiration_id()));
                                             getItem(position).setLike_count(((getInt(getItem(position).getLike_count()) - 1) < 0 ?
                                                     0 : (getInt(getItem(position).getLike_count()) - 1)) + "");
                                             viewholder.likeCount.setText(getItem(position).getLike_count());
@@ -697,34 +747,26 @@ public class InspirationAdapter extends BaseAdapter {
 
 
     public class ViewHolder {
-        private ImageView tw_share, fb_share, pin_share, gen_share, descriptionArrow2, largeheart;
-        SmallBangView like_heart;
-        private CircleImageView deletePost;
-        // public TwitterLoginButton tw_real_share;
+        private ImageView tw_share, fb_share, pin_share, gen_share, descriptionArrow2, largeheart,
+                likeCountImage, CommentCountTextImage;
+        private SmallBangView like_heart;
+        public TwitterLoginButton tw_real_share;
         private RoundedImageView inspirationImage;
-        private CircleImageView userImage;
+        private CircleImageView userImage, deletePost;
         private HorizontalScrollView productLayout;
-        private LinearLayout productInflaterLayout;
-        private TextView noProductTextView, inspirationTime, commentCount;
-        private TextView staticLikes;
+        private TextView noProductTextView, inspirationTime, commentCount, staticLikes, likeCount,
+                productTitleTextView, follower_count, collection_count, totalItemsText;
         private AutoTextSize userName;
         private ProgressBar progressBar;
         private FrameLayout user_profile_layout;
-        private TextView follower_count, collection_count, totalItemsText;
-        private LinearLayout follow_btn_layout, imgLayout;
+        private LinearLayout follow_btn_layout, imgLayout, productInflaterLayout, overlay, linearLayout2;
         private Button follow_btn;
-        private TextView likeCount;
-        RelativeLayout contentContainer;
-        LinearLayout overlay, linearLayout2;
-        ImageView likeCountImage, CommentCountTextImage;
-        TextView productTitleTextView;
-        RelativeLayout expand, descriptionArrow2_layout;
+        private RelativeLayout expand, descriptionArrow2_layout, contentContainer;
 
         private void addFragment(Fragment fragment) {
             ((HomeActivity) mContext).addFragment(fragment);
         }
     }
-
 
     private void addFragment(Fragment fragment) {
         ((HomeActivity) mContext).addFragment(fragment);
@@ -733,7 +775,6 @@ public class InspirationAdapter extends BaseAdapter {
     private void updateInspiration() {
 
     }
-
 
     private void likeInspiration(final int position) {
         final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(new ServiceCallback() {
@@ -746,12 +787,10 @@ public class InspirationAdapter extends BaseAdapter {
                     getItem(position).setLike_id(likeId);
 //                    getItem(position).setLike_count(((getInt(getItem(position).getLike_count()) - 1) < 0 ?
 //                            0 : (getInt(getItem(position).getLike_count()) - 1)) + "");
-                    Log.e("likeid--like count", "" + getItem(position).getLike_count());
 
                 } else {
 //                    getItem(position).setLike_count((getInt(getItem(position).getLike_count()) + 1) + "");
                     getItem(position).setLike_id(likeId);
-                    Log.e("likeid++like count", "" + getItem(position).getLike_count());
                 }
                 notifyDataSetChanged();
             }
@@ -760,26 +799,13 @@ public class InspirationAdapter extends BaseAdapter {
             public void handleOnFailure(ServiceException exception, Object object) {
             }
         });
-//        currentUp = System.currentTimeMillis();
-//        Log.e("likeid--currentUp", "" + currentUp);
-//        Log.e("likeid--lastDownUp", "" + lastDownUp);
-
-//        if (currentUp - lastDownUp > 8000) {
         if (islikes.get(getItem(position).getInspiration_id())) {
-            Log.e("likeid", "like");
             inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), getItem(position).getInspiration_id(), "inspiration");
         } else {
-            Log.e("likeid", "don't like");
             inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), getItem(position).getLike_id());
         }
         inspirationSectionApi.execute();
-        //    }
-//        lastDownUp = currentUp;
     }
-
-//    public boolean liked(int position) {
-//        return getItem(position).getLike_id() != "";
-//    }
 
     private int getInt(String image_width) {
         try {
@@ -797,8 +823,8 @@ public class InspirationAdapter extends BaseAdapter {
             public void onSuccess(PDKResponse response) {
 //               	onSavePin(imageUrl, response.getBoardList().get(0).getUid(), text, link);
                 if (response.getBoardList() != null && response.getBoardList().size() > 0) {
-                    //PinterestBoardDialog2 boardDialog = new PinterestBoardDialog2(mContext, response.getBoardList(), imageUrl, text, link);
-                    // boardDialog.show();
+//                    PinterestBoardDialog2 boardDialog = new PinterestBoardDialog2(mContext, response.getBoardList(), imageUrl, text, link);
+//                     boardDialog.show();
                 } else
                     AlertUtils.showToast(mContext, "No board found, please create board first");
             }
@@ -818,8 +844,13 @@ public class InspirationAdapter extends BaseAdapter {
     }
 
     public void onSavePin(Context c, String imageUrl, String boardId, String text, String linkUrl) {
+        Log.e("Pinterest-imageUrl-",imageUrl);
+        Log.e("Pinterest-boardId-",boardId);
+        Log.e("Pinterest-text-",text);
+        Log.e("Pinterest-linkUrl-",linkUrl);
 
         if (!Utils.isEmpty(text) && !Utils.isEmpty(boardId) && !Utils.isEmpty(imageUrl)) {
+            Log.e("Pinterest","yeah");
             PDKClient.getInstance().createPin(text, boardId, imageUrl, linkUrl, new PDKCallback() {
                 @Override
                 public void onSuccess(PDKResponse response) {

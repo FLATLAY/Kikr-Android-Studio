@@ -5,11 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
 import com.flatlay.adapter.ProductDetailGridAdapter;
+import com.flatlay.utility.FontUtility;
 import com.flatlaylib.bean.Product;
 
 import java.util.List;
@@ -23,11 +27,24 @@ public class ViewInsProductFragment extends BaseFragment {
     private ProductDetailGridAdapter productDetailGridAdapter;
     private View mainView;
     private List<Product> data;
-    private LinearLayout backIconLayout;
+    private RelativeLayout backIconLayout;
+    private TextView nameText, likeCount;
+    private ImageView heartIcon;
+    private int totalLikeCount = 0;
+    private String collectionName;
+    private int index = 0;
 
-    public ViewInsProductFragment(List<Product> data){
-        this.data=data;
+    public ViewInsProductFragment(List<Product> data, String collectionName) {
+        this.data = data;
+        this.collectionName = collectionName;
+        index = 0;
     }
+
+    public ViewInsProductFragment(List<Product> data) {
+        this.data = data;
+        index = 1;
+    }
+
     @Override
     public void initUI(Bundle savedInstanceState) {
     }
@@ -44,15 +61,36 @@ public class ViewInsProductFragment extends BaseFragment {
     public void setData(Bundle bundle) {
 //        data = (List<Product>) bundle.getSerializable("data");
         products_grid = (GridView) mainView.findViewById(R.id.products_grid);
-        backIconLayout=(LinearLayout) mainView.findViewById(R.id.backIconLayout);
+        backIconLayout = (RelativeLayout) mainView.findViewById(R.id.backIconLayout);
         backIconLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mContext.onBackPressed();
             }
         });
-        productDetailGridAdapter=new ProductDetailGridAdapter(mContext,data,1);
+        productDetailGridAdapter = new ProductDetailGridAdapter(mContext, data, 1);
+        likeCount = (TextView) mainView.findViewById(R.id.likeCount);
+        likeCount.setTypeface(FontUtility.setMontserratLight(mContext));
+        nameText = (TextView) mainView.findViewById(R.id.nameText);
+        nameText.setTypeface(FontUtility.setMontserratLight(mContext));
+        heartIcon = (ImageView) mainView.findViewById(R.id.heartIcon);
         products_grid.setAdapter(productDetailGridAdapter);
+        if (index == 0) {
+            likeCount.setVisibility(View.VISIBLE);
+            nameText.setVisibility(View.VISIBLE);
+            heartIcon.setVisibility(View.VISIBLE);
+            for (int i = 0; i < data.size(); i++) {
+                totalLikeCount += Integer.parseInt(data.get(i).getLike_info().getLike_count());
+            }
+            likeCount.setText("" + totalLikeCount);
+            nameText.setText("" + collectionName);
+        }
+        if (index == 1) {
+            likeCount.setVisibility(View.GONE);
+            nameText.setVisibility(View.GONE);
+            heartIcon.setVisibility(View.GONE);
+        }
+
     }
 
     @Override

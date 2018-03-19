@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -31,43 +33,60 @@ import com.flatlay.R;
 import com.flatlay.activity.EditProfileActivity;
 import com.flatlay.activity.FollowCategoriesNewActivity;
 import com.flatlay.activity.HomeActivity;
+import com.flatlay.adapter.CustomizeInterestPeopleListAdapter;
+import com.flatlay.adapter.FeaturedTabAdapter;
 import com.flatlay.adapter.FragmentProfileCollectionAdapter;
 import com.flatlay.adapter.InspirationAdapter;
 import com.flatlay.adapter.InspirationGridAdapter;
 import com.flatlay.adapter.KikrFollowingAdapter;
 import com.flatlay.adapter.ProductDetailGridAdapter;
+import com.flatlay.adapter.ProductSearchGridAdapter;
+import com.flatlay.adapter.StoreGridAdapter;
 import com.flatlay.dialog.ShareProfileDialog;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
 import com.flatlay.utility.MyMaterialContentOverflow3;
 import com.flatlaylib.api.CollectionApi;
 import com.flatlaylib.api.DeletePostApi;
+import com.flatlaylib.api.FeaturedTabApi;
+import com.flatlaylib.api.GeneralSearchApi;
 import com.flatlaylib.api.InspirationFeedApi;
+import com.flatlaylib.api.InterestSectionApi;
 import com.flatlaylib.api.LogoutApi;
 import com.flatlaylib.api.MessageCenterApi;
 import com.flatlaylib.api.MyProfileApi;
 import com.flatlaylib.api.ProductBasedOnBrandApi;
+import com.flatlaylib.bean.BrandResult;
 import com.flatlaylib.bean.CollectionList;
+import com.flatlaylib.bean.FeaturedTabData;
 import com.flatlaylib.bean.FollowerList;
 import com.flatlaylib.bean.FollowingKikrModel;
 import com.flatlaylib.bean.Inspiration;
+import com.flatlaylib.bean.InterestSection;
 import com.flatlaylib.bean.Product;
+import com.flatlaylib.bean.ProductResult;
 import com.flatlaylib.bean.ProfileCollectionList;
 import com.flatlaylib.bean.UserData;
+import com.flatlaylib.bean.UserResult;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.ServiceCallback;
 import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.CartRes;
 import com.flatlaylib.service.res.CollectionApiRes;
+import com.flatlaylib.service.res.FeaturedTabApiRes;
+import com.flatlaylib.service.res.GeneralSearchRes;
 import com.flatlaylib.service.res.InspirationFeedRes;
+import com.flatlaylib.service.res.InterestSectionRes;
 import com.flatlaylib.service.res.MyProfileRes;
 import com.flatlaylib.service.res.ProductBasedOnBrandRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Constants;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.plus.model.people.Person;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -79,52 +98,84 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class FragmentInspirationSection extends BaseFragment
         implements View.OnClickListener, AdapterView.OnItemClickListener,
         ServiceCallback, MultiAutoCompleteTextView.OnEditorActionListener {
-    private View mainView, loaderView;
-    private ListView inspirationlist, collectionList;
+    private View mainView, loaderView, highlight3, highlight2, highlight1;
+    private ListView inspirationlist, collectionList, user_result_list;
     private RecyclerView notificationlist;
     private String inspiration_id, userId, user_id, viewer_id;
     private EditText searchText;
     private List<Inspiration> product_list = new ArrayList<Inspiration>(),
             myProductList = new ArrayList<Inspiration>(), myDetailProductList = new ArrayList<Inspiration>();
     private TextView followertext1, followingtext1, followertext2, followingtext2, notification_text,
-            message_text;
-    private boolean isLoading = false, myins_isloding = false, my_detail_ins_isloding = false, mycoll_isloading = false,
-            isFirstTime = true, isFirstTimeFromMain = false, isFirstTime_mypos = true, isFirstTime_mypos_detail = true,
-            isFirstTime_myCol = true, isOnFeedPage = true;
-    private int page = 0, page1 = 0, page2 = 0, page3 = 0, index = 0, firstVisibleItem = 0,
-            visibleItemCount = 0, totalItemCount = 0, firstVisibleItem2 = 0,
-            visibleItemCount2 = 0, totalItemCount2 = 0, firstVisibleItem3 = 0,
-            visibleItemCount3 = 0, totalItemCount3 = 0, firstVisibleItem4 = 0,
-            visibleItemCount4 = 0, totalItemCount4 = 0, collAdapterIndex = -1, feedAdapterIndex = -1;
-    private TextView loadingTextView, nameText, text1, text2, text3, text4, text5, performanceText;
+            message_text, invite_text, clothing_text, music_text, pet_text, games_text, toys_text,
+            computer_text, baby_text, sports_text, health_text, jewelry_text, electronics_text,
+            filter_text, apply_text, price_text_750, price_text_500, price_text_200, shoes_text,
+            price_text_150, price_text_50, price_text_25, price_text_0, price_text, sale_text,
+            men_text, accessories_text, women_text, price_text_100;
+    private boolean isLoading = false, myins_isloding = false, my_detail_ins_isloding = false,
+            mycoll_isloading = false, user_list_isloding = false, isFirstTime_user_list = true,
+            isFirstTime_shop_list = true, isFirstTime_product_list = true, shop_list_isloding = false,
+            product_list_isloding = false,
+            isFirstTime = true, isFirstTimeFromMain = false, isFirstTime_mypos = true,
+            isFirstTime_mypos_detail = true, isFirstTime_myCol = true, isOnFeedPage = true;
+    private int page = 0, page1 = 0, page2 = 0, page3 = 0, page4 = 0, page5 = 0, page6 = 0,
+            index = 0,
+            firstVisibleItem = 0, visibleItemCount = 0, totalItemCount = 0,
+            firstVisibleItem2 = 0, visibleItemCount2 = 0, totalItemCount2 = 0,
+            firstVisibleItem3 = 0, visibleItemCount3 = 0, totalItemCount3 = 0,
+            firstVisibleItem4 = 0, visibleItemCount4 = 0, totalItemCount4 = 0,
+            firstVisibleItem5 = 0, visibleItemCount5 = 0, totalItemCount5 = 0,
+            firstVisibleItem6 = 0, visibleItemCount6 = 0, totalItemCount6 = 0,
+            firstVisibleItem7 = 0, visibleItemCount7 = 0, totalItemCount7 = 0,
+            collAdapterIndex = -1, feedAdapterIndex = -1, indexSearch = 0;
+    private TextView loadingTextView, nameText, text1, text2, text3, text4, text5,
+            performanceText, peopletext, productsText, shopText;
     private boolean isViewAll, isInfo = false, isBell = false;
     private DeletePostApi deletePostApi;
     private List<ProfileCollectionList> collectionLists = new ArrayList<ProfileCollectionList>();
     private List<CollectionList> collectionLists2;
     public static boolean isPostUpload = false;
     private ImageView image_upload_post, image_upload_post2, image_camera, image_camera2,
-            info_image, bell_image, info_image2, infoicon2;
+            info_image, bell_image, info_image2, infoicon2, filter_icon, filter_icon2;
     private RelativeLayout tab_layout1, bottomLayout, uploadChoice, bell_icon, info_icon,
-            overflow_layout1, overflow_layout2, overflow_layout3;
+            overflow_layout1, overflow_layout2, overflow_layout3, overflow_layout4,
+            products_filter_layout, products_result_layout, peopletext_layout, productsText_layout,
+            shopText_layout;
     private MyMaterialContentOverflow3 overflow2;
     private CircleImageView profile_pic, prof2;
     private SwipeRefreshLayout swipeLayout;
     private LinearLayout fashioniconlayout, beautyiconlayout, fitnessiconlayout, foodiconlayout,
             techiconlayout, photographyiconlayoutlayout, homeiconlayout, occasioniconlayout,
-            traveliconlayout, blanklayout, cart_tab, search_tab, profile_tab;
-    private GridView imagesList, feedDetail, productDetail;
+            traveliconlayout, blanklayout, cart_tab, search_tab, profile_tab, clothing_layout,
+            shoes_layout, electronics_layout, jewelry_layout, health_layout,
+            sports_layout, baby_layout, computer_layout, toy_layout, game_layout, pet_layout,
+            music_layout, people_layout, products_layout, shops_layout;
+    private GridView imagesList, feedDetail, productDetail, shopList, product_result_list;
     private Button button1, button2;
     private InspirationAdapter inspirationAdapter;
     private FragmentProfileCollectionAdapter collectionAdapter;
     private FragmentProfileView fragmentProfileView;
     private InspirationGridAdapter inspirationGridAdapter, inspirationGridAdapter2;
     private ProductDetailGridAdapter productDetailGridAdapter;
+    private ProductSearchGridAdapter productSearchdAdapter;
     private List<FollowerList> followersLists = new ArrayList<FollowerList>(), followingLists = new ArrayList<FollowerList>();
     private List<UserData> userDetails;
     private List<Product> product_data;
+    private List<ProductResult> interestProductList = new ArrayList<>();
     private List<FollowingKikrModel.DataBean> followinglist = new ArrayList<>();
     private List<FollowingKikrModel.DataBean> followinglistRefined = new ArrayList<>();
     private ShareProfileDialog shareProfileDialog;
+    private InputMethodManager imm;
+    private List<LinearLayout> gones, visibles, invisibles;
+    private List<TextView> group1, group2;
+    private List<UserResult> interestUserList = new ArrayList<>();
+    private List<FeaturedTabData> interestList = new ArrayList<>();
+    private CustomizeInterestPeopleListAdapter interestPeopleListAdapter;
+    private FeaturedTabAdapter featuredTabAdapter;
+    private List<BrandResult> interestShopList = new ArrayList<>();
+
+    private StoreGridAdapter storeGridAdapter;
+
+
 //    public FragmentInspirationSection(boolean isViewAll, String userId) {
 //        this.isViewAll = isViewAll;
 //        this.userId = userId;
@@ -165,6 +216,7 @@ public class FragmentInspirationSection extends BaseFragment
 //    }
 
     public void initData() {
+        Log.e("current", "initData");
 
         index = 0;
         if (((HomeActivity) mContext).checkInternet()) {
@@ -177,9 +229,9 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void getInspirationFeedList() {
-        Log.e("loading-ins-feed-1",""+isLoading);
+        Log.e("current", "getInspirationFeedList");
+
         isLoading = !isLoading;
-        Log.e("loading-ins-feed-2",""+isLoading);
         if (!isFirstTime) {
             loadingTextView.setVisibility(View.VISIBLE);
         } else {
@@ -206,6 +258,7 @@ public class FragmentInspirationSection extends BaseFragment
 
     @Override
     public void handleOnSuccess(Object object) {
+        Log.e("current", "handleOnSuccess");
 
         if (!isFirstTime) {
             loadingTextView.setVisibility(View.INVISIBLE);
@@ -213,9 +266,7 @@ public class FragmentInspirationSection extends BaseFragment
             loadingTextView.setVisibility(View.INVISIBLE);
         }
         hideDataNotFound();
-        Log.e("loading-feed-3",""+isLoading);
         isLoading = !isLoading;
-        Log.e("loading-feed-4",""+isLoading);
         InspirationFeedRes inspirationFeedRes = (InspirationFeedRes) object;
         if (index == 0) {
             product_list.addAll(inspirationFeedRes.getData());
@@ -233,7 +284,7 @@ public class FragmentInspirationSection extends BaseFragment
             occasioList.addAll(inspirationFeedRes.getData());
             currentList = occasioList;
         } else if (index == 5) {
-            fashionList.addAll(inspirationFeedRes.getData());
+            homeList.addAll(inspirationFeedRes.getData());
             currentList = homeList;
         } else if (index == 6) {
             photoList.addAll(inspirationFeedRes.getData());
@@ -247,13 +298,13 @@ public class FragmentInspirationSection extends BaseFragment
         } else if (index == 9) {
             beautyList.addAll(inspirationFeedRes.getData());
             currentList = beautyList;
-        } else if (index == 10) {
-            resultList.addAll(inspirationFeedRes.getData());
-            currentList = resultList;
         }
+//        else if (index == 10) {
+//            resultList.addAll(inspirationFeedRes.getData());
+//            currentList = resultList;
+//        }
         if (inspirationFeedRes.getData().size() < 10) {
             isLoading = true;
-            Log.e("loading-beauty-feed-5",""+isLoading);
         }
         if (currentList.size() == 0 && isFirstTime) {
             showDataNotFound();
@@ -272,6 +323,8 @@ public class FragmentInspirationSection extends BaseFragment
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
+        Log.e("current", "fail");
+
         if (!isFirstTime) {
             inspirationlist.removeFooterView(loaderView);
         } else {
@@ -292,6 +345,8 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void showReloadOption() {
+        Log.e("current", "showReloadOption");
+
         showDataNotFound();
         TextView textView = getDataNotFound();
         if (textView != null) {
@@ -306,6 +361,8 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     protected void showReloadFotter() {
+        Log.e("current", "showReloadFotter");
+
         TextView textView = getReloadFotter();
         textView.setOnClickListener(new View.OnClickListener() {
 
@@ -332,34 +389,25 @@ public class FragmentInspirationSection extends BaseFragment
 //        handler.postDelayed(runnable, 100);
 //    }
 
-//    @Override
-//    public void onHiddenChanged(boolean hidden) {
-//        super.onHiddenChanged(hidden);
-//        if (!hidden) {
-//            Log.e("inspp","11");
-//            getInspirationFeedList();
-//        }
-//    }
 
     @Override
     public void onResume() {
-
+        Log.e("current", "onResume");
         // TODO Auto-generated method stub
         super.onResume();
-//        Log.e("likeid++like count", "NOTIFY!!!!!!");
-//        if (inspirationAdapter != null)
-//            inspirationAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void onHiddenChanged(boolean hide){
-        Log.e("likeid++like count", "hide -NOTIFY!!!!!!");
+    public void onHiddenChanged(boolean hide) {
+        Log.e("current", "onHiddenChanged");
 
         if (inspirationAdapter != null)
             inspirationAdapter.notifyDataSetChanged();
     }
 
     public void removePost(final String inspiration_id, final String user_id) {
+        Log.e("current", "removePost");
+
         this.inspiration_id = inspiration_id;
         this.user_id = user_id;
 
@@ -392,12 +440,33 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     @Override
-    public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-        if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+    public boolean onEditorAction(TextView textView, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_NULL
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
             CommonUtility.hideSoftKeyboard(mContext);
             searchText.setCursorVisible(false);
+            Log.e("current", "key");
             if (!searchText.getText().toString().equals("")) {
-                displaySearchResult();
+                user_list_isloding = false;
+                page4 = 0;
+                interestUserList.clear();
+                indexSearch = 1;
+                isFirstTime_user_list = true;
+                displaySearchPeopleResult();
+
+                shop_list_isloding=false;
+                page5 = 0;
+                interestShopList.clear();
+                indexSearch = 2;
+                isFirstTime_shop_list = true;
+                displaySearchShopResult();
+
+                product_list_isloding=false;
+                page6 = 0;
+                interestProductList.clear();
+                indexSearch = 3;
+                isFirstTime_product_list = true;
+                displaySearchProductResult();
             } else {
                 Toast.makeText(mContext, "Please enter keywords", Toast.LENGTH_SHORT).show();
             }
@@ -409,20 +478,278 @@ public class FragmentInspirationSection extends BaseFragment
 
     @Override
     public void onClick(View v) {
+        Log.e("current", "onclick");
+
         switch (v.getId()) {
+            case R.id.people_text_layout:
+                Log.e("current", "1");
 
-//            case R.id.profile_pic:
-//                Log.e("profile","profile");
-//                overflow_layout3.setVisibility(View.GONE);
-//                overflow_layout2.setVisibility(View.GONE);
-//                overflow_layout1.setVisibility(View.VISIBLE);
-//                imagesList.setVisibility(View.VISIBLE);
-//                collectionList.setVisibility(View.GONE);
-//                feedDetail.setVisibility(View.GONE);
-//                productDetail.setVisibility(View.GONE);
-//                break;
+                overflow2.setOpen();
+                people_layout.setVisibility(View.VISIBLE);
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.GONE);
+                products_filter_layout.setVisibility(View.GONE);
+                shops_layout.setVisibility(View.GONE);
+                highlight1.setVisibility(View.VISIBLE);
+                highlight2.setVisibility(View.INVISIBLE);
+                highlight3.setVisibility(View.INVISIBLE);
+                break;
+            case R.id.products_text_layout:
+                Log.e("current", "2");
 
+                overflow2.setOpen();
+                people_layout.setVisibility(View.GONE);
+                products_layout.setVisibility(View.VISIBLE);
+                products_result_layout.setVisibility(View.GONE);
+                products_filter_layout.setVisibility(View.GONE);
+                shops_layout.setVisibility(View.GONE);
+                highlight1.setVisibility(View.INVISIBLE);
+                highlight2.setVisibility(View.VISIBLE);
+                highlight3.setVisibility(View.INVISIBLE);
+                break;
+            case R.id.shop_text_layout:
+                Log.e("current", "3");
+
+                overflow2.setOpen();
+                people_layout.setVisibility(View.GONE);
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.GONE);
+                products_filter_layout.setVisibility(View.GONE);
+                shops_layout.setVisibility(View.VISIBLE);
+                highlight1.setVisibility(View.INVISIBLE);
+                highlight2.setVisibility(View.INVISIBLE);
+                highlight3.setVisibility(View.VISIBLE);
+                break;
+            case R.id.invite_text:
+                break;
+            case R.id.clothing_layout:
+                Log.e("current", "4");
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.shoes_layout:
+                Log.e("current", "5");
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.electronics_layout:
+                Log.e("current", "6");
+
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.jewelry_layout:
+                Log.e("current", "7");
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.health_layout:
+                Log.e("current", "8");
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.sports_layout:
+                Log.e("current", "9");
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.baby_layout:
+                Log.e("current", "10");
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.computer_layout:
+                Log.e("current", "11");
+
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.toy_layout:
+                Log.e("current", "12");
+
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.game_layout:
+                Log.e("current", "13");
+
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.pet_layout:
+                Log.e("current", "14");
+
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.music_layout:
+                Log.e("current", "15");
+
+                overflow2.setOpen();
+                products_layout.setVisibility(View.GONE);
+                products_result_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.women_text:
+                Log.e("current", "16");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(men_text, accessories_text, sale_text));
+                group2 = new ArrayList<>(Arrays.asList(women_text));
+                setBackgroundByGroup(group1, R.drawable.white_button_noborder,
+                        group2, R.drawable.green_corner_button);
+                setTextColorByGroup(group1, Color.BLACK, group2, Color.WHITE);
+                break;
+            case R.id.accessories_text:
+                Log.e("current", "17");
+
+                overflow2.setOpen();
+
+                group1 = new ArrayList<>(Arrays.asList(men_text, women_text, sale_text));
+                group2 = new ArrayList<>(Arrays.asList(accessories_text));
+                setBackgroundByGroup(group1, R.drawable.white_button_noborder,
+                        group2, R.drawable.green_corner_button);
+                setTextColorByGroup(group1, Color.BLACK, group2, Color.WHITE);
+                break;
+            case R.id.men_text:
+                Log.e("current", "18");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(accessories_text, women_text, sale_text));
+                group2 = new ArrayList<>(Arrays.asList(men_text));
+                setBackgroundByGroup(group1, R.drawable.white_button_noborder,
+                        group2, R.drawable.green_corner_button);
+                setTextColorByGroup(group1, Color.BLACK, group2, Color.WHITE);
+                break;
+            case R.id.sale_text:
+                Log.e("current", "19");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(accessories_text, women_text, men_text));
+                group2 = new ArrayList<>(Arrays.asList(sale_text));
+                setBackgroundByGroup(group1, R.drawable.white_button_noborder,
+                        group2, R.drawable.green_corner_button);
+                setTextColorByGroup(group1, Color.BLACK, group2, Color.WHITE);
+                break;
+            case R.id.price_text_0:
+                Log.e("current", "20");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(price_text_25, price_text_50,
+                        price_text_100, price_text_150, price_text_200, price_text_500,
+                        price_text_750));
+                group2 = new ArrayList<>(Arrays.asList(price_text_0));
+                setBackgroundByGroup(group1, 0,
+                        group2, R.drawable.green_corner_button);
+                break;
+            case R.id.price_text_25:
+                Log.e("current", "21");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(price_text_0, price_text_50,
+                        price_text_100, price_text_150, price_text_200, price_text_500,
+                        price_text_750));
+                group2 = new ArrayList<>(Arrays.asList(price_text_25));
+                setBackgroundByGroup(group1, 0,
+                        group2, R.drawable.green_corner_button);
+                break;
+            case R.id.price_text_50:
+                Log.e("current", "22");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(price_text_0, price_text_25,
+                        price_text_100, price_text_150, price_text_200, price_text_500,
+                        price_text_750));
+                group2 = new ArrayList<>(Arrays.asList(price_text_50));
+                setBackgroundByGroup(group1, 0,
+                        group2, R.drawable.green_corner_button);
+                break;
+            case R.id.price_text_100:
+                Log.e("current", "23");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(price_text_0, price_text_25,
+                        price_text_50, price_text_150, price_text_200, price_text_500,
+                        price_text_750));
+                group2 = new ArrayList<>(Arrays.asList(price_text_100));
+                setBackgroundByGroup(group1, 0,
+                        group2, R.drawable.green_corner_button);
+                break;
+            case R.id.price_text_150:
+                Log.e("current", "24");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(price_text_0, price_text_25,
+                        price_text_50, price_text_100, price_text_200, price_text_500,
+                        price_text_750));
+                group2 = new ArrayList<>(Arrays.asList(price_text_150));
+                setBackgroundByGroup(group1, 0,
+                        group2, R.drawable.green_corner_button);
+                break;
+            case R.id.price_text_200:
+                Log.e("current", "25");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(price_text_0, price_text_25,
+                        price_text_50, price_text_100, price_text_150, price_text_500,
+                        price_text_750));
+                group2 = new ArrayList<>(Arrays.asList(price_text_200));
+                setBackgroundByGroup(group1, 0,
+                        group2, R.drawable.green_corner_button);
+                break;
+            case R.id.price_text_500:
+                Log.e("current", "26");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(price_text_0, price_text_25,
+                        price_text_50, price_text_100, price_text_150, price_text_200,
+                        price_text_750));
+                group2 = new ArrayList<>(Arrays.asList(price_text_500));
+                setBackgroundByGroup(group1, 0,
+                        group2, R.drawable.green_corner_button);
+                break;
+            case R.id.price_text_750:
+                Log.e("current", "27");
+
+                overflow2.setOpen();
+                group1 = new ArrayList<>(Arrays.asList(price_text_0, price_text_25,
+                        price_text_50, price_text_100, price_text_150, price_text_200,
+                        price_text_500));
+                group2 = new ArrayList<>(Arrays.asList(price_text_750));
+                setBackgroundByGroup(group1, 0,
+                        group2, R.drawable.green_corner_button);
+                break;
+            case R.id.apply_text:
+                Log.e("current", "28");
+
+                overflow2.setOpen();
+                break;
+            case R.id.filter_icon:
+                Log.e("current", "29");
+
+                overflow2.setOpen();
+                products_result_layout.setVisibility(View.GONE);
+                products_filter_layout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.filter_icon2:
+                Log.e("current", "30");
+
+                overflow2.setOpen();
+                products_result_layout.setVisibility(View.VISIBLE);
+                products_filter_layout.setVisibility(View.GONE);
+                break;
             case R.id.image_upload_post:
+
                 bottomLayout.setBackgroundResource(R.drawable.topdrawer2);
                 image_upload_post.setVisibility(View.GONE);
                 image_camera.setVisibility(View.GONE);
@@ -473,10 +800,7 @@ public class FragmentInspirationSection extends BaseFragment
                 break;
 
             case R.id.beautyiconlayout:
-                Log.e("loading-beauty-1",""+isLoading);
                 isLoading = false;
-                Log.e("loading-beauty-2",""+isLoading);
-
                 inspirationlist.setSelection(0);
                 page = 0;
                 beautyList.clear();
@@ -524,8 +848,11 @@ public class FragmentInspirationSection extends BaseFragment
                 break;
 
             case R.id.infoicon2:
+                Log.e("current", "31");
+                overflow2.setOpen();
                 overflow_layout3.setVisibility(View.GONE);
                 overflow_layout2.setVisibility(View.GONE);
+                overflow_layout4.setVisibility(View.GONE);
                 overflow_layout1.setVisibility(View.VISIBLE);
                 break;
 
@@ -674,30 +1001,41 @@ public class FragmentInspirationSection extends BaseFragment
                 break;
 
             case R.id.bell_icon:
+                Log.e("current", "33");
+
                 overflow2.setOpen();
                 overflow_layout1.setVisibility(View.GONE);
                 overflow_layout2.setVisibility(View.GONE);
+                overflow_layout4.setVisibility(View.GONE);
                 overflow_layout3.setVisibility(View.VISIBLE);
                 getFollowingInstagramList();
                 break;
 
             case R.id.info_icon:
+                Log.e("current", "34");
+
                 overflow2.setOpen();
                 overflow_layout1.setVisibility(View.GONE);
                 overflow_layout3.setVisibility(View.GONE);
+                overflow_layout4.setVisibility(View.GONE);
                 overflow_layout2.setVisibility(View.VISIBLE);
                 isInfo = true;
                 break;
 
             case R.id.info_image2:
+                Log.e("current", "35");
+
                 overflow2.setOpen();
                 overflow_layout2.setVisibility(View.GONE);
                 overflow_layout3.setVisibility(View.GONE);
+                overflow_layout4.setVisibility(View.GONE);
                 overflow_layout1.setVisibility(View.VISIBLE);
                 isInfo = false;
                 break;
 
             case R.id.text1:
+                Log.e("current", "36");
+
                 overflow2.setOpen();
                 shareProfileDialog.show();
                 break;
@@ -712,11 +1050,14 @@ public class FragmentInspirationSection extends BaseFragment
                 break;
 
             case R.id.text3:
+                Log.e("current", "37");
+
                 overflow2.setOpen();
                 info_image.setImageResource(R.drawable.info_teal);
                 overflow_layout2.setVisibility(View.GONE);
                 overflow_layout3.setVisibility(View.GONE);
                 overflow_layout1.setVisibility(View.VISIBLE);
+                overflow_layout4.setVisibility(View.GONE);
                 collAdapterIndex = 1;
                 feedAdapterIndex = 1;
                 performanceText.setVisibility(View.VISIBLE);
@@ -743,6 +1084,13 @@ public class FragmentInspirationSection extends BaseFragment
 
     @Override
     public void initUI(Bundle savedInstanceState) {
+        Log.e("current", "initUI");
+
+        imm = (InputMethodManager)
+                mContext.getSystemService(mContext.INPUT_METHOD_SERVICE);
+//        gones = new ArrayList<android.view.ViewGroup>();
+//        invisibles = new ArrayList<>();
+//        visibles = new ArrayList<>();
         shareProfileDialog = new ShareProfileDialog(mContext);
         tab_layout1 = (RelativeLayout) mainView.findViewById(R.id.tabLayout1);
         bell_icon = (RelativeLayout) mainView.findViewById(R.id.bell_icon);
@@ -750,6 +1098,7 @@ public class FragmentInspirationSection extends BaseFragment
         overflow_layout1 = (RelativeLayout) mainView.findViewById(R.id.overflow_layout1);
         overflow_layout2 = (RelativeLayout) mainView.findViewById(R.id.overflow_layout2);
         overflow_layout3 = (RelativeLayout) mainView.findViewById(R.id.overflow_layout3);
+        overflow_layout4 = (RelativeLayout) mainView.findViewById(R.id.overflow_layout4);
         inspirationlist = (ListView) mainView.findViewById(R.id.inspirationlist);
         loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
         loadingTextView.setTypeface(FontUtility.setMontserratLight(getActivity()));
@@ -761,6 +1110,8 @@ public class FragmentInspirationSection extends BaseFragment
         info_image = (ImageView) mainView.findViewById(R.id.info_image);
         bell_image = (ImageView) mainView.findViewById(R.id.bell_image);
         info_image2 = (ImageView) mainView.findViewById(R.id.info_image2);
+        filter_icon = (ImageView) mainView.findViewById(R.id.filter_icon);
+        filter_icon2 = (ImageView) mainView.findViewById(R.id.filter_icon2);
         infoicon2 = (ImageView) mainView.findViewById(R.id.infoicon2);
         bottomLayout = (RelativeLayout) mainView.findViewById(R.id.bottomLayout);
         profile_tab = (LinearLayout) mainView.findViewById(R.id.profile_tab);
@@ -769,13 +1120,29 @@ public class FragmentInspirationSection extends BaseFragment
         searchText = (EditText) mainView.findViewById(R.id.search_tab_text);
         searchText.setTypeface(FontUtility.setMontserratLight(getActivity()));
         searchText.setOnEditorActionListener(this);
+        searchText.setCursorVisible(false);
+        searchText.setFocusable(false);
         searchText.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
-                    searchText.setCursorVisible(true);
 //                    overflow2.getFocus();
+                    if (overflow_layout4.getVisibility() == View.GONE || !overflow2.isOpen()) {
+                        searchText.setCursorVisible(false);
+                        searchText.setFocusable(false);
+                        overflow2.triggerSlide();
+                        overflow_layout1.setVisibility(View.GONE);
+                        overflow_layout2.setVisibility(View.GONE);
+                        overflow_layout3.setVisibility(View.GONE);
+                        overflow_layout4.setVisibility(View.VISIBLE);
+//                        imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+                    } else {
+                        searchText.setCursorVisible(true);
+                        searchText.setFocusableInTouchMode(true);
+                        searchText.requestFocus();
+                        //   imm.showSoftInput(searchText,InputMethodManager.SHOW_FORCED);
+                    }
                 }
                 return false;
             }
@@ -785,6 +1152,12 @@ public class FragmentInspirationSection extends BaseFragment
         nameText.setTypeface(FontUtility.setMontserratLight(mContext));
         performanceText = (TextView) mainView.findViewById(R.id.performance_text);
         performanceText.setTypeface(FontUtility.setMontserratLight(mContext));
+        peopletext = (TextView) mainView.findViewById(R.id.people_text);
+        peopletext.setTypeface(FontUtility.setMontserratLight(mContext));
+        productsText = (TextView) mainView.findViewById(R.id.products_text);
+        productsText.setTypeface(FontUtility.setMontserratLight(mContext));
+        shopText = (TextView) mainView.findViewById(R.id.shop_text);
+        shopText.setTypeface(FontUtility.setMontserratLight(mContext));
         text1 = (TextView) mainView.findViewById(R.id.text1);
         text1.setTypeface(FontUtility.setMontserratLight(mContext));
         text2 = (TextView) mainView.findViewById(R.id.text2);
@@ -793,18 +1166,11 @@ public class FragmentInspirationSection extends BaseFragment
         text3.setTypeface(FontUtility.setMontserratLight(mContext));
         text4 = (TextView) mainView.findViewById(R.id.text4);
         text4.setTypeface(FontUtility.setMontserratLight(mContext));
-//        text4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.e("hehe","hehe");
-//                Bundle bundle2=new Bundle();
-//                bundle2.putBoolean("isFromHome",true);
-//                startActivity(FollowCategoriesNewActivity.class,bundle2);
-//            }
-//        });
         text5 = (TextView) mainView.findViewById(R.id.text5);
         text5.setTypeface(FontUtility.setMontserratLight(mContext));
-
+        peopletext_layout = (RelativeLayout) mainView.findViewById(R.id.people_text_layout);
+        productsText_layout = (RelativeLayout) mainView.findViewById(R.id.products_text_layout);
+        shopText_layout = (RelativeLayout) mainView.findViewById(R.id.shop_text_layout);
         cart_tab = (LinearLayout) mainView.findViewById(R.id.cart_layout);
         fashioniconlayout = (LinearLayout) mainView.findViewById(R.id.fashioniconlayout);
         beautyiconlayout = (LinearLayout) mainView.findViewById(R.id.beautyiconlayout);
@@ -815,6 +1181,27 @@ public class FragmentInspirationSection extends BaseFragment
         homeiconlayout = (LinearLayout) mainView.findViewById(R.id.homeiconlayout);
         occasioniconlayout = (LinearLayout) mainView.findViewById(R.id.occasioniconlayout);
         traveliconlayout = (LinearLayout) mainView.findViewById(R.id.traveliconlayout);
+        music_layout = (LinearLayout) mainView.findViewById(R.id.music_layout);
+        pet_layout = (LinearLayout) mainView.findViewById(R.id.pet_layout);
+        game_layout = (LinearLayout) mainView.findViewById(R.id.game_layout);
+        toy_layout = (LinearLayout) mainView.findViewById(R.id.toy_layout);
+        computer_layout = (LinearLayout) mainView.findViewById(R.id.computer_layout);
+        baby_layout = (LinearLayout) mainView.findViewById(R.id.baby_layout);
+        sports_layout = (LinearLayout) mainView.findViewById(R.id.sports_layout);
+        health_layout = (LinearLayout) mainView.findViewById(R.id.health_layout);
+        jewelry_layout = (LinearLayout) mainView.findViewById(R.id.jewelry_layout);
+        electronics_layout = (LinearLayout) mainView.findViewById(R.id.electronics_layout);
+        shoes_layout = (LinearLayout) mainView.findViewById(R.id.shoes_layout);
+        clothing_layout = (LinearLayout) mainView.findViewById(R.id.clothing_layout);
+        highlight1 = (View) mainView.findViewById(R.id.highlight1);
+        highlight2 = (View) mainView.findViewById(R.id.highlight2);
+        highlight3 = (View) mainView.findViewById(R.id.highlight3);
+        people_layout = (LinearLayout) mainView.findViewById(R.id.people_layout);
+        products_layout = (LinearLayout) mainView.findViewById(R.id.products_layout);
+        products_filter_layout = (RelativeLayout) mainView.findViewById(R.id.products_filter_layout);
+        products_result_layout = (RelativeLayout) mainView.findViewById(R.id.products_result_layout);
+        shops_layout = (LinearLayout) mainView.findViewById(R.id.shops_layout);
+        shoes_layout = (LinearLayout) mainView.findViewById(R.id.shoes_layout);
         swipeLayout = (SwipeRefreshLayout) mainView.findViewById(R.id.swipe_container);
         overflow2 = (MyMaterialContentOverflow3) mainView.findViewById(R.id.overflow2);
         Tracker t = ((KikrApp) mContext.getApplication()).getTracker(KikrApp.TrackerName.APP_TRACKER);
@@ -830,8 +1217,64 @@ public class FragmentInspirationSection extends BaseFragment
         notification_text.setTypeface(FontUtility.setMontserratLight(mContext));
         message_text = (TextView) mainView.findViewById(R.id.message_text);
         message_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        invite_text = (TextView) mainView.findViewById(R.id.invite_text);
+        invite_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        clothing_text = (TextView) mainView.findViewById(R.id.clothing_text);
+        clothing_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        shoes_text = (TextView) mainView.findViewById(R.id.shoes_text);
+        shoes_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        electronics_text = (TextView) mainView.findViewById(R.id.electronics_text);
+        electronics_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        jewelry_text = (TextView) mainView.findViewById(R.id.jewelry_text);
+        jewelry_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        health_text = (TextView) mainView.findViewById(R.id.health_text);
+        health_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        sports_text = (TextView) mainView.findViewById(R.id.sports_text);
+        sports_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        baby_text = (TextView) mainView.findViewById(R.id.baby_text);
+        baby_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        computer_text = (TextView) mainView.findViewById(R.id.computer_text);
+        computer_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        toys_text = (TextView) mainView.findViewById(R.id.toys_text);
+        toys_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        games_text = (TextView) mainView.findViewById(R.id.games_text);
+        games_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        pet_text = (TextView) mainView.findViewById(R.id.pet_text);
+        pet_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        music_text = (TextView) mainView.findViewById(R.id.music_text);
+        music_text.setTypeface(FontUtility.setMontserratLight(mContext));
         followertext2 = (TextView) mainView.findViewById(R.id.followertext2);
         followertext2.setTypeface(FontUtility.setMontserratLight(mContext));
+        filter_text = (TextView) mainView.findViewById(R.id.filter_text);
+        filter_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        women_text = (TextView) mainView.findViewById(R.id.women_text);
+        women_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        accessories_text = (TextView) mainView.findViewById(R.id.accessories_text);
+        accessories_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        men_text = (TextView) mainView.findViewById(R.id.men_text);
+        men_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        sale_text = (TextView) mainView.findViewById(R.id.sale_text);
+        sale_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        price_text = (TextView) mainView.findViewById(R.id.price_text);
+        price_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        price_text_0 = (TextView) mainView.findViewById(R.id.price_text_0);
+        price_text_0.setTypeface(FontUtility.setMontserratLight(mContext));
+        price_text_25 = (TextView) mainView.findViewById(R.id.price_text_25);
+        price_text_25.setTypeface(FontUtility.setMontserratLight(mContext));
+        price_text_50 = (TextView) mainView.findViewById(R.id.price_text_50);
+        price_text_50.setTypeface(FontUtility.setMontserratLight(mContext));
+        price_text_100 = (TextView) mainView.findViewById(R.id.price_text_100);
+        price_text_100.setTypeface(FontUtility.setMontserratLight(mContext));
+        price_text_150 = (TextView) mainView.findViewById(R.id.price_text_150);
+        price_text_150.setTypeface(FontUtility.setMontserratLight(mContext));
+        price_text_200 = (TextView) mainView.findViewById(R.id.price_text_200);
+        price_text_200.setTypeface(FontUtility.setMontserratLight(mContext));
+        price_text_500 = (TextView) mainView.findViewById(R.id.price_text_500);
+        price_text_500.setTypeface(FontUtility.setMontserratLight(mContext));
+        price_text_750 = (TextView) mainView.findViewById(R.id.price_text_750);
+        price_text_750.setTypeface(FontUtility.setMontserratLight(mContext));
+        apply_text = (TextView) mainView.findViewById(R.id.apply_text);
+        apply_text.setTypeface(FontUtility.setMontserratLight(mContext));
         prof2 = (CircleImageView) mainView.findViewById(R.id.prof2);
         button1 = (Button) mainView.findViewById(R.id.button11);
         button1.setTypeface(FontUtility.setMontserratLight(mContext));
@@ -839,7 +1282,6 @@ public class FragmentInspirationSection extends BaseFragment
         button2.setTypeface(FontUtility.setMontserratLight(mContext));
         button1.setTextColor(Color.WHITE);
         button1.setBackgroundResource(R.drawable.green_corner_button);
-
         imagesList = (GridView) mainView.findViewById(R.id.imagesList);
         imagesList.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -852,7 +1294,6 @@ public class FragmentInspirationSection extends BaseFragment
                 FragmentInspirationSection.this.firstVisibleItem2 = firstVisibleItem2;
                 FragmentInspirationSection.this.visibleItemCount2 = visibleItemCount2;
                 FragmentInspirationSection.this.totalItemCount2 = totalItemCount2;
-
                 if (!myins_isloding && firstVisibleItem2 + visibleItemCount2 == totalItemCount2
                         && totalItemCount2 != 0) {
                     if (((HomeActivity) mContext).checkInternet()) {
@@ -879,7 +1320,7 @@ public class FragmentInspirationSection extends BaseFragment
                 FragmentInspirationSection.this.visibleItemCount4 = visibleItemCount4;
                 FragmentInspirationSection.this.totalItemCount4 = totalItemCount4;
                 if (!my_detail_ins_isloding && firstVisibleItem4 + visibleItemCount4 == totalItemCount4
-                        && totalItemCount2 != 0) {
+                        && totalItemCount4 != 0) {
                     if (((HomeActivity) mContext).checkInternet()) {
                         page3++;
                         isFirstTime_mypos_detail = false;
@@ -891,13 +1332,43 @@ public class FragmentInspirationSection extends BaseFragment
         });
 
         productDetail = (GridView) mainView.findViewById(R.id.productDetail);
-
+        shopList = (GridView) mainView.findViewById(R.id.shopList);
+        product_result_list = (GridView) mainView.findViewById(R.id.product_result_list);
         nameText.setText(UserPreference.getInstance().getUserName());
         notificationlist = (RecyclerView) mainView.findViewById(R.id.notificationlist);
         notificationlist.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext);
         notificationlist.setLayoutManager(layoutManager);
         collectionList = (ListView) mainView.findViewById(R.id.collectionList);
+        user_result_list = (ListView) mainView.findViewById(R.id.user_result_list);
+        user_result_list.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem5, int visibleItemCount5,
+                                 int totalItemCount5) {
+                FragmentInspirationSection.this.firstVisibleItem5 = firstVisibleItem5;
+                FragmentInspirationSection.this.visibleItemCount5 = visibleItemCount5;
+                FragmentInspirationSection.this.totalItemCount5 = totalItemCount5;
+                Log.e("listloading",""+user_list_isloding);
+
+                if (!user_list_isloding && firstVisibleItem5 + visibleItemCount5 == totalItemCount5
+                        && totalItemCount5 != 0) {
+                    if (((HomeActivity) mContext).checkInternet()) {
+                        page4++;
+                        isFirstTime_user_list = false;
+                        if (indexSearch == 0)
+                            displayAllPeopleResult();
+                        if (indexSearch == 1)
+                            Log.e("listloading","1");
+                            displaySearchPeopleResult();
+                    } else {
+                    }
+                }
+            }
+        });
 //        collectionList.setOnScrollListener(new AbsListView.OnScrollListener() {
 //            @Override
 //            public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -928,10 +1399,13 @@ public class FragmentInspirationSection extends BaseFragment
             feedAdapterIndex = 0;
             getMyInspirationFeedList();
             getCollectionList();
+            indexSearch = 0;
+            displayAllPeopleResult();
         }
     }
 
     private void displayFashionFeed() {
+        Log.e("current", "displayFashionFeed");
         index = 1;
         isLoading = !isLoading;
         if (!isFirstTime) {
@@ -946,6 +1420,7 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void displayFoodFeed() {
+        Log.e("current", "displayFoodFeed");
         index = 2;
         isLoading = !isLoading;
         if (!isFirstTime) {
@@ -960,6 +1435,8 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void displayTravelFeed() {
+        Log.e("current", "displayTravelFeed");
+
         index = 3;
         isLoading = !isLoading;
         if (!isFirstTime) {
@@ -974,6 +1451,8 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void displayOccasionFeed() {
+        Log.e("current", "displayOccasionFeed");
+
         index = 4;
         isLoading = !isLoading;
         if (!isFirstTime) {
@@ -989,6 +1468,8 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void displayHomeFeed() {
+        Log.e("current", "displayHomeFeed");
+
         index = 5;
 
         isLoading = !isLoading;
@@ -1004,6 +1485,8 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void displayPhotographyFeed() {
+        Log.e("current", "displayPhotographyFeed");
+
         index = 6;
         isLoading = !isLoading;
         if (!isFirstTime) {
@@ -1018,6 +1501,8 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void displayTechFeed() {
+        Log.e("current", "displayTechFeed");
+
         index = 7;
         isLoading = !isLoading;
         if (!isFirstTime) {
@@ -1033,6 +1518,7 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void displayFitnessFeed() {
+        Log.e("current", "displayFitnessFeed");
         index = 8;
         isLoading = !isLoading;
         if (!isFirstTime) {
@@ -1048,10 +1534,9 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void displayBeautyFeed() {
+        Log.e("current", "displayBeautyFeed");
         index = 9;
-        Log.e("loading-beauty-feed-1",""+isLoading);
         isLoading = !isLoading;
-        Log.e("loading-beauty-feed-1",""+isLoading);
 
         if (!isFirstTime) {
             loadingTextView.setVisibility(View.VISIBLE);
@@ -1064,18 +1549,220 @@ public class FragmentInspirationSection extends BaseFragment
         inspirationFeedApi.execute();
     }
 
-    private void displaySearchResult() {
-        index = 10;
-        isLoading = !isLoading;
-        if (!isFirstTime) {
-            loadingTextView.setVisibility(View.VISIBLE);
-        } else {
-            loadingTextView.setVisibility(View.INVISIBLE);
-        }
-        final InspirationFeedApi inspirationFeedApi = new InspirationFeedApi(this);
-        inspirationFeedApi.searchFeedByCategory(userId, String.valueOf(page),
-                searchText.getText().toString().trim());
-        inspirationFeedApi.execute();
+    private void displayAllPeopleResult() {
+        Log.e("current", "38");
+
+        if (overflow2.isOpen())
+            overflow2.setOpen();
+        Log.e("current", "displayAllPeopleResult");
+        user_list_isloding = !user_list_isloding;
+//        index = 10;
+//        isLoading = !isLoading;
+//        if (!isFirstTime) {
+//            loadingTextView.setVisibility(View.VISIBLE);
+//        } else {
+//            loadingTextView.setVisibility(View.INVISIBLE);
+//        }
+//        final InspirationFeedApi inspirationFeedApi = new InspirationFeedApi(this);
+//        inspirationFeedApi.searchFeedByCategory(userId, String.valueOf(page),
+//                searchText.getText().toString().trim());
+//        inspirationFeedApi.execute();
+
+        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
+            @Override
+            public void handleOnSuccess(Object object) {
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
+                Log.e("current", "displayAllPeopleResult-success");
+                user_list_isloding = !user_list_isloding;
+                FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
+                List<FeaturedTabData> list = featuredTabApiRes.getData();
+
+                if (list.size() < 10)
+                    user_list_isloding = true;
+                Log.e("current-origin-size", "" + interestList.size());
+                interestList.addAll(list);
+                Log.e("current-interest-size", "" + interestList.size());
+
+                if (list.size() > 0 && isFirstTime_user_list) {
+                    Log.e("current-origin-size-1", "" + interestList.size());
+                    featuredTabAdapter = new FeaturedTabAdapter(mContext, interestList);
+                    if (overflow2.isOpen())
+                        overflow2.setOpen();
+                    user_result_list.setAdapter(featuredTabAdapter);
+                    Log.e("current-origin-size-2", "" + interestList.size());
+
+                } else if (featuredTabAdapter != null) {
+                    Log.e("current-origin-size-3", "" + interestList.size());
+                    if (overflow2.isOpen())
+                        overflow2.setOpen();
+                    featuredTabAdapter.setData(interestList);
+                    Log.e("current-origin-size-3.5", "" + interestList.size());
+                    if (overflow2.isOpen())
+                        overflow2.setOpen();
+                    featuredTabAdapter.notifyDataSetChanged();
+                }
+            }
+
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                user_list_isloding = !user_list_isloding;
+            }
+        });
+        Log.e("current-page4", "" + page4);
+        listApi.getFeaturedTabData(UserPreference.getInstance().getUserID(), String.valueOf(page4));
+        listApi.execute();
+    }
+
+    private void displaySearchPeopleResult() {
+        overflow2.setOpen();
+        Log.e("current", "displaySearchPeopleResult");
+        user_list_isloding = !user_list_isloding;
+//        index = 10;
+//        isLoading = !isLoading;
+//        if (!isFirstTime) {
+//            loadingTextView.setVisibility(View.VISIBLE);
+//        } else {
+//            loadingTextView.setVisibility(View.INVISIBLE);
+//        }
+//        final InspirationFeedApi inspirationFeedApi = new InspirationFeedApi(this);
+//        inspirationFeedApi.searchFeedByCategory(userId, String.valueOf(page),
+//                searchText.getText().toString().trim());
+//        inspirationFeedApi.execute();
+
+        final GeneralSearchApi generalSearchApi = new GeneralSearchApi(new ServiceCallback() {
+            @Override
+            public void handleOnSuccess(Object object) {
+                overflow2.setOpen();
+                Log.e("current", "displaySearchPeopleResult-success");
+                user_list_isloding = !user_list_isloding;
+                GeneralSearchRes generalSearchRes = (GeneralSearchRes) object;
+                if (generalSearchRes.getUsers().size() < 10)
+                    user_list_isloding = true;
+                Log.e("current-origin-size", "" + interestUserList.size());
+                interestUserList.addAll(generalSearchRes.getUsers());
+                Log.e("current-interest-size", "" + interestUserList.size());
+
+                if (generalSearchRes.getUsers().size() > 0 && isFirstTime_user_list) {
+                    Log.e("current-origin-size-1", "" + interestUserList.size());
+                    interestPeopleListAdapter = new CustomizeInterestPeopleListAdapter(mContext, interestUserList);
+
+                    overflow2.setOpen();
+                    user_result_list.setAdapter(interestPeopleListAdapter);
+                    Log.e("current-origin-size-2", "" + interestUserList.size());
+
+                } else if (interestPeopleListAdapter != null) {
+                    Log.e("current-origin-size-3", "" + interestUserList.size());
+                    overflow2.setOpen();
+                    interestPeopleListAdapter.setData(interestUserList);
+                    Log.e("current-origin-size-3.5", "" + interestUserList.size());
+                    overflow2.setOpen();
+                    interestPeopleListAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                user_list_isloding = !user_list_isloding;
+                Log.e("current", "fail-success");
+            }
+        });
+        Log.e("current-page4", "" + page4);
+        generalSearchApi.generalSearch(searchText.getText().toString().trim(), page4);
+        generalSearchApi.execute();
+    }
+
+    private void displaySearchProductResult() {
+        overflow2.setOpen();
+
+        Log.e("current", "displaySearchProductsResult");
+        product_list_isloding = !product_list_isloding;
+
+        final GeneralSearchApi generalSearchApi = new GeneralSearchApi(new ServiceCallback() {
+            @Override
+            public void handleOnSuccess(Object object) {
+                Log.e("current", "displayProductResult-success");
+                overflow2.setOpen();
+                product_list_isloding = !product_list_isloding;
+                GeneralSearchRes generalSearchRes = (GeneralSearchRes) object;
+                if (generalSearchRes.getProducts().size() < 10)
+                    product_list_isloding = true;
+                Log.e("current-origin-size", "" + interestProductList.size());
+                interestProductList.addAll(generalSearchRes.getProducts());
+                Log.e("current-interest-size", "" + interestProductList.size());
+
+                if (generalSearchRes.getProducts().size() > 0 && isFirstTime_shop_list) {
+                    Log.e("current-origin-size-1", "" + interestProductList.size());
+                    productSearchdAdapter = new ProductSearchGridAdapter(mContext, interestProductList);
+                    overflow2.setOpen();
+                    product_result_list.setAdapter(productSearchdAdapter);
+                    Log.e("current-origin-size-2", "" + interestProductList.size());
+
+                } else if (productSearchdAdapter != null) {
+                    Log.e("current-origin-size-3", "" + interestProductList.size());
+                    overflow2.setOpen();
+                    productSearchdAdapter.setData(interestProductList);
+                    Log.e("current-origin-size-3.5", "" + interestProductList.size());
+                    overflow2.setOpen();
+                    productSearchdAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                product_list_isloding = !product_list_isloding;
+                Log.e("current", "fail-success");
+            }
+        });
+        Log.e("current-page5", "" + page6);
+        generalSearchApi.generalSearch(searchText.getText().toString().trim(), page6);
+        generalSearchApi.execute();
+    }
+
+    private void displaySearchShopResult() {
+        Log.e("current", "displaySearchShoResult");
+        overflow2.setOpen();
+        shop_list_isloding = !shop_list_isloding;
+
+        final GeneralSearchApi generalSearchApi = new GeneralSearchApi(new ServiceCallback() {
+            @Override
+            public void handleOnSuccess(Object object) {
+                Log.e("current", "displayShopResult-success");
+                shop_list_isloding = !shop_list_isloding;
+                GeneralSearchRes generalSearchRes = (GeneralSearchRes) object;
+                if (generalSearchRes.getBrands().size() < 10)
+                    shop_list_isloding = true;
+                Log.e("current-origin-size", "" + interestShopList.size());
+                interestShopList.addAll(generalSearchRes.getBrands());
+                Log.e("current-interest-size", "" + interestShopList.size());
+
+                if (generalSearchRes.getBrands().size() > 0 && isFirstTime_shop_list) {
+                    Log.e("current-origin-size-1", "" + interestShopList.size());
+                    storeGridAdapter = new StoreGridAdapter(mContext, interestShopList);
+                    overflow2.setOpen();
+                    shopList.setAdapter(storeGridAdapter);
+                    Log.e("current-origin-size-2", "" + interestShopList.size());
+
+                } else if (storeGridAdapter != null) {
+                    Log.e("current-origin-size-3", "" + interestShopList.size());
+                    overflow2.setOpen();
+                    storeGridAdapter.setData(interestShopList);
+                    Log.e("current-origin-size-3.5", "" + interestShopList.size());
+                    overflow2.setOpen();
+                    storeGridAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                shop_list_isloding = !shop_list_isloding;
+                Log.e("current", "fail-success");
+            }
+        });
+        Log.e("current-page5", "" + page5);
+        generalSearchApi.generalSearch(searchText.getText().toString().trim(), page5);
+        generalSearchApi.execute();
     }
 
     @Override
@@ -1102,6 +1789,39 @@ public class FragmentInspirationSection extends BaseFragment
         text4.setOnClickListener(this);
         text5.setOnClickListener(this);
         infoicon2.setOnClickListener(this);
+        peopletext_layout.setOnClickListener(this);
+        productsText_layout.setOnClickListener(this);
+        shopText_layout.setOnClickListener(this);
+        invite_text.setOnClickListener(this);
+        filter_text.setOnClickListener(this);
+        women_text.setOnClickListener(this);
+        accessories_text.setOnClickListener(this);
+        men_text.setOnClickListener(this);
+        sale_text.setOnClickListener(this);
+        price_text.setOnClickListener(this);
+        price_text_0.setOnClickListener(this);
+        price_text_25.setOnClickListener(this);
+        price_text_50.setOnClickListener(this);
+        price_text_100.setOnClickListener(this);
+        price_text_150.setOnClickListener(this);
+        price_text_200.setOnClickListener(this);
+        price_text_500.setOnClickListener(this);
+        price_text_750.setOnClickListener(this);
+        apply_text.setOnClickListener(this);
+        filter_icon.setOnClickListener(this);
+        filter_icon2.setOnClickListener(this);
+        clothing_layout.setOnClickListener(this);
+        shoes_layout.setOnClickListener(this);
+        electronics_layout.setOnClickListener(this);
+        jewelry_layout.setOnClickListener(this);
+        health_layout.setOnClickListener(this);
+        sports_layout.setOnClickListener(this);
+        baby_layout.setOnClickListener(this);
+        computer_layout.setOnClickListener(this);
+        toy_layout.setOnClickListener(this);
+        game_layout.setOnClickListener(this);
+        pet_layout.setOnClickListener(this);
+        music_layout.setOnClickListener(this);
         foodiconlayout.setOnClickListener(this);
         fitnessiconlayout.setOnClickListener(this);
         occasioniconlayout.setOnClickListener(this);
@@ -1118,6 +1838,7 @@ public class FragmentInspirationSection extends BaseFragment
                     displayCollectionList();
                     overflow_layout3.setVisibility(View.GONE);
                     overflow_layout2.setVisibility(View.GONE);
+                    overflow_layout4.setVisibility(View.GONE);
                     overflow_layout1.setVisibility(View.VISIBLE);
                     if (isOnFeedPage) {
                         imagesList.setVisibility(View.VISIBLE);
@@ -1137,6 +1858,8 @@ public class FragmentInspirationSection extends BaseFragment
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e("current", "3");
+
                 overflow2.setOpen();
                 isOnFeedPage = true;
                 button2.setTextColor(Color.BLACK);
@@ -1190,10 +1913,7 @@ public class FragmentInspirationSection extends BaseFragment
                 FragmentInspirationSection.this.firstVisibleItem = firstVisibleItem;
                 FragmentInspirationSection.this.visibleItemCount = visibleItemCount;
                 FragmentInspirationSection.this.totalItemCount = totalItemCount;
-
                 if (!isLoading && firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0) {
-                    Log.e("loading-isloading",""+isLoading);
-                    Log.e("loading-page",""+page);
                     if (((HomeActivity) mContext).checkInternet()) {
                         page++;
                         isFirstTime = false;
@@ -1245,12 +1965,10 @@ public class FragmentInspirationSection extends BaseFragment
         final MyProfileApi myProfileApi = new MyProfileApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
-                Log.e("ttttt", object.toString());
                 MyProfileRes myProfileRes = (MyProfileRes) object;
                 userDetails = myProfileRes.getUser_data();
                 followersLists = myProfileRes.getFollowers_list();
                 followingLists = myProfileRes.getFollowing_list();
-                Log.e("ttttt", String.valueOf(followingLists.size()));
 
                 followingtext1.setText(String.valueOf(followersLists.size()));
                 followertext1.setText(String.valueOf(followingLists.size()));
@@ -1258,7 +1976,6 @@ public class FragmentInspirationSection extends BaseFragment
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                Log.e("ttttt", "fail");
 
             }
         });
@@ -1267,6 +1984,9 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void getMyInspirationFeedList() {
+        Log.e("current", "getMyInspirationFeedList");
+//        overflow2.setOpen();
+
         if (feedAdapterIndex == 0)
             myins_isloding = !myins_isloding;
         else
@@ -1276,45 +1996,23 @@ public class FragmentInspirationSection extends BaseFragment
             @Override
             public void handleOnSuccess(Object object) {
                 InspirationFeedRes inspirationFeedRes = (InspirationFeedRes) object;
+//                if (feedAdapterIndex == 0 && myProductList.size() < 10)
+//                    myins_isloding = true;
+//                else if (feedAdapterIndex == 1 && myDetailProductList.size() < 10)
+//                    my_detail_ins_isloding = true;
+
                 if (feedAdapterIndex == 0) {
                     myins_isloding = !myins_isloding;
                     myProductList.addAll(inspirationFeedRes.getData());
+                    if (inspirationFeedRes.getData().size() < 10)
+                        myins_isloding = true;
                 } else {
                     my_detail_ins_isloding = !my_detail_ins_isloding;
                     myDetailProductList.addAll(inspirationFeedRes.getData());
+                    if (myDetailProductList.size() < 10)
+                        my_detail_ins_isloding = true;
                 }
-
                 displayMyInspirationFeedList();
-//                if (myProductList.size() < 10) {
-//                    myins_isloding = true;
-//                }
-//                if (feedAdapterIndex == 0) {
-//                    if (myProductList.size() > 0 && isFirstTime_mypos) {
-//                        inspirationGridAdapter = new InspirationGridAdapter(mContext, myProductList, 0);
-//                        imagesList.setAdapter(inspirationGridAdapter);
-//                        feedDetail.setVisibility(View.GONE);
-//                        imagesList.setVisibility(View.VISIBLE);
-//                    } else if (inspirationGridAdapter != null) {
-//                        inspirationGridAdapter.setData(myProductList);
-//                        inspirationGridAdapter.notifyDataSetChanged();
-//                        feedDetail.setVisibility(View.GONE);
-//                        imagesList.setVisibility(View.VISIBLE);
-//                    }
-//
-//                } else if (feedAdapterIndex == 1) {
-//                    Log.e("yaya", "yaya");
-//                    if (myProductList.size() > 0 && isFirstTime_mypos) {
-//                        inspirationGridAdapter = new InspirationGridAdapter(mContext, myProductList, 1);
-//                        feedDetail.setAdapter(inspirationGridAdapter);
-//                        feedDetail.setVisibility(View.VISIBLE);
-//                        imagesList.setVisibility(View.GONE);
-//                    } else if (inspirationGridAdapter != null) {
-//                        inspirationGridAdapter.setData(myProductList);
-//                        inspirationGridAdapter.notifyDataSetChanged();
-//                        feedDetail.setVisibility(View.VISIBLE);
-//                        imagesList.setVisibility(View.GONE);
-//                    }
-//                }
             }
 
             @Override
@@ -1332,7 +2030,6 @@ public class FragmentInspirationSection extends BaseFragment
                 }
             }
         });
-//        inspirationFeedApi.getInspirationFeed(UserPreference.getInstance().getUserID(), false, String.valueOf(page1), UserPreference.getInstance().getUserID());
         if (feedAdapterIndex == 0)
             inspirationFeedApi.getInspirationFeed(userId, false, String.valueOf(page1), userId);
         else
@@ -1342,6 +2039,9 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void getCollectionList() {
+        Log.e("current", "getCollectionList");
+        if (overflow2.isOpen())
+            overflow2.setOpen();
         mycoll_isloading = !mycoll_isloading;
         final CollectionApi collectionApi = new CollectionApi(new ServiceCallback() {
             @Override
@@ -1349,46 +2049,6 @@ public class FragmentInspirationSection extends BaseFragment
                 CollectionApiRes collectionApiRes = (CollectionApiRes) object;
                 collectionLists2 = collectionApiRes.getCollection();
                 displayCollectionList();
-//                if (collectionLists2.size() < 10) {
-//                    mycoll_isloading = true;
-//                }
-//                if (collectionLists2.size() > 0 && isFirstTime_myCol) {
-//                    collectionAdapter = new FragmentProfileCollectionAdapter(mContext,
-//                            collectionLists2, userId, fragmentProfileView, null, collAdapterIndex,
-//                            new FragmentProfileCollectionAdapter.ListAdapterListener() {
-//                                @Override
-//                                public void onClickAtOKButton(int position) {
-//                                    final String coll_id = collectionLists2.get(position).getId();
-//                                    imagesList.setVisibility(View.GONE);
-//                                    collectionList.setVisibility(View.GONE);
-//                                    feedDetail.setVisibility(View.GONE);
-//                                    productDetail.setVisibility(View.VISIBLE);
-//                                    final ProductBasedOnBrandApi productBasedOnBrandApi = new ProductBasedOnBrandApi(new ServiceCallback() {
-//                                        @Override
-//                                        public void handleOnSuccess(Object object) {
-//                                            ProductBasedOnBrandRes productBasedOnBrandRes = (ProductBasedOnBrandRes) object;
-//                                            product_data = productBasedOnBrandRes.getData();
-//                                            productDetailGridAdapter = new ProductDetailGridAdapter(mContext, product_data);
-//                                            productDetail.setAdapter(productDetailGridAdapter);
-//                                        }
-//
-//                                        @Override
-//                                        public void handleOnFailure(ServiceException exception, Object object) {
-//
-//                                        }
-//                                    });
-//                                    productBasedOnBrandApi.getProductsBasedOnCollectionList
-//                                            (UserPreference.getInstance().getUserID(),
-//                                                    String.valueOf(0), coll_id);
-//                                    productBasedOnBrandApi.execute();
-//                                }
-//                            });
-//                    collectionList.setAdapter(collectionAdapter);
-////                    collectionList.setVisibility(View.VISIBLE);
-//                } else if (collectionAdapter != null) {
-//                    collectionAdapter.setData(collectionLists2);
-//                    collectionAdapter.notifyDataSetChanged();
-//                }
             }
 
             @Override
@@ -1405,58 +2065,12 @@ public class FragmentInspirationSection extends BaseFragment
 
         collectionApi.getCollectionList(UserPreference.getInstance().getUserID());
         collectionApi.execute();
-
-
-//        final MyProfileApi myProfileApi = new MyProfileApi(new ServiceCallback() {
-//            @Override
-//            public void handleOnSuccess(Object object) {
-//                mycoll_isloading = !mycoll_isloading;
-//                MyProfileRes myProfileRes = (MyProfileRes) object;
-//                collectionLists = myProfileRes.getCollection_list();
-////                collectionLists.addAll(collectionLists);
-//                if (collectionLists.size() < 10) {
-//                    mycoll_isloading = true;
-//                }
-//                if (collectionLists.size() > 0 && isFirstTime_myCol) {
-//                    Log.e("listttt","1");
-//                    collectionAdapter = new FragmentProfileCollectionAdapter(mContext,
-//                            collectionLists, userId, fragmentProfileView, null,collAdapterIndex,
-//                            new FragmentProfileCollectionAdapter.ListAdapterListener() {
-//                        @Override
-//                        public void onClickAtOKButton(int position) {
-//                            Log.e("listttt","2");
-//                            imagesList.setVisibility(View.GONE);
-//                            collectionList.setVisibility(View.GONE);
-//                            feedDetail.setVisibility(View.GONE);
-//                            productDetail.setVisibility(View.VISIBLE);
-////                            showProductDetail(collectionLists.get(position));
-//                        }
-//                    });
-//                    collectionList.setAdapter(collectionAdapter);
-//                    collectionList.setVisibility(View.VISIBLE);
-//                } else if (collectionAdapter != null) {
-//                    collectionAdapter.setData(collectionLists);
-//                    collectionAdapter.notifyDataSetChanged();
-//                }
-//            }
-//
-//            @Override
-//            public void handleOnFailure(ServiceException exception, Object object) {
-//                mycoll_isloading = !mycoll_isloading;
-//                if (object != null) {
-//                    MyProfileRes myProfileRes = (MyProfileRes) object;
-//                    AlertUtils.showToast(mContext, myProfileRes.getMessage());
-//                } else {
-//                    AlertUtils.showToast(mContext, R.string.invalid_response);
-//                }
-//            }
-//        });
-//        myProfileApi.getUserProfileDetail(userId, userId);
-//        myProfileApi.execute();
     }
 
 
     private void logoutUser() {
+        Log.e("current", "logoutUser");
+
         LogoutApi logoutApi = new LogoutApi(new ServiceCallback() {
 
             @Override
@@ -1468,22 +2082,24 @@ public class FragmentInspirationSection extends BaseFragment
 
             }
         });
+        Log.e("tokenn",CommonUtility.getDeviceTocken(mContext));
+        Log.e("tokennnmmmm",UserPreference.getInstance().getUserID());
+
         logoutApi.logoutUser(UserPreference.getInstance().getUserID(),
                 CommonUtility.getDeviceTocken(mContext));
         logoutApi.execute();
     }
 
     private void getFollowingInstagramList() {
+        Log.e("current", "getFollowingInstagramList");
 
         final MessageCenterApi messageCenterApi = new MessageCenterApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                Log.e("success", "success");
                 FollowingKikrModel followingKikrModel = (FollowingKikrModel) object;
                 followinglist = followingKikrModel.getData();
                 followinglist.size();
-                Log.e("success", "11--" + followinglist.size());
                 followinglistRefined.clear();
                 // ArrayList<FollowingKikrModel> followingList = prepareData();
                 if (followinglist.size() == 0) {
@@ -1494,6 +2110,7 @@ public class FragmentInspirationSection extends BaseFragment
 //                    followerNotFound.setVisibility(View.GONE);
 //                    loadingTextView.setVisibility(View.GONE);
                     overflow_layout3.setVisibility(View.VISIBLE);
+                    overflow_layout4.setVisibility(View.GONE);
                     overflow_layout1.setVisibility(View.GONE);
                     overflow_layout2.setVisibility(View.GONE);
                     notificationlist.setVisibility(View.VISIBLE);
@@ -1511,15 +2128,10 @@ public class FragmentInspirationSection extends BaseFragment
                             userName = userString.split(" is following")[0];
                         }
 
-                        Log.e("success", "44--" + userName);
-
-
                         if (!userName.equals(UserPreference.getInstance().getUserName())) {
-                            Log.e("success", "33--" + userName);
                             followinglistRefined.add(followinglist.get(i));
                         }
                     }
-                    Log.e("success", "22--" + followinglistRefined.size());
                     KikrFollowingAdapter adapter = new KikrFollowingAdapter(mContext,
                             (ArrayList<FollowingKikrModel.DataBean>) followinglistRefined);
                     notificationlist.setAdapter(adapter);
@@ -1529,7 +2141,6 @@ public class FragmentInspirationSection extends BaseFragment
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
 //                loadingTextView.setVisibility(View.GONE);
-                Log.e("success", "fail");
 
             }
         });
@@ -1540,36 +2151,57 @@ public class FragmentInspirationSection extends BaseFragment
 
 
     private void displayMyInspirationFeedList() {
-        if (feedAdapterIndex == 0 && myProductList.size() < 10)
-            myins_isloding = true;
-        else if (feedAdapterIndex == 1 && myDetailProductList.size() < 10)
-            my_detail_ins_isloding = true;
+        if (overflow2.isOpen())
+            overflow2.setOpen();
+        Log.e("current", "displayMyInspirationFeedList");
+
+//        if (feedAdapterIndex == 0 && myProductList.size() < 10)
+//            myins_isloding = true;
+//        else if (feedAdapterIndex == 1 && myDetailProductList.size() < 10)
+//            my_detail_ins_isloding = true;
 
         if (feedAdapterIndex == 0) {
             if (myProductList.size() > 0 && isFirstTime_mypos) {
                 inspirationGridAdapter = new InspirationGridAdapter(mContext, myProductList, 0);
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
                 imagesList.setAdapter(inspirationGridAdapter);
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
                 feedDetail.setVisibility(View.GONE);
                 imagesList.setVisibility(View.VISIBLE);
             } else if (inspirationGridAdapter != null) {
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
                 inspirationGridAdapter.setData(myProductList);
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
                 inspirationGridAdapter.notifyDataSetChanged();
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
                 feedDetail.setVisibility(View.GONE);
                 imagesList.setVisibility(View.VISIBLE);
             }
 
         } else if (feedAdapterIndex == 1) {
-            Log.e("myDetailProductList", "" + myDetailProductList.size());
             if (myDetailProductList.size() > 0 && isFirstTime_mypos_detail) {
-                Log.e("myDetailProductList", "yes");
                 inspirationGridAdapter2 = new InspirationGridAdapter(mContext, myDetailProductList, 1);
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
                 feedDetail.setAdapter(inspirationGridAdapter2);
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
                 feedDetail.setVisibility(View.VISIBLE);
                 imagesList.setVisibility(View.GONE);
             } else if (inspirationGridAdapter2 != null) {
-                Log.e("myDetailProductList", "no");
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
                 inspirationGridAdapter2.setData(myDetailProductList);
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
                 inspirationGridAdapter2.notifyDataSetChanged();
+                if (overflow2.isOpen())
+                    overflow2.setOpen();
                 feedDetail.setVisibility(View.VISIBLE);
                 imagesList.setVisibility(View.GONE);
             }
@@ -1577,6 +2209,7 @@ public class FragmentInspirationSection extends BaseFragment
     }
 
     private void displayCollectionList() {
+        Log.e("current", "displayCollectionList");
         if (collectionLists2.size() < 10) {
             mycoll_isloading = true;
         }
@@ -1614,11 +2247,58 @@ public class FragmentInspirationSection extends BaseFragment
                             productBasedOnBrandApi.execute();
                         }
                     });
+            if (overflow2.isOpen())
+                overflow2.setOpen();
             collectionList.setAdapter(collectionAdapter);
 //                    collectionList.setVisibility(View.VISIBLE);
         } else if (collectionAdapter != null) {
+            if (overflow2.isOpen())
+                overflow2.setOpen();
             collectionAdapter.setData(collectionLists2);
+            if (overflow2.isOpen())
+                overflow2.setOpen();
             collectionAdapter.notifyDataSetChanged();
         }
     }
+
+    private void setVisibilityByGroup(List<LinearLayout> gones, List<LinearLayout> visibles,
+                                      List<LinearLayout> invisibles) {
+        if (gones != null)
+            for (int i = 0; i < gones.size(); i++) {
+                gones.get(i).setVisibility(View.GONE);
+            }
+        if (visibles != null)
+            for (int i = 0; i < visibles.size(); i++) {
+                visibles.get(i).setVisibility(View.VISIBLE);
+            }
+        if (invisibles != null)
+            for (int i = 0; i < invisibles.size(); i++) {
+                invisibles.get(i).setVisibility(View.INVISIBLE);
+            }
+    }
+
+    private void setBackgroundByGroup(List<TextView> group1, int background1,
+                                      List<TextView> group2, int background2) {
+        if (group1 != null)
+            for (int i = 0; i < group1.size(); i++) {
+                group1.get(i).setBackgroundResource(background1);
+            }
+        if (group2 != null)
+            for (int i = 0; i < group2.size(); i++) {
+                group2.get(i).setBackgroundResource(background2);
+            }
+    }
+
+    private void setTextColorByGroup(List<TextView> group1, int color1,
+                                     List<TextView> group2, int color2) {
+        if (group1 != null)
+            for (int i = 0; i < group1.size(); i++) {
+                group1.get(i).setTextColor(color1);
+            }
+        if (group2 != null)
+            for (int i = 0; i < group2.size(); i++) {
+                group2.get(i).setTextColor(color2);
+            }
+    }
+
 }

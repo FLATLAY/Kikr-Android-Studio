@@ -105,7 +105,7 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
         Log.e("makeview", "1");
         FrameLayout contentFrame = createContentFrame(context, contentColor);
 
-        FloatingActionButton fab = createFab(context, buttonDrawable, buttonColor, buttonPosition);
+//        FloatingActionButton fab = createFab(context, buttonDrawable, buttonColor, buttonPosition);
 //productDetail=new TextView(context);
 //        productDetail.setTextColor(Color.WHITE);
 //        productDetail.setText("Product Detail");
@@ -133,7 +133,7 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT , 100);
         FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(
-                50, 50);
+                70, 70);
         params.gravity = Gravity.CENTER | Gravity.BOTTOM;
         params2.gravity = Gravity.CENTER;
         layout1.addView(backarrow90,params2);
@@ -170,71 +170,71 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
     }
 
 
-    private FloatingActionButton createFab(Context context, int buttonDrawable, int buttonColor, int buttonPosition) {
-        Log.e("actionbutton", "1");
-
-        fab = new TintFloatingActionButton(context);
-
-        int fabElevationInPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
-
-        LayoutParams fabLayoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        fabMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics());
-
-        if (buttonPosition == RIGHT) {
-            Log.e("actionbutton", "2");
-            fabLayoutParams.gravity = Gravity.END | Gravity.BOTTOM;
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                Log.e("actionbutton", "3");
-                fabLayoutParams.setMarginEnd(fabMargin);
-            } else {
-                Log.e("actionbutton", "4");
-                fabLayoutParams.rightMargin = fabMargin;
-            }
-
-        } else if (buttonPosition == CENTER) {
-            Log.e("actionbutton", "5");
-            fabLayoutParams.gravity = Gravity.CENTER | Gravity.BOTTOM;
-        } else {
-            Log.e("actionbutton", "6");
-            fabLayoutParams.gravity = Gravity.START | Gravity.BOTTOM;
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                Log.e("actionbutton", "7");
-                fabLayoutParams.setMarginStart(fabMargin);
-            } else {
-                Log.e("actionbutton", "8");
-                fabLayoutParams.leftMargin = fabMargin;
-            }
-
-        }
-
-        fabLayoutParams.bottomMargin = fabMargin;
-        fabLayoutParams.topMargin = fabMargin;
-
-        if (buttonDrawable > 0) {
-            Log.e("actionbutton", "9");
-            fab.setImageDrawable(ContextCompat.getDrawable(context, buttonDrawable));
-        }
-
-        if (buttonColor > 0) {
-            Log.e("actionbutton", "10");
-            ViewCompat.setBackgroundTintList(fab, ContextCompat.getColorStateList(context, buttonColor));
-        }
-
-        ViewCompat.setElevation(fab, fabElevationInPixels);
-
-        fab.setLayoutParams(fabLayoutParams);
-
-        fab.setTag("FAB");
-
-        this.addView(fab);
-
-        fab.setVisibility(INVISIBLE);
-
-        return fab;
-    }
+//    private FloatingActionButton createFab(Context context, int buttonDrawable, int buttonColor, int buttonPosition) {
+//        Log.e("actionbutton", "1");
+//
+//        fab = new TintFloatingActionButton(context);
+//
+//        int fabElevationInPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
+//
+//        LayoutParams fabLayoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//
+//        fabMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics());
+//
+//        if (buttonPosition == RIGHT) {
+//            Log.e("actionbutton", "2");
+//            fabLayoutParams.gravity = Gravity.END | Gravity.BOTTOM;
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//                Log.e("actionbutton", "3");
+//                fabLayoutParams.setMarginEnd(fabMargin);
+//            } else {
+//                Log.e("actionbutton", "4");
+//                fabLayoutParams.rightMargin = fabMargin;
+//            }
+//
+//        } else if (buttonPosition == CENTER) {
+//            Log.e("actionbutton", "5");
+//            fabLayoutParams.gravity = Gravity.CENTER | Gravity.BOTTOM;
+//        } else {
+//            Log.e("actionbutton", "6");
+//            fabLayoutParams.gravity = Gravity.START | Gravity.BOTTOM;
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//                Log.e("actionbutton", "7");
+//                fabLayoutParams.setMarginStart(fabMargin);
+//            } else {
+//                Log.e("actionbutton", "8");
+//                fabLayoutParams.leftMargin = fabMargin;
+//            }
+//
+//        }
+//
+//        fabLayoutParams.bottomMargin = fabMargin;
+//        fabLayoutParams.topMargin = fabMargin;
+//
+//        if (buttonDrawable > 0) {
+//            Log.e("actionbutton", "9");
+//            fab.setImageDrawable(ContextCompat.getDrawable(context, buttonDrawable));
+//        }
+//
+//        if (buttonColor > 0) {
+//            Log.e("actionbutton", "10");
+//            ViewCompat.setBackgroundTintList(fab, ContextCompat.getColorStateList(context, buttonColor));
+//        }
+//
+//        ViewCompat.setElevation(fab, fabElevationInPixels);
+//
+//        fab.setLayoutParams(fabLayoutParams);
+//
+//        fab.setTag("FAB");
+//
+//        this.addView(fab);
+//
+//        fab.setVisibility(INVISIBLE);
+//
+//        return fab;
+//    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -242,20 +242,20 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
 
         setPadding(0, 0, 0, 0);
 
-        int utilizedWidth = getPaddingLeft() + getPaddingRight();
+        int utilizedWidth = 0;
 
-        int utilizedHeight = getPaddingTop() + getPaddingBottom();
+        int utilizedHeight = 0;
 
-        MarginLayoutParams fabLayoutParams = (MarginLayoutParams) fab.getLayoutParams();
-
-        measureChildWithMargins(
-                fab,
-                widthMeasureSpec,
-                utilizedWidth,
-                heightMeasureSpec,
-                utilizedHeight);
-
-        utilizedHeight += (fab.getMeasuredHeight() / 2) + fabLayoutParams.topMargin;
+//        MarginLayoutParams fabLayoutParams = (MarginLayoutParams) fab.getLayoutParams();
+//
+//        measureChildWithMargins(
+//                fab,
+//                widthMeasureSpec,
+//                utilizedWidth,
+//                heightMeasureSpec,
+//                utilizedHeight);
+//
+//        utilizedHeight = (fab.getMeasuredHeight() / 2) + fabLayoutParams.topMargin;
 
 
         measureChildWithMargins(
@@ -265,17 +265,11 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
                 heightMeasureSpec,
                 utilizedHeight);
 
-        utilizedHeight += contentFrame.getMeasuredHeight();
-        Log.e("layouttt3", String.valueOf(contentFrame.getMeasuredWidth()));
-
-        Log.e("layouttt4", String.valueOf(widthMeasureSpec));
-        Log.e("layouttt5", String.valueOf(utilizedHeight));
-        Log.e("layouttt6", String.valueOf(heightMeasureSpec));
+        utilizedHeight = contentFrame.getMeasuredHeight();
 
         setMeasuredDimension(
                 resolveSize(contentFrame.getMeasuredWidth(), widthMeasureSpec),
                 resolveSize(utilizedHeight, heightMeasureSpec));
-
     }
 
     @Override
@@ -313,7 +307,7 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         Log.e("layout", "1");
-        fabTotalHeight = fab.getHeight() +
+        fabTotalHeight = backarrow90.getHeight() +
                 fabMargin + /*bottom margin*/
                 fabMargin;  /*top margin*/
 

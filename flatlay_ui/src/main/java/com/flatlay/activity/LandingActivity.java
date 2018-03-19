@@ -128,7 +128,6 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
         user_profile_image = (RoundImageView) mainView.findViewById(R.id.user_profile_image);
         user_profile_name = (TextView) mainView.findViewById(R.id.user_profile_name);
         earn250 = (TextView) mainView.findViewById(R.id.earn250);
-        earn250.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         mLoginButton = (Button) mainView.findViewById(R.id.loginButton);
 
         if (getActivity().getIntent().getStringExtra("referred_userid") != null) {

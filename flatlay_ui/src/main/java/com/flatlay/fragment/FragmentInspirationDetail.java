@@ -1,5 +1,7 @@
 package com.flatlay.fragment;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -113,59 +115,61 @@ import xyz.hanks.library.bang.SmallBangView;
 
 
 public class FragmentInspirationDetail extends BaseFragment implements OnClickListener, TextView.OnEditorActionListener {
-    private View mainView;
+    private AutocompleteCustomArrayAdapter adapter;
+    private ArrayList<SearchUser> usersList = new ArrayList<SearchUser>();
+    private ArrayList<String> temp_usersList = new ArrayList<String>();
+    private Animation a, b;
+    private Button commentBtn, closeButton, button1, button2;
+    private Bitmap bitmap;
+    private boolean isFirstTime_coll = true, isFirstTime_feed = true, isFirstTime = true, mHasDoubleClicked = false, isViewAllComments = false,
+            isPostComment = false, isFromNotification, isMyPost = false, commentOpen = false,
+            isChoosenTeal = false, isLoading_feed = false, isLoading_coll = false, isLike,
+            triggerOpenComment;
+    private CustomAutoCompleteView commentEditText;
+    private CircleImageView prof, prof2;
+    private DeletePostApi deletePostApi;
     private ImageView commentCountTextImage, descriptionArrow, inspirationImage,
             deletePost, deletePost2, tw_share, fb_share, pin_share, gen_share;
+    private Inspiration inspiration;
+    private int firstVisibleItem = 0, visibleItemCount = 0, totalItemCount = 0, page = 0,
+            firstVisibleItem1 = 0, visibleItemCount1 = 0, totalItemCount1 = 0, page1 = 0,
+            collAdapterIndex = -1;
+    private List<CollectionList> collectionLists2;
+    private ListView collectionList;
+    private List<Inspiration> product_list = new ArrayList<Inspiration>();
+    private LinearLayout commentList, bottomLayout, productInflaterLayout, backIconLayout, layout2;
+    private List<ProfileCollectionList> collectionLists = new ArrayList<ProfileCollectionList>();
+    private long lastDownUp = -1, currentUp = -1;
     private TextView tvViewAllComments, inspirationTime, likeCount, descriptionText, text1,
             text2, text3, text4, followertext1, followingtext1, followertext2, followingtext2,
             nameText, userText;
-    private List<CollectionList> collectionLists2;
-    private LinearLayout commentList, bottomLayout, productInflaterLayout;
-    private Button commentBtn, closeButton, button1, button2;
-    private Inspiration inspiration;
-    private CustomAutoCompleteView commentEditText;
     private String lastUserInput2 = "", lastUserInput = "", lastSelected2 = "", lastSelected = "",
             user_id = UserPreference.getInstance().getUserID(), profileimg, username, inspiration_id,
             inspirationUserId, inspirationImageString, inspirationProductName,
             inspirationDes;
     private List<Comment> list = new ArrayList<Comment>(), list1 = new ArrayList<Comment>();
     private FragmentInspirationDetail fragmentInspirationDetail;
-    private AutocompleteCustomArrayAdapter adapter;
-    private ArrayList<SearchUser> usersList = new ArrayList<SearchUser>();
-    private ArrayList<String> temp_usersList = new ArrayList<String>();
-    private Animation a, b;
-    private ScrollView scrollView;
+    //    private ScrollView scrollView;
     private ShareDialog shareDialog;
-    private DeletePostApi deletePostApi;
-    private Bitmap bitmap;
     private FrameLayout frameLayout, contentContainer;
     private float scaleFactor = 1;
     private HorizontalScrollView productLayout;
     private SmallBangView likeCountTextImage;
     private RelativeLayout expand_collection, layout_collection, imageLayout;
-    private boolean isFirstTime_coll = true, isFirstTime_feed = true, isFirstTime = true, mHasDoubleClicked = false, isViewAllComments = false,
-            isPostComment = false, isFromNotification, isMyPost = false, commentOpen = false,
-            isChoosenTeal = false, isLoading_feed = false, isLoading_coll = false, isLike;
+
     private MyMaterialContentOverflow overflow1, overflow2;
     private GridView imagesList;
-    private ListView collectionList;
-    private CircleImageView prof, prof2;
-    private int firstVisibleItem = 0, visibleItemCount = 0, totalItemCount = 0, page = 0,
-            firstVisibleItem1 = 0, visibleItemCount1 = 0, totalItemCount1 = 0, page1 = 0,
-            collAdapterIndex = -1;
-    private List<Inspiration> product_list = new ArrayList<Inspiration>();
     private InspirationGridAdapter inspirationAdapter;
     private FragmentProfileCollectionAdapter collectionAdapter;
     private FragmentProfileView fragmentProfileView;
-    private View tvDescriptionline;
-    private List<ProfileCollectionList> collectionLists = new ArrayList<ProfileCollectionList>();
-    private LinearLayout backIconLayout;
-    private long lastDownUp = -1, currentUp = -1;
+    private View tvDescriptionline, mainView;
 
-    public FragmentInspirationDetail(Inspiration inspiration, boolean isLike) {
+
+    public FragmentInspirationDetail(Inspiration inspiration, boolean isLike, boolean triggerOpenComment) {
         this.inspiration = inspiration;
         this.isFromNotification = false;
-        this.isLike=isLike;
+        this.isLike = isLike;
+        this.triggerOpenComment = triggerOpenComment;
     }
 
     public FragmentInspirationDetail(Inspiration inspiration, String likeid) {
@@ -194,7 +198,8 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         commentBtn.setOnClickListener(this);
         likeCountTextImage.setOnClickListener(this);
         backIconLayout.setOnClickListener(this);
-        closeButton.setOnClickListener(this);
+        userText.setOnClickListener(this);
+//        closeButton.setOnClickListener(this);
         deletePost.setOnClickListener(this);
         deletePost2.setOnClickListener(this);
         commentCountTextImage.setOnClickListener(this);
@@ -202,6 +207,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         pin_share.setOnClickListener(this);
         tw_share.setOnClickListener(this);
         gen_share.setOnClickListener(this);
+        commentEditText.setOnEditorActionListener(this);
         button1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -234,6 +240,20 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         });
 
         prof.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isMyPost) {
+//                    overflow1.setVisibility(View.VISIBLE);
+//                    overflow1.triggerSlide();
+                } else {
+                    overflow2.setVisibility(View.VISIBLE);
+                    overflow2.triggerSlide();
+                }
+            }
+        });
+
+
+        userText.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isMyPost) {
@@ -302,12 +322,12 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
 //            }
 //        });
 
-        tvViewAllComments.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewAllComments();
-            }
-        });
+//        tvViewAllComments.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                viewAllComments();
+//            }
+//        });
     }
 
 
@@ -416,8 +436,6 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                 }
             }
         });
-        Log.e("listttt", "2---" + inspirationUserId);
-
         collectionApi.getCollectionList(inspirationUserId);
         collectionApi.execute();
 //        myProfileApi.getUserProfileDetail(inspirationUserId, UserPreference.getInstance().getUserID());
@@ -437,11 +455,11 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         inspirationImage = (ImageView) mainView.findViewById(R.id.inspirationImage);
         deletePost = (ImageView) mainView.findViewById(R.id.deletePost);
         deletePost2 = (ImageView) mainView.findViewById(R.id.deletePost2);
-        inspirationTime = (TextView) mainView.findViewById(R.id.inspirationTime);
-        inspirationTime.setTypeface(FontUtility.setMontserratLight(mContext));
-        closeButton = (Button) mainView.findViewById(R.id.closetvdes);
-        tvViewAllComments = (TextView) mainView.findViewById(R.id.tvViewAllComments);
-        tvViewAllComments.setTypeface(FontUtility.setMontserratLight(mContext));
+//        inspirationTime = (TextView) mainView.findViewById(R.id.inspirationTime);
+//        inspirationTime.setTypeface(FontUtility.setMontserratLight(mContext));
+//        closeButton = (Button) mainView.findViewById(R.id.closetvdes);
+//        tvViewAllComments = (TextView) mainView.findViewById(R.id.tvViewAllComments);
+//        tvViewAllComments.setTypeface(FontUtility.setMontserratLight(mContext));
         likeCount = (TextView) mainView.findViewById(R.id.likeCount);
         descriptionArrow = (ImageView) mainView.findViewById(R.id.descriptionArrow);
         descriptionText = (TextView) mainView.findViewById(R.id.tvDescription);
@@ -449,18 +467,19 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         commentList = (LinearLayout) mainView.findViewById(R.id.commentList);
         commentList.setFocusable(false);
         backIconLayout = (LinearLayout) mainView.findViewById(R.id.backIconLayout);
+        layout2 = (LinearLayout) mainView.findViewById(R.id.layout2);
         contentContainer = (FrameLayout) mainView.findViewById(R.id.content_container);
         commentBtn = (Button) mainView.findViewById(R.id.commentBtn);
         commentBtn.setTypeface(FontUtility.setMontserratRegular(mContext));
         commentEditText = (CustomAutoCompleteView) mainView.findViewById(R.id.commentEditText);
         commentEditText.setTypeface(FontUtility.setMontserratLight(mContext));
-        scrollView = (ScrollView) mainView.findViewById(R.id.scrollView);
+//        scrollView = (ScrollView) mainView.findViewById(R.id.scrollView);
         bottomLayout = (LinearLayout) mainView.findViewById(R.id.layout_bottom);
         productLayout = (HorizontalScrollView) mainView.findViewById(R.id.productLayout);
         frameLayout = (FrameLayout) mainView.findViewById(R.id.overlayView);
         commentCountTextImage = (ImageView) mainView.findViewById(R.id.commentCountTextImage);
         prof = (CircleImageView) mainView.findViewById(R.id.prof);
-        prof2 = (CircleImageView) mainView.findViewById(R.id.prof2);
+//        prof2 = (CircleImageView) mainView.findViewById(R.id.prof2);
         userText = (TextView) mainView.findViewById(R.id.userText);
         userText.setTypeface(FontUtility.setMontserratLight(mContext));
         tvDescriptionline = (View) mainView.findViewById(R.id.tvDescriptionline);
@@ -469,11 +488,11 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
 
         text1 = (TextView) mainView.findViewById(R.id.text1);
         text1.setTypeface(FontUtility.setMontserratLight(mContext));
-        text2 = (TextView) mainView.findViewById(R.id.text1);
+        text2 = (TextView) mainView.findViewById(R.id.text2);
         text2.setTypeface(FontUtility.setMontserratLight(mContext));
-        text3 = (TextView) mainView.findViewById(R.id.text1);
+        text3 = (TextView) mainView.findViewById(R.id.text3);
         text3.setTypeface(FontUtility.setMontserratLight(mContext));
-        text4 = (TextView) mainView.findViewById(R.id.text1);
+        text4 = (TextView) mainView.findViewById(R.id.text4);
         text4.setTypeface(FontUtility.setMontserratLight(mContext));
         followingtext1 = (TextView) mainView.findViewById(R.id.followingtext1);
         followingtext1.setTypeface(FontUtility.setMontserratLight(mContext));
@@ -560,31 +579,34 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         Tracker t = ((KikrApp) mContext.getApplication()).getTracker(TrackerName.APP_TRACKER);
         t.setScreenName("Fragment Inspiration Detail");
         t.send(new HitBuilders.ScreenViewBuilder().build());
-//        descriptionArrow.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (descriptionText.getVisibility() != View.VISIBLE) {
-//                    descriptionText.setVisibility(View.VISIBLE);
-//                    descriptionArrow.startAnimation(a);
-//                } else {
-//                    descriptionText.setVisibility(View.GONE);
-//                    descriptionArrow.startAnimation(b);
-//                }
-//            }
-//        });
+        if (triggerOpenComment) {
+            Log.e("list", "222---");
+            Log.e("list-commentopen1", "" + commentOpen);
 
-        commentEditText.setOnEditorActionListener(this);
+            descriptionText.setVisibility(View.VISIBLE);
+            tvDescriptionline.setVisibility(View.VISIBLE);
+            commentCountTextImage.setImageResource(R.drawable.black_cancel_icon);
+            new Handler().postDelayed(new Runnable() {
+                public void run() {
+                    commentList.setVisibility(View.VISIBLE);
+                    bottomLayout.setVisibility(View.VISIBLE);
+                    productLayout.setVisibility(View.GONE);
+                    productInflaterLayout.setVisibility(View.GONE);
+                }
+            }, 400);
 
 
-//    public void setCollectionData() {
-//        if (contentContainer.getVisibility() == View.VISIBLE) {
-//            contentContainer.setVisibility(View.GONE);
-//            descriptionArrow.setImageResource(R.drawable.ic_down_gray_arrow);
-//           // totalItemsText.setVisibility(View.GONE);
-//        } else {
-//            contentContainer.setVisibility(View.VISIBLE);
-//          //  totalItemsText.setVisibility(View.VISIBLE);
-//        }
+//            productLayout.setVisibility(View.GONE);
+//            productInflaterLayout.setVisibility(View.GONE);
+//            commentCountTextImage.setImageResource(R.drawable.black_cancel_icon);
+//            commentList.setVisibility(View.VISIBLE);
+//            bottomLayout.setVisibility(View.VISIBLE);
+//            descriptionText.setVisibility(View.VISIBLE);
+//            tvDescriptionline.setVisibility(View.VISIBLE);
+            layout2.animate().translationY(0 - 170).setDuration(400);
+            Log.e("list-commentopen2", "" + commentOpen);
+
+        }
     }
 
     public void removePost(final String inspiration_id, final String user_id) {
@@ -666,7 +688,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
             getCollectionList();
         }
 
-        tvViewAllComments.setText(Html.fromHtml("<u>View All " + list1.size() + " Comments</u>"));
+//        tvViewAllComments.setText(Html.fromHtml("<u>View All " + list1.size() + " Comments</u>"));
         if (checkInternet()) {
             getInspirationDetails();
         }
@@ -702,7 +724,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                                     public void run() {
                                         currentUp = System.currentTimeMillis();
                                         Log.e("likeid--difference", "" + (currentUp - lastDownUp));
-                                        if (currentUp - lastDownUp > 700){
+                                        if (currentUp - lastDownUp > 700) {
                                             likeInspiration();
                                         }
                                     }
@@ -741,7 +763,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         });
 
         CommonUtility.setImage(mContext, profileimg, prof, R.drawable.profile_icon);
-        CommonUtility.setImage(mContext, profileimg, prof2, R.drawable.profile_icon);
+//        CommonUtility.setImage(mContext, profileimg, prof2, R.drawable.profile_icon);
         userText.setText(username);
         nameText.setText(username);
 
@@ -780,29 +802,28 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
     private List<FollowerList> followingLists = new ArrayList<FollowerList>();
     private List<UserData> userDetails;
 
-    private void viewAllComments() {
-        commentList.removeAllViews();
-        list.clear();
-        if (!isViewAllComments) {
-            list.addAll(list1);
-            isViewAllComments = true;
-            tvViewAllComments.setTextColor(getResources().getColor(R.color.white));
-        } else {
-            list.add(list1.get(0));
-            list.add(list1.get(1));
-            list.add(list1.get(2));
-            list.add(list1.get(3));
-            isViewAllComments = false;
-            tvViewAllComments.setTextColor(getResources().getColor(R.color.app_background));
-        }
+//    private void viewAllComments() {
+//        commentList.removeAllViews();
+//        list.clear();
+//        if (!isViewAllComments) {
+//            list.addAll(list1);
+//            isViewAllComments = true;
+////            tvViewAllComments.setTextColor(getResources().getColor(R.color.white));
+//        } else {
+//            list.add(list1.get(0));
+//            list.add(list1.get(1));
+//            list.add(list1.get(2));
+//            list.add(list1.get(3));
+//            isViewAllComments = false;
+////            tvViewAllComments.setTextColor(getResources().getColor(R.color.app_background));
+//        }
+//
+//        if (list.size() >= 0) {
+//            commentList.addView(new InspirationCommentsUI(mContext, list, fragmentInspirationDetail).getView(),0);
+//        }
+//    }
 
-        if (list.size() >= 0) {
-            commentList.addView(new InspirationCommentsUI(mContext, list, fragmentInspirationDetail).getView());
-        }
-    }
-
-
-    long lastPressTime = 0;
+//    long lastPressTime = 0;
 
 //    private boolean findDoubleClick() {
 //        long pressTime = System.currentTimeMillis();
@@ -933,20 +954,20 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                     if (list1.size() > 3)
                         list.add(list1.get(3));
 
-                    if (list1.size() > 4) {
-                        tvViewAllComments.setText(Html.fromHtml("<u>View All " + list1.size() + " Comments</u>"));
-                        tvViewAllComments.setVisibility(View.VISIBLE);
-                    } else {
-                        tvViewAllComments.setVisibility(View.GONE);
-                    }
+//                    if (list1.size() > 4) {
+//                        tvViewAllComments.setText(Html.fromHtml("<u>View All " + list1.size() + " Comments</u>"));
+//                        tvViewAllComments.setVisibility(View.VISIBLE);
+//                    } else {
+//                        tvViewAllComments.setVisibility(View.GONE);
+//                    }
                     if (isPostComment) {
                         list.clear();
                         list.addAll(list1);
-                        tvViewAllComments.setVisibility(View.GONE);
+//                        tvViewAllComments.setVisibility(View.GONE);
                     }
                     commentList.removeAllViews();
                     if (list.size() >= 0) {
-                        commentList.addView(new InspirationCommentsUI(mContext, list, fragmentInspirationDetail).getView());
+                        commentList.addView(new InspirationCommentsUI(mContext, list, fragmentInspirationDetail).getView(), 0);
                     }
                     if (inspiration == null || isFromNotification) {
                         inspiration = inspirationRes.getInspiration();
@@ -1043,7 +1064,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        inspirationTime.setText(CommonUtility.calculateTimeDiff(calServer, calLocal));
+//        inspirationTime.setText(CommonUtility.calculateTimeDiff(calServer, calLocal));
         getUsersList();
         commentEditText.addTextChangedListener(new CustomAutoCompleteTextChangedListener(mContext));
         Log.w("FragmentInspDetail", "1");
@@ -1225,27 +1246,43 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                 break;
             case R.id.commentCountTextImage:
                 // closeButton.setVisibility(View.VISIBLE);
-
+                Log.e("list-commentopen", "" + commentOpen);
                 if (!commentOpen) {
-                    commentList.setVisibility(View.VISIBLE);
-                    bottomLayout.setVisibility(View.VISIBLE);
-                    productLayout.setVisibility(View.GONE);
-                    productInflaterLayout.setVisibility(View.GONE);
                     descriptionText.setVisibility(View.VISIBLE);
                     tvDescriptionline.setVisibility(View.VISIBLE);
                     commentCountTextImage.setImageResource(R.drawable.black_cancel_icon);
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            commentList.setVisibility(View.VISIBLE);
+                            bottomLayout.setVisibility(View.VISIBLE);
+                            productLayout.setVisibility(View.GONE);
+                            productInflaterLayout.setVisibility(View.GONE);
+                        }
+                    }, 400);
+//                    commentList.setVisibility(View.VISIBLE);
+//                    bottomLayout.setVisibility(View.VISIBLE);
+//                    productLayout.setVisibility(View.GONE);
+//                    productInflaterLayout.setVisibility(View.GONE);
+//                    descriptionText.setVisibility(View.VISIBLE);
+//                    tvDescriptionline.setVisibility(View.VISIBLE);
+//                    commentCountTextImage.setImageResource(R.drawable.black_cancel_icon);
+                    layout2.animate().translationY(0 - 170).setDuration(400);
                     commentOpen = true;
                 } else {
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            descriptionText.setVisibility(View.GONE);
+                            tvDescriptionline.setVisibility(View.GONE);
+                        }
+                    }, 400);
                     productLayout.setVisibility(View.VISIBLE);
-
                     commentList.setVisibility(View.GONE);
                     bottomLayout.setVisibility(View.GONE);
-                    descriptionText.setVisibility(View.GONE);
-                    tvDescriptionline.setVisibility(View.GONE);
                     productLayout.setVisibility(View.VISIBLE);
                     productInflaterLayout.setVisibility(View.VISIBLE);
 //                    closeButton.setVisibility(View.GONE);
                     commentCountTextImage.setImageResource(R.drawable.speechbubble);
+                    layout2.animate().translationY(0).setDuration(400);
                     commentOpen = false;
                 }
 
@@ -1273,7 +1310,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
                         Log.e("likeid--currentUp", "" + currentUp);
                         Log.e("likeid--lastDownUp", "" + lastDownUp);
                         Log.e("likeid--difference", "" + (currentUp - lastDownUp));
-                        if (currentUp - lastDownUp > 900){
+                        if (currentUp - lastDownUp > 900) {
                             likeInspiration();
                         }
                     }
@@ -1307,9 +1344,12 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
 
             case R.id.deletePost2:
                 if (!isChoosenTeal) {
+                    overflow1.setVisibility(View.VISIBLE);
+                    overflow1.triggerSlide();
                     deletePost2.setImageResource(R.drawable.deleteediticon2);
                     isChoosenTeal = true;
                 } else {
+                    overflow1.triggerClose();
                     deletePost2.setImageResource(R.drawable.deleteediticon);
                     isChoosenTeal = false;
                 }

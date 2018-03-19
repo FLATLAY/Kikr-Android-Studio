@@ -49,13 +49,10 @@
             android:layout_marginBottom="20dp"
             android:fontFamily="Montserrat"
             android:padding="@dimen/padding_large"
+            android:background="@drawable/flatlayloginbordernew6"
             android:text="CLOSE"
             android:textColor="@color/white"
-            android:textSize="18dp"
-            />
-
+            android:textSize="18dp" />
 
     </LinearLayout>
-
-
 </RelativeLayout>

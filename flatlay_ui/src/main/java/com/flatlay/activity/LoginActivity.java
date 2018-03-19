@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -189,6 +190,7 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
 
     private void loginViaEamil(String email, String password) {
         final LoginUserApi service = new LoginUserApi(this);
+        Log.e("tokennnnn",CommonUtility.getDeviceTocken(mContext));
         service.loginViaEmail(email, password, DeviceUtils.getPhoneModel(),
                 CommonUtility.getDeviceTocken(getActivity()), "android",
                 CommonUtility.getDeviceId(getActivity()));

@@ -118,6 +118,7 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
             viewHolder.productLayout2 = (HorizontalScrollView) convertView.findViewById(R.id.productLayout2);
             viewHolder.detailLayout = (RelativeLayout) convertView.findViewById(R.id.detailLayout);
             viewHolder.generalLayout = (LinearLayout) convertView.findViewById(R.id.generalLayout);
+            viewHolder.like_icon = (ImageView) convertView.findViewById(R.id.like_icon);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -146,6 +147,9 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
         productInflaterLayout2.setLayoutParams(params);
         viewHolder.productLayout.removeAllViews();
         viewHolder.productLayout2.removeAllViews();
+        if (user_id.equals(UserPreference.getInstance().getUserID())) {
+            viewHolder.like_icon.setVisibility(View.INVISIBLE);
+        }
         viewHolder.view_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,7 +177,9 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
                         viewHolder.viewAll_text.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                ViewInsProductFragment detail = new ViewInsProductFragment(map.get(position));
+                                ViewInsProductFragment detail =
+                                        new ViewInsProductFragment(map.get(position),
+                                                data.get(position).getName());
                                 ((HomeActivity) mContext).addFragment(detail);
                             }
                         });
@@ -205,6 +211,15 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
                         map.get(position), true).getView());
                 viewHolder.productLayout.addView(productInflaterLayout);
                 viewHolder.productLayout.scrollTo(0, 0);
+                viewHolder.viewAll_text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ViewInsProductFragment detail =
+                                new ViewInsProductFragment(map.get(position),
+                                        data.get(position).getName());
+                        ((HomeActivity) mContext).addFragment(detail);
+                    }
+                });
             } else if (index == 1) {
                 if (viewHolder.productLayout2.getChildCount() > 0)
                     viewHolder.productLayout2.removeAllViews();
@@ -220,15 +235,13 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        LinearLayout generalLayout;
-        RelativeLayout detailLayout;
-        HorizontalScrollView productLayout, productLayout2;
-        TextView collection_name, view_text, productview_text, productview_count, itemsaves_text,
+        private LinearLayout generalLayout, name_layout;
+        private RelativeLayout detailLayout;
+        private HorizontalScrollView productLayout, productLayout2;
+        private TextView collection_name, view_text, productview_text, productview_count, itemsaves_text,
                 itemsaves_count, collectionview_text, collectionview_count, payoutcredits_text,
-                payoutcredits_count, collection_name2, viewAll_text;
-
-        LinearLayout name_layout;
-        TextView collection_name_inspiration;
+                payoutcredits_count, collection_name2, viewAll_text, collection_name_inspiration;
+        private ImageView like_icon;
     }
 
     private void addFragment(Fragment fragment) {

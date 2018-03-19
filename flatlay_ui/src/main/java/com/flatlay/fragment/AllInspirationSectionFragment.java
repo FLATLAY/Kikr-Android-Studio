@@ -47,11 +47,11 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
 //    private SwipeRefreshLayout swipeLayout;
     private InspirationAdapter inspirationAdapter;
 
-    public AllInspirationSectionFragment(boolean isViewAll, String userId) {
-        this.isViewAll = isViewAll;
-        this.userId = userId;
-        this.isFirstTimeFromMain = false;
-    }
+//    public AllInspirationSectionFragment(boolean isViewAll, String userId) {
+//        this.isViewAll = isViewAll;
+//        this.userId = userId;
+//        this.isFirstTimeFromMain = false;
+//    }
 
     public AllInspirationSectionFragment() {
         isFirstTimeFromMain = true;
@@ -65,7 +65,6 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
         return mainView;
     }
 
-
     @Override
     public void onClick(View view) {
 
@@ -75,7 +74,6 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
     }
-
 
     @Override
     public void initUI(Bundle savedInstanceState) {
@@ -164,7 +162,6 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
         if (checkInternet())
             getInspirationFeedList();
         else {
-            Log.w("FragmentInspSection", "showReloadOption()");
             showReloadOption();
         }
     }
@@ -172,23 +169,18 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
     private void showReloadOption() {
         showDataNotFound();
         TextView textView = getDataNotFound();
-        Log.w("showReloadOption", "Text is: " + textView.getText().toString());
-        Syso.info("text view>>" + textView);
         if (textView != null) {
-            Syso.info("12233 inside text view text view>>" + textView);
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (checkInternet())
                         getInspirationFeedList();
-                    Syso.info("text view>>");
                 }
             });
         }
     }
 
     private void getInspirationFeedList() {
-        Log.e("gerIns", String.valueOf(page));
         isLoading = !isLoading;
         if (!isFirstTime) {
             loadingTextView.setVisibility(View.VISIBLE);
@@ -210,20 +202,17 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
         }
         hideDataNotFound();
         isLoading = !isLoading;
-        Syso.info("In handleOnSuccess>>" + object);
         InspirationFeedRes inspirationFeedRes = (InspirationFeedRes) object;
         product_list.addAll(inspirationFeedRes.getData());
 
         if (inspirationFeedRes.getData().size() < 10) {
             isLoading = true;
         }
-        Log.e("rrrrr",String.valueOf(product_list.size()));
 
         if (product_list.size() == 0 && isFirstTime) {
             showDataNotFound();
         }
         if (product_list.size() > 0 && isFirstTime) {
-         //   inspirationAdapter = new InspirationAdapter(mContext, product_list, isViewAll, FragmentInspirationSection.this);
             inspirationlist.setAdapter(inspirationAdapter);
             inspirationAdapter.notifyDataSetChanged();
 
@@ -237,7 +226,6 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
     public void handleOnFailure(ServiceException exception, Object object) {
         loadingTextView.setVisibility(View.VISIBLE);
         isLoading = !isLoading;
-        Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             InspirationFeedRes response = (InspirationFeedRes) object;
             AlertUtils.showToast(mContext, response.getMessage());

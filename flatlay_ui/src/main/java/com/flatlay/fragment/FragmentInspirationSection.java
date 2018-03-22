@@ -469,14 +469,15 @@ public class FragmentInspirationSection extends BaseFragment implements View.OnC
                 highlight1.setVisibility(View.INVISIBLE);
                 highlight2.setVisibility(View.INVISIBLE);
                 highlight3.setVisibility(View.VISIBLE);
+                if (indexSearch != 2) displayAllShops();
                 indexSearch = 2;
-                if (searchText.getText().toString().trim().length() <= 0) {
-                    page5 = 0;
-//                    allBrandGridAdapter = null;
-                    brandLists.clear();
-                    isFirstTime_shop_list = true;
-                    displayAllShops();
-                }
+//                if (searchText.getText().toString().trim().length() <= 0) {
+//                    page5 = 0;
+////                    allBrandGridAdapter = null;
+//                    brandLists.clear();
+//                    isFirstTime_shop_list = true;
+//                    displayAllShops();
+//                }
 //                if (needToUpdate_shop) {
 //                    shop_list_isloding = false;
 //                    page5 = 0;

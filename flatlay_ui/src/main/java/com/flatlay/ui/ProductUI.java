@@ -76,14 +76,14 @@ public class ProductUI {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         if (!isDrawer)
             for (int i = 0; i < data.size(); i++) {
-                View convertView = null;
                 layoutParams.setMargins(0, 5, 5, 0);
-                convertView = (LinearLayout) mInflater.inflate(R.layout.inspiration_product_list3, null);
+                View convertView = (LinearLayout) mInflater.inflate(R.layout.inspiration_product_list3, null);
                 ImageView activity_product_list_product_image = (ImageView) convertView.findViewById(R.id.activity_product_list_product_image);
                 TextView cancelIcon = (TextView) convertView.findViewById(R.id.cancelIcon);
                 cancelIcon.setTypeface(FontUtility.setMontserratLight(mContext));
                 final Product product = data.get(i);
-                CommonUtility.setImage(mContext, product.getProductimageurl(), activity_product_list_product_image, R.drawable.dum_list_item_product);
+                CommonUtility.setImage(mContext, activity_product_list_product_image, product.getProductimageurl());
+//                CommonUtility.setImage(mContext, product.getProductimageurl(), activity_product_list_product_image, R.drawable.dum_list_item_product);
                 convertView.setLayoutParams(layoutParams);
                 ll.addView(convertView);
                 cancelIcon.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +112,8 @@ public class ProductUI {
                 convertView = (LinearLayout) mInflater.inflate(R.layout.inspiration_product_list4, null);
                 ImageView activity_product_list_product_image = (ImageView) convertView.findViewById(R.id.activity_product_list_product_image);
                 final Product product = data.get(i);
-                CommonUtility.setImage(mContext, product.getProductimageurl(), activity_product_list_product_image, R.drawable.dum_list_item_product);
+                CommonUtility.setImage(mContext, activity_product_list_product_image, product.getProductimageurl());
+//                CommonUtility.setImage(mContext, product.getProductimageurl(), activity_product_list_product_image, R.drawable.dum_list_item_product);
                 convertView.setLayoutParams(layoutParams);
                 convertView.setOnClickListener(new View.OnClickListener() {
                     @Override

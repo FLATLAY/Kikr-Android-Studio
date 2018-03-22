@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.fragment.FragmentProfileView;
+import com.flatlay.ui.FeaturedTabUi;
 import com.flatlay.ui.RoundImageView;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
@@ -37,12 +38,15 @@ import com.flatlaylib.service.res.InspirationFeedRes;
 import com.flatlaylib.service.res.MyProfileRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
+import com.paypal.android.sdk.P;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -56,8 +60,10 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
     //    public boolean[] mSelectedItems;
     private List<UserResult> followUsers = new ArrayList<>();
     private List<Inspiration> inspirationList = new ArrayList<>();
+    private List<String> temporarylist = new ArrayList<>();
+
     //IMPORTANT: consider using a linked hash map?
-    private HashMap<Integer, List<Inspiration>> positionMap = new HashMap<>();
+    private LinkedHashMap<String, List<String>> positionMap = new LinkedHashMap<>();
 //    private HashMap<Integer, Boolean> followMap = new HashMap<>();
 
     private List<UserData> userDetails;
@@ -103,15 +109,16 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.name_text = (TextView) convertView.findViewById(R.id.name_text);
             viewHolder.userImage = (CircleImageView) convertView.findViewById(R.id.userImage);
-            viewHolder.image1 = (ImageView) convertView.findViewById(R.id.image1);
-            viewHolder.image2 = (ImageView) convertView.findViewById(R.id.image2);
-            viewHolder.image3 = (ImageView) convertView.findViewById(R.id.image3);
-            viewHolder.image4 = (ImageView) convertView.findViewById(R.id.image4);
-            viewHolder.image5 = (ImageView) convertView.findViewById(R.id.image5);
-            viewHolder.image6 = (ImageView) convertView.findViewById(R.id.image6);
-            viewHolder.image7 = (ImageView) convertView.findViewById(R.id.image7);
-            viewHolder.image8 = (ImageView) convertView.findViewById(R.id.image8);
-            viewHolder.image9 = (ImageView) convertView.findViewById(R.id.image9);
+//            viewHolder.image1 = (ImageView) convertView.findViewById(R.id.image1);
+//            viewHolder.image2 = (ImageView) convertView.findViewById(R.id.image2);
+//            viewHolder.image3 = (ImageView) convertView.findViewById(R.id.image3);
+//            viewHolder.image4 = (ImageView) convertView.findViewById(R.id.image4);
+//            viewHolder.view_all_text = (TextView) convertView.findViewById(R.id.view_all_text);
+//            viewHolder.image5 = (ImageView) convertView.findViewById(R.id.image5);
+//            viewHolder.image6 = (ImageView) convertView.findViewById(R.id.image6);
+//            viewHolder.image7 = (ImageView) convertView.findViewById(R.id.image7);
+//            viewHolder.image8 = (ImageView) convertView.findViewById(R.id.image8);
+//            viewHolder.image9 = (ImageView) convertView.findViewById(R.id.image9);
 //            viewHolder.image10 = (ImageView) convertView.findViewById(R.id.image10);
             viewHolder.follow_icon = (ImageView) convertView.findViewById(R.id.follow_icon);
             viewHolder.scroll_view = (HorizontalScrollView) convertView.findViewById(R.id.scroll_view);
@@ -122,6 +129,9 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.name_text.setTypeface(FontUtility.setMontserratLight(mContext));
+//        viewHolder.view_all_text.setTypeface(FontUtility.setMontserratLight(mContext));
+//        viewHolder.view_all_text.setVisibility(View.GONE);
+
 //        viewHolder.userNameTextView.setOnClickListener(new View.OnClickListener() {
 //
 //            @Override
@@ -136,22 +146,21 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
 //                startProfilePage(position);
 //            }
 //        });
-
+        if (position >= followUsers.size()) return convertView;
         String name = getItem(position).getName();
         if (name != null && name.length() > 0)
             viewHolder.name_text.setText(name);
         else
             viewHolder.name_text.setText("User");
-        viewHolder.card_layout.setVisibility(View.GONE);
-        viewHolder.image1.setVisibility(View.GONE);
-        viewHolder.image2.setVisibility(View.GONE);
-        viewHolder.image3.setVisibility(View.GONE);
-        viewHolder.image4.setVisibility(View.GONE);
-        viewHolder.image5.setVisibility(View.GONE);
-        viewHolder.image6.setVisibility(View.GONE);
-        viewHolder.image7.setVisibility(View.GONE);
-        viewHolder.image8.setVisibility(View.GONE);
-        viewHolder.image9.setVisibility(View.GONE);
+//        viewHolder.image1.setVisibility(View.GONE);
+//        viewHolder.image2.setVisibility(View.GONE);
+//        viewHolder.image3.setVisibility(View.GONE);
+//        viewHolder.image4.setVisibility(View.GONE);
+//        viewHolder.image5.setVisibility(View.GONE);
+//        viewHolder.image6.setVisibility(View.GONE);
+//        viewHolder.image7.setVisibility(View.GONE);
+//        viewHolder.image8.setVisibility(View.GONE);
+//        viewHolder.image9.setVisibility(View.GONE);
 //        viewHolder.image10.setVisibility(View.INVISIBLE);
         String profileImage = getItem(position).getImg();
 
@@ -170,82 +179,104 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
 //        });
 //
 //        viewHolder.product_layout.scrollTo(0, 0);
-
-//        if (!positionMap.containsKey(position)) {
-        final InspirationFeedApi inspirationFeedApi = new InspirationFeedApi(new ServiceCallback() {
-            @Override
-            public void handleOnSuccess(Object object) {
-                InspirationFeedRes inspirationFeedRes = (InspirationFeedRes) object;
-                inspirationList = inspirationFeedRes.getData();
+        if (!positionMap.containsKey(getItem(position).getId())) {
+            final InspirationFeedApi inspirationFeedApi = new InspirationFeedApi(new ServiceCallback() {
+                @Override
+                public void handleOnSuccess(Object object) {
+                    InspirationFeedRes inspirationFeedRes = (InspirationFeedRes) object;
+                    inspirationList = inspirationFeedRes.getData();
 //                    positionMap.put(position, inspirationList);
-                if (inspirationList.size() > 0) {
-                    viewHolder.card_layout.setVisibility(View.VISIBLE);
-                    CommonUtility.setImage(mContext, viewHolder.image1, inspirationList.get(0).getInspiration_image());
-                    viewHolder.image1.setVisibility(View.VISIBLE);
-                }
+                    temporarylist = new ArrayList<>();
+                    for (int i = 0; i < inspirationList.size(); i++) {
+                        temporarylist.add(inspirationList.get(i).getInspiration_image());
+                    }
+//                if (inspirationList.size() > 0) {
+//                    viewHolder.card_layout.setVisibility(View.VISIBLE);
+//                    CommonUtility.setImage(mContext, inspirationList.get(0).getInspiration_image(),viewHolder.image1);
+//                    viewHolder.image1.setVisibility(View.VISIBLE);
+//                    temporarylist.add(inspirationList.get(0).getInspiration_image());
+//                }
+//
+//                if (inspirationList.size() > 1) {
+//                    CommonUtility.setImage(mContext, inspirationList.get(1).getInspiration_image(), viewHolder.image2);
+//                    viewHolder.image2.setVisibility(View.VISIBLE);
+//                    temporarylist.add(inspirationList.get(1).getInspiration_image());
+//                }
+//
+//                if (inspirationList.size() > 2) {
+//                    CommonUtility.setImage(mContext, inspirationList.get(2).getInspiration_image(), viewHolder.image3);
+//                    viewHolder.image3.setVisibility(View.VISIBLE);
+//                    temporarylist.add(inspirationList.get(2).getInspiration_image());
+//
+//                }
+//
+//                if (inspirationList.size() > 3) {
+//                    CommonUtility.setImage(mContext, viewHolder.image4, inspirationList.get(3).getInspiration_image());
+//
+//                    viewHolder.image4.setVisibility(View.VISIBLE);
+//                    temporarylist.add(inspirationList.get(3).getInspiration_image());
+//
+//                }
+//                if (inspirationList.size() > 4) {
+////                    CommonUtility.setImage(mContext, viewHolder.image5, inspirationList.get(4).getInspiration_image());
+////
+////                    viewHolder.image5.setVisibility(View.VISIBLE);
+//                    viewHolder.view_all_text.setVisibility(View.VISIBLE);
+//                }
 
-                if (inspirationList.size() > 1) {
-                    CommonUtility.setImage(mContext, viewHolder.image2, inspirationList.get(1).getInspiration_image());
-
-                    viewHolder.image2.setVisibility(View.VISIBLE);
-                }
-
-                if (inspirationList.size() > 2) {
-                    CommonUtility.setImage(mContext, viewHolder.image3, inspirationList.get(2).getInspiration_image());
-
-                    viewHolder.image3.setVisibility(View.VISIBLE);
-                }
-
-                if (inspirationList.size() > 3) {
-                    CommonUtility.setImage(mContext, viewHolder.image4, inspirationList.get(3).getInspiration_image());
-
-                    viewHolder.image4.setVisibility(View.VISIBLE);
-                }
-                if (inspirationList.size() > 4) {
-                    CommonUtility.setImage(mContext, viewHolder.image5, inspirationList.get(4).getInspiration_image());
-
-                    viewHolder.image5.setVisibility(View.VISIBLE);
-                }
-                if (inspirationList.size() > 5) {
-                    CommonUtility.setImage(mContext, viewHolder.image6, inspirationList.get(5).getInspiration_image());
-
-                    viewHolder.image6.setVisibility(View.VISIBLE);
-                }
-                if (inspirationList.size() > 6) {
-                    CommonUtility.setImage(mContext, viewHolder.image7, inspirationList.get(6).getInspiration_image());
-
-                    viewHolder.image7.setVisibility(View.VISIBLE);
-                }
-                if (inspirationList.size() > 7) {
-                    CommonUtility.setImage(mContext, viewHolder.image8, inspirationList.get(7).getInspiration_image());
-
-                    viewHolder.image8.setVisibility(View.VISIBLE);
-                }
-                if (inspirationList.size() > 8) {
-                    CommonUtility.setImage(mContext, viewHolder.image9, inspirationList.get(8).getInspiration_image());
-
-                    viewHolder.image9.setVisibility(View.VISIBLE);
-                }
+//                if (inspirationList.size() > 5) {
+//                    CommonUtility.setImage(mContext, viewHolder.image6, inspirationList.get(5).getInspiration_image());
+//
+//                    viewHolder.image6.setVisibility(View.VISIBLE);
+//                }
+//                if (inspirationList.size() > 6) {
+//                    CommonUtility.setImage(mContext, viewHolder.image7, inspirationList.get(6).getInspiration_image());
+//
+//                    viewHolder.image7.setVisibility(View.VISIBLE);
+//                }
+//                if (inspirationList.size() > 7) {
+//                    CommonUtility.setImage(mContext, viewHolder.image8, inspirationList.get(7).getInspiration_image());
+//
+//                    viewHolder.image8.setVisibility(View.VISIBLE);
+//                }
+//                if (inspirationList.size() > 8) {
+//                    CommonUtility.setImage(mContext, viewHolder.image9, inspirationList.get(8).getInspiration_image());
+//
+//                    viewHolder.image9.setVisibility(View.VISIBLE);
+//                }
 //                    if (inspirationList.size() > 9 && inspirationList.get(9).getInspiration_image().length() > 0) {
 //                        CommonUtility.setImage(mContext, inspirationList.get(9).getInspiration_image(),
 //                                viewHolder.image10);
 //                        viewHolder.image10.setVisibility(View.VISIBLE);
 //                    }
-            }
+                    viewHolder.card_layout.removeAllViews();
+                    Log.e("feed2--3", "" + temporarylist.size());
+                    View view = new FeaturedTabUi(mContext, temporarylist).getView();
+                    viewHolder.card_layout.addView(view);
 
-            @Override
-            public void handleOnFailure(ServiceException exception, Object object) {
-                if (object != null) {
-                    InspirationFeedRes response = (InspirationFeedRes) object;
-                    AlertUtils.showToast(mContext, response.getMessage());
-                } else {
-                    AlertUtils.showToast(mContext, R.string.invalid_response);
+                    positionMap.put(getItem(position).getId(), temporarylist);
+                    Log.e("feed2--2", "" + temporarylist.size());
+
+                    if (positionMap.size() > 200) {
+                        Map.Entry<String, List<String>> mapEntry = positionMap.entrySet().iterator().next();
+                        String key = mapEntry.getKey();
+                        positionMap.remove(key);
+                    }
                 }
-            }
-        });
-        inspirationFeedApi.getInspirationFeed(getItem(position).getId(), false, String.valueOf(0),
-                UserPreference.getInstance().getUserID());
-        inspirationFeedApi.execute();
+
+                @Override
+                public void handleOnFailure(ServiceException exception, Object object) {
+                    if (object != null) {
+                        InspirationFeedRes response = (InspirationFeedRes) object;
+                        AlertUtils.showToast(mContext, response.getMessage());
+                    } else {
+                        AlertUtils.showToast(mContext, R.string.invalid_response);
+                    }
+                }
+            });
+            inspirationFeedApi.getInspirationFeed(getItem(position).getId(), false, String.valueOf(0),
+                    UserPreference.getInstance().getUserID());
+            inspirationFeedApi.execute();
 
 //            final MyProfileApi myProfileApi = new MyProfileApi(new ServiceCallback() {
 //                @Override
@@ -271,37 +302,42 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
 //            myProfileApi.getUserProfileDetail(getItem(position).getId(), UserPreference.getInstance().getUserID());
 //            myProfileApi.execute();
 
-//        } else {
-//            inspirationList = positionMap.get(position);
-//            if (inspirationList.size() > 0) {
+        } else {
+            temporarylist = positionMap.get(getItem(position).getId());
+            Log.e("feed2--22", "" + temporarylist.size());
+            viewHolder.card_layout.removeAllViews();
+            Log.e("feed2--33", "" + temporarylist.size());
+            View view = new FeaturedTabUi(mContext, temporarylist).getView();
+            viewHolder.card_layout.addView(view);
+//            if (temporarylist.size() > 0) {
 //                viewHolder.card_layout.setVisibility(View.VISIBLE);
-//                CommonUtility.setImage(mContext, inspirationList.get(0).getInspiration_image(),
-//                        viewHolder.image1);
+////                CommonUtility.setImage(mContext, temporarylist.get(0),
+////                        viewHolder.image1);
 //                viewHolder.image1.setVisibility(View.VISIBLE);
 //            }
 //
-//            if (inspirationList.size() > 1) {
-//                CommonUtility.setImage(mContext, inspirationList.get(1).getInspiration_image(),
-//                        viewHolder.image2);
+//            if (temporarylist.size() > 1) {
+////                CommonUtility.setImage(mContext, temporarylist.get(1),
+////                        viewHolder.image2);
 //                viewHolder.image2.setVisibility(View.VISIBLE);
 //            }
 //
-//            if (inspirationList.size() > 2) {
-//                CommonUtility.setImage(mContext, inspirationList.get(2).getInspiration_image(),
-//                        viewHolder.image3);
+//            if (temporarylist.size() > 2) {
+////                CommonUtility.setImage(mContext, temporarylist.get(2),
+////                        viewHolder.image3);
 //                viewHolder.image3.setVisibility(View.VISIBLE);
 //            }
 //
-//            if (inspirationList.size() > 3) {
-//                CommonUtility.setImage(mContext, inspirationList.get(3).getInspiration_image(),
-//                        viewHolder.image4);
+//            if (temporarylist.size() > 3) {
+////                CommonUtility.setImage(mContext, temporarylist.get(3),
+////                        viewHolder.image4);
 //                viewHolder.image4.setVisibility(View.VISIBLE);
 //            }
-//            if (inspirationList.size() > 4) {
-//                CommonUtility.setImage(mContext, inspirationList.get(4).getInspiration_image(),
-//                        viewHolder.image5);
-//                viewHolder.image5.setVisibility(View.VISIBLE);
+//            if (temporarylist.size() > 4) {
+//
+//                viewHolder.view_all_text.setVisibility(View.VISIBLE);
 //            }
+        }
 //            if (inspirationList.size() > 5) {
 //                CommonUtility.setImage(mContext, inspirationList.get(5).getInspiration_image(),
 //                        viewHolder.image6);
@@ -359,6 +395,8 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
             }
         });
         viewHolder.scroll_view.scrollTo(0, 0);
+        Log.e("feed2--4444", "" + "feed");
+
         return convertView;
     }
 
@@ -369,12 +407,11 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
 //    }
 
     public class ViewHolder {
-        private TextView name_text;
-        private CircleImageView userImage;
-        private ImageView image1, image2, image3, image4, image5, image6, image7, image8, image9,
-                follow_icon;
-        private HorizontalScrollView scroll_view;
-        private LinearLayout card_layout;
+        TextView name_text;
+        CircleImageView userImage;
+        ImageView follow_icon;
+        HorizontalScrollView scroll_view;
+        LinearLayout card_layout;
     }
 
     private void addFragment(Fragment fragment) {

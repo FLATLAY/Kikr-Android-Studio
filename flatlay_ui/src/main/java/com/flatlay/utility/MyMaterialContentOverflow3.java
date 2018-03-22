@@ -31,7 +31,7 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
 
     private static final String INSTANCE_KEY = "com.materialcontentoverflow.INSTANCE_KEY";
     public static final int LEFT = 0, CENTER = 1, RIGHT = 2;
-    private TintFloatingActionButton fab;
+//    private TintFloatingActionButton fab;
     private FrameLayout contentFrame;
     private ImageView backarrow90;
     private MyOverFlowGesListener2 overflowGestureListener;
@@ -114,7 +114,7 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
         layout1.addView(backarrow90,params2);
         this.addView(layout1, params);
         overflowGestureListener = new MyOverFlowGesListener2(this, backarrow90);
-        // fab.setOnTouchListener(overflowGestureListener.getMotionEvent());
+        layout1.setOnTouchListener(overflowGestureListener.getMotionEvent());
 
         contentFrame.setOnTouchListener(overflowGestureListener.getMotionEvent());
     }
@@ -357,11 +357,11 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
 
         super.onDetachedFromWindow();
         overflowGestureListener.clearReferences();
-        ViewCompat.setBackgroundTintList(fab, null);
-        fab.setImageResource(0);
-        fab.setImageDrawable(null);
-        fab.setImageBitmap(null);
-        fab = null;
+//        ViewCompat.setBackgroundTintList(fab, null);
+//        fab.setImageResource(0);
+//        fab.setImageDrawable(null);
+//        fab.setImageBitmap(null);
+//        fab = null;
         contentFrame = null;
     }
 

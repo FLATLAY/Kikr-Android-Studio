@@ -70,7 +70,8 @@ public class StoreGridAdapter extends BaseAdapter {
             viewholder = (ViewHolder) convertView.getTag();
         }
         viewholder.follow_text.setTypeface(FontUtility.setMontserratLight(mContext));
-        CommonUtility.setImage(mContext, viewholder.brandImage, data.get(position).getImg());
+        if(data.size()>position)
+            CommonUtility.setImage(mContext, viewholder.brandImage, data.get(position).getImg());
         return convertView;
     }
 

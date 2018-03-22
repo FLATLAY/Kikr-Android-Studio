@@ -68,15 +68,12 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int i) {
         final ViewHolder holder2 = viewHolder;
-        Log.e("success", "33--" + followingList.size());
         String userString = followingList.get(i).getMessage();
         String notificationType = followingList.get(i).getType();
         String extras = followingList.get(i).getExtras();
         String getHtmlcontent = followingList.get(i).getHtmlcontent();
         String userName = "";
         String notitification = "";
-        Log.e("ddddd", extras);
-        Log.e("ddddd--", getHtmlcontent);
         try {
             JSONObject jObject = new JSONObject(extras);
             String user_idsend = jObject.getString("user_idsend");
@@ -122,8 +119,6 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
             viewHolder.type_image.setImageResource(R.drawable.following_white_on_teal);
 
         }
-        Log.e("success", "44--" + notitification);
-
         String time;
         Calendar calLocal = Calendar.getInstance();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
@@ -137,6 +132,8 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
             viewHolder.followingsubstring.setText(Html.fromHtml
                     (userName + " " + notitification));
 
+            Log.e("notification", "" + followingList.get(i).getMessage());
+            Log.e("notification-image", "" + followingList.get(i).getImg());
             if (followingList.get(i).getImg().equals("")) {
                 Picasso.with(context).load(R.drawable.profile_icon).into(viewHolder.user_image);
             } else {

@@ -12,6 +12,19 @@ public class ProductResult {
     String producturl;
     String affiliateurl;
     String affiliateurlforsharing;
+    String productimageurl;
+    String shortproductdesc;
+    String longproductdesc;
+    String saleprice;
+    String percentOff;
+    String retailprice;
+    String brand;
+    String productname;
+    String isbn;
+    String currency;
+    String merchantid;
+    String merchantname;
+    LikeInfo likeInfo;
 
     public String getId() {
         return id;
@@ -173,17 +186,4 @@ public class ProductResult {
         this.likeInfo = likeInfo;
     }
 
-    String productimageurl;
-    String shortproductdesc;
-    String longproductdesc;
-    String saleprice;
-    String percentOff;
-    String retailprice;
-    String brand;
-    String productname;
-    String isbn;
-    String currency;
-    String merchantid;
-    String merchantname;
-    LikeInfo likeInfo;
 }

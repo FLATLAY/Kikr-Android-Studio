@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,10 +36,11 @@ public class FeaturedTabUi {
     private List<Product> data;
     private List<FeaturedTabData> brandsArray;
     private List<Inspiration> feed;
+    private List<String> feed2;
     private LayoutInflater mInflater;
     private FeaturedTabData featuredTabData;
     private ProgressBarDialog mProgressBarDialog;
-    private View view;
+//    private View view;
     private String USER = "user";
     private float lastX = 0, lastY = 0;
     private TextView loadMore;
@@ -48,57 +50,85 @@ public class FeaturedTabUi {
         super();
         this.mContext = context;
         this.brandsArray = brandsArray;
-        view = convertView;
+//        view = convertView;
         this.featuredTabData = featuredTabData;
         this.data = this.featuredTabData.getProducts();
         this.feed = this.featuredTabData.getInspiration_feed();
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    public FeaturedTabUi(FragmentActivity context, List<String> feed2) {
+        super();
+        this.mContext = context;
+//        view = convertView;
+        this.feed2 = feed2;
+        this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
     public View getView() {
         LinearLayout ll = new LinearLayout(mContext);
-        // LayoutParams layoutParams = new LinearLayout.LayoutParams((CommonUtility.getDeviceWidth(mContext) / 3) - 40, LinearLayout.LayoutParams.WRAP_CONTENT);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, (CommonUtility.getDeviceHeight(mContext)*4/30 ));
+//        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         layoutParams.setMargins(5, 0, 5, 0);
         int size = 0;
-        if (data != null)
-            size = data.size();
-        if (feed != null)
-            size = feed.size();
-        for (int i = 0; i < size; i++) {
-            View convertView = mInflater.inflate(R.layout.adapter_featured_images_view, null);
-
-            ImageView activity_product_list_product_image = (ImageView) convertView.findViewById(R.id.activity_product_list_product_image);
-
-
-            if ((data != null && data.size() > i) || (feed != null && feed.size() > i)) {
-                if (data != null)
-                    CommonUtility.setImage(mContext, data.get(i).getProductimageurl(), activity_product_list_product_image);
-                if (feed != null) {
-                    // CommonUtility.setImage(mContext, feed.get(i).getProfile_pic(), activity_product_list_product_image);
-                    CommonUtility.setImage(mContext,activity_product_list_product_image, feed.get(i).getInspiration_image());
-                }
+        if (feed2 != null) {
+            size = feed2.size();
+            for (int i = 0; i < size&&i<4; i++) {
+                View convertView = mInflater.inflate(R.layout.adapter_featured_images_view, null);
+                ImageView activity_product_list_product_image = (ImageView) convertView.findViewById(R.id.activity_product_list_product_image);
+                CommonUtility.setImage(mContext, activity_product_list_product_image, feed2.get(i));
                 activity_product_list_product_image.setVisibility(View.VISIBLE);
+                convertView.setLayoutParams(layoutParams);
+                ll.addView(convertView);
+                convertView.setTag(i);
+            }if (size > 4) {
+                RelativeLayout convertView = (RelativeLayout) mInflater.inflate(R.layout.layout_load_more2, null);
+                loadMore = (TextView) convertView.findViewById(R.id.textView1);
+                loadMore.setTypeface(FontUtility.setMontserratLight(mContext));
+                loadMore.setTextSize(20);
+                RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams((CommonUtility.getDeviceHeight(mContext)*4/30), (CommonUtility.getDeviceHeight(mContext)*4/30));
+                layoutParams2.setMargins(5, 0, 5, 0);
+                convertView.setLayoutParams(layoutParams2);
+                ll.addView(convertView);
+            }
+        } else {
+            if (data != null)
+                size = data.size();
+            if (feed != null)
+                size = feed.size();
+            for (int i = 0; i < size&&i<4; i++) {
+                View convertView = mInflater.inflate(R.layout.adapter_featured_images_view, null);
 
-            } else
-                activity_product_list_product_image.setImageResource(R.drawable.white_image);
-            convertView.setLayoutParams(layoutParams);
-            ll.addView(convertView);
-            convertView.setTag(i);
-            ViewGroup.LayoutParams params = convertView.getLayoutParams();
+                ImageView activity_product_list_product_image = (ImageView) convertView.findViewById(R.id.activity_product_list_product_image);
 
-        }
 
-        if (size > 4) {
-            RelativeLayout convertView = (RelativeLayout) mInflater.inflate(R.layout.layout_load_more2, null);
-            loadMore =(TextView) convertView.findViewById(R.id.textView1);
-            loadMore.setTypeface(FontUtility.setMontserratLight(mContext));
-            LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutParams2.setMargins(5, 0, 5, 0);
+                if ((data != null && data.size() > i) || (feed != null && feed.size() > i)) {
+                    if (data != null)
+                        CommonUtility.setImage(mContext, data.get(i).getProductimageurl(), activity_product_list_product_image);
+                    if (feed != null) {
+                        CommonUtility.setImage(mContext, activity_product_list_product_image, feed.get(i).getInspiration_image());
+                    }
+                    activity_product_list_product_image.setVisibility(View.VISIBLE);
 
-            //convertView.setBackgroundColor(mContext.getResources().getColor(R.color.transparent));
-            convertView.setLayoutParams(layoutParams2);
-            ll.addView(convertView);
+                } else
+                    activity_product_list_product_image.setImageResource(R.drawable.white_image);
+                convertView.setLayoutParams(layoutParams);
+                ll.addView(convertView);
+                convertView.setTag(i);
+//                ViewGroup.LayoutParams params = convertView.getLayoutParams();
+
+            }
+
+            if (size > 4) {
+                RelativeLayout convertView = (RelativeLayout) mInflater.inflate(R.layout.layout_load_more2, null);
+                loadMore = (TextView) convertView.findViewById(R.id.textView1);
+                loadMore.setTypeface(FontUtility.setMontserratLight(mContext));
+                RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams((CommonUtility.getDeviceHeight(mContext)*4/30), (CommonUtility.getDeviceHeight(mContext)*4/30 ));
+                layoutParams2.setMargins(5, 0, 5, 0);
+                loadMore.setTextSize(20);
+                convertView.setLayoutParams(layoutParams2);
+                ll.addView(convertView);
+            }
         }
         return ll;
     }

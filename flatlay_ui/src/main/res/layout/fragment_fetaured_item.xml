@@ -56,157 +56,169 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_marginRight="5dp"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="9dp"
-                card_view:cardElevation="5dp"
-                card_view:cardUseCompatPadding="false">
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--card_view:cardBackgroundColor="@android:color/white"-->
+                <!--card_view:cardCornerRadius="9dp"-->
+                <!--card_view:cardElevation="5dp"-->
+                <!--card_view:cardUseCompatPadding="false">-->
 
-                <ImageView
-                    android:id="@+id/image1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="@dimen/buy_option_height" />
-            </android.support.v7.widget.CardView>
+                <!--<ImageView-->
+                    <!--android:id="@+id/image1"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:maxHeight="@dimen/buy_option_height" />-->
+            <!--</android.support.v7.widget.CardView>-->
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_marginRight="5dp"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="9dp"
-                card_view:cardElevation="5dp"
-                card_view:cardUseCompatPadding="false">
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--card_view:cardBackgroundColor="@android:color/white"-->
+                <!--card_view:cardCornerRadius="9dp"-->
+                <!--card_view:cardElevation="5dp"-->
+                <!--card_view:cardUseCompatPadding="false">-->
 
-                <ImageView
-                    android:id="@+id/image2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="@dimen/buy_option_height" />
-            </android.support.v7.widget.CardView>
+                <!--<ImageView-->
+                    <!--android:id="@+id/image2"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:maxHeight="@dimen/buy_option_height" />-->
+            <!--</android.support.v7.widget.CardView>-->
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_marginRight="5dp"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="9dp"
-                card_view:cardElevation="5dp"
-                card_view:cardUseCompatPadding="false">
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--card_view:cardBackgroundColor="@android:color/white"-->
+                <!--card_view:cardCornerRadius="9dp"-->
+                <!--card_view:cardElevation="5dp"-->
+                <!--card_view:cardUseCompatPadding="false">-->
 
-                <ImageView
-                    android:id="@+id/image3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="@dimen/buy_option_height" />
-            </android.support.v7.widget.CardView>
+                <!--<ImageView-->
+                    <!--android:id="@+id/image3"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:maxHeight="@dimen/buy_option_height" />-->
+            <!--</android.support.v7.widget.CardView>-->
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_marginRight="5dp"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="9dp"
-                card_view:cardElevation="5dp"
-                card_view:cardUseCompatPadding="false">
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--card_view:cardBackgroundColor="@android:color/white"-->
+                <!--card_view:cardCornerRadius="9dp"-->
+                <!--card_view:cardElevation="5dp"-->
+                <!--card_view:cardUseCompatPadding="false">-->
 
-                <ImageView
-                    android:id="@+id/image4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="@dimen/buy_option_height" />
-            </android.support.v7.widget.CardView>
+                <!--<ImageView-->
+                    <!--android:id="@+id/image4"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:maxHeight="@dimen/buy_option_height" />-->
+            <!--</android.support.v7.widget.CardView>-->
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_marginRight="5dp"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="9dp"
-                card_view:cardElevation="5dp"
-                card_view:cardUseCompatPadding="false">
+            <!--<TextView-->
+                <!--android:id="@+id/view_all_text"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:text="View All"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="16dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:background="@drawable/btn_simple_white_border3"/>-->
 
-                <ImageView
-                    android:id="@+id/image5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="@dimen/buy_option_height" />
-            </android.support.v7.widget.CardView>
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--card_view:cardBackgroundColor="@android:color/white"-->
+                <!--card_view:cardCornerRadius="9dp"-->
+                <!--card_view:cardElevation="5dp"-->
+                <!--card_view:cardUseCompatPadding="false">-->
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_marginRight="5dp"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="9dp"
-                card_view:cardElevation="5dp"
-                card_view:cardUseCompatPadding="false">
+                <!--<ImageView-->
+                    <!--android:id="@+id/image5"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:maxHeight="@dimen/buy_option_height" />-->
+            <!--</android.support.v7.widget.CardView>-->
 
-                <ImageView
-                    android:id="@+id/image6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="@dimen/buy_option_height" />
-            </android.support.v7.widget.CardView>
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--card_view:cardBackgroundColor="@android:color/white"-->
+                <!--card_view:cardCornerRadius="9dp"-->
+                <!--card_view:cardElevation="5dp"-->
+                <!--card_view:cardUseCompatPadding="false">-->
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_marginRight="5dp"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="9dp"
-                card_view:cardElevation="5dp"
-                card_view:cardUseCompatPadding="false">
+                <!--<ImageView-->
+                    <!--android:id="@+id/image6"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:maxHeight="@dimen/buy_option_height" />-->
+            <!--</android.support.v7.widget.CardView>-->
 
-                <ImageView
-                    android:id="@+id/image7"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="@dimen/buy_option_height" />
-            </android.support.v7.widget.CardView>
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--card_view:cardBackgroundColor="@android:color/white"-->
+                <!--card_view:cardCornerRadius="9dp"-->
+                <!--card_view:cardElevation="5dp"-->
+                <!--card_view:cardUseCompatPadding="false">-->
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_marginRight="5dp"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="9dp"
-                card_view:cardElevation="5dp"
-                card_view:cardUseCompatPadding="false">
+                <!--<ImageView-->
+                    <!--android:id="@+id/image7"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="70dp"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:maxHeight="@dimen/buy_option_height" />-->
+            <!--</android.support.v7.widget.CardView>-->
 
-                <ImageView
-                    android:id="@+id/image8"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="@dimen/buy_option_height" />
-            </android.support.v7.widget.CardView>
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--card_view:cardBackgroundColor="@android:color/white"-->
+                <!--card_view:cardCornerRadius="9dp"-->
+                <!--card_view:cardElevation="5dp"-->
+                <!--card_view:cardUseCompatPadding="false">-->
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardCornerRadius="9dp"
-                card_view:cardElevation="5dp"
-                card_view:cardUseCompatPadding="false">
+                <!--<ImageView-->
+                    <!--android:id="@+id/image8"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:maxHeight="@dimen/buy_option_height" />-->
+            <!--</android.support.v7.widget.CardView>-->
 
-                <ImageView
-                    android:id="@+id/image9"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="@dimen/buy_option_height" />
-            </android.support.v7.widget.CardView>
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="70dp"-->
+                <!--card_view:cardBackgroundColor="@android:color/white"-->
+                <!--card_view:cardCornerRadius="9dp"-->
+                <!--card_view:cardElevation="5dp"-->
+                <!--card_view:cardUseCompatPadding="false">-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/image9"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="70dp"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:maxHeight="@dimen/buy_option_height" />-->
+            <!--</android.support.v7.widget.CardView>-->
 
             <!--<android.support.v7.widget.CardView-->
                 <!--android:layout_width="wrap_content"-->

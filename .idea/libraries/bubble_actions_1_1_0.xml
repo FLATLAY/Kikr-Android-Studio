@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="bubble-actions-1.1.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/61ad50d393fe768594886c1a595473fe6fc2f5c7/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/61ad50d393fe768594886c1a595473fe6fc2f5c7/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.samthompson/bubble-actions/1.1.0/a7d00c0b5790f35514b252ada2cc2d9d4453ae34/bubble-actions-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

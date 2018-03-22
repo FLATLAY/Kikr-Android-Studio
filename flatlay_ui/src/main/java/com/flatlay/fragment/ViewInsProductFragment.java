@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
+import com.flatlay.adapter.AllInsProductAdapter;
 import com.flatlay.adapter.ProductDetailGridAdapter;
 import com.flatlay.utility.FontUtility;
 import com.flatlaylib.bean.Product;
@@ -24,10 +25,10 @@ import java.util.List;
 
 public class ViewInsProductFragment extends BaseFragment {
     private GridView products_grid;
-    private ProductDetailGridAdapter productDetailGridAdapter;
+    private AllInsProductAdapter allInsProductAdapter;
     private View mainView;
     private List<Product> data;
-    private RelativeLayout backIconLayout;
+    private LinearLayout backIconLayout;
     private TextView nameText, likeCount;
     private ImageView heartIcon;
     private int totalLikeCount = 0;
@@ -61,20 +62,20 @@ public class ViewInsProductFragment extends BaseFragment {
     public void setData(Bundle bundle) {
 //        data = (List<Product>) bundle.getSerializable("data");
         products_grid = (GridView) mainView.findViewById(R.id.products_grid);
-        backIconLayout = (RelativeLayout) mainView.findViewById(R.id.backIconLayout);
+        backIconLayout = (LinearLayout) mainView.findViewById(R.id.backIconLayout);
         backIconLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mContext.onBackPressed();
             }
         });
-        productDetailGridAdapter = new ProductDetailGridAdapter(mContext, data, 1);
+        allInsProductAdapter = new AllInsProductAdapter(mContext, data);
         likeCount = (TextView) mainView.findViewById(R.id.likeCount);
         likeCount.setTypeface(FontUtility.setMontserratLight(mContext));
         nameText = (TextView) mainView.findViewById(R.id.nameText);
         nameText.setTypeface(FontUtility.setMontserratLight(mContext));
         heartIcon = (ImageView) mainView.findViewById(R.id.heartIcon);
-        products_grid.setAdapter(productDetailGridAdapter);
+        products_grid.setAdapter(allInsProductAdapter);
         if (index == 0) {
             likeCount.setVisibility(View.VISIBLE);
             nameText.setVisibility(View.VISIBLE);

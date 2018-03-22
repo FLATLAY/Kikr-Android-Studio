@@ -37,7 +37,7 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
 
     public static final int RIGHT = 2;
 
-    private TintFloatingActionButton fab;
+//    private TintFloatingActionButton fab;
 
     private FrameLayout contentFrame;
 
@@ -122,8 +122,7 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
                     overflowGestureListener.slide(-350);
 //                    overflowGestureListener.setInitialYPosition(getInitialYPosition());
                     setClose();
-                }
-                else {
+                } else {
                     Log.e("isOpened", "isNotOpened");
                     overflowGestureListener.slide(0);
                     setOpen();
@@ -131,15 +130,15 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
             }
         });
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT , 100);
+                ViewGroup.LayoutParams.MATCH_PARENT, 100);
         FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(
                 70, 70);
         params.gravity = Gravity.CENTER | Gravity.BOTTOM;
         params2.gravity = Gravity.CENTER;
-        layout1.addView(backarrow90,params2);
+        layout1.addView(backarrow90, params2);
         this.addView(layout1, params);
         overflowGestureListener = new MyOverFlowGesListener2(this, backarrow90);
-        // fab.setOnTouchListener(overflowGestureListener.getMotionEvent());
+        layout1.setOnTouchListener(overflowGestureListener.getMotionEvent());
 
         contentFrame.setOnTouchListener(overflowGestureListener.getMotionEvent());
     }
@@ -358,11 +357,11 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
         Log.e("detached", "1");
         super.onDetachedFromWindow();
         overflowGestureListener.clearReferences();
-        ViewCompat.setBackgroundTintList(fab, null);
-        fab.setImageResource(0);
-        fab.setImageDrawable(null);
-        fab.setImageBitmap(null);
-        fab = null;
+//        ViewCompat.setBackgroundTintList(fab, null);
+//        fab.setImageResource(0);
+//        fab.setImageDrawable(null);
+//        fab.setImageBitmap(null);
+//        fab = null;
         contentFrame = null;
     }
 

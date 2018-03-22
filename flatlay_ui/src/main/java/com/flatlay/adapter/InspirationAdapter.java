@@ -469,21 +469,21 @@ public class InspirationAdapter extends BaseAdapter {
         }
 
         viewholder.follow_btn.setTypeface(font);
-        if (getItem(position).getIs_followed() != null && follow_map.get(getItem(position).getUsername()).equals("yes")) {
-            viewholder.follow_btn.setText("Following");
-            viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_borderbg_gray));
-            viewholder.follow_btn.setTextColor(Color.parseColor("#000000"));
-            int paddingPixel = 5;
-            float density = mContext.getResources().getDisplayMetrics().density;
-            int paddingDp = (int) (paddingPixel * density);
-            viewholder.follow_btn.setPadding(paddingDp, 0, paddingDp, 0);
-
-        } else {
-            viewholder.follow_btn.setText(" Follow + ");
-            viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
-            viewholder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
-            viewholder.follow_btn.setPadding(17, 0, 17, 0);
-        }
+//        if (getItem(position).getIs_followed() != null && follow_map.get(getItem(position).getUsername()).equals("yes")) {
+//            viewholder.follow_btn.setText("Following");
+//            viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.btn_borderbg_gray));
+//            viewholder.follow_btn.setTextColor(Color.parseColor("#000000"));
+//            int paddingPixel = 5;
+//            float density = mContext.getResources().getDisplayMetrics().density;
+//            int paddingDp = (int) (paddingPixel * density);
+//            viewholder.follow_btn.setPadding(paddingDp, 0, paddingDp, 0);
+//
+//        } else {
+//            viewholder.follow_btn.setText(" Follow + ");
+//            viewholder.follow_btn.setBackground(mContext.getResources().getDrawable(R.drawable.followgreen));
+//            viewholder.follow_btn.setTextColor(mContext.getResources().getColor(R.color.white));
+//            viewholder.follow_btn.setPadding(17, 0, 17, 0);
+//        }
 
 
         if (Integer.parseInt(getItem(position).getLike_count()) > 0) {
@@ -540,25 +540,25 @@ public class InspirationAdapter extends BaseAdapter {
 
         viewholder.commentCount.setText(getItem(position).getComment_count());
 
-        viewholder.follow_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getItem(position).getIs_followed() != null) {
-                    if (follow_map.get(getItem(position).getUsername()).equals("no")) {
-                        // getItem(position).getIs_followed().equals("no")
-                        follow_map.put(getItem(position).getUsername(), "yes");
-                        getItem(position).setIs_followed("yes");
-                        notifyDataSetChanged();
-                        ((HomeActivity) mContext).followUser(getItem(position).getUser_id());
-                    } else {
-                        follow_map.put(getItem(position).getUsername(), "no");
-                        getItem(position).setIs_followed("no");
-                        notifyDataSetChanged();
-                        ((HomeActivity) mContext).unFollowUser(getItem(position).getUser_id());
-                    }
-                }
-            }
-        });
+//        viewholder.follow_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (getItem(position).getIs_followed() != null) {
+//                    if (follow_map.get(getItem(position).getUsername()).equals("no")) {
+//                        // getItem(position).getIs_followed().equals("no")
+//                        follow_map.put(getItem(position).getUsername(), "yes");
+//                        getItem(position).setIs_followed("yes");
+//                        notifyDataSetChanged();
+//                        ((HomeActivity) mContext).followUser(getItem(position).getUser_id());
+//                    } else {
+//                        follow_map.put(getItem(position).getUsername(), "no");
+//                        getItem(position).setIs_followed("no");
+//                        notifyDataSetChanged();
+//                        ((HomeActivity) mContext).unFollowUser(getItem(position).getUser_id());
+//                    }
+//                }
+//            }
+//        });
 
         // TO BE CHANGED
         /*
@@ -731,7 +731,7 @@ public class InspirationAdapter extends BaseAdapter {
 
         if (UserPreference.getInstance().getUserID().equals(getItem(position).getUser_id())) {
             viewholder.deletePost.setVisibility(View.VISIBLE);
-            viewholder.follow_btn.setVisibility(View.GONE);
+//            viewholder.follow_btn.setVisibility(View.GONE);
             viewholder.userImage.setVisibility(View.GONE);
             viewholder.linearLayout2.setVisibility(View.GONE);
         } else {

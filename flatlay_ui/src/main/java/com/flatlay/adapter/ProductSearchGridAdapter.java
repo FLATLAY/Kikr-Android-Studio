@@ -94,7 +94,7 @@ public class ProductSearchGridAdapter extends BaseAdapter {
         }
         viewholder.layout1.setVisibility(View.GONE);
         Log.e("current", "image-"+getItem(position).getProductimageurl());
-
+        if(products.size()>position)
         CommonUtility.setImage(mContext, viewholder.productImage, getItem(position).getProductimageurl());
         return convertView;
     }

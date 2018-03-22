@@ -399,7 +399,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="1"></LinearLayout>
+                    android:layout_weight="1.2"></LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -581,9 +581,12 @@
                         android:id="@+id/imagesList"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="23dp"
-                        android:layout_marginRight="23dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="10dp"
                         android:cacheColorHint="#00000000"
+                        android:verticalSpacing="10dp"
+                        android:horizontalSpacing="10dp"
                         android:listSelector="@android:color/transparent"
                         android:numColumns="3"
                         android:scrollbars="none"></GridView>
@@ -604,10 +607,12 @@
                         android:id="@+id/feedDetail"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="23dp"
-                        android:layout_marginRight="23dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
                         android:cacheColorHint="#00000000"
+                        android:verticalSpacing="15dp"
+                        android:horizontalSpacing="15dp"
+                        android:layout_marginTop="15dp"
                         android:listSelector="@android:color/transparent"
                         android:numColumns="2"
                         android:scrollbars="none"
@@ -617,9 +622,11 @@
                         android:id="@+id/productDetail"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="23dp"
-                        android:layout_marginRight="23dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:verticalSpacing="15dp"
+                        android:horizontalSpacing="15dp"
+                        android:layout_marginTop="10dp"
                         android:cacheColorHint="#00000000"
                         android:listSelector="@android:color/transparent"
                         android:numColumns="2"
@@ -650,7 +657,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="1.5"></LinearLayout>
+                    android:layout_weight="1.2"></LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -806,7 +813,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="1.5"></LinearLayout>
+                    android:layout_weight="1.2"></LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/notification_title"
@@ -1443,7 +1450,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1.5"
+                        android:layout_weight="0.5"
                         android:gravity="center"
                         android:orientation="horizontal"></LinearLayout>
                 </LinearLayout>
@@ -1590,8 +1597,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:text="$0 - $25"
+                                android:text=" $0 - $25"
                                 android:textAlignment="center"
+                                android:gravity="center"
+                                android:layout_gravity="center"
                                 android:textColor="@color/white"
                                 android:textSize="16dp" />
 
@@ -1601,6 +1610,8 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:text="$25 - $50"
+                                android:gravity="center"
+                                android:layout_gravity="center"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textSize="16dp" />
@@ -1610,7 +1621,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:text="$50 - $100"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:text=" $50 - $100"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textSize="16dp" />
@@ -1619,6 +1632,8 @@
                                 android:id="@+id/price_text_100"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
+                                android:gravity="center"
+                                android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:text="$100 - $150"
                                 android:textAlignment="center"
@@ -1638,6 +1653,8 @@
                             <TextView
                                 android:id="@+id/price_text_200"
                                 android:layout_width="match_parent"
+                                android:gravity="center"
+                                android:layout_gravity="center"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:text="$200 - $500"
@@ -1649,6 +1666,8 @@
                                 android:id="@+id/price_text_500"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
+                                android:gravity="center"
+                                android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:text="$500 - $750"
                                 android:textAlignment="center"
@@ -1659,6 +1678,8 @@
                                 android:id="@+id/price_text_750"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
+                                android:gravity="center"
+                                android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:text="$750+"
                                 android:textAlignment="center"
@@ -1730,6 +1751,9 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="23dp"
                             android:layout_marginRight="23dp"
+                            android:verticalSpacing="10dp"
+                            android:horizontalSpacing="10dp"
+                            android:layout_marginTop="10dp"
                             android:cacheColorHint="#00000000"
                             android:listSelector="@android:color/transparent"
                             android:numColumns="4"
@@ -1753,10 +1777,10 @@
                     </RelativeLayout>
                 </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"></LinearLayout>
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:layout_weight="1"></LinearLayout>-->
 
                 <LinearLayout
                     android:id="@+id/shops_layout"
@@ -1770,18 +1794,21 @@
                         android:id="@+id/shopList"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="23dp"
-                        android:layout_marginRight="23dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
                         android:cacheColorHint="#00000000"
+                        android:horizontalSpacing="10dp"
+                        android:layout_marginTop="10dp"
+                        android:verticalSpacing="10dp"
                         android:listSelector="@android:color/transparent"
                         android:numColumns="3"
                         android:scrollbars="none"></GridView>
                 </LinearLayout>
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"></LinearLayout>-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"></LinearLayout>
             </LinearLayout>
         </RelativeLayout>
     </com.flatlay.utility.MyMaterialContentOverflow3>
@@ -1804,7 +1831,7 @@
                 android:id="@+id/profile_tab"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:gravity="center">
 
                 <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"

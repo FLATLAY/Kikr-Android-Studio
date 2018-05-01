@@ -25,10 +25,12 @@ import com.flatlaylib.utils.StringUtils;
 public class EmailActivity extends BaseActivity implements OnKeyListener,
 		OnClickListener {
 	private EditText mEmailEditText;
+	public final static String TAG="EditProfileActivity";
 
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		Log.w(TAG,"EmailActivity");
 		UserPreference.getInstance().setCurrentScreen(Screen.EmailScreen);
 		CommonUtility.noTitleActivity(context);
 		setContentView(R.layout.activity_email);

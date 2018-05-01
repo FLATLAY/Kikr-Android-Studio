@@ -84,6 +84,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     private Uri picUri;
     private final int CROP_PIC = 1006;
     private int index = 0;
+    public final static String TAG="EditProfileActivity";
     private String[] socialInfo = new String[5],
             originSocial = {"https://www.facebook.com/",
                     "https://www.instagram.com/", "https://www.pinterest.com/",
@@ -107,6 +108,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.w(TAG,"EditProfileActivity");
         if (getIntent().hasExtra("is_edit_profile")) {
             isEditProfile = getIntent().getBooleanExtra("is_edit_profile", false);
         } else {
@@ -284,7 +286,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 //                    save2.setVisibility(View.INVISIBLE);
 //                }
                 index = 4;
-                Log.e("ahhhhh", UserPreference.getInstance().getUserTube());
+                Log.e(TAG, UserPreference.getInstance().getUserTube());
                 break;
 
 //            case R.id.editTextView:
@@ -438,7 +440,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                     usernameEditText.setText(userDetails.get(0).getUsername());
                     oldUsername = userDetails.get(0).getUsername();
                     nameTextView.setText(oldUsername);
-                    Log.e("oldddddd", oldUsername);
+                    Log.e(TAG, oldUsername);
                     setOldSocial();
 
                 } else
@@ -515,7 +517,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         });
         socialDetailApi.getProfileByUserName(oldUsername);
         socialDetailApi.execute();
-        Log.e("oldddddd222", oldUsername);
+        Log.e(TAG, oldUsername);
     }
 
     @Override

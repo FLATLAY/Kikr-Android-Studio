@@ -266,9 +266,7 @@ public class MyMaterialContentOverflow4 extends FrameLayout {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        fabTotalHeight = backarrow90.getHeight() +
-                fabMargin + /*bottom margin*/
-                fabMargin;  /*top margin*/
+        fabTotalHeight = 70;
 
         initialYPosition = getInitialYPosition();
 

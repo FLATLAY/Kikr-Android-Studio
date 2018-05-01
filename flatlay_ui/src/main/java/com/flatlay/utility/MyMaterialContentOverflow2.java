@@ -54,20 +54,17 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
     public MyMaterialContentOverflow2(Context context) {
         super(context);
         init(context, null, 0, 0);
-        Log.e("create", "1");
 
     }
 
     public MyMaterialContentOverflow2(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs, 0, 0);
-        Log.e("create", "2");
     }
 
     public MyMaterialContentOverflow2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs, defStyleAttr, 0);
-        Log.e("create", "3");
     }
 
     @TargetApi(21)
@@ -77,7 +74,6 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
     }
 
     public void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        Log.e("init", "1");
         TypedArray a = context.obtainStyledAttributes(
                 attrs,
                 R.styleable.MaterialContentOverflow,
@@ -89,20 +85,17 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
         int buttonPosition = 0;
 
         try {
-            Log.e("init", "2");
             buttonDrawable = a.getResourceId(R.styleable.MaterialContentOverflow_buttonDrawable, 0);
             buttonColor = a.getResourceId(R.styleable.MaterialContentOverflow_fabButtonColor, 0);
             contentColor = a.getResourceId(R.styleable.MaterialContentOverflow_contentColor, 0);
             buttonPosition = a.getInt(R.styleable.MaterialContentOverflow_buttonPosition, 0);
         } finally {
-            Log.e("init", "3");
             a.recycle();
             makeView(context, buttonDrawable, buttonColor, contentColor, buttonPosition);
         }
     }
 
     public void makeView(Context context, int buttonDrawable, int buttonColor, int contentColor, int buttonPosition) {
-        Log.e("makeview", "1");
         FrameLayout contentFrame = createContentFrame(context, contentColor);
 
 //        FloatingActionButton fab = createFab(context, buttonDrawable, buttonColor, buttonPosition);
@@ -118,12 +111,10 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
             @Override
             public void onClick(View view) {
                 if (overflowGestureListener.isOpened()) {
-                    Log.e("isOpened", "isOpened");
                     overflowGestureListener.slide(-350);
 //                    overflowGestureListener.setInitialYPosition(getInitialYPosition());
                     setClose();
                 } else {
-                    Log.e("isOpened", "isNotOpened");
                     overflowGestureListener.slide(0);
                     setOpen();
                 }
@@ -137,16 +128,18 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
         params2.gravity = Gravity.CENTER;
         layout1.addView(backarrow90, params2);
         this.addView(layout1, params);
-        overflowGestureListener = new MyOverFlowGesListener2(this, backarrow90);
+        overflowGestureListener = new MyOverFlowGesListener2(this, backarrow90,new MyOverFlowGesListener2.OnCloseListener() {
+            @Override
+            public void onClose() {
+            }
+        });
         layout1.setOnTouchListener(overflowGestureListener.getMotionEvent());
 
         contentFrame.setOnTouchListener(overflowGestureListener.getMotionEvent());
     }
 
     private FrameLayout createContentFrame(Context context, int contentColor) {
-        Log.e("framelayout", "1");
         if (contentFrame == null) {
-            Log.e("framelayout", "2");
             contentFrame = new FrameLayout(this.getContext());
             contentFrame.setTag("FRAME");
         }
@@ -237,7 +230,6 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        Log.e("onmeasure", "1");
 
         setPadding(0, 0, 0, 0);
 
@@ -273,31 +265,23 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
 
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
-        Log.e("addView", "1");
         if (child.getTag() == null) {
-            Log.e("addView", "2");
             child.setTag("FOO");
         }
         if (!child.getTag().equals("FAB")) {
-            Log.e("addView", "3");
             if (!child.getTag().equals("FRAME")) {
-                Log.e("addView", "4");
                 if (contentFrame == null) {
-                    Log.e("addView", "5");
                     contentFrame = new FrameLayout(this.getContext());
                     contentFrame.setTag("FRAME");
                 }
                 contentFrame.addView(child, index, params);
             } else {
-                Log.e("addView", "6");
                 super.addView(child, index, params);
             }
         } else {
-            Log.e("addView", "7");
             super.addView(child, index, params);
         }
         if (child.getTag().equals("FOO")) {
-            Log.e("addView", "8");
             child.setTag(null);
         }
     }
@@ -305,35 +289,29 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        Log.e("layout", "1");
-        fabTotalHeight = backarrow90.getHeight() +
-                fabMargin + /*bottom margin*/
-                fabMargin;  /*top margin*/
+//        fabTotalHeight = backarrow90.getHeight() +
+//                fabMargin + /*bottom margin*/
+//                fabMargin;  /*top margin*/
 
+        fabTotalHeight=70;
         initialYPosition = getInitialYPosition();
-        Log.e("layouttt1", String.valueOf(initialYPosition));
-
 
         if (overflowGestureListener.isOpened() && !isFocus) {
-            Log.e("layout", "2");
             ViewHelper.setY(this, 0f);
         } else {
-            Log.e("layout", "3");
             if (!isFocus)
-                ViewHelper.setY(this, initialYPosition + (float) (fabTotalHeight * 2.5));
+                ViewHelper.setY(this, initialYPosition + (float) (fabTotalHeight * 1.5));
             else
-                ViewHelper.setY(this, initialYPosition + (float) (fabTotalHeight * 0.9));
+                ViewHelper.setY(this, initialYPosition + (float) (fabTotalHeight * 1.5));
 
         }
 
         if (!overflowGestureListener.isOpened()) {
-            Log.e("layout", "4");
             if (!isFocus)
-                overflowGestureListener.setInitialYPosition((float) (fabTotalHeight * 2.5) - ((ViewGroup) this.getParent()).getHeight());
+                overflowGestureListener.setInitialYPosition((float) (fabTotalHeight * 1.5) - ((ViewGroup) this.getParent()).getHeight());
             else
-                overflowGestureListener.setInitialYPosition((float) (fabTotalHeight * 0.9) - ((ViewGroup) this.getParent()).getHeight());
+                overflowGestureListener.setInitialYPosition((float) (fabTotalHeight * 1.5) - ((ViewGroup) this.getParent()).getHeight());
 
-            Log.e("layouttt2", String.valueOf(((ViewGroup) this.getParent()).getHeight()));
 
         }
 

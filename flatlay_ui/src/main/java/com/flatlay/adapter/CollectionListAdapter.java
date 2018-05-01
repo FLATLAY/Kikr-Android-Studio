@@ -37,6 +37,7 @@ public class CollectionListAdapter extends BaseAdapter implements ServiceCallbac
     private List<CollectionList> data;
     private Product product;
     private CollectionListDialog collectionListDialog;
+    final String TAG = "CollectionListAdapter";
 
     public CollectionListAdapter(FragmentActivity context, List<CollectionList> data,
                                  Product productId, CollectionListDialog collectionListDialog) {
@@ -46,7 +47,7 @@ public class CollectionListAdapter extends BaseAdapter implements ServiceCallbac
         this.product = productId;
         this.collectionListDialog = collectionListDialog;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Log.w("Activity", "CollectionListAdapter");
+        Log.w(TAG, "CollectionListAdapter");
     }
 
     public void setData(List<CollectionList> data) {

@@ -22,6 +22,7 @@ import com.flatlaylib.db.DatabaseHelper;
 
 //test
 public class KikrApp extends BranchApp {
+	public static final String TAG = "KikrApp";
 
 	private static DatabaseHelper mDatabaseHelper;
 	private boolean mAddressValidForPromo;
@@ -39,7 +40,7 @@ public class KikrApp extends BranchApp {
 	public void onCreate() {
 		super.onCreate();
 		//Fabric.with(this, new Crashlytics());
-		Log.w("Activity","KikrApp");
+		Log.w(TAG,"KikrApp");
 		AppContext context = AppContext.getInstance();
 		context.setContext(this);
 		mDatabaseHelper = DatabaseHelper.getIntance(this);

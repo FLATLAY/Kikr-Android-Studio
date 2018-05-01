@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,11 +35,14 @@ public class ForgotPassword extends BaseFragment implements OnKeyListener,
     private TextView mBackToLanding, mForgotPassword;
     private Button mReset;
     private View mainView;
+    public final static String TAG="ForgotPassword";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.activity_email2, container, false);
+        Log.w(TAG,"ForgotPassword");
         return mainView;
     }
 

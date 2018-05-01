@@ -32,6 +32,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected FragmentActivity context;
     protected DisplayMetrics mDisplayMetrics;
+    public static final String TAG = "BaseActivity";
 
     public abstract void initLayout();
 
@@ -46,7 +47,7 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        Log.w("Activity","BaseActivity");
+        Log.w(TAG,"BaseActivity");
         context = (BaseActivity) this;
         mDisplayMetrics = new DisplayMetrics();
         addActivity();

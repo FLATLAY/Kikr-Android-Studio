@@ -35,6 +35,7 @@ import java.util.Set;
 public class FbSignActivity extends BaseActivity {
 
     public static final String KEY_USER = "KEY_USER";
+    public final static String TAG = "FbSignActivity";
 
     private LoginButton btnFacebookLogin;
     private CallbackManager callbackManager;
@@ -45,7 +46,7 @@ public class FbSignActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.w("Activity:", "FbSignActivity");
+        Log.w(TAG, "FbSignActivity");
         FacebookSdk.sdkInitialize(getApplicationContext());
         CommonUtility.noTitleActivity(context);
         isGetFriendList = getIntent().getBooleanExtra("getFriendList", false);
@@ -59,7 +60,7 @@ public class FbSignActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-        Log.w("FbSignActivity", "onResume()");
+        Log.w(TAG, "onResume()");
         AccessToken token = AccessToken.getCurrentAccessToken();
         if (token != null && !token.isExpired()) {
             getFacebookMeInfo(token);
@@ -78,12 +79,12 @@ public class FbSignActivity extends BaseActivity {
                         }
 
                         @Override
-                        public void onCancel () {
+                        public void onCancel() {
                             finish();
                         }
 
                         @Override
-                        public void onError (FacebookException e){
+                        public void onError(FacebookException e) {
                             e.printStackTrace();
                             AlertUtils.showToast(context, "Facebook login failed.");
                             finish();
@@ -116,7 +117,7 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private void getFacebookMeInfo(AccessToken accessToken) {
-        Log.w("FbSignActivity","getFacebookMeInfo");
+        Log.w(TAG, "getFacebookMeInfo");
         GraphRequest me = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
             @Override
             public void onCompleted(JSONObject user, GraphResponse response) {
@@ -127,10 +128,10 @@ public class FbSignActivity extends BaseActivity {
                             requestMyAppFacebookFriends(token);
                         }
                     } else if (isGetProfilePic) {
+                        getProfilePic(user);
                     } else {
                         buildUserDataAndDoSignIn(user);
                     }
-                    getProfilePic(user);
                 } else {
                     AlertUtils.showToast(context,
                             "Error in getting Facebook Profile Data.");
@@ -145,6 +146,7 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private void getProfilePic(JSONObject user) {
+        Log.w("FbSignActivity","getProfilePic");
         URL url = null;
         String fb_id = "";
         try {
@@ -154,25 +156,24 @@ public class FbSignActivity extends BaseActivity {
         }
         try {
             url = new URL("http://graph.facebook.com/" + fb_id + "/picture?type=large");
-            UserPreference.getInstance().setProfilePic(url.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
         Intent intent = new Intent();
         intent.putExtra("profile_pic", url.toString());
-        UserPreference.getInstance().setProfilePic(url.toString());
         setResult(RESULT_OK, intent);
         finish();
     }
 
     private void buildUserDataAndDoSignIn(JSONObject graphUser) {
+        Log.w("FbSignActivity","buildUserDataAndDoSignIn:"+graphUser.toString());
 
-        String fb_id = "", name = "", email="", username = "", gender = "", birthday = "", link = "",
-                location = "";
+        String fb_id = "", name = "", email="", username = "", gender = "", birthday = "", link = "", location = "";
 
         try {
             fb_id = graphUser.getString("id");
             name = graphUser.getString("name");
+            Log.w("FbSignActivity","Name: "+name);
             email = graphUser.getString("email");
             UserPreference.getInstance().setEmail(name);
             UserPreference.getInstance().setEmail(email);
@@ -191,6 +192,7 @@ public class FbSignActivity extends BaseActivity {
             ex.printStackTrace();
         }
 
+
         URL url = null;
         try {
             url = new URL("http://graph.facebook.com/" + fb_id + "/picture?type=large");
@@ -198,6 +200,23 @@ public class FbSignActivity extends BaseActivity {
             e.printStackTrace();
         }
         String address = "";
+
+        /*
+        String birthday = graphUser.getBirthday() != null ? graphUser.getBirthday() : "";
+        String link = graphUser.getLink() != null ? graphUser.getLink() : "";
+        GraphPlace graphPlace = graphUser.getLocation();
+        GraphLocation location = graphPlace != null ? graphPlace.getLocation() : null;
+
+        if (location != null) {
+            String street = location.getStreet() != null ? location.getStreet() : "";
+            String city = location.getCity() != null ? location.getCity() : "";
+            String state = location.getState() != null ? location.getState() : "";
+            String country = location.getCountry() != null ? location.getCountry() : "";
+            String zipCode = location.getZip() != null ? location.getZip() : "";
+            address = street + " " + city + " " + state + " " + country + " " + zipCode;
+        }
+*/
+
         Intent intent = new Intent();
         intent.putExtra("id", fb_id);
         intent.putExtra("email", email);
@@ -210,6 +229,8 @@ public class FbSignActivity extends BaseActivity {
         intent.putExtra("profile_pic", url.toString());
         setResult(RESULT_OK, intent);
         Syso.info("address>>" + address);
+
+        //getDetailsFromFacebook(graphUser);
         finish();
 
     }

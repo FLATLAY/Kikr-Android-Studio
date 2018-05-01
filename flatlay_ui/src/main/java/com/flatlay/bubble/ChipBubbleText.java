@@ -18,11 +18,12 @@ public class ChipBubbleText {
     private int threshold;
     private Context context;
     private ChipPropery chipPropery;
+    final String TAG = "ChipBubbleText";
 
     public ChipBubbleText(Context context, MultiAutoCompleteTextView multiAutoCompleteTextView,
                           String[] adapterValue, int threshold) {
         super();
-        Log.w("Activity","ChipBubbleText");
+        Log.w(TAG,"ChipBubbleText");
         this.context = context;
         this.multiAutoCompleteTextView = multiAutoCompleteTextView;
         this.adapterValue = adapterValue;

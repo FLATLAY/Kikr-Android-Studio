@@ -259,6 +259,10 @@ public class CommonUtility {
         Picasso.with(context) .load(url) .resize(180, 180) .into(imageView);
     }
 
+    public static void setImageNoResize(Activity context, ImageView imageView, String url){
+        Picasso.with(context) .load(url) .into(imageView);
+    }
+
     public static void setImageHigh(Activity context, ImageView imageView, String url){
         Picasso.with(context) .load(url) .resize(400, 400) .into(imageView);
     }
@@ -310,6 +314,24 @@ public class CommonUtility {
         startDate = outputFormat.format(date);
         return startDate;
     }
+
+
+    public static String getDateFormat2(String dateStr) {
+        String inputPattern = "yyyy-MM-dd";
+        String outputPattern = "MM/dd/yy";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+        Date date = null;
+        String startDate = null;
+        try {
+            date = inputFormat.parse(dateStr);
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        startDate = outputFormat.format(date);
+        return startDate;
+    }
+
 
     public static String setChangeDateFormat(String dateStr) {
         String inputPattern = "yyyy-MM-dd";

@@ -30,11 +30,14 @@ public class InspirationCommentsUI {
     private LayoutInflater mInflater;
     private List<Comment> data = new ArrayList<Comment>();
     private FragmentInspirationDetail fragmentInspirationDetail;
+    private CommentUIListener listener;
 
-    public InspirationCommentsUI(FragmentActivity context, List<Comment> data, FragmentInspirationDetail fragmentInspirationDetail) {
+
+    public InspirationCommentsUI(FragmentActivity context, List<Comment> data, FragmentInspirationDetail fragmentInspirationDetail,CommentUIListener listener) {
         super();
         this.mContext = context;
         this.data = data;
+        this.listener=listener;
         this.fragmentInspirationDetail = fragmentInspirationDetail;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -73,6 +76,13 @@ public class InspirationCommentsUI {
                 CommonUtility.setImage(mContext, data.get(i).getProfile_pic(), userImage, R.drawable.profile_icon);
             else
                 userImage.setImageResource(R.drawable.profile_icon);
+            final int index=i;
+            userImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onClickAtOKButton(index);
+                }
+            });
 
             if (UserPreference.getInstance().getUserID().equals(data.get(i).getUser_id())){
                 deletecomment.setVisibility(View.GONE);
@@ -120,5 +130,8 @@ public class InspirationCommentsUI {
 
         return ll;
     }
+    public interface CommentUIListener { // create an interface
 
+        void onClickAtOKButton(int position);
+    }
 }

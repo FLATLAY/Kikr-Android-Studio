@@ -37,24 +37,22 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
     private MyOverFlowGesListener2 overflowGestureListener;
     private float initialYPosition;
     private int fabMargin, index = -1, fabTotalHeight;
+    private OnCloseListener listener;
 
     public MyMaterialContentOverflow3(Context context) {
         super(context);
         init(context, null, 0, 0);
-        Log.e("overflow-create", "1");
     }
 
     public MyMaterialContentOverflow3(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs, 0, 0);
-        Log.e("overflow-create", "2");
     }
 
     public MyMaterialContentOverflow3(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         init(context, attrs, defStyleAttr, 0);
-        Log.e("overflow-create", "3");
     }
 
     @TargetApi(21)
@@ -65,7 +63,6 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
     }
 
     public void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        Log.e("overflow-init", "1");
         TypedArray a = context.obtainStyledAttributes(
                 attrs,
                 R.styleable.MaterialContentOverflow,
@@ -77,13 +74,11 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
         int buttonPosition = 0;
 
         try {
-            Log.e("overflow-init", "2");
             buttonDrawable = a.getResourceId(R.styleable.MaterialContentOverflow_buttonDrawable, 0);
             buttonColor = a.getResourceId(R.styleable.MaterialContentOverflow_fabButtonColor, 0);
             contentColor = a.getResourceId(R.styleable.MaterialContentOverflow_contentColor, 0);
             buttonPosition = a.getInt(R.styleable.MaterialContentOverflow_buttonPosition, 0);
         } finally {
-            Log.e("overflow-init", "3");
 
             a.recycle();
             makeView(context, buttonDrawable, buttonColor, contentColor, buttonPosition);
@@ -91,7 +86,6 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
     }
 
     public void makeView(Context context, int buttonDrawable, int buttonColor, int contentColor, int buttonPosition) {
-        Log.e("overflow-makeview", "1");
         FrameLayout contentFrame = createContentFrame(context, contentColor);
 
 //        FloatingActionButton fab = createFab(context, buttonDrawable, buttonColor, buttonPosition);
@@ -113,17 +107,20 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
         params2.gravity = Gravity.CENTER;
         layout1.addView(backarrow90,params2);
         this.addView(layout1, params);
-        overflowGestureListener = new MyOverFlowGesListener2(this, backarrow90);
+        overflowGestureListener = new MyOverFlowGesListener2(this, backarrow90, new MyOverFlowGesListener2.OnCloseListener() {
+            @Override
+            public void onClose() {
+                listener.onClose();
+            }
+        });
         layout1.setOnTouchListener(overflowGestureListener.getMotionEvent());
 
         contentFrame.setOnTouchListener(overflowGestureListener.getMotionEvent());
     }
 
     private FrameLayout createContentFrame(Context context, int contentColor) {
-        Log.e("overflow-framelayout", "1");
 
         if (contentFrame == null) {
-            Log.e("overflow-framelayout", "2");
 
             contentFrame = new FrameLayout(this.getContext());
             contentFrame.setTag("FRAME");
@@ -224,7 +221,6 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        Log.e("overflow-onmeasure", "1");
 
         setPadding(0, 0, 0, 0);
 
@@ -261,38 +257,30 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
 
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
-        Log.e("overflow-addView", "1");
 
         if (child.getTag() == null) {
-            Log.e("overflow-addView", "2");
 
             child.setTag("FOO");
         }
         if (!child.getTag().equals("FAB")) {
-            Log.e("overflow-addView", "3");
 
             if (!child.getTag().equals("FRAME")) {
-                Log.e("overflow-addView", "4");
 
                 if (contentFrame == null) {
-                    Log.e("overflow-addView", "5");
 
                     contentFrame = new FrameLayout(this.getContext());
                     contentFrame.setTag("FRAME");
                 }
                 contentFrame.addView(child, index, params);
             } else {
-                Log.e("overflow-addView", "6");
 
                 super.addView(child, index, params);
             }
         } else {
-            Log.e("overflow-addView", "7");
 
             super.addView(child, index, params);
         }
         if (child.getTag().equals("FOO")) {
-            Log.e("overflow-addView", "8");
 
             child.setTag(null);
         }
@@ -300,29 +288,19 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        Log.e("overflow-layout", "1");
-
         fabTotalHeight = backarrow90.getHeight() +
                 fabMargin + /*bottom margin*/
                 fabMargin;  /*top margin*/
 
         initialYPosition = getInitialYPosition();
-        Log.e("overflow-layouttt1", String.valueOf(initialYPosition));
 
-        Log.e("overflow-slide","1--"+overflowGestureListener.isOpened());
         if (overflowGestureListener.isOpened()) {
-            Log.e("overflow-layout", "2");
-
             ViewHelper.setY(this, 0f);
         } else {
-            Log.e("overflow-layout", "3");
-
             ViewHelper.setY(this, initialYPosition);
         }
 
         if (!overflowGestureListener.isOpened()) {
-            Log.e("overflow-layout", "4");
-
             overflowGestureListener.setInitialYPosition(initialYPosition);
         }
 
@@ -338,22 +316,24 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
 //            contentFrame.setPadding(0, fabTotalHeight, 0, 0);
 //        }
 
-        Log.e("overflow-onlayout", String.valueOf(changed));
-
         super.onLayout(changed, left, top, right, bottom);
     }
 
     private float getInitialYPosition() {
-        Log.e("overflow-ypos", "1");
 
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,
                 fabTotalHeight * 2 / 3 - ((ViewGroup) this.getParent()).getHeight(),
                 getResources().getDisplayMetrics());
     }
 
+//    public void setInitialYPosition(){
+//        overflowGestureListener.setInitialYPosition(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,
+//                fabTotalHeight * 2 / 3 - ((ViewGroup) this.getParent()).getHeight(),
+//                getResources().getDisplayMetrics()));
+//    }
+
     @Override
     protected void onDetachedFromWindow() {
-        Log.e("overflow-detached", "1");
 
         super.onDetachedFromWindow();
         overflowGestureListener.clearReferences();
@@ -369,13 +349,26 @@ public class MyMaterialContentOverflow3 extends FrameLayout {
         overflowGestureListener.slide(0);
     }
 
+    public void triggerClose() {
+        overflowGestureListener.slide(-350);
+    }
+
+
     public void setOpen() {
-        Log.e("overflow-layout", "SETOPEN");
 
         overflowGestureListener.setIsOpened(true);
     }
 
+    public interface OnCloseListener {
+
+        void onClose();
+    }
+
     public boolean isOpen(){
         return overflowGestureListener.isOpened();
+    }
+
+    public void setOnCloseListener(OnCloseListener listener){
+        this.listener=listener;
     }
 }

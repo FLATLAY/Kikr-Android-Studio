@@ -19,8 +19,10 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.OrientationEventListener;
@@ -39,10 +41,14 @@ import com.desmond.squarecamera.CameraSettingPreferences;
 import com.desmond.squarecamera.ImageParameters;
 import com.desmond.squarecamera.ResizeAnimation;
 import com.desmond.squarecamera.SquareCameraPreview;
+import com.flatlay.BaseFragment;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
+import com.soundcloud.android.crop.Crop;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -50,12 +56,15 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
+import static android.app.Activity.RESULT_OK;
+
 public class CameraFragment extends Fragment implements SurfaceHolder.Callback, Camera.PictureCallback {
 
-    public static final String TAG = CameraFragment.class.getSimpleName();
+    public static final String TAG = "CameraFragment";
     public static final String CAMERA_ID_KEY = "camera_id";
     public static final String CAMERA_FLASH_KEY = "flash_mode";
     public static final String IMAGE_INFO = "image_info";
+    protected FragmentActivity mContext;
 
     private static final int PICTURE_SIZE_MAX_WIDTH = 1280;
     private static final int PREVIEW_SIZE_MAX_WIDTH = 640;
@@ -80,7 +89,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
     }
 
     public CameraFragment() {
-        Log.w("test","testing4");
+        Log.w(TAG,"testing4");
     }
 
     @Override
@@ -93,7 +102,8 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.w("CameraFragment","Camera Fragment onCreate()");
+        Log.w(TAG,"Camera Fragment onCreate()");
+        mContext = getActivity();
         if (savedInstanceState == null) {
             mCameraID = getBackCameraID();
             mFlashMode = CameraSettingPreferences.getCameraFlashMode(getActivity());
@@ -121,7 +131,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         } catch (Exception ex) {
             Syso.info(ex.getMessage());
         }
-        Log.w("test","testing2");
+        Log.w(TAG,"testing2");
         mPreviewView.getHolder().addCallback(CameraFragment.this);
 
         mImageParameters.mIsPortrait =
@@ -182,7 +192,6 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
             @Override
             public void onClick(View v) {
                 findDoubleClick();
-
                 if (mHasDoubleClicked) {
                     setFlashMode();
                     mHasDoubleClicked = false;
@@ -220,10 +229,10 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         final TextView autoFlashIcon = (TextView) view.findViewById(R.id.auto_flash_icon);
         if (Camera.Parameters.FLASH_MODE_AUTO.equalsIgnoreCase(mFlashMode) || Camera.Parameters.FLASH_MODE_ON.equalsIgnoreCase(mFlashMode)) {
             autoFlashIcon.setText("Auto");
-            flash_icon.setImageResource(R.drawable.flash);
+            flash_icon.setImageResource(R.drawable.flash_icon_yes);
         } else if (Camera.Parameters.FLASH_MODE_OFF.equalsIgnoreCase(mFlashMode)) {
             autoFlashIcon.setText("Off");
-            flash_icon.setImageResource(R.drawable.flash_icon_gray);
+            flash_icon.setImageResource(R.drawable.flash_icon_no);
         }
     }
 
@@ -304,7 +313,6 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         try {
             mCamera.setPreviewDisplay(mSurfaceHolder);
             mCamera.startPreview();
-
             setSafeToTakePhoto(true);
             setCameraFocusReady(true);
         } catch (IOException e) {
@@ -466,7 +474,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
 
 
     private void takePicture() {
-        Log.w("CameraFragment","takePicture()");
+        Log.w(TAG,"takePicture()");
         if (mIsSafeToTakePhoto) {
             setSafeToTakePhoto(false);
 
@@ -532,19 +540,67 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.w("CameraFragment","onActivityResult 1");
-        if (resultCode != Activity.RESULT_OK) return;
-        Log.w("CameraFragment","onActivityResult 2");
-        switch (requestCode) {
-            case 1:
-                Uri imageUri = data.getData();
-                break;
+//        if (resultCode != Activity.RESULT_OK) return;
+//        switch (requestCode) {
+//            case 1:
+//                Uri imageUri = data.getData();
+//                break;
+//
+//            default:
+//                super.onActivityResult(requestCode, resultCode, data);
+//        }
+        Log.e("resu and req code", requestCode + " -- " + resultCode);
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("resu and req code", requestCode + " -- " + resultCode);
 
-            default:
-                super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Log.w("onActivityResultFPUT", "1");
+                String filePath = Environment.getExternalStorageDirectory()
+                        + "/temporary_holder.jpg";
+                Bitmap thumbnail = BitmapFactory.decodeFile(filePath);
+                inspirationImageUrl = filePath;
+                goToNext(thumbnail);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        } else if (resultCode == RESULT_OK) {
+
+            Log.e("req code", requestCode + "");
+            if (requestCode == UCrop.REQUEST_CROP) {
+                String filePath = Environment.getExternalStorageDirectory()
+                        + "/temporary_holder.jpg";
+
+                Log.w("onActivityResultFPUT", "****FPUT: " + filePath);
+
+                Bitmap thumbnail = BitmapFactory.decodeFile(filePath);
+                //Log.w("onActivityResultFPUT","****2");
+
+                inspirationImageUrl = filePath;
+                goToNext(thumbnail);
+                //Log.w("onActivityResultFPUT","****3");
+
+
+            } else if (requestCode == Crop.REQUEST_PICK) {
+                //Log.w("onActivityResultFPUT","REQUEST_PICK");
+                Uri destination = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
+                Crop crop = new Crop(data.getData());
+                crop.output(destination).asSquare().start(mContext); //Check the Max Size
+            }
         }
     }
 
+    String inspirationImageUrl;
+
+    public void goToNext(Bitmap thumbnail) {
+        Log.w("FragmentPUTag", "gotoNext");
+        if (thumbnail != null || inspirationImageUrl != null) {
+            ((HomeActivity)mContext).addFragment(new FragmentPostUploadTag(thumbnail, inspirationImageUrl, String.valueOf(false)));
+        } else {
+            AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
+        }
+    }
 
     private Bitmap rotatePicture(int rotation, Bitmap bitmap) {
 
@@ -566,7 +622,6 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
 
     @Override
     public void onPictureTaken(final byte[] data, Camera camera) {
-        Log.w("CameraFragment","onPictureTaken");
         final int rotation = getPhotoRotation();
 //        final ProgressBarDialog mProgressBarDialog = new ProgressBarDialog(getActivity());
 //        mProgressBarDialog.show();
@@ -580,14 +635,14 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
                 //                image.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
                 //                String path = MediaStore.Images.Media.insertImage(mContext.getContentResolver(), image, "Title", null);
                 Uri url = resizeBitmapFitXY(image.getWidth(), image.getHeight(), image);
-                Log.w("CameraFragment","Going into startCropActivity(): "+image.getHeight());
+                Log.w(TAG,"Going into startCropActivity(): "+image.getHeight());
                 ((HomeActivity) getActivity()).startCropActivity(url);
                 return null;
             }
 
             @Override
             protected void onPostExecute(Void aVoid) {
-                Log.w("CameraFragment","Back from startCropActivity/doInBackground()");
+                Log.w(TAG,"Back from startCropActivity/doInBackground()");
                 super.onPostExecute(aVoid);
                 //takePhotoBtn.setEnabled(true);
 //                if (mProgressBarDialog.isShowing())
@@ -606,7 +661,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         int height = bm.getHeight();
         int maxWidth = 600;
         int maxHeight = 450;
-        Log.v("CameraFragment", "Width and height are " + width + "--" + height);
+        Log.v(TAG, "Width and height are " + width + "--" + height);
 
         if (width > height) {
             // landscape
@@ -624,14 +679,14 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
             width = maxWidth;
         }
 
-        Log.w("Pictures", "after scaling Width and height are " + width + "--" + height);
+        Log.w(TAG, "after scaling Width and height are " + width + "--" + height);
 
         bm = Bitmap.createScaledBitmap(bm, width, height, true);
         return bm;
     }
 
     public Uri resizeBitmapFitXY(int width, int height, Bitmap bitmap) {
-        Log.w("CameraFragment","resizeBitmapFitXY()");
+        Log.w(TAG,"resizeBitmapFitXY()");
         try {
             Bitmap background = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
             float originalWidth = bitmap.getWidth(), originalHeight = bitmap.getHeight();

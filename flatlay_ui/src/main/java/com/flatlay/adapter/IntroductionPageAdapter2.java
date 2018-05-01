@@ -20,11 +20,12 @@ public class IntroductionPageAdapter2 extends PagerAdapter {
     private FragmentActivity mContext;
    // int images[] = new int[]{R.layout.introduction_screen, R.layout.introduction_screen, R.layout.introduction_screen, R.layout.introduction_screen};
     LayoutInflater inflater;
+    final String TAG = "IntroductionPageAda2";
 
     public IntroductionPageAdapter2(FragmentActivity mContext) {
         this.mContext = mContext;
         inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Log.w("Activity", "IntroductionPagerAdapter");
+        Log.w(TAG, "IntroductionPagerAdapter");
     }
 
     @Override

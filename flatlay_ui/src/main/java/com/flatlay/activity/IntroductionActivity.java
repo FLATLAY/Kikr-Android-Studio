@@ -2,6 +2,7 @@ package com.flatlay.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.flatlay.utility.MyCirclePageIndicator;
 
 public class IntroductionActivity extends BaseFragment {
     private View mainView;
+    public final static String TAG="IntroductionActivity";
 
     ViewPager tutorialImageView;
     TextView closeButton;
@@ -29,6 +31,7 @@ public class IntroductionActivity extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.introduction, container, false);
+        Log.w(TAG,"IntroductionActivity");
         return mainView;
     }
 

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/overflow_layout10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"></LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/credit_debit_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_whitebg">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/credit_card" />
+
+                <TextView
+                    android:id="@+id/credit_debit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="CREDIT / DEBIT CARD"
+                    android:textAlignment="center"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dip"
+                    android:layout_weight="5"
+                    android:background="@color/white" />
+
+                <TextView
+                    android:id="@+id/or_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text=" OR "
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dip"
+                    android:layout_weight="5"
+                    android:background="@color/white" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/add_paypal_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_whitebg">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/paypal_1" />
+
+                <TextView
+                    android:id="@+id/paypal_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="PAYPAL"
+                    android:textAlignment="center"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/dummylayout2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/overflow_layout11"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2.5"></LinearLayout>
+
+            <TextView
+                android:id="@+id/title_credit_debit_text"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="CREDIT / DEBIT CARD"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/name_card_text"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:text="Name on Card"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/name_card_text2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:background="@drawable/topsearch_red_border"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/card_num_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="left|center_vertical"
+                    android:text="Card Number"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"></TextView>
+
+                <TextView
+                    android:id="@+id/dummylayout6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <TextView
+                    android:id="@+id/ccv_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:text="CCV"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/card_num_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:background="@drawable/topsearch_red_border"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"></EditText>
+
+                <TextView
+                    android:id="@+id/dummylayout7"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <EditText
+                    android:id="@+id/ccv_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/topsearch_red_border"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"></EditText>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/expiration_text"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:text="Expiration Date"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/expiration_text2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:background="@drawable/topsearch_red_border"
+                android:hint="00/0000"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/check_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="left|center_vertical"
+                    android:src="@drawable/box_default" />
+
+                <TextView
+                    android:id="@+id/default_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:text="Set as default payment"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dummylayout3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.8" />
+
+            <TextView
+                android:id="@+id/save_card_button"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1.2"
+                android:background="@drawable/green_corner_button"
+                android:gravity="center"
+                android:text="    Save Card    "
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/dummylayout4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:id="@+id/cancel_text"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="CANCEL"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/dummylayout5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

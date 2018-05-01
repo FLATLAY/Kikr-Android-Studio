@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,11 +35,13 @@ public class ResetPassword extends BaseFragment implements OnKeyListener,
     private TextView mResetPass, mbackToLanding,resendPinButton;
     private Button mReset;
     private View mainView;
+    public final static String TAG="ResetPassword";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.reset2, container, false);
+        Log.w(TAG,"ResetPassword");
         return mainView;
     }
 

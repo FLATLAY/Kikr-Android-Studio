@@ -78,7 +78,7 @@ public class FacebookSocialNetwork extends SocialNetwork {
     /*** Social network ID in asne modules, should be unique*/
     public static final int ID = 4;
 
-    private static final String PERMISSION = "publish_actions";
+    private static final String PERMISSION = "publish_actions", TAG="FacebookSocialNetwork";
     private Fragment fragment;
     private CallbackManager callbackManager;
     private com.github.gorbin.asne.core.AccessToken accessToken;
@@ -464,13 +464,13 @@ public class FacebookSocialNetwork extends SocialNetwork {
             if (bundle.getString(BUNDLE_LINK) != null) {
                 link = Uri.parse(bundle.getString(BUNDLE_LINK));
             } else {
-                Log.e("FaceboolSocialNetwork:", "requestPostDialog required URL to share!");
+                Log.e(TAG, "requestPostDialog required URL to share!");
             }
             if (bundle.getString(BUNDLE_PICTURE) != null) {
                 pictureLink = Uri.parse(bundle.getString(BUNDLE_PICTURE));
             }
 
-            Log.w("Facebook Social Network","Here is the ContentURL"+link);
+            Log.w(TAG,"Here is the ContentURL"+link);
 
             ShareLinkContent linkContent = new ShareLinkContent.Builder()
                     .setContentTitle(bundle.getString(BUNDLE_NAME))
@@ -630,19 +630,19 @@ public class FacebookSocialNetwork extends SocialNetwork {
                 ShareApi.share(content, new FacebookCallback<Sharer.Result>() {
                     @Override
                     public void onSuccess(Sharer.Result result) {
-                        Log.v("FACEBOOK_TEST", "share api success");
+                        Log.v(TAG, "share api success");
                         publishSuccess(REQUEST_POST_MESSAGE, null);
                     }
 
                     @Override
                     public void onCancel() {
-                        Log.v("FACEBOOK_TEST", "share api cancel");
+                        Log.v(TAG, "share api cancel");
                         publishSuccess(REQUEST_POST_MESSAGE, "postRequestMessage canceled");
                     }
 
                     @Override
                     public void onError(FacebookException e) {
-                        Log.v("FACEBOOK_TEST", "share api error " + e);
+                        Log.v(TAG, "share api error " + e);
                         publishSuccess(REQUEST_POST_MESSAGE, e.toString());
                     }
                 });
@@ -670,19 +670,19 @@ public class FacebookSocialNetwork extends SocialNetwork {
                 ShareApi.share(content, new FacebookCallback<Sharer.Result>() {
                     @Override
                     public void onSuccess(Sharer.Result result) {
-                        Log.v("FACEBOOK_TEST", "share api success");
+                        Log.v(TAG, "share api success");
                         publishSuccess(REQUEST_POST_PHOTO, null);
                     }
 
                     @Override
                     public void onCancel() {
-                        Log.v("FACEBOOK_TEST", "share api cancel");
+                        Log.v(TAG, "share api cancel");
                         publishSuccess(REQUEST_POST_PHOTO, "postRequestPhoto canceled");
                     }
 
                     @Override
                     public void onError(FacebookException e) {
-                        Log.v("FACEBOOK_TEST", "share api error " + e);
+                        Log.v(TAG, "share api error " + e);
                         publishSuccess(REQUEST_POST_PHOTO, e.toString());
                     }
                 });
@@ -716,13 +716,13 @@ public class FacebookSocialNetwork extends SocialNetwork {
         if (bundle.getString(BUNDLE_LINK) != null) {
             link = Uri.parse(bundle.getString(BUNDLE_LINK));
         } else {
-            Log.e("FaceboolSocialNetwork:", "requestPostLink required URL to share!");
+            Log.e(TAG, "requestPostLink required URL to share!");
             publishSuccess(REQUEST_POST_LINK, "postRequestLink required URL to share!");
         }
         if (bundle.getString(BUNDLE_PICTURE) != null) {
             pictureLink = Uri.parse(bundle.getString(BUNDLE_PICTURE));
         }
-        Log.w("Facebook Social Network","Here is the ContentURL"+link);
+        Log.w(TAG,"Here is the ContentURL"+link);
         ShareLinkContent content = new ShareLinkContent.Builder()
                 .setContentTitle(bundle.getString(BUNDLE_NAME))
                 .setContentDescription(bundle.getString(BUNDLE_MESSAGE))
@@ -737,19 +737,19 @@ public class FacebookSocialNetwork extends SocialNetwork {
                 ShareApi.share(content, new FacebookCallback<Sharer.Result>() {
                     @Override
                     public void onSuccess(Sharer.Result result) {
-                        Log.v("FACEBOOK_TEST", "share api success");
+                        Log.v(TAG, "share api success");
                         publishSuccess(REQUEST_POST_LINK, null);
                     }
 
                     @Override
                     public void onCancel() {
-                        Log.v("FACEBOOK_TEST", "share api cancel");
+                        Log.v(TAG, "share api cancel");
                         publishSuccess(REQUEST_POST_LINK, "postRequestLink canceled");
                     }
 
                     @Override
                     public void onError(FacebookException e) {
-                        Log.v("FACEBOOK_TEST", "share api error " + e);
+                        Log.v(TAG, "share api error " + e);
                         publishSuccess(REQUEST_POST_LINK, e.toString());
                     }
                 });

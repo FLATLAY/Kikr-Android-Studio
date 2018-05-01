@@ -15,7 +15,7 @@ import com.flatlay.activity.HomeActivity;
 
 public class AutocompleteCustomArrayAdapter extends ArrayAdapter<String> {
 
-    final String TAG = "AutocompleteCustomArrayAdapter.java";
+    final String TAG = "AutocompleteCustom";
 
     Context mContext;
     int layoutResourceId;
@@ -28,7 +28,7 @@ public class AutocompleteCustomArrayAdapter extends ArrayAdapter<String> {
         this.layoutResourceId = layoutResourceId;
         this.mContext = mContext;
         this.data = data;
-        Log.w("Activity","AutoCompleteCustomArrayAdapter");
+        Log.w(TAG,"AutoCompleteCustomArrayAdapter");
     }
     @Override
     public int getCount() {

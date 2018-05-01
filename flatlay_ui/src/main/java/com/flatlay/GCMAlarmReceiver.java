@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.flatlay.activity.HomeActivity;
 import com.flatlaylib.db.AppPreference;
@@ -20,13 +21,14 @@ import java.util.Calendar;
 
 public class GCMAlarmReceiver extends BroadcastReceiver{
 
-
+	public static final String TAG = "GCMAlarmReceiver";
 	public static String FROM_ORDER_NOTIFICATION = "from_order_notification";
 	private static int NOTIFICATION_WAIT_TIME = 60; //in minute
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		Syso.info("uuuuuuuuuuuuuu>>>>>>>>> in GCMAlarmReceiver onReceive");
+		Log.w(TAG,"GCMAlarmReceiver");
 		if(intent.hasExtra("from")&&intent.getStringExtra("from").equals(FROM_ORDER_NOTIFICATION)){
 			String message = "Your order has been processed, please check status in orders";
 			String purchase_id = intent.getStringExtra("purchase_id");
@@ -48,7 +50,7 @@ public class GCMAlarmReceiver extends BroadcastReceiver{
 	private void setNotification(Context context,String message,String section,String otherdata) {
 		Syso.info("uuuuuuuuuuuuuu>>>>>>>>> in setNotification");
 		NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
-		notificationBuilder.setSmallIcon(R.drawable.flatlayhomeimage);
+		notificationBuilder.setSmallIcon(R.drawable.imgpsh_smallsize);
 		notificationBuilder.setTicker(message);
 		notificationBuilder.setContentTitle(context.getString(R.string.app_name));
 		notificationBuilder.setContentText(message);

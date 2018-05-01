@@ -53,6 +53,7 @@ public class ProductSearchGridAdapter extends BaseAdapter {
     private List<ProductResult> products;
     private String postlink;
     private static String SHARE_POST_LINK = "Find it @FLATLAY http://flat-lay.com/product/";
+    final String TAG = "ProductSearchGrid";
 
     public ProductSearchGridAdapter(FragmentActivity context, List<ProductResult> products) {
         super();
@@ -93,7 +94,7 @@ public class ProductSearchGridAdapter extends BaseAdapter {
             viewholder = (ViewHolder) convertView.getTag();
         }
         viewholder.layout1.setVisibility(View.GONE);
-        Log.e("current", "image-"+getItem(position).getProductimageurl());
+        Log.e(TAG, "image-"+getItem(position).getProductimageurl());
         if(products.size()>position)
         CommonUtility.setImage(mContext, viewholder.productImage, getItem(position).getProductimageurl());
         return convertView;

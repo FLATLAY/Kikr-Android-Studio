@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
@@ -30,6 +31,7 @@ import com.flatlaylib.utils.Syso;
 
 public class FollowCategoriesNewActivity extends BaseActivity implements OnClickListener, ServiceCallback {
     private ListView listView;
+    public final static String TAG="FollowCategoriesNew";
     private FollowCategoryNewAdapter categoryAdapter;
     private LinearLayout backIconLayout;
     //  public static TextView mRightText;
@@ -43,6 +45,7 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        Log.w(TAG,"FollowCategoriesNewActivity");
         CommonUtility.noTitleActivity(context);
         UserPreference.getInstance().setCurrentScreen(Screen.CategoryScreen);
         setContentView(R.layout.activity_follow_categories_new);

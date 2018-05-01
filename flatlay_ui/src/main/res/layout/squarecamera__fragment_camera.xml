@@ -8,7 +8,6 @@
         android:id="@+id/camera_preview_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_margin="0dp"
         android:padding="0dp" />
 
@@ -17,28 +16,24 @@
         android:id="@+id/camera_tools_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
-        android:background="#33000000"
-
-
-        android:padding="10dp">
+        android:background="#33000000">
 
         <LinearLayout
-            android:id="@+id/camera_tools_view"
+            android:id="@+id/camera_tools_view1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:gravity="center"
+            android:background="@drawable/topdrawer6"
             android:orientation="horizontal"
-            android:padding="5dp">
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/change_camera"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:src="@drawable/refresh" />
+                android:src="@drawable/camara_switch" />
 
             <ImageView
                 android:id="@+id/capture_image_button"
@@ -46,7 +41,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
 
-                android:src="@drawable/captureimage" />
+                android:src="@drawable/capture_image" />
 
             <LinearLayout
                 android:id="@+id/flash"
@@ -60,7 +55,7 @@
                     android:id="@+id/flash_icon"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/flash_icon_gray" />
+                    android:src="@drawable/flash_icon_no" />
 
                 <TextView
                     android:id="@+id/auto_flash_icon"

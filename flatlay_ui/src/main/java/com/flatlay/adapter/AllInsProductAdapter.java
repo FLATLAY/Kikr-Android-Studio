@@ -135,6 +135,7 @@ public class AllInsProductAdapter extends BaseAdapter {
                                     createAccountDialog.show();
                                 } else {
                                     CollectionListDialog collectionListDialog = new CollectionListDialog(mContext, product);
+                                    collectionListDialog.getWindow().setBackgroundDrawableResource(R.color.real_transparent);
                                     collectionListDialog.show();
                                 }
                             }

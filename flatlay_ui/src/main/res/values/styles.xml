@@ -12,7 +12,6 @@
         -->
     </style>
 
-
     <!--<item name="colorPrimary">@color/header_background</item>-->
     <!--<item name="colorPrimaryDark">@color/header_background</item>-->
     <!--<item name="colorAccent">@color/colorAccent</item-->
@@ -85,6 +84,7 @@
         <!-- active thumb & track color (30% transparency) -->
         <item name="colorControlActivated">@color/white</item>
         <!-- inactive thumb color -->
+        <item name="colorControlNormal">@color/white</item>
         <item name="colorSwitchThumbNormal">@color/white</item>
         <!-- inactive track color (30% transparency) -->
         <item name="android:colorForeground">@color/white</item>

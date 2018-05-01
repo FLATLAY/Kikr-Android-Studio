@@ -56,6 +56,8 @@ public class ProductDetailWebViewActivity extends BaseActivity implements OnClic
     private List<String> favoriteDealsIdList;
     private MyMaterialContentOverflow4 overflow1;
     private int index = 0;
+    public final static String TAG="ProductDetailWeb";
+
     //    private ScrollView infoLayout;
     private GestureDetector gestureDetector;
     private ContextMenuView contextMenuBg;
@@ -68,6 +70,7 @@ public class ProductDetailWebViewActivity extends BaseActivity implements OnClic
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        Log.w(TAG,"ProductDetailWebViewActivity");
         CommonUtility.noTitleActivity(context);
         setContentView(R.layout.fragment_product_detail_webview);
         Bundle extras = getIntent().getExtras();
@@ -197,7 +200,6 @@ public class ProductDetailWebViewActivity extends BaseActivity implements OnClic
         backIconLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("back", "back");
                 finish();
             }
         });

@@ -19,6 +19,7 @@
     <color name="darkgray">#727272</color>
     <color name="tab_color">#089b87</color>
     <color name="transparent">#80000000</color>
+    <color name="real_transparent">#00000000</color>
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>

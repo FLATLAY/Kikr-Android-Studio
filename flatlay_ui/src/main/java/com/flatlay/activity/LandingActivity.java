@@ -55,6 +55,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
     private boolean isFromFacebook = false;
     private LinearLayout layoutReferred;
     private RoundImageView user_profile_image;
+    public final static String TAG="LandingActivity";
     private TextView user_profile_name, earn250;
     public static String referred_userid = "-1";
     private SharedPreferences userSettings, temp;
@@ -65,7 +66,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
                              Bundle savedInstanceState) {
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mainView = inflater.inflate(R.layout.landing2, container, false);
-        Log.e("Landing", "LandingStarted");
+        Log.w(TAG,"LandingActivity");
         temp = getActivity().getSharedPreferences("fromRemove", 0);
         userSettings = getActivity().getSharedPreferences("UserSettings", 0);
         SharedPreferences.Editor editor = userSettings.edit();
@@ -73,6 +74,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
         editor.apply();
         return mainView;
     }
+
 
     @Override
     public void onClick(View v) {
@@ -180,6 +182,9 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
             String gender = data.getStringExtra("gender");
             mUsername = data.getStringExtra("name");
             mProfilePic = data.getStringExtra("profile_pic");
+            if(mProfilePic!=null){
+            Log.e("Imaggeeeee-on",mProfilePic);
+            UserPreference.getInstance().setProfilePic(mProfilePic);}
             String g = gender != null ? gender : DEFAULT_GENDER;
             mEmail = email;
             name = data.getStringExtra("name");
@@ -221,6 +226,10 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
             UserPreference.getInstance().setIsCreateWalletPin(true);
             UserPreference.getInstance().setCartID(response.getCart_id());
             UserPreference.getInstance().setAccessToken(response.gettoken());
+            if(mProfilePic!=null) {
+                Log.e("Imaggeeeee-s", response.getProfile_pic());
+                UserPreference.getInstance().setProfilePic(response.getProfile_pic());
+            }
             setHelpPreference();
             Bundle bundle = new Bundle();
             bundle.putString("email", mEmail);

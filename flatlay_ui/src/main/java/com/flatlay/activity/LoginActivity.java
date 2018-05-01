@@ -37,12 +37,13 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
     private TextView mBackButton, mLogin,mForgotPassword;
     private Button mLoginButton;
     private EditText mEmailEditText, mPasswordEditText;
-    //private ProgressBarDialog progressBarDialog;
+    public final static String TAG="LoginActivity";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.login2, container, false);
+        Log.w(TAG,"LoginActivity");
         return mainView;
     }
 
@@ -190,7 +191,7 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
 
     private void loginViaEamil(String email, String password) {
         final LoginUserApi service = new LoginUserApi(this);
-        Log.e("tokennnnn",CommonUtility.getDeviceTocken(mContext));
+        Log.e(TAG,CommonUtility.getDeviceTocken(mContext));
         service.loginViaEmail(email, password, DeviceUtils.getPhoneModel(),
                 CommonUtility.getDeviceTocken(getActivity()), "android",
                 CommonUtility.getDeviceId(getActivity()));
@@ -206,7 +207,6 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
             UserPreference.getInstance().setUserID(response.getId());
             UserPreference.getInstance().setIsCreateWalletPin(true);
             UserPreference.getInstance().setcheckedIsConnected(true);
-
             UserPreference.getInstance().setEmail(response.getEmail());
             UserPreference.getInstance().setAccessToken(response.gettoken());
             UserPreference.getInstance().setAccessToken(response.gettoken());
@@ -214,7 +214,6 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
             UserPreference.getInstance().setCartID(response.getCart_id());
             UserPreference.getInstance().setProfilePic(response.getProfile_pic());
             UserPreference.getInstance().setBgImage(response.getBackground_pic());
-
             startActivity(HomeActivity.class);
             UserPreference.getInstance().setPassword();
         }

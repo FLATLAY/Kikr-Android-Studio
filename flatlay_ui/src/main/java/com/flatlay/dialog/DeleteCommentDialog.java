@@ -11,9 +11,10 @@ import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.fragment.FragmentInspirationDetail;
 import com.flatlay.utility.CommonUtility;
+import com.flatlay.utility.FontUtility;
 
 public class DeleteCommentDialog extends Dialog{
-    private TextView cancelTextView,okTextView;
+    private TextView messageTextView,cancelTextView,okTextView;
     private FragmentActivity mContext;
     private FragmentInspirationDetail fragmentInspirationDetail;
     private String commentId;
@@ -38,8 +39,12 @@ public class DeleteCommentDialog extends Dialog{
         lp.dimAmount = 0.9f;
         getWindow().setAttributes(lp);
         setCanceledOnTouchOutside(true);
+        messageTextView= (TextView) findViewById(R.id.messageTextView);
+        messageTextView.setTypeface(FontUtility.setMontserratLight(getOwnerActivity()));
         cancelTextView= (TextView) findViewById(R.id.cancelTextView);
+        cancelTextView.setTypeface(FontUtility.setMontserratLight(getOwnerActivity()));
         okTextView = (TextView) findViewById(R.id.okTextView);
+        okTextView.setTypeface(FontUtility.setMontserratLight(getOwnerActivity()));
         cancelTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

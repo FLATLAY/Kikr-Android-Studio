@@ -29,11 +29,11 @@ import com.flatlaylib.utils.StringUtils;
 
 public class ChangeEmailActivity extends BaseActivity implements OnKeyListener, OnClickListener {
     private EditText emailEditText;
-
+public final static String TAG="ChangeEmailActivity";
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        Log.w("Activity:", "ChangeEmailActivity");
+        Log.w(TAG, "ChangeEmailActivity");
         CommonUtility.noTitleActivity(context);
         setContentView(R.layout.activity_change_email);
     }

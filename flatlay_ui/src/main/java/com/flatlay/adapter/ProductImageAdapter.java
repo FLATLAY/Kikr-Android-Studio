@@ -29,6 +29,8 @@ public class ProductImageAdapter extends PagerAdapter {
     private FragmentActivity mContext;
     private String url;
     private Product product;
+    final String TAG = "ProductImageAdapter";
+
 
     public ProductImageAdapter(FragmentActivity mContext, List<String> images, String url, Product product) {
         this.mContext = mContext;
@@ -36,7 +38,7 @@ public class ProductImageAdapter extends PagerAdapter {
         this.url = url;
         this.product= product;
         Syso.info("instantiateItem>>>>>>>>>>>ProductPagerAdapter");
-        Log.w("Activity","ProductPagerAdapter");
+        Log.w(TAG,"ProductPagerAdapter");
     }
 
     class ViewHolder {

@@ -10,7 +10,21 @@ public class Card {
 	String cardtype;
 	String expirationMonth;
 	String expirationYear;
-	
+
+	public Card(String card_id,String card_number,String name_on_card,String expiration_date,String cvv,String cardtype,String expirationMonth,String expirationYear){
+		this.card_id=card_id;
+		this.card_number=card_number;
+		this.name_on_card=name_on_card;
+		this.expiration_date=expiration_date;
+		this.cvv=cvv;
+		this.cardtype=cardtype;
+		this.expirationMonth=expirationMonth;
+		this.expirationYear=expirationYear;
+	}
+
+	public Card(){
+
+	}
 	/**
 	 * @return the cardtype
 	 */

@@ -51,28 +51,32 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+                        android:id="@+id/ins_icon"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:src="@drawable/purple_instagram" />
+                        android:src="@drawable/instagram_black" />
 
                     <ImageView
+                        android:id="@+id/fb_icon"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:src="@drawable/blue_fb" />
+                        android:src="@drawable/facebooklogoo" />
 
                     <ImageView
+                        android:id="@+id/pin_icon"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:src="@drawable/red_pinterest" />
+                        android:src="@drawable/pinterestlogoo" />
 
                     <ImageView
+                        android:id="@+id/twi_icon"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:src="@drawable/blue_twitter" />
+                        android:src="@drawable/twitterlogoo" />
                 </LinearLayout>
             </LinearLayout>
 

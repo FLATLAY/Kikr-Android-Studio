@@ -29,10 +29,11 @@ public class ChipBubbleTextWatcher implements TextWatcher {
     ArrayList<Item> itemArrayList;
     String[] autoSuggestArray = null;
     String checkApiCall = "";
+    final String TAG = "ChipBubbleTextW";
 
     public ChipBubbleTextWatcher(Context context, MultiAutoCompleteTextView multiAutoCompleteTextView, ChipPropery chipPropery) {
         super();
-        Log.w("Activity","ChipBubbleTextWatcher");
+        Log.w(TAG,"ChipBubbleTextWatcher");
         this.multiAutoCompleteTextView = multiAutoCompleteTextView;
         this.context = context;
         this.chipPropery = chipPropery;

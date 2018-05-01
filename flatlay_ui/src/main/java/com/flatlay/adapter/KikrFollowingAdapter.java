@@ -52,6 +52,7 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
     String likeinsp = "likeinsp";
     String commentinsp = "commentinsp";
     private List<UserData> userDetails;
+    final String TAG = "KikrFollowingAda";
 
 
     public KikrFollowingAdapter(FragmentActivity context, ArrayList<FollowingKikrModel.DataBean> followingList) {
@@ -78,7 +79,14 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
             JSONObject jObject = new JSONObject(extras);
             String user_idsend = jObject.getString("user_idsend");
             JSONObject innerJObject = jObject.getJSONObject("otherdata");
-            String inspiration_id = innerJObject.getString("inspiration_id");
+            final String inspiration_id = innerJObject.getString("inspiration_id");
+            viewHolder.followingsubstring.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    addFragment(new FragmentInspirationDetail(inspiration_id));
+
+                }
+            });
             Inspiration inspirationsetvalue = new Inspiration();
 //            inspirationsetvalue.setUser_id(user_idrec);
             inspirationsetvalue.setInspiration_id(inspiration_id);
@@ -131,9 +139,8 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
             viewHolder.followingsubstring.setTypeface(FontUtility.setMontserratLight(context));
             viewHolder.followingsubstring.setText(Html.fromHtml
                     (userName + " " + notitification));
-
-            Log.e("notification", "" + followingList.get(i).getMessage());
-            Log.e("notification-image", "" + followingList.get(i).getImg());
+            Log.e(TAG, "" + followingList.get(i).getMessage());
+            Log.e(TAG, "" + followingList.get(i).getImg());
             if (followingList.get(i).getImg().equals("")) {
                 Picasso.with(context).load(R.drawable.profile_icon).into(viewHolder.user_image);
             } else {
@@ -203,7 +210,7 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
         } catch (Exception e) {
             e.printStackTrace();
         }
-        viewHolder.gridview.setAdapter(new FollowingImagesSet(context));
+//        viewHolder.gridview.setAdapter(new FollowingImagesSet(context));
 
     }
 
@@ -217,7 +224,7 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
         private ImageView imageView_Hotel;
         private TextView user_following, week, followingsubstring;
         LinearLayout product_inflater_layout;
-        GridView gridview;
+//        GridView gridview;
         ImageView user_image, follower_user_image,type_image;
 
         public ViewHolder(View view) {
@@ -225,7 +232,7 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
 
             imageView_Hotel = (ImageView) view.findViewById(R.id.searchImageView);
             user_following = (TextView) view.findViewById(R.id.user_following);
-            gridview = (GridView) view.findViewById(R.id.gridview);
+//            gridview = (GridView) view.findViewById(R.id.gridview);
             week = (TextView) view.findViewById(R.id.week);
             user_image = (ImageView) view.findViewById(R.id.user_image);
             type_image = (ImageView) view.findViewById(R.id.type_image);
@@ -234,6 +241,9 @@ public class KikrFollowingAdapter extends RecyclerView.Adapter<KikrFollowingAdap
         }
     }
 
+    private void addFragment(Fragment fragment) {
+        ((HomeActivity) context).addFragment(fragment);
+    }
 
 }
 

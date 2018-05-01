@@ -43,6 +43,7 @@ public class PictureUtils {
     public static final int REQUEST_CODE_GALLERY = 2;
     public static final int REQUEST_CODE_DEFAULT_LIST = 3;
     public static final int REQUEST_CODE_VIDEO = 4;
+    public static final String TAG = "PictureUtils";
 
     public static final String APP_DIR_MAIN = "SpotPog/images/";
     public static final String FILE_NAME = "pic_temp";
@@ -146,7 +147,7 @@ public class PictureUtils {
     }
 
     public static byte[] getByteArray2(Bitmap bitmap) {
-        Log.w("my-App", "getByteArray2 of PictureUtils.class");
+        Log.w(TAG, "getByteArray2 of PictureUtils.class");
         if (bitmap == null) {
             return null;
         }
@@ -689,9 +690,9 @@ public class PictureUtils {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         int bounding = 800;
-        Log.i("Test", "original width = " + Integer.toString(width));
-        Log.i("Test", "original height = " + Integer.toString(height));
-        Log.i("Test", "bounding = " + Integer.toString(bounding));
+        Log.i(TAG, "original width = " + Integer.toString(width));
+        Log.i(TAG, "original height = " + Integer.toString(height));
+        Log.i(TAG, "bounding = " + Integer.toString(bounding));
 
         // Determine how much to scale: the dimension requiring less scaling is
         // closer to the its side. This way the image always stays inside your
@@ -699,9 +700,9 @@ public class PictureUtils {
         float xScale = ((float) bounding) / width;
         float yScale = ((float) bounding) / height;
         float scale = (xScale <= yScale) ? xScale : yScale;
-        Log.i("Test", "xScale = " + Float.toString(xScale));
-        Log.i("Test", "yScale = " + Float.toString(yScale));
-        Log.i("Test", "scale = " + Float.toString(scale));
+        Log.i(TAG, "xScale = " + Float.toString(xScale));
+        Log.i(TAG, "yScale = " + Float.toString(yScale));
+        Log.i(TAG, "scale = " + Float.toString(scale));
 
         // Create a matrix for the scaling and add the scaling data
         Matrix matrix = new Matrix();
@@ -711,8 +712,8 @@ public class PictureUtils {
         Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
         width = scaledBitmap.getWidth(); // re-use
         height = scaledBitmap.getHeight(); // re-use
-        Log.i("Test", "scaled width = " + Integer.toString(width));
-        Log.i("Test", "scaled height = " + Integer.toString(height));
+        Log.i(TAG, "scaled width = " + Integer.toString(width));
+        Log.i(TAG, "scaled height = " + Integer.toString(height));
         return scaledBitmap;
     }
 }

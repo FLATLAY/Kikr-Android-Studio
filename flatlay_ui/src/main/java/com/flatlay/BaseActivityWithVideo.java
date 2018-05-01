@@ -13,9 +13,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.VideoView;
 
+import com.facebook.FacebookSdk;
+import com.flatlay.activity.EditProfileActivity;
+import com.flatlay.activity.HomeActivity;
 import com.flatlay.activity.LandingActivity;
 import com.flatlay.activity.LoginActivity;
 import com.flatlay.activity.SignUpActivity;
+import com.flatlay.fragment.FragmentInspirationSection;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.utils.AlertUtils;
 
@@ -30,14 +34,43 @@ public class BaseActivityWithVideo extends BaseActivity {
     public Stack<String> mFragmentStack;
     private Fragment mContent;
     private boolean backPressedToExitOnce = false;
-
+    private String inspiration_id;
+    public static final String TAG = "BaseActivityWithVideo";
     private FragmentManager manager;
     public FragmentTransaction transaction = getSupportFragmentManager()
             .beginTransaction();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FacebookSdk.sdkInitialize(getApplicationContext());
         super.onCreate(savedInstanceState);
+        Log.w(TAG, "BaseActivityWithVideo");
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null && bundle.get("otherdata") != null) {
+            String otherdata = bundle.get("otherdata").toString();
+            if (otherdata.contains("inspiration_id")) {
+                inspiration_id = otherdata.substring(19, otherdata.length() - 2);
+            }
+        }
+        if (bundle != null) {
+            for (String key : bundle.keySet()) {
+                Object value = bundle.get(key);
+                Log.d(TAG, String.format("%s %s (%s)", key,
+                        value.toString(), value.getClass().getName()));
+            }
+        }
+        if (bundle != null && bundle.getString("title") != null && (bundle.getString("title").equals("New Like") || bundle.getString("title").equals("New Comment"))) {
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.putExtra("inspiration_id", inspiration_id.toString());
+            intent.putExtra("section", bundle.getString("section").toString());
+            startActivity(intent);
+        }
+        if (bundle != null && bundle.getString("title") != null && bundle.getString("title").equals("New Follower")) {
+            Intent intent = new Intent(this, HomeActivity.class);
+//            intent.putExtra("inspiration_id", inspiration_id.toString());
+            intent.putExtra("section", bundle.getString("section").toString());
+            startActivity(intent);
+        }
         if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
             finish();
             return;
@@ -59,7 +92,7 @@ public class BaseActivityWithVideo extends BaseActivity {
             hideAllFragment();
             addFragment(fragment);
         } else {
-            Log.e("MainActivity", "Error in creating fragment.");
+            Log.e(TAG, "Error in creating fragment.");
         }
     }
 
@@ -133,7 +166,6 @@ public class BaseActivityWithVideo extends BaseActivity {
             super.onBackPressed();
         }
     }
-
 
 
     @Override

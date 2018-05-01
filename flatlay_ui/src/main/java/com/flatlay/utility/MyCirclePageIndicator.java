@@ -197,7 +197,6 @@ public class MyCirclePageIndicator extends View implements PageIndicator {
             setCurrentItem(count - 1);
             return;
         }
-        Log.e("huihui",String.valueOf(count));
 
         int longSize;
         int longPaddingBefore;

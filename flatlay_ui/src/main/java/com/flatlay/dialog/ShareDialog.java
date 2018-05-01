@@ -34,6 +34,8 @@ public class ShareDialog extends Dialog{
 	private TextView cancelicon;
 	private Inspiration inspiration;
 	private String shareimagename;
+	public static final String TAG = "ShareDialog";
+
 //	private TextView searchText;
 
 //	public ShareDialog(Context mContext, HomeActivity homeActivity,Product product) {
@@ -226,8 +228,8 @@ public class ShareDialog extends Dialog{
 		BranchShortLinkBuilder shortUrlBuilder = new BranchShortLinkBuilder(mContext)
 
 				.addParameters("product_url", imageUrl);
-		Log.w("temp", "CREATING BRANCH LINK!" + imageUrl);
-		Log.w("temp", "CREATING BRANCH LINK!" + shareimagename);
+		Log.w(TAG, "CREATING BRANCH LINK!" + imageUrl);
+		Log.w(TAG, "CREATING BRANCH LINK!" + shareimagename);
 
 		// Get URL Asynchronously
 		shortUrlBuilder.generateShortUrl(new Branch.BranchLinkCreateListener() {

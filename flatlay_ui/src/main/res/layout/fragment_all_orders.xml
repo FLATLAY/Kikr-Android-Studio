@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="#00000000"
     android:orientation="vertical" >
 
     <include
@@ -10,15 +10,45 @@
         layout="@layout/layout_order_not_found"
         android:visibility="gone" />
 
-    <ExpandableListView
-        android:id="@+id/ordersList"
+    <TextView
+        android:id="@+id/progress_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="IN PROGRESS"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+
+    <ListView
+        android:id="@+id/ordersList1"
         android:groupIndicator="@null"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
+        android:layout_height="wrap_content"
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:listSelector="@android:color/transparent" >
-    </ExpandableListView>
+    </ListView>
+
+    <TextView
+        android:id="@+id/complete_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="COMPLETED"
+        android:layout_marginTop="40dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+
+    <ListView
+        android:id="@+id/ordersList2"
+        android:groupIndicator="@null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="#00000000"
+        android:dividerHeight="10dp"
+        android:layout_marginTop="10dp"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent" >
+    </ListView>
 
 </LinearLayout>

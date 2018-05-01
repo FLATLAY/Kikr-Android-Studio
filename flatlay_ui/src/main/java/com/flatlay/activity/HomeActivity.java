@@ -60,11 +60,13 @@ import com.flatlay.dialog.LogoutDialogWithTab;
 import com.flatlay.dialog.PostUploadTagDialog;
 
 import com.flatlay.fragment.FragmentDiscoverNew;
+import com.flatlay.fragment.FragmentPostUploadTab;
 import com.flatlay.fragment.FragmentProfileView;
 import com.flatlay.fragment.FragmentInspirationSection;
 import com.flatlay.fragment.FragmentSettings;
 
 import com.flatlay.menu.ArcLayout;
+import com.flatlay.post_upload.CameraFragment;
 import com.flatlay.post_upload.FragmentPostUploadTag;
 import com.flatlay.post_upload.ProductSearchTagging;
 import com.flatlay.sessionstore.SessionStore;
@@ -153,13 +155,15 @@ import twitter4j.User;
 
 public class HomeActivity extends FragmentActivity implements OnClickListener, OnLoginCompleteListener {
     public static final String SOCIAL_NETWORK_TAG = "SocialIntegrationMain.SOCIAL_NETWORK_TAG";
+    public final static String TAG = "HomeActivity";
+
     public static int SHARING_CODE = 64206;
     public static PDKClient pdkClient;
     public static Spinner mstatus;
     public static TextView uploadphoto, menuBackTextView, postuploadtagbackTextView;
     public static ImageView photouploadnext, homeImageView, menuRightImageView, crossarrow, postUploadWithTag;
     public static TextView gallery, camera, instagram;
-    private FragmentActivity context,mActivity;
+    private FragmentActivity context, mActivity;
     private View viewHeader;
     //private CircleImageView profile_pic;
     private android.support.v7.app.ActionBar actionBar;
@@ -167,13 +171,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     public static ImageView menuSearchImageView;
     private LinearLayout menuSearchLayout, menuProfileLayout, menuConnectWithTwitterLayout,
             menuConnectWithFacebookLayout, menuKikrCreditsLayout, menuActivityLayout,
-            kikerWalletLayout, kikrGuideLayout,menuMyFriendsLayout, menuInviteFriendsLayout,
+            kikerWalletLayout, kikrGuideLayout, menuMyFriendsLayout, menuInviteFriendsLayout,
             menuCheckInLayout, menuSupportLayout, menuSettingsLayout, menuLogoutoptionLayout,
             menuProfileOptionLayout, inspirationLayout, discoverLayout, menuDealLayout,
             menuMyFriendsOptionLayout, menuOrdersLayout, menuChatLayout,
             menuSettingsOptionLayout, menuDealOptionLayout, menuConnectWithInstagramLayout,
             menuInterestsLayout;
-    private ImageView menuMyFriendsLayoutImageView,menuProfileLayoutImageView,
+    private ImageView menuMyFriendsLayoutImageView, menuProfileLayoutImageView,
             menuDealImageView, menuSettingsLayoutImageView;
     // private ProgressBarDialog progressBarDialog;
     public List<ProductFeedItem> list;
@@ -181,12 +185,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     public Stack<String> mFragmentStack;
     private Fragment mContent;
     private HomeActivity homeActivity;
-    private int PAYPAL_REQUEST_CODE = 0,creditsCounter = 0;
+    private int PAYPAL_REQUEST_CODE = 0, creditsCounter = 0;
     private Braintree braintree;
     private BroadcastReceiver receiver;
     private View twitterView, fbView;
     private ScrollView menuScrollView;
-    private boolean isProfile = false, firstTime = false,isFirstTime,backPressedToExitOnce = false;
+    private boolean isProfile = false, firstTime = false, isFirstTime, backPressedToExitOnce = false;
     private static ArrayList<Activity> homeActivtyList = new ArrayList<Activity>();
     public static ArrayList<Activity> activities = new ArrayList<Activity>();
     private double kikrCredit = 0;
@@ -194,7 +198,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private TextView logoutTextView, supportTextView, settingsTextView, inviteTextView,
             kikrChatTextView, checkInTextView, dealTextview, orderTextView, walletTextView,
             kikrCreditTextView, viewProfileTextView, kikrGuideTextView, viewSearchTextView,
-            totalCredits, txtShop, txtFeed,menuRightTextView;
+            totalCredits, txtShop, txtFeed, menuRightTextView;
     //RelativeLayout tab_layout1;
     //LinearLayout cart_tab, search_tab, profile_tab;
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -202,7 +206,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.w("Activity", "HomeActivity");
+        Log.w(TAG, "HomeActivity");
         setContentView(R.layout.activity_home);
         if (homeActivtyList != null) {
             homeActivtyList.add(this);
@@ -395,7 +399,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 //        actionBar.setCustomView(viewHeader, new android.support.v7.app.ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         crossarrow = (ImageView) findViewById(R.id.crossarrow);
         postUploadWithTag = (ImageView) viewHeader.findViewById(R.id.postUploadWithTag);
-        mstatus = (Spinner) findViewById(R.id.mstatus);
+        Log.e("mstatus", "mstatus");
+        mstatus = (Spinner) viewHeader.findViewById(R.id.mstatus);
+        Log.e("mstatus", "mstatus：" + (mstatus == null));
+
         uploadphoto = (TextView) viewHeader.findViewById(R.id.uploadphoto);
         photouploadnext = (ImageView) viewHeader.findViewById(R.id.photouploadnext);
         menuBackTextView = (TextView) viewHeader.findViewById(R.id.leftTextView);
@@ -431,22 +438,23 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 //        actionBar.hide();
     }
 
-    public void hideBackButtonvalue() {
-        menuBackTextView.setVisibility(View.GONE);
-
-        camera.setVisibility(View.GONE);
-        gallery.setVisibility(View.GONE);
-        instagram.setVisibility(View.GONE);
-        mstatus.setVisibility(View.GONE);
-        crossarrow.setVisibility(View.GONE);
-        homeImageView.setVisibility(View.VISIBLE);
-    }
+//    public void hideBackButtonvalue() {
+//        menuBackTextView.setVisibility(View.GONE);
+//
+//        camera.setVisibility(View.GONE);
+//        gallery.setVisibility(View.GONE);
+//        instagram.setVisibility(View.GONE);
+//        mstatus.setVisibility(View.GONE);
+//        crossarrow.setVisibility(View.GONE);
+//        homeImageView.setVisibility(View.VISIBLE);
+//    }
 
     private void startUploadPostSection() {
         // cart_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
         //  profile_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
         // upload_post_tab.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
         // search_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
+        addFragment(new FragmentPostUploadTab());
     }
 
     @Override
@@ -476,7 +484,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         MarshmallowPermissions.CAMERA_PERMISSION_REQUEST_CODE);
             } else {
-                Log.w("HomeActivity", "Here1");
                 startUploadPostSection();
 
             }
@@ -575,12 +582,18 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 String id = getIntent().getStringExtra("inspiration_id");
                 addFragment(new FragmentInspirationDetail(id));
                 cleanActivity();
-            } else if (getIntent().getStringExtra("section").equals("follow")) {
-                addFragment(new FragmentProfileView(getIntent().getStringExtra("inspiration_id"), "no"));
-                cleanActivity();
             }
+//            else if (getIntent().getStringExtra("section").equals("follow")) {
+////                addFragment(new FragmentProfileView(getIntent().getStringExtra("inspiration_id"), "no"));
+//                addFragment(new FragmentInspirationSection(true));
+//                cleanActivity();
+//            }
         } else if (getIntent().getStringExtra("section") != null) {
-            if (getIntent().getStringExtra("section").equals("placeorder")) {
+            if (getIntent().getStringExtra("section").equals("follow")) {
+//                addFragment(new FragmentProfileView(getIntent().getStringExtra("inspiration_id"), "no"));
+                addFragment(new FragmentInspirationSection(true));
+                cleanActivity();
+            } else if (getIntent().getStringExtra("section").equals("placeorder")) {
                 UserPreference.getInstance().setIsNotificationClicked(true);
                 String otherdata = getIntent().getStringExtra("otherdata");
                 cleanActivity();
@@ -641,30 +654,36 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
     }
 
-    private void getCartList() {
-        CartApi cartApi = new CartApi(new ServiceCallback() {
+//    private List<Product> productLists;
+//
+//    public List<Product> getCartProducts(){
+//        return productLists;
+//    }
 
-            @Override
-            public void handleOnSuccess(Object object) {
-                Syso.info("In handleOnSuccess>>" + object);
-                CartRes cartRes = (CartRes) object;
-                List<Product> productLists = cartRes.getData();
-                if (productLists.size() > 0) {
-                    UserPreference.getInstance().setCartCount(
-                            String.valueOf(productLists.size()));
-                    refreshCartCount();
-                }
-            }
-
-            @Override
-            public void handleOnFailure(ServiceException exception,
-                                        Object object) {
-
-            }
-        });
-        cartApi.getCartList(UserPreference.getInstance().getUserID());
-        cartApi.execute();
-    }
+//    public void getCartList() {
+//        CartApi cartApi = new CartApi(new ServiceCallback() {
+//
+//            @Override
+//            public void handleOnSuccess(Object object) {
+//                Syso.info("In handleOnSuccess>>" + object);
+//                CartRes cartRes = (CartRes) object;
+//                productLists = cartRes.getData();
+//                if (productLists.size() > 0) {
+//                    UserPreference.getInstance().setCartCount(
+//                            String.valueOf(productLists.size()));
+////                    refreshCartCount();
+//                }
+//            }
+//
+//            @Override
+//            public void handleOnFailure(ServiceException exception,
+//                                        Object object) {
+//
+//            }
+//        });
+//        cartApi.getCartList(UserPreference.getInstance().getUserID());
+//        cartApi.execute();
+//    }
 
     public void setClickListener() {
 //        crossarrow.setOnClickListener(this);
@@ -681,7 +700,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             hideAllFragment();
             addFragment(fragment);
         } else {
-            Log.e("MainActivity", "Error in creating fragment.");
+            Log.e(TAG, "Error in creating fragment.");
         }
     }
 
@@ -751,13 +770,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.w("HomeActivity", "onActivityResult" + CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE);
+        Log.w(TAG, "onActivityResult" + CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE);
 
         Log.e("home act", requestCode + "wefwe" + resultCode);
         if (requestCode == AppConstants.WALLETLIST && resultCode == RESULT_OK) {
-            Log.w("onActivityResultHA", "1");
         } else if (requestCode == AppConstants.REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
-            Log.w("onActivityResultHA", "2");
             String id = data.getStringExtra("id");
             String email = data.getStringExtra("email");
             String gender = data.getStringExtra("gender");
@@ -768,7 +785,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             String location = data.getStringExtra("location");
             connectWithFacebook(id, email, gender, name, username, birthday, profile_link, location);
         } else if (requestCode == AppConstants.REQUEST_CODE_TWIT_LOGIN && resultCode == RESULT_OK) {
-            Log.w("onActivityResultHA", "3");
             String id = String.valueOf(data.getLongExtra("id", 0));
             String description = data.getStringExtra("description");
             String language = data.getStringExtra("language");
@@ -782,7 +798,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             connectWithTwitter(id, description, language, location, name, profile_image_url, screen_name, status, time_zone);
 
         } else if (requestCode == AppConstants.REQUEST_CODE_FB_FRIEND_LIST) {
-            Log.w("onActivityResultHA", "4");
             ArrayList<FbUser> fbUsers = (ArrayList<FbUser>) data.getSerializableExtra("friend_list");
             if (fbUsers != null && fbUsers.size() > 0) {
                 uploadFbFriends(fbUsers);
@@ -791,11 +806,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
             }
         } else if (requestCode == AppConstants.REQUEST_CODE_TWIT_FRIEND_LIST) {
-            Log.w("onActivityResultHA", "5");
             ArrayList<OauthItem> twitUsers = (ArrayList<OauthItem>) data.getSerializableExtra("friend_list");
             showTwitterFriendList(twitUsers);
         } else if (requestCode == PAYPAL_REQUEST_CODE) {
-            Log.w("onActivityResultHA", "6");
             if (resultCode == RESULT_OK) {
                 System.out.println("in result ok");
                 AlertUtils.showToast(context, "Please wait...");
@@ -811,20 +824,17 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 braintree.finishPayWithPayPal(this, resultCode, data);
             }
         } else if (requestCode == AppConstants.REQUEST_CODE_MASKED_WALLET) {
-            Log.w("onActivityResultHA", "7");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(
                     mFragmentStack.peek());
 
         }
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            Log.w("onActivityResultHA", "30");
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
-                Log.w("HomeActivity", "Going to handleCropResult2" + resultUri);
-
-                handleCropResult2(data, resultUri);
+                Log.w(TAG, "Going to handleCropResult2" + resultUri);
+                handleCropResult(data);
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
@@ -834,51 +844,46 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
 
         if (requestCode == UCrop.REQUEST_CROP) {
-            Log.w("onActivityResultHA", "8");
             handleCropResult(data);
         }
         if (requestCode == UCrop.RESULT_ERROR) {
-            Log.w("onActivityResultHA", "9");
             handleCropError(data);
         }
 
 
         if (requestCode == Crop.REQUEST_CROP) {
-            Log.w("onActivityResultHA", "10");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-
+            ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
+                    resultCode, data);
         }
 
         if (requestCode == Crop.REQUEST_PICK) {
-            Log.w("onActivityResultHA", "16");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+            ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
+                    resultCode, data);
 
         }
         if (requestCode == AppConstants.REQUEST_CODE_INSTAGRAM) {
-            Log.w("onActivityResultHA", "11");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-
+            ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
+                    resultCode, data);
         }
 
         if (requestCode == AppConstants.REQUEST_CODE_TWIT_TO_FRIEND) {
-            Log.w("onActivityResultHA", "12");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
 
         }
         if (requestCode == AppConstants.REQUEST_CODE_EMAIL_CHANGE) {
-            Log.w("onActivityResultHA", "13");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             ((FragmentSettings) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
         if (requestCode == HomeActivity.SHARING_CODE) {
-            Log.w("onActivityResultHA", "14");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
             if (fragment != null) {
                 fragment.onActivityResult(requestCode, resultCode, data);
             }
         } else if (requestCode == TwitterAuthConfig.DEFAULT_AUTH_REQUEST_CODE) {
-            Log.w("HomeActivity", "onActivityResult Twitter 140");
             //Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());;
             //fragment.onActivityResult(requestCode, resultCode, data);
 
@@ -888,23 +893,19 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             }
 
         } else if (requestCode == PDKClient.PDKCLIENT_REQUEST_CODE) {
-            Log.w("HomeActivity", "onActivityResult Pinterest 8772");
             PDKClient.getInstance().onOauthResponse(requestCode, resultCode, data);
         } else {
-            Log.w("onActivityResultHA", "15");
 
             if (data != null) {
                 Uri dataUri = data.getData();
                 if (dataUri != null) {
                     String urlString = dataUri.toString();
                     if (urlString.contains("oauth://ASNE?oauth_token")) {
-                        Log.w("onActivityResultHA", "21");
                         Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
                         if (fragment != null) {
                             fragment.onActivityResult(requestCode, resultCode, data);
                         }
                     } else if (urlString.contains("www.tychotechnologies.in")) {
-                        Log.w("onActivityResultHA", "22");
                         Fragment fragment = getSupportFragmentManager().findFragmentByTag(SOCIAL_NETWORK_TAG);
                         if (fragment != null) {
                             fragment.onActivityResult(requestCode, resultCode, data);
@@ -1438,7 +1439,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             mContent = fragment;
             FragmentTransaction transaction = getSupportFragmentManager()
                     .beginTransaction();
-            System.out.println("1111 added>>" + mContent.toString());
             if (mFragmentStack.size() > 0) {
                 Fragment currentFragment = getSupportFragmentManager()
                         .findFragmentByTag(mFragmentStack.peek());
@@ -1448,7 +1448,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 mFragmentStack.add(mContent.toString());
                 transaction.add(R.id.frame_container, fragment, mContent.toString());
                 transaction.addToBackStack(mContent.toString());
-                transaction.commit();
+                if (fragment instanceof FragmentPostUploadTab)
+                    transaction.commitAllowingStateLoss();
+                else
+                    transaction.commit();
             } else {
                 mFragmentStack.add(mContent.toString());
                 transaction.replace(R.id.frame_container, fragment, mContent.toString());
@@ -1457,6 +1460,43 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             }
             checkBackButton(fragment);
             checkRightButton(fragment);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Fragment getCurrentFragment(){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        Fragment currentFragment = getSupportFragmentManager()
+                .findFragmentByTag(mFragmentStack.peek());
+        return currentFragment;
+    }
+
+    public void myAddFragment(Fragment fragment) {
+        try {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            Fragment currentFragment = getSupportFragmentManager()
+                    .findFragmentByTag(mFragmentStack.peek());
+            if (mFragmentStack.size() > 0&&!(currentFragment instanceof FragmentInspirationSection)) {
+                Log.e("addFragment","1");
+                if (currentFragment != null) {
+                    Log.e("addFragment","2");
+
+                    transaction.hide(currentFragment);
+                }
+                mFragmentStack.add(fragment.toString());
+                transaction.replace(R.id.frame_container_section_1, fragment, fragment.toString());
+                transaction.addToBackStack(fragment.toString());
+                transaction.commit();
+            } else {
+                Log.e("addFragment","3");
+
+                mFragmentStack.add(fragment.toString());
+                transaction.replace(R.id.frame_container_section_1, fragment, fragment.toString());
+                transaction.addToBackStack(fragment.toString());
+                transaction.commit();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1493,34 +1533,46 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
     }
 
+    public void finishInspirationSection() {
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+        if (mFragmentStack.size() == 1 && fragment instanceof FragmentInspirationSection) {
+            finish();
+        }
+    }
+
 
     @Override
     public void onBackPressed() {
         try {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-            if (fragment instanceof FragmentPostUploadTag) {
-
-                postuploadtagbackTextView.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        PostUploadTagDialog welcome = new PostUploadTagDialog(homeActivity);
-                        welcome.show();
-                    }
-                });
-
-//                showActionBar();
-//                tab_layout.setVisibility(View.GONE);
-            } else {
-//                hideActionBar();
-                //tab_layout1.setVisibility(View.VISIBLE);
-
-            }
+//            if (fragment instanceof FragmentPostUploadTag) {
+//
+//                postuploadtagbackTextView.setOnClickListener(new OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        PostUploadTagDialog welcome = new PostUploadTagDialog(homeActivity);
+//                        welcome.show();
+//                    }
+//                });
+//
+////                showActionBar();
+////                tab_layout.setVisibility(View.GONE);
+//            } else {
+//
+////                hideActionBar();
+//                //tab_layout1.setVisibility(View.VISIBLE);
+//
+//            }
             hideFutter();
             CommonUtility.hideSoftKeyboard(this);
             if (mFragmentStack.size() == 1) {
-                if (fragment instanceof FragmentInspirationSection || fragment instanceof LandingActivity) {
+                Log.e("nani", "nani22");
+
+                if (fragment instanceof FragmentInspirationSection) {
+                } else if (fragment instanceof LandingActivity) {
+
 //                    if (backPressedToExitOnce) {
-                        finish();
+                    finish();
 //                    } else {
 //                        this.backPressedToExitOnce = true;
 //                        AlertUtils.showToast(context, "Press again to exit");
@@ -1532,27 +1584,30 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 //                        }, 2000);
 //                    }
                 } else {
+
                     hideAllFragment();
                     addFragment(new FragmentInspirationSection());
 //                    getSupportFragmentManager().findFragmentByTag(mFragmentStack.lastElement()).onResume();
                 }
             } else {
-                if (fragment instanceof FragmentPostUploadTag) {
-                    //  gallery.setVisibility(View.VISIBLE);
-                    postuploadtagbackTextView.setOnClickListener(new OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            PostUploadTagDialog welcome = new PostUploadTagDialog(homeActivity);
-                            welcome.show();
-                        }
-                    });
+                Log.e("nani", "nani11");
 
-                } else {
-                    removeFragment();
-                    super.onBackPressed();
-                }
+//                if (fragment instanceof FragmentPostUploadTag) {
+//                    //  gallery.setVisibility(View.VISIBLE);
+//                    postuploadtagbackTextView.setOnClickListener(new OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            PostUploadTagDialog welcome = new PostUploadTagDialog(homeActivity);
+//                            welcome.show();
+//                        }
+//                    });
+//
+//                } else {
+                removeFragment();
+                super.onBackPressed();
+                // }
             }
-            fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+//            fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
 
 
         } catch (Exception e) {
@@ -1621,12 +1676,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         try {
             // remove the current fragment from the stack.
             String fold = mFragmentStack.pop();
-            Log.e("back",fold);
+            Log.e("back", fold);
             Fragment f2 = getSupportFragmentManager().findFragmentByTag(fold);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             // get fragment that is to be shown (in our case fragment1).
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-            Log.e("backk",mFragmentStack.peek());
+            Log.e("backk", mFragmentStack.peek());
 
             // This time I set an animation with no fade in, so the user doesn't
             // wait for the animation in back press
@@ -1802,20 +1857,20 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     }
 
-    public void hideBackButton() {
-        postuploadtagbackTextView.setVisibility(View.GONE);
-        menuBackTextView.setVisibility(View.GONE);
-        menuRightImageView.setVisibility(View.VISIBLE);
-        camera.setVisibility(View.GONE);
-        gallery.setVisibility(View.GONE);
-        menuTextCartCount.setVisibility(View.VISIBLE);
-        mstatus.setVisibility(View.GONE);
-        photouploadnext.setVisibility(View.GONE);
-        instagram.setVisibility(View.GONE);
-        crossarrow.setVisibility(View.GONE);
-        postUploadWithTag.setVisibility(View.GONE);
-        homeImageView.setVisibility(View.VISIBLE);
-    }
+//    public void hideBackButton() {
+//        postuploadtagbackTextView.setVisibility(View.GONE);
+//        menuBackTextView.setVisibility(View.GONE);
+//        menuRightImageView.setVisibility(View.VISIBLE);
+//        camera.setVisibility(View.GONE);
+//        gallery.setVisibility(View.GONE);
+//        menuTextCartCount.setVisibility(View.VISIBLE);
+//        mstatus.setVisibility(View.GONE);
+//        photouploadnext.setVisibility(View.GONE);
+//        instagram.setVisibility(View.GONE);
+//        crossarrow.setVisibility(View.GONE);
+//        postUploadWithTag.setVisibility(View.GONE);
+//        homeImageView.setVisibility(View.VISIBLE);
+//    }
 
     private void checkBackButton(Fragment fragment) {
 
@@ -2240,10 +2295,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     }
                 });
         if (TextUtils.isEmpty(product.getLike_info().getLike_id())) {
-            Log.w("HomeActivity", "postLike()");
             inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), product.getId(), "product");
         } else {
-            Log.w("HomeActivity", "removeLike()");
             inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), product.getLike_info().getLike_id());
         }
         inspirationSectionApi.execute();
@@ -2295,10 +2348,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     }
                 });
         if (TextUtils.isEmpty(inspiration.getLike_id())) {
-            Log.w("HomeActivity", "postLike()");
             inspirationSectionApi.postLike(UserPreference.getInstance().getUserID(), inspiration.getInspiration_id(), "inspiration");
         } else {
-            Log.w("HomeActivity", "removeLike()");
             inspirationSectionApi.removeLike(UserPreference.getInstance().getUserID(), inspiration.getLike_id());
         }
         inspirationSectionApi.execute();
@@ -2338,10 +2389,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             @Override
             public void onInitFinished(JSONObject referringParams, BranchError error) {
                 if (error == null) {
-                    Log.e("userid identity", UserPreference.getInstance().getUserID());
                     Branch.getInstance().setIdentity(UserPreference.getInstance().getUserID());
-                    Log.e("init on start home", "init on start home");
-
                 } else {
                     Log.e("MyApp", error.getMessage());
                 }
@@ -2373,7 +2421,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     JSONObject jsonObject = new JSONObject(object.toString());
                     if (jsonObject.getString("message").equalsIgnoreCase("done")) {
                         UserPreference.getInstance().setPurchaseId("");
-                        Log.w("HomeActivity", "FragmentUserCart()");
+                        Log.w(TAG, "FragmentUserCart()");
                     } else {
                         AlertUtils.showToast(context, "Your previous order is still being processed. You should receive confirmation on the status shortly.");
                     }
@@ -2467,7 +2515,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private Uri mDestinationUri;
 
     public void startCropActivity(@NonNull Uri uri) {
-        Log.w("HomeActivity", "startCropActivity()");
+        Log.w(TAG, "startCropActivity()");
 
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
         String filePath = Environment.getExternalStorageDirectory()
@@ -2496,7 +2544,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void startCropActivityForMedia(@NonNull Uri uri) {
-        Log.w("HomeActivity", "startCropActivityForMedia()");
+        Log.w(TAG, "startCropActivityForMedia()");
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
         CropImage.activity(uri)
                 .setRequestedSize(700, 700, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
@@ -2544,7 +2592,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         if (result != null) {
             Log.w("handleCropResultHA", "Here");
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-
+            if (fragment instanceof FragmentPostUploadTab)
+                ((FragmentPostUploadTab) fragment).onActivityResult(UCrop.REQUEST_CROP, RESULT_OK
+                        , result);
+            else if (fragment instanceof CameraFragment)
+                ((CameraFragment) fragment).onActivityResult(CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE, RESULT_OK
+                        , result);
         } else
             AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
 //        final Uri resultUri = UCrop.getOutput(result);
@@ -2556,15 +2609,17 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
 
-    private void handleCropResult2(@NonNull Intent result, Uri resultUri) {
-
-        if (result != null) {
-            Log.w("HomeActivity", "handleCropResult2()");
-            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-
-        } else
-            AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
-    }
+//    private void handleCropResult2(@NonNull Intent result, Uri resultUri) {
+//
+//        if (result != null) {
+//            Log.w(TAG, "handleCropResult2()");
+//            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
+//            if (fragment != null)
+//                ((CameraFragment) fragment).onActivityResult(CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE, RESULT_OK
+//                        , result);
+//        } else
+//            AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
+//    }
 
 
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")

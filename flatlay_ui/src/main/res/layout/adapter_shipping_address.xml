@@ -15,8 +15,7 @@
             android:id="@+id/addressRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:theme="@style/shippingadress"
-            />
+            android:theme="@style/shippingadress" />
 
         <TextView
             android:id="@+id/addressText"
@@ -29,16 +28,9 @@
             android:textColor="@color/white"
             android:textSize="@dimen/large_text_size" />
 
-        <ImageView
-            android:id="@+id/editAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/card_selector" />
-
     </LinearLayout>
 
     <View
-        style="@style/cartViewStyle"
-        android:layout_marginLeft="@dimen/padding_cart_list_view" />
+        style="@style/cartViewStyle" />
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.flatlay.activity;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -24,10 +25,13 @@ public class PinGuideActivity extends BaseActivity implements View.OnClickListen
     //ImageView circleImages;
     private Button next;
     private TextView pinDescription,title;
+    public final static String TAG="PinGuideActivity";
+
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        Log.w(TAG,"PinGuideActivity");
         CommonUtility.noTitleActivity(context);
         setContentView(R.layout.pinguide);
         hideHeader();

@@ -110,6 +110,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     LinearLayout txtfollowers;
     boolean isFragmentContainer = true;
     LinearLayout photolayout, collectionlayout, followinglayout, followerlayout;
+    public static final String TAG = "FragmentProfileView";
 
     public FragmentProfileView() {
         try {
@@ -153,7 +154,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.fragment_profile, null);
         fragmentProfileView = this;
-        Log.w("FragmentProfileView", "onCreateView");
+        Log.w(TAG, "onCreateView");
         return mainView;
     }
 

@@ -55,6 +55,7 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
     private int index;
     private List<Product> product_data;
     private Map<String, List<Product>> map = new HashMap<>();
+    final String TAG = "FragmentProfileCo";
 
     public FragmentProfileCollectionAdapter(FragmentActivity context,
                                             List<CollectionList> data,
@@ -157,7 +158,7 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
             }
         });
         if (!map.containsKey(getItem(position).getId())) {
-            Log.e("areyou?","nono"+getItem(position).getId());
+            Log.e(TAG,"nono"+getItem(position).getId());
             final ProductBasedOnBrandApi productBasedOnBrandApi = new ProductBasedOnBrandApi(new ServiceCallback() {
 
                 @Override
@@ -197,12 +198,12 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
                     String.valueOf(0), data.get(position).getId());
             productBasedOnBrandApi.execute();
         } else {
-            Log.e("areyou?","exists"+getItem(position).getId());
+            Log.e(TAG,"exists"+getItem(position).getId());
             if (index == 0) {
                 viewHolder.productInflaterLayout.removeAllViews();
                 viewHolder.productInflaterLayout.addView(new ProductUI(mContext, 200, 200,
                         map.get(getItem(position).getId()), true).getView());
-                Log.e("areyou--222","exists"+getItem(position).getId());
+                Log.e(TAG,"exists"+getItem(position).getId());
                 viewHolder.viewAll_text.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

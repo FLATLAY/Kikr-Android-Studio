@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,12 +37,14 @@ public class SignUpActivity extends BaseFragment implements OnClickListener, OnK
     private boolean mIsMaleSelected = true, ratherNotSelected = false;
     private Button mNextButton;
     private View mainView;
+    public final static String TAG="SignUpActivity";
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.signup2, container, false);
+        Log.w(TAG,"SignUpActivity");
         return mainView;
     }
 

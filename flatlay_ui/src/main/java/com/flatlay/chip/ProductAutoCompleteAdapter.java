@@ -22,6 +22,7 @@ public class ProductAutoCompleteAdapter extends ArrayAdapter<Product> {
     List<Product> products = new ArrayList<>();
     Context mContext;
     int viewResourceId;
+    final String TAG = "ProductAutoCom";
 
     public ProductAutoCompleteAdapter(Context context, int viewResourceId, List<Product> products) {
         super(context, viewResourceId, products);
@@ -29,7 +30,7 @@ public class ProductAutoCompleteAdapter extends ArrayAdapter<Product> {
         this.products.addAll(products);
 
         this.viewResourceId = viewResourceId;
-        Log.w("Activity","ProductAutoCompleteAdapter");
+        Log.w(TAG,"ProductAutoCompleteAdapter");
     }
 
     @Override

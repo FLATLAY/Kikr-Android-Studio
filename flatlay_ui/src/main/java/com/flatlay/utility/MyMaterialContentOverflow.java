@@ -119,7 +119,11 @@ public class MyMaterialContentOverflow extends FrameLayout {
         params2.gravity = Gravity.CENTER;
         layout1.addView(backarrow90,params2);
         this.addView(layout1, params);
-        overflowGestureListener = new MyOverFlowGesListener2(this,backarrow90);
+        overflowGestureListener = new MyOverFlowGesListener2(this,backarrow90,new MyOverFlowGesListener2.OnCloseListener() {
+            @Override
+            public void onClose() {
+            }
+        });
 
         layout1.setOnTouchListener(overflowGestureListener.getMotionEvent());
 
@@ -325,6 +329,9 @@ public class MyMaterialContentOverflow extends FrameLayout {
         overflowGestureListener.slide(-350);
     }
 
+    public boolean isOpen(){
+        return overflowGestureListener.isOpened();
+    }
 
     public void setOpen(){
         overflowGestureListener.setIsOpened(true);

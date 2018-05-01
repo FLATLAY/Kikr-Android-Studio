@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/btn_simple_teal_border"
+    android:layout_centerHorizontal="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/sure_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:text="Are you sure you want to delete this post?"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginTop="5dip"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/yes_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:text="YES"/>
+
+            <View
+                android:layout_width="2dip"
+                android:layout_height="35dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/cancel_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:text="CANCEL"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

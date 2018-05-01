@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/btn_simple_teal_border"
+    android:layout_centerHorizontal="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/edit_text"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Edit"/>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginTop="5dip"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/delete_text"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+
+            android:gravity="center"
+            android:text="Delete"/>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginTop="5dip"
+            android:background="@color/white" />
+
+
+        <TextView
+            android:id="@+id/cancel_text"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Cancel"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

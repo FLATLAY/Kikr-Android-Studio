@@ -9,13 +9,14 @@ import android.view.View.OnTouchListener;
 import android.widget.MultiAutoCompleteTextView;
 
 public class ChipBubbleOnTouchListner implements OnTouchListener {
+	final String TAG = "ChipBubbleOnTou";
 
 	private MultiAutoCompleteTextView autoCompleteTextView;
 	//private Context context;
 
 	public ChipBubbleOnTouchListner(MultiAutoCompleteTextView autoCompleteTextView, Context context) {
 		super();
-		Log.w("Activity","ChipBubbleOnTouchListner");
+		Log.w(TAG,"ChipBubbleOnTouchListner");
 		this.autoCompleteTextView = autoCompleteTextView;
 		//this.context = context;
 	}

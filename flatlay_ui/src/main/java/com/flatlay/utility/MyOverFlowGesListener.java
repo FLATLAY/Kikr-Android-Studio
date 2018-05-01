@@ -59,14 +59,11 @@ public class MyOverFlowGesListener extends GestureDetector.SimpleOnGestureListen
     @Override
     public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent2, float distanceX, float distanceY) {
         if (motionEvent2.getRawY() <= initialYPosition) {
-            Log.e("scroll","2");
             ViewHelper.setTranslationY(overflow.get(), motionEvent2.getRawY());
             if (motionEvent.getRawY() < motionEvent2.getRawY()) {
-                Log.e("scroll","3");
                 isScrollUpping = false;
                 isOpened = false;
             } else {
-                Log.e("scroll","4");
                 isScrollUpping = true;
                 isOpened = true;
             }
@@ -76,14 +73,11 @@ public class MyOverFlowGesListener extends GestureDetector.SimpleOnGestureListen
 
     @Override
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent2, float velocityX, float velocityY) {
-        Log.e("HI", "hi33");
 
         if (motionEvent.getRawY() < motionEvent2.getRawY()) {
-            Log.e("fling","2");
             slide(initialYPosition);
 
         } else {
-            Log.e("fling","3");
             slide(-350);
 
         }
@@ -94,11 +88,9 @@ public class MyOverFlowGesListener extends GestureDetector.SimpleOnGestureListen
         ObjectAnimator objectAnimator;
         if(overflow!=null) {
             if (position == -350) {
-                Log.e("slide", "2");
                 objectAnimator = ObjectAnimator.ofFloat(overflow.get(), "translationY", initialYPosition);
                 image.startAnimation(bb);
             } else {
-                Log.e("slide", "3");
                 objectAnimator = ObjectAnimator.ofFloat(overflow.get(), "translationY", -300f);
                 image.startAnimation(aa);
             }

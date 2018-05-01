@@ -36,13 +36,14 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
     public ArrayList<Category> catList = new ArrayList<Category>();
     private Activity mContext;
     public List<Integer> imagesList = new ArrayList<>();
+    final String TAG = "FollowCategoryNewAda";
 
     public FollowCategoryNewAdapter(Activity mContext, List<Category> categories, List<Integer> imagesList) {
         inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         catList = (ArrayList<Category>) categories;
         this.mContext = mContext;
         this.imagesList = imagesList;
-        Log.w("Activity", "FollowCategoryNewAdapter");
+        Log.w(TAG, "FollowCategoryNewAdapter");
     }
 
 
@@ -157,7 +158,7 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
                // FollowCategoriesNewActivity.checkFollowAtLeastOne();
 
                 getItem(position).setIs_followed("yes");
-                Log.e("followed successfully", "followed successfully");
+                Log.e(TAG, "followed successfully");
             }
 
             @Override
@@ -181,7 +182,7 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
             @Override
             public void handleOnSuccess(Object object) {
                 Syso.info("In handleOnSuccess>>" + object);
-                Log.e("unfollowed", "unfollowed");
+                Log.e(TAG, "unfollowed");
                 FollowCategoriesNewActivity.selectedCount--;
                 //FollowCategoriesNewActivity.checkFollowAtLeastOne();
 

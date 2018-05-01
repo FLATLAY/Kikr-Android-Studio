@@ -32,6 +32,7 @@ public class HelpPressMenuDialog extends Dialog {
     private RelativeLayout cartRL;
     private RelativeLayout shareRL;
     private RelativeLayout storeRL;
+    public static final String TAG = "HelpPressMenuDialog";
 
     private TextView likeTV;
     private TextView collectionTV;
@@ -100,7 +101,7 @@ public class HelpPressMenuDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Log.d("", "Touch------");
+                Log.d(TAG, "Touch------");
                 if (isAnimationCompleted)
                     dismiss();
 

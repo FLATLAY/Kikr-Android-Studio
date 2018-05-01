@@ -36,6 +36,7 @@ public class InspirationGridAdapter extends BaseAdapter {
     private List<Inspiration> inspirations;
     int index =-1;
     private Animation aa, bb;
+    final String TAG = "InspirationGridAdapter";
 
 
     public InspirationGridAdapter(FragmentActivity context, List<Inspiration> inspirations, int index) {
@@ -44,7 +45,7 @@ public class InspirationGridAdapter extends BaseAdapter {
         this.inspirations = inspirations;
         this.index=index;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Log.w("Activity","InspirationGridAdapter");
+        Log.w(TAG,"InspirationGridAdapter");
     }
 
 //    public InspirationGridAdapter(FragmentActivity context, List<Inspiration> inspirations, int index) {
@@ -126,7 +127,7 @@ public class InspirationGridAdapter extends BaseAdapter {
             public void onClick(View v) {
                 if (((HomeActivity)mContext).checkInternet()) {
                     addFragment(new FragmentInspirationDetail(getItem(position),
-                            getItem(position).getLike_id()));//                    Inspiration inspiration = getItem(position);
+                            getItem(position).getLike_id(),false));//                    Inspiration inspiration = getItem(position);
 //                    Gson gson = new Gson();
 //                    String inspirationAsAString = gson.toJson(inspiration);
 //                    Intent intent = new Intent(mContext, FragmentInspirationDetail.class);

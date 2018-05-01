@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overflow_layout12"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"></LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/shipping_text9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Shipping"
+                android:textColor="@color/white"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/shipping_text8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Payment"
+                android:textColor="@color/white"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/confirm_text3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Confirm"
+                android:textColor="@color/white"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/title_image_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="40dp"
+                android:src="@drawable/round_teal" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@color/btn_green" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical|left"
+                android:src="@drawable/round_teal_stroke" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@color/btn_green" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="40dp"
+                android:src="@drawable/round_teal_stroke" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/address_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="11"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/saved_address_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/add_new_address_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add New Address"
+                    android:textColor="@color/white"
+                    android:textSize="17dp" />
+
+                <LinearLayout
+                    android:id="@+id/new_address_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/contact_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact Details"
+                        android:textColor="@color/white"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/first_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/topsearch_red_border"
+                        android:hint="First Name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/last_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/topsearch_red_border"
+                        android:hint="Last Name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/topsearch_noborder"
+                        android:hint="Email"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="17dp" />
+
+
+                    <TextView
+                        android:id="@+id/contact_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shipping Details"
+                        android:textColor="@color/white"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/enter_country_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/topsearch_red_border"
+                        android:hint="Country"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/enter_address_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/topsearch_red_border"
+                        android:hint="Address"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/enter_apt_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/topsearch_noborder"
+                        android:hint="Apt / Unit"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/enter_city_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/topsearch_red_border"
+                        android:hint="City"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/enter_state_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/topsearch_red_border"
+                        android:hint="State"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/enter_zip_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/topsearch_red_border"
+                        android:hint="Zip Code"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="17dp" />
+
+
+                    <TextView
+                        android:id="@+id/save_address_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/green_corner_button"
+                        android:text="      Save      "
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="19dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/next_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/green_corner_button"
+                    android:text="      Next      "
+                    android:textColor="@color/white"
+                    android:textSize="19dp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"></LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

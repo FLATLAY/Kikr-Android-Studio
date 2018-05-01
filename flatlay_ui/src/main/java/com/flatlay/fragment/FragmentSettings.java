@@ -64,12 +64,15 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 	private ProgressBar progressBar_settings_followers,progressBar_settings_comments,progressBar_settings_purchases,progressBar_settings_favorites;
 	public static int cameFromPassword = -1;
 	SharedPreferences userSettings;
+	public static final String TAG = "FragmentSettings";
+
 	public FragmentSettings() {
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		mainView = inflater.inflate(R.layout.fragment_settings, null);
+		Log.w(TAG,"FragmentSettings");
 		fragmentSettings=this;
 		return mainView;
 	}
@@ -139,14 +142,14 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
 		if(userSettings.getString("isSet", "").equals("True"))
 		{
-			Log.w("isSet","false!!!!!");
+			Log.w(TAG,"false!!!!!");
 			emailText.setText(UserPreference.getInstance().getEmail());
 			setNotifications();
 			getAddressList(false);
 		}
 		else
 		{
-			Log.w("isSet","true!!!!!");
+			Log.w(TAG,"true!!!!!");
 			getAddressList(true);
 		}
 
@@ -249,38 +252,28 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 //				}
 				//break;
 			case R.id.switchfollowers:
-				Log.w("Updating followers","Clicked");
 				if(checkInternet()){
 					if (userSettings.getString("settingFollowers", null).equals("true")) {
-						Log.w("followers","false/off");
 						editor.putString("settingFollowers", "false");
 						editor.apply();
-						Log.w("followers","now is "+userSettings.getString("settingFollowers", null));
 						setNotificationStatus(AppConstants.Options.FOLLOWERS, "off",progressBar_settings_followers);
 					} else {
-						Log.w("followers","true/on");
 						editor.putString("settingFollowers", "true");
 						editor.apply();
-						Log.w("followers","now is "+userSettings.getString("settingFollowers", null));
 						setNotificationStatus(AppConstants.Options.FOLLOWERS, "on",progressBar_settings_followers);
 					}
 				}
 
 				break;
 			case R.id.switchcomment:
-				Log.w("Updating comments","Clicked");
 				if(checkInternet()){
 					if (userSettings.getString("settingComments", null).equals("true")) {
-						Log.w("comments","false/off");
 						editor.putString("settingComments", "false");
 						editor.apply();
-						Log.w("comments","now is "+userSettings.getString("settingComments", null));
 						setNotificationStatus(AppConstants.Options.COMMENTS, "off",progressBar_settings_comments);
 					} else {
-						Log.w("comments","true/on");
 						editor.putString("settingComments", "true");
 						editor.apply();
-						Log.w("comments","now is "+userSettings.getString("settingComments", null));
 						setNotificationStatus(AppConstants.Options.COMMENTS, "on",progressBar_settings_comments);
 					}
 				}
@@ -288,18 +281,13 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 				break;
 			case R.id.switchfavoritesImage:
 				if(checkInternet()){
-					Log.w("Updating favorites","Clicked");
 					if (userSettings.getString("settingFavourites", null).equals("true")) {
-						Log.w("favorites","false/off");
 						editor.putString("settingFavourites", "false");
 						editor.apply();
-						Log.w("favorites","now is "+userSettings.getString("settingFavourites", null));
 						setNotificationStatus(AppConstants.Options.FAVOURITES, "off",progressBar_settings_favorites);
 					} else {
-						Log.w("favorites","true/on");
 						editor.putString("settingFavourites", "true");
 						editor.apply();
-						Log.w("favorites","now is "+userSettings.getString("settingFavourites", null));
 						setNotificationStatus(AppConstants.Options.FAVOURITES, "on",progressBar_settings_favorites);
 					}
 				}
@@ -307,18 +295,13 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 				break;
 			case R.id.switchitemsPurchasedImage:
 				if(checkInternet()){
-					Log.w("Updating purchases","Clicked");
 					if (userSettings.getString("settingPurchases", null).equals("true")) {
-						Log.w("purchases","false/off");
 						editor.putString("settingPurchases", "false");
 						editor.apply();
-						Log.w("purchases","now is "+userSettings.getString("settingPurchases", null));
 						setNotificationStatus(AppConstants.Options.PURCHASES, "off",progressBar_settings_purchases);
 					} else {
-						Log.w("purchases","true/on");
 						editor.putString("settingPurchases", "true");
 						editor.apply();
-						Log.w("purchases","now is "+userSettings.getString("settingPurchases", null));
 						setNotificationStatus(AppConstants.Options.PURCHASES, "on",progressBar_settings_purchases);
 					}
 				}
@@ -428,48 +411,34 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 	public void setNotifications()
 	{
 
-		Log.w("FragmentSettings","setNotifications()");
-		Log.w("Comments",":"+userSettings.getString("settingComments", ""));
-		Log.w("Followers",":"+userSettings.getString("settingFollowers", ""));
-		Log.w("Purcahses",":"+userSettings.getString("settingPurchases", ""));
-		Log.w("Favourites",":"+userSettings.getString("settingFavourites", ""));
-
 		if (userSettings.getString("settingComments", "").equals("true")) {
-			Log.w("c","true");
 			switchcomment.setChecked(true);
 		}
 		else {
-			Log.w("c","false");
 			switchcomment.setChecked(false);
 		}
 
 		//FOLLOWERS
 		if (userSettings.getString("settingFollowers", "").equals("true")) {
-			Log.w("fol","true");
 			switchfollowers.setChecked(true);
 		}
 		else {
-			Log.w("fol","false");
 			switchfollowers.setChecked(false);
 		}
 
 		//PURCHASES
 		if (userSettings.getString("settingPurchases", "").equals("true")) {
-			Log.w("p","true");
 			switchitemsPurchasedImage.setChecked(true);
 		}
 		else {
-			Log.w("p","false");
 			switchitemsPurchasedImage.setChecked(false);
 		}
 
 		//FAVOURITES
 		if (userSettings.getString("settingFavourites", "").equals("true")) {
-			Log.w("fav","true");
 			switchfavoritesImage.setChecked(true);
 		}
 		else {
-			Log.w("fav","false");
 			switchfavoritesImage.setChecked(false);
 		}
 	}
@@ -512,11 +481,6 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 					// txtPWD.setText(settings.getString("Password", "").toString());
 
 					// COMMENTS
-					Log.w("Comments",":"+settingStatus.get(AppConstants.Options.COMMENTS));
-					Log.w("Followers",":"+settingStatus.get(AppConstants.Options.FOLLOWERS));
-					Log.w("Purcahses",":"+settingStatus.get(AppConstants.Options.PURCHASES));
-					Log.w("Favourites",":"+settingStatus.get(AppConstants.Options.FAVOURITES));
-
 					if (settingStatus.get(AppConstants.Options.COMMENTS)) {
 						switchcomment.setChecked(true);
 					}

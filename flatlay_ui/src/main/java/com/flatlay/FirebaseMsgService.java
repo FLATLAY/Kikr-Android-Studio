@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.RemoteViews;
 
+import com.flatlay.activity.EditProfileActivity;
 import com.flatlay.activity.HomeActivity;
 import com.flatlaylib.db.AppPreference;
 import com.flatlaylib.utils.Syso;
@@ -66,48 +67,82 @@ public class FirebaseMsgService extends FirebaseMessagingService {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
 
-        Log.i(TAG, "Received message"+message);
+        Log.i(TAG, "Received message" + message);
         Intent intent = new Intent(this, HomeActivity.class);
         dumpIntent(intent);
-        Log.w("FirebaseMsgService","intent"+intent.toString());
+        Log.w("FirebaseMsgService", "intent" + intent.toString());
 
         String otherdata = "";
         String inspiration_id = null;
         String purchase_id = "";
         String section = "";
-        if (intent.hasExtra("otherdata")) {
+        if (remoteMessage.getData().containsKey("otherdata")) {
+            otherdata = remoteMessage.getData().get("otherdata");
+            JSONObject jsonobj = null;
             try {
-                otherdata = intent.getStringExtra("otherdata");
-                JSONObject jsonobj = new JSONObject(otherdata);
+                jsonobj = new JSONObject(otherdata);
+
                 if (jsonobj.has("inspiration_id")) {
                     inspiration_id = jsonobj.getString("inspiration_id");
+                    intent.putExtra("inspiration_id", inspiration_id.toString());
+                    Log.w("FirebaseMsgService", inspiration_id);
                 }
                 if (jsonobj.has("purchase_id")) {
                     purchase_id = jsonobj.getString("purchase_id");
                 }
-            } catch (JSONException e1) {
-                e1.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
-        try {
-            //message = intent.getStringExtra("message");
-            section = intent.getStringExtra("section");
-            if (section != null && section.equalsIgnoreCase("follow")) {
-                inspiration_id = intent.getStringExtra("user_idsend");
-            }
-            if (section != null && section.equalsIgnoreCase("twotap")) {
-                AppPreference.getInstance().setIsShowNotification(purchase_id, false);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            //message = "You received new message";
+        if (remoteMessage.getData().containsKey("section")) {
+            section = remoteMessage.getData().get("section");
+            Log.w("FirebaseMsgService", section);
+            intent.putExtra("section", section.toString());
         }
+//        try {
+//            JSONObject jsonobj0 = new JSONObject(message);
+//            if (jsonobj0.has("otherdata")) {
+//                otherdata = jsonobj0.getString("otherdata").toString();
+//                Log.w("FirebaseMsgService", otherdata);
+//                JSONObject jsonobj = new JSONObject(otherdata);
+//                if (jsonobj.has("inspiration_id")) {
+//                    inspiration_id = jsonobj.getString("inspiration_id");
+//                    intent.putExtra("inspiration_id", inspiration_id.toString());
+//                    Log.w("FirebaseMsgService", inspiration_id);
+//                }
+//                if (jsonobj.has("purchase_id")) {
+//                    purchase_id = jsonobj.getString("purchase_id");
+//                }
+//            }
+//            if (jsonobj0.has("section")) {
+//                section = jsonobj0.getString("inspiration_id");
+//                Log.w("FirebaseMsgService", section);
+//                intent.putExtra("section", section.toString());
+//            }
+//        } catch (JSONException e1) {
+//            e1.printStackTrace();
+//        }
+
+//        try {
+//            //message = intent.getStringExtra("message");
+////            section = intent.getStringExtra("section").toString();
+////            Log.w("FirebaseMsgService", section);
+//            if (section != null && section.equalsIgnoreCase("follow")) {
+//                inspiration_id = intent.getStringExtra("user_idsend");
+//            }
+//            if (section != null && section.equalsIgnoreCase("twotap")) {
+//                AppPreference.getInstance().setIsShowNotification(purchase_id, false);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            //message = "You received new message";
+//        }
         boolean isShowNotification = true;
         if (section != null && section.equalsIgnoreCase("placeorder")) {
             isShowNotification = false;
         }
         if (isShowNotification) {
-            Log.w("FirebaseMsgService","message"+message);
+            Log.w("FirebaseMsgService", "message " + message);
             generateCustomNotification(getBaseContext(), message, inspiration_id, section, otherdata);
         }
 
@@ -121,11 +156,9 @@ public class FirebaseMsgService extends FirebaseMessagingService {
      */
 
 
-
     /**
      * Method called on Receiving a new message
      */
-
 
 
 //    public double getFinalPrice(String string) {
@@ -139,39 +172,38 @@ public class FirebaseMsgService extends FirebaseMessagingService {
 //        return price;
 //    }
 
-    private void generateNotification(Context context, String message, String inspiration_id, String section, String otherdata) {
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
-        notificationBuilder.setSmallIcon(R.drawable.imgpsh_smallsize);
-        notificationBuilder.setTicker(message);
-        notificationBuilder.setContentTitle(context.getString(R.string.app_name));
-        notificationBuilder.setContentText(message);
-        notificationBuilder.setAutoCancel(true);
-
-        Intent intent = new Intent(context, HomeActivity.class);
-        if (!TextUtils.isEmpty(otherdata)) {
-            intent.putExtra("otherdata", otherdata);
-        }
-        if (!TextUtils.isEmpty(inspiration_id)) {
-            intent.putExtra("inspiration_id", inspiration_id);
-        }
-        intent.putExtra("section", section);
-        intent.setData(Uri.parse(section));
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_ONE_SHOT);
-        notificationBuilder.setContentIntent(pendingIntent);
-        Notification notification = notificationBuilder.build();
-        notification.defaults |= Notification.DEFAULT_SOUND;
-        notification.defaults |= Notification.DEFAULT_VIBRATE;
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        if (!TextUtils.isEmpty(section) && section.equalsIgnoreCase("commission"))
-            notificationManager.notify(100, notification);
-        else
-            notificationManager.notify(1, notification);
-
-        if (!TextUtils.isEmpty(section) && section.equalsIgnoreCase("placeorder")) {
-            setAlarmForNotification();
-        }
-    }
-
+//    private void generateNotification(Context context, String message, String inspiration_id, String section, String otherdata) {
+//        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
+//        notificationBuilder.setSmallIcon(R.drawable.imgpsh_smallsize);
+//        notificationBuilder.setTicker(message);
+//        notificationBuilder.setContentTitle(context.getString(R.string.app_name));
+//        notificationBuilder.setContentText(message);
+//        notificationBuilder.setAutoCancel(true);
+//
+//        Intent intent = new Intent(context, HomeActivity.class);
+//        if (!TextUtils.isEmpty(otherdata)) {
+//            intent.putExtra("otherdata", otherdata);
+//        }
+//        if (!TextUtils.isEmpty(inspiration_id)) {
+//            intent.putExtra("inspiration_id", inspiration_id);
+//        }
+//        intent.putExtra("section", section);
+//        intent.setData(Uri.parse(section));
+//        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_ONE_SHOT);
+//        notificationBuilder.setContentIntent(pendingIntent);
+//        Notification notification = notificationBuilder.build();
+//        notification.defaults |= Notification.DEFAULT_SOUND;
+//        notification.defaults |= Notification.DEFAULT_VIBRATE;
+//        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+//        if (!TextUtils.isEmpty(section) && section.equalsIgnoreCase("commission"))
+//            notificationManager.notify(100, notification);
+//        else
+//            notificationManager.notify(1, notification);
+//
+//        if (!TextUtils.isEmpty(section) && section.equalsIgnoreCase("placeorder")) {
+//            setAlarmForNotification();
+//        }
+//    }
     private void setAlarmForNotification() {
         AlarmManager manager = (AlarmManager) getApplicationContext().getSystemService(ALARM_SERVICE);
         Calendar calendar = Calendar.getInstance();
@@ -203,18 +235,21 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         RemoteViews remoteViews = new RemoteViews(getPackageName(),
                 R.layout.customnotification);
 
-        Intent intent = new Intent(context, HomeActivity.class);
-        if (!TextUtils.isEmpty(otherdata)) {
-            intent.putExtra("otherdata", otherdata);
-        }
-        if (!TextUtils.isEmpty(inspiration_id)) {
-            intent.putExtra("inspiration_id", inspiration_id);
-        }
-        if (!TextUtils.isEmpty(section)) {
-            intent.putExtra("section", section);
-            intent.setData(Uri.parse(section));
-        }
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_ONE_SHOT);
+//        Intent intent = new Intent(context, HomeActivity.class);
+//        if (!TextUtils.isEmpty(otherdata)) {
+//            intent.putExtra("otherdata", otherdata);
+//        }
+//        if (!TextUtils.isEmpty(inspiration_id)) {
+//            intent.putExtra("inspiration_id", inspiration_id);
+//        }
+//        if (!TextUtils.isEmpty(section)) {
+//            intent.putExtra("section", section);
+//            intent.setData(Uri.parse(section));
+//        }
+        Intent intent2 = new Intent(this, HomeActivity.class);
+        intent2.putExtra("inspiration_id", inspiration_id.toString());
+        intent2.putExtra("section", section.toString());
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 // Set Icon
@@ -231,12 +266,12 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         // Locate and set the Image into customnotificationtext.xml ImageViews
         remoteViews.setImageViewResource(R.id.image, R.drawable.imgpsh_smallsize);
         Date date = new Date();
-        SimpleDateFormat format=new SimpleDateFormat("hh:mm aa");
+        SimpleDateFormat format = new SimpleDateFormat("hh:mm aa");
 
         String hey = "Hey!";
 
-        Log.w("FirebaseMsgService","Notification Text: "+hey+message);
-        Log.w("FirebaseMsgService","Time: "+format.format(date));
+        Log.w("FirebaseMsgService", "Notification Text: " + hey + message);
+        Log.w("FirebaseMsgService", "Time: " + format.format(date));
 
         // Locate and set the Text into customnotificationtext.xml TextViews
         remoteViews.setTextViewText(R.id.title, "Flatlay");
@@ -245,7 +280,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
 
 
         // Create Notification Manager
-        NotificationManager notificationmanager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//        NotificationManager notificationmanager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Notification notification = builder.build();
         notification.defaults |= Notification.DEFAULT_SOUND;
         notification.defaults |= Notification.DEFAULT_VIBRATE;
@@ -258,9 +293,5 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         if (!TextUtils.isEmpty(section) && section.equalsIgnoreCase("placeorder")) {
             setAlarmForNotification();
         }
-
-
     }
-
-
 }

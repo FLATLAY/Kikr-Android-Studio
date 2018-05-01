@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +40,8 @@ public class StoreGridAdapter extends BaseAdapter {
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setData(List<BrandResult> data){
-        this.data=data;
+    public void setData(List<BrandResult> data) {
+        this.data = data;
     }
 
     @Override
@@ -57,27 +58,33 @@ public class StoreGridAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return 0;
     }
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder viewholder;
-        if (convertView==null) {
-            convertView = mInflater.inflate(R.layout.adapter_brand_grid,null);
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.adapter_brand_grid, null);
             viewholder = new StoreGridAdapter.ViewHolder();
-            viewholder.brandImage= (ImageView) convertView.findViewById(R.id.brandImage);
-            viewholder.follow_text= (TextView) convertView.findViewById(R.id.follow_text);
+            viewholder.brandImage = (ImageView) convertView.findViewById(R.id.brandImage);
+            viewholder.follow_text = (TextView) convertView.findViewById(R.id.follow_text);
             convertView.setTag(viewholder);
         } else {
             viewholder = (ViewHolder) convertView.getTag();
         }
         viewholder.follow_text.setTypeface(FontUtility.setMontserratLight(mContext));
-        if(data.size()>position)
-            CommonUtility.setImage(mContext, viewholder.brandImage, data.get(position).getImg());
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, (CommonUtility.getDeviceWidth(mContext)) / 8);
+        layoutParams.gravity= Gravity.CENTER;
+        layoutParams.setMargins(0,15,0,0);
+        if (data.size() > position) {
+            viewholder.brandImage.setLayoutParams(layoutParams);
+            CommonUtility.setImageNoResize(mContext,viewholder.brandImage,data.get(position).getImg());
+        }
         return convertView;
     }
 
     public class ViewHolder {
         private ImageView brandImage;
-//        private LinearLayout follow_layout;
+        //        private LinearLayout follow_layout;
         private TextView follow_text;
     }
 

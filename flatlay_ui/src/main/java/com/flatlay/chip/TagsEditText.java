@@ -50,6 +50,7 @@ import java.util.List;
  */
 public class TagsEditText extends AutoCompleteTextView {
     boolean colorChange = false;
+    final String TAG = "TagsEditText";
 
     private static final String SEPARATOR = " ";
     public static final String NEW_LINE = "\n";
@@ -337,7 +338,7 @@ public class TagsEditText extends AutoCompleteTextView {
 
     private void init(@Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         Context context = getContext();
-        Log.w("Activity","TagsEditText");
+        Log.w(TAG,"TagsEditText");
         if (attrs == null) {
             mIsSpacesAllowedInTags = false;
             mTagsTextColor = ResourceUtils.getColor(context, R.color.defaultTagsTextColor);

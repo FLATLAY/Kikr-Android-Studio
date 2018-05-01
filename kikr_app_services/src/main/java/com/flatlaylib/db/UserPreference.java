@@ -289,7 +289,6 @@ public class UserPreference {
     }
 
     public String getProfilePic() {
-        Log.e("Profile", "lalaa4455:"+mPrefs.getString(mProfilePic, ""));
         return mPrefs.getString(mProfilePic, "");
     }
 
@@ -419,5 +418,25 @@ public class UserPreference {
     public String getPaypalAccessToken() {
 
         return mPrefs.getString(mPaypalAccessToken, "");
+    }
+
+    public void setSearchIndex(int searchIndex){
+        this.searchIndex=searchIndex;
+    }
+
+    private int searchIndex=0;
+
+    public int getSearchIndex(){
+        return searchIndex;
+    }
+
+    public void setPpsIndex(int ppsIndex){
+        this.ppsIndex=ppsIndex;
+    }
+
+    private int ppsIndex=0;
+
+    public int getPpsIndex(){
+        return ppsIndex;
     }
 }

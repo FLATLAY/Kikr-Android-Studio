@@ -202,7 +202,7 @@ public class InspirationProductUI {
             if (index == 0) {
                 RelativeLayout.LayoutParams layoutParams2 =
                         new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT);
+                                ViewGroup.LayoutParams.MATCH_PARENT);
                 layoutParams2.setMargins(0, 15, 15, 15);
                 convertView.setLayoutParams(layoutParams2);
             }
@@ -213,7 +213,7 @@ public class InspirationProductUI {
                 public void onClick(View view) {
 //                    Bundle bundle = new Bundle();
 //                    bundle.putSerializable("data", data);
-                    ViewInsProductFragment detail = new ViewInsProductFragment(data);
+                    ViewInsProductFragment detail = new ViewInsProductFragment(data,inspiration.getItem_name());
 //                    detail.setArguments(bundle);
                     ((HomeActivity) mContext).addFragment(detail);
                 }
@@ -320,4 +320,3 @@ public class InspirationProductUI {
     private Fragment mContent;
 
 }
-

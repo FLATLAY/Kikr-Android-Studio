@@ -24,6 +24,8 @@ public class ProductTaggingListAdapter
     private LayoutInflater mInflater;
     private List<Product> data;
     boolean isProductSearch = false;
+    final String TAG = "ProductTaggingLis";
+
 
     public ProductTaggingListAdapter(ProductSearchTagging context, List<Product> data) {
         super();
@@ -31,7 +33,7 @@ public class ProductTaggingListAdapter
         this.data = data;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         isProductSearch = false;
-        Log.w("Activity","ProductTaggingListAdapter");
+        Log.w(TAG,"ProductTaggingListAdapter");
     }
 
 

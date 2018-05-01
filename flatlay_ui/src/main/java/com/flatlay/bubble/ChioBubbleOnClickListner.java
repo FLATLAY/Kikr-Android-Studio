@@ -11,12 +11,13 @@ public class ChioBubbleOnClickListner implements OnClickListener {
 	private MultiAutoCompleteTextView autoCompleteTextView;
 	private Context context;
 	private ChipPropery chipPropery;
-	
-	
-	
+
+	final String TAG = "ChioBubbleOnCl";
+
+
 	public ChioBubbleOnClickListner(Context context, MultiAutoCompleteTextView autoCompleteTextView, ChipPropery chipPropery) {
 		super();
-		Log.w("Activity","ChioBubbleOnClickListner");
+		Log.w(TAG,"ChioBubbleOnClickListner");
 		this.autoCompleteTextView = autoCompleteTextView;
 		this.context = context;
 		this.chipPropery = chipPropery;

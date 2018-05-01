@@ -60,18 +60,21 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
     //    public boolean[] mSelectedItems;
     private List<UserResult> followUsers = new ArrayList<>();
     private List<Inspiration> inspirationList = new ArrayList<>();
-    private List<String> temporarylist = new ArrayList<>();
+    private List<Inspiration> temporarylist = new ArrayList<>();
+    private ListAdapterListener mListener;
+    final String TAG = "CustomizeInterestPe";
 
     //IMPORTANT: consider using a linked hash map?
-    private LinkedHashMap<String, List<String>> positionMap = new LinkedHashMap<>();
+    private LinkedHashMap<String, List<Inspiration>> positionMap = new LinkedHashMap<>();
 //    private HashMap<Integer, Boolean> followMap = new HashMap<>();
 
     private List<UserData> userDetails;
     private Boolean isFollowing = false;
 
-    public CustomizeInterestPeopleListAdapter(FragmentActivity mContext, List<UserResult> followUsers) {
+    public CustomizeInterestPeopleListAdapter(FragmentActivity mContext, List<UserResult> followUsers, ListAdapterListener mListener) {
         this.mContext = mContext;
         this.followUsers = followUsers;
+        this.mListener = mListener;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //        mSelectedItems = new boolean[followUsers.size()];
 //        Arrays.fill(mSelectedItems, false);
@@ -165,11 +168,23 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
         String profileImage = getItem(position).getImg();
 
         if (profileImage != null && profileImage.length() > 0)
-            Picasso.with(mContext).load(getItem(position).getImg()).resize(150, 150).into(viewHolder.userImage);
+            CommonUtility.setImage(mContext, viewHolder.userImage, getItem(position).getImg());
+
         else
             Picasso.with(mContext).load(R.drawable.profile_icon).into(viewHolder.userImage);
 
-
+        viewHolder.userImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onClickAtOKButton(position);
+            }
+        });
+        viewHolder.name_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onClickAtOKButton(position);
+            }
+        });
 //        viewHolder.product_inflater_layout.removeAllViews();
 //        viewHolder.product_layout.post(new Runnable() {
 //            @Override
@@ -185,11 +200,13 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
                 public void handleOnSuccess(Object object) {
                     InspirationFeedRes inspirationFeedRes = (InspirationFeedRes) object;
                     inspirationList = inspirationFeedRes.getData();
+
 //                    positionMap.put(position, inspirationList);
                     temporarylist = new ArrayList<>();
                     for (int i = 0; i < inspirationList.size(); i++) {
-                        temporarylist.add(inspirationList.get(i).getInspiration_image());
+                        temporarylist.add(inspirationList.get(i));
                     }
+
 //                if (inspirationList.size() > 0) {
 //                    viewHolder.card_layout.setVisibility(View.VISIBLE);
 //                    CommonUtility.setImage(mContext, inspirationList.get(0).getInspiration_image(),viewHolder.image1);
@@ -250,15 +267,16 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
 //                        viewHolder.image10.setVisibility(View.VISIBLE);
 //                    }
                     viewHolder.card_layout.removeAllViews();
-                    Log.e("feed2--3", "" + temporarylist.size());
-                    View view = new FeaturedTabUi(mContext, temporarylist).getView();
+                    View view = new FeaturedTabUi(mContext, temporarylist, new FeaturedTabUi.ListAdapterListener() {
+                        @Override
+                        public void onClickAtOKButton() {
+                            viewHolder.userImage.performClick();
+                        }
+                    }).getView();
                     viewHolder.card_layout.addView(view);
-
                     positionMap.put(getItem(position).getId(), temporarylist);
-                    Log.e("feed2--2", "" + temporarylist.size());
-
                     if (positionMap.size() > 200) {
-                        Map.Entry<String, List<String>> mapEntry = positionMap.entrySet().iterator().next();
+                        Map.Entry<String, List<Inspiration>> mapEntry = positionMap.entrySet().iterator().next();
                         String key = mapEntry.getKey();
                         positionMap.remove(key);
                     }
@@ -304,10 +322,15 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
 
         } else {
             temporarylist = positionMap.get(getItem(position).getId());
-            Log.e("feed2--22", "" + temporarylist.size());
+            Log.e(TAG, "" + temporarylist.size());
             viewHolder.card_layout.removeAllViews();
-            Log.e("feed2--33", "" + temporarylist.size());
-            View view = new FeaturedTabUi(mContext, temporarylist).getView();
+            Log.e(TAG, "" + temporarylist.size());
+            View view = new FeaturedTabUi(mContext, temporarylist, new FeaturedTabUi.ListAdapterListener() {
+                @Override
+                public void onClickAtOKButton() {
+                    viewHolder.userImage.performClick();
+                }
+            }).getView();
             viewHolder.card_layout.addView(view);
 //            if (temporarylist.size() > 0) {
 //                viewHolder.card_layout.setVisibility(View.VISIBLE);
@@ -395,16 +418,20 @@ public class CustomizeInterestPeopleListAdapter extends BaseAdapter {
             }
         });
         viewHolder.scroll_view.scrollTo(0, 0);
-        Log.e("feed2--4444", "" + "feed");
+        Log.e(TAG, "" + "feed");
 
         return convertView;
     }
 
-//    public void startProfilePage(int pos) {
+    //    public void startProfilePage(int pos) {
 //
 //        addFragment(new FragmentProfileView(getItem(pos).getId(), "no"));
 //
 //    }
+    public interface ListAdapterListener { // create an interface
+
+        void onClickAtOKButton(int position);
+    }
 
     public class ViewHolder {
         TextView name_text;

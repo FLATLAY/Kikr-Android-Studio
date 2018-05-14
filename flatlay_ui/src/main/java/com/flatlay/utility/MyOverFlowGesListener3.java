@@ -35,15 +35,15 @@ public class MyOverFlowGesListener3 extends GestureDetector.SimpleOnGestureListe
 
     private WeakReference<ViewGroup> overflow;
     private Animation aa, bb;
-private FragmentActivity context;
+    private FragmentActivity context;
     private ImageView image;
 
     private GestureDetectorCompat gestureDetectorCompat;
 
-    public MyOverFlowGesListener3(ViewGroup overflow, ImageView image, FragmentActivity context,OnCloseListener listener) {
+    public MyOverFlowGesListener3(ViewGroup overflow, ImageView image, FragmentActivity context, OnCloseListener listener) {
         this.overflow = new WeakReference<>(overflow);
-        this.context=context;
-        this.listener=listener;
+        this.context = context;
+        this.listener = listener;
         this.gestureDetectorCompat = new GestureDetectorCompat(
                 overflow.getContext(), this);
         aa = new RotateAnimation(0.0f, 180.0f,
@@ -68,10 +68,8 @@ private FragmentActivity context;
         if (motionEvent2.getRawY() <= initialYPosition) {
             ViewHelper.setTranslationY(overflow.get(), motionEvent2.getRawY());
             if (motionEvent.getRawY() < motionEvent2.getRawY()) {
-                Log.e(TAG, "onScrollfalse"+isScrollUpping);
                 isScrollUpping = false;
             } else {
-                Log.e(TAG, "onScrolltrue"+isScrollUpping);
                 isScrollUpping = true;
             }
         }
@@ -82,31 +80,28 @@ private FragmentActivity context;
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent2, float velocityX, float velocityY) {
         isScrollUpping = null;
         if (motionEvent.getRawY() < motionEvent2.getRawY()) {
-            Log.e(TAG, "onFling1"+isScrollUpping);
             slide(-350);
         } else {
-            Log.e(TAG, "onFling2"+isScrollUpping);
             slide(0);
         }
         return true;
     }
 
+
     public void slide(float position) {
 
         ObjectAnimator objectAnimator;
-        if(overflow!=null) {
+        if (overflow != null) {
 
             if (position == -350) {
-                Log.e(TAG, "slide350"+isScrollUpping);
                 this.isOpened = false;
                 objectAnimator = ObjectAnimator.ofFloat(overflow.get(), "translationY", initialYPosition);
                 image.startAnimation(bb);
                 listener.onClose();
 
             } else {
-                Log.e(TAG, "slide0"+isScrollUpping);
                 this.isOpened = true;
-                objectAnimator = ObjectAnimator.ofFloat(overflow.get(), "translationY", initialYPosition-(CommonUtility.getDeviceHeight(context)/2));
+                objectAnimator = ObjectAnimator.ofFloat(overflow.get(), "translationY", initialYPosition + (CommonUtility.getDeviceHeight(context) / 2));
                 image.startAnimation(aa);
                 listener.onOpen();
             }
@@ -124,10 +119,8 @@ private FragmentActivity context;
             if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 if (isScrollUpping != null) {
                     if (isScrollUpping) {
-                        Log.e(TAG, "motionEvent0"+isScrollUpping);
                         slide(0);
                     } else {
-                        Log.e(TAG, "motionEvent350"+isScrollUpping);
                         slide(-350);
                     }
                 }
@@ -164,6 +157,7 @@ private FragmentActivity context;
     public interface OnCloseListener {
 
         void onClose();
+
         void onOpen();
 
     }

@@ -125,15 +125,11 @@ public class ProductDetailGridAdapter extends BaseAdapter {
         bb.setFillAfter(true);
         bb.setDuration(400);
         final Product currentProduct = getItem(position);
-
-//		CommonUtility.setImage(mContext, getItem(position).getInspiration_image(), viewholder.inspirationImage, R.drawable.dum_list_item_product);
-        //	CommonUtility.setImage(mContext, getItem(position).getInspiration_image(), viewholder.inspirationImage);
         CommonUtility.setImage(mContext, viewholder.productImage, getItem(position).getProductimageurl());
-        //Picasso.with(mContext).load(getItem(position).getInspiration_image()).transform(new RoundedTransformation(125, 4)).into(viewholder.inspirationImage);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((HomeActivity)mContext).checkInternet()) {
+                if (((HomeActivity) mContext).checkInternet()) {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("data", currentProduct);
                     FragmentDiscoverDetail detail = new FragmentDiscoverDetail();
@@ -143,7 +139,7 @@ public class ProductDetailGridAdapter extends BaseAdapter {
             }
         });
 
-        final Product product=products.get(position);
+        final Product product = products.get(position);
 
         convertView.setOnLongClickListener(new View.OnLongClickListener() {
 
@@ -153,7 +149,6 @@ public class ProductDetailGridAdapter extends BaseAdapter {
                         .addAction("Like", R.drawable.small_gray_heart, new MyBubbleActions.Callback() {
                             @Override
                             public void doAction() {
-                                // Toast.makeText(v.getContext(), "Like", Toast.LENGTH_SHORT).show();
                                 if (UserPreference.getInstance().getPassword() == "" || UserPreference.getInstance().getEmail() == "" || UserPreference.getInstance().getUserName() == "") {
                                     CreateAccountDialog createAccountDialog = new CreateAccountDialog(mContext);
                                     createAccountDialog.show();
@@ -161,8 +156,6 @@ public class ProductDetailGridAdapter extends BaseAdapter {
                                     likeInspiration(product, new UiUpdate() {
                                         @Override
                                         public void updateUi() {
-                                            // TextView likeCountTextView = (TextView) v.findViewById(R.id.likeCountTextView);
-                                            //  likeCountTextView.setText(TextUtils.isEmpty(data.get((Integer) v.getTag()).getike_info().getLike_count()) ? "0" : data.get((Integer) v.getTag()).getLike_info().getLike_count());
                                         }
                                     });
                                 }
@@ -171,7 +164,6 @@ public class ProductDetailGridAdapter extends BaseAdapter {
                         .addAction("Add to Collection", R.drawable.small_gray_plus, new MyBubbleActions.Callback() {
                             @Override
                             public void doAction() {
-                                // Toast.makeText(v.getContext(), "Add to Collection", Toast.LENGTH_SHORT).show();
                                 if (UserPreference.getInstance().getPassword() == "" || UserPreference.getInstance().getEmail() == "" || UserPreference.getInstance().getUserName() == "") {
                                     CreateAccountDialog createAccountDialog = new CreateAccountDialog(mContext);
                                     createAccountDialog.show();
@@ -184,7 +176,6 @@ public class ProductDetailGridAdapter extends BaseAdapter {
                         .addAction("Add to Cart", R.drawable.small_gray_cart, new MyBubbleActions.Callback() {
                             @Override
                             public void doAction() {
-                                // Toast.makeText(v.getContext(), "Add to Cart", Toast.LENGTH_SHORT).show();
                                 addProductToCart(product);
 
                             }
@@ -192,7 +183,6 @@ public class ProductDetailGridAdapter extends BaseAdapter {
                         .addAction("View On Store Site", R.drawable.small_gray_store, new MyBubbleActions.Callback() {
                             @Override
                             public void doAction() {
-                                // Toast.makeText(v.getContext(), "View On Store Site", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(mContext, ProductDetailWebViewActivity.class);
                                 intent.putExtra("data", new Gson().toJson(product));
                                 mContext.startActivity(intent);
@@ -201,7 +191,6 @@ public class ProductDetailGridAdapter extends BaseAdapter {
                         .addAction("Share", R.drawable.small_gray_kopie, new MyBubbleActions.Callback() {
                             @Override
                             public void doAction() {
-                                // Toast.makeText(v.getContext(), "Share", Toast.LENGTH_SHORT).show();
                                 postlink = SHARE_POST_LINK + product.getId();
                                 ShareDialog dialog = new ShareDialog(mContext,
                                         product.getProductimageurl(), postlink);
@@ -216,7 +205,7 @@ public class ProductDetailGridAdapter extends BaseAdapter {
         viewholder.text4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((HomeActivity)mContext).checkInternet()) {
+                if (((HomeActivity) mContext).checkInternet()) {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("data", currentProduct);
                     FragmentDiscoverDetail detail = new FragmentDiscoverDetail();
@@ -248,15 +237,6 @@ public class ProductDetailGridAdapter extends BaseAdapter {
         });
         return convertView;
     }
-
-//    public boolean checkInternet() {
-//        if (CommonUtility.isOnline(mContext)) {
-//            return true;
-//        } else {
-//            CommonUtility.showNoInternetAlert(mContext);
-//            return false;
-//        }
-//    }
 
     public void likeInspiration(final Product product, final UiUpdate uiUpdate) {
         Syso.info("123 like id: " + product.getLike_info().getLike_id()
@@ -292,7 +272,6 @@ public class ProductDetailGridAdapter extends BaseAdapter {
                         if (uiUpdate != null) {
                             uiUpdate.updateUi();
                         }
-//                        AlertUtils.showToast(context, inspirationRes.getMessage());
                     }
 
                     @Override
@@ -316,17 +295,13 @@ public class ProductDetailGridAdapter extends BaseAdapter {
     }
 
     public void addProductToCart(Product product) {
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
         final CartApi cartApi = new CartApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                //  mProgressBarDialog.dismiss();
                 if (object != null) {
                     CartRes response = (CartRes) object;
                     UserPreference.getInstance().incCartCount();
-                    //  refreshCartCount();
                     AlertUtils.showToast(mContext, response.getMessage());
                 }
             }
@@ -334,7 +309,6 @@ public class ProductDetailGridAdapter extends BaseAdapter {
             @Override
             public void handleOnFailure(ServiceException exception,
                                         Object object) {
-                //mProgressBarDialog.dismiss();
                 Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     CartRes response = (CartRes) object;
@@ -355,8 +329,5 @@ public class ProductDetailGridAdapter extends BaseAdapter {
         private LinearLayout layout1, detaillayout, detaillayout2, dummylayout;
         private TextView text1, text2, text3, text4;
     }
-
-
-
 }
 

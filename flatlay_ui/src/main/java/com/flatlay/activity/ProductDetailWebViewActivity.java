@@ -56,9 +56,8 @@ public class ProductDetailWebViewActivity extends BaseActivity implements OnClic
     private List<String> favoriteDealsIdList;
     private MyMaterialContentOverflow4 overflow1;
     private int index = 0;
-    public final static String TAG="ProductDetailWeb";
+    public final static String TAG = "ProductDetailWeb";
 
-    //    private ScrollView infoLayout;
     private GestureDetector gestureDetector;
     private ContextMenuView contextMenuBg;
     private View centarlView;
@@ -70,7 +69,7 @@ public class ProductDetailWebViewActivity extends BaseActivity implements OnClic
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        Log.w(TAG,"ProductDetailWebViewActivity");
+        Log.w(TAG, "ProductDetailWebViewActivity");
         CommonUtility.noTitleActivity(context);
         setContentView(R.layout.fragment_product_detail_webview);
         Bundle extras = getIntent().getExtras();
@@ -105,9 +104,6 @@ public class ProductDetailWebViewActivity extends BaseActivity implements OnClic
                     favorite_image.setImageResource(R.drawable.ic_deals_unfavorite);
                 }
                 break;
-//            case R.id.backIconLayout:
-//                finish();
-//                break;
 
             case R.id.text8:
                 overflow1.triggerHide();
@@ -227,7 +223,6 @@ public class ProductDetailWebViewActivity extends BaseActivity implements OnClic
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                //if(clickedDismiss)
                 if (gestureDetector.onTouchEvent(event)) {
                     if (isMenuShowing()) {
                         hideContextMenu();

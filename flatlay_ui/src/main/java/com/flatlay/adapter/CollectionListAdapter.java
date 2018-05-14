@@ -117,7 +117,6 @@ public class CollectionListAdapter extends BaseAdapter implements ServiceCallbac
 
     @Override
     public void handleOnSuccess(Object object) {
-        //mProgressBarDialog.dismiss();
         Syso.info("In handleOnSuccess>>" + object);
         CollectionApiRes collectionApiRes = (CollectionApiRes) object;
         AlertUtils.showToast(mContext, collectionApiRes.getMessage());
@@ -126,7 +125,6 @@ public class CollectionListAdapter extends BaseAdapter implements ServiceCallbac
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
-        //mProgressBarDialog.dismiss();
         Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             CollectionApiRes response = (CollectionApiRes) object;

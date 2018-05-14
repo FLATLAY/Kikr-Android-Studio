@@ -28,27 +28,27 @@ import com.flatlaylib.utils.Syso;
 
 public class ConfirmDeleteDialog extends Dialog {
     private TextView yes_text, cancel_text, sure_text;
-    private String inspiration_id,user_id;
+    private String inspiration_id, user_id;
     private DeletePostApi deletePostApi;
     private Context mContext;
 
-    public ConfirmDeleteDialog(@NonNull Context context,String inspiration_id, final String user_id) {
+    public ConfirmDeleteDialog(@NonNull Context context, String inspiration_id, final String user_id) {
         super(context);
-        this.inspiration_id=inspiration_id;
-        this.user_id=user_id;
-        this.mContext=context;
+        this.inspiration_id = inspiration_id;
+        this.user_id = user_id;
+        this.mContext = context;
         init();
     }
 
     public ConfirmDeleteDialog(@NonNull Context context, @StyleRes int themeResId) {
         super(context, themeResId);
-        this.mContext=context;
+        this.mContext = context;
         init();
     }
 
     protected ConfirmDeleteDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
-        this.mContext=context;
+        this.mContext = context;
         init();
     }
 
@@ -68,7 +68,7 @@ public class ConfirmDeleteDialog extends Dialog {
         yes_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                removePost(inspiration_id,user_id);
+                removePost(inspiration_id, user_id);
             }
         });
         cancel_text.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +91,7 @@ public class ConfirmDeleteDialog extends Dialog {
 
                 if (object.toString().equals(Constants.WebConstants.SUCCESS_CODE)) {
                     dismiss();
-                    ((HomeActivity)mContext).addFragment(new FragmentInspirationSection());
+                    ((HomeActivity) mContext).addFragment(new FragmentInspirationSection());
                     ((HomeActivity) mContext).mFragmentStack.clear();
                     ((HomeActivity) mContext).addFragment(new FragmentDiscoverNew());
                     ((HomeActivity) mContext).onBackPressed();

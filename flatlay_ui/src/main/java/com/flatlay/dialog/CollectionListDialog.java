@@ -30,7 +30,6 @@ import com.flatlaylib.utils.Syso;
 public class CollectionListDialog extends Dialog implements ServiceCallback {
     private FragmentActivity mContext;
     private LinearLayout add_collection_layout;
-    //private TextView share_collection_layout;
     private ListView collection_listing;
     private Product productList;
     private CollectionListDialog collectionListDialog;
@@ -40,8 +39,6 @@ public class CollectionListDialog extends Dialog implements ServiceCallback {
     private LinearLayout cancelicon;
     boolean isCreating = false;
 
-    //private ProgressBar progressBarCollection;
-
     public CollectionListDialog(FragmentActivity context, Product productList) {
         super(context, R.style.AdvanceDialogTheme);
         mContext = context;
@@ -49,12 +46,6 @@ public class CollectionListDialog extends Dialog implements ServiceCallback {
         this.productList = productList;
         init();
     }
-
-//    public CollectionListDialog(FragmentActivity context, int theme) {
-//        super(context, R.style.AdvanceDialogTheme);
-//        mContext = context;
-//        init();
-//    }
 
     private void init() {
         setContentView(R.layout.dialog_collection_list);
@@ -70,7 +61,6 @@ public class CollectionListDialog extends Dialog implements ServiceCallback {
         cancelicon = (LinearLayout) findViewById(R.id.cancellayout);
         doneButton = (Button) findViewById(R.id.doneButton);
         doneButton.setTypeface(FontUtility.setMontserratLight(getOwnerActivity()));
-        //share_collection_layout = (TextView) findViewById(R.id.share_collection_layout);
         if (checkInternet())
             getCollectionList();
         WindowManager.LayoutParams lp = getWindow().getAttributes();
@@ -103,19 +93,11 @@ public class CollectionListDialog extends Dialog implements ServiceCallback {
         createCollectionText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //AddCollectionDialog dialog = new AddCollectionDialog(mContext,productList.getId(),collectionListDialog);
-                //dialog.show();
                 createCollectionText.setVisibility(View.GONE);
                 createCollectionText2.setVisibility(View.VISIBLE);
                 isCreating = true;
             }
         });
-//		share_collection_layout.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				((HomeActivity) mContext).shareProductCollection("");
-//			}
-//		});
     }
 
     private boolean checkInternet() {
@@ -128,7 +110,6 @@ public class CollectionListDialog extends Dialog implements ServiceCallback {
     }
 
     public void getCollectionList() {
-//		progressBarCollection.setVisibility(View.VISIBLE);
         final CollectionApi collectionApi = new CollectionApi(this);
         collectionApi.getCollectionList(UserPreference.getInstance().getUserID());
         collectionApi.execute();
@@ -136,7 +117,6 @@ public class CollectionListDialog extends Dialog implements ServiceCallback {
 
     @Override
     public void handleOnSuccess(Object object) {
-        //	progressBarCollection.setVisibility(View.GONE);
         Syso.info("In handleOnSuccess>>" + object);
         if (object instanceof AddCollectionApiRes) {
             AddCollectionApiRes collectionApiRes = (AddCollectionApiRes) object;

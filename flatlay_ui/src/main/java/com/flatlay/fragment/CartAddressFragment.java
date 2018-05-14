@@ -48,11 +48,10 @@ public class CartAddressFragment extends BaseFragment implements View.OnClickLis
     private CartAddressFragment cartAddressFragment;
     private List<Product> my_productLists;
     private double total_price;
-//    private boolean firstTimeGetCard;
 
-    public CartAddressFragment(List<Product> my_productLists,double total_price) {
-        this.my_productLists=my_productLists;
-        this.total_price=total_price;
+    public CartAddressFragment(List<Product> my_productLists, double total_price) {
+        this.my_productLists = my_productLists;
+        this.total_price = total_price;
     }
 
     @Override
@@ -79,7 +78,7 @@ public class CartAddressFragment extends BaseFragment implements View.OnClickLis
                 break;
             case R.id.next_button:
                 if (isValidAddress) {
-                    ((HomeActivity) mContext).myAddFragment(new CartCardFragment(shippingAddress,my_productLists,cardAndShippingDetail,total_price));
+                    ((HomeActivity) mContext).myAddFragment(new CartCardFragment(shippingAddress, my_productLists, cardAndShippingDetail, total_price));
                 } else {
                     AlertUtils.showToast(mContext, "Please enter required information.");
                 }
@@ -191,8 +190,6 @@ public class CartAddressFragment extends BaseFragment implements View.OnClickLis
 
     private void saveAddress() {
         isValidAddress = true;
-//        isValidPayment = true;
-//        isValidBillingAddress = true;
         if (new_address_layout.getVisibility() == View.VISIBLE) {
             if (first_name.getText().toString().trim() != null && first_name.getText().toString().trim().length() > 0) {
                 shippingAddress.setFirstname(first_name.getText().toString().trim());
@@ -268,143 +265,6 @@ public class CartAddressFragment extends BaseFragment implements View.OnClickLis
                 enter_state_text.setBackgroundResource(R.drawable.topsearch_red_border);
             }
         }
-//        if (enter_promo_text.getText().toString().trim() != null && enter_promo_text.getText().toString().trim().length() > 0) {
-//            this.promoCode = enter_promo_text.getText().toString().trim();
-//        }
-//        if (enter_card_num.getText().toString().trim() != null && enter_card_num.getText().toString().trim().length() > 0) {
-//            enter_card_num.setBackgroundResource(R.drawable.topsearch_noborder);
-//            cardAndShippingDetail.setCard_number(CommonUtility.DecryptCreditCard(enter_card_num.getText().toString().trim()));
-//            newCard.setCard_number(enter_card_num.getText().toString().trim());
-//            newCard.setCardtype(Luhn.getCardTypeinString(enter_card_num.getText().toString().trim()));
-//        } else {
-//            isValidPayment = false;
-//            enter_card_num.setBackgroundResource(R.drawable.topsearch_red_border);
-//        }
-//        if (enter_name_on_card2.getVisibility() == View.VISIBLE && (enter_name_on_card2.getText().toString().trim() == null || enter_name_on_card2.getText().toString().trim().length() <= 0)) {
-//            isValidPayment = false;
-//            enter_name_on_card2.setBackgroundResource(R.drawable.topsearch_red_border);
-//        } else {
-//            enter_name_on_card2.setBackgroundResource(R.drawable.topsearch_noborder);
-//            cardAndShippingDetail.setCard_name(enter_name_on_card2.getText().toString().trim());
-//            newCard.setName_on_card(enter_name_on_card2.getText().toString().trim());
-//        }
-//        if (enter_expire_text2.getVisibility() == View.VISIBLE && (enter_expire_text2.getText().toString().trim() == null || enter_expire_text2.getText().toString().trim().length() <= 0)) {
-//            isValidPayment = false;
-//            enter_expire_text2.setBackgroundResource(R.drawable.topsearch_red_border);
-//        } else {
-//            enter_expire_text2.setBackgroundResource(R.drawable.topsearch_noborder);
-//            String[] arr = enter_expire_text2.getText().toString().trim().split("/");
-//            if (arr.length >= 2) {
-//                cardAndShippingDetail.setExpiry_date_month(arr[0]);
-//                newCard.setExpirationMonth(arr[0]);
-//                if (arr[1].length() == 2) {
-//                    cardAndShippingDetail.setExpiry_date_year("20" + arr[1]);
-//                    newCard.setExpirationYear("20" + arr[1]);
-//                } else {
-//                    cardAndShippingDetail.setExpiry_date_year(arr[1]);
-//                    newCard.setExpirationYear(arr[1]);
-//                }
-//            }
-//        }
-//        if (ccv_text3.getVisibility() == View.VISIBLE && (ccv_text3.getText().toString().trim() == null || ccv_text3.getText().toString().trim().length() <= 0)) {
-//            isValidPayment = false;
-//            ccv_text3.setBackgroundResource(R.drawable.topsearch_red_border);
-//        } else {
-//            ccv_text3.setBackgroundResource(R.drawable.topsearch_noborder);
-//            cardAndShippingDetail.setCvv(ccv_text3.getText().toString().trim());
-//            newCard.setCvv(ccv_text3.getText().toString().trim());
-//        }
-//        if (billing_layout.getVisibility() == View.GONE) {
-//            isValidBillingAddress = true;
-//            cardAndShippingDetail.setBilling_first_name(shippingAddress.getFirstname());
-//            cardAndShippingDetail.setBilling_last_name(shippingAddress.getLastname());
-//            if (this.apartment.length() > 0) {
-//                cardAndShippingDetail.setBilling_address(addressLine1 + ", " + this.apartment);
-//                billlingAddress.setLine1(addressLine1 + ", " + this.apartment);
-//            } else {
-//                cardAndShippingDetail.setBilling_address(addressLine1);
-//                billlingAddress.setLine1(addressLine1);
-//            }
-//            cardAndShippingDetail.setBilling_country(shippingAddress.getCountry());
-//            cardAndShippingDetail.setBilling_city(shippingAddress.getCity_town());
-//            cardAndShippingDetail.setBilling_zip(shippingAddress.getZip_code());
-//            cardAndShippingDetail.setBilling_state(shippingAddress.getState());
-//            billlingAddress.setFirstName(shippingAddress.getFirstname());
-//            billlingAddress.setLastName(shippingAddress.getLastname());
-//            billlingAddress.setCity(shippingAddress.getCity_town());
-//            billlingAddress.setCountry_code("US");
-//            billlingAddress.setPostal_code(shippingAddress.getZip_code());
-//            billlingAddress.setState(shippingAddress.getState());
-//        } else {
-//            if (billing_first_name.getText().toString().trim() != null && billing_first_name.getText().toString().trim().length() > 0) {
-//                billing_first_name.setBackgroundResource(R.drawable.topsearch_noborder);
-//                billlingAddress.setFirstName(billing_first_name.getText().toString().trim());
-//                cardAndShippingDetail.setBilling_first_name(billlingAddress.getFirstName());
-//            } else {
-//                isValidBillingAddress = false;
-//                billing_first_name.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (billing_last_name.getText().toString().trim() != null && billing_last_name.getText().toString().trim().length() > 0) {
-//                billing_last_name.setBackgroundResource(R.drawable.topsearch_noborder);
-//                billlingAddress.setLastName(billing_last_name.getText().toString().trim());
-//                cardAndShippingDetail.setBilling_last_name(billlingAddress.getLastName());
-//            } else {
-//                isValidBillingAddress = false;
-//                billing_last_name.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (enter_country_text2.getText().toString().trim() != null && enter_country_text2.getText().toString().trim().length() > 0) {
-//                enter_country_text2.setBackgroundResource(R.drawable.topsearch_noborder);
-//                billlingAddress.setCountry_code("US");
-//                cardAndShippingDetail.setBilling_country(billlingAddress.getCountry_code());
-//            } else {
-//                isValidBillingAddress = false;
-//                enter_country_text2.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (enter_address_text2.getText().toString().trim() != null && enter_address_text2.getText().toString().trim().length() > 0) {
-//                enter_address_text2.setBackgroundResource(R.drawable.topsearch_noborder);
-//                this.billAddressLine1 = enter_address_text2.getText().toString().trim();
-//                if (this.billApartment.length() > 0) {
-//                    cardAndShippingDetail.setBilling_address(billAddressLine1 + ", " + this.billApartment);
-//                    billlingAddress.setLine1(billAddressLine1 + ", " + this.billApartment);
-//                } else {
-//                    cardAndShippingDetail.setBilling_address(billAddressLine1);
-//                    billlingAddress.setLine1(billAddressLine1);
-//                }
-//            } else {
-//                isValidBillingAddress = false;
-//                enter_address_text2.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (enter_apt_text2.getText().toString().trim() != null && enter_apt_text2.getText().toString().trim().length() > 0) {
-//                this.billApartment = enter_apt_text2.getText().toString().trim();
-//                cardAndShippingDetail.setBilling_address(billAddressLine1 + ", " + this.billApartment);
-//                billlingAddress.setLine1(billAddressLine1 + ", " + this.billApartment);
-//            } else {
-//            }
-//            if (enter_city_text2.getText().toString().trim() != null && enter_city_text2.getText().toString().trim().length() > 0) {
-//                enter_city_text2.setBackgroundResource(R.drawable.topsearch_noborder);
-//                billlingAddress.setCity(enter_city_text2.getText().toString().trim());
-//                cardAndShippingDetail.setBilling_city(billlingAddress.getCity());
-//            } else {
-//                isValidBillingAddress = false;
-//                enter_city_text2.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (enter_state_text2.getText().toString().trim() != null && enter_state_text2.getText().toString().trim().length() > 0) {
-//                enter_state_text2.setBackgroundResource(R.drawable.topsearch_noborder);
-//                billlingAddress.setState(enter_state_text2.getText().toString().trim());
-//                cardAndShippingDetail.setBilling_state(billlingAddress.getState());
-//            } else {
-//                isValidBillingAddress = false;
-//                enter_state_text2.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (enter_zip_text2.getText().toString().trim() != null && enter_zip_text2.getText().toString().trim().length() > 0) {
-//                enter_zip_text2.setBackgroundResource(R.drawable.topsearch_noborder);
-//                billlingAddress.setPostal_code(enter_zip_text2.getText().toString().trim());
-//                cardAndShippingDetail.setBilling_zip(billlingAddress.getPostal_code());
-//            } else {
-//                isValidBillingAddress = false;
-//                enter_zip_text2.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-        // }
     }
 
     private void addNewAddress() {

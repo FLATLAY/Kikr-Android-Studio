@@ -30,7 +30,7 @@ public class ProductAutoCompleteAdapter extends ArrayAdapter<Product> {
         this.products.addAll(products);
 
         this.viewResourceId = viewResourceId;
-        Log.w(TAG,"ProductAutoCompleteAdapter");
+        Log.w(TAG, "ProductAutoCompleteAdapter");
     }
 
     @Override

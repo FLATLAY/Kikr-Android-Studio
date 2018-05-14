@@ -115,7 +115,6 @@ public class MyOverFlowGesListener2 extends GestureDetector.SimpleOnGestureListe
             gestureDetectorCompat.onTouchEvent(motionEvent);
             view.onTouchEvent(motionEvent);
             if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-//                isOpened = true;
                 if (isScrollUpping != null) {
                     if (isScrollUpping) {
                         slide(0f);

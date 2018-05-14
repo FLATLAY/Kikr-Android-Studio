@@ -65,12 +65,20 @@
     </style>
     <style name="UploadSwitch" parent="Theme.AppCompat.Light">
         <!-- active thumb & track color (30% transparency) -->
-        <item name="colorControlActivated">@color/switchselect</item>
+        <item name="colorControlActivated">@color/btn_green</item>
         <!-- inactive thumb color -->
         <item name="colorSwitchThumbNormal">@color/grey</item>
         <!-- inactive track color (30% transparency) -->
         <item name="android:colorForeground">@color/grey</item>
     </style>
+    <!--<style name="MyUploadSwitch" parent="Theme.AppCompat.Light">-->
+        <!--&lt;!&ndash; active thumb & track color (30% transparency) &ndash;&gt;-->
+        <!--&lt;!&ndash; inactive thumb color &ndash;&gt;-->
+        <!--<item name="android:thumb">@drawable/my_switch_thumb_selector</item>-->
+        <!--<item name="track">@drawable/my_switch_track_selector</item>-->
+
+        <!--&lt;!&ndash; inactive track color (30% transparency) &ndash;&gt;-->
+    <!--</style>-->
     <style name="SettingSwitch" parent="Theme.AppCompat.Light">
         <!-- active thumb & track color (30% transparency) -->
         <item name="colorControlActivated">@color/white</item>

@@ -62,10 +62,7 @@ public class WalletCardFragment extends BaseFragment implements View.OnClickList
         switch (view.getId()) {
 
             case R.id.new_payment_text:
-//                if (currentlayout2 != null)
-//                    currentlayout2.setVisibility(View.GONE);
-//                overflow_layout10.setVisibility(View.VISIBLE);
-//                currentlayout2 = overflow_layout10;
+
                 ((HomeActivity) mContext).myAddFragment(new WalletNewCardFragment());
                 break;
             case R.id.flatlay_card:

@@ -10,26 +10,25 @@ import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.fragment.FragmentSettings;
 
-public class CreateAccountDialog extends Dialog{
-	private TextView fbTextView, twitterTextView, emailTextView;
-	private HomeActivity homeActivity;
-	private Context mContext;
+public class CreateAccountDialog extends Dialog {
+    private TextView fbTextView, twitterTextView, emailTextView;
+    private HomeActivity homeActivity;
+    private Context mContext;
 
-	public CreateAccountDialog(Context mContext) {
-		super(mContext, R.style.AdvanceDialogTheme);
-		//this.homeActivity = homeActivity;
-		this.mContext=mContext;
-		init();
-	}
+    public CreateAccountDialog(Context mContext) {
+        super(mContext, R.style.AdvanceDialogTheme);
+        this.mContext = mContext;
+        init();
+    }
 
-	private void init() {
-		setContentView(R.layout.dialog_createaccount);
-		setCancelable(true);
-		WindowManager.LayoutParams lp = getWindow().getAttributes();
-		lp.dimAmount = 0.9f;
-		getWindow().setAttributes(lp);
-		setCanceledOnTouchOutside(true);
-	/*	fbTextView = (TextView) findViewById(R.id.fbTextView);
+    private void init() {
+        setContentView(R.layout.dialog_createaccount);
+        setCancelable(true);
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.dimAmount = 0.9f;
+        getWindow().setAttributes(lp);
+        setCanceledOnTouchOutside(true);
+    /*	fbTextView = (TextView) findViewById(R.id.fbTextView);
 		fbTextView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -45,16 +44,15 @@ public class CreateAccountDialog extends Dialog{
 				dismiss();
 			}
 		});*/
-		emailTextView = (TextView) findViewById(R.id.emailTextView);
-		emailTextView.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				//((HomeActivity)mContext).emailLogIn();
-				((HomeActivity)mContext).addFragment(new FragmentSettings());
-				dismiss();
-			}
-		});
-	}
-	
-	
+        emailTextView = (TextView) findViewById(R.id.emailTextView);
+        emailTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((HomeActivity) mContext).addFragment(new FragmentSettings());
+                dismiss();
+            }
+        });
+    }
+
+
 }

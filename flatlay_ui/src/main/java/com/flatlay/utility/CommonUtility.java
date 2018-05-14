@@ -246,6 +246,11 @@ public class CommonUtility {
         UrlImageViewHelper.setUseBitmapScaling(false);
     }
 
+    public static void setImage(String url, ImageView imageView) {
+        UrlImageViewHelper.setUrlDrawable(imageView, url);
+        UrlImageViewHelper.setUseBitmapScaling(false);
+    }
+
     public static void setImage(Activity context, String url, ImageView imageView, int placeholder) {
 //		AQuery aQuery = new AQuery(context);
 //		Bitmap preset = BitmapFactory.decodeResource(context.getResources(), placeholder);

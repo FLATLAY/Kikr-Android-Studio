@@ -14,12 +14,12 @@ import com.flatlay.utility.MyMaterialContentOverflow3;
  * Created by RachelDi on 4/30/18.
  */
 
-public class HistoryOrdersFragment extends BaseFragment implements View.OnClickListener{
+public class HistoryOrdersFragment extends BaseFragment implements View.OnClickListener {
     private View mainView;
     private MyMaterialContentOverflow3 overflow2;
 
-    public HistoryOrdersFragment(MyMaterialContentOverflow3 overflow2){
-        this.overflow2=overflow2;
+    public HistoryOrdersFragment(MyMaterialContentOverflow3 overflow2) {
+        this.overflow2 = overflow2;
     }
 
     @Override

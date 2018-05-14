@@ -35,6 +35,7 @@ public class RemoveProduct extends Dialog {
         this.fragmentInspirationSection = fragmentInspirationSection;
         init();
     }
+
     public RemoveProduct(Context context, Inspiration inspiration, FragmentInspirationDetail fragmentInspirationDetail, CallBack callBack) {
         super(context, R.style.AdvanceDialogTheme);
         this.inspiration = inspiration;
@@ -73,8 +74,6 @@ public class RemoveProduct extends Dialog {
             public void onClick(View v) {
                 if (((HomeActivity) mContext).checkInternet()) {
                     fragmentInspirationDetail.removePost(inspiration.getInspiration_id(), inspiration.getUser_id());
-                    // DeletePostApi.deletepost(inspiration_id,user_id);
-                    //	removepost(inspiration_id, user_id);
                     dismiss();
                 } else
                     System.out.print("error");

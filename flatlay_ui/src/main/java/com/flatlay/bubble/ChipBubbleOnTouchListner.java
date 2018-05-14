@@ -9,27 +9,25 @@ import android.view.View.OnTouchListener;
 import android.widget.MultiAutoCompleteTextView;
 
 public class ChipBubbleOnTouchListner implements OnTouchListener {
-	final String TAG = "ChipBubbleOnTou";
+    final String TAG = "ChipBubbleOnTou";
 
-	private MultiAutoCompleteTextView autoCompleteTextView;
-	//private Context context;
+    private MultiAutoCompleteTextView autoCompleteTextView;
 
-	public ChipBubbleOnTouchListner(MultiAutoCompleteTextView autoCompleteTextView, Context context) {
-		super();
-		Log.w(TAG,"ChipBubbleOnTouchListner");
-		this.autoCompleteTextView = autoCompleteTextView;
-		//this.context = context;
-	}
+    public ChipBubbleOnTouchListner(MultiAutoCompleteTextView autoCompleteTextView, Context context) {
+        super();
+        Log.w(TAG, "ChipBubbleOnTouchListner");
+        this.autoCompleteTextView = autoCompleteTextView;
+    }
 
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
 
-		Layout layout = ((MultiAutoCompleteTextView) v).getLayout();
-		float x = event.getX() + autoCompleteTextView.getScrollX();
-		int offset = layout.getOffsetForHorizontal(0, x);
-		System.out.println(offset);
-	
-		return true;
-	}
+        Layout layout = ((MultiAutoCompleteTextView) v).getLayout();
+        float x = event.getX() + autoCompleteTextView.getScrollX();
+        int offset = layout.getOffsetForHorizontal(0, x);
+        System.out.println(offset);
+
+        return true;
+    }
 
 }

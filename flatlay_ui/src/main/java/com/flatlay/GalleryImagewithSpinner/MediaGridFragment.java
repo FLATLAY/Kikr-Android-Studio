@@ -15,10 +15,12 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -27,9 +29,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.flatlay.BaseFragment;
@@ -38,6 +43,8 @@ import com.flatlay.GallerychacheKikr.ImageWorker;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.ui.ProgressBarDialog;
+import com.flatlay.utility.FontUtility;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -56,7 +63,7 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
     private Uri picUri;
     AdapterView.OnItemClickListener itemClickListener;
     List<String> list = new ArrayList<String>();
-    Spinner mstatus = HomeActivity.mstatus;
+    Spinner mstatus;
     private static final String LOG_TAG = "MediaGridFragment";
     List<String> categories = new ArrayList<String>();
     // Variables related to Media items
@@ -99,7 +106,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
     private FolderAdapter folderAdapter;
 
     private ImagesInFolderAdapter imagesAdapter;
-    private ProgressBarDialog mProgressBarDialog;
 
     public MediaGridFragment() {
         // Required empty public constructor
@@ -108,8 +114,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // setRetainInstance(true);
         Log.d(LOG_TAG, "onCreate");
         setHasOptionsMenu(true);
 
@@ -122,12 +126,10 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
         Log.d(LOG_TAG, "onCreateView");
 
         // Inflate the layout for this fragment
-
+        categories.clear();
         final View v = inflater.inflate(R.layout.fragment_media_grid, container, false);
-
         gridView = (GridView) v.findViewById(R.id.gridview);
-
-        //  mstatus= (Spinner) v.findViewById(R.id.mstatus);
+        mstatus = (Spinner) v.findViewById(R.id.mstatus);
         mContentResolver = getActivity().getContentResolver();
         if (Build.VERSION.SDK_INT >= 23) {
 
@@ -140,29 +142,32 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
             getRootFolders();
         }
 
-
-        // categories.add("ALL");
         for (Map.Entry m : mFolderBucket.entrySet()) {
 
             String abhi = m.getValue().toString();
             categories.add(abhi);
-            // System.out.println(m.getKey()+" "+m.getValue());
         }
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
-                (getActivity(), android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter adapter3 =
+                new ArrayAdapter<String>(mContext, R.layout.myspinneritem, categories) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View view = super.getView(position, convertView, parent);
+                        ((TextView) view).setTypeface(FontUtility.setMontserratLight(mContext));
+                        return view;
+                    }
 
-        dataAdapter.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
+                    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                        View view = super.getDropDownView(position, convertView, parent);
+                        ((TextView) view).setTypeface(FontUtility.setMontserratLight(mContext));
+                        return view;
+                    }
 
-        mstatus.setAdapter(dataAdapter);
+                };
+
+        adapter3.setDropDownViewResource(R.layout.myspinnerdropdown);
+        mstatus.setAdapter(adapter3);
         mstatus.setOnItemSelectedListener(new GridViewListener());
 
-
-        //   folderAdapter = new FolderAdapter(getActivity(),getActivity().getContentResolver(),1,1,1);
-
-        //  gridView.setAdapter(folderAdapter);
-
-        //gridView.setOnItemSelectedListener(new GridViewListener());
         return v;
 
     }
@@ -236,42 +241,27 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            // folderposition=position;
 
             getMediaInFolder(position);
-            //    Cursor c1 = (Cursor) parent.getItemAtPosition(position);
 
             imagesAdapter = new ImagesInFolderAdapter(getActivity(), getActivity().getContentResolver(), imgCount, vidCount, thumbnailIds, arrPath);
             gridView.setAdapter(imagesAdapter);
-            // gridView.setOnItemClickListener(null);
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View arg1, final int position,
                                         long arg3) {
+                    Log.w(TAG, "startCropActivityForMediass()+");
 
-                    mProgressBarDialog = new ProgressBarDialog(mContext);
-                    mProgressBarDialog.show();
-                    // Cursor  c1 = (Cursor ) arg0.getItemAtPosition(position);
-                    new AsyncTask<Void, Void, Void>() {
-                        @Override
-                        protected Void doInBackground(Void... params) {
-                            Bitmap bmp=BitmapFactory.decodeFile(String.valueOf(arrPath[position]));
-                            picUri=resizeBitmapFitXY(bmp.getWidth(),bmp.getHeight(),bmp);
-                            //picUri = bitmapToUriConverter(BitmapFactory.decodeFile(String.valueOf(arrPath[position])));
-                            //picUri = Uri.fromFile(new File(String.valueOf(arrPath[position])));
-                            ((HomeActivity) mContext).startCropActivityForMedia(picUri);
-                            return null;
+                    final RoundedImageView background_view = (RoundedImageView) arg1.findViewById(R.id.background_view);
+                    background_view.setImageResource(R.color.btn_green);
+                    Bitmap bmp = BitmapFactory.decodeFile(String.valueOf(arrPath[position]));
+                    picUri = resizeBitmapFitXY(bmp.getWidth(), bmp.getHeight(), bmp);
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            background_view.setImageResource(R.color.white);
                         }
-
-                        @Override
-                        protected void onPostExecute(Void aVoid) {
-                            super.onPostExecute(aVoid);
-                            if (mProgressBarDialog.isShowing())
-                                mProgressBarDialog.dismiss();
-                        }
-                    }.execute();
-
-
+                    }, 800);
+                    ((HomeActivity) mContext).startCropActivityForMedia(picUri);
                 }
             });
 
@@ -321,37 +311,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
             return null;
         }
     }
-
-    public Uri bitmapToUriConverter(Bitmap mBitmap) {
-        Uri uri = null;
-        try {
-//            final BitmapFactory.Options options = new BitmapFactory.Options();
-//            // Calculate inSampleSize
-//            options.inSampleSize = calculateInSampleSize2(options, 300, 300);
-//
-//            // Decode bitmap with inSampleSize set
-//            options.inJustDecodeBounds = false;
-            Bitmap newBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth(), mBitmap.getHeight(),
-                    true);
-
-            File file = new File(getActivity().getFilesDir(), "Image"
-                    + new Random().nextInt() + ".jpeg");
-            FileOutputStream out = getActivity().openFileOutput(file.getName(),
-                    Context.MODE_PRIVATE);
-            newBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-            out.flush();
-            out.close();
-            //get absolute path
-            String realPath = file.getAbsolutePath();
-            File f = new File(realPath);
-            uri = Uri.fromFile(f);
-
-        } catch (Exception e) {
-            Log.e("Your Error Message", e.getMessage());
-        }
-        return uri;
-    }
-
 
     // finding folder name by abhishek
     private void getfolders() {
@@ -462,8 +421,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
 
 
     }
-
-
     //TODO   :  Step 2
 
     private void getMediaInFolder(int bucketFolderId) {
@@ -709,9 +666,16 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
 
             }
 
-            ImageView view1 = (ImageView) v.findViewById(R.id.thumbnail);
-            view1.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
+            final ImageView view1 = (ImageView) v.findViewById(R.id.thumbnail);
+//            CardView card1=(CardView) v.findViewById(R.id.thumbnail_background);
+//            view1.setBackgroundResource(R.drawable.whitetabborder);
+////            view1.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//            view1.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    view1.setBackgroundResource(R.drawable.tabborder);
+//                }
+//            });
 
             if (position < imgCount && imgCount != 0) {
                 imageWorker.loadImage(position, view1, thumbnailIds[position], arrPath[position], v, true);
@@ -727,7 +691,37 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
 
     }
 
-    private int dipToPx(int sp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, sp, getResources().getDisplayMetrics());
-    }
+//    private int dipToPx(int sp) {
+//        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, sp, getResources().getDisplayMetrics());
+//    }
+
+//    public Uri bitmapToUriConverter(Bitmap mBitmap) {
+//        Uri uri = null;
+//        try {
+////            final BitmapFactory.Options options = new BitmapFactory.Options();
+////            // Calculate inSampleSize
+////            options.inSampleSize = calculateInSampleSize2(options, 300, 300);
+////
+////            // Decode bitmap with inSampleSize set
+////            options.inJustDecodeBounds = false;
+//            Bitmap newBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth(), mBitmap.getHeight(),
+//                    true);
+//
+//            File file = new File(getActivity().getFilesDir(), "Image"
+//                    + new Random().nextInt() + ".jpeg");
+//            FileOutputStream out = getActivity().openFileOutput(file.getName(),
+//                    Context.MODE_PRIVATE);
+//            newBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+//            out.flush();
+//            out.close();
+//            //get absolute path
+//            String realPath = file.getAbsolutePath();
+//            File f = new File(realPath);
+//            uri = Uri.fromFile(f);
+//
+//        } catch (Exception e) {
+//            Log.e("Your Error Message", e.getMessage());
+//        }
+//        return uri;
+//    }
 }

@@ -11,10 +11,11 @@ import android.widget.TextView;
 
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
+import com.flatlay.utility.FontUtility;
 
 
 public class RedirectToPlayStore extends Dialog {
-    private TextView cancelTextView, okTextView,messageTextView;
+    private TextView cancelTextView, okTextView, messageTextView;
 
     private FragmentActivity mContext;
     String ACTION;
@@ -35,11 +36,14 @@ public class RedirectToPlayStore extends Dialog {
         getWindow().setAttributes(lp);
         setCanceledOnTouchOutside(true);
         cancelTextView = (TextView) findViewById(R.id.cancelTextView);
+        cancelTextView.setTypeface(FontUtility.setMontserratLight(getOwnerActivity()));
         okTextView = (TextView) findViewById(R.id.okTextView);
-        messageTextView=(TextView)findViewById(R.id.messageTextView);
-        if(ACTION.equals("instagram"))
+        okTextView.setTypeface(FontUtility.setMontserratLight(getOwnerActivity()));
+        messageTextView = (TextView) findViewById(R.id.messageTextView);
+        messageTextView.setTypeface(FontUtility.setMontserratLight(getOwnerActivity()));
+        if (ACTION.equals("instagram"))
             messageTextView.setText("Instagram is not installed on your device. Would you like to install it now in order to post?");
-        if(ACTION.equals("pinterest"))
+        if (ACTION.equals("pinterest"))
             messageTextView.setText("Pinterest is not installed on your device. Would you like to install it now in order to post?");
         cancelTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +55,7 @@ public class RedirectToPlayStore extends Dialog {
             @Override
             public void onClick(View v) {
                 if (((HomeActivity) mContext).checkInternet()) {
-                    if(ACTION.equals("instagram")) {
+                    if (ACTION.equals("instagram")) {
                         final String appPackageName = "com.instagram.android"; // getPackageName() from Context or Activity object
                         try {
                             mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
@@ -59,7 +63,7 @@ public class RedirectToPlayStore extends Dialog {
                             mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
                         }
                     }
-                    if(ACTION.equals("pinterest")) {
+                    if (ACTION.equals("pinterest")) {
                         final String appPackageName = "com.pinterest"; // getPackageName() from Context or Activity object
                         try {
                             mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));

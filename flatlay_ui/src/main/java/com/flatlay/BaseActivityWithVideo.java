@@ -44,7 +44,7 @@ public class BaseActivityWithVideo extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         FacebookSdk.sdkInitialize(getApplicationContext());
         super.onCreate(savedInstanceState);
-        Log.w(TAG, "BaseActivityWithVideo");
+        Log.e(TAG, "BaseActivityWithVideo");
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.get("otherdata") != null) {
             String otherdata = bundle.get("otherdata").toString();
@@ -67,7 +67,6 @@ public class BaseActivityWithVideo extends BaseActivity {
         }
         if (bundle != null && bundle.getString("title") != null && bundle.getString("title").equals("New Follower")) {
             Intent intent = new Intent(this, HomeActivity.class);
-//            intent.putExtra("inspiration_id", inspiration_id.toString());
             intent.putExtra("section", bundle.getString("section").toString());
             startActivity(intent);
         }
@@ -103,7 +102,6 @@ public class BaseActivityWithVideo extends BaseActivity {
                         .beginTransaction();
                 Fragment fragment = getSupportFragmentManager()
                         .findFragmentByTag(mFragmentStack.peek());
-//                transaction.remove(fragment);
                 if (fragment != null)
                     transaction.remove(fragment);
                 transaction.commit();
@@ -120,25 +118,12 @@ public class BaseActivityWithVideo extends BaseActivity {
             mContent = fragment;
             transaction = getSupportFragmentManager()
                     .beginTransaction();
-//            if (mFragmentStack.size() > 0) {
-//                Fragment currentFragment = getSupportFragmentManager()
-//                        .findFragmentByTag(mFragmentStack.peek());
-//                if (currentFragment != null)
-//                    transaction.hide(currentFragment);
-//                mFragmentStack.add(mContent.toString());
-//                transaction.add(R.id.baseFrameLayout, fragment, mContent.toString());
-//                transaction.addToBackStack(mContent.toString());
-//                if (fragment instanceof FragmentPostUploadTab)
-//                    transaction.commitAllowingStateLoss();
-//                else
-//                    transaction.commit();
-//
-//            } else {
+
             mFragmentStack.add(mContent.toString());
             transaction.replace(R.id.baseFrameLayout, fragment, mContent.toString());
             transaction.addToBackStack(mContent.toString());
             transaction.commit();
-            //}
+
 
         } catch (Exception e) {
             e.printStackTrace();

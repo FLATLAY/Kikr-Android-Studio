@@ -93,18 +93,11 @@ public class ResetPassword extends BaseFragment implements OnKeyListener,
     }
 
     private void doAuthanticate() {
-//        progressBarDialog = new ProgressBarDialog(getActivity());
-//        progressBarDialog.show();
+
         final RegisterUserApi service = new RegisterUserApi(this);
         service.forgotPassword(getArguments().getString("email"));
         service.execute();
 
-//        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                service.cancel();
-//            }
-//        });
     }
 
     @Override
@@ -151,19 +144,11 @@ public class ResetPassword extends BaseFragment implements OnKeyListener,
 
     private void doAuthanticate(String resetpin, String password) {
 
-//        progressBarDialog = new ProgressBarDialog(getActivity());
-//        progressBarDialog.show();
         final RegisterUserApi service = new RegisterUserApi(this);
         service.resetPassword(getArguments().getString("email"), resetpin,
                 password);
         service.execute();
 
-//        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                service.cancel();
-//            }
-//        });
     }
 
     public void setUpTextType() {
@@ -177,7 +162,6 @@ public class ResetPassword extends BaseFragment implements OnKeyListener,
 
     @Override
     public void handleOnSuccess(Object object) {
-//        progressBarDialog.dismiss();
         Syso.info("In handleOnSuccess>>" + object);
         if (resend) {
             resend = false;
@@ -189,7 +173,6 @@ public class ResetPassword extends BaseFragment implements OnKeyListener,
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
-//        progressBarDialog.dismiss();
         Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;

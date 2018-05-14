@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.flatlaylib.service.ServiceException;
 import com.flatlaylib.service.res.EditProfileRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,7 +47,6 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
     private LifestyleImageAdapter lifestyleImageAdapter;
     InstagramUtility instagramUtility;
     SharedPreferences sharedPreferences;
-    //	List<BgImage> bgImages = new ArrayList<BgImage>();
     List<String> bgImageList = new ArrayList<String>();
     ArrayList<InstagramImage> postImages = new ArrayList<>();
     int count = 120;
@@ -61,22 +62,10 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
     private String mParam2;
     Bitmap bitmapImg;
     public static int login = 0;
-//Image_Layout_Quiz image_layout_quiz;
 
     public FragmentInstagram() {
         // Required empty public constructor
     }
-
-
-//    public static FragmentInstagram newInstance(String param1, String param2) {
-//
-//        FragmentInstagram fragment = new FragmentInstagram();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,20 +74,17 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        Log.e("FragmentInstagram","1");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_default_lifestyle_images, container, false);
-        Log.e("FragmentInstagram","2");
 
         return view;
     }
 
 
     public void getInstagramList(int count, boolean isShowLoader) {
-        Log.e("FragmentInstagram","3");
 
         super.getInstagramList(count, isShowLoader);
 
@@ -156,7 +142,6 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
     }
 
     private List<String> getImageList(List<BgImage> bgImages2) {
-        Log.e("FragmentInstagram","4");
 
         List<String> bgImages = new ArrayList<String>();
         for (BgImage bgImage : bgImages2) {
@@ -178,6 +163,15 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
 
 
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+        final RoundedImageView lifestyleImage = (RoundedImageView) arg1.findViewById(R.id.lifestyleImage);
+
+        lifestyleImage.setBorderColor(mContext.getResources().getColor(R.color.btn_green));
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                lifestyleImage.setBorderColor(mContext.getResources().getColor(R.color.white));
+            }
+        }, 800);
+
 
         new DownloadImage().execute(postImages.get(arg2).getHigh_resolution_url());
 
@@ -203,7 +197,6 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
     @Override
     public void initUI(Bundle savedInstanceState) {
         imagesList = (GridView) view.findViewById(R.id.imagesList);
-        Log.e("FragmentInstagram","5");
         loginToInstagram(120, true);
     }
 
@@ -238,7 +231,6 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
     }
 
     public Uri bitmapToUriConverter(Bitmap mBitmap) {
-        Log.e("FragmentInstagram","6");
 
         Uri uri = null;
         try {
@@ -265,15 +257,6 @@ public class FragmentInstagram extends ParentFragment implements AdapterView.OnI
 
     @Override
     public void setData(Bundle sa) {
-
-//            if (checkInternet()) {
-//                if (true) {
-//                   getInstagramList(count, true);
-//                    isLoadDefault = false;
-//                } else
-//
-//                   getBgList();
-//            }
 
     }
 

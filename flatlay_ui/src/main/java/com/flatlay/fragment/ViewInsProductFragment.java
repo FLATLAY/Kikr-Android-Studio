@@ -41,11 +41,6 @@ public class ViewInsProductFragment extends BaseFragment {
         index = 0;
     }
 
-//    public ViewInsProductFragment(List<Product> data) {
-//        this.data = data;
-//        index = 1;
-//    }
-
     @Override
     public void initUI(Bundle savedInstanceState) {
     }
@@ -60,7 +55,6 @@ public class ViewInsProductFragment extends BaseFragment {
 
     @Override
     public void setData(Bundle bundle) {
-//        data = (List<Product>) bundle.getSerializable("data");
         products_grid = (GridView) mainView.findViewById(R.id.products_grid);
         backIconLayout = (LinearLayout) mainView.findViewById(R.id.backIconLayout);
         backIconLayout.setOnClickListener(new View.OnClickListener() {
@@ -76,25 +70,14 @@ public class ViewInsProductFragment extends BaseFragment {
         nameText.setTypeface(FontUtility.setMontserratLight(mContext));
         heartIcon = (ImageView) mainView.findViewById(R.id.heartIcon);
         products_grid.setAdapter(allInsProductAdapter);
-//        if (index == 0) {
-//            likeCount.setVisibility(View.VISIBLE);
-//            nameText.setVisibility(View.VISIBLE);
-//            heartIcon.setVisibility(View.VISIBLE);
+
         for (int i = 0; i < data.size(); i++) {
             totalLikeCount += Integer.parseInt(data.get(i).getLike_info().getLike_count());
         }
         likeCount.setText("" + totalLikeCount);
-//        if (index == 0) {
-//            nameText.setVisibility(View.VISIBLE);
+
         nameText.setText("" + collectionName);
-//        } else
-//            nameText.setVisibility(View.INVISIBLE);
-        //}
-//        if (index == 1) {
-//            likeCount.setVisibility(View.GONE);
-//            nameText.setVisibility(View.GONE);
-//            heartIcon.setVisibility(View.GONE);
-        //    }
+
 
     }
 

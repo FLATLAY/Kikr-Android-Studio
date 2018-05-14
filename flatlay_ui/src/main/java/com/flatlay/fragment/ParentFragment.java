@@ -28,10 +28,8 @@ public class ParentFragment extends BaseFragment {
     boolean isProcessingLogin = false;
 
 
-    public void getInstagramList(int count, boolean isShowLoader)
-    {
+    public void getInstagramList(int count, boolean isShowLoader) {
 
-        //isLoading = true;
         instagramUtility = new InstagramUtility(mContext, false, count + "", isShowLoader, new InstagramCallBack() {
             @Override
             public void setProfilePic(String url) {
@@ -57,13 +55,8 @@ public class ParentFragment extends BaseFragment {
             }
         });
 
-// instagramUtility.inItInstgram();
-//       instagramUtility.login();
 
     }
-
-
-
 
 
     @Override

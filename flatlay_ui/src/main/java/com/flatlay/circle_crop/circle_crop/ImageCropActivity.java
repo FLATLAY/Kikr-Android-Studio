@@ -127,7 +127,6 @@ public class ImageCropActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,19 +165,13 @@ public class ImageCropActivity extends AppCompatActivity {
 
     private void proceedToCrop(Bundle savedInstanceState) {
         createTempFile();
-
-        //pickImage();
         savedimage();
 
-//        mImagePath = mFileTemp.getPath();
-//        mSaveUri = Utils.path;
-//        mImageUri = Utils.path;
-//        init();
     }
 
     public String getImageUri(Context inContext, InputStream uri) {
 
-        Bitmap inImage=BitmapFactory.decodeStream(uri);
+        Bitmap inImage = BitmapFactory.decodeStream(uri);
 
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
@@ -196,12 +189,7 @@ public class ImageCropActivity extends AppCompatActivity {
     public void savedimage() {
         try {
             InputStream inputStream = getContentResolver().openInputStream(Utils.path); // Got the bitmap .. Copy it to the temp file for cropping
-//            FileOutputStream fileOutputStream = new FileOutputStream(mFileTemp);
-//            copyStream(inputStream, fileOutputStream);
-//            //fileOutputStream.close();
-//            inputStream.close();
-           // Uri uri=
-            mImagePath = getImageUri(getApplicationContext(),inputStream);
+            mImagePath = getImageUri(getApplicationContext(), inputStream);
             mSaveUri = Utils.getImageUri(mImagePath);
             mImageUri = Utils.getImageUri(mImagePath);
             init();
@@ -214,12 +202,10 @@ public class ImageCropActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        //  this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //getActionbar().hide();
     }
 
     private void init() {
-        Log.w(TAG,"ImageCropActivity");
+        Log.w(TAG, "ImageCropActivity");
         Bitmap b = getBitmap(mImageUri);
         Drawable bitmap = new BitmapDrawable(getResources(), b);
         int h = bitmap.getIntrinsicHeight();
@@ -244,7 +230,7 @@ public class ImageCropActivity extends AppCompatActivity {
         boolean saved = saveOutput();
         if (saved) {
             //USUALLY Upload image to server here
-            Utils.path=mSaveUri;
+            Utils.path = mSaveUri;
             Intent intent = new Intent();
             intent.putExtra("img_crop", mSaveUri);
             setResult(RESULT_OK, intent);
@@ -421,9 +407,9 @@ public class ImageCropActivity extends AppCompatActivity {
         float actualCropHeight = cropWindowHeight * scaleFactorHeight;
 
         // Crop the subset from the original Bitmap.
-        Bitmap bitmapImage=Bitmap.createBitmap(mCurrentDisplayedBitmap, (int) actualCropX, (int) actualCropY, (int) actualCropWidth, (int) actualCropHeight);
+        Bitmap bitmapImage = Bitmap.createBitmap(mCurrentDisplayedBitmap, (int) actualCropX, (int) actualCropY, (int) actualCropWidth, (int) actualCropHeight);
 
-       // Uri uri=bitmapToUriConverter(bitmapImage);
+        // Uri uri=bitmapToUriConverter(bitmapImage);
 
         return bitmapImage;
     }
@@ -431,7 +417,7 @@ public class ImageCropActivity extends AppCompatActivity {
     public Uri bitmapToUriConverter(Bitmap mBitmap) {
         Uri uri = null;
         try {
-            FileOutputStream out =openFileOutput(mFileTemp.getName(),
+            FileOutputStream out = openFileOutput(mFileTemp.getName(),
                     Context.MODE_PRIVATE);
             mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();

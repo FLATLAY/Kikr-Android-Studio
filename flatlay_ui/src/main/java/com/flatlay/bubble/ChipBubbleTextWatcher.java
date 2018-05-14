@@ -33,7 +33,7 @@ public class ChipBubbleTextWatcher implements TextWatcher {
 
     public ChipBubbleTextWatcher(Context context, MultiAutoCompleteTextView multiAutoCompleteTextView, ChipPropery chipPropery) {
         super();
-        Log.w(TAG,"ChipBubbleTextWatcher");
+        Log.w(TAG, "ChipBubbleTextWatcher");
         this.multiAutoCompleteTextView = multiAutoCompleteTextView;
         this.context = context;
         this.chipPropery = chipPropery;
@@ -138,8 +138,6 @@ public class ChipBubbleTextWatcher implements TextWatcher {
 
 
     public void getAll(String searchString) {
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
         final SearchAllApi searchAllApi = new SearchAllApi(new ServiceCallback() {
 
             @Override
@@ -175,23 +173,15 @@ public class ChipBubbleTextWatcher implements TextWatcher {
                 multiAutoCompleteTextView.showDropDown();
                 multiAutoCompleteTextView.requestFocus();
                 chipBubbleText.initialize();
-//                if (mProgressBarDialog.isShowing())
-//                    mProgressBarDialog.dismiss();
-
 
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-//                if (mProgressBarDialog.isShowing())
-//                    mProgressBarDialog.dismiss();
                 Syso.info("In handleOnFailure>>" + object);
 
                 if (object != null) {
-//                    InterestSectionRes response = (InterestSectionRes) object;
-//                    AlertUtils.showToast(CustomizeFeedActivity.this, response.getMessage());
                 } else {
-                    // AlertUtils.showToast(CustomizeFeedActivity.this, R.string.invalid_response);
                 }
             }
         });

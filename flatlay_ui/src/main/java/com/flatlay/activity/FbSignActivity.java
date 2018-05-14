@@ -146,7 +146,7 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private void getProfilePic(JSONObject user) {
-        Log.w("FbSignActivity","getProfilePic");
+        Log.w("FbSignActivity", "getProfilePic");
         URL url = null;
         String fb_id = "";
         try {
@@ -166,24 +166,22 @@ public class FbSignActivity extends BaseActivity {
     }
 
     private void buildUserDataAndDoSignIn(JSONObject graphUser) {
-        Log.w("FbSignActivity","buildUserDataAndDoSignIn:"+graphUser.toString());
+        Log.w("FbSignActivity", "buildUserDataAndDoSignIn:" + graphUser.toString());
 
-        String fb_id = "", name = "", email="", username = "", gender = "", birthday = "", link = "", location = "";
+        String fb_id = "", name = "", email = "", username = "", gender = "", birthday = "", link = "", location = "";
 
         try {
             fb_id = graphUser.getString("id");
             name = graphUser.getString("name");
-            Log.w("FbSignActivity","Name: "+name);
+            Log.w("FbSignActivity", "Name: " + name);
             email = graphUser.getString("email");
             UserPreference.getInstance().setEmail(name);
             UserPreference.getInstance().setEmail(email);
 
-            if(graphUser.has("username"))
-            {
+            if (graphUser.has("username")) {
                 username = graphUser.getString("username");
             }
-            if(graphUser.has("gender"))
-            {
+            if (graphUser.has("gender")) {
                 gender = graphUser.getString("username");
             }
 
@@ -229,8 +227,6 @@ public class FbSignActivity extends BaseActivity {
         intent.putExtra("profile_pic", url.toString());
         setResult(RESULT_OK, intent);
         Syso.info("address>>" + address);
-
-        //getDetailsFromFacebook(graphUser);
         finish();
 
     }

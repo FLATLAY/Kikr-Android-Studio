@@ -14,12 +14,12 @@ import com.flatlay.utility.FontUtility;
  */
 
 public class ComingSoonDialog extends Dialog {
-    private TextView sure_text,ok_text;
+    private TextView sure_text, ok_text;
     private FragmentActivity mContext;
 
     public ComingSoonDialog(FragmentActivity mContext) {
         super(mContext, R.style.AdvanceDialogTheme);
-        this.mContext=mContext;
+        this.mContext = mContext;
         init();
     }
 
@@ -36,7 +36,7 @@ public class ComingSoonDialog extends Dialog {
         setCanceledOnTouchOutside(true);
         setCancelable(true);
 
-        sure_text= (TextView) findViewById(R.id.sure_text);
+        sure_text = (TextView) findViewById(R.id.sure_text);
         sure_text.setTypeface(FontUtility.setMontserratLight(mContext));
         ok_text = (TextView) findViewById(R.id.ok_text);
         ok_text.setTypeface(FontUtility.setMontserratLight(mContext));

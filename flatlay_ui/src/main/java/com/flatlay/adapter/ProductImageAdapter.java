@@ -36,9 +36,9 @@ public class ProductImageAdapter extends PagerAdapter {
         this.mContext = mContext;
         this.productImages = images;
         this.url = url;
-        this.product= product;
+        this.product = product;
         Syso.info("instantiateItem>>>>>>>>>>>ProductPagerAdapter");
-        Log.w(TAG,"ProductPagerAdapter");
+        Log.w(TAG, "ProductPagerAdapter");
     }
 
     class ViewHolder {
@@ -81,7 +81,7 @@ public class ProductImageAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(View container, final int position) {
-        Syso.info("instantiateItem>>>>>>>>>>>"+position);
+        Syso.info("instantiateItem>>>>>>>>>>>" + position);
         final LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final ViewHolder holder;
         holder = new ViewHolder();
@@ -93,8 +93,6 @@ public class ProductImageAdapter extends PagerAdapter {
 
             @Override
             public void onClick(View arg0) {
-//				if(((HomeActivity) mContext).checkInternet())
-//					((HomeActivity) mContext).addFragment(new FragmentProductDetailWebView(url, product));
             }
         });
         return collection;

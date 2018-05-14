@@ -11,7 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentTop="true"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -30,49 +31,86 @@
             android:textSize="20dp"/>
     </LinearLayout>
 
-    <com.flatlay.utility.MyMaterialContentBottom xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/overflow2"
+
+    <RelativeLayout
+        android:id="@+id/gallery_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/btn_whitebg2"
         android:layout_alignParentBottom="true"
-        app:buttonDrawable="@drawable/back_icon"
-        app:buttonPosition="left"
-        app:contentColor="@color/white"
-        app:fabButtonColor="@color/white">
+        android:paddingTop="20dp"
+        android:layout_marginTop="50dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/gallery_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/gallery_icon"/>
+
+        <ImageView
+            android:id="@+id/ins_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/instagram_icon"/>
+
+        <FrameLayout
+            android:id="@+id/frame_container4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/btn_whitebg2"
-            android:paddingTop="20dp"
             android:layout_marginTop="50dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="50dp"></FrameLayout>
+    </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/gallery_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/gallery_icon"/>
+    <!--<com.flatlay.utility.MyMaterialContentBottom xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/overflow2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--app:buttonDrawable="@drawable/back_icon"-->
+        <!--app:buttonPosition="left"-->
+        <!--app:contentColor="@color/white"-->
+        <!--app:fabButtonColor="@color/white">-->
 
-            <ImageView
-                android:id="@+id/ins_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/instagram_icon"/>
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@drawable/btn_whitebg2"-->
+            <!--android:paddingTop="20dp"-->
+            <!--android:layout_marginTop="50dp"-->
+            <!--android:paddingLeft="20dp"-->
+            <!--android:paddingRight="20dp">-->
 
-            <FrameLayout
-                android:id="@+id/frame_container4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="50dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="50dp"></FrameLayout>
-            </RelativeLayout>
-        </com.flatlay.utility.MyMaterialContentBottom>
+            <!--<ImageView-->
+                <!--android:id="@+id/gallery_icon"-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:src="@drawable/gallery_icon"/>-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/ins_icon"-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:src="@drawable/instagram_icon"/>-->
+
+            <!--<FrameLayout-->
+                <!--android:id="@+id/frame_container4"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginTop="50dp"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_marginBottom="50dp"></FrameLayout>-->
+            <!--</RelativeLayout>-->
+        <!--</com.flatlay.utility.MyMaterialContentBottom>-->
 </RelativeLayout>

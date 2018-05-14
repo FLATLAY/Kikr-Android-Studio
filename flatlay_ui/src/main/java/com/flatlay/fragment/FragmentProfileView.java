@@ -89,8 +89,6 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     private LinearLayout layoutPeopleStoreBrand;
     private Button interest_store_button, interest_brand_button, interest_people_button;
     private List<InterestSection> interestList;
-   // private InterestBrandListAdapter interestBrandListAdapter;
-   // private InterestStoreListAdapter interestStoreListAdapter;
     public static String lastUserId;
 
     private TextView myActivityButton, btn_photos;
@@ -101,7 +99,6 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
     int page = 0;
     private int firstVisibleItem = 0, visibleItemCount = 0, totalItemCount = 0;
     private List<Inspiration> product_list = new ArrayList<Inspiration>();
-   // private InspirationGridAdapter inspirationAdapter;
     private TextView loadingTextView, tvEarnCreditsText;
     private View loaderView;
     private Button photos_button, btnCreateCollection, btnUpload;
@@ -165,7 +162,6 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         otheruserclick = (TextView) mainView.findViewById(R.id.otheruserclick);
         bg_nocollection = (ImageView) mainView.findViewById(R.id.bg_nocollection);
         invite = (Button) mainView.findViewById(R.id.invite);
-        // photos_button = (Button) mainView.findViewById(R.id.photos_button);
         collection_list = (ListView) mainView.findViewById(R.id.collection_list);
         photo_button = (ImageView) mainView.findViewById(R.id.photo_button);
         following_button = (ImageView) mainView.findViewById(R.id.following_button);
@@ -190,8 +186,6 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
         interest_brand_button = (Button) mainView.findViewById(R.id.interest_brand_button);
         interest_people_button = (Button) mainView.findViewById(R.id.interest_people_button);
         myActivityButton = (TextView) mainView.findViewById(R.id.btn_activity);
-        //btn_photos = (TextView) mainView.findViewById(R.id.btn_photos);
-        //myActivityButton.setText("Activity");
         descriptionTextView = (TextView) mainView.findViewById(R.id.descriptionTextView);
         imagesList = (GridView) mainView.findViewById(R.id.imagesList);
         profile_btn_layout = (LinearLayout) mainView.findViewById(R.id.profile_btn_layout);

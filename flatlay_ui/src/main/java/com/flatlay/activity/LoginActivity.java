@@ -221,7 +221,6 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
-       // progressBarDialog.dismiss();
         Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;

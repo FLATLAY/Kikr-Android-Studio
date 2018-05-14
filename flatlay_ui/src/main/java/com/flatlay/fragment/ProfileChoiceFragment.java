@@ -25,29 +25,31 @@ import com.flatlaylib.service.ServiceException;
  * Created by RachelDi on 4/27/18.
  */
 
-public class ProfileChoiceFragment extends BaseFragment implements View.OnClickListener{
+public class ProfileChoiceFragment extends BaseFragment implements View.OnClickListener {
     private View mainView;
     private ImageView info_image2;
     private MyMaterialContentOverflow3 overflow2;
-    private boolean isOnFeedPage=true;
-    private TextView text1,text2,text3,text4,text5;
+    private boolean isOnFeedPage = true;
+    private TextView text1, text2, text3, text4, text5;
     private ShareProfileDialog shareProfileDialog;
 
-    public ProfileChoiceFragment(MyMaterialContentOverflow3 overflow2,boolean isOnFeedPage){
-        this.overflow2=overflow2;
-        this.isOnFeedPage=isOnFeedPage;
+    public ProfileChoiceFragment(MyMaterialContentOverflow3 overflow2, boolean isOnFeedPage) {
+        this.overflow2 = overflow2;
+        this.isOnFeedPage = isOnFeedPage;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.profile_choice_layout, null);
         return mainView;
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.info_image2:
                 overflow2.setOpen();
-                ((HomeActivity)mContext).myAddFragment(new MyFeedCollectionFragment(overflow2,false,isOnFeedPage));
+                ((HomeActivity) mContext).myAddFragment(new MyFeedCollectionFragment(overflow2, false, isOnFeedPage));
                 break;
             case R.id.text1:
                 overflow2.setOpen();
@@ -61,7 +63,7 @@ public class ProfileChoiceFragment extends BaseFragment implements View.OnClickL
                 break;
             case R.id.text3:
                 overflow2.setOpen();
-                ((HomeActivity)mContext).myAddFragment(new MyFeedCollectionFragment(overflow2,true,true));
+                ((HomeActivity) mContext).myAddFragment(new MyFeedCollectionFragment(overflow2, true, true));
                 break;
             case R.id.text4:
                 Bundle bundle2 = new Bundle();

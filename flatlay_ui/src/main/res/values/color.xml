@@ -46,6 +46,8 @@
     <color name="discover_list_item_shadow">#80000000</color>
     <color name="discover_list_item_shadow2">#50000000</color>
     <color name="red">#ff0000</color>
+    <color name="purple">#8900fa</color>
+
     <color name="bg_gray">#EFEFEF</color>
     <color name="divider_gray_dark">#EDEDED</color>
     <color name="discover_price_color">#bd2a2a</color>

@@ -42,33 +42,33 @@ import java.util.List;
  * Created by RachelDi on 4/29/18.
  */
 
-public class CartCardFragment extends BaseFragment implements View.OnClickListener{
+public class CartCardFragment extends BaseFragment implements View.OnClickListener {
     private View mainView;
-    private TextView shipping_text7,shipping_text6,confirm_text2,payment_type_text,payment_detail_text,
-            enter_card_num,enter_name_on_card2,enter_expire_text2,billing_text,same_as_text,contact_text3,
-            enter_country_text2,enter_apt_text2,enter_city_text2,enter_state_text2,add_card_done_button,
+    private TextView shipping_text7, shipping_text6, confirm_text2, payment_type_text, payment_detail_text,
+            enter_card_num, enter_name_on_card2, enter_expire_text2, billing_text, same_as_text, contact_text3,
+            enter_country_text2, enter_apt_text2, enter_city_text2, enter_state_text2, add_card_done_button,
             next_button2;
     private GridView card_gridview;
-    private EditText ccv_text3,billing_first_name,billing_last_name,enter_address_text2,enter_zip_text2;
+    private EditText ccv_text3, billing_first_name, billing_last_name, enter_address_text2, enter_zip_text2;
     private ImageView same_as_icon;
     private LinearLayout billing_layout;
-    private boolean isValidPayment = false,isValidBillingAddress = false;
+    private boolean isValidPayment = false, isValidBillingAddress = false;
     private Card newCard = new Card();
     private BillingAddress billlingAddress = new BillingAddress();
     private CartProduct cardAndShippingDetail;
     private Address shippingAddress;
-    private String billAddressLine1 = "",billApartment = "", apartment = "",addressLine1 = "";
+    private String billAddressLine1 = "", billApartment = "", apartment = "", addressLine1 = "";
     private List<Product> my_productLists;
-//    private boolean firstTimeGetCard;
     private double total_price;
 
 
-    public CartCardFragment(Address shippingAddress,List<Product> my_productLists,CartProduct cardAndShippingDetail,double total_price){
+    public CartCardFragment(Address shippingAddress, List<Product> my_productLists, CartProduct cardAndShippingDetail, double total_price) {
         this.my_productLists = my_productLists;
-        this.shippingAddress=shippingAddress;
-        this.cardAndShippingDetail=cardAndShippingDetail;
-        this.total_price=total_price;
+        this.shippingAddress = shippingAddress;
+        this.cardAndShippingDetail = cardAndShippingDetail;
+        this.total_price = total_price;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.cart_card_layout, null);
@@ -98,7 +98,7 @@ public class CartCardFragment extends BaseFragment implements View.OnClickListen
                 break;
             case R.id.next_button2:
                 if (isValidBillingAddress && isValidPayment) {
-                    ((HomeActivity) mContext).myAddFragment(new CartConfirmFragment(my_productLists,cardAndShippingDetail,shippingAddress,total_price));
+                    ((HomeActivity) mContext).myAddFragment(new CartConfirmFragment(my_productLists, cardAndShippingDetail, shippingAddress, total_price));
                 } else {
                     AlertUtils.showToast(mContext, "Please enter required information.");
                 }
@@ -168,10 +168,7 @@ public class CartCardFragment extends BaseFragment implements View.OnClickListen
         add_card_done_button.setTypeface(FontUtility.setMontserratLight(mContext));
         next_button2 = (TextView) mainView.findViewById(R.id.next_button2);
         next_button2.setTypeface(FontUtility.setMontserratLight(mContext));
-//        if (firstTimeGetCard) {
-            getCardList();
-//            firstTimeGetCard = false;
-     //   }
+        getCardList();
     }
 
     @Override
@@ -194,7 +191,6 @@ public class CartCardFragment extends BaseFragment implements View.OnClickListen
     }
 
     public void getCardList() {
-//        flatlay_card.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (CommonUtility.getDeviceWidth(mContext)) * 51 / 100));
         final CardInfoApi cardInfoApi = new CardInfoApi(new ServiceCallback() {
 
             @Override
@@ -204,7 +200,6 @@ public class CartCardFragment extends BaseFragment implements View.OnClickListen
                     List<Card> temp = new ArrayList<>();
                     List<Card> temp2 = new ArrayList<>();
                     temp = cardInfoRes.getData();
-//                    setCardList(temp);
                     temp2 = temp;
                     temp2.add(new Card("flatlay", "flatlay", "flatlay", "", "", "", "", ""));
                     temp2.add(new Card("Add", "Add", "Add", "", "", "", "", ""));
@@ -280,6 +275,7 @@ public class CartCardFragment extends BaseFragment implements View.OnClickListen
         cardInfoApi.getCardList(UserPreference.getInstance().getUserID());
         cardInfoApi.execute();
     }
+
     public void validateCard(final Card card, BillingAddress address) {
         if (checkInternet()) {
             OAuthWebService authWebService = new OAuthWebService(Constants.WebConstants.PAYPAL_PAYMENT_URL, new ServiceCallback() {
@@ -317,87 +313,8 @@ public class CartCardFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void saveAddress() {
-//        isValidAddress = true;
         isValidPayment = true;
         isValidBillingAddress = true;
-//        if (new_address_layout.getVisibility() == View.VISIBLE) {
-//            if (first_name.getText().toString().trim() != null && first_name.getText().toString().trim().length() > 0) {
-//                shippingAddress.setFirstname(first_name.getText().toString().trim());
-//                first_name.setBackgroundResource(R.drawable.topsearch_noborder);
-//                cardAndShippingDetail.setShipping_first_name(shippingAddress.getFirstname());
-//            } else {
-//                isValidAddress = false;
-//                first_name.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (last_name.getText().toString().trim() != null && last_name.getText().toString().trim().length() > 0) {
-//                shippingAddress.setLastname(last_name.getText().toString().trim());
-//                last_name.setBackgroundResource(R.drawable.topsearch_noborder);
-//                cardAndShippingDetail.setShipping_last_name(shippingAddress.getLastname());
-//            } else {
-//                isValidAddress = false;
-//                last_name.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (email.getText().toString().trim() != null && email.getText().toString().trim().length() > 0) {
-//                this.emailString = email.getText().toString().trim();
-//                cardAndShippingDetail.setEmail(emailString);
-//            } else {
-//                this.emailString = UserPreference.getInstance().getEmail();
-//                cardAndShippingDetail.setEmail(emailString);
-//            }
-//            if (enter_address_text.getText().toString().trim() != null && enter_address_text.getText().toString().trim().length() > 0) {
-//                this.addressLine1 = enter_address_text.getText().toString().trim();
-//                enter_address_text.setBackgroundResource(R.drawable.topsearch_noborder);
-//                shippingAddress.setStreet_address(addressLine1);
-//                if (this.apartment.length() > 0)
-//                    cardAndShippingDetail.setShipping_address(addressLine1 + ", " + this.apartment);
-//                else
-//                    cardAndShippingDetail.setShipping_address(addressLine1);
-//            } else {
-//                isValidAddress = false;
-//                enter_address_text.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (enter_apt_text.getText().toString().trim() != null && enter_apt_text.getText().toString().trim().length() > 0) {
-//                this.apartment = enter_apt_text.getText().toString().trim();
-//                shippingAddress.setApartment(apartment);
-//                cardAndShippingDetail.setShipping_address(addressLine1 + ", " + this.apartment);
-//            } else {
-//            }
-//            if (enter_country_text.getText().toString().trim() != null && enter_country_text.getText().toString().trim().length() > 0) {
-//                shippingAddress.setCountry(enter_country_text.getText().toString().trim());
-//                enter_country_text.setBackgroundResource(R.drawable.topsearch_noborder);
-//                cardAndShippingDetail.setShipping_country(shippingAddress.getCountry());
-//            } else {
-//                isValidAddress = false;
-//                enter_country_text.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (enter_city_text.getText().toString().trim() != null && enter_city_text.getText().toString().trim().length() > 0) {
-//                shippingAddress.setCity_town(enter_city_text.getText().toString().trim());
-//                enter_city_text.setBackgroundResource(R.drawable.topsearch_noborder);
-//                cardAndShippingDetail.setShipping_city(shippingAddress.getCity_town());
-//            } else {
-//                isValidAddress = false;
-//                enter_city_text.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (enter_zip_text.getText().toString().trim() != null && enter_zip_text.getText().toString().trim().length() > 0) {
-//                shippingAddress.setZip_code(enter_zip_text.getText().toString().trim());
-//                enter_zip_text.setBackgroundResource(R.drawable.topsearch_noborder);
-//                cardAndShippingDetail.setShipping_zip(shippingAddress.getZip_code());
-//            } else {
-//                isValidAddress = false;
-//                enter_zip_text.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//            if (enter_state_text.getText().toString().trim() != null && enter_state_text.getText().toString().trim().length() > 0) {
-//                shippingAddress.setState(enter_state_text.getText().toString().trim());
-//                enter_state_text.setBackgroundResource(R.drawable.topsearch_noborder);
-//                cardAndShippingDetail.setShipping_state(shippingAddress.getState());
-//            } else {
-//                isValidAddress = false;
-//                enter_state_text.setBackgroundResource(R.drawable.topsearch_red_border);
-//            }
-//        }
-//        if (enter_promo_text.getText().toString().trim() != null && enter_promo_text.getText().toString().trim().length() > 0) {
-//            this.promoCode = enter_promo_text.getText().toString().trim();
-//        }
         if (enter_card_num.getText().toString().trim() != null && enter_card_num.getText().toString().trim().length() > 0) {
             enter_card_num.setBackgroundResource(R.drawable.topsearch_noborder);
             cardAndShippingDetail.setCard_number(CommonUtility.DecryptCreditCard(enter_card_num.getText().toString().trim()));

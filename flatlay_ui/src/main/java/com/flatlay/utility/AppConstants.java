@@ -33,7 +33,7 @@ public class AppConstants {
     public static final String FROM_PROFILE = "FROM_PROFILE";
 
 
-    public static final int PASSWORD_MIN_LENGTH = 5;
+    public static final int PASSWORD_MIN_LENGTH = 6;
     public static final int USERNAME_MAX_LENGTH = 10;
     public static final int COLLECTION_NAME_MAX_LENGTH = 16;
     public static boolean isFromTutorial = false;

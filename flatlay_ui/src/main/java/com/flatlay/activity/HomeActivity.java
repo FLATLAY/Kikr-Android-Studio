@@ -121,6 +121,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.pinterest.android.pdk.PDKCallback;
 import com.pinterest.android.pdk.PDKClient;
 import com.pinterest.android.pdk.PDKException;
@@ -165,7 +166,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     public static TextView gallery, camera, instagram;
     private FragmentActivity context, mActivity;
     private View viewHeader;
-    //private CircleImageView profile_pic;
     private android.support.v7.app.ActionBar actionBar;
     public static TextView menuTextCartCount;
     public static ImageView menuSearchImageView;
@@ -179,7 +179,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             menuInterestsLayout;
     private ImageView menuMyFriendsLayoutImageView, menuProfileLayoutImageView,
             menuDealImageView, menuSettingsLayoutImageView;
-    // private ProgressBarDialog progressBarDialog;
     public List<ProductFeedItem> list;
     private ArrayList<LinearLayout> layouts = new ArrayList<LinearLayout>();
     public Stack<String> mFragmentStack;
@@ -199,8 +198,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             kikrChatTextView, checkInTextView, dealTextview, orderTextView, walletTextView,
             kikrCreditTextView, viewProfileTextView, kikrGuideTextView, viewSearchTextView,
             totalCredits, txtShop, txtFeed, menuRightTextView;
-    //RelativeLayout tab_layout1;
-    //LinearLayout cart_tab, search_tab, profile_tab;
     private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
@@ -244,7 +241,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 updateScreen(Screen.HomeScreen);
         }
         registerHomeReceiver();
-        // Syso.info("IP address:"+CommonUtility.getIpAddress(context));
 
         Tracker t = ((KikrApp) getApplication()).getTracker(TrackerName.APP_TRACKER);
         t.setScreenName("HomeActivity");
@@ -258,7 +254,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             settings.edit().putBoolean("my_first_time", false).commit();
         }
 
-        // getKikrCredits();
         Product prod = (Product) getIntent().getSerializableExtra("productobj");
         if (prod != null) {
             Bundle bundle = new Bundle();
@@ -269,14 +264,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             addFragment(new FragmentProfileView(getIntent().getStringExtra("profile_collection"), "no"));
 
         }
-        //  PushTest.pushFCMNotification();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         isFirstTime = true;
-//        if (getIntent().getExtras() != null) {
-//            // Call your NotificationActivity here..
-//            Intent intent = new Intent(HomeActivity.this, FirebaseMsgService.class);
-//            startActivity(intent);
-//        }
     }
 
     @Override
@@ -351,7 +340,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         layouts.add(menuConnectWithFacebookLayout);
         layouts.add(menuKikrCreditsLayout);
         layouts.add(menuActivityLayout);
-        //layouts.add(menuMyFriendsLayout);
         layouts.add(menuInviteFriendsLayout);
         layouts.add(menuCheckInLayout);
         layouts.add(menuSupportLayout);
@@ -387,22 +375,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void setActionBar() {
-//        actionBar = getSupportActionBar();
-//        actionBar.hide();
-//        actionBar.setDisplayShowHomeEnabled(true);
-//        actionBar.setDisplayShowCustomEnabled(true);
-//        actionBar.setDisplayShowTitleEnabled(false);
-//        actionBar.setDisplayHomeAsUpEnabled(false);
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         viewHeader = inflater.inflate(R.layout.app_discover_header, null);
-//        actionBar.setCustomView(viewHeader, new android.support.v7.app.ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         crossarrow = (ImageView) findViewById(R.id.crossarrow);
         postUploadWithTag = (ImageView) viewHeader.findViewById(R.id.postUploadWithTag);
-        Log.e("mstatus", "mstatus");
         mstatus = (Spinner) viewHeader.findViewById(R.id.mstatus);
-        Log.e("mstatus", "mstatus：" + (mstatus == null));
-
         uploadphoto = (TextView) viewHeader.findViewById(R.id.uploadphoto);
         photouploadnext = (ImageView) viewHeader.findViewById(R.id.photouploadnext);
         menuBackTextView = (TextView) viewHeader.findViewById(R.id.leftTextView);
@@ -417,7 +395,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         homeImageView = (ImageView) viewHeader.findViewById(R.id.homeImageView);
         menuSearchImageView = (ImageView) viewHeader.findViewById(R.id.menuSearchImageView);
         menuTextCartCount = (TextView) viewHeader.findViewById(R.id.txtCartCount);
-//        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 
         menuRightImageView.setOnClickListener(this);
         homeImageView.setOnClickListener(this);
@@ -429,32 +406,15 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
 
     public void showActionBar() {
-//        actionBar.show();
         menuRightImageView.setVisibility(View.VISIBLE);
         menuTextCartCount.setVisibility(View.VISIBLE);
     }
 
     public void hideActionBar() {
-//        actionBar.hide();
     }
 
-//    public void hideBackButtonvalue() {
-//        menuBackTextView.setVisibility(View.GONE);
-//
-//        camera.setVisibility(View.GONE);
-//        gallery.setVisibility(View.GONE);
-//        instagram.setVisibility(View.GONE);
-//        mstatus.setVisibility(View.GONE);
-//        crossarrow.setVisibility(View.GONE);
-//        homeImageView.setVisibility(View.VISIBLE);
-//    }
-
     private void startUploadPostSection() {
-        // cart_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-        //  profile_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-        // upload_post_tab.setBackgroundColor(getResources().getColor(R.color.tab_selected_new));
-        // search_tab.setBackgroundColor(getResources().getColor(R.color.tab_bg_new));
-        addFragment(new FragmentPostUploadTab());
+        addFragment(new CameraFragment());
     }
 
     @Override
@@ -513,12 +473,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void initLayout() {
-        // tab_layout1 = (RelativeLayout) findViewById(R.id.tabLayout1);
-        // cart_tab = (LinearLayout) findViewById(R.id.cart_layout);
-        //profile_tab = (LinearLayout) findViewById(R.id.profile_tab);
-        //upload_post_tab = (LinearLayout) findViewById(R.id.upload_post_tab);
-        //search_tab = (LinearLayout) findViewById(R.id.search_tab);
-        //profile_pic = (CircleImageView) findViewById(R.id.profile_pic);
         menuSearchLayout = (LinearLayout) findViewById(R.id.menuSearchLayout);
         menuProfileLayout = (LinearLayout) findViewById(R.id.menuProfileLayout);
         menuConnectWithTwitterLayout = (LinearLayout) findViewById(R.id.menuConnectWithTwitterLayout);
@@ -568,11 +522,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         kikrGuideTextView = (TextView) findViewById(R.id.kikrGuideTextView);
         viewSearchTextView = (TextView) findViewById(R.id.viewSearchTextView);
 
-        // cart_tab.setOnClickListener(this);
-        //search_tab.setOnClickListener(this);
-        //profile_tab.setOnClickListener(this);
-        //upload_post_tab.setOnClickListener(this);
-
         CommonUtility.hideSoftKeyboard(this);
     }
 
@@ -583,14 +532,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 addFragment(new FragmentInspirationDetail(id));
                 cleanActivity();
             }
-//            else if (getIntent().getStringExtra("section").equals("follow")) {
-////                addFragment(new FragmentProfileView(getIntent().getStringExtra("inspiration_id"), "no"));
-//                addFragment(new FragmentInspirationSection(true));
-//                cleanActivity();
-//            }
         } else if (getIntent().getStringExtra("section") != null) {
             if (getIntent().getStringExtra("section").equals("follow")) {
-//                addFragment(new FragmentProfileView(getIntent().getStringExtra("inspiration_id"), "no"));
                 addFragment(new FragmentInspirationSection(true));
                 cleanActivity();
             } else if (getIntent().getStringExtra("section").equals("placeorder")) {
@@ -623,7 +566,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             }
         }
         if (checkInternet()) {
-            // getCartList();
         }
     }
 
@@ -654,41 +596,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
     }
 
-//    private List<Product> productLists;
-//
-//    public List<Product> getCartProducts(){
-//        return productLists;
-//    }
-
-//    public void getCartList() {
-//        CartApi cartApi = new CartApi(new ServiceCallback() {
-//
-//            @Override
-//            public void handleOnSuccess(Object object) {
-//                Syso.info("In handleOnSuccess>>" + object);
-//                CartRes cartRes = (CartRes) object;
-//                productLists = cartRes.getData();
-//                if (productLists.size() > 0) {
-//                    UserPreference.getInstance().setCartCount(
-//                            String.valueOf(productLists.size()));
-////                    refreshCartCount();
-//                }
-//            }
-//
-//            @Override
-//            public void handleOnFailure(ServiceException exception,
-//                                        Object object) {
-//
-//            }
-//        });
-//        cartApi.getCartList(UserPreference.getInstance().getUserID());
-//        cartApi.execute();
-//    }
-
     public void setClickListener() {
-//        crossarrow.setOnClickListener(this);
-//        postUploadWithTag.setOnClickListener(this);
-//
 
     }
 
@@ -703,15 +611,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             Log.e(TAG, "Error in creating fragment.");
         }
     }
-
-//    public void showLoginHome() {
-//        Intent i = new Intent(context, LandingActivity.class);
-//        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(i);
-//        finish();
-//    }
-
 
     public void inviteFriends() {
 
@@ -816,7 +715,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         .addListener(new Braintree.PaymentMethodNonceListener() {
                             public void onPaymentMethodNonce(
                                     String paymentMethodNonce) {
-                                // Syso.info("aaaaaaaaaaaaaaa payment nonce::"+paymentMethodNonce);
                                 if (checkInternet())
                                     saveCheckout(paymentMethodNonce);
                             }
@@ -853,7 +751,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
         if (requestCode == Crop.REQUEST_CROP) {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-            ((FragmentPostUploadTab) fragment).onActivityResult(requestCode,
+            ((CameraFragment) fragment).onActivityResult(requestCode,
                     resultCode, data);
         }
 
@@ -884,8 +782,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 fragment.onActivityResult(requestCode, resultCode, data);
             }
         } else if (requestCode == TwitterAuthConfig.DEFAULT_AUTH_REQUEST_CODE) {
-            //Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());;
-            //fragment.onActivityResult(requestCode, resultCode, data);
 
             final TwitterAuthClient twitterAuthClient = new TwitterAuthClient();
             if (twitterAuthClient.getRequestCode() == requestCode) {
@@ -926,8 +822,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void uploadFbFriends(List<FbUser> fbusers) {
-//        progressBarDialog = new ProgressBarDialog(context);
-//        progressBarDialog.show();
         final FbTwFriendsApi service = new FbTwFriendsApi(
                 new ServiceCallback() {
 
@@ -941,7 +835,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
-                        //progressBarDialog.dismiss();
 
                     }
                 });
@@ -995,8 +888,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-//            progressBarDialog = new ProgressBarDialog(context);
-//            progressBarDialog.show();
         }
 
         @Override
@@ -1007,7 +898,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         @Override
         protected void onPostExecute(User user) {
             super.onPostExecute(user);
-            // progressBarDialog.dismiss();
             System.out.println("Twitter id>>" + user);
             if (user != null) {
                 getTwitterInfo(user);
@@ -1023,8 +913,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-//            progressBarDialog = new ProgressBarDialog(context);
-//            progressBarDialog.show();
         }
 
         @Override
@@ -1035,7 +923,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         @Override
         protected void onPostExecute(ArrayList<OauthItem> result) {
             super.onPostExecute(result);
-            //   progressBarDialog.dismiss();
             System.out.println("Twitter friend list>>" + result);
             showTwitterFriendList(result);
         }
@@ -1044,8 +931,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     private void connectWithTwitter(String userId, String description, String language, String location, String name, String profile_image_url, String screen_name, String status,
                                     String time_zone) {
-//        progressBarDialog = new ProgressBarDialog(context);
-//        progressBarDialog.show();
 
         final ConnectWithTwitterApi service = new ConnectWithTwitterApi(
                 new ServiceCallback() {
@@ -1053,7 +938,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     @Override
                     public void handleOnSuccess(Object object) {
 
-                        //progressBarDialog.dismiss();
                         if (object != null) {
                             getTwitterFriendList();
                         } else {
@@ -1066,7 +950,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     public void handleOnFailure(ServiceException exception,
                                                 Object object) {
 
-                        // progressBarDialog.dismiss();
                         if (object != null) {
                             ConnectWithTwitterRes facebookRes = (ConnectWithTwitterRes) object;
                             String message = facebookRes.getMessage();
@@ -1082,12 +965,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 profile_image_url, name, screen_name, status, time_zone);
         service.execute();
 
-//        progressBarDialog.setOnCancelListener(new OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                service.cancel();
-//            }
-//        });
     }
 
     private void checkStatusOFSocial() {
@@ -1179,14 +1056,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void uploadTwitterFriends(List<TwitterFriendList> data) {
-//        progressBarDialog = new ProgressBarDialog(context);
-//        progressBarDialog.show();
+
         final FbTwFriendsApi service = new FbTwFriendsApi(
                 new ServiceCallback() {
 
                     @Override
                     public void handleOnSuccess(Object object) {
-                        // progressBarDialog.dismiss();
                         AlertUtils.showToast(context, R.string.alert_connected_with_twitter);
                         UserPreference.getInstance().setIsTwitterConnected(true);
 
@@ -1194,7 +1069,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
-                        // progressBarDialog.dismiss();
 
                     }
                 });
@@ -1205,8 +1079,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private void connectWithFacebook(String id, String email, String gender,
                                      String name, String username, String birthday, String profile_link,
                                      String location) {
-//        progressBarDialog = new ProgressBarDialog(context);
-//        progressBarDialog.show();
+
 
         final ConnectWithFacebookApi service = new ConnectWithFacebookApi(
                 new ServiceCallback() {
@@ -1214,7 +1087,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     @Override
                     public void handleOnSuccess(Object object) {
 
-                        //progressBarDialog.dismiss();
                         if (object != null) {
                             getFBFriendList();
                         } else {
@@ -1226,7 +1098,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
 
-                        //progressBarDialog.dismiss();
                         if (object != null) {
                             ConnectWithFacebookRes facebookRes = (ConnectWithFacebookRes) object;
                             String message = facebookRes.getMessage();
@@ -1240,12 +1111,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 });
         service.connectWithFacebook(id, gender, birthday, profile_link, location, name, username);
         service.execute();
-        // progressBarDialog.setOnCancelListener(new OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                service.cancel();
-//            }
-//        });
     }
 
 
@@ -1265,7 +1130,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 .addParameters("discounttype", product.getDiscounttype())
                 .addParameters("saleprice", product.getSaleprice())
                 .addParameters("retailprice", product.getRetailprice())
-                //.addParameters("brand", product.getBrand())
                 .addParameters("shippingcost", product.getShippingcost())
                 .addParameters("keywords", product.getKeywords())
                 .addParameters("manufacturename", product.getManufacturename())
@@ -1350,25 +1214,16 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     if (isOther)
                         startActivity(Intent.createChooser(intent, "Share"));
                     else {
-//
                     }
                 } else {
                     Log.i("Branch", "Got a Branch URL 3 " + url);
-                    Log.w("shareimagename", "" + shareimagename);
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     String link = shareimagename;
                     intent.putExtra(Intent.EXTRA_TEXT, link);
                     if (isOther) {
-                        Log.w("inside if", "inside if" + link);
                         startActivity(Intent.createChooser(intent, "Share"));
                     } else {
-                        Log.w("inside else", "inside else");
-//							loginPinterest(link, url, product.getProductimageurl());
-                        Log.w("inside else", "" + link);
-                        Log.w("inside else", "" + url);
-                        Log.w("inside else", "" + imageUrl);
-
                     }
                 }
             }
@@ -1479,9 +1334,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             Fragment currentFragment = getSupportFragmentManager()
                     .findFragmentByTag(mFragmentStack.peek());
             if (mFragmentStack.size() > 0&&!(currentFragment instanceof FragmentInspirationSection)) {
-                Log.e("addFragment","1");
                 if (currentFragment != null) {
-                    Log.e("addFragment","2");
 
                     transaction.hide(currentFragment);
                 }
@@ -1490,8 +1343,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 transaction.addToBackStack(fragment.toString());
                 transaction.commit();
             } else {
-                Log.e("addFragment","3");
-
                 mFragmentStack.add(fragment.toString());
                 transaction.replace(R.id.frame_container_section_1, fragment, fragment.toString());
                 transaction.addToBackStack(fragment.toString());
@@ -1545,69 +1396,21 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     public void onBackPressed() {
         try {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-//            if (fragment instanceof FragmentPostUploadTag) {
-//
-//                postuploadtagbackTextView.setOnClickListener(new OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        PostUploadTagDialog welcome = new PostUploadTagDialog(homeActivity);
-//                        welcome.show();
-//                    }
-//                });
-//
-////                showActionBar();
-////                tab_layout.setVisibility(View.GONE);
-//            } else {
-//
-////                hideActionBar();
-//                //tab_layout1.setVisibility(View.VISIBLE);
-//
-//            }
             hideFutter();
             CommonUtility.hideSoftKeyboard(this);
             if (mFragmentStack.size() == 1) {
-                Log.e("nani", "nani22");
-
                 if (fragment instanceof FragmentInspirationSection) {
                 } else if (fragment instanceof LandingActivity) {
 
-//                    if (backPressedToExitOnce) {
-                    finish();
-//                    } else {
-//                        this.backPressedToExitOnce = true;
-//                        AlertUtils.showToast(context, "Press again to exit");
-//                        new Handler().postDelayed(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                backPressedToExitOnce = false;
-//                            }
-//                        }, 2000);
-//                    }
                 } else {
 
                     hideAllFragment();
                     addFragment(new FragmentInspirationSection());
-//                    getSupportFragmentManager().findFragmentByTag(mFragmentStack.lastElement()).onResume();
                 }
             } else {
-                Log.e("nani", "nani11");
-
-//                if (fragment instanceof FragmentPostUploadTag) {
-//                    //  gallery.setVisibility(View.VISIBLE);
-//                    postuploadtagbackTextView.setOnClickListener(new OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            PostUploadTagDialog welcome = new PostUploadTagDialog(homeActivity);
-//                            welcome.show();
-//                        }
-//                    });
-//
-//                } else {
                 removeFragment();
                 super.onBackPressed();
-                // }
             }
-//            fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
 
 
         } catch (Exception e) {
@@ -1617,46 +1420,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     }
 
-
-//    public void ontagBack() {
-//        try {
-//
-//            left.closeMenu();
-//            hideFutter();
-//            if (mFragmentStack.size() == 1) {
-//                Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-//                if (fragment instanceof FragmentPostUploadTab) {
-//                    if (backPressedToExitOnce) {
-//                        finish();
-//                    } else {
-//                        this.backPressedToExitOnce = true;
-//                        AlertUtils.showToast(context, "Press again to exit");
-//                        new Handler().postDelayed(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                backPressedToExitOnce = false;
-//                            }
-//                        }, 2000);
-//                    }
-//                } else {
-//                   // hideAllFragment();
-//                    addFragment(new FragmentPostUploadTab());
-//                }
-//            } else {
-//               // removeFragment();
-//                super.onBackPressed();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-
-
     public void backpostuploadtad() {
 
         showActionBar();
-        //tab_layout1.setVisibility(View.GONE);
         mstatus.setVisibility(View.VISIBLE);
         crossarrow.setVisibility(View.VISIBLE);
         menuBackTextView.setVisibility(View.GONE);
@@ -1674,20 +1440,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     public void removeFragment() {
         try {
-            // remove the current fragment from the stack.
             String fold = mFragmentStack.pop();
-            Log.e("back", fold);
             Fragment f2 = getSupportFragmentManager().findFragmentByTag(fold);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            // get fragment that is to be shown (in our case fragment1).
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-            Log.e("backk", mFragmentStack.peek());
-
-            // This time I set an animation with no fade in, so the user doesn't
-            // wait for the animation in back press
-            // transaction.setCustomAnimations(R.anim.slide_right_in,
-            // R.anim.slide_right_out);
-            // We must use the show() method.
             checkBackButton(fragment);
             checkRightButton(fragment);
 
@@ -1703,7 +1459,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         .beginTransaction();
                 Fragment fragment = getSupportFragmentManager()
                         .findFragmentByTag(mFragmentStack.peek());
-                // transaction.remove(fragment);
                 if (fragment != null)
                     transaction.remove(fragment);
                 transaction.commit();
@@ -1715,28 +1470,16 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void showFooter() {
-//        LinearLayout footerLayout = (LinearLayout) findViewById(R.id.footer);
-//        footerLayout.setVisibility(View.VISIBLE);
-//        LinearLayout footerLayout1 = (LinearLayout) findViewById(R.id.footer_layout);
-//        TextView textView = (TextView) findViewById(R.id.reloadTextView);
-//        footerLayout1.setVisibility(View.VISIBLE);
-//        textView.setVisibility(View.GONE);
     }
 
     public TextView getReloadFotter() {
-//        LinearLayout layout = (LinearLayout) findViewById(R.id.footer);
-//        layout.setVisibility(View.VISIBLE);
-        //LinearLayout footerLayout = (LinearLayout) findViewById(R.id.footer_layout);
         TextView textView = (TextView) findViewById(R.id.reloadTextView);
-        // footerLayout.setVisibility(View.GONE);
         textView.setVisibility(View.VISIBLE);
         textView.setText(Html.fromHtml(getResources().getString(R.string.no_internet)));
         return textView;
     }
 
     public void hideFutter() {
-//        LinearLayout footerLayout = (LinearLayout) findViewById(R.id.footer);
-//        footerLayout.setVisibility(View.GONE);
     }
 
     public void updateScreen(String current_screen) {
@@ -1775,13 +1518,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void getTokenfromClient() {
-//        progressBarDialog = new ProgressBarDialog(context);
-//        progressBarDialog.show();
+
         final BraintreePaymentApi braintreePaymentApi = new BraintreePaymentApi(
                 new ServiceCallback() {
                     @Override
                     public void handleOnSuccess(Object object) {
-                        //progressBarDialog.dismiss();
                         BraintreePaymentRes braintreePaymentRes = (BraintreePaymentRes) object;
                         String clientToken = braintreePaymentRes.getClient_token();
                         braintree = Braintree.getInstance(context, clientToken);
@@ -1790,7 +1531,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
-                        //progressBarDialog.dismiss();
                     }
                 });
         braintreePaymentApi.getClientToken(UserPreference.getInstance().getUserID(), CommonUtility.getDeviceId(context));
@@ -1798,20 +1538,17 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void saveCheckout(String paymentMethodNonce) {
-//        progressBarDialog = new ProgressBarDialog(context);
-//        progressBarDialog.show();
+
         final BraintreePaymentApi braintreePaymentApi = new BraintreePaymentApi(
                 new ServiceCallback() {
                     @Override
                     public void handleOnSuccess(Object object) {
-                        //  progressBarDialog.dismiss();
                         AlertUtils.showToast(context, R.string.payment_success_text);
                         createCart();
                     }
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
-                        // progressBarDialog.dismiss();
                         AlertUtils.showToast(context, R.string.payment_fail_text);
                     }
                 });
@@ -1823,21 +1560,16 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void createCart() {
-//		progressBarDialog = new ProgressBarDialog(context);
-//		progressBarDialog.show();
         final CartApi cartApi = new CartApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
-//				progressBarDialog.dismiss();
                 CartRes cartRes = (CartRes) object;
                 UserPreference.getInstance().setCartID(cartRes.getCart_id());
-//				loadFragment(new FragmentDiscover());
             }
 
             @Override
             public void handleOnFailure(ServiceException exception,
                                         Object object) {
-//				progressBarDialog.dismiss();
             }
         });
         cartApi.createCart(UserPreference.getInstance().getUserID());
@@ -1856,21 +1588,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         postUploadWithTag.setVisibility(View.GONE);
 
     }
-
-//    public void hideBackButton() {
-//        postuploadtagbackTextView.setVisibility(View.GONE);
-//        menuBackTextView.setVisibility(View.GONE);
-//        menuRightImageView.setVisibility(View.VISIBLE);
-//        camera.setVisibility(View.GONE);
-//        gallery.setVisibility(View.GONE);
-//        menuTextCartCount.setVisibility(View.VISIBLE);
-//        mstatus.setVisibility(View.GONE);
-//        photouploadnext.setVisibility(View.GONE);
-//        instagram.setVisibility(View.GONE);
-//        crossarrow.setVisibility(View.GONE);
-//        postUploadWithTag.setVisibility(View.GONE);
-//        homeImageView.setVisibility(View.VISIBLE);
-//    }
 
     private void checkBackButton(Fragment fragment) {
 
@@ -1927,14 +1644,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     private void checkKikrWalletPin() {
 
-//        progressBarDialog = new ProgressBarDialog(context);
-//        progressBarDialog.show();
 
         final WalletPinApi service = new WalletPinApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                // progressBarDialog.dismiss();
                 if (object != null) {
                     WalletPinRes response = (WalletPinRes) object;
                     if (!TextUtils.isEmpty(response.getPin_created()) && response.getPin_created().equals("yes")) {
@@ -1949,7 +1663,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             @Override
             public void handleOnFailure(ServiceException exception,
                                         Object object) {
-                //progressBarDialog.dismiss();
                 if (object != null) {
                     WalletPinRes response = (WalletPinRes) object;
                     AlertUtils.showToast(context, response.getMessage());
@@ -1960,13 +1673,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         });
         service.checkKikrWalletPin(UserPreference.getInstance().getUserID());
         service.execute();
-
-        //progressBarDialog.setOnCancelListener(new OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                service.cancel();
-//            }
-//        });
     }
 
     public void setimage(Bitmap bitmap) {
@@ -1981,269 +1687,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     int menuIndex = 0;
 
-//    public void showContextMenu(Product product, UiUpdate uiUpdate) {
-//        contextMenuBg.setVisibility(View.VISIBLE);
-//        contextMenuBg.setProduct(product, this);
-//        contextMenuBg.setUiUpdate(uiUpdate);
-//        menuIndex = 1;
-//        showCentralOption();
-//    }
-//
-//    public void showContextMenu2(Inspiration inspiration, UiUpdate uiUpdate) {
-//        contextMenuBg2.setVisibility(View.VISIBLE);
-//        contextMenuBg2.setInspiration(inspiration, this);
-//        contextMenuBg2.setUiUpdate(uiUpdate);
-//        menuIndex = 0;
-//        showCentralOption2();
-//    }
-//
-//
-//    public void showContextMenuNoMidCircle(Product product, UiUpdate uiUpdate) {
-//        contextMenuBg.setVisibility(View.VISIBLE);
-//        contextMenuBg.setProduct(product, this);
-//        contextMenuBg.setUiUpdate(uiUpdate);
-//        contextMenuBg.unSelectIcons();
-//        // showCentralOptionNoMidCircle();
-//    }
-
-//    public void showCentralOptionNoMidCircle() {
-//        if (centarlView == null) {
-//            ImageView view = new ImageView(context);
-//            LayoutParams params = new LayoutParams(
-//                    (int) getResources().getDimension(R.dimen.menuChildSize),
-//                    (int) getResources().getDimension(R.dimen.menuChildSize));
-//            view.setLayoutParams(params);
-//            //view.setImageResource(R.drawable.contextual_origin_pulser);
-//            centarlView = view;
-//            contextMenuBg.addView(centarlView);
-//        }
-//        centarlView.setVisibility(View.INVISIBLE);
-//        centarlView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
-//        float widht = centarlView.getMeasuredWidth();
-//        float height = centarlView.getMeasuredHeight();
-//        Syso.info("9999999 centarlView>>>>> lastX:" + lastX + ", lastY:"
-//                + lastY + ", width:" + widht + ", height:" + height);
-//        // centarlView.setX((float) (lastX-(widht/3)));
-//        // centarlView.setY((float) (lastY-1.1*height));
-//
-//        centarlView.setX((float) (lastX - (0.3 * widht)));
-//        centarlView.setY((float) (lastY - 1.2 * height));
-//        Syso.info("9999999 centarlView 2>>>>> XX:" + centarlView.getX()
-//                + ", YY:" + centarlView.getY());
-//        contextMenuBg.setXY(lastX, lastY);
-//        Syso.info("Touch point>>> lastX:" + lastX + ", lastY:" + lastY
-//                + " , ViewX:" + centarlView.getX() + ", ViewY:"
-//                + centarlView.getY() + ",widht:" + widht + ",height:" + height);
-//    }
-
-//    public void hideContextMenu() {
-//        contextMenuBg.setVisibility(View.GONE);
-//    }
-//
-//    public void hideContextMenu2() {
-//        contextMenuBg2.setVisibility(View.GONE);
-//    }
-//
-//
-//    public boolean isMenuShowing() {
-//        return contextMenuBg.getVisibility() == View.VISIBLE ? true : false;
-//    }
-//
-//    public boolean isMenuShowing2() {
-//        return contextMenuBg2.getVisibility() == View.VISIBLE ? true : false;
-//    }
-//
-//
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent ev) {
-//        // TODO Auto-generated method stub
-//        float x = ev.getX();
-//        float y = ev.getY();
-////		Syso.info("1111111111111111   Dispatch>>>>>  X :" + x + ", y:" + y);
-//        lastX = x;
-//        lastY = y;
-//        if (isMenuShowing()) {
-//           // if (menuIndex == 0)
-//                return contextMenuBg.dispatchTouchEvent(ev);
-//            //else
-//              //  return contextMenuBg2.dispatchTouchEvent(ev);
-//        } else {
-//            return super.dispatchTouchEvent(ev);
-//        }
-//    }
-
-//    public void showCentralOption() {
-//        if (centarlView == null) {
-//            ImageView view = new ImageView(context);
-//            LayoutParams params = new LayoutParams(
-//                    (int) getResources().getDimension(R.dimen.menuChildSize),
-//                    (int) getResources().getDimension(R.dimen.menuChildSize));
-//            view.setLayoutParams(params);
-//            view.setImageResource(R.drawable.contextual_origin_pulser);
-//            centarlView = view;
-//            contextMenuBg.addView(centarlView);
-//
-//        }
-//        centarlView.setVisibility(View.VISIBLE);
-//        centarlView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
-//        float widht = centarlView.getMeasuredWidth();
-//        float height = centarlView.getMeasuredHeight();
-//        Syso.info("9999999 centarlView>>>>> lastX:" + lastX + ", lastY:"
-//                + lastY + ", width:" + widht + ", height:" + height);
-//        // centarlView.setX((float) (lastX-(widht/3)));
-//        // centarlView.setY((float) (lastY-1.1*height));
-//
-//        centarlView.setX((float) (lastX - (0.3 * widht)));
-//        centarlView.setY((float) (lastY - 1.2 * height));
-//        Syso.info("9999999 centarlView 2>>>>> XX:" + centarlView.getX()
-//                + ", YY:" + centarlView.getY());
-//        contextMenuBg.setXY(lastX, lastY);
-//
-//        Syso.info("Touch point>>> lastX:" + lastX + ", lastY:" + lastY
-//                + " , ViewX:" + centarlView.getX() + ", ViewY:"
-//                + centarlView.getY() + ",widht:" + widht + ",height:" + height);
-//    }
-//
-//    public void showCentralOption2() {
-//        if (centarlView2 == null) {
-//            ImageView view = new ImageView(context);
-//            LayoutParams params = new LayoutParams(
-//                    (int) getResources().getDimension(R.dimen.menuChildSize),
-//                    (int) getResources().getDimension(R.dimen.menuChildSize));
-//            view.setLayoutParams(params);
-//            view.setImageResource(R.drawable.contextual_origin_pulser);
-//            centarlView2 = view;
-//            contextMenuBg2.addView(centarlView2);
-//        }
-//        centarlView2.setVisibility(View.VISIBLE);
-//        centarlView2.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
-//        float widht = centarlView2.getMeasuredWidth();
-//        float height = centarlView2.getMeasuredHeight();
-//        Syso.info("9999999 centarlView2>>>>> lastX:" + lastX + ", lastY:"
-//                + lastY + ", width:" + widht + ", height:" + height);
-//        // centarlView.setX((float) (lastX-(widht/3)));
-//        // centarlView.setY((float) (lastY-1.1*height));
-//
-//        centarlView2.setX((float) (lastX - (0.3 * widht)));
-//        centarlView2.setY((float) (lastY - 1.2 * height));
-//        Syso.info("9999999 centarlView2 2>>>>> XX:" + centarlView2.getX()
-//                + ", YY:" + centarlView2.getY());
-//        contextMenuBg2.setXY(lastX, lastY);
-//        Syso.info("Touch point>>> lastX:" + lastX + ", lastY:" + lastY
-//                + " , ViewX:" + centarlView2.getX() + ", ViewY:"
-//                + centarlView2.getY() + ",widht:" + widht + ",height:" + height);
-//    }
-//
-//
-//    public void showLableTextView(String value, float x, float y) {
-//        if (lableTextView == null) {
-//            lableTextView = new TextView(context);
-//            LayoutParams params = new LayoutParams(
-//                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-//            lableTextView.setLayoutParams(params);
-//            lableTextView.setBackgroundResource(R.drawable.black_round_ract);
-//            lableTextView.setTextColor(Color.WHITE);
-//            contextMenuBg.addView(lableTextView);
-//
-//        }
-//        lableTextView.setText(value);
-//        lableTextView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
-//        int widht = lableTextView.getMeasuredWidth();
-//        int height = lableTextView.getMeasuredHeight();
-//        ArcLayout arcLayout = contextMenuBg.getArcLayout();
-//
-//
-//        if (arcLayout != null) {
-//            lableTextView.setX(arcLayout.getX() + x - widht / 2);
-//            lableTextView.setY(arcLayout.getY() + y
-//                    - getResources().getDimension(R.dimen.lable_distance));
-//            Syso.info("987654321  Touch point>>> value:" + value + ", x:" + x
-//                    + ", y:" + y + ", arcLayout.getLeft():"
-//                    + arcLayout.getLeft() + ", arcLayout.getTop():"
-//                    + arcLayout.getTop());
-//        }
-//
-//        lableTextView.setVisibility(View.VISIBLE);
-//    }
-//
-//    public void showLableTextView2(String value, float x, float y) {
-//        if (lableTextView == null) {
-//            lableTextView = new TextView(context);
-//            LayoutParams params = new LayoutParams(
-//                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-//            lableTextView.setLayoutParams(params);
-//            lableTextView.setBackgroundResource(R.drawable.black_round_ract);
-//            lableTextView.setTextColor(Color.WHITE);
-//            contextMenuBg2.addView(lableTextView);
-//
-//        }
-//        lableTextView.setText(value);
-//        lableTextView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
-//        int widht = lableTextView.getMeasuredWidth();
-//        int height = lableTextView.getMeasuredHeight();
-//        ArcLayout arcLayout = contextMenuBg2.getArcLayout();
-//
-//
-//        if (arcLayout != null) {
-//            lableTextView.setX(arcLayout.getX() + x - widht / 2);
-//            lableTextView.setY(arcLayout.getY() + y
-//                    - getResources().getDimension(R.dimen.lable_distance));
-//            Syso.info("987654321  Touch point>>> value:" + value + ", x:" + x
-//                    + ", y:" + y + ", arcLayout.getLeft():"
-//                    + arcLayout.getLeft() + ", arcLayout.getTop():"
-//                    + arcLayout.getTop());
-//        }
-//
-//        lableTextView.setVisibility(View.VISIBLE);
-//    }
-//
-//
-//    public void hideLableTextView() {
-//        if (lableTextView != null) {
-//            lableTextView.setVisibility(View.GONE);
-//        }
-//    }
-
-//    private ProgressBarDialog mProgressBarDialog;
-
-//    public void addProductToCart(Product product) {
-//        final CartApi cartApi = new CartApi(new ServiceCallback() {
-//
-//            @Override
-//            public void handleOnSuccess(Object object) {
-//                //  mProgressBarDialog.dismiss();
-//                if (object != null) {
-//                    CartRes response = (CartRes) object;
-//                    UserPreference.getInstance().incCartCount();
-//                    refreshCartCount();
-//                    AlertUtils.showToast(context, "Added to cart");
-//                }
-//            }
-//
-//            @Override
-//            public void handleOnFailure(ServiceException exception,
-//                                        Object object) {
-//                //mProgressBarDialog.dismiss();
-//                Syso.info("In handleOnFailure>>" + object);
-//                if (object != null) {
-//                    CartRes response = (CartRes) object;
-//                    AlertUtils.showToast(context, response.getMessage());
-//                } else {
-//                    AlertUtils.showToast(context, R.string.invalid_response);
-//                }
-//            }
-//        });
-//        String fromUserId = product.getFrom_user_id() == null ? "" : product.getFrom_user_id();
-//        String fromCollection = product.getFrom_collection_id() == null ? "" : product.getFrom_collection_id();
-//        Log.w("HomeActivity", "" + product.getQuantity());
-//        cartApi.addToCart(UserPreference.getInstance().getUserID(), product.getId(), "1", UserPreference.getInstance().getCartID(), fromUserId, fromCollection, "", "", product.getSelected_values());
-//        cartApi.execute();
-//    }
-
 
     public void likeInspiration(final Product product, final UiUpdate uiUpdate) {
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
         Syso.info("123 like id: " + product.getLike_info().getLike_id()
                 + ", count:" + product.getLike_info().getLike_count());
         final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(
@@ -2251,7 +1696,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
                     @Override
                     public void handleOnSuccess(Object object) {
-                        //   mProgressBarDialog.dismiss();
 
                         InspirationRes inspirationRes = (InspirationRes) object;
                         String likeId = inspirationRes.getLike_id();
@@ -2278,7 +1722,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         if (uiUpdate != null) {
                             uiUpdate.updateUi();
                         }
-//                        AlertUtils.showToast(context, inspirationRes.getMessage());
                     }
 
                     @Override
@@ -2291,7 +1734,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         } else {
                             AlertUtils.showToast(context, R.string.invalid_response);
                         }
-                        //mProgressBarDialog.dismiss();
                     }
                 });
         if (TextUtils.isEmpty(product.getLike_info().getLike_id())) {
@@ -2303,8 +1745,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void likeInspiration2(final Inspiration inspiration, final UiUpdate uiUpdate) {
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
+
         Syso.info("123 like id: " + inspiration.getLike_id()
                 + ", count:" + inspiration.getLike_count());
         final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(
@@ -2312,7 +1753,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
                     @Override
                     public void handleOnSuccess(Object object) {
-                        //   mProgressBarDialog.dismiss();
 
                         InspirationRes inspirationRes = (InspirationRes) object;
                         String likeId = inspirationRes.getLike_id();
@@ -2344,7 +1784,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         } else {
                             AlertUtils.showToast(context, R.string.invalid_response);
                         }
-                        //mProgressBarDialog.dismiss();
                     }
                 });
         if (TextUtils.isEmpty(inspiration.getLike_id())) {
@@ -2355,13 +1794,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         inspirationSectionApi.execute();
     }
 
-//    public void setDescription() {
-//        if (mActivity instanceof FragmentInspirationDetail) {
-//            ((FragmentInspirationDetail) mActivity).setDescription();
-//        }
-//    }
-
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -2370,12 +1802,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     private void checkForCrashes() {
-        //CrashManager.register(this, "3ec40bcb125d3ad0f770b3d424bcf913");
     }
 
     private void checkForUpdates() {
-        // Remove this for store builds!
-        // UpdateManager.register(this, "3ec40bcb125d3ad0f770b3d424bcf913");
     }
 
     @Override
@@ -2409,14 +1838,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void purchaseStatus(String purchase_id) {
-//        progressBarDialog = new ProgressBarDialog(context);
-//        progressBarDialog.show();
+
         TwoTapApi twoTapApi = new TwoTapApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
                 Syso.info("success:   " + object);
-                // progressBarDialog.dismiss();
                 try {
                     JSONObject jsonObject = new JSONObject(object.toString());
                     if (jsonObject.getString("message").equalsIgnoreCase("done")) {
@@ -2432,7 +1859,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                // progressBarDialog.dismiss();
             }
         });
         twoTapApi.purchaseStatus(purchase_id);
@@ -2440,20 +1866,16 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     }
 
     public void followUser(String user_id) {
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
 
         final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                //mProgressBarDialog.dismiss();
                 Syso.info("In handleOnSuccess>>" + object);
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                // mProgressBarDialog.dismiss();
                 Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     FollowUserRes response = (FollowUserRes) object;
@@ -2466,23 +1888,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         followUserApi.followUser(UserPreference.getInstance().getUserID(), user_id);
         followUserApi.execute();
 
-//        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                followUserApi.cancel();
-//            }
-//        });
     }
 
     public void unFollowUser(String user_id) {
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
 
         final FollowUserApi followUserApi = new FollowUserApi(new ServiceCallback() {
 
             @Override
             public void handleOnSuccess(Object object) {
-                // mProgressBarDialog.dismiss();
 
                 Syso.info("In handleOnSuccess>>" + object);
             }
@@ -2502,12 +1915,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         followUserApi.unFollowUser(UserPreference.getInstance().getUserID(), user_id);
         followUserApi.execute();
 
-//        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                followUserApi.cancel();
-//            }
-//        });
     }
 
     //  cropping functions
@@ -2533,7 +1940,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
         CropImage.activity(uri)
                 .setRequestedSize(800, 800, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
-                //.setMaxCropResultSize(2000, 2000)
                 .setFixAspectRatio(true)
                 .setAspectRatio(1, 1)
                 .setAllowCounterRotation(true)
@@ -2547,15 +1953,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         Log.w(TAG, "startCropActivityForMedia()");
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
         CropImage.activity(uri)
-                .setRequestedSize(700, 700, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
-                //.setMaxCropResultSize(2000, 2000)
+                .setRequestedSize(800, 800, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
                 .setFixAspectRatio(true)
                 .setAllowCounterRotation(true)
                 .setAllowRotation(true)
                 .setAspectRatio(1, 1)
                 .setOutputUri(mDestinationUri)
                 .start(context);
-
     }
 
     private UCrop basisConfig(@NonNull UCrop uCrop) {
@@ -2600,26 +2004,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         , result);
         } else
             AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
-//        final Uri resultUri = UCrop.getOutput(result);
-//        if (resultUri != null) {
-//            ResultActivity.startWithUri(SampleActivity.this, resultUri);
-//        } else {
-//            Toast.makeText(SampleActivity.this, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show();
-//        }
     }
-
-
-//    private void handleCropResult2(@NonNull Intent result, Uri resultUri) {
-//
-//        if (result != null) {
-//            Log.w(TAG, "handleCropResult2()");
-//            Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
-//            if (fragment != null)
-//                ((CameraFragment) fragment).onActivityResult(CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE, RESULT_OK
-//                        , result);
-//        } else
-//            AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
-//    }
 
 
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")

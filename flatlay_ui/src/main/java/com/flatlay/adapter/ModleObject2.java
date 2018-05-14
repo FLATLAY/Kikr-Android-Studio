@@ -12,7 +12,7 @@ public enum ModleObject2 {
     INTRODUCTIONSCREEN(R.string.intruductionscreen, R.layout.introduction_screen),
     INTRODUCTIONSCREEN2(R.string.intruductionscreen2, R.layout.introduction_screen2),
     INTRODUCTIONSCREEN3(R.string.intruductionscreen3, R.layout.introduction_screen3),
-    INTRODUCTIONSCREEN4(R.string.intruductionscreen4,R.layout.introduction_screen4);
+    INTRODUCTIONSCREEN4(R.string.intruductionscreen4, R.layout.introduction_screen4);
     final String TAG = "ModleObject2";
 
     private int mTitleResId;
@@ -21,7 +21,7 @@ public enum ModleObject2 {
     ModleObject2(int titleResId, int layoutResId) {
         mTitleResId = titleResId;
         mLayoutResId = layoutResId;
-        Log.w(TAG,"ModleObject2");
+        Log.w(TAG, "ModleObject2");
     }
 
     public int getTitleResId() {

@@ -57,7 +57,7 @@ public class UserPreference {
     private final String mPinterestBoardId = "boardid";
 
     private static UserPreference INSTANCE;
-    private String mPaypalAccessToken="paypal_access_token";
+    private String mPaypalAccessToken = "paypal_access_token";
 
     public static UserPreference getInstance() {
 
@@ -212,6 +212,7 @@ public class UserPreference {
         mPrefsEditor.putString(mPinterestBoardId, boardId);
         mPrefsEditor.commit();
     }
+
     public boolean getIsRefreshProfile() {
         return mPrefs.getBoolean(mIsRefreshProfile, false);
     }
@@ -279,11 +280,11 @@ public class UserPreference {
     }
 
     public void setProfilePic(String value) {
-        Log.e("Profile", "lalaa1001:"+UserPreference.getInstance().getProfilePic());
+        Log.e("Profile", "lalaa1001:" + UserPreference.getInstance().getProfilePic());
 
         if (value != null) {
             mPrefsEditor.putString(mProfilePic, value);
-            Log.e("Profile", "lalaa44"+UserPreference.getInstance().getProfilePic());
+            Log.e("Profile", "lalaa44" + UserPreference.getInstance().getProfilePic());
             mPrefsEditor.commit();
         }
     }
@@ -420,23 +421,23 @@ public class UserPreference {
         return mPrefs.getString(mPaypalAccessToken, "");
     }
 
-    public void setSearchIndex(int searchIndex){
-        this.searchIndex=searchIndex;
+    public void setSearchIndex(int searchIndex) {
+        this.searchIndex = searchIndex;
     }
 
-    private int searchIndex=0;
+    private int searchIndex = 0;
 
-    public int getSearchIndex(){
+    public int getSearchIndex() {
         return searchIndex;
     }
 
-    public void setPpsIndex(int ppsIndex){
-        this.ppsIndex=ppsIndex;
+    public void setPpsIndex(int ppsIndex) {
+        this.ppsIndex = ppsIndex;
     }
 
-    private int ppsIndex=0;
+    private int ppsIndex = 0;
 
-    public int getPpsIndex(){
+    public int getPpsIndex() {
         return ppsIndex;
     }
 }

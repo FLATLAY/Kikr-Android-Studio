@@ -21,7 +21,7 @@ import com.flatlay.utility.MyCirclePageIndicator;
 
 public class IntroductionActivity extends BaseFragment {
     private View mainView;
-    public final static String TAG="IntroductionActivity";
+    public final static String TAG = "IntroductionActivity";
 
     ViewPager tutorialImageView;
     TextView closeButton;
@@ -31,7 +31,7 @@ public class IntroductionActivity extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.introduction, container, false);
-        Log.w(TAG,"IntroductionActivity");
+        Log.w(TAG, "IntroductionActivity");
         return mainView;
     }
 

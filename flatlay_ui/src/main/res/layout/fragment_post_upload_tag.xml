@@ -2,7 +2,9 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:TagsEditText="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
     android:id="@+id/main_content"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,7 +22,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="5dp"
-            android:layout_weight="2"></LinearLayout>
+            android:layout_weight="1.3"></LinearLayout>
 
         <LinearLayout
             android:id="@+id/add_collection_layout"
@@ -29,21 +31,23 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
-            android:layout_weight="4"
+            android:layout_weight="3"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/add_collection_text"
+            <EditText
+                android:id="@+id/etCollectionName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ADD TO COLLECTION"
+                android:hint="New Post"
+                android:textSize="15dp"
+                android:visibility="gone"
                 android:textAlignment="center"
                 android:textColor="@color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -146,7 +150,7 @@
                     android:layout_height="25dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginRight="70dp"
                     android:gravity="center"
                     android:visibility="gone">
 
@@ -195,24 +199,24 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/cancel_layout2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="8dp"
-                    android:gravity="center">
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/cancel_layout2"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginRight="8dp"-->
+                    <!--android:gravity="center">-->
 
-                    <TextView
-                        android:id="@+id/cancelIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:text="CLOSE"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="17dp" />
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--android:id="@+id/cancelIcon"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="25dp"-->
+                        <!--android:text="CLOSE"-->
+                        <!--android:textAlignment="center"-->
+                        <!--android:textColor="@color/white"-->
+                        <!--android:textSize="17dp" />-->
+                <!--</LinearLayout>-->
             </RelativeLayout>
 
             <LinearLayout
@@ -294,39 +298,49 @@
             android:id="@+id/picture_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="12"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
+            android:layout_weight="12"
             android:gravity="center"
             android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/overlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp">
 
             <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/inspirationImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:scaleType="fitXY"
+                android:focusableInTouchMode ="true"
+                android:focusable="true"
                 android:src="@drawable/dum_list_item_product"
                 app:riv_border_color="@color/black"
                 app:riv_border_width="1dp"
                 app:riv_corner_radius="7dp" />
+            </FrameLayout>
 
             <EditText
                 android:id="@+id/description_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/topsearch_noborder2"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/description_edittext"
                 android:hint="Description"
-                android:padding="10dp"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="2dp"
+                android:textSize="15dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
         </LinearLayout>
@@ -351,61 +365,89 @@
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/share_ins_layout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="15dp">
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/instagram_small_green"/>
+                        android:src="@drawable/instagram_small_green" />
+
                     <TextView
                         android:id="@+id/ins_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
+                        android:text="Instagram"
                         android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:text="Instagram"/>
+                        android:textSize="16dp" />
 
-                    <ImageView
-                        android:layout_width="30dp"
+                    <android.support.v7.widget.SwitchCompat
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/toggle3"/>
+                        android:id="@+id/switchInstagram"
+                        android:layout_centerVertical="true"
+                        android:theme="@style/UploadSwitch"
+                        app:showText="false"/>
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/share_ins_toggle"-->
+                        <!--android:layout_width="30dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:src="@drawable/toggle3" />-->
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/share_fb_layout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/facebook_small_green"/>
+                        android:src="@drawable/facebook_small_green" />
+
                     <TextView
                         android:id="@+id/fb_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
+                        android:text="Facebook"
                         android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:text="Facebook"/>
+                        android:textSize="16dp" />
 
-                    <ImageView
-                        android:layout_width="30dp"
+                    <android.support.v7.widget.SwitchCompat
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/toggle3"/>
+                        android:id="@+id/switchfacebook"
+                        android:layout_centerVertical="true"
+                        android:theme="@style/UploadSwitch"
+                        app:showText="false"/>
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/share_fb_toggle"-->
+                        <!--android:layout_width="30dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:src="@drawable/toggle3" />-->
                 </RelativeLayout>
             </LinearLayout>
 
@@ -415,66 +457,118 @@
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/share_twi_layout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="15dp">
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/twitter_small_green"/>
+                        android:src="@drawable/twitter_small_green" />
+
                     <TextView
                         android:id="@+id/twitter_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
+                        android:text="Twitter"
                         android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:text="Twitter"/>
+                        android:textSize="16dp" />
 
-                    <ImageView
-                        android:layout_width="30dp"
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/toggle3"/>
+                        android:id="@+id/switchtwitter"
+                        android:layout_marginRight="2dp"
+                        android:layout_centerVertical="true"
+                        android:theme="@style/UploadSwitch"
+                        app:showText="false" />
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/share_twi_toggle"-->
+                        <!--android:layout_width="30dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:src="@drawable/toggle3" />-->
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/share_pin_layout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/pinterst_small_green"/>
+                        android:src="@drawable/pinterst_small_green" />
+
                     <TextView
                         android:id="@+id/pinterest_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
+                        android:text="Pinterest"
                         android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:text="Pinterest"/>
+                        android:textSize="16dp" />
 
-                    <ImageView
-                        android:layout_width="30dp"
+                    <!--<ImageView-->
+                        <!--android:id="@+id/share_pin_toggle"-->
+                        <!--android:layout_width="30dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:src="@drawable/toggle3" />-->
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/toggle3"/>
+                        android:id="@+id/switchPinterest"
+                        android:layout_marginRight="2dp"
+                        android:layout_centerVertical="true"
+                        android:theme="@style/UploadSwitch"
+                        app:showText="false"/>
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
+
+    <com.flatlay.utility.MyMaterialContentOverflow3 xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/overflow2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/topdrawer"
+        app:buttonDrawable="@drawable/back_icon"
+        app:buttonPosition="left"
+        app:contentColor="@color/white"
+        app:fabButtonColor="@color/white">
+
+        <FrameLayout
+            android:id="@+id/frame_upload_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00000000"></FrameLayout>
+
+    </com.flatlay.utility.MyMaterialContentOverflow3>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -511,8 +605,23 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="Search"
+                android:visibility="gone"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
+
+
+            <TextView
+                android:id="@+id/add_collection_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:text="TAG ITEMS"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
 
             <LinearLayout
                 android:id="@+id/linearLAyout2"
@@ -522,12 +631,27 @@
                 android:layout_centerVertical="true">
 
                 <TextView
+                    android:id="@+id/post_without_tag_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:text="POST WITHOUT TAG"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    android:textSize="18dp" />
+
+
+                <TextView
                     android:id="@+id/post_text"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginRight="30dp"
                     android:gravity="center"
-                    android:text="POST"
+                    android:text="  POST  "
+                    android:textAlignment="center"
+                    android:background="@drawable/grey_corner_button"
                     android:textColor="@color/white"
                     android:textSize="18dp" />
 
@@ -536,5 +660,7 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+
 
 </RelativeLayout>

@@ -47,7 +47,6 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
     }
 
 
-
     public void setData(List<Category> data) {
         this.catList.addAll(data);
     }
@@ -79,28 +78,23 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
             viewHolder.relativeLayout = (RelativeLayout) convertView.findViewById(R.id.relativeLayout);
             viewHolder.categoryNameTextView.setTypeface(FontUtility.setMontserratLight(mContext));
             viewHolder.followBtn.setTypeface(FontUtility.setMontserratLight(mContext));
-            // viewHolder.productView=(ImageView) convertView.findViewById(R.id.productView);
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.categoryNameTextView.setText(getItem(position).getName());
-        //	viewHolder.followBtn.setTag(position);
 
         viewHolder.productLayout.removeAllViews();
-        //   for(int i =0 ; i < imagesList.size(); i++) {
 
 
         ImageView imageView = new ImageView(mContext);
         imageView.setScaleType(ImageView.ScaleType.CENTER);
         DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
-        LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(metrics.widthPixels, (int)(metrics.heightPixels*1/11));
-        //LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-       // imageView.setLayoutParams(parms);
+        LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(metrics.widthPixels, (int) (metrics.heightPixels * 1 / 11));
+
         imageView.setBackgroundResource(imagesList.get(position));
-        viewHolder.productLayout.addView(imageView,parms);
-        //  }
+        viewHolder.productLayout.addView(imageView, parms);
 
         viewHolder.followBtn.setOnClickListener(new OnClickListener() {
 
@@ -111,14 +105,12 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
                     viewHolder.followBtn.setText(" Following ");
                     viewHolder.followBtn.setTextColor(mContext.getResources().getColor(R.color.white));
                     viewHolder.followBtn.setSelected(true);
-                    //   viewHolder.relativeLayout.setBackgroundColor(Color.parseColor("#CC5bbaad"));
 
                 } else {
                     deleteCategory(getItem(position).getId(), position);
                     viewHolder.followBtn.setText(" Follow ");
                     viewHolder.followBtn.setTextColor(mContext.getResources().getColor(R.color.black));
                     viewHolder.followBtn.setSelected(false);
-                    //   viewHolder.relativeLayout.setBackgroundColor(Color.parseColor("#99000000"));
                 }
 
             }
@@ -128,12 +120,10 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
             viewHolder.followBtn.setText(" Following ");
             viewHolder.followBtn.setTextColor(mContext.getResources().getColor(R.color.white));
             viewHolder.followBtn.setSelected(true);
-            //   viewHolder.relativeLayout.setBackgroundColor(Color.parseColor("#CC5bbaad"));
         } else {
             viewHolder.followBtn.setText(" Follow ");
             viewHolder.followBtn.setTextColor(mContext.getResources().getColor(R.color.black));
             viewHolder.followBtn.setSelected(false);
-            //  viewHolder.relativeLayout.setBackgroundColor(Color.parseColor("#99000000"));
         }
 
 
@@ -145,7 +135,6 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
         Button followBtn;
         LinearLayout productLayout;
         RelativeLayout relativeLayout;
-        //ImageView productView;
     }
 
     public void addCategory(String categoryID, final int position) {
@@ -155,7 +144,6 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
             public void handleOnSuccess(Object object) {
                 Syso.info("In handleOnSuccess>>" + object);
                 FollowCategoriesNewActivity.selectedCount++;
-               // FollowCategoriesNewActivity.checkFollowAtLeastOne();
 
                 getItem(position).setIs_followed("yes");
                 Log.e(TAG, "followed successfully");
@@ -184,7 +172,6 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
                 Syso.info("In handleOnSuccess>>" + object);
                 Log.e(TAG, "unfollowed");
                 FollowCategoriesNewActivity.selectedCount--;
-                //FollowCategoriesNewActivity.checkFollowAtLeastOne();
 
                 getItem(position).setIs_followed("no");
             }

@@ -84,7 +84,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     private Uri picUri;
     private final int CROP_PIC = 1006;
     private int index = 0;
-    public final static String TAG="EditProfileActivity";
+    public final static String TAG = "EditProfileActivity";
     private String[] socialInfo = new String[5],
             originSocial = {"https://www.facebook.com/",
                     "https://www.instagram.com/", "https://www.pinterest.com/",
@@ -108,7 +108,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.w(TAG,"EditProfileActivity");
+        Log.w(TAG, "EditProfileActivity");
         if (getIntent().hasExtra("is_edit_profile")) {
             isEditProfile = getIntent().getBooleanExtra("is_edit_profile", false);
         } else {
@@ -123,12 +123,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         }
         usernameEditText.addTextChangedListener(new MyTextWatcher());
         fbEdit.addTextChangedListener(new MyTextWatcher2());
-//        newFb = originSocial[0];
-//        newPin = originSocial[1];
-//        newIns = originSocial[2];
-//        newTwi = originSocial[3];
-//        newTube = originSocial[4];
-
     }
 
     String newFb;
@@ -174,7 +168,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 save1.setTextColor(Color.GRAY);
                 usernameEditText.clearFocus();
                 doRegister();
-                // setOldInfo();
                 usernameEditText.setVisibility(View.GONE);
                 save1.setVisibility(View.GONE);
                 editTextView1.setVisibility(View.VISIBLE);
@@ -193,15 +186,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 twiIcon.setImageResource(R.drawable.twitter_1);
                 insIcon.setImageResource(R.drawable.ig1);
                 tubeIcon.setImageResource(R.drawable.youtube_1);
-//                if (UserPreference.getInstance().getUserFb() != null&& UserPreference.getInstance().getUserFb().length()>0
-//                        && !UserPreference.getInstance().getUserFb().equals("https://www.facebook.com/")) {
-//                    fbEdit.setVisibility(View.VISIBLE);
-//                    save2.setVisibility(View.VISIBLE);
-//                    fbEdit.setText(originSocial[0]);
-//                } else {
-//                    fbEdit.setVisibility(View.INVISIBLE);
-//                    save2.setVisibility(View.INVISIBLE);
-//                }
                 index = 0;
                 break;
 
@@ -214,16 +198,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 tubeIcon.setImageResource(R.drawable.youtube_1);
                 newPin = fbEdit.getText().toString();
                 index = 1;
-//                if (UserPreference.getInstance().getUserPin() != null&& UserPreference.getInstance().getUserPin().length()>0
-//                        && !UserPreference.getInstance().getUserPin().equals("https://www.pinterest.com/")) {
-//                    fbEdit.setVisibility(View.VISIBLE);
-//                    save2.setVisibility(View.VISIBLE);
-//                    fbEdit.setText(originSocial[2]);
-//                } else {
-//                    fbEdit.setVisibility(View.INVISIBLE);
-//                    save2.setVisibility(View.INVISIBLE);
-//
-//                }
                 break;
 
             case R.id.insIcon:
@@ -234,16 +208,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 fbIcon.setImageResource(R.drawable.facebook1);
                 tubeIcon.setImageResource(R.drawable.youtube_1);
                 newIns = fbEdit.getText().toString();
-//                if (UserPreference.getInstance().getUserIns() != null&& UserPreference.getInstance().getUserIns().length()>0
-//                        && !UserPreference.getInstance().getUserIns().equals("https://www.instagram.com/")) {
-//                    fbEdit.setVisibility(View.VISIBLE);
-//                    save2.setVisibility(View.VISIBLE);
-//                    fbEdit.setText(originSocial[1]);
-//                } else {
-//                    fbEdit.setVisibility(View.INVISIBLE);
-//                    save2.setVisibility(View.INVISIBLE);
-//
-//                }
                 index = 2;
                 break;
 
@@ -255,16 +219,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 tubeIcon.setImageResource(R.drawable.youtube_1);
                 insIcon.setImageResource(R.drawable.ig1);
                 newTwi = fbEdit.getText().toString();
-//                if (UserPreference.getInstance().getUserTwi() != null&& UserPreference.getInstance().getUserTwi().length()>0
-//                        && !UserPreference.getInstance().getUserTwi().equals("https://www.twitter.com/")) {
-//                    fbEdit.setVisibility(View.VISIBLE);
-//                    save2.setVisibility(View.VISIBLE);
-//                    fbEdit.setText(originSocial[3]);
-//                } else {
-//                    fbEdit.setVisibility(View.INVISIBLE);
-//                    save2.setVisibility(View.INVISIBLE);
-//
-//                }
                 index = 3;
                 break;
 
@@ -276,29 +230,9 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 fbIcon.setImageResource(R.drawable.facebook1);
                 insIcon.setImageResource(R.drawable.ig1);
                 newTube = fbEdit.getText().toString();
-//                if (UserPreference.getInstance().getUserTube() != null && UserPreference.getInstance().getUserTube().length()>0
-//                        && !UserPreference.getInstance().getUserTube().equals("https://www.youtube.com/")) {
-//                    fbEdit.setVisibility(View.VISIBLE);
-//                    save2.setVisibility(View.VISIBLE);
-//                    fbEdit.setText(originSocial[4]);
-//                } else {
-//                    fbEdit.setVisibility(View.INVISIBLE);
-//                    save2.setVisibility(View.INVISIBLE);
-//                }
                 index = 4;
                 Log.e(TAG, UserPreference.getInstance().getUserTube());
                 break;
-
-//            case R.id.editTextView:
-//                fbEdit.setVisibility(View.VISIBLE);
-//                save2.setVisibility(View.VISIBLE);
-//                fbEdit.setText(originSocial2[index]);
-//                break;
-//            case R.id.nextButton:
-//
-//                wantToGoNext = true;
-//                validateUserInput();
-//                break;
 
             case R.id.backIconLayout:
                 onBackPressed();
@@ -311,7 +245,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         nextButton = (Button) findViewById(R.id.nextButton);
         usernameEditText = (EditText) findViewById(R.id.usernameEditText);
         user_profile_image = (ImageView) findViewById(R.id.user_profile_image);
-//        oldUsername = usernameEditText.getText().toString().trim();
         usernameEditText.setFilters(new InputFilter[]{filter});
         save1 = (TextView) findViewById(R.id.saveTextView1);
         save2 = (TextView) findViewById(R.id.saveTextView2);
@@ -327,36 +260,16 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         camera = (ImageView) findViewById(R.id.cameraIcon);
         editTextView1 = (TextView) findViewById(R.id.editTextView1);
         editedit2 = (TextView) findViewById(R.id.editedit2);
-//        editTextView1.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
 
         nameTextView = (TextView) findViewById(R.id.nameTextView);
-//        Picasso.with(this).load(R.drawable.profile_icon).resize(150, 150).into(user_profile_image);
         usernameEditText.setVisibility(View.GONE);
         save1.setVisibility(View.GONE);
         fbEdit.setVisibility(View.GONE);
         save2.setVisibility(View.GONE);
-//        if (UserPreference.getInstance().getUserFb() != null
-//                && !UserPreference.getInstance().getUserFb().equals("https://www.facebook.com/")) {
-//            fbEdit.setVisibility(View.VISIBLE);
-//            save2.setVisibility(View.VISIBLE);
-//            fbEdit.setText(UserPreference.getInstance().getUserFb());
-//        } else {
-//            fbEdit.setVisibility(View.INVISIBLE);
-//            save2.setVisibility(View.INVISIBLE);
-//
-//        }
-        // editTextView = (TextView) findViewById(R.id.editTextView);
     }
 
     @Override
     public void setupData() {
-//        if (getIntent().hasExtra("profilePic")) {
-//            profilePic = getIntent().getStringExtra("profilePic");
         String profilePic = UserPreference.getInstance().getProfilePic();
 
         if (!TextUtils.isEmpty(profilePic)) {
@@ -365,11 +278,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 needToUpdatePic = true;
         } else
             Picasso.with(this).load(R.drawable.profile_icon).resize(150, 150).into(user_profile_image);
-
-//        }
-
-//        if (getIntent().hasExtra("username")) {
-//            String username = getIntent().getStringExtra("username");
         String username = UserPreference.getInstance().getUserName();
         if (username != null) {
             usernameEditText.setText(username);
@@ -378,7 +286,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
             if (!from.equals(AppConstants.FROM_PROFILE))
                 needToUpdateName = true;
         }
-//        }
 
         if (getIntent().hasExtra("is_edit_profile")) {
             isEditProfile = getIntent().getBooleanExtra("is_edit_profile", false);
@@ -409,23 +316,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     }
 
     private List<UserData> userDetails;
-
-
-//    public void setName() {
-//        usernameEditText.setText(PictureUtils.choice);
-//    }
-
-//    public String[] generateRandomName() {
-//        String[] result = new String[4];
-//        newUsername = usernameEditText.getText().toString().trim();
-//        int i = 0;
-//        while (i < 4) {
-//
-//            i++;
-//        }
-//        return result;
-//    }
-
 
     public void setOldInfo() {
         final MyProfileApi myProfileApi = new MyProfileApi(new ServiceCallback() {
@@ -462,8 +352,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
 
     public void setOldSocial() {
-        // setOldInfo();
-        //modify original social
         final SocialDetailApi socialDetailApi = new SocialDetailApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
@@ -498,17 +386,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 newIns = originSocial[2];
                 newTwi = originSocial[3];
                 newTube = originSocial[4];
-//                if (UserPreference.getInstance().getUserFb() != null
-//                        && !UserPreference.getInstance().getUserFb().equals("https://www.facebook.com/")) {
-//                    fbEdit.setVisibility(View.VISIBLE);
-//                    save2.setVisibility(View.VISIBLE);
-//                    fbEdit.setText(originSocial[0]);
-//                } else {
-//                    fbEdit.setVisibility(View.INVISIBLE);
-//                    save2.setVisibility(View.INVISIBLE);
-//
-//                }
-
             }
 
             @Override
@@ -540,8 +417,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
     @Override
     public void setClickListener() {
-//        nextButton.setOnClickListener(this);
-        // usernameEditText.setOnEditorActionListener(this);
         user_profile_image.setOnClickListener(this);
         save2.setOnClickListener(this);
         save1.setOnClickListener(this);
@@ -613,8 +488,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-//            mProgressBarDialog = new ProgressBarDialog(context);
-//            mProgressBarDialog.show();
         }
 
         @Override
@@ -643,7 +516,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 performNewCrop(result);
             } else
                 Syso.info("Could not download the image, Please try again.");
-            //  mProgressBarDialog.dismiss();
         }
     }
 
@@ -679,7 +551,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     boolean isValid = true;
 
     private void validateUserInput() {
-        Log.e("Yourrrr", "1");
         newUsername = usernameEditText.getText().toString().trim();
         if (TextUtils.isEmpty(newUsername)) {
             isValid = false;
@@ -703,7 +574,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
             setResult(RESULT_OK);
             doRegister();
             updateSocial();
-        } else if (needToUpdatePic){
+        } else if (needToUpdatePic) {
             setResult(RESULT_OK);
             uploadImage();
         }
@@ -766,7 +637,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                                                 Object object) {
                         if (object != null) {
                             EditProfileRes editProfileRes = (EditProfileRes) object;
-                            //AlertUtils.showToast(context, editProfileRes.getMessage());
                         }
                     }
                 });

@@ -34,12 +34,12 @@ import org.json.JSONObject;
  * Created by RachelDi on 4/30/18.
  */
 
-public class WalletNewCardFragment extends BaseFragment implements View.OnClickListener{
+public class WalletNewCardFragment extends BaseFragment implements View.OnClickListener {
     private View mainView;
-    private RelativeLayout overflow_layout10, overflow_layout11,add_paypal_layout,credit_debit_layout;
-    private TextView credit_debit_text,or_text,paypal_text,title_credit_debit_text,name_card_text,
-            card_num_text,ccv_text,expiration_text,default_text,save_card_button,cancel_text;
-    private EditText name_card_text2,card_num_text2,ccv_text2,expiration_text2;
+    private RelativeLayout overflow_layout10, overflow_layout11, add_paypal_layout, credit_debit_layout;
+    private TextView credit_debit_text, or_text, paypal_text, title_credit_debit_text, name_card_text,
+            card_num_text, ccv_text, expiration_text, default_text, save_card_button, cancel_text;
+    private EditText name_card_text2, card_num_text2, ccv_text2, expiration_text2;
     private ImageView check_icon;
     private boolean isValidPayment2 = false;
     private Card newCard2 = new Card();
@@ -241,7 +241,6 @@ public class WalletNewCardFragment extends BaseFragment implements View.OnClickL
             public void handleOnSuccess(Object object) {
                 if (object != null) {
                     AlertUtils.showToast(mContext, "Card added");
-//                    getCardList();
                 } else {
                     AlertUtils.showToast(mContext, R.string.invalid_response);
                 }

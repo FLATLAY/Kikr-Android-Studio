@@ -4,16 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/lifestyleImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
+        android:layout_margin="2dp"
         android:src="@drawable/dum_list_item_product"
         app:riv_border_color="@color/white"
-        app:riv_border_width="0dp"
+        app:riv_border_width="2dp"
         app:riv_corner_radius="7dp"/>
 
 </LinearLayout>

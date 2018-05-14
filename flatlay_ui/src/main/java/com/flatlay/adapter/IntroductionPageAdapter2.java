@@ -18,7 +18,6 @@ import com.flatlay.utility.FontUtility;
 
 public class IntroductionPageAdapter2 extends PagerAdapter {
     private FragmentActivity mContext;
-   // int images[] = new int[]{R.layout.introduction_screen, R.layout.introduction_screen, R.layout.introduction_screen, R.layout.introduction_screen};
     LayoutInflater inflater;
     final String TAG = "IntroductionPageAda2";
 
@@ -33,8 +32,8 @@ public class IntroductionPageAdapter2 extends PagerAdapter {
         ModleObject2 modelObject = ModleObject2.values()[position];
         LayoutInflater inflater = LayoutInflater.from(mContext);
         ViewGroup layout = (ViewGroup) inflater.inflate(modelObject.getLayoutResId(), collection, false);
-        TextView detailText = (TextView)layout.findViewById(R.id.detailText);
-        TextView titleText = (TextView)layout.findViewById(R.id.titleText);
+        TextView detailText = (TextView) layout.findViewById(R.id.detailText);
+        TextView titleText = (TextView) layout.findViewById(R.id.titleText);
         detailText.setTypeface(FontUtility.setMontserratLight(mContext));
         titleText.setTypeface(FontUtility.setMontserratRegular(mContext));
         collection.addView(layout);

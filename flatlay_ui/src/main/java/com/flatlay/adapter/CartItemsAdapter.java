@@ -45,10 +45,10 @@ public class CartItemsAdapter extends BaseAdapter {
     private DeleteItemsListener listener;
 
 
-    public CartItemsAdapter(FragmentActivity mContext, List<Product> productLists,DeleteItemsListener listener) {
+    public CartItemsAdapter(FragmentActivity mContext, List<Product> productLists, DeleteItemsListener listener) {
         this.mContext = mContext;
         this.productLists = productLists;
-        this.listener=listener;
+        this.listener = listener;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -118,7 +118,7 @@ public class CartItemsAdapter extends BaseAdapter {
             viewHolder.cancel_icon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    removeFromCart(getItem(i).getId(),i);
+                    removeFromCart(getItem(i).getId(), i);
                 }
             });
         }
@@ -144,18 +144,11 @@ public class CartItemsAdapter extends BaseAdapter {
                 }
                 UserPreference.getInstance().decCartCount();
                 listener.onDelete(i);
-//                ((HomeActivity) mContext).refreshCartCount();
-//                cartListAdapter.notifyDataSetChanged();
-//                if (productLists.size() == 0) {
-//                    showEmptyCart();
-//                }
-//                addFragment(new CartFragmentTab());
                 AlertUtils.showToast(mContext, "Product removed successfully");
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-                //mProgressBarDialog.dismiss();
                 Syso.info("In handleOnFailure>>" + object);
                 if (object != null) {
                     CartRes response = (CartRes) object;

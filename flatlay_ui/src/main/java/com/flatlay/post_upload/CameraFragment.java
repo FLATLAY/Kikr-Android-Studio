@@ -1,6 +1,7 @@
 package com.flatlay.post_upload;
 
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import android.hardware.Camera.Size;
@@ -20,11 +22,16 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.OrientationEventListener;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -32,7 +39,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,8 +51,13 @@ import com.desmond.squarecamera.ImageParameters;
 import com.desmond.squarecamera.ResizeAnimation;
 import com.desmond.squarecamera.SquareCameraPreview;
 import com.flatlay.BaseFragment;
+import com.flatlay.GalleryImagewithSpinner.MediaGridFragment;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
+import com.flatlay.fragment.FragmentInstagram;
+import com.flatlay.fragment.FragmentPostUploadTab;
+import com.flatlay.utility.CommonUtility;
+import com.flatlay.utility.FontUtility;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
 import com.soundcloud.android.crop.Crop;
@@ -58,17 +72,24 @@ import java.util.Random;
 
 import static android.app.Activity.RESULT_OK;
 
-public class CameraFragment extends Fragment implements SurfaceHolder.Callback, Camera.PictureCallback {
+public class CameraFragment extends Fragment implements SurfaceHolder.Callback, Camera.PictureCallback, View.OnClickListener {
 
     public static final String TAG = "CameraFragment";
     public static final String CAMERA_ID_KEY = "camera_id";
     public static final String CAMERA_FLASH_KEY = "flash_mode";
     public static final String IMAGE_INFO = "image_info";
     protected FragmentActivity mContext;
-
+    private MediaGridFragment mediaGridFragment = new MediaGridFragment();
+    private FragmentInstagram fragmentInstagram;
+    private ImageView arrow, gallery_icon, ins_icon, camera_image;
+    private RelativeLayout gallery_layout, cancelImage;
+    private FrameLayout frame_container4;
+    private GestureDetector mDetector;
     private static final int PICTURE_SIZE_MAX_WIDTH = 1280;
     private static final int PREVIEW_SIZE_MAX_WIDTH = 640;
-
+    private TextView text;
+    private View mainView;
+    private CameraFragment cameraFragment;
     private int mCameraID;
     private String mFlashMode;
     RelativeLayout camera_tools_view;
@@ -83,13 +104,13 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
 
     private CameraOrientationListener mOrientationListener;
     private boolean mHasDoubleClicked = false;
+    private LinearLayout camera_layout;
 
     public static Fragment newInstance() {
         return new CameraFragment();
     }
 
     public CameraFragment() {
-        Log.w(TAG,"testing4");
     }
 
     @Override
@@ -98,11 +119,10 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         mOrientationListener = new CameraOrientationListener(context);
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.w(TAG,"Camera Fragment onCreate()");
+        Log.w(TAG, "Camera Fragment onCreate()");
         mContext = getActivity();
         if (savedInstanceState == null) {
             mCameraID = getBackCameraID();
@@ -118,11 +138,14 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.squarecamera__fragment_camera, container, false);
+        mainView = inflater.inflate(R.layout.squarecamera__fragment_camera, null);
+        cameraFragment = this;
+        return mainView;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
         super.onViewCreated(view, savedInstanceState);
         mOrientationListener.enable();
         try {
@@ -131,9 +154,10 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         } catch (Exception ex) {
             Syso.info(ex.getMessage());
         }
-        Log.w(TAG,"testing2");
         mPreviewView.getHolder().addCallback(CameraFragment.this);
-
+        RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (CommonUtility.getDeviceWidth(mContext) * 4 / 3));
+        layoutParams3.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+        mPreviewView.setLayoutParams(layoutParams3);
         mImageParameters.mIsPortrait =
                 getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
 
@@ -142,12 +166,12 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
             observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
+
                     mImageParameters.mPreviewWidth = mPreviewView.getWidth();
                     mImageParameters.mPreviewHeight = mPreviewView.getHeight();
 
                     mImageParameters.mCoverWidth = mImageParameters.mCoverHeight
                             = mImageParameters.calculateCoverWidthHeight();
-
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         mPreviewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -188,20 +212,56 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
             }
         });
         camera_tools_view = (RelativeLayout) view.findViewById(R.id.camera_tools_view);
-        camera_tools_view.setOnClickListener(new View.OnClickListener() {
+
+        RelativeLayout.LayoutParams layoutParams4 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (CommonUtility.getDeviceHeight(mContext) * 2 / 9));
+        layoutParams4.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        camera_tools_view.setLayoutParams(layoutParams4);
+        text = (TextView) mainView.findViewById(R.id.text);
+        camera_layout = (LinearLayout) mainView.findViewById(R.id.camera_layout);
+        text.setTypeface(FontUtility.setMontserratLight(mContext));
+        gallery_icon = (ImageView) mainView.findViewById(R.id.gallery_icon);
+        arrow = (ImageView) mainView.findViewById(R.id.arrow);
+        ins_icon = (ImageView) mainView.findViewById(R.id.ins_icon);
+        cancelImage = (RelativeLayout) mainView.findViewById(R.id.cancelImage);
+        camera_image = (ImageView) mainView.findViewById(R.id.camera_image);
+        gallery_layout = (RelativeLayout) mainView.findViewById(R.id.gallery_layout);
+        mDetector = new GestureDetector(mContext, new MyListener());
+        View.OnTouchListener touchListener = new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                findDoubleClick();
-                if (mHasDoubleClicked) {
-                    setFlashMode();
-                    mHasDoubleClicked = false;
-
-                }
-
-
+            public boolean onTouch(View v, MotionEvent event) {
+                mDetector.onTouchEvent(event);
+                return true;
+            }
+        };
+        gallery_layout.setOnTouchListener(touchListener);
+        mPreviewView.setOnTouchListener(touchListener);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ObjectAnimator objectAnimator2;
+                objectAnimator2 = ObjectAnimator.ofFloat(gallery_layout, "translationY", (CommonUtility.getDeviceHeight(mContext)));
+                objectAnimator2.setInterpolator(new LinearOutSlowInInterpolator());
+                objectAnimator2.setDuration(800);
+                objectAnimator2.start();
+                camera_image.setVisibility(View.GONE);
+                text.setVisibility(View.GONE);
+                cancelImage.setVisibility(View.VISIBLE);
             }
         });
+        frame_container4 = (FrameLayout) mainView.findViewById(R.id.frame_container4);
+        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (CommonUtility.getDeviceHeight(mContext) / 2));
+        layoutParams2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        gallery_layout.setLayoutParams(layoutParams2);
+        myAddFragment(mediaGridFragment);
+        gallery_icon.setOnClickListener(this);
+        ins_icon.setOnClickListener(this);
+        cancelImage.setOnClickListener(this);
+    }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        cameraFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 
@@ -219,6 +279,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         }
 
         setupFlashMode();
+
         setupCamera();
     }
 
@@ -238,7 +299,6 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-//        Log.d(TAG, "onSaveInstanceState");
         outState.putInt(CAMERA_ID_KEY, mCameraID);
         outState.putString(CAMERA_FLASH_KEY, mFlashMode);
         outState.putParcelable(IMAGE_INFO, mImageParameters);
@@ -293,6 +353,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
      * Restart the camera preview
      */
     private void restartPreview() {
+
         if (mCamera != null) {
             stopCameraPreview();
             mCamera.release();
@@ -308,6 +369,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
      */
     private void startCameraPreview() {
         determineDisplayOrientation();
+
         setupCamera();
 
         try {
@@ -410,7 +472,6 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         parameters.setPreviewSize(bestPreviewSize.width, bestPreviewSize.height);
         parameters.setPictureSize(bestPictureSize.width, bestPictureSize.height);
 
-
         // Set continuous picture focus, if it's supported
         if (parameters.getSupportedFocusModes().contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
             parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
@@ -428,6 +489,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         // Lock in the changes
         mCamera.setParameters(parameters);
     }
+
 
     private Size determineBestPreviewSize(Camera.Parameters parameters) {
         return determineBestSize(parameters.getSupportedPreviewSizes(), PREVIEW_SIZE_MAX_WIDTH);
@@ -472,9 +534,8 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         return CameraInfo.CAMERA_FACING_BACK;
     }
 
-
     private void takePicture() {
-        Log.w(TAG,"takePicture()");
+        Log.w(TAG, "takePicture()");
         if (mIsSafeToTakePhoto) {
             setSafeToTakePhoto(false);
 
@@ -522,6 +583,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+
         mSurfaceHolder = holder;
 
         getCamera(mCameraID);
@@ -538,65 +600,12 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         // The surface is destroyed with the visibility of the SurfaceView is set to View.Invisible
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (resultCode != Activity.RESULT_OK) return;
-//        switch (requestCode) {
-//            case 1:
-//                Uri imageUri = data.getData();
-//                break;
-//
-//            default:
-//                super.onActivityResult(requestCode, resultCode, data);
-//        }
-        Log.e("resu and req code", requestCode + " -- " + resultCode);
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.e("resu and req code", requestCode + " -- " + resultCode);
-
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Log.w("onActivityResultFPUT", "1");
-                String filePath = Environment.getExternalStorageDirectory()
-                        + "/temporary_holder.jpg";
-                Bitmap thumbnail = BitmapFactory.decodeFile(filePath);
-                inspirationImageUrl = filePath;
-                goToNext(thumbnail);
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
-            }
-        } else if (resultCode == RESULT_OK) {
-
-            Log.e("req code", requestCode + "");
-            if (requestCode == UCrop.REQUEST_CROP) {
-                String filePath = Environment.getExternalStorageDirectory()
-                        + "/temporary_holder.jpg";
-
-                Log.w("onActivityResultFPUT", "****FPUT: " + filePath);
-
-                Bitmap thumbnail = BitmapFactory.decodeFile(filePath);
-                //Log.w("onActivityResultFPUT","****2");
-
-                inspirationImageUrl = filePath;
-                goToNext(thumbnail);
-                //Log.w("onActivityResultFPUT","****3");
-
-
-            } else if (requestCode == Crop.REQUEST_PICK) {
-                //Log.w("onActivityResultFPUT","REQUEST_PICK");
-                Uri destination = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
-                Crop crop = new Crop(data.getData());
-                crop.output(destination).asSquare().start(mContext); //Check the Max Size
-            }
-        }
-    }
-
     String inspirationImageUrl;
 
     public void goToNext(Bitmap thumbnail) {
         Log.w("FragmentPUTag", "gotoNext");
         if (thumbnail != null || inspirationImageUrl != null) {
-            ((HomeActivity)mContext).addFragment(new FragmentPostUploadTag(thumbnail, inspirationImageUrl, String.valueOf(false)));
+            ((HomeActivity) mContext).addFragment(new FragmentPostUploadTag(cameraFragment, thumbnail, inspirationImageUrl, String.valueOf(false)));
         } else {
             AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
         }
@@ -623,70 +632,20 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
     @Override
     public void onPictureTaken(final byte[] data, Camera camera) {
         final int rotation = getPhotoRotation();
-//        final ProgressBarDialog mProgressBarDialog = new ProgressBarDialog(getActivity());
-//        mProgressBarDialog.show();
 
-        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                Bitmap image = BitmapFactory.decodeByteArray(data, 0, data.length);
-                image = rotatePicture(rotation, image);
-                //                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                //                image.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-                //                String path = MediaStore.Images.Media.insertImage(mContext.getContentResolver(), image, "Title", null);
-                Uri url = resizeBitmapFitXY(image.getWidth(), image.getHeight(), image);
-                Log.w(TAG,"Going into startCropActivity(): "+image.getHeight());
-                ((HomeActivity) getActivity()).startCropActivity(url);
-                return null;
-            }
+        Bitmap image = BitmapFactory.decodeByteArray(data, 0, data.length);
+        image = rotatePicture(rotation, image);
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                Log.w(TAG,"Back from startCropActivity/doInBackground()");
-                super.onPostExecute(aVoid);
-                //takePhotoBtn.setEnabled(true);
-//                if (mProgressBarDialog.isShowing())
-//                    mProgressBarDialog.dismiss();
-                onStop();
-            }
-        };
-
-        task.execute((Void) null);
+        Uri url = resizeBitmapFitXY(image.getWidth(), image.getHeight(), image);
+        Log.w("onPictureTaken", "Going into startCropActivity(): " + image.getHeight());
+        ((HomeActivity) getActivity()).startCropActivity(url);
+        onStop();
         setSafeToTakePhoto(true);
-    }
 
-
-    private Bitmap scaleBitmap(Bitmap bm) {
-        int width = bm.getWidth();
-        int height = bm.getHeight();
-        int maxWidth = 600;
-        int maxHeight = 450;
-        Log.v(TAG, "Width and height are " + width + "--" + height);
-
-        if (width > height) {
-            // landscape
-            float ratio = (float) width / maxWidth;
-            width = maxWidth;
-            height = (int) (height / ratio);
-        } else if (height > width) {
-            // portrait
-            float ratio = (float) height / maxHeight;
-            height = maxHeight;
-            width = (int) (width / ratio);
-        } else {
-            // square
-            height = maxHeight;
-            width = maxWidth;
-        }
-
-        Log.w(TAG, "after scaling Width and height are " + width + "--" + height);
-
-        bm = Bitmap.createScaledBitmap(bm, width, height, true);
-        return bm;
     }
 
     public Uri resizeBitmapFitXY(int width, int height, Bitmap bitmap) {
-        Log.w(TAG,"resizeBitmapFitXY()");
+        Log.w(TAG, "resizeBitmapFitXY()");
         try {
             Bitmap background = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
             float originalWidth = bitmap.getWidth(), originalHeight = bitmap.getHeight();
@@ -724,36 +683,6 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         }
     }
 
-    public Uri bitmapToUriConverter(Bitmap mBitmap) {
-        Uri uri = null;
-        try {
-
-//            Bitmap newBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth(), mBitmap.getHeight(),
-//                    true);
-            File file = new File(getActivity().getFilesDir(), "Image"
-                    + new Random().nextInt() + ".jpeg");
-            FileOutputStream out = getActivity().openFileOutput(file.getName(),
-                    Context.MODE_PRIVATE);
-            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-            out.flush();
-            out.close();
-            //get absolute path
-            String realPath = file.getAbsolutePath();
-            File f = new File(realPath);
-            uri = Uri.fromFile(f);
-//            if(mBitmap!=null&&!mBitmap.isRecycled())
-//            {
-//                mBitmap.recycle();
-//                mBitmap=null;
-//            }
-
-        } catch (Exception e) {
-            Log.e("Your Error Message", e.getMessage());
-        }
-
-        return uri;
-    }
-
     private int getPhotoRotation() {
         int rotation;
         int orientation = mOrientationListener.getRememberedNormalOrientation();
@@ -767,6 +696,36 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         }
 
         return rotation;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.cancelImage:
+                if (camera_image.getVisibility() == View.VISIBLE) {
+                    mContext.onBackPressed();
+                } else {
+                    ObjectAnimator objectAnimator1;
+                    objectAnimator1 = ObjectAnimator.ofFloat(gallery_layout, "translationY", 0);
+                    objectAnimator1.setInterpolator(new LinearOutSlowInInterpolator());
+                    objectAnimator1.setDuration(800);
+                    objectAnimator1.start();
+                    camera_image.setVisibility(View.VISIBLE);
+                    text.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.gallery_icon:
+                myAddFragment(mediaGridFragment);
+                gallery_icon.setImageResource(R.drawable.gallery_teal);
+                ins_icon.setImageResource(R.drawable.instagram_icon);
+                break;
+            case R.id.ins_icon:
+                fragmentInstagram = new FragmentInstagram();
+                myAddFragment(fragmentInstagram);
+                gallery_icon.setImageResource(R.drawable.gallery_icon);
+                ins_icon.setImageResource(R.drawable.instagram_teal2);
+                break;
+        }
     }
 
     /**
@@ -821,4 +780,91 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
             return mRememberedNormalOrientation;
         }
     }
+
+    public void myAddFragment(Fragment fragment) {
+        FragmentTransaction transaction = mContext.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container4, fragment, null);
+        transaction.commit();
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e("resu and req code", requestCode + " -- " + resultCode);
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("resu and req code", requestCode + " -- " + resultCode);
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Log.w("onActivityResultFPUT", "1");
+                String filePath = Environment.getExternalStorageDirectory()
+                        + "/temporary_holder.jpg";
+                Bitmap thumbnail = BitmapFactory.decodeFile(filePath);
+                inspirationImageUrl = filePath;
+                goToNext(thumbnail);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        } else if (resultCode == RESULT_OK) {
+
+            Log.e("req code", requestCode + "");
+            if (requestCode == UCrop.REQUEST_CROP) {
+                String filePath = Environment.getExternalStorageDirectory()
+                        + "/temporary_holder.jpg";
+
+                Log.w("onActivityResultFPUT", "****FPUT: " + filePath);
+
+                Bitmap thumbnail = BitmapFactory.decodeFile(filePath);
+
+                inspirationImageUrl = filePath;
+                goToNext(thumbnail);
+
+
+            } else if (requestCode == Crop.REQUEST_PICK) {
+                Uri destination = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
+                Crop crop = new Crop(data.getData());
+                crop.output(destination).asSquare().start(mContext); //Check the Max Size
+            }
+        }
+    }
+
+    private class MyListener extends GestureDetector.SimpleOnGestureListener {
+
+        @Override
+        public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent2, float distanceX, float distanceY) {
+
+            ObjectAnimator objectAnimator;
+            if (motionEvent.getRawY() < motionEvent2.getRawY()) {
+                objectAnimator = ObjectAnimator.ofFloat(gallery_layout, "translationY", (CommonUtility.getDeviceHeight(mContext)));
+                objectAnimator.setInterpolator(new LinearOutSlowInInterpolator());
+                objectAnimator.setDuration(800);
+                objectAnimator.start();
+                camera_image.setVisibility(View.GONE);
+                text.setVisibility(View.GONE);
+                cancelImage.setVisibility(View.VISIBLE);
+            } else {
+
+            }
+            return true;
+        }
+
+        @Override
+        public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent2, float velocityX, float velocityY) {
+
+            ObjectAnimator objectAnimator;
+            if (motionEvent.getRawY() < motionEvent2.getRawY()) {
+                objectAnimator = ObjectAnimator.ofFloat(gallery_layout, "translationY", (CommonUtility.getDeviceHeight(mContext)));
+                objectAnimator.setInterpolator(new LinearOutSlowInInterpolator());
+                objectAnimator.setDuration(800);
+                objectAnimator.start();
+                camera_image.setVisibility(View.GONE);
+                text.setVisibility(View.GONE);
+                cancelImage.setVisibility(View.VISIBLE);
+            } else {
+            }
+            return true;
+        }
+    }
+
 }

@@ -33,7 +33,6 @@ public class ChooseCollectionListAdapter extends BaseAdapter implements ServiceC
     private LayoutInflater mInflater;
     private List<CollectionList> data;
     private ChooseCollectionDialog collectionListDialog;
-//    private Product product;
 
 
     public ChooseCollectionListAdapter(FragmentActivity context, List<CollectionList> data,
@@ -41,7 +40,6 @@ public class ChooseCollectionListAdapter extends BaseAdapter implements ServiceC
         super();
         this.mContext = context;
         this.data = data;
-//        this.product = product;
         this.collectionListDialog = collectionListDialog;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -78,14 +76,6 @@ public class ChooseCollectionListAdapter extends BaseAdapter implements ServiceC
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.collection_name.setText(getItem(i).getName());
-//        view.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View arg0) {
-//                if (((HomeActivity) mContext).checkInternet())
-//                    addCollectionToProduct(getItem(i).getId(), product);
-//            }
-//        });
         return view;
     }
 
@@ -110,17 +100,4 @@ public class ChooseCollectionListAdapter extends BaseAdapter implements ServiceC
         TextView collection_name;
     }
 
-//    private void addCollectionToProduct(String collection_id, Product product) {
-//
-//        String from_user_id = TextUtils.isEmpty(product.getFrom_user_id()) ? "" :
-//                product.getFrom_user_id();
-//        String from_collection_id = TextUtils.isEmpty(product.getFrom_collection_id()) ? "" :
-//                product.getFrom_collection_id();
-//
-//        final CollectionApi collectionApi = new CollectionApi(this);
-//        collectionApi.addProductInCollection(UserPreference.getInstance().getUserID(),
-//                collection_id, product.getId(), from_user_id, from_collection_id,
-//                product.getProductimageurl());
-//        collectionApi.execute();
-//    }
 }

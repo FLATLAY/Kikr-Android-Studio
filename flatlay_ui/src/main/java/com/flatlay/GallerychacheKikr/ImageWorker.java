@@ -21,14 +21,25 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.media.ThumbnailUtils;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -37,9 +48,13 @@ import android.widget.ImageView;
 
 import com.flatlay.BuildConfig;
 import com.flatlay.R;
+import com.flatlay.utility.CommonUtility;
+import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
 import java.util.Locale;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * This class wraps up completing some arbitrary long running work when loading a bitmap to an
@@ -75,7 +90,7 @@ public class ImageWorker {
     private Boolean[] misVideoSupported;
 
     private int mCountImage = 0;
-    private int mCountVideo = 0 ;
+    private int mCountVideo = 0;
     private long[] mArrayId = null;
     private long[] mFolderArrayId;
     private boolean mFolder = false;
@@ -94,7 +109,7 @@ public class ImageWorker {
     }
 
     public ImageWorker(Context context, ContentResolver contentResolver, int nCountImage, int nCountVideo, long[] arrayId, String[] arrayPath,
-                      DisplayMetrics metrics) {
+                       DisplayMetrics metrics) {
 
 
         mResources = context.getResources();
@@ -151,9 +166,30 @@ public class ImageWorker {
             //END_INCLUDE(execute_background_task)
         }
     }*/
+    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
+                .getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
 
-    public void loadImage(Integer position, ImageView imageView, Long id, String arrayPath, View noMediaView, boolean isImage)
-    {
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+        final float roundPx = pixels;
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+
+        return output;
+    }
+
+
+    public void loadImage(Integer position, ImageView imageView, Long id, String arrayPath, View noMediaView, boolean isImage) {
         mID = id;
         m_ArrayPath = arrayPath;
         //	misVideoSupported = isVideoSupported;
@@ -164,9 +200,8 @@ public class ImageWorker {
         boolean isSupported = false;
         Boolean misImage = false;
 
-        if( position < 0)
-        {
-            return ;
+        if (position < 0) {
+            return;
         }
 
         Bitmap bitmap = null;
@@ -174,30 +209,34 @@ public class ImageWorker {
         ImageCache.CacheEntry mCacheEntry;
 
 
-        if (mImageCache != null)
-        {
+        if (mImageCache != null) {
+            Log.v(TAG, "loadImage  : not111:" + id.toString());
+
             mCacheEntry = mImageCache.getBitmapFromMemCache(id.toString());
-            if(mCacheEntry != null) {
+            if (mCacheEntry != null) {
                 bitmap = mCacheEntry.mBitmap;
-                Log.v(TAG, "loadImage  : getting Image from mImageCache" );
+                Log.v(TAG, "loadImage  : getting Image from mImageCache");
             }
         }
 
-        if (bitmap != null)
-        {
+        if (bitmap != null) {
+
+            Log.v(TAG, "loadImage  : not null");
 
             // Bitmap found in memory cache
-            imageView.setImageBitmap(bitmap);
+
+            imageView.setImageBitmap(getRoundedCornerBitmap(bitmap, 90));
 
             //      Log.v(TAG, "loadImage :  Bitmap found in memory cache " + bitmap );
 
-        }
-        else if (cancelPotentialWork(position.toString(), imageView))
-        {
+        } else if (cancelPotentialWork(position.toString(), imageView)) {
             final BitmapWorkerTask task = new BitmapWorkerTask(imageView);
             final AsyncDrawable asyncDrawable = new AsyncDrawable(mResources, mLoadingBitmap, task);
+//            RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getApplicationContext().getResources(),asyncDrawable);
+//            img.setCornerRadius(20);
+//
+//            imageView.setImageDrawable(img);
             imageView.setImageDrawable(asyncDrawable);
-
             // NOTE: This uses a custom version of AsyncTask that has been pulled from the
             // framework and slightly modified. Refer to the docs at the top of the class
             // for more info on what was changed.
@@ -207,8 +246,6 @@ public class ImageWorker {
 
 
         }
-
-
 
     }
 
@@ -233,11 +270,12 @@ public class ImageWorker {
     /**
      * Adds an {@link ImageCache} to this {@link ImageWorker} to handle disk and memory bitmap
      * caching.
+     *
      * @param fragmentManager
-     * @param cacheParams The cache parameters to use for the image cache.
+     * @param cacheParams     The cache parameters to use for the image cache.
      */
     public void addImageCache(FragmentManager fragmentManager,
-            ImageCache.ImageCacheParams cacheParams) {
+                              ImageCache.ImageCacheParams cacheParams) {
         mImageCacheParams = cacheParams;
         mImageCache = ImageCache.findOrCreateCache(fragmentManager, mImageCacheParams);
         new CacheAsyncTask().execute(MESSAGE_INIT_DISK_CACHE);
@@ -246,9 +284,10 @@ public class ImageWorker {
     /**
      * Adds an {@link ImageCache} to this {@link ImageWorker} to handle disk and memory bitmap
      * caching.
+     *
      * @param activity
      * @param diskCacheDirectoryName See
-     * {@link ImageCache.ImageCacheParams#ImageCacheParams(Context, String)}.
+     *                               {@link ImageCache.ImageCacheParams#ImageCacheParams(Context, String)}.
      */
     public void addImageCache(FragmentActivity activity, String diskCacheDirectoryName) {
         mImageCacheParams = new ImageCache.ImageCacheParams(activity, diskCacheDirectoryName);
@@ -274,7 +313,7 @@ public class ImageWorker {
      * example, you could resize a large bitmap here, or pull down an image from the network.
      *
      * @param params The data to identify which image to process, as provided by
-     *            {@link ImageWorker#loadImage(Integer, ImageView, Long, String, View, boolean)}
+     *               {@link ImageWorker#loadImage(Integer, ImageView, Long, String, View, boolean)}
      * @return The processed bitmap
      */
     private Bitmap processBitmap(AsyncParam params) {
@@ -312,49 +351,47 @@ public class ImageWorker {
 
         Bitmap bm = null;
         final BitmapFactory.Options options = new BitmapFactory.Options();
-        if(position < mCountImage ){
+        if (position < mCountImage) {
 
             options.inSampleSize = calculateInSampleSize(options, dipToPx(106), dipToPx(68));
 
-                bm = MediaStore.Images.Thumbnails.getThumbnail(mContentResolver, ImageId, MediaStore.Images.Thumbnails.MINI_KIND, options);
-                if(bm == null)
-                    bm = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(imagePath, options), dipToPx(106), dipToPx(68));
+            bm = MediaStore.Images.Thumbnails.getThumbnail(mContentResolver, ImageId, MediaStore.Images.Thumbnails.MINI_KIND, options);
+            if (bm == null)
+                bm = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(imagePath, options), dipToPx(106), dipToPx(68));
 
-            if(bm == null) {
+            if (bm == null) {
                 BitmapFactory.Options opt = new BitmapFactory.Options();
                 opt.inJustDecodeBounds = true;
                 BitmapFactory.decodeFile(imagePath, opt);
                 opt.inJustDecodeBounds = false;
 
                 int thumbHeight = 120;
-                int thumbWidth = Math.min((int)(200),(int)((float)opt.outWidth/(float)opt.outHeight*(float)thumbHeight));
+                int thumbWidth = Math.min((int) (200), (int) ((float) opt.outWidth / (float) opt.outHeight * (float) thumbHeight));
 
-                if( opt.outHeight > thumbHeight*2 && opt.outWidth > thumbWidth*2 ) {
-                    opt.inSampleSize = Math.min(opt.outHeight/thumbHeight, opt.outWidth/thumbWidth);
+                if (opt.outHeight > thumbHeight * 2 && opt.outWidth > thumbWidth * 2) {
+                    opt.inSampleSize = Math.min(opt.outHeight / thumbHeight, opt.outWidth / thumbWidth);
                 }
                 Log.d(TAG, "   bounds decoded : width,height=" + opt.outWidth + "," + opt.outHeight + "; target w,h=" + thumbWidth + "," + thumbHeight + "; sampleSize=" + opt.inSampleSize);
                 Bitmap bitmap = BitmapFactory.decodeFile(imagePath, opt);
-                if( bitmap != null ) {
+                if (bitmap != null) {
                     Bitmap scaledBm = Bitmap.createScaledBitmap(bm, thumbWidth, thumbHeight, true);
-                    if(scaledBm != bitmap)
+                    if (scaledBm != bitmap)
                         bitmap.recycle();
                     return scaledBm;
                 }
 
             }
 
-        }
-        else if (position == mCountImage || position > mCountImage && position<mCountImage+mCountVideo )
-        {
+        } else if (position == mCountImage || position > mCountImage && position < mCountImage + mCountVideo) {
 
             options.inSampleSize = calculateInSampleSize(options, dipToPx(106), dipToPx(68));
 
-            bm = MediaStore.Video.Thumbnails.getThumbnail(mContentResolver, ImageId , MediaStore.Video.Thumbnails.MINI_KIND, options);
+            bm = MediaStore.Video.Thumbnails.getThumbnail(mContentResolver, ImageId, MediaStore.Video.Thumbnails.MINI_KIND, options);
 
-            if(bm == null){
+            if (bm == null) {
 
-                bm = ThumbnailUtils.createVideoThumbnail(imagePath, MediaStore.Video.Thumbnails.MICRO_KIND );
-                if(bm == null) {
+                bm = ThumbnailUtils.createVideoThumbnail(imagePath, MediaStore.Video.Thumbnails.MICRO_KIND);
+                if (bm == null) {
                     bm = ThumbnailUtils.createVideoThumbnail(imagePath, MediaStore.Video.Thumbnails.MINI_KIND);
                 }
                 if (bm == null) {
@@ -380,14 +417,15 @@ public class ImageWorker {
 
     /**
      * Cancels any pending work attached to the provided ImageView.
+     *
      * @param imageView
      */
     public static void cancelWork(ImageView imageView) {
         final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
         if (bitmapWorkerTask != null) {
             bitmapWorkerTask.cancel(true);
-                final Object bitmapData = bitmapWorkerTask.imageId;
-                Log.d(TAG, "cancelWork - cancelled work for " + bitmapData);
+            final Object bitmapData = bitmapWorkerTask.imageId;
+            Log.d(TAG, "cancelWork - cancelled work for " + bitmapData);
         }
     }
 
@@ -463,7 +501,7 @@ public class ImageWorker {
                 Log.d(TAG, "doInBackground - starting work");
             }
             Bitmap bitmap = null;
-            AsyncParam aparam = (AsyncParam)params[0];
+            AsyncParam aparam = (AsyncParam) params[0];
             imageId = aparam.mImageId;
             imagePath = aparam.mImagePath;
             position = aparam.mPosition;
@@ -476,7 +514,8 @@ public class ImageWorker {
                 while (mPauseWork && !isCancelled()) {
                     try {
                         mPauseWorkLock.wait();
-                    } catch (InterruptedException e) {}
+                    } catch (InterruptedException e) {
+                    }
                 }
             }
 
@@ -488,7 +527,7 @@ public class ImageWorker {
                     && !mExitTasksEarly) {
 //                bitmap = mImageCache.getBitmapFromDiskCache(dataString);
                 mcacheEntry2 = mImageCache.getBitmapFromDiskCache(imageId.toString());
-                if(mcacheEntry2 != null)
+                if (mcacheEntry2 != null)
                     bitmap = mcacheEntry2.mBitmap;
                 Log.d(TAG, " getBitmapfromDiskCache :" + bitmap);
             }
@@ -503,14 +542,14 @@ public class ImageWorker {
                 bitmap = processBitmap(params[0]);
             }
 
-            if(bitmap != null && mImageCache != null) {
-                if(imagePath.toLowerCase().endsWith("jpg") || imagePath.toLowerCase().endsWith("jpeg") || imagePath.toLowerCase().endsWith("png") ||
+            if (bitmap != null && mImageCache != null) {
+                if (imagePath.toLowerCase().endsWith("jpg") || imagePath.toLowerCase().endsWith("jpeg") || imagePath.toLowerCase().endsWith("png") ||
                         imagePath.toLowerCase().endsWith("gif")) {
 
                     is_Image = true;
 
 
-                }else {
+                } else {
                     is_Image = false;
 
                 }
@@ -619,7 +658,7 @@ public class ImageWorker {
         if (mFadeInBitmap) {
             // Transition drawable with a transparent drawable and the final drawable
             final TransitionDrawable td =
-                    new TransitionDrawable(new Drawable[] {
+                    new TransitionDrawable(new Drawable[]{
                             new ColorDrawable(android.R.color.transparent),
                             drawable
                     });
@@ -659,7 +698,7 @@ public class ImageWorker {
 
         @Override
         protected Void doInBackground(Object... params) {
-            switch ((Integer)params[0]) {
+            switch ((Integer) params[0]) {
                 case MESSAGE_CLEAR:
                     clearCacheInternal();
                     break;
@@ -717,14 +756,12 @@ public class ImageWorker {
 
     // Additional methods
 
-    public class AsyncParam
-    {
+    public class AsyncParam {
         public int mPosition = 0;
         public Long mImageId = 0L;
         public String mImagePath = "";
 
-        public AsyncParam(int position, Long id, String path)
-        {
+        public AsyncParam(int position, Long id, String path) {
             mPosition = position;
             mImageId = id;
             mImagePath = path;
@@ -735,18 +772,19 @@ public class ImageWorker {
     private static boolean isImage(String fileName) {
         String name = fileName.toLowerCase(Locale.US);
 
-        for (String s: IMAGE_EXTENSIONS) {
-            if(name.endsWith(s))
+        for (String s : IMAGE_EXTENSIONS) {
+            if (name.endsWith(s))
                 return true;
         }
         return false;
 
     }
+
     private static boolean isVideo(String fileName) {
         String name = fileName.toLowerCase(Locale.US);
 
-        for (String s: VIDEO_EXTENSIONS) {
-            if(name.endsWith(s))
+        for (String s : VIDEO_EXTENSIONS) {
+            if (name.endsWith(s))
                 return true;
         }
         return false;
@@ -780,7 +818,7 @@ public class ImageWorker {
 
     }
 
-    private int dipToPx( int sp ) {
+    private int dipToPx(int sp) {
 
 
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, sp, mMetrics);

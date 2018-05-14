@@ -19,7 +19,8 @@ import com.flatlay.R;
 
 public class GeneralFunctions {
 
-public static boolean isSpacePressed;
+    public static boolean isSpacePressed;
+
     public static void setChips(final Context context, CharSequence typedText,
                                 final MultiAutoCompleteTextView mutiView, ChipPropery chipPropery) {
 
@@ -134,8 +135,6 @@ public static boolean isSpacePressed;
         return bmpDrawable;
 
     }
-
-
 
 
 }

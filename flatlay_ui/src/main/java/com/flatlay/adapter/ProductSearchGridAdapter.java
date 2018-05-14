@@ -54,6 +54,8 @@ public class ProductSearchGridAdapter extends BaseAdapter {
     private String postlink;
     private static String SHARE_POST_LINK = "Find it @FLATLAY http://flat-lay.com/product/";
     final String TAG = "ProductSearchGrid";
+    private MyItemsListener listener;
+    private boolean isUpload = false;
 
     public ProductSearchGridAdapter(FragmentActivity context, List<ProductResult> products) {
         super();
@@ -61,6 +63,16 @@ public class ProductSearchGridAdapter extends BaseAdapter {
         this.products = products;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
+
+    public ProductSearchGridAdapter(FragmentActivity context, List<ProductResult> products, boolean isUpload, MyItemsListener listener) {
+        super();
+        this.mContext = context;
+        this.isUpload = isUpload;
+        this.products = products;
+        this.listener = listener;
+        this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
 
     public void setData(List<ProductResult> data) {
         this.products = data;
@@ -94,15 +106,54 @@ public class ProductSearchGridAdapter extends BaseAdapter {
             viewholder = (ViewHolder) convertView.getTag();
         }
         viewholder.layout1.setVisibility(View.GONE);
-        Log.e(TAG, "image-"+getItem(position).getProductimageurl());
-        if(products.size()>position)
-        CommonUtility.setImage(mContext, viewholder.productImage, getItem(position).getProductimageurl());
+        ProductResult currentResult = getItem(position);
+        if (products.size() > position)
+            CommonUtility.setImage(mContext, viewholder.productImage, currentResult.getProductimageurl());
+        final Product currentProduct = new Product();
+        currentProduct.setAffiliateurl(currentResult.getAffiliateurl());
+        currentProduct.setAffiliateurlforsharing(currentResult.getAffiliateurlforsharing());
+        currentProduct.setDiscount(currentResult.getPercentOff());
+        currentProduct.setId(currentResult.getId());
+        currentProduct.setLongproductdesc(currentResult.getLongproductdesc());
+        currentProduct.setMerchantname(currentResult.getMerchantname());
+        currentProduct.setProducturl(currentResult.getProducturl());
+        currentProduct.setSaleprice(currentResult.getSaleprice());
+        currentProduct.setRetailprice(currentResult.getRetailprice());
+        currentProduct.setProductname(currentResult.getProductname());
+        currentProduct.setShortproductdesc(currentResult.getShortproductdesc());
+        currentProduct.setLike_info(currentResult.getLikeInfo());
+        currentProduct.setMerchantid(currentResult.getMerchantid());
+        currentProduct.setProductimageurl(currentResult.getProductimageurl());
+        if (isUpload) {
+            viewholder.productImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onOkButton(currentProduct);
+                }
+            });
+        } else {
+            viewholder.productImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("data", currentProduct);
+                    FragmentDiscoverDetail detail = new FragmentDiscoverDetail();
+                    detail.setArguments(bundle);
+                    ((HomeActivity) mContext).addFragment(detail);
+                }
+            });
+        }
         return convertView;
     }
 
     public class ViewHolder {
         private ImageView productImage;
         private LinearLayout layout1;
+    }
+
+    public interface MyItemsListener { // create an interface
+
+        void onOkButton(Product currentProduct);
     }
 }
 

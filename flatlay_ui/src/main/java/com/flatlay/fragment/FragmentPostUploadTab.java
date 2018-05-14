@@ -12,9 +12,12 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -34,6 +37,7 @@ import com.flatlay.utility.MyMaterialContentBottom;
 import com.flatlay.utility.MyMaterialContentOverflow3;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
+import com.nineoldandroids.view.ViewHelper;
 import com.soundcloud.android.crop.Crop;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.yalantis.ucrop.UCrop;
@@ -51,16 +55,17 @@ public class FragmentPostUploadTab extends BaseFragment implements View.OnClickL
     final static String TAG = "PostUploadTab";
     private TextView text;
     private ImageView gallery_icon, ins_icon;
-    private RelativeLayout relativeLayout;
-    private MyMaterialContentBottom overflow;
+    private RelativeLayout relativeLayout, gallery_layout;
     private View mainView;
     private LinearLayout camera_layout;
     String inspirationImageUrl;
     private boolean isImage = false;
-    private CameraFragment cameraFragment=new CameraFragment();
-    private MediaGridFragment mediaGridFragment=new MediaGridFragment();
+    private CameraFragment cameraFragment = new CameraFragment();
+    private MediaGridFragment mediaGridFragment = new MediaGridFragment();
     private FragmentInstagram fragmentInstagram;
     private FrameLayout frame_container4;
+    private GestureDetector mDetector;
+
 
     public FragmentPostUploadTab() {
 
@@ -81,36 +86,35 @@ public class FragmentPostUploadTab extends BaseFragment implements View.OnClickL
         gallery_icon = (ImageView) mainView.findViewById(R.id.gallery_icon);
         ins_icon = (ImageView) mainView.findViewById(R.id.ins_icon);
         relativeLayout = (RelativeLayout) mainView.findViewById(R.id.relativeLayout);
+        gallery_layout = (RelativeLayout) mainView.findViewById(R.id.gallery_layout);
+        mDetector = new GestureDetector(mContext, new MyListener());
+        View.OnTouchListener touchListener = new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // pass the events to the gesture detector
+                // a return value of true means the detector is handling it
+                // a return value of false means the detector didn't
+                // recognize the event
+                mDetector.onTouchEvent(event);
+                return true;
+            }
+        };
+        gallery_layout.setOnTouchListener(touchListener);
         frame_container4 = (FrameLayout) mainView.findViewById(R.id.frame_container4);
-        overflow = (MyMaterialContentBottom) mainView.findViewById(R.id.overflow2);
-        overflow.setOnCloseListener(new MyMaterialContentBottom.OnCloseListener() {
-            @Override
-            public void onClose() {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(camera_layout, "translationY", 0);
-                animator.setDuration(700);
-                animator.start();
-            }
-
-            @Override
-            public void onOpen() {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(camera_layout, "translationY", -330.0f);
-                animator.setDuration(700);
-                animator.start();
-            }
-        });
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (CommonUtility.getDeviceHeight(mContext) *37/100));
-        layoutParams.setMargins(0,90,0,40);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (CommonUtility.getDeviceHeight(mContext) * 37 / 100));
+        layoutParams.setMargins(0, 90, 0, 40);
         frame_container4.setLayoutParams(layoutParams);
+        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (CommonUtility.getDeviceHeight(mContext) / 2));
+        layoutParams2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        gallery_layout.setLayoutParams(layoutParams2);
         myAddFragment(mediaGridFragment);
     }
 
-    public void myAddFragment(Fragment fragment){
+    public void myAddFragment(Fragment fragment) {
         FragmentTransaction transaction = mContext.getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_container4, new MediaGridFragment(), null);
         transaction.replace(R.id.frame_container4, fragment, null);
         transaction.commit();
-        Log.e("gallery_icon",(overflow.getVisibility()==View.VISIBLE)+"");
-        Log.e("gallery_icon",overflow.getY()+"");
+
     }
 
     @Override
@@ -134,15 +138,15 @@ public class FragmentPostUploadTab extends BaseFragment implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.relativeLayout:
-                addFragment(cameraFragment);
                 break;
             case R.id.gallery_icon:
-                Log.e("gallery_icon",overflow.getY()+"");
                 myAddFragment(mediaGridFragment);
+
                 break;
             case R.id.ins_icon:
-                fragmentInstagram=new FragmentInstagram();
+                fragmentInstagram = new FragmentInstagram();
                 myAddFragment(fragmentInstagram);
+
                 break;
         }
     }
@@ -150,7 +154,6 @@ public class FragmentPostUploadTab extends BaseFragment implements View.OnClickL
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        Log.w("test", "testing1");
         cameraFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
@@ -212,19 +215,48 @@ public class FragmentPostUploadTab extends BaseFragment implements View.OnClickL
                 Log.w("onActivityResultFPUT", "****FPUT: " + filePath);
 
                 Bitmap thumbnail = BitmapFactory.decodeFile(filePath);
-                //Log.w("onActivityResultFPUT","****2");
 
                 inspirationImageUrl = filePath;
                 goToNext(thumbnail);
-                //Log.w("onActivityResultFPUT","****3");
 
 
             } else if (requestCode == Crop.REQUEST_PICK) {
-                //Log.w("onActivityResultFPUT","REQUEST_PICK");
                 Uri destination = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
                 Crop crop = new Crop(data.getData());
                 crop.output(destination).asSquare().start(mContext); //Check the Max Size
             }
+        }
+    }
+
+    private class MyListener extends GestureDetector.SimpleOnGestureListener {
+
+        @Override
+        public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent2, float distanceX, float distanceY) {
+
+            ObjectAnimator objectAnimator;
+            if (motionEvent.getRawY() < motionEvent2.getRawY()) {
+                objectAnimator = ObjectAnimator.ofFloat(gallery_layout, "translationY", (CommonUtility.getDeviceHeight(mContext)));
+                objectAnimator.setInterpolator(new LinearOutSlowInInterpolator());
+                objectAnimator.setDuration(800);
+                objectAnimator.start();
+            } else {
+
+            }
+            return true;
+        }
+
+        @Override
+        public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent2, float velocityX, float velocityY) {
+
+            ObjectAnimator objectAnimator;
+            if (motionEvent.getRawY() < motionEvent2.getRawY()) {
+                objectAnimator = ObjectAnimator.ofFloat(gallery_layout, "translationY", (CommonUtility.getDeviceHeight(mContext)));
+                objectAnimator.setInterpolator(new LinearOutSlowInInterpolator());
+                objectAnimator.setDuration(800);
+                objectAnimator.start();
+            } else {
+            }
+            return true;
         }
     }
 

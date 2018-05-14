@@ -30,16 +30,16 @@ import java.util.List;
 
 public class NotificationListFragment extends BaseFragment implements View.OnClickListener {
     private View mainView;
-    private TextView notification_text,message_text;
+    private TextView notification_text, message_text;
     private ImageView infoicon2;
     private MyMaterialContentOverflow3 overflow2;
-    private boolean isOnFeedPage=true;
+    private boolean isOnFeedPage = true;
     private List<FollowingKikrModel.DataBean> followinglist = new ArrayList<>(), followinglistRefined = new ArrayList<>();
     private RecyclerView notificationlist;
 
-    public NotificationListFragment(MyMaterialContentOverflow3 overflow2,boolean isOnFeedPage){
-        this.overflow2=overflow2;
-        this.isOnFeedPage=isOnFeedPage;
+    public NotificationListFragment(MyMaterialContentOverflow3 overflow2, boolean isOnFeedPage) {
+        this.overflow2 = overflow2;
+        this.isOnFeedPage = isOnFeedPage;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class NotificationListFragment extends BaseFragment implements View.OnCli
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.infoicon2:
-                ((HomeActivity)mContext).myAddFragment(new MyFeedCollectionFragment(overflow2,false,isOnFeedPage));
+                ((HomeActivity) mContext).myAddFragment(new MyFeedCollectionFragment(overflow2, false, isOnFeedPage));
                 break;
         }
     }

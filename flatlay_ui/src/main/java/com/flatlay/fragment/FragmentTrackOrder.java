@@ -40,17 +40,16 @@ import java.util.List;
  * Created by RachelDi on 4/9/18.
  */
 
-public class FragmentTrackOrder extends BaseFragment{
+public class FragmentTrackOrder extends BaseFragment {
     private View mainView;
-    private TextView date_text,total_price_text,orders_text,deliver_text,order_num_text,items_list_text;
-//            shipping_address_text,shipping_address_text_name,shipping_address1_text,shipping_address2_text;
+    private TextView date_text, total_price_text, orders_text, deliver_text, order_num_text, items_list_text;
     private String orderId;
     private Orders order;
-    private LinearLayout order_items_list,backIconLayout;
+    private LinearLayout order_items_list, backIconLayout;
 
     public FragmentTrackOrder(String orderId, Orders order) {
         this.orderId = orderId;
-        this.order=order;
+        this.order = order;
     }
 
     @Override
@@ -74,12 +73,6 @@ public class FragmentTrackOrder extends BaseFragment{
         order_num_text = (TextView) mainView.findViewById(R.id.order_num_text);
         order_num_text.setTypeface(FontUtility.setMontserratLight(mContext));
 
-//        shipping_address_text = (TextView) mainView.findViewById(R.id.shipping_address_text);
-//        shipping_address_text.setTypeface(FontUtility.setMontserratLight(mContext));
-//
-//        shipping_address_text_name = (TextView) mainView.findViewById(R.id.shipping_address_text_name);
-//        shipping_address_text_name.setTypeface(FontUtility.setMontserratLight(mContext));
-
         order_items_list = (LinearLayout) mainView.findViewById(R.id.order_items_list);
         backIconLayout = (LinearLayout) mainView.findViewById(R.id.backIconLayout);
         backIconLayout.setOnClickListener(new View.OnClickListener() {
@@ -88,12 +81,6 @@ public class FragmentTrackOrder extends BaseFragment{
                 mContext.onBackPressed();
             }
         });
-
-//        shipping_address1_text = (TextView) mainView.findViewById(R.id.shipping_address1_text);
-//        shipping_address1_text.setTypeface(FontUtility.setMontserratLight(mContext));
-//
-//        shipping_address2_text = (TextView) mainView.findViewById(R.id.shipping_address2_text);
-//        shipping_address2_text.setTypeface(FontUtility.setMontserratLight(mContext));
 
         items_list_text = (TextView) mainView.findViewById(R.id.items_list_text);
         items_list_text.setTypeface(FontUtility.setMontserratLight(mContext));
@@ -110,10 +97,6 @@ public class FragmentTrackOrder extends BaseFragment{
 
     }
 
-//    @Override
-//    public void setClickListener() {
-//        back.setOnClickListener(this);
-//    }
 
     @Override
     public void setData(Bundle bundle) {
@@ -129,8 +112,8 @@ public class FragmentTrackOrder extends BaseFragment{
             @Override
             public void handleOnSuccess(Object object) {
                 OrderRes orderRes = (OrderRes) object;
-                if (orderRes!=null)
-                    setDetails(orderRes,order_items_list);
+                if (orderRes != null)
+                    setDetails(orderRes, order_items_list);
             }
 
             @Override
@@ -143,37 +126,29 @@ public class FragmentTrackOrder extends BaseFragment{
                 }
             }
         });
-        ordersApi.getOrderDetails(UserPreference.getInstance().getUserID(),orderId);
+        ordersApi.getOrderDetails(UserPreference.getInstance().getUserID(), orderId);
         ordersApi.execute();
     }
 
     protected void setDetails(OrderRes orderRes, LinearLayout order_items_list) {
-//        if (!TextUtils.isEmpty(orderRes.getStatus())) {
-//            orderStatusTextView.setText(orderRes.getStatus());
-//        }
+
         if (!TextUtils.isEmpty(orderRes.getTotal())) {
             total_price_text.setText("Total: $" + CommonUtility.getFormatedNum(orderRes.getTotal()));
         }
-//        if (!TextUtils.isEmpty(orderRes.getShipping())) {
-//            orderShippingTextView.setText("$" + CommonUtility.getFormatedNum(orderRes.getShipping()));
-//        }
-//        if (!TextUtils.isEmpty(orderRes.getTax())) {
-//            orderTaxTextView.setText("$" + CommonUtility.getFormatedNum(orderRes.getTax()));
-//        }
+
         if (!TextUtils.isEmpty(orderRes.getQuantity())) {
-            items_list_text.setText("ITEMS ("+orderRes.getQuantity()+")");
+            items_list_text.setText("ITEMS (" + orderRes.getQuantity() + ")");
         }
         if (!TextUtils.isEmpty(orderRes.getId())) {
-            order_num_text.setText("Order No.: "+orderRes.getId());
+            order_num_text.setText("Order No.: " + orderRes.getId());
         }
         List<Product> product = orderRes.getProduct();
-        setCartItemsList(product,order_items_list);
+        setCartItemsList(product, order_items_list);
     }
 
-    protected void setCartItemsList(final List<Product> data,LinearLayout order_items_list) {
+    protected void setCartItemsList(final List<Product> data, LinearLayout order_items_list) {
         order_items_list.removeAllViews();
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Log.e(TAG, "2:" + data.size());
         for (int i = 0; i < data.size(); i++) {
             LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.cart_item_layout, null);
             ImageView cancel_icon = (ImageView) layout.findViewById(R.id.cancel_icon);
@@ -231,44 +206,8 @@ public class FragmentTrackOrder extends BaseFragment{
             order_items_list.addView(layout, params3);
         }
     }
+
     protected LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-
-//    private void setProductData(Product product) {
-//        CommonUtility.setImage(mContext, product.getProductimageurl(), cartProductImage, R.drawable.dum_list_item_product);
-//        brandName.setText(product.getMerchantname());
-//        productName.setText(product.getProductname());
-//        if(!TextUtils.isEmpty(product.getSaleprice()) || product.getSaleprice().equals("0")){
-//            regularPriceText.setText(" $"+CommonUtility.getFormatedNum(product.getSaleprice()));
-//        }else{
-//            regularPriceText.setText(" $"+CommonUtility.getFormatedNum(product.getRetailprice()));
-//        }
-//        if (!TextUtils.isEmpty(product.getQuantity())) {
-//            quantityLayout.setVisibility(View.VISIBLE);
-//            quantityText.setText(" "+product.getQuantity());
-//        } else {
-//            quantityLayout.setVisibility(View.GONE);
-//        }
-//        if(!TextUtils.isEmpty(product.getSelected_color())){
-//            colorText.setText(" "+product.getSelected_color());
-//        }else{
-//            colorLayout.setVisibility(View.GONE);
-//        }
-//
-//        if(!TextUtils.isEmpty(product.getSelected_size())){
-//            sizeText.setText(" "+product.getSelected_size());
-//        }else{
-//            sizeLayout.setVisibility(View.GONE);
-//        }
-//    }
-
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.backButton:
-//                ((HomeActivity)mContext).onBackPressed();
-//                break;
-//        }
-//    }
 
 }
 

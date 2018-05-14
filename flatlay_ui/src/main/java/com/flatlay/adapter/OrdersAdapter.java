@@ -45,7 +45,7 @@ import java.util.Map;
 public class OrdersAdapter extends BaseAdapter {
 
     private FragmentActivity mContext;
-    List<List<Product>> products_list=new ArrayList<>();
+    List<List<Product>> products_list = new ArrayList<>();
     private LayoutInflater mInflater;
     List<Orders> data = new ArrayList<>();
     Map<Integer, List<Product>> loadMap = new HashMap<>();
@@ -123,14 +123,11 @@ public class OrdersAdapter extends BaseAdapter {
 
                 @Override
                 public void handleOnSuccess(Object object) {
-                    Log.e("OrdersAdapter", "success");
                     OrderRes orderRes = (OrderRes) object;
                     if (orderRes != null) {
-                        Log.e("OrdersAdapter", "success+" + orderRes.getId());
                         List<Product> product = orderRes.getProduct();
                         loadMap.put(i, product);
                         if (product != null && product.size() > 0) {
-                            Log.e("OrdersAdapter", "1"+i);
                             viewholder.image1.setVisibility(View.VISIBLE);
                             CommonUtility.setImage(mContext, viewholder.image1, product.get(0).getProductimageurl());
                         }
@@ -153,7 +150,6 @@ public class OrdersAdapter extends BaseAdapter {
 
                 @Override
                 public void handleOnFailure(ServiceException exception, Object object) {
-                    Log.e("OrdersAdapter", "fail");
                     if (object != null) {
                         OrderRes response = (OrderRes) object;
                         AlertUtils.showToast(mContext, response.getMessage());
@@ -168,79 +164,26 @@ public class OrdersAdapter extends BaseAdapter {
         } else {
             viewholder = (ViewHolder) convertView.getTag();
         }
-//        if (!loadMap.containsKey(i)) {
-//            Log.e("OrdersAdapter", "enter");
-//            loadMap.put(i, new ArrayList<Product>());
-//
-//            final OrdersApi ordersApi = new OrdersApi(new ServiceCallback() {
-//
-//                @Override
-//                public void handleOnSuccess(Object object) {
-//                    Log.e("OrdersAdapter", "success");
-//                    OrderRes orderRes = (OrderRes) object;
-//                    if (orderRes != null) {
-//                        Log.e("OrdersAdapter", "success+" + orderRes.getId());
-//                        List<Product> product = orderRes.getProduct();
-//                        loadMap.put(i, product);
-//                        if (product != null && product.size() > 0) {
-//                            Log.e("OrdersAdapter", "1"+i);
-//                            viewholder.image1.setVisibility(View.VISIBLE);
-//                            CommonUtility.setImage(mContext, viewholder.image1, product.get(0).getProductimageurl());
-//                        }
-//                        if (product != null && product.size() > 1) {
-//                            viewholder.image2.setVisibility(View.VISIBLE);
-//                            CommonUtility.setImage(mContext, viewholder.image2, product.get(1).getProductimageurl());
-//                        }
-//                        if (product != null && product.size() > 2) {
-//                            viewholder.image3.setVisibility(View.VISIBLE);
-//                            CommonUtility.setImage(mContext, viewholder.image3, product.get(2).getProductimageurl());
-//                        }
-//                        if (product != null && product.size() > 3) {
-//                            viewholder.image4_layout.setVisibility(View.VISIBLE);
-//                            CommonUtility.setImage(mContext, viewholder.image4, product.get(3).getProductimageurl());
-//                            viewholder.rest_text.setText("+" + (product.size() - 3));
-//
-//                        }
-//                    }
-//                }
-//
-//                @Override
-//                public void handleOnFailure(ServiceException exception, Object object) {
-//                    Log.e("OrdersAdapter", "fail");
-//                    if (object != null) {
-//                        OrderRes response = (OrderRes) object;
-//                        AlertUtils.showToast(mContext, response.getMessage());
-//                    } else {
-//                        AlertUtils.showToast(mContext, R.string.invalid_response);
-//                    }
-//                }
-//            });
-//            ordersApi.getOrderDetails(UserPreference.getInstance().getUserID(), data.get(i).getOrder_id());
-//            ordersApi.execute();
-//        } else {
-            List<Product> product = loadMap.get(i);
-            if (product != null && product.size() > 0) {
-                Log.e("OrdersAdapter", "2+"+product.get(0).getProductimageurl());
-                viewholder.image1.setVisibility(View.VISIBLE);
-                CommonUtility.setImage(mContext, viewholder.image1, product.get(0).getProductimageurl());
-            }
-            if (product != null && product.size() > 1) {
-                viewholder.image2.setVisibility(View.VISIBLE);
-                CommonUtility.setImage(mContext, viewholder.image2, product.get(1).getProductimageurl());
-            }
-            if (product != null && product.size() > 2) {
-                viewholder.image3.setVisibility(View.VISIBLE);
-                CommonUtility.setImage(mContext, viewholder.image3, product.get(2).getProductimageurl());
-            }
-            if (product != null && product.size() > 3) {
-                viewholder.image4_layout.setVisibility(View.VISIBLE);
-                CommonUtility.setImage(mContext, viewholder.image4, product.get(3).getProductimageurl());
-                viewholder.rest_text.setText("+" + (product.size() - 3));
+        List<Product> product = loadMap.get(i);
+        if (product != null && product.size() > 0) {
+            viewholder.image1.setVisibility(View.VISIBLE);
+            CommonUtility.setImage(mContext, viewholder.image1, product.get(0).getProductimageurl());
+        }
+        if (product != null && product.size() > 1) {
+            viewholder.image2.setVisibility(View.VISIBLE);
+            CommonUtility.setImage(mContext, viewholder.image2, product.get(1).getProductimageurl());
+        }
+        if (product != null && product.size() > 2) {
+            viewholder.image3.setVisibility(View.VISIBLE);
+            CommonUtility.setImage(mContext, viewholder.image3, product.get(2).getProductimageurl());
+        }
+        if (product != null && product.size() > 3) {
+            viewholder.image4_layout.setVisibility(View.VISIBLE);
+            CommonUtility.setImage(mContext, viewholder.image4, product.get(3).getProductimageurl());
+            viewholder.rest_text.setText("+" + (product.size() - 3));
 
-            }
-     //   }
+        }
         viewholder.date_text.setText(CommonUtility.getDateFormat2(data.get(i).getOrder_date()));
-//            viewholder.deliver_date.setText(data.get(i).getStatus());
         viewholder.order_num.setText("Order No.: " + data.get(i).getOrder_id());
         viewholder.image4_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -251,7 +194,6 @@ public class OrdersAdapter extends BaseAdapter {
         viewholder.view_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("OrdersAdapter", "click"+i+data.get(i).getOrder_id());
                 addFragment(new FragmentTrackOrder(data.get(i).getOrder_id(), data.get(i)));
             }
         });

@@ -61,8 +61,6 @@ public class AutoSuggestApi {
         this.tagsEditText = tagsEditText;
         Syso.info("Auto suggest api calling.", searchString);
         previousSearchedText[i++] = searchString;
-        //mProgressBarDialog = new ProgressBarDialog(mContext);
-        //mProgressBarDialog.show();
         final SearchAllApi searchAllApi = new SearchAllApi(new ServiceCallback() {
 
             @Override
@@ -93,35 +91,22 @@ public class AutoSuggestApi {
                     tagsEditText.setAdapter(new ArrayAdapter<>(mContext,
                             android.R.layout.simple_dropdown_item_1line, autoSuggestArray));
                     tagsEditText.showDropDown();
-                }
-                else {
+                } else {
 
                     showKeypad();
 
                 }
-
-
-//                if (mProgressBarDialog.isShowing())
-//                    mProgressBarDialog.dismiss();
-//
-
-
-
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-//                if (mProgressBarDialog.isShowing())
-//                    mProgressBarDialog.dismiss();
+
                 Syso.info("In handleOnFailure>>" + object);
 
 
-
                 if (object != null) {
-//                    InterestSectionRes response = (InterestSectionRes) object;
-//                    AlertUtils.showToast(CustomizeFeedActivity.this, response.getMessage());
+
                 } else {
-                    // AlertUtils.showToast(CustomizeFeedActivity.this, R.string.invalid_response);
                 }
             }
         });

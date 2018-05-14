@@ -98,11 +98,7 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
     public void makeView(Context context, int buttonDrawable, int buttonColor, int contentColor, int buttonPosition) {
         FrameLayout contentFrame = createContentFrame(context, contentColor);
 
-//        FloatingActionButton fab = createFab(context, buttonDrawable, buttonColor, buttonPosition);
-//productDetail=new TextView(context);
-//        productDetail.setTextColor(Color.WHITE);
-//        productDetail.setText("Product Detail");
-//        productDetail
+
         FrameLayout layout1 = new FrameLayout(context);
 
         backarrow90 = new ImageView(context);
@@ -112,7 +108,6 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
             public void onClick(View view) {
                 if (overflowGestureListener.isOpened()) {
                     overflowGestureListener.slide(-350);
-//                    overflowGestureListener.setInitialYPosition(getInitialYPosition());
                     setClose();
                 } else {
                     overflowGestureListener.slide(0);
@@ -128,7 +123,7 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
         params2.gravity = Gravity.CENTER;
         layout1.addView(backarrow90, params2);
         this.addView(layout1, params);
-        overflowGestureListener = new MyOverFlowGesListener2(this, backarrow90,new MyOverFlowGesListener2.OnCloseListener() {
+        overflowGestureListener = new MyOverFlowGesListener2(this, backarrow90, new MyOverFlowGesListener2.OnCloseListener() {
             @Override
             public void onClose() {
             }
@@ -162,72 +157,6 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
     }
 
 
-//    private FloatingActionButton createFab(Context context, int buttonDrawable, int buttonColor, int buttonPosition) {
-//        Log.e("actionbutton", "1");
-//
-//        fab = new TintFloatingActionButton(context);
-//
-//        int fabElevationInPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
-//
-//        LayoutParams fabLayoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//
-//        fabMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics());
-//
-//        if (buttonPosition == RIGHT) {
-//            Log.e("actionbutton", "2");
-//            fabLayoutParams.gravity = Gravity.END | Gravity.BOTTOM;
-//
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-//                Log.e("actionbutton", "3");
-//                fabLayoutParams.setMarginEnd(fabMargin);
-//            } else {
-//                Log.e("actionbutton", "4");
-//                fabLayoutParams.rightMargin = fabMargin;
-//            }
-//
-//        } else if (buttonPosition == CENTER) {
-//            Log.e("actionbutton", "5");
-//            fabLayoutParams.gravity = Gravity.CENTER | Gravity.BOTTOM;
-//        } else {
-//            Log.e("actionbutton", "6");
-//            fabLayoutParams.gravity = Gravity.START | Gravity.BOTTOM;
-//
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-//                Log.e("actionbutton", "7");
-//                fabLayoutParams.setMarginStart(fabMargin);
-//            } else {
-//                Log.e("actionbutton", "8");
-//                fabLayoutParams.leftMargin = fabMargin;
-//            }
-//
-//        }
-//
-//        fabLayoutParams.bottomMargin = fabMargin;
-//        fabLayoutParams.topMargin = fabMargin;
-//
-//        if (buttonDrawable > 0) {
-//            Log.e("actionbutton", "9");
-//            fab.setImageDrawable(ContextCompat.getDrawable(context, buttonDrawable));
-//        }
-//
-//        if (buttonColor > 0) {
-//            Log.e("actionbutton", "10");
-//            ViewCompat.setBackgroundTintList(fab, ContextCompat.getColorStateList(context, buttonColor));
-//        }
-//
-//        ViewCompat.setElevation(fab, fabElevationInPixels);
-//
-//        fab.setLayoutParams(fabLayoutParams);
-//
-//        fab.setTag("FAB");
-//
-//        this.addView(fab);
-//
-//        fab.setVisibility(INVISIBLE);
-//
-//        return fab;
-//    }
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
@@ -236,18 +165,6 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
         int utilizedWidth = 0;
 
         int utilizedHeight = 0;
-
-//        MarginLayoutParams fabLayoutParams = (MarginLayoutParams) fab.getLayoutParams();
-//
-//        measureChildWithMargins(
-//                fab,
-//                widthMeasureSpec,
-//                utilizedWidth,
-//                heightMeasureSpec,
-//                utilizedHeight);
-//
-//        utilizedHeight = (fab.getMeasuredHeight() / 2) + fabLayoutParams.topMargin;
-
 
         measureChildWithMargins(
                 contentFrame,
@@ -289,11 +206,8 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-//        fabTotalHeight = backarrow90.getHeight() +
-//                fabMargin + /*bottom margin*/
-//                fabMargin;  /*top margin*/
 
-        fabTotalHeight=70;
+        fabTotalHeight = 70;
         initialYPosition = getInitialYPosition();
 
         if (overflowGestureListener.isOpened() && !isFocus) {
@@ -319,27 +233,20 @@ public class MyMaterialContentOverflow2 extends FrameLayout {
     }
 
     private float getInitialYPosition() {
-        Log.e("ypos", "1");
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,
                 -((ViewGroup) this.getParent()).getHeight(),
                 getResources().getDisplayMetrics());
     }
 
     public void triggerSlide() {
-        Log.e("trigger", "1");
         overflowGestureListener.slide(0);
     }
 
     @Override
     protected void onDetachedFromWindow() {
-        Log.e("detached", "1");
         super.onDetachedFromWindow();
         overflowGestureListener.clearReferences();
-//        ViewCompat.setBackgroundTintList(fab, null);
-//        fab.setImageResource(0);
-//        fab.setImageDrawable(null);
-//        fab.setImageBitmap(null);
-//        fab = null;
+
         contentFrame = null;
     }
 

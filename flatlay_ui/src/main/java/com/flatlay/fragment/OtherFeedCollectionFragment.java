@@ -48,7 +48,7 @@ public class OtherFeedCollectionFragment extends BaseFragment implements View.On
     private String other_user_id, other_user_name, image, otherUserId = "";
     private GridView other_imagesList;
     private MyMaterialContentOverflow3 overflow2;
-    private TextView other_nameText, other_followertext1, other_followingtext1,other_followertext2,other_followingtext2;
+    private TextView other_nameText, other_followertext1, other_followingtext1, other_followertext2, other_followingtext2;
     private Button other_button11, other_button22;
     private ListView other_collectionList;
     private InspirationGridAdapter other_inspirationGridAdapter;

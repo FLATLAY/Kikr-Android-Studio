@@ -1,5 +1,6 @@
 package com.flatlay.fragment;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -29,6 +30,8 @@ import com.flatlay.adapter.CustomizeInterestPeopleListAdapter;
 import com.flatlay.adapter.FeaturedTabAdapter;
 import com.flatlay.adapter.ProductSearchGridAdapter;
 import com.flatlay.adapter.StoreGridAdapter;
+import com.flatlay.post_upload.FragmentPostUploadTag;
+import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
 import com.flatlay.utility.MyMaterialContentOverflow3;
@@ -38,6 +41,7 @@ import com.flatlaylib.api.GeneralSearchApi;
 import com.flatlaylib.bean.BrandList;
 import com.flatlaylib.bean.BrandResult;
 import com.flatlaylib.bean.FeaturedTabData;
+import com.flatlaylib.bean.Product;
 import com.flatlaylib.bean.ProductResult;
 import com.flatlaylib.bean.UserResult;
 import com.flatlaylib.db.UserPreference;
@@ -56,7 +60,7 @@ import java.util.List;
  */
 
 public class SearchProductFragment extends BaseFragment implements View.OnClickListener {
-    private View mainView, highlight3, highlight2, highlight1;
+    private View mainView, highlight3, highlight2, highlight1, white_line;
     private MyMaterialContentOverflow3 overflow2;
     private ImageView filter_icon, filter_icon2;
     private TextView peopletext, productsText, shopText, invite_text, clothing_text, music_text, pet_text,
@@ -72,7 +76,7 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
             game_layout, pet_layout, music_layout, shops_layout;
     private GridView product_result_list, shopList;
     private ListView user_result_list;
-    private FragmentInspirationSection section;
+    private BaseFragment section;
     private ProductSearchGridAdapter productSearchdAdapter;
     private String resultCategory = "", filter2 = "", filter3 = "", category = "";
     private List<TextView> group1, group2;
@@ -91,42 +95,32 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
     private List<UserResult> interestUserList = new ArrayList<>();
     private CustomizeInterestPeopleListAdapter interestPeopleListAdapter;
     private AllBrandGridAdapter allBrandGridAdapter;
+    private ProgressBarDialog mProgressBarDialog;
 
-    public SearchProductFragment(MyMaterialContentOverflow3 overflow2, FragmentInspirationSection section, String search_text, boolean displayAllPeople, int indexSearch) {
-        Log.e("SearchProduct", "1");
-
-        this.overflow2 = overflow2;
-        this.section = section;
-        this.search_text = search_text;
-        this.displayAllPeople = displayAllPeople;
-        this.indexSearch = indexSearch;
-//        indexSearch = UserPreference.getInstance().getSearchIndex();
-    }
-
-    public SearchProductFragment(MyMaterialContentOverflow3 overflow2, FragmentInspirationSection section, String search_text, boolean displayAllPeople, int indexSearch, int ppsIndex) {
+    public SearchProductFragment(MyMaterialContentOverflow3 overflow2, BaseFragment section, String search_text, boolean displayAllPeople, int indexSearch) {
 
         this.overflow2 = overflow2;
         this.section = section;
         this.search_text = search_text;
         this.displayAllPeople = displayAllPeople;
         this.indexSearch = indexSearch;
-        this.ppsIndex = ppsIndex;
     }
 
-    public SearchProductFragment(MyMaterialContentOverflow3 overflow2, FragmentInspirationSection section, String search_text, boolean displayAllPeople) {
-        Log.e("SearchProduct", "2");
+
+    public SearchProductFragment(MyMaterialContentOverflow3 overflow2, BaseFragment section, String search_text, boolean displayAllPeople) {
 
         this.overflow2 = overflow2;
         this.section = section;
         this.search_text = search_text;
         this.displayAllPeople = displayAllPeople;
-        indexSearch = UserPreference.getInstance().getSearchIndex();
-        Log.e("SearchProduct", "aaarrrr+" + indexSearch);
+        if (section instanceof FragmentInspirationSection)
+            indexSearch = UserPreference.getInstance().getSearchIndex();
+        if (section instanceof FragmentPostUploadTag)
+            indexSearch = 3;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.e("SearchProduct", "onCreateView");
 
         mainView = inflater.inflate(R.layout.search_fragment_layout, null);
         return mainView;
@@ -136,9 +130,7 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.people_text_layout:
-                Log.e("SearchProduct", "people_text_layout");
                 overflow2.setOpen();
-                section.setInitialSearchText();
                 people_layout.setVisibility(View.VISIBLE);
                 products_layout.setVisibility(View.GONE);
                 products_result_layout.setVisibility(View.GONE);
@@ -153,32 +145,26 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
                 UserPreference.getInstance().setPpsIndex(ppsIndex);
                 break;
             case R.id.products_text_layout:
-                Log.e("SearchProduct", "products_text_layout");
-
                 overflow2.setOpen();
                 ppsIndex = 1;
                 UserPreference.getInstance().setPpsIndex(ppsIndex);
-                section.setInitialSearchText();
-                people_layout.setVisibility(View.GONE);
-                products_layout.setVisibility(View.VISIBLE);
-                products_result_layout.setVisibility(View.GONE);
-                products_filter_layout.setVisibility(View.GONE);
-                shops_layout.setVisibility(View.GONE);
-                highlight1.setVisibility(View.INVISIBLE);
-                highlight2.setVisibility(View.VISIBLE);
-                highlight3.setVisibility(View.INVISIBLE);
-                indexSearch = 3;
-                UserPreference.getInstance().setSearchIndex(indexSearch);
-                Log.e("SearchProduct", "aaaaa" + UserPreference.getInstance().getSearchIndex());
-
+                if (section instanceof FragmentInspirationSection) {
+                    people_layout.setVisibility(View.GONE);
+                    products_layout.setVisibility(View.VISIBLE);
+                    products_result_layout.setVisibility(View.GONE);
+                    products_filter_layout.setVisibility(View.GONE);
+                    shops_layout.setVisibility(View.GONE);
+                    highlight1.setVisibility(View.INVISIBLE);
+                    highlight2.setVisibility(View.VISIBLE);
+                    highlight3.setVisibility(View.INVISIBLE);
+                    indexSearch = 3;
+                    UserPreference.getInstance().setSearchIndex(indexSearch);
+                }
                 break;
             case R.id.shop_text_layout:
-                Log.e("SearchProduct", "shop_text_layout");
-
                 overflow2.setOpen();
                 ppsIndex = 2;
                 UserPreference.getInstance().setPpsIndex(ppsIndex);
-                section.setInitialSearchText();
                 people_layout.setVisibility(View.GONE);
                 products_layout.setVisibility(View.GONE);
                 products_result_layout.setVisibility(View.GONE);
@@ -188,7 +174,6 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
                 highlight2.setVisibility(View.INVISIBLE);
                 highlight3.setVisibility(View.VISIBLE);
                 if (indexSearch != 2) {
-                    Log.e("SearchProduct", "bbbbbbb");
                     displayAllShops();
                 }
                 indexSearch = 2;
@@ -493,14 +478,22 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
 
     @Override
     public void initUI(Bundle savedInstanceState) {
-        Log.e("SearchProduct", "initUI");
+        mProgressBarDialog = new ProgressBarDialog(mContext);
 
         peopletext_layout = (RelativeLayout) mainView.findViewById(R.id.people_text_layout);
         peopletext = (TextView) mainView.findViewById(R.id.people_text);
         peopletext.setTypeface(FontUtility.setMontserratLight(mContext));
+        white_line = (View) mainView.findViewById(R.id.white_line);
         highlight1 = (View) mainView.findViewById(R.id.highlight1);
         highlight2 = (View) mainView.findViewById(R.id.highlight2);
         highlight3 = (View) mainView.findViewById(R.id.highlight3);
+        if (indexSearch == 1) {
+            highlight1.setVisibility(View.VISIBLE);
+        } else if (indexSearch == 3) {
+            highlight2.setVisibility(View.VISIBLE);
+        } else {
+            highlight3.setVisibility(View.VISIBLE);
+        }
         productsText_layout = (RelativeLayout) mainView.findViewById(R.id.products_text_layout);
         productsText = (TextView) mainView.findViewById(R.id.products_text);
         productsText.setTypeface(FontUtility.setMontserratLight(mContext));
@@ -585,7 +578,17 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
         health_layout = (LinearLayout) mainView.findViewById(R.id.health_layout);
         jewelry_layout = (LinearLayout) mainView.findViewById(R.id.jewelry_layout);
         product_result_list = (GridView) mainView.findViewById(R.id.product_result_list);
-//        indexSearch = UserPreference.getInstance().getSearchIndex();
+        if (section instanceof FragmentPostUploadTag) {
+            peopletext_layout.setVisibility(View.GONE);
+            productsText_layout.setVisibility(View.GONE);
+            shopText_layout.setVisibility(View.GONE);
+            people_layout.setVisibility(View.GONE);
+            products_layout.setVisibility(View.VISIBLE);
+            products_result_layout.setVisibility(View.GONE);
+            products_filter_layout.setVisibility(View.GONE);
+            shops_layout.setVisibility(View.GONE);
+            white_line.setVisibility(View.GONE);
+        }
         user_result_list.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -627,7 +630,6 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
                     if (((HomeActivity) mContext).checkInternet()) {
                         page5++;
                         isFirstTime_shop_list = false;
-                        Log.e("SearchProduct","scrolling");
                         if (search_text.length() > 0) {
                         } else
                             displayAllShops();
@@ -638,15 +640,8 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
         });
 
         if (search_text == null || search_text.length() == 0) {
-            Log.e("SearchShop", "a+" + indexSearch);
 
             if (indexSearch == 2) {
-                Log.e("SearchShop", "b");
-//                people_layout.setVisibility(View.GONE);
-//                products_layout.setVisibility(View.GONE);
-//                products_result_layout.setVisibility(View.GONE);
-//                products_filter_layout.setVisibility(View.GONE);
-//                shops_layout.setVisibility(View.VISIBLE);
                 storeGridAdapter = null;
                 shop_list_isloding = false;
                 page5 = 0;
@@ -655,24 +650,17 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
                 isFirstTime_shop_list = true;
                 displayAllShops();
             } else if (indexSearch == 3) {
-                Log.e("SearchProduct", "c");
 
                 product_list_isloding = false;
                 page6 = 0;
                 interestProductList.clear();
-//                    isFirstTime_product_list = true;
                 people_layout.setVisibility(View.GONE);
                 shops_layout.setVisibility(View.GONE);
                 products_filter_layout.setVisibility(View.GONE);
                 products_result_layout.setVisibility(View.GONE);
                 products_layout.setVisibility(View.VISIBLE);
             } else if ((indexSearch == 0 || indexSearch == 1)) {
-                Log.e("SearchProduct", "d");
-//                people_layout.setVisibility(View.VISIBLE);
-//                products_layout.setVisibility(View.GONE);
-//                products_result_layout.setVisibility(View.GONE);
-//                products_filter_layout.setVisibility(View.GONE);
-//                shops_layout.setVisibility(View.GONE);
+
                 interestPeopleListAdapter = null;
                 user_list_isloding = false;
                 page4 = 0;
@@ -683,40 +671,23 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
             }
         } else {
             if (indexSearch == 2) {
-                Log.e("SearchProduct", "e");
 
                 storeGridAdapter = null;
                 shop_list_isloding = false;
                 page5 = 0;
                 interestShopList.clear();
                 isFirstTime_shop_list = true;
-//                people_layout.setVisibility(View.GONE);
-//                products_layout.setVisibility(View.GONE);
-//                products_result_layout.setVisibility(View.GONE);
-//                products_filter_layout.setVisibility(View.GONE);
-//                shops_layout.setVisibility(View.VISIBLE);
+
                 displaySearchShopResult();
-            }
-            else if (indexSearch == 3) {
-                Log.e("SearchProduct", "f");
+            } else if (indexSearch == 3) {
 
                 product_list_isloding = false;
                 page6 = 0;
                 interestProductList.clear();
-//            isFirstTime_product_list = true;
-//                people_layout.setVisibility(View.GONE);
-//                shops_layout.setVisibility(View.GONE);
-//                products_filter_layout.setVisibility(View.GONE);
-//                products_layout.setVisibility(View.GONE);
-//                products_result_layout.setVisibility(View.VISIBLE);
+
                 displaySearchProductResult();
             } else {
-                Log.e("SearchProduct", "g");
-//                people_layout.setVisibility(View.VISIBLE);
-//                products_layout.setVisibility(View.GONE);
-//                products_result_layout.setVisibility(View.GONE);
-//                products_filter_layout.setVisibility(View.GONE);
-//                shops_layout.setVisibility(View.GONE);
+
                 interestPeopleListAdapter = null;
                 user_list_isloding = false;
                 page4 = 0;
@@ -729,12 +700,7 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
 
     @Override
     public void setData(Bundle bundle) {
-        Log.e("SearchProduct", "setData");
 
-//        if (displayAllPeople) {
-//            displayAllPeopleResult();
-//
-//        }
     }
 
     @Override
@@ -780,7 +746,6 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
     }
 
     private void displayAllPeopleResult() {
-        Log.e("SearchProduct", "displayAllPeopleResult");
         highlight1.setVisibility(View.VISIBLE);
         highlight2.setVisibility(View.INVISIBLE);
         highlight3.setVisibility(View.INVISIBLE);
@@ -811,46 +776,9 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
                             final String other_user_id = interestList.get(position).getItem_id();
                             final String other_user_name = interestList.get(position).getItem_name();
                             final String image = interestList.get(position).getProfile_pic();
-//                            if (currentlayout != null)
-//                                currentlayout.setVisibility(View.GONE);
-//                            if (currentlayout2 != null)
-//                                currentlayout2.setVisibility(View.GONE);
+
                             ((HomeActivity) mContext).myAddFragment(new OtherFeedCollectionFragment(overflow2, other_user_id, other_user_name, image));
 
-//                            if (!other_user_id.equals(otherUserId)) {
-//                                otherUserId = other_user_id;
-//                                is_other_FirstTime_feed = true;
-//                                isother_Loading_feed = false;
-//                                page7 = 0;
-//                                other_product_list.clear();
-//                                CommonUtility.setImage(mContext, image, other_profile_pic, R.drawable.profile_icon);
-//                                other_nameText.setText(other_user_name);
-//                                other_button22.setTextColor(Color.BLACK);
-//                                other_button11.setTextColor(Color.WHITE);
-//                                other_button22.setBackgroundResource(R.drawable.white_button_noborder);
-//                                other_button11.setBackgroundResource(R.drawable.green_corner_button);
-//                                getOtherInspirationFeedList(other_user_id);
-//                                getOtherCollectionList(other_user_id);
-//                                final MyProfileApi myProfileApi = new MyProfileApi(new ServiceCallback() {
-//                                    @Override
-//                                    public void handleOnSuccess(Object object) {
-//                                        MyProfileRes myProfileRes = (MyProfileRes) object;
-//                                        other_followersLists = myProfileRes.getFollowers_list();
-//                                        other_followingLists = myProfileRes.getFollowing_list();
-//                                        other_followertext1.setText(String.valueOf(other_followingLists.size()));
-//                                        other_followingtext1.setText(String.valueOf(other_followersLists.size()));
-//                                    }
-//
-//                                    @Override
-//                                    public void handleOnFailure(ServiceException exception, Object object) {
-//
-//                                    }
-//                                });
-//                                myProfileApi.getUserProfileDetail(other_user_id, UserPreference.getInstance().getUserID());
-//                                myProfileApi.execute();
-//                            }
-//                            overflow_layout5.setVisibility(View.VISIBLE);
-//                            currentlayout = overflow_layout5;
                         }
                     });
                     if (overflow2.isOpen())
@@ -876,7 +804,6 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
     }
 
     private void displaySearchPeopleResult() {
-        Log.e("SearchProduct", "displaySearchPeopleResult");
         highlight1.setVisibility(View.VISIBLE);
         highlight2.setVisibility(View.INVISIBLE);
         highlight3.setVisibility(View.INVISIBLE);
@@ -903,46 +830,8 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
                             final String other_user_id = interestUserList.get(position).getId();
                             final String other_user_name = interestUserList.get(position).getName();
                             final String image = interestUserList.get(position).getImg();
-//                            if (currentlayout != null)
-//                                currentlayout.setVisibility(View.GONE);
-//                            if (currentlayout2 != null)
-//                                currentlayout2.setVisibility(View.GONE);
                             ((HomeActivity) mContext).myAddFragment(new OtherFeedCollectionFragment(overflow2, other_user_id, other_user_name, image));
 
-//                            if (!other_user_id.equals(otherUserId)) {
-//                                otherUserId = other_user_id;
-//                                is_other_FirstTime_feed = true;
-//                                isother_Loading_feed = false;
-//                                page7 = 0;
-//                                other_product_list.clear();
-//                                CommonUtility.setImage(mContext, image, other_profile_pic, R.drawable.profile_icon);
-//                                other_nameText.setText(other_user_name);
-//                                other_button22.setTextColor(Color.BLACK);
-//                                other_button11.setTextColor(Color.WHITE);
-//                                other_button22.setBackgroundResource(R.drawable.white_button_noborder);
-//                                other_button11.setBackgroundResource(R.drawable.green_corner_button);
-//                                getOtherInspirationFeedList(other_user_id);
-//                                getOtherCollectionList(other_user_id);
-//                                final MyProfileApi myProfileApi = new MyProfileApi(new ServiceCallback() {
-//                                    @Override
-//                                    public void handleOnSuccess(Object object) {
-//                                        MyProfileRes myProfileRes = (MyProfileRes) object;
-//                                        other_followersLists = myProfileRes.getFollowers_list();
-//                                        other_followingLists = myProfileRes.getFollowing_list();
-//                                        other_followertext1.setText(String.valueOf(other_followingLists.size()));
-//                                        other_followingtext1.setText(String.valueOf(other_followersLists.size()));
-//                                    }
-//
-//                                    @Override
-//                                    public void handleOnFailure(ServiceException exception, Object object) {
-//
-//                                    }
-//                                });
-//                                myProfileApi.getUserProfileDetail(other_user_id, UserPreference.getInstance().getUserID());
-//                                myProfileApi.execute();
-//                            }
-//                            overflow_layout5.setVisibility(View.VISIBLE);
-//                            currentlayout = overflow_layout5;
                         }
                     });
                     overflow2.setOpen();
@@ -976,22 +865,33 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
         products_filter_layout.setVisibility(View.GONE);
         products_layout.setVisibility(View.GONE);
         products_result_layout.setVisibility(View.VISIBLE);
-        Log.e("SearchProduct", "displaySearchProductResult");
 
         overflow2.setOpen();
         product_list_isloding = !product_list_isloding;
+        mProgressBarDialog = new ProgressBarDialog(mContext);
+        mProgressBarDialog.show();
         final GeneralSearchApi generalSearchApi = new GeneralSearchApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
                 overflow2.setOpen();
                 resultCategory = category;
+                if (mProgressBarDialog.isShowing())
+                    mProgressBarDialog.dismiss();
                 product_list_isloding = !product_list_isloding;
                 GeneralSearchRes generalSearchRes = (GeneralSearchRes) object;
                 if (generalSearchRes.getProducts().size() < 10) product_list_isloding = true;
                 interestProductList.addAll(generalSearchRes.getProducts());
                 temporaryProoducts = categoryFilter(interestProductList, resultCategory);
                 if (temporaryProoducts.size() > 0 && isFirstTime_shop_list) {
-                    productSearchdAdapter = new ProductSearchGridAdapter(mContext, temporaryProoducts);
+                    if (section instanceof FragmentInspirationSection)
+                        productSearchdAdapter = new ProductSearchGridAdapter(mContext, temporaryProoducts);
+                    else
+                        productSearchdAdapter = new ProductSearchGridAdapter(mContext, temporaryProoducts, true, new ProductSearchGridAdapter.MyItemsListener() {
+                            @Override
+                            public void onOkButton(Product currentProduct) {
+                                ((FragmentPostUploadTag) section).chooseProduct(currentProduct);
+                            }
+                        });
                     overflow2.setOpen();
                     product_result_list.setAdapter(productSearchdAdapter);
                 } else if (productSearchdAdapter != null) {
@@ -1004,15 +904,17 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
+                if (mProgressBarDialog.isShowing())
+                    mProgressBarDialog.dismiss();
                 product_list_isloding = !product_list_isloding;
             }
         });
+
         generalSearchApi.generalSearch(search_text, page6);
         generalSearchApi.execute();
     }
 
     private void displayAllShops() {
-        Log.e("SearchProduct", "displayAllShops");
         highlight1.setVisibility(View.INVISIBLE);
         highlight2.setVisibility(View.INVISIBLE);
         highlight3.setVisibility(View.VISIBLE);
@@ -1026,7 +928,7 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
         final BrandListApi brandListApi = new BrandListApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
-//
+
                 shop_list_isloding = !shop_list_isloding;
                 BrandListRes brandListRes = (BrandListRes) object;
                 if (brandListRes.getData().size() < 10) shop_list_isloding = true;
@@ -1053,7 +955,6 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
     }
 
     private void displaySearchShopResult() {
-        Log.e("SearchProduct", "displaySearchShopResult");
         highlight1.setVisibility(View.INVISIBLE);
         highlight2.setVisibility(View.INVISIBLE);
         highlight3.setVisibility(View.VISIBLE);

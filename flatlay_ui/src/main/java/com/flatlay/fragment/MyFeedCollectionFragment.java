@@ -57,27 +57,28 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
     private View mainView;
     private ImageView info_image;
     private MyMaterialContentOverflow3 overflow2;
-    private RelativeLayout bell_icon,info_icon;
-    private TextView performanceText, nameText,followingtext1,followertext2,followertext1,followingtext2;
+    private RelativeLayout bell_icon, info_icon;
+    private TextView performanceText, nameText, followingtext1, followertext2, followertext1, followingtext2;
     private FragmentProfileCollectionAdapter collectionAdapter;
     private ListView collectionList;
     private List<UserData> userDetails;
     private List<Product> product_data;
-    private List<Inspiration> myDetailProductList = new ArrayList<Inspiration>(),myProductList = new ArrayList<Inspiration>();
-    private boolean isFirstTime_myCol = true,mycoll_isloading = false,myins_isloding = false,
-            showPerformance = false, isOnFeedPage = true,isInfo=false,my_detail_ins_isloding = false,
-            isFirstTime_mypos_detail = true,isFirstTime_mypos = true;
-    private int collAdapterIndex = -1, feedAdapterIndex = -1, page3 = 0,firstVisibleItem2 = 0,
-            visibleItemCount2 = 0, totalItemCount2 = 0,firstVisibleItem4 = 0, visibleItemCount4 = 0,
-            totalItemCount4 = 0,page1 = 0;
+    private List<Inspiration> myDetailProductList = new ArrayList<Inspiration>(), myProductList = new ArrayList<Inspiration>();
+    private boolean isFirstTime_myCol = true, mycoll_isloading = false, myins_isloding = false,
+            showPerformance = false, isOnFeedPage = true, isInfo = false, my_detail_ins_isloding = false,
+            isFirstTime_mypos_detail = true, isFirstTime_mypos = true;
+    private int collAdapterIndex = -1, feedAdapterIndex = -1, page3 = 0, firstVisibleItem2 = 0,
+            visibleItemCount2 = 0, totalItemCount2 = 0, firstVisibleItem4 = 0, visibleItemCount4 = 0,
+            totalItemCount4 = 0, page1 = 0;
     private FragmentProfileView fragmentProfileView;
     private Button button1, button2;
     private ProductDetailGridAdapter productDetailGridAdapter;
-    private InspirationGridAdapter inspirationGridAdapter,inspirationGridAdapter2;
-    private List<FollowerList> followersLists = new ArrayList<FollowerList>(),followingLists = new ArrayList<FollowerList>();
-    private String userId=UserPreference.getInstance().getUserID();
+    private InspirationGridAdapter inspirationGridAdapter, inspirationGridAdapter2;
+    private List<FollowerList> followersLists = new ArrayList<FollowerList>(), followingLists = new ArrayList<FollowerList>();
+    private String userId = UserPreference.getInstance().getUserID();
     private List<CollectionList> collectionLists2;
-    private GridView imagesList,feedDetail,productDetail;
+    private GridView imagesList, feedDetail, productDetail;
+
     public MyFeedCollectionFragment(MyMaterialContentOverflow3 overflow2, boolean showPerformance, boolean isOnFeedPage) {
         this.overflow2 = overflow2;
         this.showPerformance = showPerformance;
@@ -96,10 +97,9 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
 
             case R.id.bell_icon:
                 overflow2.setOpen();
-                ((HomeActivity)mContext).myAddFragment(new NotificationListFragment(overflow2,isOnFeedPage));
+                ((HomeActivity) mContext).myAddFragment(new NotificationListFragment(overflow2, isOnFeedPage));
                 break;
             case R.id.button11:
-                Log.e("button1","button1");
                 overflow2.setOpen();
                 isOnFeedPage = true;
                 button2.setTextColor(Color.BLACK);
@@ -107,18 +107,15 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
                 button2.setBackgroundResource(R.drawable.white_button_noborder);
                 button1.setBackgroundResource(R.drawable.green_corner_button);
                 if (isInfo) {
-                    Log.e("button1","button1-1");
                     imagesList.setVisibility(View.GONE);
                     feedDetail.setVisibility(View.VISIBLE);
                 } else {
-                    Log.e("button1","button1-2");
                     imagesList.setVisibility(View.VISIBLE);
                     feedDetail.setVisibility(View.GONE);
                 }
                 collectionList.setVisibility(View.GONE);
                 break;
             case R.id.button22:
-                Log.e("button2","button2");
                 overflow2.setOpen();
                 isOnFeedPage = false;
                 button1.setTextColor(Color.BLACK);
@@ -130,14 +127,13 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
                 break;
             case R.id.info_icon:
                 overflow2.setOpen();
-                ((HomeActivity)mContext).myAddFragment(new ProfileChoiceFragment(overflow2,isOnFeedPage));
+                ((HomeActivity) mContext).myAddFragment(new ProfileChoiceFragment(overflow2, isOnFeedPage));
                 break;
         }
     }
 
     @Override
     public void initUI(Bundle savedInstanceState) {
-        Log.e("button1","button1-start");
 
         bell_icon = (RelativeLayout) mainView.findViewById(R.id.bell_icon);
         performanceText = (TextView) mainView.findViewById(R.id.performance_text);
@@ -165,7 +161,6 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
         followingtext2.setTypeface(FontUtility.setMontserratLight(mContext));
         info_image = (ImageView) mainView.findViewById(R.id.info_image);
         if (showPerformance == true) {
-            Log.e("button1","button1-true");
 
             info_image.setImageResource(R.drawable.info_teal);
             collAdapterIndex = 1;
@@ -175,7 +170,6 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
             myDetailProductList.clear();
             page3 = 0;
         } else {
-            Log.e("button1","button1-false");
 
             collAdapterIndex = 0;
             feedAdapterIndex = 0;
@@ -202,8 +196,7 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
         myProfileApi.getUserProfileDetail(UserPreference.getInstance().getUserID(),
                 UserPreference.getInstance().getUserID());
         myProfileApi.execute();
-        getMyInspirationFeedList();
-        getCollectionList();
+
         feedDetail = (GridView) mainView.findViewById(R.id.feedDetail);
         feedDetail.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -227,14 +220,12 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
             }
         });
         if (isOnFeedPage) {
-            Log.e("button1","button1-on");
 
             imagesList.setVisibility(View.VISIBLE);
             collectionList.setVisibility(View.GONE);
             feedDetail.setVisibility(View.GONE);
             productDetail.setVisibility(View.GONE);
         } else {
-            Log.e("button1","button1-not on");
 
             imagesList.setVisibility(View.GONE);
             collectionList.setVisibility(View.VISIBLE);
@@ -264,6 +255,8 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
                 }
             }
         });
+        getCollectionList();
+        getMyInspirationFeedList();
     }
 
     @Override
@@ -287,7 +280,6 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
     private void displayCollectionList() {
         if (collectionLists2.size() < 10) mycoll_isloading = true;
         if (collectionLists2.size() > 0 && isFirstTime_myCol) {
-            Log.e("button1","button1-firstTimeColl");
             collectionAdapter = new FragmentProfileCollectionAdapter(mContext, collectionLists2,
                     UserPreference.getInstance().getUserID(), fragmentProfileView, null, collAdapterIndex, new FragmentProfileCollectionAdapter.ListAdapterListener() {
                 @Override
@@ -327,11 +319,17 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
     private void getMyInspirationFeedList() {
         if (feedAdapterIndex == 0) myins_isloding = !myins_isloding;
         else my_detail_ins_isloding = !my_detail_ins_isloding;
-
+        if (overflow2.isOpen()) overflow2.setOpen();
+        if (feedAdapterIndex == 0) {
+            feedDetail.setVisibility(View.GONE);
+            imagesList.setVisibility(View.VISIBLE);
+        } else if (feedAdapterIndex == 1) {
+            feedDetail.setVisibility(View.VISIBLE);
+            imagesList.setVisibility(View.GONE);
+        }
         final InspirationFeedApi inspirationFeedApi = new InspirationFeedApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
-                Log.e("button1","button1-getMyInspirationFeedList");
 
                 InspirationFeedRes inspirationFeedRes = (InspirationFeedRes) object;
                 if (feedAdapterIndex == 0) {
@@ -364,52 +362,34 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
     }
 
     private void displayMyInspirationFeedList() {
-        Log.e("button1","button1-displayMyInspirationFeedList");
 
         if (overflow2.isOpen()) overflow2.setOpen();
         if (feedAdapterIndex == 0) {
             if (myProductList.size() > 0 && isFirstTime_mypos) {
                 inspirationGridAdapter = new InspirationGridAdapter(mContext, myProductList, 0);
-                if (overflow2.isOpen()) overflow2.setOpen();
                 imagesList.setAdapter(inspirationGridAdapter);
-                if (overflow2.isOpen()) overflow2.setOpen();
-                feedDetail.setVisibility(View.GONE);
-                imagesList.setVisibility(View.VISIBLE);
             } else if (inspirationGridAdapter != null) {
-                if (overflow2.isOpen()) overflow2.setOpen();
                 inspirationGridAdapter.setData(myProductList);
-                if (overflow2.isOpen()) overflow2.setOpen();
                 inspirationGridAdapter.notifyDataSetChanged();
-                if (overflow2.isOpen()) overflow2.setOpen();
-                feedDetail.setVisibility(View.GONE);
-                imagesList.setVisibility(View.VISIBLE);
             }
         } else if (feedAdapterIndex == 1) {
-            Log.e("button1","button1-ll"+myDetailProductList.size());
-            Log.e("button1","button1-tt"+isFirstTime_mypos_detail);
 
             if (myDetailProductList.size() > 0 && isFirstTime_mypos_detail) {
-                Log.e("button1","button1-frirstTime");
                 inspirationGridAdapter2 = new InspirationGridAdapter(mContext, myDetailProductList, 1);
-                if (overflow2.isOpen()) overflow2.setOpen();
                 feedDetail.setAdapter(inspirationGridAdapter2);
-                if (overflow2.isOpen()) overflow2.setOpen();
-                feedDetail.setVisibility(View.VISIBLE);
-                imagesList.setVisibility(View.GONE);
             } else if (inspirationGridAdapter2 != null) {
-                if (overflow2.isOpen()) overflow2.setOpen();
                 inspirationGridAdapter2.setData(myDetailProductList);
-                if (overflow2.isOpen()) overflow2.setOpen();
                 inspirationGridAdapter2.notifyDataSetChanged();
-                if (overflow2.isOpen()) overflow2.setOpen();
-                feedDetail.setVisibility(View.VISIBLE);
-                imagesList.setVisibility(View.GONE);
             }
         }
     }
 
     private void getCollectionList() {
         if (overflow2.isOpen()) overflow2.setOpen();
+        imagesList.setVisibility(View.GONE);
+        collectionList.setVisibility(View.GONE);
+        feedDetail.setVisibility(View.GONE);
+        productDetail.setVisibility(View.VISIBLE);
         mycoll_isloading = !mycoll_isloading;
         final CollectionApi collectionApi = new CollectionApi(new ServiceCallback() {
             @Override

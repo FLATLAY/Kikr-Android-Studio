@@ -86,16 +86,6 @@ public class HelpPressMenuDialog extends Dialog {
         mainRL.setVisibility(View.VISIBLE);
         startMainRLFadeAnimation(mainRL);
 
-
-//        img1.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                startMainRLFadeAnimation(mainRL);
-//            }
-//        });
-
-
         parentRL.setOnClickListener(new View.OnClickListener() {
 
             @Override

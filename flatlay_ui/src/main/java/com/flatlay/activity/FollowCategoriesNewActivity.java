@@ -31,12 +31,9 @@ import com.flatlaylib.utils.Syso;
 
 public class FollowCategoriesNewActivity extends BaseActivity implements OnClickListener, ServiceCallback {
     private ListView listView;
-    public final static String TAG="FollowCategoriesNew";
+    public final static String TAG = "FollowCategoriesNew";
     private FollowCategoryNewAdapter categoryAdapter;
     private LinearLayout backIconLayout;
-    //  public static TextView mRightText;
-    // private ProgressBarDialog mProgressBarDialog;
-    //private TextView mDataNotFoundTextView;
     private int pagenum = 0;
     private boolean isLoading = false, isFirstTime = true, isFromHome = false;
     public static int selectedCount = 0;
@@ -45,7 +42,7 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        Log.w(TAG,"FollowCategoriesNewActivity");
+        Log.w(TAG, "FollowCategoriesNewActivity");
         CommonUtility.noTitleActivity(context);
         UserPreference.getInstance().setCurrentScreen(Screen.CategoryScreen);
         setContentView(R.layout.activity_follow_categories_new);
@@ -63,8 +60,6 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
         listView = (ListView) findViewById(R.id.categoryGridView);
         nextButton = (Button) findViewById(R.id.nextButton);
         backIconLayout = (LinearLayout) findViewById(R.id.backIconLayout);
-
-        //	mDataNotFoundTextView=(TextView) findViewById(R.id.dataNotFoundTextView);
     }
 
     @Override
@@ -124,7 +119,6 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
 
     @Override
     public void setClickListener() {
-//        nextButton.setOnClickListener(this);
         backIconLayout.setOnClickListener(this);
     }
 
@@ -145,12 +139,6 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.nextButton:
-//                if (selectedCount > 0)
-//                    goToNextScreen();
-//                else
-//                    AlertUtils.showToast(context, "Follow at least 1 category.");
-//                break;
 
             case R.id.backIconLayout:
                 onBackPressed();
@@ -161,31 +149,16 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
 
     private void getCategoryList() {
         isLoading = !isLoading;
-        //  mProgressBarDialog = new ProgressBarDialog(context);
         if (pagenum > 0)
             showFooter();
-        //else
-        //   mProgressBarDialog.show();
-
         final CategoryListApi listApi = new CategoryListApi(this);
         listApi.getCategoryList(Integer.toString(pagenum));
         listApi.execute();
-
-//        mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                isLoading = !isLoading;
-//                listApi.cancel();
-//            }
-//        });
     }
 
 
     @Override
     public void handleOnSuccess(Object object) {
-//        if (mProgressBarDialog.isShowing())
-//            mProgressBarDialog.dismiss();
-//        else
         hideFutter();
         hideDataNotFound();
         isLoading = !isLoading;
@@ -195,10 +168,7 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
             isLoading = true;
         }
         if (categories.size() == 0 && isFirstTime) {
-            //	mDataNotFoundTextView.setVisibility(View.VISIBLE);
         } else if (categories.size() > 0 && isFirstTime) {
-            //mDataNotFoundTextView.setVisibility(View.GONE);
-
             List<Category> reorderedCategories = new ArrayList<Category>();
             List<Integer> imgList = new ArrayList<>();
             int womensImage = R.drawable.womens_fashion;
@@ -250,7 +220,6 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
 
     private void goToNextScreen() {
         startActivity(PinGuideActivity.class);
-//		finish();
     }
 
     @Override
@@ -260,9 +229,6 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
-//        if (mProgressBarDialog.isShowing())
-//            mProgressBarDialog.dismiss();
-//        else
         hideFutter();
         isLoading = !isLoading;
         Syso.info("In handleOnFailure>>" + object);

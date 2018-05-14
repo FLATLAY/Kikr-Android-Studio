@@ -74,8 +74,7 @@ public class LogoutDialogWithTab extends Dialog {
                     HelpPreference.getInstance().clearAllData();
 
                     AccessToken token = AccessToken.getCurrentAccessToken();
-                    if(token != null)
-                    {
+                    if (token != null) {
                         LoginManager.getInstance().logOut();
                     }
                     SessionStore.resetTwitterLogin(mContext);

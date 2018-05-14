@@ -69,7 +69,6 @@ public class CartListFragment extends BaseFragment implements View.OnClickListen
     private ImageView arrow1, arrow2;
     private EditText enter_promo_text;
     private MyMaterialContentOverflow3 overflow2;
-//    private boolean firstTimeGetCard;
     private List<Product> my_productLists;
     private String promoCode = "";
     private double total_price = 0;
@@ -77,7 +76,6 @@ public class CartListFragment extends BaseFragment implements View.OnClickListen
 
     public CartListFragment(MyMaterialContentOverflow3 overflow2) {
         this.overflow2 = overflow2;
-//        this.firstTimeGetCard = firstTimeGetCard;
     }
 
 
@@ -100,7 +98,6 @@ public class CartListFragment extends BaseFragment implements View.OnClickListen
                 }
                 break;
             case R.id.checkoutButton:
-                //need to change!!!!!!!!!!!!!!!!
                 ((HomeActivity) mContext).myAddFragment(new CartAddressFragment(my_productLists, total_price));
                 break;
             case R.id.fillButton:
@@ -170,10 +167,6 @@ public class CartListFragment extends BaseFragment implements View.OnClickListen
                 getCartList();
             }
         }, 700);
-//        if (firstTimeGetCard) {
-//            getKikrCredits();
-//            firstTimeGetCard = false;
-//        }
     }
 
     @Override
@@ -213,10 +206,7 @@ public class CartListFragment extends BaseFragment implements View.OnClickListen
                             String.valueOf(productLists.size()));
                     items_count_text.setText(UserPreference.getInstance().getCartCount());
                     total_item_count_text.setText("Total (" + UserPreference.getInstance().getCartCount() + " Items)");
-//                    final_total_item_count_text.setText("ITEMS (" + UserPreference.getInstance().getCartCount() + " )");
-//                    subtotal_text2.setText("Subtotal (" + UserPreference.getInstance().getCartCount() + " Items)");
                     setCartItemsList(productLists);
-//                    setCartItemsList2(productLists);
                 }
             }
 
@@ -247,8 +237,6 @@ public class CartListFragment extends BaseFragment implements View.OnClickListen
                 UserPreference.getInstance().decCartCount();
                 items_count_text.setText(UserPreference.getInstance().getCartCount());
                 total_item_count_text.setText("Total (" + UserPreference.getInstance().getCartCount() + " Items)");
-//                final_total_item_count_text.setText("ITEMS (" + UserPreference.getInstance().getCartCount() + " )");
-//                subtotal_text2.setText("Subtotal (" + UserPreference.getInstance().getCartCount() + " Items)");
                 AlertUtils.showToast(mContext, "Product removed successfully");
                 layout.setVisibility(View.GONE);
             }
@@ -327,7 +315,6 @@ public class CartListFragment extends BaseFragment implements View.OnClickListen
             });
 
             sub_price_text.setText("$ " + new DecimalFormat("#,##0.00").format(new Double(total_price)));
-//            total_amount_text2.setText("$ " + new DecimalFormat("#,##0.00").format(new Double(total_price + TAX)));
             product_image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -343,79 +330,11 @@ public class CartListFragment extends BaseFragment implements View.OnClickListen
         }
     }
 
-//    protected void setCartItemsList2(final List<Product> data) {
-//        item_list2.removeAllViews();
-//        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        for (int i = 0; i < data.size(); i++) {
-//            LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.cart_item_layout, null);
-//            ImageView cancel_icon = (ImageView) layout.findViewById(R.id.cancel_icon);
-//            RoundedImageView product_image = (RoundedImageView) layout.findViewById(R.id.product_image);
-//            final Product currentProduct = data.get(i);
-//            String productImage = currentProduct.getProductimageurl();
-//            if (productImage != null && productImage.length() > 0)
-//                CommonUtility.setImage(mContext, product_image, productImage);
-//            product_image.setTag(i);
-//            ((TextView) layout.findViewById(R.id.quantity_text)).setTypeface(FontUtility.setMontserratLight(mContext));
-//            ((TextView) layout.findViewById(R.id.price_text)).setTypeface(FontUtility.setMontserratLight(mContext));
-//            ((TextView) layout.findViewById(R.id.size_text)).setTypeface(FontUtility.setMontserratLight(mContext));
-//            ((TextView) layout.findViewById(R.id.color_text)).setTypeface(FontUtility.setMontserratLight(mContext));
-//            ((TextView) layout.findViewById(R.id.product_name)).setTypeface(FontUtility.setMontserratLight(mContext));
-//            ((TextView) layout.findViewById(R.id.brand_name)).setTypeface(FontUtility.setMontserratRegular(mContext));
-//            if (currentProduct.getMerchantname() != null && currentProduct.getMerchantname().length() > 0) {
-//                ((TextView) layout.findViewById(R.id.brand_name)).setVisibility(View.VISIBLE);
-//                ((TextView) layout.findViewById(R.id.brand_name)).setText(currentProduct.getMerchantname());
-//            }
-//            if (currentProduct.getQuantity() != null && currentProduct.getQuantity().length() > 0) {
-//                ((TextView) layout.findViewById(R.id.quantity_text)).setVisibility(View.VISIBLE);
-//                ((TextView) layout.findViewById(R.id.quantity_text)).setText("Quantity: " + currentProduct.getQuantity());
-//            }
-//            if (currentProduct.getProductname() != null && currentProduct.getProductname().length() > 0) {
-//                ((TextView) layout.findViewById(R.id.product_name)).setVisibility(View.VISIBLE);
-//                ((TextView) layout.findViewById(R.id.product_name)).setText(currentProduct.getProductname());
-//            }
-//            if (currentProduct.getSelected_color() != null && currentProduct.getSelected_color().length() > 0) {
-//                ((TextView) layout.findViewById(R.id.color_text)).setVisibility(View.VISIBLE);
-//                ((TextView) layout.findViewById(R.id.color_text)).setText("Color: " + currentProduct.getSelected_color());
-//            }
-//            if (currentProduct.getSelected_size() != null && currentProduct.getSelected_size().length() > 0) {
-//                ((TextView) layout.findViewById(R.id.size_text)).setVisibility(View.VISIBLE);
-//                ((TextView) layout.findViewById(R.id.size_text)).setText("Size: " + currentProduct.getSelected_size());
-//            }
-//            double currentPrice = 0;
-//            if (currentProduct.getSaleprice() != null && currentProduct.getSaleprice().length() > 0) {
-//                ((TextView) layout.findViewById(R.id.price_text)).setVisibility(View.VISIBLE);
-//                total_price += StringUtils.getDoubleValue(currentProduct.getSaleprice());
-//                currentPrice = StringUtils.getDoubleValue(currentProduct.getSaleprice());
-//                ((TextView) layout.findViewById(R.id.price_text)).setText("Price: $ " + currentProduct.getSaleprice());
-//            } else if (currentProduct.getRetailprice() != null && currentProduct.getRetailprice().length() > 0) {
-//                ((TextView) layout.findViewById(R.id.price_text)).setVisibility(View.VISIBLE);
-//                total_price += StringUtils.getDoubleValue(currentProduct.getRetailprice());
-//                currentPrice = StringUtils.getDoubleValue(currentProduct.getRetailprice());
-//                ((TextView) layout.findViewById(R.id.price_text)).setText("Price: $ " + currentProduct.getRetailprice());
-//            }
-//
-//            cancel_icon.setVisibility(View.INVISIBLE);
-//            sub_price_text.setText("$ " + new DecimalFormat("#,##0.00").format(new Double(total_price)));
-//            product_image.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("data", currentProduct);
-//                    FragmentDiscoverDetail detail = new FragmentDiscoverDetail();
-//                    detail.setArguments(bundle);
-//                    ((HomeActivity) mContext).addFragment(detail);
-//                }
-//            });
-//            params3.setMargins(0, 10, 0, 10);
-//            item_list2.addView(layout, params3);
-//        }
-//    }
-
-        private void saveAddress() {
-            if (enter_promo_text.getText().toString().trim() != null && enter_promo_text.getText().toString().trim().length() > 0) {
+    private void saveAddress() {
+        if (enter_promo_text.getText().toString().trim() != null && enter_promo_text.getText().toString().trim().length() > 0) {
             this.promoCode = enter_promo_text.getText().toString().trim();
         }
-}
+    }
 
     private class MyTextWatcher2 implements TextWatcher {
         @Override
@@ -425,8 +344,7 @@ public class CartListFragment extends BaseFragment implements View.OnClickListen
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            //need to change!!!!!!!!!!!!!!!
-              saveAddress();
+            saveAddress();
         }
 
         @Override

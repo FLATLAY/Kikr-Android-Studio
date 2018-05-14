@@ -29,7 +29,8 @@ import com.flatlaylib.utils.StringUtils;
 
 public class ChangeEmailActivity extends BaseActivity implements OnKeyListener, OnClickListener {
     private EditText emailEditText;
-public final static String TAG="ChangeEmailActivity";
+    public final static String TAG = "ChangeEmailActivity";
+
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);

@@ -16,85 +16,72 @@ import com.flatlaylib.service.res.AddressRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
 
-public class RemoveSocialAccountDialog extends Dialog{
-	private TextView cancelTextView,okTextView;
-	private Context mContext;
-	private String addressId;
+public class RemoveSocialAccountDialog extends Dialog {
+    private TextView cancelTextView, okTextView;
+    private Context mContext;
+    private String addressId;
 
-	public RemoveSocialAccountDialog(Context mContext) {
-		super(mContext, R.style.AdvanceDialogTheme);
-		this.mContext=mContext;
-		init();
-	}
+    public RemoveSocialAccountDialog(Context mContext) {
+        super(mContext, R.style.AdvanceDialogTheme);
+        this.mContext = mContext;
+        init();
+    }
 
-	public RemoveSocialAccountDialog(Context context, int theme) {
-		super(context, R.style.AdvanceDialogTheme);
-		init();
-	}
+    public RemoveSocialAccountDialog(Context context, int theme) {
+        super(context, R.style.AdvanceDialogTheme);
+        init();
+    }
 
-	private void init() {
-		setContentView(R.layout.dialog_remove_social_account);
-		setCancelable(true);
-		WindowManager.LayoutParams lp = getWindow().getAttributes();
-		lp.dimAmount = 0.9f;
-		getWindow().setAttributes(lp);
-		setCanceledOnTouchOutside(true);
-		cancelTextView= (TextView) findViewById(R.id.cancelTextView);
-		okTextView = (TextView) findViewById(R.id.okTextView);
-		cancelTextView.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				dismiss();
-			}
-		});
-		okTextView.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-//				deleteAddress();
-				dismiss();
-			}
-		});
-	}
-	
-	private void deleteAddress() {
+    private void init() {
+        setContentView(R.layout.dialog_remove_social_account);
+        setCancelable(true);
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.dimAmount = 0.9f;
+        getWindow().setAttributes(lp);
+        setCanceledOnTouchOutside(true);
+        cancelTextView = (TextView) findViewById(R.id.cancelTextView);
+        okTextView = (TextView) findViewById(R.id.okTextView);
+        cancelTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+        okTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+    }
 
-//		progressBarDialog = new ProgressBarDialog(mContext);
-//		progressBarDialog.show();
-		final AddressApi service = new AddressApi(new ServiceCallback() {
+    private void deleteAddress() {
 
-		
-			@Override
-			public void handleOnSuccess(Object object) {
-				//progressBarDialog.dismiss();
-				Syso.info("In handleOnSuccess>>"+object);
-				if(object!=null){
-					dismiss();
-				}
-			}
+        final AddressApi service = new AddressApi(new ServiceCallback() {
 
-			@Override
-			public void handleOnFailure(ServiceException exception,Object object) {
-				//progressBarDialog.dismiss();
-				Syso.info("In handleOnFailure>>"+object);
-				if(object!=null){
-					AddressRes response=(AddressRes) object;
-					AlertUtils.showToast(mContext,response.getMessage());
-				}else{
-					AlertUtils.showToast(mContext,R.string.invalid_response);
-				}
-				
-			}
-		});
-		service.removeAddress(UserPreference.getInstance().getUserID(), addressId);
-		service.execute();
 
-		//progressBarDialog.setOnCancelListener(new OnCancelListener() {
-//			@Override
-//			public void onCancel(DialogInterface dialog) {
-//				service.cancel();
-//			}
-//		});
-	}
-	
-	
+            @Override
+            public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
+                if (object != null) {
+                    dismiss();
+                }
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    AddressRes response = (AddressRes) object;
+                    AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    AlertUtils.showToast(mContext, R.string.invalid_response);
+                }
+
+            }
+        });
+        service.removeAddress(UserPreference.getInstance().getUserID(), addressId);
+        service.execute();
+    }
+
 }

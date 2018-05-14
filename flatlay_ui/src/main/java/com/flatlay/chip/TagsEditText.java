@@ -99,27 +99,6 @@ public class TagsEditText extends AutoCompleteTextView {
         return mLastString;
     }
 
-//     mTextWatcher = new TextWatcher() {
-//        @Override
-//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            Syso.info("Search On text changed  :",mLastString.length());
-//
-//        }
-//
-//        @Override
-//        public void onTextChanged(CharSequence s, int start, int before, int count) {
-//        }
-//
-//        @Override
-//        public void afterTextChanged(Editable s) {
-//            if (mIsAfterTextWatcherEnabled) {
-//
-//                setTags();
-//
-//            }
-//        }
-//    };
-
 
     public TagsEditText(Context context) {
         super(context);
@@ -338,7 +317,7 @@ public class TagsEditText extends AutoCompleteTextView {
 
     private void init(@Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         Context context = getContext();
-        Log.w(TAG,"TagsEditText");
+        Log.w(TAG, "TagsEditText");
         if (attrs == null) {
             mIsSpacesAllowedInTags = false;
             mTagsTextColor = ResourceUtils.getColor(context, R.color.defaultTagsTextColor);

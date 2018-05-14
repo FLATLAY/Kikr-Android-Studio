@@ -17,8 +17,15 @@ import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
+import com.flatlaylib.api.BrandListApi;
+import com.flatlaylib.bean.BrandList;
 import com.flatlaylib.bean.BrandResult;
 import com.flatlaylib.bean.Inspiration;
+import com.flatlaylib.service.ServiceCallback;
+import com.flatlaylib.service.ServiceException;
+import com.flatlaylib.service.res.ProductListRes;
+import com.flatlaylib.utils.AlertUtils;
+import com.flatlaylib.utils.Syso;
 
 import java.util.List;
 
@@ -73,23 +80,89 @@ public class StoreGridAdapter extends BaseAdapter {
         }
         viewholder.follow_text.setTypeface(FontUtility.setMontserratLight(mContext));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, (CommonUtility.getDeviceWidth(mContext)) / 8);
-        layoutParams.gravity= Gravity.CENTER;
-        layoutParams.setMargins(0,15,0,0);
+        layoutParams.gravity = Gravity.CENTER;
+        layoutParams.setMargins(0, 15, 0, 0);
         if (data.size() > position) {
             viewholder.brandImage.setLayoutParams(layoutParams);
-            CommonUtility.setImageNoResize(mContext,viewholder.brandImage,data.get(position).getImg());
+            CommonUtility.setImage(mContext, viewholder.brandImage, data.get(position).getImg());
         }
+        viewholder.follow_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (data.get(position).getIs_followed().equalsIgnoreCase("no")) {
+                    addBrand(data.get(position).getId(), viewholder.follow_text, data.get(position));
+                } else {
+                    deleteBrand(data.get(position).getId(), viewholder.follow_text, data.get(position));
+
+                }
+            }
+        });
         return convertView;
     }
 
     public class ViewHolder {
         private ImageView brandImage;
-        //        private LinearLayout follow_layout;
         private TextView follow_text;
     }
 
     private void addFragment(Fragment fragment) {
         ((HomeActivity) mContext).addFragment(fragment);
     }
+
+    public void addBrand(String brand_id, final View v, final BrandResult brand) {
+        final BrandListApi listApi = new BrandListApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+                Syso.info("In handleOnSuccess>>" + object);
+                AlertUtils.showToast(mContext, "Brand followed");
+
+                ((TextView) v).setText("Following");
+                brand.setIs_followed("yes");
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    ProductListRes response = (ProductListRes) object;
+                    AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                }
+            }
+        });
+        listApi.addBrands(brand_id);
+        listApi.execute();
+    }
+
+    public void deleteBrand(String brand_id, final View v, final BrandResult brand) {
+        final BrandListApi listApi = new BrandListApi(new ServiceCallback() {
+
+            @Override
+            public void handleOnSuccess(Object object) {
+
+                AlertUtils.showToast(mContext, "Brand unfollowed");
+
+                ((TextView) v).setText("Follow +");
+                brand.setIs_followed("no");
+                Syso.info("In handleOnSuccess>>" + object);
+
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    ProductListRes response = (ProductListRes) object;
+                    AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                }
+            }
+        });
+        listApi.deleteBrand(brand_id);
+        listApi.execute();
+    }
+
 
 }

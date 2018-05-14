@@ -81,12 +81,11 @@ public class MyMaterialContentBottom extends FrameLayout {
         FrameLayout contentFrame = createContentFrame();
         FrameLayout layout1 = new FrameLayout(context);
         backarrow = new ImageView(context);
-        backarrow.setImageResource(R.drawable.backarrow90_2);
+        backarrow.setImageResource(R.drawable.backarrow90);
         layout1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //change
-                Log.e("MyOverFlowGesListener3", "bottom"+listener.isOpened());
 
                 if (listener.isOpened())
                     listener.slide(-350);
@@ -195,30 +194,23 @@ public class MyMaterialContentBottom extends FrameLayout {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        Log.e("MyOverFlowGesListener3", "bottom1"+listener.isOpened());
 
         fabTotalHeight = 70;
 
         initialYPosition = getInitialYPosition();
-        Log.e("MyOverFlowGesListener3", "bottom7:"+initialYPosition);
 
 
         if (listener.isOpened()) {
-            Log.e("MyOverFlowGesListener3", "bottom2"+listener.isOpened());
 
-          //  ViewHelper.setY(this, initialYPosition + 600);
         } else {
-            Log.e("MyOverFlowGesListener3", "bottom3"+listener.isOpened());
 
             ViewHelper.setY(this, initialYPosition);
         }
 
         if (!listener.isOpened()) {
-            Log.e("MyOverFlowGesListener3", "bottom4"+listener.isOpened());
 
             listener.setInitialYPosition(initialYPosition);
         }
-        Log.e("MyOverFlowGesListener3", "bottom5"+listener.isOpened());
 
 
         super.onLayout(changed, left, top, right, bottom);
@@ -227,14 +219,13 @@ public class MyMaterialContentBottom extends FrameLayout {
     private float getInitialYPosition() {
 
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,
-                ((ViewGroup) this.getParent()).getHeight() - 90,
+                ((ViewGroup) this.getParent()).getHeight() - 190,
                 getResources().getDisplayMetrics());
     }
 
 
     @Override
     protected void onDetachedFromWindow() {
-        Log.e("MyOverFlowGesListener3", "bottom6"+listener.isOpened());
 
         super.onDetachedFromWindow();
         listener.clearReferences();
@@ -244,12 +235,18 @@ public class MyMaterialContentBottom extends FrameLayout {
     public interface OnCloseListener {
 
         void onClose();
+
         void onOpen();
     }
 
+    public void setOpen() {
 
-    public void setOnCloseListener(OnCloseListener listener){
-        this.closeListener=listener;
+        listener.setIsOpened(true);
+    }
+
+
+    public void setOnCloseListener(OnCloseListener listener) {
+        this.closeListener = listener;
     }
 
 }

@@ -22,36 +22,30 @@ import com.flatlay.utility.FontUtility;
  */
 
 public class PinGuideActivity extends BaseActivity implements View.OnClickListener {
-    //ImageView circleImages;
     private Button next;
-    private TextView pinDescription,title;
-    public final static String TAG="PinGuideActivity";
+    private TextView pinDescription, title;
+    public final static String TAG = "PinGuideActivity";
 
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        Log.w(TAG,"PinGuideActivity");
+        Log.w(TAG, "PinGuideActivity");
         CommonUtility.noTitleActivity(context);
         setContentView(R.layout.pinguide);
         hideHeader();
         HelpPressMenuDialog helpPressMenuDialog = new HelpPressMenuDialog(this);
-        //helpPressMenuDialog.setContentView(R.layout.helpscreen_presshere_menu);
         Window dialogWindow = helpPressMenuDialog.getWindow();
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         dialogWindow.setGravity(Gravity.CENTER);
-
-        //lp.alpha = 0.7f;
         DisplayMetrics d = context.getResources().getDisplayMetrics();
         lp.width = (int) (d.widthPixels);
-       // dialogWindow.setAttributes(lp);
         helpPressMenuDialog.show();
     }
 
 
     @Override
     public void initLayout() {
-       // circleImages = (ImageView) findViewById(R.id.circleImages);
         title = (TextView) findViewById(R.id.pintitle);
         next = (Button) findViewById(R.id.nextButton);
         pinDescription = (TextView) findViewById(R.id.pinDescription);

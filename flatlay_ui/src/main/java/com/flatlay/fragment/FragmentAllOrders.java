@@ -50,10 +50,8 @@ public class FragmentAllOrders extends BaseFragment implements View.OnClickListe
     private TextView progress_text, complete_text;
     private OrderListener listener;
 
-
-    //boolean isordered =false;
     public FragmentAllOrders(OrderListener listener) {
-        this.listener=listener;
+        this.listener = listener;
     }
 
     @Override
@@ -92,100 +90,18 @@ public class FragmentAllOrders extends BaseFragment implements View.OnClickListe
 
     @Override
     public void setData(Bundle bundle) {
-        //  if(CartFragmentTab.isordered)
-        // {
         initData();
-        //  }
-        // CartFragmentTab.isordered=false;
-//        ordersList.setOnScrollListener(new AbsListView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(AbsListView view,
-//                                             int scrollState) {
-//                // Do nothing
-//            }
-//
-//            @Override
-//            public void onScroll(AbsListView view, int firstVisibleItem,
-//                                 int visibleItemCount, int totalItemCount) {
-////				   System.out.println("1234 in onScroll fvi"+firstVisibleItem+", vic"+visibleItemCount+", tic"+totalItemCount);
-//                if(!isLoading&&firstVisibleItem+visibleItemCount == totalItemCount && totalItemCount!=0) {
-////			    	System.out.println("1234 inside if ");
-//                    if(checkInternet2()){
-//                        pagenum++;
-//                        isFirstTime=false;
-//                        getOrdersList();
-//                    }else{
-//                        showReloadFotter();
-//                    }
-//                }
-//            }
-//        });
     }
 
-//    protected void showReloadFotter() {
-//        TextView textView=getReloadFotter();
-//        textView.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                if(checkInternet()){
-//                    pagenum++;
-//                    isFirstTime=false;
-//                    getOrdersList();
-//                }
-//            }
-//        });
-//    }
 
     private void getOrdersList() {
-//        isLoading=!isLoading;
         final OrdersApi ordersApi = new OrdersApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
                 hideDataNotFound();
-//                isLoading=!isLoading;
                 OrderRes orderRes = (OrderRes) object;
                 List<Orders> data = orderRes.getData();
-               // HashMap<String, List<Orders>> dataChild = new HashMap<String, List<Orders>>();
-//                HashMap<String, List<Orders>> dataChild2 = new HashMap<String, List<Orders>>();
-
-             //   List<String> cartHeaders = new ArrayList<String>();
-//                List<String> cartHeaders2 = new ArrayList<String>();
-
-            //    HashMap<String, String> cartDataMap = new HashMap<String, String>();
-
-
-//                for (Orders order : data) {
-//                    cartHeaders.add(order.getCartId());
-//                    cartDataMap.put(order.getCartId(), order.getCartId() + "#" + order.getOrder_date() + "#" + order.getFinalcartprice() + "#" +
-//                            order.getShipping() + "#" + order.getStatus());
-//                }
-//                Set<String> uniqueCartIDs = new HashSet<String>();
-//                uniqueCartIDs.addAll(cartHeaders);
-//                cartHeaders.clear();
-//                cartHeaders.addAll(uniqueCartIDs);
-//
-//                List<Orders> dummyOrders = null;
-//                //double totalPriceAllOrdersInCart = 0;
-//                for (int i = 0; i < cartHeaders.size(); i++) {
-//                    dummyOrders = new ArrayList<Orders>();
-//                    //	totalPriceAllOrdersInCart = 0;
-//                    for (int j = 0; j < data.size(); j++) {
-//
-//                        if (cartHeaders.get(i).equalsIgnoreCase(data.get(j).getCartId())) {
-//                            dummyOrders.add(data.get(j));
-//                            //		totalPriceAllOrdersInCart += Double.parseDouble(data.get(j).getFinalcartprice());
-//                        }
-//                    }
-//
-//                    dataChild.put(cartHeaders.get(i), dummyOrders);
-//                }
-
-//                if(data.size()<10){
-//                    isLoading=true;
-//                }
                 if (data.size() == 0 && isFirstTime) {
-//					showDataNotFound();
                     try {
                         LinearLayout layout = (LinearLayout) getView().findViewById(R.id.itemNotFound);
                         layout.setVisibility(View.VISIBLE);
@@ -200,29 +116,19 @@ public class FragmentAllOrders extends BaseFragment implements View.OnClickListe
                                 listener.onClickButton();
                             }
                         });
-//                        textView.setText("No past orders");
                     } catch (NullPointerException exception) {
                         exception.printStackTrace();
                     }
                 } else if (data.size() > 0 && isFirstTime) {
                     hideDataNotFound();
-                    Log.e("2nd else all orders", "2nd"+data.size());
-//                    ordersAdapter = new OrdersAdapter(mContext, cartHeaders, dataChild, cartDataMap);
+                    Log.e("2nd else all orders", "2nd" + data.size());
                     ordersAdapter = new OrdersAdapter(mContext, data);
                     ordersList2.setAdapter(ordersAdapter);
                 }
-//                else {
-//                    Log.e("3rd else all orders", "3rd");
-////                    ordersAdapter.addAll(cartHeaders, dataChild, cartDataMap);
-//                    ordersAdapter.addAll(cartHeaders, dataChild, cartDataMap);
-//
-//                    ordersAdapter.notifyDataSetChanged();
-//                }
             }
 
             @Override
             public void handleOnFailure(ServiceException exception, Object object) {
-//                isLoading = !isLoading;
                 if (object != null) {
                     OrderRes response = (OrderRes) object;
                     AlertUtils.showToast(mContext, response.getMessage());
@@ -238,9 +144,6 @@ public class FragmentAllOrders extends BaseFragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.startshopping:
-//                addFragment(new FragmentDiscoverNew());
-//                break;
         }
     }
 

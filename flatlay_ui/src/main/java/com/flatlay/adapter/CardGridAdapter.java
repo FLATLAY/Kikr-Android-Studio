@@ -33,11 +33,11 @@ public class CardGridAdapter extends BaseAdapter {
     private CardGridListener listener;
 
 
-    public CardGridAdapter(FragmentActivity context, List<Card> data,CardGridListener listener) {
+    public CardGridAdapter(FragmentActivity context, List<Card> data, CardGridListener listener) {
         super();
         this.mContext = context;
         this.data = data;
-        this.listener=listener;
+        this.listener = listener;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -74,33 +74,30 @@ public class CardGridAdapter extends BaseAdapter {
         }
         viewholder.card_num_text.setTypeface(FontUtility.setMontserratLight(mContext));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, (CommonUtility.getDeviceWidth(mContext)) / 10);
-//        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (CommonUtility.getDeviceWidth(mContext)) / 10);
-        layoutParams.gravity= Gravity.CENTER;
-        layoutParams.setMargins(0,15,0,0);
-//        layoutParams2.gravity= Gravity.CENTER;
-//        layoutParams2.setMargins(0,15,0,0);
+        layoutParams.gravity = Gravity.CENTER;
+        layoutParams.setMargins(0, 15, 0, 0);
         if (data.size() > position && !getItem(position).getCard_number().equals("Add")
                 && !getItem(position).getCard_number().equals("paypal")
                 && !getItem(position).getCard_number().equals("flatlay")) {
             viewholder.cardImage.setLayoutParams(layoutParams);
             viewholder.cardImage.setVisibility(View.VISIBLE);
             viewholder.card_num_text.setVisibility(View.VISIBLE);
-            setImage(viewholder.cardImage,getItem(position).getCard_number(),viewholder.card_num_text);
-        }else if(data.size() > position && getItem(position).getCard_number().equals("paypal")){
+            setImage(viewholder.cardImage, getItem(position).getCard_number(), viewholder.card_num_text);
+        } else if (data.size() > position && getItem(position).getCard_number().equals("paypal")) {
             viewholder.cardImage.setLayoutParams(layoutParams);
             viewholder.cardImage.setVisibility(View.VISIBLE);
             viewholder.card_num_text.setVisibility(View.INVISIBLE);
             viewholder.cardImage.setImageResource(R.drawable.paypal_1);
-        }else if(data.size() > position && getItem(position).getCard_number().equals("flatlay")){
+        } else if (data.size() > position && getItem(position).getCard_number().equals("flatlay")) {
             viewholder.cardImage.setLayoutParams(layoutParams);
             viewholder.cardImage.setVisibility(View.VISIBLE);
             viewholder.card_num_text.setVisibility(View.INVISIBLE);
             viewholder.cardImage.setImageResource(R.drawable.card1_small);
-        }else if(data.size() > position && getItem(position).getCard_number().equals("Add")){
+        } else if (data.size() > position && getItem(position).getCard_number().equals("Add")) {
             viewholder.cardImage.setLayoutParams(layoutParams);
             viewholder.cardImage.setVisibility(View.GONE);
             viewholder.card_num_text.setText("Add\nCard");
-            viewholder.card_num_text.setPadding(5,5,5,5);
+            viewholder.card_num_text.setPadding(5, 5, 5, 5);
         }
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,11 +110,10 @@ public class CardGridAdapter extends BaseAdapter {
 
     public class ViewHolder {
         private ImageView cardImage;
-        //        private LinearLayout follow_layout;
         private TextView card_num_text;
     }
 
-    private void setImage(ImageView view, String card_number1, TextView text){
+    private void setImage(ImageView view, String card_number1, TextView text) {
         String card_number = CommonUtility.DecryptCreditCard(card_number1);
         if (Luhn.isCardValid(card_number)) {
             CardType cardtype = Luhn.getCardType(card_number);

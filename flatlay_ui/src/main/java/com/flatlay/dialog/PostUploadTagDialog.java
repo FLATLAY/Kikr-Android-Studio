@@ -9,16 +9,15 @@ import android.widget.TextView;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
 
-public class PostUploadTagDialog extends Dialog{
-    private TextView cancelTextView,okTextView;
+public class PostUploadTagDialog extends Dialog {
+    private TextView cancelTextView, okTextView;
     private HomeActivity homeActivity;
     private Context mContext;
 
-    public PostUploadTagDialog( HomeActivity homeActivity) {
+    public PostUploadTagDialog(HomeActivity homeActivity) {
         super(homeActivity, R.style.AdvanceDialogTheme);
-        //   super(mContext, R.style.AdvanceDialogTheme);
         this.homeActivity = homeActivity;
-        this.mContext=mContext;
+        this.mContext = mContext;
         init();
     }
 
@@ -34,13 +33,13 @@ public class PostUploadTagDialog extends Dialog{
         lp.dimAmount = 0.9f;
         getWindow().setAttributes(lp);
         setCanceledOnTouchOutside(true);
-        cancelTextView= (TextView) findViewById(R.id.cancelTextView);
+        cancelTextView = (TextView) findViewById(R.id.cancelTextView);
         okTextView = (TextView) findViewById(R.id.okTextView);
         okTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
-              homeActivity.backpostuploadtad();
+                homeActivity.backpostuploadtad();
 
             }
         });

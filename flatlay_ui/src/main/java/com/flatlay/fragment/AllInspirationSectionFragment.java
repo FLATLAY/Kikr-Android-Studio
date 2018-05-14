@@ -44,14 +44,7 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
     private int firstVisibleItem = 0, visibleItemCount = 0, totalItemCount = 0;
     private TextView loadingTextView;
     private boolean isViewAll;
-//    private SwipeRefreshLayout swipeLayout;
     private InspirationAdapter inspirationAdapter;
-
-//    public AllInspirationSectionFragment(boolean isViewAll, String userId) {
-//        this.isViewAll = isViewAll;
-//        this.userId = userId;
-//        this.isFirstTimeFromMain = false;
-//    }
 
     public AllInspirationSectionFragment() {
         isFirstTimeFromMain = true;
@@ -80,7 +73,6 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
         inspirationlist = (ListView) mainView.findViewById(R.id.inspirationlist);
         loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
         loadingTextView.setTypeface(FontUtility.setMontserratLight(getActivity()));
-//        swipeLayout = (SwipeRefreshLayout) mainView.findViewById(R.id.swipe_container);
     }
 
     @Override
@@ -109,19 +101,6 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
 
             }
         });
-
-//        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                loadingTextView.setVisibility(View.VISIBLE);
-//                getInspirationFeedList();
-//                if (swipeLayout.isRefreshing()) {
-//                    swipeLayout.setRefreshing(false);
-//                    loadingTextView.setVisibility(View.INVISIBLE);
-//                }
-//
-//            }
-//        });
     }
 
     @Override

@@ -44,14 +44,10 @@ public class ChooseCollectionDialog extends Dialog implements ServiceCallback {
     private ImageView more_items_arrow;
     private int preLast;
 
-//    private Product product;
-
-
     public ChooseCollectionDialog(FragmentActivity context) {
         super(context, R.style.AdvanceDialogTheme);
         mContext = context;
         chooseCollectionDialog = this;
-//        this.product = product;
         init();
     }
 

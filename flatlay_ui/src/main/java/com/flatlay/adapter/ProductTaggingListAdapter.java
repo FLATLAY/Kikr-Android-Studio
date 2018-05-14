@@ -33,13 +33,13 @@ public class ProductTaggingListAdapter
         this.data = data;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         isProductSearch = false;
-        Log.w(TAG,"ProductTaggingListAdapter");
+        Log.w(TAG, "ProductTaggingListAdapter");
     }
 
 
-	public void setData(List<Product> data){
-		this.data.addAll(data);
-	}
+    public void setData(List<Product> data) {
+        this.data.addAll(data);
+    }
 
     @Override
     public int getCount() {
@@ -72,38 +72,6 @@ public class ProductTaggingListAdapter
         }
         viewHolder.activity_product_list_product_name.setText(data.get(position).getProductname());
         CommonUtility.setImage(mContext, data.get(position).getProductimageurl(), viewHolder.activity_product_list_product_image, R.drawable.dum_list_item_product);
-//        if (!isProductSearch)
-//            convertView.setOnClickListener(new View.OnClickListener() {
-//
-//                @Override
-//                public void onClick(View view) {
-//                    CommonUtility.hideSoftKeyboard(mContext);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("data", data.get(position));
-////                   mContext.setResult(001,bundle);
-////                    addFragment(detail);
-//                }
-//            });
-
-//        convertView.setOnLongClickListener(new View.OnLongClickListener() {
-//
-//            @Override
-//            public boolean onLongClick(final View v) {
-//                if (((HomeActivity) mContext).isMenuShowing()) {
-//                    ((HomeActivity) mContext).hideContextMenu();
-//                } else {
-//                    ((HomeActivity) mContext).showContextMenu(data.get(position), new UiUpdate() {
-//
-//                        @Override
-//                        public void updateUi() {
-//                            TextView likeCountTextView = (TextView) v.findViewById(R.id.likeCountTextView);
-//                            likeCountTextView.setText(TextUtils.isEmpty(data.get((Integer) v.getTag()).getLike_info().getLike_count()) ? "0" : data.get((Integer) v.getTag()).getLike_info().getLike_count());
-//                        }
-//                    });
-//                }
-//                return true;
-//            }
-//        });
         return convertView;
     }
 
@@ -112,7 +80,4 @@ public class ProductTaggingListAdapter
         TextView activity_product_list_product_name;
     }
 
-//    private void addFragment(Fragment fragment) {
-//        ((HomeActivity) mContext).addFragment(fragment);
-//    }
 }

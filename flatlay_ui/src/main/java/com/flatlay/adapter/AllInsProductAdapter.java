@@ -95,7 +95,7 @@ public class AllInsProductAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((HomeActivity)mContext).checkInternet()) {
+                if (((HomeActivity) mContext).checkInternet()) {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("data", currentProduct);
                     FragmentDiscoverDetail detail = new FragmentDiscoverDetail();
@@ -105,7 +105,7 @@ public class AllInsProductAdapter extends BaseAdapter {
             }
         });
 
-        final Product product=products.get(position);
+        final Product product = products.get(position);
 
         convertView.setOnLongClickListener(new View.OnLongClickListener() {
 
@@ -173,15 +173,6 @@ public class AllInsProductAdapter extends BaseAdapter {
         return convertView;
     }
 
-//    public boolean checkInternet() {
-//        if (CommonUtility.isOnline(mContext)) {
-//            return true;
-//        } else {
-//            CommonUtility.showNoInternetAlert(mContext);
-//            return false;
-//        }
-//    }
-
     public void likeInspiration(final Product product, final UiUpdate uiUpdate) {
         Syso.info("123 like id: " + product.getLike_info().getLike_id()
                 + ", count:" + product.getLike_info().getLike_count());
@@ -216,7 +207,6 @@ public class AllInsProductAdapter extends BaseAdapter {
                         if (uiUpdate != null) {
                             uiUpdate.updateUi();
                         }
-//                        AlertUtils.showToast(context, inspirationRes.getMessage());
                     }
 
                     @Override
@@ -240,8 +230,6 @@ public class AllInsProductAdapter extends BaseAdapter {
     }
 
     public void addProductToCart(Product product) {
-//        mProgressBarDialog = new ProgressBarDialog(context);
-//        mProgressBarDialog.show();
         final CartApi cartApi = new CartApi(new ServiceCallback() {
 
             @Override

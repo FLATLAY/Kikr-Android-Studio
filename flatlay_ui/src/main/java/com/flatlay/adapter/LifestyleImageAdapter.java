@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.flatlay.R;
+import com.flatlay.utility.CommonUtility;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
@@ -22,35 +23,35 @@ import java.util.List;
 
 public class LifestyleImageAdapter extends BaseAdapter {
 
-        private Activity mContext;
-        private LayoutInflater mInflater;
-        List<String> bgImages = new ArrayList<String>();
+    private Activity mContext;
+    private LayoutInflater mInflater;
+    List<String> bgImages = new ArrayList<String>();
 
-	public LifestyleImageAdapter(Activity context, List<String> bgImages) {
+    public LifestyleImageAdapter(Activity context, List<String> bgImages) {
         super();
         this.mContext = context;
         this.bgImages = bgImages;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Log.w("Activity","LifestyleImageAdapter");
+        Log.w("Activity", "LifestyleImageAdapter");
     }
 
-        @Override
-        public int getCount() {
+    @Override
+    public int getCount() {
         return bgImages.size();
     }
 
-        @Override
-        public String getItem(int index) {
+    @Override
+    public String getItem(int index) {
         return bgImages.get(index);
     }
 
-        @Override
-        public long getItemId(int position) {
+    @Override
+    public long getItemId(int position) {
         return 0;
     }
 
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.adapter_lifestyle_images, null);
@@ -60,12 +61,11 @@ public class LifestyleImageAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Picasso.with(mContext).load(getItem(position)).into(viewHolder.lifestyleImage);
-        //CommonUtility.setImage(mContext, getItem(position), viewHolder.lifestyleImage, R.drawable.dum_list_item_product);
+        CommonUtility.setImage(mContext, viewHolder.lifestyleImage, getItem(position));
         return convertView;
     }
 
-        public class ViewHolder {
-            RoundedImageView lifestyleImage;
-        }
+    public class ViewHolder {
+        RoundedImageView lifestyleImage;
     }
+}

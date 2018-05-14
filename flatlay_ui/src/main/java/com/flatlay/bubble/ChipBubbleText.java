@@ -23,7 +23,7 @@ public class ChipBubbleText {
     public ChipBubbleText(Context context, MultiAutoCompleteTextView multiAutoCompleteTextView,
                           String[] adapterValue, int threshold) {
         super();
-        Log.w(TAG,"ChipBubbleText");
+        Log.w(TAG, "ChipBubbleText");
         this.context = context;
         this.multiAutoCompleteTextView = multiAutoCompleteTextView;
         this.adapterValue = adapterValue;
@@ -66,7 +66,6 @@ public class ChipBubbleText {
         multiAutoCompleteTextView.setOnClickListener(new ChioBubbleOnClickListner(context, multiAutoCompleteTextView, chipPropery));
         multiAutoCompleteTextView.setSingleLine(true);
 
-        // multiAutoCompleteTextView.setO
     }
 
     public class SpaceTokenizer implements MultiAutoCompleteTextView.Tokenizer {

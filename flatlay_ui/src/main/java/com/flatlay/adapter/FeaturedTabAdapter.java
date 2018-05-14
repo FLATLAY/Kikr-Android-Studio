@@ -47,12 +47,7 @@ public class FeaturedTabAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     final String TAG = "FeaturedTabAdapter";
 
-    //    public boolean[] mSelectedItems;
     private List<FeaturedTabData> data = new ArrayList<>();
-    //    private List<Inspiration> inspirationList = new ArrayList<>();
-    //IMPORTANT: consider using a linked hash map?
-//    private HashMap<Integer, List<Inspiration>> positionMap = new HashMap<>();
-//    private HashMap<Integer, Boolean> followMap = new HashMap<>();
     private ListAdapterListener mListener;
 
     private List<UserData> userDetails;
@@ -63,17 +58,11 @@ public class FeaturedTabAdapter extends BaseAdapter {
         this.data = data;
         this.mListener = mListener;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        mSelectedItems = new boolean[followUsers.size()];
-//        Arrays.fill(mSelectedItems, false);
     }
 
     public void setData(List<FeaturedTabData> data) {
         this.data = data;
     }
-
-//    public boolean[] getSelectedItems() {
-//        return mSelectedItems;
-//    }
 
     @Override
     public int getCount() {
@@ -116,20 +105,11 @@ public class FeaturedTabAdapter extends BaseAdapter {
             viewHolder.name_text.setText("User");
         String profileImage = getItem(position).getProfile_pic();
 
-//        if (profileImage != null && profileImage.length() > 0)
-//            Picasso.with(mContext).load(getItem(position).getProfile_pic()).resize(150, 150).into(viewHolder.userImage);
-        Log.e(TAG, getItem(position).getProfile_pic());
-        Log.e(TAG, getItem(position).getItem_image());
-        Log.e(TAG, getItem(position).getItem_name());
-
         if (profileImage != null && profileImage.length() > 0)
             CommonUtility.setImage(mContext, viewHolder.userImage, getItem(position).getProfile_pic());
 
-//        Picasso.with(mContext).load(getItem(position).getProfile_pic()).resize(150, 150).into(viewHolder.userImage);
         else
             Picasso.with(mContext).load(R.drawable.profile_icon).into(viewHolder.userImage);
-//        else
-//            Picasso.with(mContext).load(R.drawable.profile_icon).into(viewHolder.userImage);
 
         viewHolder.userImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,7 +137,6 @@ public class FeaturedTabAdapter extends BaseAdapter {
             public void onClick(View view) {
                 if (getItem(position).getIs_followed() != null) {
                     if (getItem(position).getIs_followed().equals("no")) {
-                        //add a notifications he
                         getItem(position).setIs_followed("yes");
                         notifyDataSetChanged();
                         ((HomeActivity) mContext).followUser(getItem(position).getItem_id());
@@ -170,8 +149,6 @@ public class FeaturedTabAdapter extends BaseAdapter {
             }
         });
         viewHolder.card_layout.removeAllViews();
-        //????????
-//        Log.e("ispirationnn",""+getItem(position).getInspiration_feed().get(0).getLike_count());
         View view = new FeaturedTabUi(mContext, getItem(position), new FeaturedTabUi.ListAdapterListener() {
             @Override
             public void onClickAtOKButton() {

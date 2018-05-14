@@ -140,12 +140,8 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
         viewHolder.collection_name.setText(getItem(position).getName());
         viewHolder.collection_name2.setText(getItem(position).getName());
         viewHolder.collection_name_inspiration.setText(getItem(position).getName());
-//        final LinearLayout productInflaterLayout = new LinearLayout(mContext);
-//        final LinearLayout productInflaterLayout2 = new LinearLayout(mContext);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
-//        productInflaterLayout.setLayoutParams(params);
-//        productInflaterLayout2.setLayoutParams(params);
         viewHolder.productInflaterLayout.removeAllViews();
         viewHolder.productInflaterLayout2.removeAllViews();
         if (user_id.equals(UserPreference.getInstance().getUserID())) {
@@ -158,7 +154,6 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
             }
         });
         if (!map.containsKey(getItem(position).getId())) {
-            Log.e(TAG,"nono"+getItem(position).getId());
             final ProductBasedOnBrandApi productBasedOnBrandApi = new ProductBasedOnBrandApi(new ServiceCallback() {
 
                 @Override
@@ -198,12 +193,10 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
                     String.valueOf(0), data.get(position).getId());
             productBasedOnBrandApi.execute();
         } else {
-            Log.e(TAG,"exists"+getItem(position).getId());
             if (index == 0) {
                 viewHolder.productInflaterLayout.removeAllViews();
                 viewHolder.productInflaterLayout.addView(new ProductUI(mContext, 200, 200,
                         map.get(getItem(position).getId()), true).getView());
-                Log.e(TAG,"exists"+getItem(position).getId());
                 viewHolder.viewAll_text.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -211,7 +204,6 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
                                 new ViewInsProductFragment(map.get(getItem(position).getId()),
                                         data.get(position).getName());
                         ((HomeActivity) mContext).addFragment(detail);
-//                        Log.e("areyou--222","exists"+getItem(position).getId());
                     }
                 });
             } else if (index == 1) {
@@ -227,7 +219,6 @@ public class FragmentProfileCollectionAdapter extends BaseAdapter {
     public class ViewHolder {
         private LinearLayout generalLayout, name_layout, productInflaterLayout2, productInflaterLayout;
         private RelativeLayout detailLayout;
-        //        private HorizontalScrollView productLayout, productLayout2;
         private TextView collection_name, view_text, productview_text, productview_count, itemsaves_text,
                 itemsaves_count, collectionview_text, collectionview_count, payoutcredits_text,
                 payoutcredits_count, collection_name2, viewAll_text, collection_name_inspiration;

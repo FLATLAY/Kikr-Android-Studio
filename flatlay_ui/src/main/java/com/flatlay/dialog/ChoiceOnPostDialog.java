@@ -25,23 +25,23 @@ public class ChoiceOnPostDialog extends Dialog {
     private Inspiration inspiration;
 
 
-    public ChoiceOnPostDialog(@NonNull Context context,Inspiration inspiration) {
+    public ChoiceOnPostDialog(@NonNull Context context, Inspiration inspiration) {
         super(context);
-        this.mContext=context;
-        this.inspiration=inspiration;
+        this.mContext = context;
+        this.inspiration = inspiration;
         init();
 
     }
 
     public ChoiceOnPostDialog(@NonNull Context context, @StyleRes int themeResId) {
         super(context, themeResId);
-        this.mContext=context;
+        this.mContext = context;
         init();
     }
 
     protected ChoiceOnPostDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
-        this.mContext=context;
+        this.mContext = context;
         init();
     }
 
@@ -62,7 +62,7 @@ public class ChoiceOnPostDialog extends Dialog {
             @Override
             public void onClick(View view) {
                 dismiss();
-                ((HomeActivity)mContext).addFragment(new FragmentPostUploadTag(inspiration, true));
+                ((HomeActivity) mContext).addFragment(new FragmentPostUploadTag(inspiration, true));
             }
         });
         delete_text.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +71,7 @@ public class ChoiceOnPostDialog extends Dialog {
                 dismiss();
                 com.flatlay.dialog.ConfirmDeleteDialog confirmDeleteDialog =
                         new com.flatlay.dialog.ConfirmDeleteDialog(mContext, inspiration.getInspiration_id(), inspiration.getUser_id());
-                confirmDeleteDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                confirmDeleteDialog.getWindow().setBackgroundDrawableResource(R.color.real_transparent);
                 confirmDeleteDialog.show();
             }
         });

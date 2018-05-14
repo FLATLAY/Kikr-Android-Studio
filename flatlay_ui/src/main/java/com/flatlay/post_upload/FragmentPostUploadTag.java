@@ -15,7 +15,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -49,8 +51,18 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
+import com.flatlay.dialog.ChooseCollectionDialog;
+import com.flatlay.fragment.FragmentDiscoverDetail;
 import com.flatlay.fragment.FragmentInspirationSection;
+import com.flatlay.fragment.SearchProductFragment;
+import com.flatlay.ui.ProductUI;
+import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.FontUtility;
+import com.flatlay.utility.MyMaterialContentOverflow3;
+import com.flatlay.utility.PinterestUtility;
+import com.flatlaylib.api.ProductBasedOnBrandApi;
+import com.flatlaylib.bean.CollectionList;
+import com.flatlaylib.service.res.ProductBasedOnBrandRes;
 import com.github.gorbin.asne.core.SocialNetwork;
 import com.github.gorbin.asne.core.SocialNetworkManager;
 import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
@@ -114,18 +126,55 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public class FragmentPostUploadTag extends BaseFragment implements View.OnClickListener, OnLoginCompleteListener, SocialNetworkManager.OnInitializationCompleteListener {
+public class FragmentPostUploadTag extends BaseFragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, OnLoginCompleteListener, SocialNetworkManager.OnInitializationCompleteListener {
+    private ProgressBarDialog mProgressBarDialog;
 
-    private TextView add_collection_text, button1, textOR, button2, new_collection_name, ins_text, fb_text, twitter_text, pinterest_text, post_text;
+    private TextView collectionName, newCollectionName, addProducts, post_without_tag_text, add_collection_text, button1, textOR, button2, new_collection_name, ins_text, fb_text, twitter_text, pinterest_text, post_text;
     private View mainView;
     final static String TAG = "FragmentPostUploadTag";
     private Inspiration inspiration;
-    private EditText create_collection_text, description_text;
+    private EditText nameYourCollection, description_text, search_tab_text;
     private RoundedImageView inspirationImage;
-    private LinearLayout backIconLayout;
+    private LinearLayout productInflaterLayout, addCollectionLayout2, addCollectionLayout1, checkLayout, backIconLayout, cancel_layout1;
     private Bitmap bmp;
-    private String isImage;
-    private String imageUrl;
+    private boolean choseExisitng = false;
+    private String isImage, imageUrl, choice, collection_id;
+    private ListView choicelist;
+    private int networkId = 0;
+    private RelativeLayout main_content, share_pin_layout, share_twi_layout, share_fb_layout, share_ins_layout;
+    private ArrayList<Integer> networkidarray = new ArrayList<Integer>();
+    public static SocialNetworkManager mSocialNetworkManager;
+    private SwitchCompat switchFacebook, switchTwitter, switchInstagram, switchPinterest;
+    private MyMaterialContentOverflow3 overflow2;
+    private SearchProductFragment searchProductFragment;
+    private FragmentPostUploadTag fragmentPostUploadTag;
+    private ChooseCollectionDialog collectionListDialog;
+    private boolean isNewCollectionAdded;
+    private int addProductNewCollection = 0;
+    private ArrayList<Product> taggedProductList = new ArrayList<>();
+    private float x = 0, y = 0;
+    private int productAddedCount = 0;
+    private ArrayList<Product> addProductListNew = new ArrayList<>();
+    public static boolean isUploadWithoutTag = false;
+    private boolean isAddProduct = false;
+    private ArrayList<Product> addProductListNew1 = new ArrayList<>();
+    private ArrayList<String> taggedProductIds = new ArrayList<>();
+    private boolean isTaggingProduct = true;
+    private TagView tagView;
+    private InputMethodManager imm;
+    private FrameLayout overlay;
+    private String START_TEXT = "Tag Product", finalNewCollectionName;
+    private TaggedItem taggedItemLocal = new TaggedItem(), selectedItem;
+    private ImageView squareCheck2, squareCheck, cancelImage;
+    private SocialNetwork socialNetwork;
+    private int sucesssharecount = 0;
+    private HorizontalScrollView productLayout;
+    private boolean isAdd = true;
+    private int page = 0;
+    private int index = 0;
+    CameraFragment cameraFragment;
+    private List<CollectionList> collectionLists;
+    private List<Product> products = new ArrayList<Product>();
 
     public FragmentPostUploadTag(Inspiration inspiration, boolean isUpdate) {
         this.inspiration = inspiration;
@@ -134,6 +183,16 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
 
     public FragmentPostUploadTag(Inspiration inspiration) {
         this.inspiration = inspiration;
+        this.isUpdate = true;
+        isUploadWithoutTag = false;
+    }
+
+    public FragmentPostUploadTag(CameraFragment cameraFragment, Bitmap bmp, String imageUrl, String isImage) {
+        this.bmp = bmp;
+        this.cameraFragment = cameraFragment;
+        this.isUpdate = false;
+        this.isImage = isImage;
+        this.imageUrl = imageUrl;
     }
 
     public FragmentPostUploadTag(Bitmap bmp, String imageUrl, String isImage) {
@@ -148,6 +207,10 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.fragment_post_upload_tag, null);
         Log.w(TAG, "FragmentPostUploadTag");
+        fragmentPostUploadTag = this;
+        if (cameraFragment != null) {
+            cameraFragment.onStop();
+        }
         return mainView;
     }
 
@@ -155,38 +218,226 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
 
-            case R.id.backIconLayout: {
-                Log.e(TAG, "backIconLayout");
-                mContext.onBackPressed();
-            }
-            break;
+            case R.id.backIconLayout:
+                if (overflow2.isOpen()) {
+                    overflow2.triggerClose();
+                } else {
 
-            case R.id.post_text: {
+                    mContext.onBackPressed();
+                }
+                break;
+
+            case R.id.post_text:
+
                 validateInput();
-            }
-            break;
+                break;
+
+            case R.id.cancel_layout1:
+                addCollectionLayout2.setVisibility(View.GONE);
+                addCollectionLayout1.setVisibility(View.VISIBLE);
+                imm.hideSoftInputFromWindow(nameYourCollection.getApplicationWindowToken(), 0);
+                break;
+
+
+            case R.id.button1:
+                isNewCollectionAdded = true;
+
+                choseExisitng = false;
+                cancel_layout1.setVisibility(View.VISIBLE);
+                addProducts.setVisibility(View.INVISIBLE);
+                addProducts.setText("Add Product");
+                nameYourCollection.setVisibility(View.VISIBLE);
+                newCollectionName.setVisibility(View.GONE);
+                nameYourCollection.requestFocus();
+                addCollectionLayout1.setVisibility(View.GONE);
+                addCollectionLayout2.setVisibility(View.VISIBLE);
+
+                squareCheck2.setVisibility(View.GONE);
+                nameYourCollection.setVisibility(View.VISIBLE);
+                collectionName.setVisibility(View.GONE);
+                addProducts.setText("Add Product");
+                productInflaterLayout.removeAllViews();
+                products.clear();
+                nameYourCollection.setText("");
+                collection_id = null;
+
+                break;
+            case R.id.button2:
+                choseExisitng = true;
+                cancel_layout1.setVisibility(View.VISIBLE);
+                checkLayout.setVisibility(View.VISIBLE);
+                collectionListDialog = new ChooseCollectionDialog(mContext);
+                collectionListDialog.getWindow().setBackgroundDrawableResource(R.color.real_transparent);
+                collectionListDialog.show();
+                choicelist = (ListView) collectionListDialog.findViewById(R.id.collection_listing);
+                choicelist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        TextView textView = (TextView) view.findViewById(R.id.collection_name);
+                        String text = textView.getText().toString().trim();
+                        choice = text;
+                        collectionListDialog.dismiss();
+                        cancel_layout1.setVisibility(View.VISIBLE);
+                        addCollectionLayout1.setVisibility(View.GONE);
+                        addProducts.setVisibility(View.VISIBLE);
+                        addCollectionLayout2.setVisibility(View.VISIBLE);
+                        squareCheck.setVisibility(View.GONE);
+                        squareCheck2.setVisibility(View.VISIBLE);
+                        productInflaterLayout.setVisibility(View.VISIBLE);
+                        nameYourCollection.setVisibility(View.GONE);
+                        newCollectionName.setVisibility(View.GONE);
+                        productLayout.setVisibility(View.VISIBLE);
+                        collectionName.setVisibility(View.VISIBLE);
+                        collectionName.setText(choice);
+                        collectionName.setTextColor(Color.WHITE);
+                        page = 0;
+                        collection_id = collectionListDialog.geCheckedCollection(i).getId();
+                        productInflaterLayout.removeAllViews();
+                        products.clear();
+                        initProducts();
+                    }
+                });
+                break;
+            case R.id.cancelImage:
+                addCollectionLayout2.setVisibility(View.GONE);
+                addCollectionLayout1.setVisibility(View.VISIBLE);
+                addProducts.setText("");
+                imm.hideSoftInputFromWindow(nameYourCollection.getApplicationWindowToken(), 0);
+                break;
+            case R.id.add_products_button:
+                overflow2.triggerSlide();
+                add_collection_text.setVisibility(View.GONE);
+                post_text.setVisibility(View.GONE);
+                search_tab_text.setVisibility(View.VISIBLE);
+                FragmentTransaction transaction = mContext.getSupportFragmentManager().beginTransaction();
+                searchProductFragment = new SearchProductFragment(overflow2, fragmentPostUploadTag, "", true, 3);
+                transaction.replace(R.id.frame_upload_page, searchProductFragment, searchProductFragment.toString());
+                transaction.addToBackStack(null);
+                transaction.commit();
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        search_tab_text.setCursorVisible(true);
+                        search_tab_text.setFocusable(true);
+                        search_tab_text.setFocusableInTouchMode(true);
+                        search_tab_text.requestFocus();
+                    }
+                }, 0);
+
+                if (!choseExisitng) {
+                    if (products.size() > 0 && finalNewCollectionName != null) {
+                        cancel_layout1.setVisibility(View.VISIBLE);
+                        checkLayout.setVisibility(View.VISIBLE);
+                        squareCheck.setVisibility(View.VISIBLE);
+                        squareCheck.setImageResource(R.drawable.square_check);
+                    } else {
+                        checkLayout.setVisibility(View.GONE);
+                        cancel_layout1.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    cancel_layout1.setVisibility(View.VISIBLE);
+                    checkLayout.setVisibility(View.VISIBLE);
+                    squareCheck2.setVisibility(View.VISIBLE);
+                    squareCheck2.setImageResource(R.drawable.square_check);
+                }
+                break;
         }
+    }
+
+    public void setInitialSearchText() {
+        search_tab_text.setText("");
     }
 
     @Override
     public void onLoginSuccess(int socialNetworkID) {
+/* SocialSharingActivity.hideProgress(); */
+        networkidarray.add(networkId);
+        if (networkId == FacebookSocialNetwork.ID)
+            UserPreference.getInstance().setmIsFacebookSignedIn(true);
+        if (networkId == TwitterSocialNetwork.ID)
+            UserPreference.getInstance().setmIsTwitterSignedIn(true);
+        if (networkId == InstagramSocialNetwork.ID)
+            UserPreference.getInstance().setmIsInstagramSignedIn(true);
+        checkedSocialSharingLogin();
+        setShareClickable(true);
 
     }
 
     @Override
     public void onError(int socialNetworkID, String requestID, String errorMessage, Object data) {
-
+        if (networkId == TwitterSocialNetwork.ID) {
+            ((TwitterSocialNetwork) mSocialNetworkManager.getSocialNetwork(networkId)).cancelLoginRequest();
+        }
+        checkedSocialSharingLogin();
+        setShareClickable(true);
+        Toast.makeText(getActivity(), "ERROR: " + errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void initUI(Bundle savedInstanceState) {
+        mProgressBarDialog = new ProgressBarDialog(mContext);
+        imm = (InputMethodManager)
+                mContext.getSystemService(mContext.INPUT_METHOD_SERVICE);
+        CollectionTextWatcher watcher = new CollectionTextWatcher();
+        DescriptionTextWatcher watcher2 = new DescriptionTextWatcher();
+        collectionName = (TextView) mainView.findViewById(R.id.collection_name_text);
+        collectionName.setTypeface(FontUtility.setMontserratLight(mContext));
+        search_tab_text = (EditText) mainView.findViewById(R.id.search_tab_text);
+        search_tab_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        overflow2 = (MyMaterialContentOverflow3) mainView.findViewById(R.id.overflow2);
+        switchFacebook = (SwitchCompat) mainView.findViewById(R.id.switchfacebook);
+        switchTwitter = (SwitchCompat) mainView.findViewById(R.id.switchtwitter);
+        switchInstagram = (SwitchCompat) mainView.findViewById(R.id.switchInstagram);
+        switchPinterest = (SwitchCompat) mainView.findViewById(R.id.switchPinterest);
+        cancelImage = (ImageView) mainView.findViewById(R.id.cancelImage);
+        switchFacebook.setOnCheckedChangeListener(this);
+        switchTwitter.setOnCheckedChangeListener(this);
+        switchInstagram.setOnCheckedChangeListener(this);
+        switchPinterest.setOnCheckedChangeListener(this);
+        cancelImage.setOnClickListener(this);
+        productInflaterLayout = (LinearLayout) mainView.findViewById(R.id.productInflaterLayout);
+        addCollectionLayout2 = (LinearLayout) mainView.findViewById(R.id.add_collection_layout2);
+        addCollectionLayout1 = (LinearLayout) mainView.findViewById(R.id.add_collection_layout);
+        checkLayout = (LinearLayout) mainView.findViewById(R.id.square_check_layout);
+        share_pin_layout = (RelativeLayout) mainView.findViewById(R.id.share_pin_layout);
+        share_twi_layout = (RelativeLayout) mainView.findViewById(R.id.share_twi_layout);
+        share_fb_layout = (RelativeLayout) mainView.findViewById(R.id.share_fb_layout);
+        share_ins_layout = (RelativeLayout) mainView.findViewById(R.id.share_ins_layout);
         inspirationImage = (RoundedImageView) mainView.findViewById(R.id.inspirationImage);
-        create_collection_text = (EditText) mainView.findViewById(R.id.create_collection_text);
-        create_collection_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        nameYourCollection = (EditText) mainView.findViewById(R.id.create_collection_text);
+        nameYourCollection.setTypeface(FontUtility.setMontserratLight(mContext));
+        nameYourCollection.addTextChangedListener(watcher);
         description_text = (EditText) mainView.findViewById(R.id.description_text);
         description_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        description_text.addTextChangedListener(watcher2);
+
+        main_content = (RelativeLayout) mainView.findViewById(R.id.main_content);
+
+        main_content.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                description_text.clearFocus();
+                description_text.setCursorVisible(false);
+                imm.hideSoftInputFromWindow(nameYourCollection.getApplicationWindowToken(), 0);
+                return false;
+            }
+        });
         add_collection_text = (TextView) mainView.findViewById(R.id.add_collection_text);
         add_collection_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        post_without_tag_text = (TextView) mainView.findViewById(R.id.post_without_tag_text);
+        post_without_tag_text.setTypeface(FontUtility.setMontserratRegular(mContext));
+        post_without_tag_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.w(TAG, "setOnClickListener");
+                getConfirmation();
+            }
+        });
+        productLayout = (HorizontalScrollView) mainView.findViewById(R.id.productLayout);
+        overlay = (FrameLayout) mainView.findViewById(R.id.overlay);
+        addProducts = (TextView) mainView.findViewById(R.id.add_products_button);
+        addProducts.setTypeface(FontUtility.setMontserratLight(mContext));
+        newCollectionName = (TextView) mainView.findViewById(R.id.new_collection_name);
+        newCollectionName.setTypeface(FontUtility.setMontserratLight(mContext));
         button1 = (TextView) mainView.findViewById(R.id.button1);
         button1.setTypeface(FontUtility.setMontserratLight(mContext));
         textOR = (TextView) mainView.findViewById(R.id.textOR);
@@ -204,21 +455,126 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
         pinterest_text = (TextView) mainView.findViewById(R.id.pinterest_text);
         pinterest_text.setTypeface(FontUtility.setMontserratLight(mContext));
         post_text = (TextView) mainView.findViewById(R.id.post_text);
-        post_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        post_text.setTypeface(FontUtility.setMontserratRegular(mContext));
         backIconLayout = (LinearLayout) mainView.findViewById(R.id.backIconLayout);
+        cancel_layout1 = (LinearLayout) mainView.findViewById(R.id.cancel_layout1);
         description_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                description_text.setCursorVisible(true);
+                description_text.setFocusable(true);
+                description_text.requestFocus();
             }
         });
+        search_tab_text.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)) {
+                    String search_text = search_tab_text.getText().toString().trim();
+                    Log.e(TAG, "down");
+                    FragmentTransaction transaction = mContext.getSupportFragmentManager().beginTransaction();
+                    searchProductFragment = new SearchProductFragment(overflow2, fragmentPostUploadTag, search_text, false);
+                    transaction.replace(R.id.frame_upload_page, searchProductFragment, searchProductFragment.toString());
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        search_tab_text.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (overflow2.isOpen()) {
+                    search_tab_text.setCursorVisible(true);
+                    search_tab_text.setFocusable(true);
+                    search_tab_text.setFocusableInTouchMode(true);
+                    search_tab_text.requestFocus();
+                }
+
+                return false;
+            }
+        });
+        overflow2.setOnCloseListener(new MyMaterialContentOverflow3.OnCloseListener() {
+            @Override
+            public void onClose() {
+                search_tab_text.setVisibility(View.GONE);
+                add_collection_text.setVisibility(View.VISIBLE);
+                post_text.setVisibility(View.VISIBLE);
+            }
+        });
+        nameYourCollection.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    if (validCollectionName()) {
+                        checkLayout.setVisibility(View.GONE);
+                        cancel_layout1.setVisibility(View.VISIBLE);
+                        nameYourCollection.setCursorVisible(false);
+                        nameYourCollection.setVisibility(View.GONE);
+                        newCollectionName.setVisibility(View.VISIBLE);
+                        newCollectionName.setText(finalNewCollectionName);
+                        addProducts.setVisibility(View.VISIBLE);
+                    } else
+                        AlertUtils.showToast(mContext, "Please enter collection name");
+                    return true;
+                }
+                return false;
+            }
+        });
+        squareCheck = (ImageView) mainView.findViewById(R.id.square_check);
+        squareCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imm.hideSoftInputFromWindow(nameYourCollection.getApplicationWindowToken(), 0);
+                nameYourCollection.setCursorVisible(false);
+                if (validCollectionName() && addProducts.getVisibility() == View.INVISIBLE) {
+                    addProducts.setVisibility(View.VISIBLE);
+                    nameYourCollection.setVisibility(View.GONE);
+                    newCollectionName.setVisibility(View.VISIBLE);
+                    newCollectionName.setText(finalNewCollectionName);
+                    squareCheck.setVisibility(View.GONE);
+                    cancel_layout1.setVisibility(View.VISIBLE);
+                    productInflaterLayout.setVisibility(View.VISIBLE);
+                } else if (validCollectionName() && addProducts.getVisibility() == View.VISIBLE) {
+                    if (products.size() > 0 && validCollectionName()) {
+                        checkLayout.setVisibility(View.GONE);
+
+                        if (products.size() > 1 && !TextUtils.isEmpty(collection_id)) {
+                            addProductInCollection(collection_id, currentProduct);
+
+                        } else {
+                            addCollection();
+                        }
+                    }
+                } else
+                    AlertUtils.showToast(mContext, "Please enter collection name");
+            }
+        });
+        squareCheck2 = (ImageView) mainView.findViewById(R.id.square_check2);
+        squareCheck2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                squareCheck2.setVisibility(View.GONE);
+                cancel_layout1.setVisibility(View.VISIBLE);
+                addProductInCollection(collection_id, currentProduct);
+                finalNewCollectionName = collectionName.getText().toString();
+                setTagInformation();
+
+            }
+        });
+        setTouchEvent();
+        callsocialsharing();
+        checkedSocialSharingLogin();
     }
 
     @Override
     public void setData(Bundle bundle) {
-        if(!isUpdate){
+        if (!isUpdate) {
             inspirationImage.setImageBitmap(bmp);
-        }else {
+        } else {
             CommonUtility.setImageHigh(mContext, inspirationImage, inspiration.getInspiration_image());
             description_text.setText(inspiration.getDescription());
         }
@@ -233,126 +589,121 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
     public void setClickListener() {
         backIconLayout.setOnClickListener(this);
         post_text.setOnClickListener(this);
+        share_twi_layout.setOnClickListener(this);
+        share_pin_layout.setOnClickListener(this);
+        share_fb_layout.setOnClickListener(this);
+        share_ins_layout.setOnClickListener(this);
+        button1.setOnClickListener(this);
+        button2.setOnClickListener(this);
+        cancelImage.setOnClickListener(this);
+        addProducts.setOnClickListener(this);
 
     }
 
     @Override
     public void onSocialNetworkManagerInitialized() {
+//when init SocialNetworks - get and setup login only for initialized SocialNetworks
+        for (SocialNetwork socialNetwork : mSocialNetworkManager.getInitializedSocialNetworks()) {
+            socialNetwork.setOnLoginCompleteListener(this);
 
+            initSocialNetwork(socialNetwork);
+        }
     }
 
     private String description;
-    private boolean isUpdate=false;
+    private boolean isUpdate = false;
+
+
+    private void setTagInformation() {
+        taggedItem.setSelectedItem(collection_id);
+        taggedItem.setSelectedItemName(finalNewCollectionName);
+
+        taggedItem.setSelectedItemType("collection");
+
+        taggedItem.setSelectedItemXY("");
+
+        taggedProducts.setSelectedProductsId(collection_id);
+        taggedProducts.setSelectedProducts(collection_id);
+
+        taggedProducts.setSelectedProductsXY("");
+
+    }
 
     private void validateInput() {
         description = description_text.getText().toString().trim();
-        if (bmp == null && imageUrl == null && !isUpdate) { //If an image has been selected
+        if (bmp == null && imageUrl == null && !isUpdate) {
+//If an image has been selected
             AlertUtils.showToast(mContext, R.string.alert_no_image_selected);
-        } else if (TextUtils.isEmpty(description)&&isUpdate) {
+        } else if (TextUtils.isEmpty(description) && isUpdate) {
+
             AlertUtils.showToast(mContext, // If a description has been added
                     R.string.alert_no_description_entered);
         } else {
-            if (checkInternet()) {
-                if (isUpdate && !description.equals(inspiration.getDescription())) {
+            if (TextUtils.isEmpty(description)) {
+                AlertUtils.showToast(mContext, // If a description has been added
+                        "Please enter description");
+            } else if (checkInternet()) {
+
+                if (isUpdate) {
+
                     updateDescription();
-                }else if(!isUpdate){
-                    new GetImage().execute();
-                }
-                else {
+                } else {
 
                     CommonUtility.hideSoftKeyboard(mContext);
 
-//                    if (isNewCollectionAdded) {
-//                        createNewCollection();
-//                    } else if (taggedProductList.size() > 0) {
-//                        productAddedCount = 0;
-//                        for (int i = 0; i < taggedProductList.size(); i++) {
-//                            addProductToTaggedCollection(taggedProductList.get(i));
-//
-//                        }
-//                    } else {
+                    if (taggedProductList.size() > 0) {
+
+                        productAddedCount = 0;
+                        for (int i = 0; i < taggedProductList.size(); i++) {
+
+                        }
+                    } else {
+                        Log.w(TAG, "Going in GetImage().execute(); **");
                         new GetImage().execute();
-                   // }
+                    }
                 }
+
             }
         }
     }
 
-//    private void uploadInspiration(byte[] image) {
-//        final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(
-//                new ServiceCallback() {
-//
-//                    @Override
-//                    public void handleOnSuccess(Object object) {
-//                        Syso.info("In handleOnSuccess>>" + object);
-//                        InspirationRes inspirationRes = (InspirationRes) object;
-//                        if (inspirationRes != null) {
-//                            AlertUtils.showToast(mContext,
-//                                    inspirationRes.getMessage());
-//                            SHARE_POST_LINK = SHARE_POST_LINK + inspirationRes.getId();
-//                            imageServerUri = inspirationRes.getImage_url();
-//                            sharePost();
-//                            goToTrendingSection();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void handleOnFailure(ServiceException exception, Object object) {
-//                        Syso.info("In handleOnFailure>>" + object);
-//                        if (object != null) {
-//                            InspirationRes response = (InspirationRes) object;
-//                            AlertUtils.showToast(mContext, response.getMessage());
-//                        } else {
-//                            AlertUtils.showToast(mContext, R.string.invalid_response);
-//                        }
-//                    }
-//                });
-//        if (image != null || imageUrl != null) {
-//            String width = bmp != null ? String.valueOf(bmp.getWidth()) : "";
-//            String height = bmp != null ? String.valueOf(bmp.getHeight()) : "";
-//
-//            inspirationSectionApi.uploadImage(UserPreference.getInstance()
-//                            .getUserID(), image, "yes", description.trim(), taggedItem,
-//                    taggedProducts, width + ".000000", height + ".000000", imageUrl);
-//            inspirationSectionApi.execute();
-//
-//
-//        } else {
-//            AlertUtils.showToast(mContext, "No image found");
-//        }
-//
-//    }
+    private void addProductToTaggedCollection(Product product) {
+        String from_user_id = TextUtils.isEmpty(product.getFrom_user_id()) ? "" : product.getFrom_user_id();
+        String from_collection_id = TextUtils.isEmpty(product.getFrom_collection_id()) ? "" : product.getFrom_collection_id();
+
+        final CollectionApi collectionApi = new CollectionApi(new ServiceCallback() {
+            @Override
+            public void handleOnSuccess(Object object) {
+                productAddedCount++;
+                Syso.info("In handleOnSuccess>>" + object);
+                CollectionApiRes collectionApiRes = (CollectionApiRes) object;
+
+
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+
+                Syso.info("In handleOnFailure>>" + object);
+                if (object != null) {
+                    CollectionApiRes response = (CollectionApiRes) object;
+                    AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    AlertUtils.showToast(mContext, R.string.invalid_response);
+                }
+            }
+        });
+        collectionApi.addProductInCollection(UserPreference.getInstance().getUserID(), taggedItem.getSelectedItem(), product.getId(), from_user_id, from_collection_id, product.getProductimageurl());
+        collectionApi.execute();
+    }
+
 
     public void updateDescription() {
         try {
-//            CommonUtility.hideSoftKeyboard(mContext);
             final EditInspirationApi editPostApi = new EditInspirationApi(new ServiceCallback() {
                 @Override
                 public void handleOnSuccess(Object object) {
                     CommonRes serverResponse = (CommonRes) object;
-//
-//                    if (isUpdate && !collectionListAdapter.isItemTagged() || isUpdate && isUploadWithoutTag
-//                            ) {
-//                        if (!StringUtils.isEmpty(inspiration.getItem_id()))
-//                            removeGeneralTag();
-//                        else {
-//                            progressbar.setVisibility(View.GONE);
-//                            if (serverResponse.getCode().equals(Constants.WebConstants.SUCCESS_CODE)) {
-//
-//                                AlertUtils.showToast(mContext, "Post updated successfully");
-//                                goToTrendingSection();
-//                            }
-//                        }
-//
-//
-//                    } else if (isUpdate && !taggedItem.getSelectedItem().equals(inspiration.getItem_id())) {
-//                        if (!StringUtils.isEmpty(inspiration.getItem_id()))
-//                            removeGeneralTag();
-//                        else
-//                            addTag();
-//
-//
-//                    } else {
 
                     if (serverResponse.getCode().equals(Constants.WebConstants.SUCCESS_CODE)) {
 
@@ -360,8 +711,6 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
                         inspiration.setDescription(description_text.getText().toString().trim());
                         description_text.setCursorVisible(false);
 
-//                            goToTrendingSection();
-                        // }
                     }
                 }
 
@@ -374,7 +723,6 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
                     } else {
                         AlertUtils.showToast(mContext, R.string.invalid_response);
                     }
-//                    goToTrendingSection();
                 }
             });
 
@@ -388,40 +736,131 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
     static String SHARE_POST_LINK = "Find it @FLATLAY http://flat-lay.com/flatlay/";
     String imageServerUri;
 
-//    private void sharePost() {
-//
-//        Log.w("FPUTag","sharePost()");
-//
-//        if(switchInstagram.isChecked()) {
-//            postToInstagram();
-//        }
-//
-//        if(switchFacebook.isChecked() || switchTwitter.isChecked()){
-//            for (int i = 0; i < networkidarray.size(); i++) {
-//                startProfile(networkidarray.get(i));
-//            }
-//        }
-//
-//        /*
-//        if (switchInstagram.isChecked() || switchTwitter.isChecked() || switchFacebook.isChecked()) {
-//            for (int i = 0; i < networkidarray.size(); i++) {
-//                startProfile(networkidarray.get(i));
-//            }
-//        }
-//        */
-//
-//        if (switchPinterest.isChecked()) {
-//            pintrestsharingimage();
-//            onSavePin(mContext, imageServerUri, UserPreference.getInstance().getmPinterestBoardId(), descriptionEditText.getText().toString() + " " + SHARE_POST_LINK, imageServerUri);
-//        }
-//    }
+    private void sharePost() {
+
+
+        if (switchInstagram.isChecked()) {
+            postToInstagram();
+        }
+
+        if (switchFacebook.isChecked() || switchTwitter.isChecked()) {
+            for (int i = 0; i < networkidarray.size(); i++) {
+                startProfile(networkidarray.get(i));
+            }
+        }
+
+        /*
+        if (switchInstagram.isChecked() || switchTwitter.isChecked() || switchFacebook.isChecked()) {
+            for (int i = 0; i < networkidarray.size(); i++) {
+                startProfile(networkidarray.get(i));
+            }
+        }
+        */
+
+        if (switchPinterest.isChecked()) {
+            pintrestsharingimage();
+            onSavePin(mContext, imageServerUri, UserPreference.getInstance().getmPinterestBoardId(), description_text.getText().toString() + " " + SHARE_POST_LINK, imageServerUri);
+        }
+    }
+
+    private void pintrestsharingimage() {
+
+        PinterestUtility.getInstance(mContext, this).init();
+    }
+
+    private void callSocialSharing() {
+
+        SocialNetwork socialNetwork = mSocialNetworkManager.getSocialNetwork(networkId);
+        if (!socialNetwork.isConnected()) {
+
+            if (networkId != 0) {
+                socialNetwork.requestLogin();
+            } else {
+                Toast.makeText(getActivity(), "Wrong networkId", Toast.LENGTH_LONG).show();
+            }
+        } else
+            setShareClickable(true);
+    }
+
+
+    private void startProfile(final int networkId) {
+        Log.w(TAG, "startProfile");
+
+        String shareTEXT = description_text.getText().toString() + " " + SHARE_POST_LINK;
+        socialNetwork = FragmentPostUploadTag.mSocialNetworkManager.getSocialNetwork(networkId);
+        socialNetwork.requestCurrentPerson();
+        socialNetwork.requestPostPhoto(new File(imageUrl), shareTEXT, new OnPostingCompleteListener() {
+            @Override
+            public void onPostSuccessfully(int socialNetworkID) {
+                Log.w(TAG, "You Posted Photo : " + networkId);
+                sucesssharecount++;
+                if (networkidarray.size() == sucesssharecount) {
+                    Toast.makeText(getActivity(), "Image posted successfully", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onError(int socialNetworkID, String requestID, String errorMessage, Object data) {
+                Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+    }
+
+    private void postToInstagram() {
+
+        Log.w(TAG, "shareToInstagram()" + imageUrl);
+        File media = new File(imageUrl);
+        Uri uri = Uri.fromFile(media);
+        String shareTEXT = description_text.getText().toString() + " " + SHARE_POST_LINK;
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("image/*");
+        shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareTEXT);
+        shareIntent.setPackage("com.instagram.android");
+        startActivity(Intent.createChooser(shareIntent, "Share to"));
+    }
+
+    public void onSavePin(Context c, String imageUrl, String boardId, String text, String linkUrl) {
+        Log.w(TAG, "onSavePin()");
+        if (!Utils.isEmpty(text) && !Utils.isEmpty(boardId) && !Utils.isEmpty(imageUrl)) {
+            PDKClient.getInstance().createPin(text, boardId, imageUrl, linkUrl, new PDKCallback() {
+                @Override
+                public void onSuccess(PDKResponse response) {
+                    Log.d(getClass().getName(), response.getData().toString());
+                    Syso.info("12345678 >>> output" + response.getData().toString());
+                    AlertUtils.showToast(mContext, "Shared Successfully");
+                }
+
+                @Override
+                public void onFailure(PDKException exception) {
+                    Syso.info("12345678 >>> output" + exception.getDetailMessage());
+                    try {
+                        JSONObject jsonObject = new JSONObject(exception.getDetailMessage());
+                        AlertUtils.showToast(mContext, jsonObject.getString("message"));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        AlertUtils.showToast(mContext, exception.getDetailMessage());
+                    }
+
+                }
+            });
+        } else {
+            Toast.makeText(mContext, "Required fields cannot be empty", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private TaggedItem taggedItem = new TaggedItem();
     private TaggedProducts taggedProducts = new TaggedProducts();
 
 
     private void uploadInspiration(byte[] image) {
-        Log.w("FragmentPUTag","uploadInspiration()");
+        Toast.makeText(mContext, "Uploading, you will be lead to main page", Toast.LENGTH_SHORT).show();
+
+        Log.w(TAG, "uploadInspiration()");
         final InspirationSectionApi inspirationSectionApi = new InspirationSectionApi(
                 new ServiceCallback() {
 
@@ -433,12 +872,9 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
                                     inspirationRes.getMessage());
                             SHARE_POST_LINK = SHARE_POST_LINK + inspirationRes.getId();
                             imageServerUri = inspirationRes.getImage_url();
-//                            sharePost();
-//                            goToTrendingSection();
-                            ((HomeActivity)mContext).addFragment(new FragmentInspirationSection());
+                            sharePost();
                             ((HomeActivity) mContext).mFragmentStack.clear();
-                            ((HomeActivity) mContext).addFragment(new FragmentDiscoverNew());
-                            ((HomeActivity) mContext).onBackPressed();
+                            ((HomeActivity) mContext).addFragment(new FragmentInspirationSection());
                         }
                     }
 
@@ -453,7 +889,7 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
                     }
                 });
         if (image != null || imageUrl != null) {
-            Log.w("FragmentPUTag","Image present");
+            Log.w(TAG, "Image present");
             String width = bmp != null ? String.valueOf(bmp.getWidth()) : "";
             String height = bmp != null ? String.valueOf(bmp.getHeight()) : "";
 
@@ -468,15 +904,96 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
         }
 
     }
+
     byte[] byteArray;
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+        switch (buttonView.getId()) {
+            case R.id.switchfacebook:
+                if (isChecked && !UserPreference.getInstance().getmIsFacebookSignedIn()) {
+                    switchFacebook.setChecked(false);
+                    networkId = FacebookSocialNetwork.ID;
+                    callSocialSharing();
+
+                } else if (!isChecked) {
+                    networkId = FacebookSocialNetwork.ID;
+                    if (networkidarray.contains(networkId)) {
+                        networkidarray.remove(new Integer(networkId));
+                    }
+                } else if (isChecked) {
+                }
+                break;
+
+            case R.id.switchtwitter:
+
+                if (isChecked && !UserPreference.getInstance().getmIsTwitterSignedIn()) {
+                    networkId = TwitterSocialNetwork.ID;
+
+                    switchTwitter.setChecked(false);
+                    callSocialSharing();
+                } else if (!isChecked) {
+                } else if (isChecked) {
+                }
+
+
+                break;
+            case R.id.switchInstagram:
+                if (isChecked && !UserPreference.getInstance().getmIsInstagramSignedIn()) {
+                    switchInstagram.setChecked(false);
+                    if (((HomeActivity) mContext).appInstalledOrNot("com.instagram.android")) {
+
+                        networkId = InstagramSocialNetwork.ID;
+                        callSocialSharing();
+                        switchInstagram.setChecked(true);
+                    } else {
+                        RedirectToPlayStore redirectToPlayStore = new RedirectToPlayStore(mContext, "instagram");
+                        redirectToPlayStore.getWindow().setBackgroundDrawableResource(R.color.real_transparent);
+                        redirectToPlayStore.show();
+                    }
+
+                } else if (!isChecked) {
+                    networkId = InstagramSocialNetwork.ID;
+                    if (networkidarray.contains(networkId)) {
+                        networkidarray.remove(new Integer(networkId));
+                    }
+                } else if (isChecked) {
+                }
+
+                break;
+
+            case R.id.switchPinterest:
+                if (isChecked && !UserPreference.getInstance().getmIsPinterestSignedIn()) {
+                    switchPinterest.setChecked(false);
+                    if (((HomeActivity) mContext).appInstalledOrNot("com.pinterest")) {
+                        pintrestsharingimage();
+                        switchPinterest.setChecked(true);
+                    } else {
+                        RedirectToPlayStore redirectToPlayStore = new RedirectToPlayStore(mContext, "pinterest");
+                        redirectToPlayStore.show();
+                    }
+                } else if (!isChecked) {
+                } else if (isChecked) {
+                }
+                break;
+
+        }
+    }
+
+    private void setShareClickable(boolean isClickable) {
+        switchFacebook.setClickable(isClickable);
+        switchInstagram.setClickable(isClickable);
+        switchPinterest.setClickable(isClickable);
+        switchTwitter.setClickable(isClickable);
+    }
 
 
     private class GetImage extends AsyncTask<Void, Void, byte[]> {
 
         @Override
         protected void onPreExecute() {
-            Log.w("FragmentPUTag","GetImage() onPreExecute()");
-//            imageUploadView.setImageBitmap(bmp);
+            Log.w(TAG, "GetImage() onPreExecute()");
             super.onPreExecute();
         }
 
@@ -484,7 +1001,7 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
         protected byte[] doInBackground(Void... params) {
 
             // TODO Auto-generated method stub
-            Log.w("FragmentPUTag","GetImage() doInBackground()");
+            Log.w(TAG, "GetImage() doInBackground()");
             if (isImage.equals("no")) {
                 return byteArray;
             } else {
@@ -497,8 +1014,380 @@ public class FragmentPostUploadTag extends BaseFragment implements View.OnClickL
         protected void onPostExecute(byte[] result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-            Log.w("FragmentPUTag","Going in uploadInspiration() 1");
+            Log.w(TAG, "Going in uploadInspiration() 1");
             uploadInspiration(result);
         }
     }
+
+    public void checkedSocialSharingLogin() {
+        Log.w(TAG, "checkedSocialSharingLogin");
+        networkidarray.clear();
+        if (UserPreference.getInstance().getmIsFacebookSignedIn()) {
+            networkId = FacebookSocialNetwork.ID;
+            networkidarray.add(networkId);
+            switchFacebook.setChecked(true);
+        } else {
+            switchFacebook.setChecked(false);
+        }
+
+        if (UserPreference.getInstance().getmIsTwitterSignedIn()) {
+            networkId = TwitterSocialNetwork.ID;
+            networkidarray.add(networkId);
+            switchTwitter.setChecked(true);
+        } else {
+            switchTwitter.setChecked(false);
+        }
+
+        if (UserPreference.getInstance().getmIsInstagramSignedIn()) {
+            Log.w(TAG, "Instagram Signed In");
+            networkId = InstagramSocialNetwork.ID;
+            switchInstagram.setChecked(true);
+        } else {
+            Log.w(TAG, "Instagram Not Signed In");
+            switchInstagram.setChecked(false);
+        }
+
+        if (UserPreference.getInstance().getmIsPinterestSignedIn()) {
+            switchPinterest.setChecked(true);
+        } else {
+            switchPinterest.setChecked(false);
+        }
+
+    }
+
+    private void callsocialsharing() {
+        Log.w(TAG, "callsocialsharing");
+        //Get Keys for initiate SocialNetworks
+        String TWITTER_CONSUMER_KEY = getActivity().getString(R.string.twitter_consumer_key);
+        String TWITTER_CONSUMER_SECRET = getActivity().getString(R.string.twitter_consumer_secret);
+        String TWITTER_CALLBACK_URL = "oauth://ASNE";
+
+        String INSTAGRAM_CLIENT_ID = AppConstants.INSTAGRAM_CLIENT_ID;
+        String INSTAGRAM_CLIENT_SECRET = AppConstants.INSTAGRAM_CLIENT_SECRET;
+        String INSTAGRAM_REDIRECT_URI = AppConstants.INSTAGRAM_REDIRECT_URI;
+        String scope = "likes+comments";
+
+        //Chose permissions
+        ArrayList<String> fbScope = new ArrayList<String>();
+        fbScope.addAll(Arrays.asList("public_profile, email, user_friends"));
+        String linkedInScope = "r_basicprofile+r_fullprofile+rw_nus+r_network+w_messages+r_emailaddress+r_contactinfo";
+
+        //Use manager to manage SocialNetworks
+        mSocialNetworkManager = (SocialNetworkManager) getFragmentManager().findFragmentByTag(HomeActivity.SOCIAL_NETWORK_TAG);
+
+        //Check if manager exist
+        if (mSocialNetworkManager == null) {
+            mSocialNetworkManager = new SocialNetworkManager();
+
+            //Init and add to manager FacebookSocialNetwork
+            FacebookSocialNetwork fbNetwork = new FacebookSocialNetwork(this, fbScope);
+            mSocialNetworkManager.addSocialNetwork(fbNetwork);
+
+            //Init and add to manager TwitterSocialNetwork
+            TwitterSocialNetwork twNetwork = new TwitterSocialNetwork(this, TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, TWITTER_CALLBACK_URL);
+            mSocialNetworkManager.addSocialNetwork(twNetwork);
+
+            InstagramSocialNetwork instaNetwork = new InstagramSocialNetwork(this, INSTAGRAM_CLIENT_ID, INSTAGRAM_CLIENT_SECRET, INSTAGRAM_REDIRECT_URI, scope);
+            mSocialNetworkManager.addSocialNetwork(instaNetwork);
+
+            getFragmentManager().beginTransaction().add(mSocialNetworkManager, HomeActivity.SOCIAL_NETWORK_TAG).commit();
+            mSocialNetworkManager.setOnInitializationCompleteListener(this);
+        } else {
+            //if manager exist - get and setup login only for initialized SocialNetworks
+            if (!mSocialNetworkManager.getInitializedSocialNetworks().isEmpty()) {
+                List<SocialNetwork> socialNetworks = mSocialNetworkManager.getInitializedSocialNetworks();
+                for (SocialNetwork socialNetwork : socialNetworks) {
+                    socialNetwork.setOnLoginCompleteListener(((HomeActivity) mContext));
+                    initSocialNetwork(socialNetwork);
+                }
+            }
+        }
+    }
+
+    private void initSocialNetwork(SocialNetwork socialNetwork) {
+        if (socialNetwork.isConnected()) {
+            switch (socialNetwork.getID()) {
+                case FacebookSocialNetwork.ID:
+
+                    break;
+                case TwitterSocialNetwork.ID:
+
+                    break;
+                case InstagramSocialNetwork.ID:
+
+                    break;
+
+            }
+        }
+
+    }
+
+
+    private void getConfirmation() {
+        Log.w(TAG, "getConfirmation()");
+        final AlertDialog.Builder builder;
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        if (checkInternet()) {
+                            isNewCollectionAdded = false;
+                            addProductListNew.clear();
+                            taggedProductList.clear();
+                            taggedItem = new TaggedItem();
+                            taggedProducts = new TaggedProducts();
+                            isUploadWithoutTag = true;
+
+                            validateInput();
+                        }
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        dialog.dismiss();
+                        break;
+                }
+            }
+        };
+
+        builder = new AlertDialog.Builder(mContext);
+        builder.setMessage("Are you sure you want to continue without tagging?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+    }
+
+
+    private void addProductToNewCollection(Product product) {
+        Log.w(TAG, "addProductToNewCollection22()");
+
+        addProductListNew1.add(product);
+
+    }
+
+
+    CollectionApi collectionApi;
+
+
+    private void addProductInCollection(String collection_id, Product product) {
+
+        String from_user_id = TextUtils.isEmpty(product.getFrom_user_id()) ? "" :
+                product.getFrom_user_id();
+        String from_collection_id = TextUtils.isEmpty(product.getFrom_collection_id()) ? "" :
+                product.getFrom_collection_id();
+
+        final CollectionApi collectionApi = new CollectionApi(new ServiceCallback() {
+            @Override
+            public void handleOnSuccess(Object object) {
+                CollectionApiRes collectionApiRes = (CollectionApiRes) object;
+                AlertUtils.showToast(mContext, collectionApiRes.getMessage());
+                if (!choseExisitng) {
+                    checkLayout.setVisibility(View.GONE);
+
+                } else {
+                    checkLayout.setVisibility(View.VISIBLE);
+                }
+                cancel_layout1.setVisibility(View.VISIBLE);
+
+                finalNewCollectionName = nameYourCollection.getText().toString();
+                setTagInformation();
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                if (object != null) {
+                    CollectionApiRes response = (CollectionApiRes) object;
+                    AlertUtils.showToast(mContext, response.getMessage());
+                } else {
+                    AlertUtils.showToast(mContext, R.string.invalid_response);
+                }
+            }
+        });
+        collectionApi.addProductInCollection(UserPreference.getInstance().getUserID(),
+                collection_id, product.getId(), from_user_id, from_collection_id,
+                product.getProductimageurl());
+        collectionApi.execute();
+    }
+
+    public void chooseProduct(Product product) {
+
+        isNewCollectionAdded = true;
+        addProductListNew.add(product);
+        addProductToNewCollection(product);
+        this.currentProduct = product;
+
+        updateListAdd(product);
+
+        overflow2.triggerClose();
+    }
+
+
+    private void setTouchEvent() {
+        Log.w(TAG, "setTouchEvent()");
+        tagView = new TagView(mContext);
+
+    }
+
+    public void getProducts() {
+        final ProductBasedOnBrandApi productBasedOnBrandApi =
+                new ProductBasedOnBrandApi(new ServiceCallback() {
+                    @Override
+                    public void handleOnSuccess(Object object) {
+                        ProductBasedOnBrandRes productBasedOnBrandRes = (ProductBasedOnBrandRes) object;
+                        List<Product> data = productBasedOnBrandRes.getData();
+                        products.addAll(data);
+                        productInflaterLayout.removeAllViews();
+                        productInflaterLayout.
+                                addView(new ProductUI(mContext, 200, 200, products, false).getView());
+                        //IMPORTANT: assume call api one time, we can get 15 products at most
+                        if (data.size() == 15) {
+                            page++;
+                            getProducts();
+                        }
+
+                        addProducts.setText("Add Product");
+                    }
+
+                    @Override
+                    public void handleOnFailure(ServiceException exception, Object object) {
+                    }
+                });
+        productBasedOnBrandApi.getProductsBasedOnCollectionList
+                (UserPreference.getInstance().getUserID(), String.valueOf(page), collection_id);
+        productBasedOnBrandApi.execute();
+    }
+
+
+    public boolean validCollectionName() {
+        String name = nameYourCollection.getText().toString();
+        if (name != null && name.length() != 0) {
+            finalNewCollectionName = name.trim();
+            return true;
+        }
+        return false;
+    }
+
+    private class CollectionTextWatcher implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            if (validCollectionName()) {
+                cancel_layout1.setVisibility(View.GONE);
+                checkLayout.setVisibility(View.VISIBLE);
+                squareCheck.setVisibility(View.VISIBLE);
+                squareCheck.setImageResource(R.drawable.square_check);
+            } else {
+                checkLayout.setVisibility(View.GONE);
+                cancel_layout1.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    }
+
+    private class DescriptionTextWatcher implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String des = description_text.getText().toString().trim();
+            if (TextUtils.isEmpty(des)) {
+                post_text.setBackgroundResource(R.drawable.grey_corner_button);
+            } else {
+                post_text.setBackgroundResource(R.drawable.green_corner_button_post);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    }
+
+
+    Product currentProduct = new Product();
+
+    public void getNewCollectionId() {
+        final CollectionApi collectionApi = new CollectionApi(new ServiceCallback() {
+            @Override
+            public void handleOnSuccess(Object object) {
+                CollectionApiRes collectionApiRes = (CollectionApiRes) object;
+                collectionLists = collectionApiRes.getCollection();
+                if (collectionLists != null && collectionLists.size() > 0) {
+                    collection_id = collectionLists.get(collectionLists.size() - 1).getId();
+
+                    checkLayout.setVisibility(View.GONE);
+                    cancel_layout1.setVisibility(View.GONE);
+
+
+                    newCollectionName.setText(collectionLists.get(collectionLists.size() - 1).getName());
+                    addProductInCollection(collection_id, currentProduct);
+
+                }
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+                if (object != null) {
+
+                    CollectionApiRes response = (CollectionApiRes) object;
+                    AlertUtils.showToast(mContext, response.getMessage());
+
+                } else {
+                    AlertUtils.showToast(mContext, R.string.invalid_response);
+                }
+            }
+        });
+        collectionApi.getCollectionList(UserPreference.getInstance().getUserID());
+        collectionApi.execute();
+    }
+
+    public void initProducts() {
+        getProducts();
+        productLayout.scrollTo(0, 0);
+    }
+
+    private void addCollection() {
+        final AddCollectionApi collectionApi = new AddCollectionApi(new ServiceCallback() {
+            @Override
+            public void handleOnSuccess(Object object) {
+                AlertUtils.showToast(mContext, "Collection added");
+                nameYourCollection.clearFocus();
+                getNewCollectionId();
+            }
+
+            @Override
+            public void handleOnFailure(ServiceException exception, Object object) {
+
+            }
+        });
+        if (finalNewCollectionName != null && finalNewCollectionName.length() > 0)
+            collectionApi.addNewCollection(finalNewCollectionName);
+        collectionApi.execute();
+    }
+
+    private void updateListAdd(Product product) {
+        products.add(0, product);
+
+        if (products.size() > 0 && validCollectionName()) {
+            checkLayout.setVisibility(View.VISIBLE);
+            squareCheck.setVisibility(View.VISIBLE);
+            squareCheck.setImageResource(R.drawable.square_check);
+            cancel_layout1.setVisibility(View.VISIBLE);
+
+        }
+
+
+        productInflaterLayout.removeAllViews();
+        productInflaterLayout.addView(new ProductUI(mContext, 200, 200, products, false).getView());
+    }
+
 }

@@ -100,7 +100,6 @@ public class SignUpActivity extends BaseFragment implements OnClickListener, OnK
 
     @Override
     public void initUI(Bundle savedInstanceState) {
-        // CommonUtility.noTitleActivity(getActivity());
         mEmailEditText = (EditText) mainView.findViewById(R.id.emailEditText);
         mPasswordEditText = (EditText) mainView.findViewById(R.id.passwordEditText);
         mreemailEditText = (EditText) mainView.findViewById(R.id.reemailEditText);
@@ -117,16 +116,6 @@ public class SignUpActivity extends BaseFragment implements OnClickListener, OnK
         setOnKeyListener();
 
     }
-
-//    @Override
-//    public void setupData() {
-//
-//    }
-//
-//    @Override
-//    public void headerView() {
-//        hideHeader();
-//    }
 
     public void setUpTextType() {
         mEmailEditText.setTypeface(FontUtility.setMontserratLight(getActivity()));
@@ -206,24 +195,13 @@ public class SignUpActivity extends BaseFragment implements OnClickListener, OnK
 
     private void registerViaEamil(String email, String password, String gender) {
 
-//        mProgressBarDialog = new ProgressBarDialog(getActivity());
-//        mProgressBarDialog.show();
-
         final RegisterUserApi service = new RegisterUserApi(this);
         service.registerViaEmail(email, password, gender, DeviceUtils.getPhoneModel(), CommonUtility.getDeviceTocken(getActivity()), Screen.UserNameScreen, "android", CommonUtility.getDeviceId(getActivity()));
         service.execute();
-
-       // mProgressBarDialog.setOnCancelListener(new OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                service.cancel();
-//            }
-//        });
     }
 
     @Override
     public void handleOnSuccess(Object object) {
-      //  mProgressBarDialog.dismiss();
         Syso.info("In handleOnSuccess>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;
@@ -231,10 +209,8 @@ public class SignUpActivity extends BaseFragment implements OnClickListener, OnK
             setHelpPreference();
             Bundle bundle = new Bundle();
             bundle.putString("email", "");
-            //what about gender? password??
             startActivity(EditProfileActivity.class,bundle);
         }
-        //necessary?
         getActivity().finish();
     }
 
@@ -261,7 +237,6 @@ public class SignUpActivity extends BaseFragment implements OnClickListener, OnK
 
     @Override
     public void handleOnFailure(ServiceException exception, Object object) {
-        //mProgressBarDialog.dismiss();
         Syso.info("In handleOnFailure>>" + object);
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;

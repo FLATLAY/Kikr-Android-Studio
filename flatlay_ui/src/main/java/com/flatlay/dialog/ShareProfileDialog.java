@@ -19,7 +19,7 @@ public class ShareProfileDialog extends Dialog {
     private Context mContext;
     private TextView otherButton;
     private TextView title;
-    private ImageView cancelIcon,twi_icon,pin_icon,fb_icon,ins_icon;
+    private ImageView cancelIcon, twi_icon, pin_icon, fb_icon, ins_icon;
 
 
     public ShareProfileDialog(@NonNull Context mContext) {
@@ -31,17 +31,17 @@ public class ShareProfileDialog extends Dialog {
         otherButton.setTypeface(FontUtility.setMontserratLight(getOwnerActivity()));
         title = (TextView) findViewById(R.id.title_text);
         title.setTypeface(FontUtility.setMontserratLight(getOwnerActivity()));
-        cancelIcon=(ImageView) findViewById(R.id.cancel_icon);
+        cancelIcon = (ImageView) findViewById(R.id.cancel_icon);
         cancelIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dismiss();
             }
         });
-        ins_icon=(ImageView) findViewById(R.id.ins_icon);
-        fb_icon=(ImageView) findViewById(R.id.fb_icon);
-        pin_icon=(ImageView) findViewById(R.id.pin_icon);
-        twi_icon=(ImageView) findViewById(R.id.twi_icon);
+        ins_icon = (ImageView) findViewById(R.id.ins_icon);
+        fb_icon = (ImageView) findViewById(R.id.fb_icon);
+        pin_icon = (ImageView) findViewById(R.id.pin_icon);
+        twi_icon = (ImageView) findViewById(R.id.twi_icon);
         ins_icon.setImageResource(R.drawable.instagram_black);
         fb_icon.setImageResource(R.drawable.facebooklogoo);
         pin_icon.setImageResource(R.drawable.pinterestlogoo);

@@ -8,7 +8,7 @@ android {
         applicationId "com.albinmathew.samples.photocrop"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 1
+        versionCode 38
         versionName "1.0"
     }
     buildTypes {

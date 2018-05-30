@@ -28,6 +28,9 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <permission  android:name="com.flatlay.permission.C2D_MESSAGE"  android:protectionLevel="signature" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <supports-screens
         android:anyDensity="true"
@@ -359,9 +362,7 @@
 
 
         <!-- Required OpenGL ES 2.0. for Maps V2 -->
-        <uses-feature
-            android:glEsVersion="0x00020000"
-            android:required="true" />
+
 
         <!-- Googlge API Key -->
         <meta-data

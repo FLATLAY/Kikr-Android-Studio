@@ -65,6 +65,9 @@ import java.util.Random;
 import twitter4j.User;
 
 public class EditProfileActivity extends BaseActivity implements OnClickListener, TextView.OnEditorActionListener {
+    private final static int REQUEST_CODE_FB_PIC = 1004;
+    private final static int REQUEST_CODE_TWIT_PIC = 1005;
+    final int CROP_PIC = 1006;
     private ProgressBarDialog mProgressBarDialog;
     private Button mDoneButton;
     private RoundImageView user_profile_image;
@@ -82,12 +85,9 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     private boolean needToUpdateName = false;
     private boolean needToUpdatePic = false;
     private boolean needToUpdateBg = false;
-    private final static int REQUEST_CODE_FB_PIC = 1004;
-    private final static int REQUEST_CODE_TWIT_PIC = 1005;
     private ProgressBarDialog progressBarDialog;
     private String from = "";
     private Uri picUri;
-    final int CROP_PIC = 1006;
     private TextView kikr_learn_more;
     private TextView textViewOutside, descriptionTextView;
     private RelativeLayout layoutPictures;
@@ -106,11 +106,12 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
             return null;
         }
     };
+    private Uri mDestinationUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.w("Activity:","EditProfileActivity");
+        Log.w("Activity:", "EditProfileActivity");
         if (getIntent().hasExtra("is_edit_profile")) {
             isEditProfile = getIntent().getBooleanExtra("is_edit_profile", false);
         } else {
@@ -315,9 +316,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 //Bitmap thePic = extras.getParcelable("data");
                 setImage(thumbnail);
                 mImageBitmap = thumbnail;
-            }
-            else if(requestCode==UCrop.REQUEST_CROP)
-            {
+            } else if (requestCode == UCrop.REQUEST_CROP) {
 //                String filePath = Environment.getExternalStorageDirectory()
 //                        + "/temporary_holder.jpg";
                 String filePath = Environment.getExternalStorageDirectory()
@@ -334,61 +333,12 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 //				user_profile_image.setImageBitmap(bitmap);
 //				user_profile_image.setTag(bitmap);
 //				mImageBitmap = bitmap;
-//			} 
+//			}
 //		}
     }
 
-    private void  performCropGallery(Uri picUri)
-    {
+    private void performCropGallery(Uri picUri) {
         startCropActivity(picUri);
-    }
-
-
-
-    private class DownloadImage extends AsyncTask<String, Void, Uri> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            // Create a progressdialog
-            mProgressBarDialog = new ProgressBarDialog(context);
-            mProgressBarDialog.show();
-        }
-
-        @Override
-        protected Uri doInBackground(String... URL) {
-
-            String imageURL = URL[0];
-            Uri url = null;
-
-            Bitmap bitmap = null;
-            try {
-                // Download Image from URL
-                InputStream input = new java.net.URL(imageURL).openStream();
-                // Decode Bitmap
-                bitmap = BitmapFactory.decodeStream(input);
-                //  String path = MediaStore.Images.Media.insertImage(mContext.getContentResolver(), bitmap, "Title", null);
-                url = bitmapToUriConverter(bitmap);
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return url;
-        }
-
-        @Override
-        protected void onPostExecute(Uri result) {
-            // Set the bitmap into ImageView
-            if (result != null) {
-                Utils.path=result;
-                performNewCrop(result);
-            }
-            else
-                Syso.info("Could not download the image, Please try again.");
-            // Close progressdialog
-            mProgressBarDialog.dismiss();
-        }
     }
 
     public Uri bitmapToUriConverter(Bitmap mBitmap) {
@@ -730,54 +680,22 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         }
     }
 
-    private class GetTwitterInfo extends AsyncTask<Void, Void, User> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressBarDialog = new ProgressBarDialog(context);
-            progressBarDialog.show();
-        }
-
-        @Override
-        protected User doInBackground(Void... params) {
-            return TwitterOAuthActivity.getUserInfo(context);
-        }
-
-        @Override
-        protected void onPostExecute(User user) {
-            super.onPostExecute(user);
-            progressBarDialog.dismiss();
-            System.out.println("Twitter id>>" + user);
-            if (user != null) {
-                needToUpdatePic = true;
-                mImageBitmap = null;
-                profilePic = user.getOriginalProfileImageURL();
-                CommonUtility.setImage(context, profilePic, user_profile_image, R.drawable.profile_icon);
-            } else {
-                AlertUtils.showToast(context, "Failed to connect with twitter. Please try again.");
-            }
-        }
-    }
-
-    private Uri mDestinationUri;
-
     public void startCropActivity(@NonNull Uri uri) {
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
-       // UCrop uCrop = UCrop.of(uri, mDestinationUri);
+        // UCrop uCrop = UCrop.of(uri, mDestinationUri);
 
         //uCrop = basisConfig(uCrop);
-      // uCrop = advancedConfig(uCrop);
+        // uCrop = advancedConfig(uCrop);
 
         //uCrop.start(context);
         CropImage.activity(uri)
                 .setRequestedSize(700, 700, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
                 //.setMaxCropResultSize(2000, 2000)
                 .setFixAspectRatio(true)
-                .setAspectRatio(1,1)
+                .setAspectRatio(1, 1)
                 .setOutputUri(mDestinationUri)
                 .start(context);
     }
-
 
     private UCrop basisConfig(@NonNull UCrop uCrop) {
 
@@ -797,7 +715,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         return uCrop;
     }
 
-
     private UCrop advancedConfig(@NonNull UCrop uCrop) {
         UCrop.Options options = new UCrop.Options();
 
@@ -806,7 +723,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
         options.setCompressionQuality(100);
 
-      //  options.setHideBottomControls(false);
+        //  options.setHideBottomControls(false);
         options.setFreeStyleCropEnabled(true);
 
 
@@ -836,6 +753,80 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
             Toast.makeText(EditProfileActivity.this, cropError.getMessage(), Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(EditProfileActivity.this, R.string.toast_unexpected_error, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class DownloadImage extends AsyncTask<String, Void, Uri> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Create a progressdialog
+            mProgressBarDialog = new ProgressBarDialog(context);
+            mProgressBarDialog.show();
+        }
+
+        @Override
+        protected Uri doInBackground(String... URL) {
+
+            String imageURL = URL[0];
+            Uri url = null;
+
+            Bitmap bitmap = null;
+            try {
+                // Download Image from URL
+                InputStream input = new java.net.URL(imageURL).openStream();
+                // Decode Bitmap
+                bitmap = BitmapFactory.decodeStream(input);
+                //  String path = MediaStore.Images.Media.insertImage(mContext.getContentResolver(), bitmap, "Title", null);
+                url = bitmapToUriConverter(bitmap);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return url;
+        }
+
+        @Override
+        protected void onPostExecute(Uri result) {
+            // Set the bitmap into ImageView
+            if (result != null) {
+                Utils.path = result;
+                performNewCrop(result);
+            } else
+                Syso.info("Could not download the image, Please try again.");
+            // Close progressdialog
+            mProgressBarDialog.dismiss();
+        }
+    }
+
+    private class GetTwitterInfo extends AsyncTask<Void, Void, User> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBarDialog = new ProgressBarDialog(context);
+            progressBarDialog.show();
+        }
+
+        @Override
+        protected User doInBackground(Void... params) {
+            return TwitterOAuthActivity.getUserInfo(context);
+        }
+
+        @Override
+        protected void onPostExecute(User user) {
+            super.onPostExecute(user);
+            progressBarDialog.dismiss();
+            System.out.println("Twitter id>>" + user);
+            if (user != null) {
+                needToUpdatePic = true;
+                mImageBitmap = null;
+                profilePic = user.getOriginalProfileImageURL();
+                CommonUtility.setImage(context, profilePic, user_profile_image, R.drawable.profile_icon);
+            } else {
+                AlertUtils.showToast(context, "Failed to connect with twitter. Please try again.");
+            }
         }
     }
 }

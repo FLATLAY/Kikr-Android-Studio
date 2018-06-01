@@ -64,6 +64,18 @@ import java.util.List;
 import java.util.Random;
 
 public class EditProfileActivity extends BaseActivity implements OnClickListener {
+    public final static String TAG = "EditProfileActivity";
+    private final static int REQUEST_CODE_FB_PIC = 1004, REQUEST_CODE_TWIT_PIC = 1005,
+            REQUEST_CODE_INS_PIC = 1000000, REQUEST_CODE_PIN_PIC = 1000000,
+            REQUEST_CODE_TUBE_PIC = 1000000;
+    private final int CROP_PIC = 1006;
+    String newFb;
+    String newIns;
+    String newTube;
+    String newTwi;
+    String newPin;
+    Boolean wantToGoNext = false;
+    boolean isValid = true;
     private Button nextButton;
     private ImageView user_profile_image, camera, fbIcon, insIcon, pinIcon, twiIcon,
             tubeIcon;
@@ -78,13 +90,8 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     private EditProfileActivity editProfileActivity;
     private boolean needToUpdateName = false, needToUpdatePic = false, needToUpdateBg = false,
             isEditProfile = false, changeMadeToName = false, changeMadeToSocial = false;
-    private final static int REQUEST_CODE_FB_PIC = 1004, REQUEST_CODE_TWIT_PIC = 1005,
-            REQUEST_CODE_INS_PIC = 1000000, REQUEST_CODE_PIN_PIC = 1000000,
-            REQUEST_CODE_TUBE_PIC = 1000000;
     private Uri picUri;
-    private final int CROP_PIC = 1006;
     private int index = 0;
-    public final static String TAG = "EditProfileActivity";
     private String[] socialInfo = new String[5],
             originSocial = {"https://www.facebook.com/",
                     "https://www.instagram.com/", "https://www.pinterest.com/",
@@ -92,7 +99,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
             originSocial2 = {"https://www.facebook.com/",
                     "https://www.instagram.com/", "https://www.pinterest.com/",
                     "https://www.twitter.com/", "https://www.youtube.com/"};
-
     private InputFilter filter = new InputFilter() {
 
         @Override
@@ -104,6 +110,8 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
             return null;
         }
     };
+    private List<UserData> userDetails;
+    private Uri mDestinationUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,14 +132,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         usernameEditText.addTextChangedListener(new MyTextWatcher());
         fbEdit.addTextChangedListener(new MyTextWatcher2());
     }
-
-    String newFb;
-    String newIns;
-    String newTube;
-    String newTwi;
-    String newPin;
-
-    Boolean wantToGoNext = false;
 
     @Override
     public void onClick(View v) {
@@ -237,6 +237,11 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
             case R.id.backIconLayout:
                 onBackPressed();
                 break;
+
+            case R.id.next_button:
+                validateUserInput();
+                break;
+
         }
     }
 
@@ -315,8 +320,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         setOldInfo();
     }
 
-    private List<UserData> userDetails;
-
     public void setOldInfo() {
         final MyProfileApi myProfileApi = new MyProfileApi(new ServiceCallback() {
             @Override
@@ -349,7 +352,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
             fbEdit.setText(UserPreference.getInstance().getUserFb());
         }
     }
-
 
     public void setOldSocial() {
         final SocialDetailApi socialDetailApi = new SocialDetailApi(new ServiceCallback() {
@@ -482,43 +484,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         startCropActivity(picUri);
     }
 
-
-    private class DownloadImage extends AsyncTask<String, Void, Uri> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Uri doInBackground(String... URL) {
-
-            String imageURL = URL[0];
-            Uri url = null;
-
-            Bitmap bitmap = null;
-            try {
-                InputStream input = new java.net.URL(imageURL).openStream();
-                bitmap = BitmapFactory.decodeStream(input);
-                url = bitmapToUriConverter(bitmap);
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return url;
-        }
-
-        @Override
-        protected void onPostExecute(Uri result) {
-            if (result != null) {
-                Utils.path = result;
-                performNewCrop(result);
-            } else
-                Syso.info("Could not download the image, Please try again.");
-        }
-    }
-
     public Uri bitmapToUriConverter(Bitmap mBitmap) {
         Uri uri = null;
         try {
@@ -541,14 +506,11 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         return uri;
     }
 
-
     private void performNewCrop(Uri imgUri) {
         Intent cropIntent = new Intent(EditProfileActivity.this, ImageCropActivity.class);
         cropIntent.putExtra("imagePath", imgUri);
         startActivityForResult(cropIntent, CROP_PIC);
     }
-
-    boolean isValid = true;
 
     private void validateUserInput() {
         newUsername = usernameEditText.getText().toString().trim();
@@ -577,6 +539,8 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         } else if (needToUpdatePic) {
             setResult(RESULT_OK);
             uploadImage();
+        } else {
+            if (wantToGoNext) goToNextScreen();
         }
     }
 
@@ -594,7 +558,7 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                         UserPreference.getInstance().setUserName(newUsername);
                         nameTextView.setText(newUsername);
                         oldUsername = newUsername;
-                        if (wantToGoNext) goToNextScreen();
+                        //if (wantToGoNext) goToNextScreen();
                     }
 
                     @Override
@@ -733,9 +697,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         }
     }
 
-
-    private Uri mDestinationUri;
-
     private boolean checkIfAlreadyhavePermission() {
         int result = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
         int result2 = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -761,6 +722,42 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
                 .setAspectRatio(1, 1)
                 .setOutputUri(mDestinationUri)
                 .start(context);
+    }
+
+    private class DownloadImage extends AsyncTask<String, Void, Uri> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Uri doInBackground(String... URL) {
+
+            String imageURL = URL[0];
+            Uri url = null;
+
+            Bitmap bitmap = null;
+            try {
+                InputStream input = new java.net.URL(imageURL).openStream();
+                bitmap = BitmapFactory.decodeStream(input);
+                url = bitmapToUriConverter(bitmap);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return url;
+        }
+
+        @Override
+        protected void onPostExecute(Uri result) {
+            if (result != null) {
+                Utils.path = result;
+                performNewCrop(result);
+            } else
+                Syso.info("Could not download the image, Please try again.");
+        }
     }
 
     private class MyTextWatcher implements TextWatcher {

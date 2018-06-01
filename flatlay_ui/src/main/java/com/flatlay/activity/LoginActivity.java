@@ -2,7 +2,6 @@ package com.flatlay.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -14,7 +13,8 @@ import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.flatlay.BaseFragment;
@@ -33,23 +33,26 @@ import com.flatlaylib.utils.Syso;
 
 
 public class LoginActivity extends BaseFragment implements OnClickListener, OnKeyListener, ServiceCallback {
+    public final static String TAG = "LoginActivity";
     private View mainView;
-    private TextView mBackButton, mLogin,mForgotPassword;
+    private TextView mBackButton, mLogin, mForgotPassword;
     private Button mLoginButton;
     private EditText mEmailEditText, mPasswordEditText;
-    public final static String TAG="LoginActivity";
+    private ProgressBar pb;
+    private LinearLayout layout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.login2, container, false);
-        Log.w(TAG,"LoginActivity");
+        Log.w(TAG, "LoginActivity");
         return mainView;
     }
 
     @Override
     public void initUI(Bundle savedInstanceState) {
-
+        pb = (ProgressBar) mainView.findViewById(R.id.progressBar);
+        layout = (LinearLayout) mainView.findViewById(R.id.layout20);
         mBackButton = (TextView) mainView.findViewById(R.id.backToLanding);
         mForgotPassword = (TextView) mainView.findViewById(R.id.forgotPasswordTextView);
         mEmailEditText = (EditText) mainView.findViewById(R.id.emailEditText);
@@ -70,30 +73,6 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
     @Override
     public void refreshData(Bundle bundle) {
 
-    }
-
-    private class LoginTextWatcher implements TextWatcher {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            String email = mEmailEditText.getText().toString();
-            String password = mPasswordEditText.getText().toString();
-            if (email != null && email.length() != 0
-                    && StringUtils.isEmailValid(email)
-                    && password != null && password.length() != 0) {
-                mLoginButton.setTextColor(Color.WHITE);
-            } else
-                mLoginButton.setTextColor(Color.GRAY);
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-        }
     }
 
     public void setUpTextType() {
@@ -137,11 +116,13 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
                 break;
             case R.id.loginButton:
                 CommonUtility.hideSoftKeyboard(getActivity());
-                getActivity().getSupportFragmentManager()
+                pb.setVisibility(View.VISIBLE);
+                layout.setVisibility(View.GONE);
+                /*getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.baseFrameLayout, new LoginActivity(), null)
                         .addToBackStack(null)
-                        .commit();
+                        .commit();*/
                 validateUserInput();
                 break;
         }
@@ -191,7 +172,7 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
 
     private void loginViaEamil(String email, String password) {
         final LoginUserApi service = new LoginUserApi(this);
-        Log.e(TAG,CommonUtility.getDeviceTocken(mContext));
+        Log.e(TAG, CommonUtility.getDeviceTocken(mContext));
         service.loginViaEmail(email, password, DeviceUtils.getPhoneModel(),
                 CommonUtility.getDeviceTocken(getActivity()), "android",
                 CommonUtility.getDeviceId(getActivity()));
@@ -230,6 +211,30 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
         } else {
             String invaild = "Invalid Email Id/Password";
             AlertUtils.showToast(getActivity(), invaild);
+        }
+    }
+
+    private class LoginTextWatcher implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String email = mEmailEditText.getText().toString();
+            String password = mPasswordEditText.getText().toString();
+            if (email != null && email.length() != 0
+                    && StringUtils.isEmailValid(email)
+                    && password != null && password.length() != 0) {
+                mLoginButton.setTextColor(Color.WHITE);
+            } else
+                mLoginButton.setTextColor(Color.GRAY);
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
         }
     }
 

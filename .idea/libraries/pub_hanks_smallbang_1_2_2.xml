@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="pub.hanks:smallbang-1.2.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/c3ebba15b3c7213f068869d6d9ef3ae424b015c4/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/c3ebba15b3c7213f068869d6d9ef3ae424b015c4/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/pub.hanks/smallbang/1.2.2/a7165cf64f2907cb427082f4de97497765da2c01/smallbang-1.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

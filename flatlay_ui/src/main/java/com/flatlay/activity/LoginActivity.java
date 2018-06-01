@@ -210,7 +210,9 @@ public class LoginActivity extends BaseFragment implements OnClickListener, OnKe
             UserPreference.getInstance().setEmail(response.getEmail());
             UserPreference.getInstance().setAccessToken(response.gettoken());
             UserPreference.getInstance().setAccessToken(response.gettoken());
+
             UserPreference.getInstance().setUserName(response.getUsername());
+
             UserPreference.getInstance().setCartID(response.getCart_id());
             UserPreference.getInstance().setProfilePic(response.getProfile_pic());
             UserPreference.getInstance().setBgImage(response.getBackground_pic());

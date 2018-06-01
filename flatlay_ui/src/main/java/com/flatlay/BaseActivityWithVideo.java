@@ -21,6 +21,7 @@ import com.flatlay.activity.LoginActivity;
 import com.flatlay.activity.SignUpActivity;
 import com.flatlay.fragment.FragmentInspirationSection;
 import com.flatlay.utility.CommonUtility;
+import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.utils.AlertUtils;
 
 import java.util.Stack;
@@ -46,6 +47,8 @@ public class BaseActivityWithVideo extends BaseActivity {
         super.onCreate(savedInstanceState);
         Log.e(TAG, "BaseActivityWithVideo");
         Bundle bundle = getIntent().getExtras();
+        System.out.println(bundle);
+
         if (bundle != null && bundle.get("otherdata") != null) {
             String otherdata = bundle.get("otherdata").toString();
             if (otherdata.contains("inspiration_id")) {
@@ -82,7 +85,10 @@ public class BaseActivityWithVideo extends BaseActivity {
         setContentView(R.layout.activity_base_video);
         findViewById(R.id.baseHeader).setVisibility(View.GONE);
         vedio = (VideoView) findViewById(R.id.vedio);
-        loadFragment(new LandingActivity());
+        if (UserPreference.getInstance().getUserID().equals(""))
+            loadFragment(new LandingActivity());
+        else
+            startActivity(HomeActivity.class);
     }
 
 

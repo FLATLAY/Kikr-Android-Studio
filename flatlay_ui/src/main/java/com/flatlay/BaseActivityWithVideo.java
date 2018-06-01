@@ -83,12 +83,24 @@ public class BaseActivityWithVideo extends BaseActivity {
         mDisplayMetrics = new DisplayMetrics();
         mFragmentStack = new Stack<String>();
         setContentView(R.layout.activity_base_video);
+
         findViewById(R.id.baseHeader).setVisibility(View.GONE);
         vedio = (VideoView) findViewById(R.id.vedio);
-        if (UserPreference.getInstance().getUserID().equals(""))
+        Handler handler = new Handler();
+        if (UserPreference.getInstance().getUserID().equals("")) {
+            findViewById(R.id.top_logo).setVisibility(View.GONE);
             loadFragment(new LandingActivity());
+        }
         else
-            startActivity(HomeActivity.class);
+        {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(HomeActivity.class);
+                }
+            },1500);
+        }
+
     }
 
 

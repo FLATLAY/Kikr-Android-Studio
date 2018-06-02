@@ -45,6 +45,8 @@
     <string name="app_name">FLATLAY</string>
     <string name="loading">LOADING...</string>
     <string name="facebook_app_id">1577144115912726</string>
+    <string name="fb_login_protocol_scheme">fb1577144115912726</string>
+
     <string name="no_internet"><![CDATA[No internet connection,<br> <u>try again.</u>]]></string>
     <string name="no_data_found">No Collections Yet </string>
 

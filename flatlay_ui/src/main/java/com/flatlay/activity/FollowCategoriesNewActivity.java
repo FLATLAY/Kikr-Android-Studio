@@ -1,8 +1,5 @@
 package com.flatlay.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,14 +26,17 @@ import com.flatlaylib.service.res.CategoryRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FollowCategoriesNewActivity extends BaseActivity implements OnClickListener, ServiceCallback {
-    private ListView listView;
     public final static String TAG = "FollowCategoriesNew";
+    public static int selectedCount = 0;
+    private ListView listView;
     private FollowCategoryNewAdapter categoryAdapter;
     private LinearLayout backIconLayout;
     private int pagenum = 0;
     private boolean isLoading = false, isFirstTime = true, isFromHome = false;
-    public static int selectedCount = 0;
     private Button nextButton;
 
     @Override
@@ -98,9 +98,15 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
                 });
             }
         } else {
-            if (selectedCount > 0)
-                goToNextScreen();
-            else
+            nextButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (selectedCount > 0)
+                        goToNextScreen();
+
+                }
+            });
+            if (selectedCount == 0)
                 AlertUtils.showToast(context, "Follow at least 1 category.");
         }
 

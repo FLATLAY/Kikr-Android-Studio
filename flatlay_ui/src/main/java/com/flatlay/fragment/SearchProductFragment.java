@@ -1,26 +1,17 @@
 package com.flatlay.fragment;
 
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.MultiAutoCompleteTextView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
@@ -32,7 +23,6 @@ import com.flatlay.adapter.ProductSearchGridAdapter;
 import com.flatlay.adapter.StoreGridAdapter;
 import com.flatlay.post_upload.FragmentPostUploadTag;
 import com.flatlay.ui.ProgressBarDialog;
-import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
 import com.flatlay.utility.MyMaterialContentOverflow3;
 import com.flatlaylib.api.BrandListApi;

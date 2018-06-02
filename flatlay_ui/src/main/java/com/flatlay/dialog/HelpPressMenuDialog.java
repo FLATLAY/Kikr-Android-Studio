@@ -1,28 +1,30 @@
 package com.flatlay.dialog;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.flatlay.R;
+import com.flatlay.activity.HomeActivity;
 import com.flatlay.utility.FontUtility;
 
 public class HelpPressMenuDialog extends Dialog {
 
+    public static final String TAG = "HelpPressMenuDialog";
     private FragmentActivity mContext;
     private ImageView img1;
     private RelativeLayout parentRL;
@@ -32,13 +34,13 @@ public class HelpPressMenuDialog extends Dialog {
     private RelativeLayout cartRL;
     private RelativeLayout shareRL;
     private RelativeLayout storeRL;
-    public static final String TAG = "HelpPressMenuDialog";
-
     private TextView likeTV;
     private TextView collectionTV;
     private TextView cartTV;
     private TextView shareTV;
     private TextView storeTV;
+
+    private Button next;
     private boolean isAnimationCompleted = false;
 
     public HelpPressMenuDialog(FragmentActivity context) {
@@ -56,7 +58,7 @@ public class HelpPressMenuDialog extends Dialog {
         getWindow().setAttributes(lp);
         setCancelable(false);
         img1 = (ImageView) findViewById(R.id.img1);
-
+        next = (Button) findViewById(R.id.nextButton);
         parentRL = (RelativeLayout) findViewById(R.id.parentRL);
         mainRL = (RelativeLayout) findViewById(R.id.mainRL);
         LikeRL = (RelativeLayout) findViewById(R.id.likeRL);
@@ -92,12 +94,21 @@ public class HelpPressMenuDialog extends Dialog {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Log.d(TAG, "Touch------");
-                /*if (isAnimationCompleted)
-                    dismiss();*/
+                if (isAnimationCompleted)
+                    //dismiss();
+                    mContext.startActivity(new Intent(mContext,HomeActivity.class));
+
+            }
+        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContext.startActivity(new Intent(mContext,HomeActivity.class));
 
             }
         });
     }
+
 
     private void startLikeArcAnimation(float toX, float fromX, float toY, float fromY) {
         TranslateAnimation animation = new TranslateAnimation(TranslateAnimation.RELATIVE_TO_PARENT,

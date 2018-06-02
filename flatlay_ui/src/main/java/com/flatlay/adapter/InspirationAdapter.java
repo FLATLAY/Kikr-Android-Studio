@@ -134,6 +134,8 @@ public class InspirationAdapter extends BaseAdapter {
         this.isViewAll = isViewAll;
         this.mListener = mListener;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        FacebookSdk.sdkInitialize(mContext);
+
         init();
     }
 
@@ -141,7 +143,9 @@ public class InspirationAdapter extends BaseAdapter {
         follow_map.clear();
         callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog(mContext);
+        FacebookSdk.sdkInitialize(mContext);
         Twitter.initialize(mContext);
+
 
         pdkClient = PDKClient.configureInstance(mContext, AppConstants.PINTEREST_APP_ID);
         pdkClient.onConnect(mContext);

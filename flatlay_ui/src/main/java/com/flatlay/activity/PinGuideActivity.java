@@ -38,6 +38,7 @@ public class PinGuideActivity extends BaseActivity implements View.OnClickListen
         Window dialogWindow = helpPressMenuDialog.getWindow();
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         dialogWindow.setGravity(Gravity.CENTER);
+        //dialogWindow.setElevation(0f);
         DisplayMetrics d = context.getResources().getDisplayMetrics();
         lp.width = (int) (d.widthPixels);
         helpPressMenuDialog.show();

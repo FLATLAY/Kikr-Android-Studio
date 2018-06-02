@@ -78,6 +78,7 @@
             <Button
                 android:id="@+id/nextButton"
                 android:layout_width="140dp"
+                android:elevation="4dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:background="@drawable/green_corner_button"

@@ -50,11 +50,11 @@ public class HelpPressMenuDialog extends Dialog {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void init() {
         setContentView(R.layout.helpscreen_presshere_menu);
-        setCanceledOnTouchOutside(true);
+        setCanceledOnTouchOutside(false);
         WindowManager.LayoutParams lp = getWindow().getAttributes();
 
         getWindow().setAttributes(lp);
-        setCancelable(true);
+        setCancelable(false);
         img1 = (ImageView) findViewById(R.id.img1);
 
         parentRL = (RelativeLayout) findViewById(R.id.parentRL);
@@ -92,8 +92,8 @@ public class HelpPressMenuDialog extends Dialog {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Log.d(TAG, "Touch------");
-                if (isAnimationCompleted)
-                    dismiss();
+                /*if (isAnimationCompleted)
+                    dismiss();*/
 
             }
         });

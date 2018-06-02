@@ -1,11 +1,7 @@
 package com.flatlay.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,12 +28,17 @@ import com.flatlaylib.service.res.CategoryRes;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.Syso;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.view.View.GONE;
+
 public class FollowCategoryNewAdapter extends BaseAdapter {
-    private LayoutInflater inflater;
-    public ArrayList<Category> catList = new ArrayList<Category>();
-    private Activity mContext;
-    public List<Integer> imagesList = new ArrayList<>();
     final String TAG = "FollowCategoryNewAda";
+    public ArrayList<Category> catList = new ArrayList<Category>();
+    public List<Integer> imagesList = new ArrayList<>();
+    private LayoutInflater inflater;
+    private Activity mContext;
 
     public FollowCategoryNewAdapter(Activity mContext, List<Category> categories, List<Integer> imagesList) {
         inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -72,6 +74,7 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.adapter_follow_category_new, null);
             viewHolder = new ViewHolder();
+            viewHolder.load = (ProgressBar) convertView.findViewById(R.id.follow_load);
             viewHolder.categoryNameTextView = (TextView) convertView.findViewById(R.id.categoryNameTextView);
             viewHolder.followBtn = (Button) convertView.findViewById(R.id.followBtn);
             viewHolder.productLayout = (LinearLayout) convertView.findViewById(R.id.productLayout);
@@ -101,13 +104,15 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (getItem(position).getIs_followed().equalsIgnoreCase("no")) {
-                    addCategory(getItem(position).getId(), position);
+                    addCategory(getItem(position).getId(), position, viewHolder.load);
                     viewHolder.followBtn.setText(" Following ");
+                    viewHolder.load.setVisibility(View.VISIBLE);
                     viewHolder.followBtn.setTextColor(mContext.getResources().getColor(R.color.white));
                     viewHolder.followBtn.setSelected(true);
 
                 } else {
-                    deleteCategory(getItem(position).getId(), position);
+                    deleteCategory(getItem(position).getId(), position, viewHolder.load);
+                    viewHolder.load.setVisibility(View.VISIBLE);
                     viewHolder.followBtn.setText(" Follow ");
                     viewHolder.followBtn.setTextColor(mContext.getResources().getColor(R.color.black));
                     viewHolder.followBtn.setSelected(false);
@@ -118,10 +123,12 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
 
         if (getItem(position).getIs_followed().equalsIgnoreCase("yes")) {
             viewHolder.followBtn.setText(" Following ");
+            //viewHolder.load.setVisibility(View.GONE);
             viewHolder.followBtn.setTextColor(mContext.getResources().getColor(R.color.white));
             viewHolder.followBtn.setSelected(true);
         } else {
-            viewHolder.followBtn.setText(" Follow ");
+            viewHolder.load.setVisibility(GONE);
+            //viewHolder.followBtn.setText(" Follow ");
             viewHolder.followBtn.setTextColor(mContext.getResources().getColor(R.color.black));
             viewHolder.followBtn.setSelected(false);
         }
@@ -130,14 +137,7 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public class ViewHolder {
-        TextView categoryNameTextView;
-        Button followBtn;
-        LinearLayout productLayout;
-        RelativeLayout relativeLayout;
-    }
-
-    public void addCategory(String categoryID, final int position) {
+    public void addCategory(String categoryID, final int position, final ProgressBar load) {
         final CategoryListApi listApi = new CategoryListApi(new ServiceCallback() {
 
             @Override
@@ -147,6 +147,7 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
 
                 getItem(position).setIs_followed("yes");
                 Log.e(TAG, "followed successfully");
+                load.setVisibility(GONE);
             }
 
             @Override
@@ -164,7 +165,7 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
         listApi.execute();
     }
 
-    public void deleteCategory(String categoryID, final int position) {
+    public void deleteCategory(String categoryID, final int position,final ProgressBar load) {
         final CategoryListApi listApi = new CategoryListApi(new ServiceCallback() {
 
             @Override
@@ -172,6 +173,7 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
                 Syso.info("In handleOnSuccess>>" + object);
                 Log.e(TAG, "unfollowed");
                 FollowCategoriesNewActivity.selectedCount--;
+                load.setVisibility(GONE);
 
                 getItem(position).setIs_followed("no");
             }
@@ -189,5 +191,13 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
         });
         listApi.deleteCategory(UserPreference.getInstance().getUserID(), categoryID);
         listApi.execute();
+    }
+
+    public class ViewHolder {
+        TextView categoryNameTextView;
+        Button followBtn;
+        ProgressBar load;
+        LinearLayout productLayout;
+        RelativeLayout relativeLayout;
     }
 }

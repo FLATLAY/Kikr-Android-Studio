@@ -1,58 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" 
+    android:layout_height="wrap_content"
     android:orientation="vertical">
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/follow_load"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:elevation="4dp" />
 
     <HorizontalScrollView
         android:id="@+id/productsScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        >
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/productLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        </LinearLayout>
+            android:orientation="horizontal"></LinearLayout>
     </HorizontalScrollView>
-    
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="25dp"
+        android:layout_gravity="bottom"
         android:background="#CC000000"
-        android:paddingRight="16dp"
-        android:paddingLeft="16dp"
-        android:paddingTop="3dp"
         android:gravity="center"
         android:paddingBottom="3dp"
-        >
-        
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="3dp">
+
         <TextView
             android:id="@+id/categoryNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:text="Men's Fashion"
             android:layout_centerInParent="true"
+            android:text="Men's Fashion"
             android:textColor="@color/white"
             android:textSize="14.5dp" />
-        
+
         <Button
             android:id="@+id/followBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/follow_selector"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
+            android:background="@drawable/follow_selector"
+            android:text=" Follow "
             android:textColor="@color/black"
-            android:textSize="14.5dp"
-            android:text=" Follow "/>
-        
-        
+            android:textSize="14.5dp" />
+
+
     </RelativeLayout>
-        
-    
+
+
 </FrameLayout>

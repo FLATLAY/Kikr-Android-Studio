@@ -202,6 +202,7 @@
             android:name="com.flatlay.activity.PinGuideActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:windowSoftInputMode="stateHidden|adjustPan"></activity>
         <!--<activity-->
             <!--android:name="com.flatlay.activity.KikrLearnMoreActivity"-->

@@ -50,6 +50,7 @@ public class PinGuideActivity extends BaseActivity implements View.OnClickListen
         title = (TextView) findViewById(R.id.pintitle);
         next = (Button) findViewById(R.id.nextButton);
         pinDescription = (TextView) findViewById(R.id.pinDescription);
+
     }
 
     @Override

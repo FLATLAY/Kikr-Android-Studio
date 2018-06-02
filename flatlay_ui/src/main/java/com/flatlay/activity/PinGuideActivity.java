@@ -76,6 +76,6 @@ public class PinGuideActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.nextButton)
-            startActivity(BaseActivityWithVideo.class);
+            startActivity(HomeActivity.class);
     }
 }

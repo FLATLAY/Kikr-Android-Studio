@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.flatlay.BaseActivityWithVideo;
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
 import com.flatlay.activity.EditProfileActivity;
@@ -72,6 +73,8 @@ public class ProfileChoiceFragment extends BaseFragment implements View.OnClickL
                 break;
             case R.id.text5:
                 logoutUser();
+                UserPreference.getInstance().setUserID("");
+                startActivity(BaseActivityWithVideo.class);
                 mContext.finish();
                 break;
         }

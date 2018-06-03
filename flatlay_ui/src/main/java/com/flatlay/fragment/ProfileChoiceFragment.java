@@ -76,8 +76,8 @@ public class ProfileChoiceFragment extends BaseFragment implements View.OnClickL
             case R.id.text5:
                 logoutUser();
                 UserPreference.getInstance().setUserID("");
-                LoginManager.getInstance().logOut();
-                LoginManager.getInstance().setLoginBehavior(LoginBehavior.WEB_ONLY);
+                //LoginManager.getInstance().logOut();
+                //LoginManager.getInstance().setLoginBehavior(LoginBehavior.WEB_ONLY);
 
                 startActivity(BaseActivityWithVideo.class);
                 mContext.finish();

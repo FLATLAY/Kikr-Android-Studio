@@ -74,6 +74,7 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
                 return result;
         }
     };
+    ArrayAdapter adapter3;
     private Uri picUri;
     // Variables related to Media items
     private int imgCount; // number of images
@@ -81,18 +82,15 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
     private Bitmap[] thumbnails;
     private String[] imgDisplayNames;
     private String[] imgSize;
-
     // Content Resolver
     private long[] thumbnailIds;
     private String[] arrPath;
     // Views
     private ImageWorker imageWorker;
-
     // Map and Hash initializations
     private ContentResolver mContentResolver;
     private GridView gridView;
     private Integer[] folderBucketIds;
-
     private FolderAdapter folderAdapter;
 
     private ImagesInFolderAdapter imagesAdapter;
@@ -121,19 +119,39 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
         gridView = (GridView) v.findViewById(R.id.gridview);
         mstatus = (Spinner) v.findViewById(R.id.mstatus);
         mContentResolver = getActivity().getContentResolver();
+
+        ArrayAdapter adapter3 =
+                new ArrayAdapter<String>(mContext, R.layout.myspinneritem, categories) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View view = super.getView(position, convertView, parent);
+                        ((TextView) view).setTypeface(FontUtility.setMontserratLight(mContext));
+                        return view;
+                    }
+
+                    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                        View view = super.getDropDownView(position, convertView, parent);
+                        ((TextView) view).setTypeface(FontUtility.setMontserratLight(mContext));
+                        return view;
+                    }
+
+                };
+
         if (Build.VERSION.SDK_INT >= 23) {
 
             if (!checkPermission()) {
                 requestPermission();
             } else {
-                new LoadAsyncTask().execute();
+                new LoadAsyncTask(adapter3).execute();
+
             }
         } else {
-            new LoadAsyncTask().execute();
+            new LoadAsyncTask(adapter3).execute();
+
         }
-
-
-
+        /*adapter3.setDropDownViewResource(R.layout.myspinnerdropdown);
+        mstatus.setAdapter(adapter3);
+        mstatus.setOnItemSelectedListener(new GridViewListener());*/
         return v;
 
     }
@@ -454,6 +472,10 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
 
     public class LoadAsyncTask extends AsyncTask<Void, Void, Void> {
 
+        ArrayAdapter adapter3;
+        LoadAsyncTask(ArrayAdapter a){
+            this.adapter3=a;
+        }
         @Override
         protected Void doInBackground(Void... voids) {
 
@@ -470,28 +492,15 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
 
         @Override
         protected void onPreExecute() {
-            //Toast.makeText(mContext, "PreExecute", Toast.LENGTH_SHORT).show();
+
+            adapter3.setDropDownViewResource(R.layout.myspinnerdropdown);
+            mstatus.setAdapter(adapter3);
+            mstatus.setOnItemSelectedListener(new GridViewListener());
             super.onPreExecute();
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            ArrayAdapter adapter3 =
-                    new ArrayAdapter<String>(mContext, R.layout.myspinneritem, categories) {
-                        @Override
-                        public View getView(int position, View convertView, ViewGroup parent) {
-                            View view = super.getView(position, convertView, parent);
-                            ((TextView) view).setTypeface(FontUtility.setMontserratLight(mContext));
-                            return view;
-                        }
-
-                        public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                            View view = super.getDropDownView(position, convertView, parent);
-                            ((TextView) view).setTypeface(FontUtility.setMontserratLight(mContext));
-                            return view;
-                        }
-
-                    };
 
             adapter3.setDropDownViewResource(R.layout.myspinnerdropdown);
             mstatus.setAdapter(adapter3);

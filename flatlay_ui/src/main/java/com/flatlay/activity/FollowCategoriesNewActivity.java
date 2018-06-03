@@ -1,5 +1,6 @@
 package com.flatlay.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +46,7 @@ public class FollowCategoriesNewActivity extends BaseActivity implements OnClick
         Log.w(TAG, "FollowCategoriesNewActivity");
         CommonUtility.noTitleActivity(context);
         UserPreference.getInstance().setCurrentScreen(Screen.CategoryScreen);
+
         setContentView(R.layout.activity_follow_categories_new);
         if (checkInternet())
             getCategoryList();

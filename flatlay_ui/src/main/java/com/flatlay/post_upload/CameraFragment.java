@@ -136,7 +136,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.squarecamera__fragment_camera, null);
+        mainView = inflater.inflate(R.layout.squarecamera__fragment_camera, container,false);
 
         cameraFragment = this;
         return mainView;
@@ -551,11 +551,21 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
             };
 
             // Raw callback occurs when the raw image data is available
-            Camera.PictureCallback raw = null;
+            Camera.PictureCallback raw = new Camera.PictureCallback() {
+                @Override
+                public void onPictureTaken(byte[] bytes, Camera camera) {
+                    Log.i(TAG, "onPictureTaken: raw");
+                }
+            };
 
             // postView callback occurs when a scaled, fully processed
             // postView image is available.
-            Camera.PictureCallback postView = null;
+            Camera.PictureCallback postView = new Camera.PictureCallback() {
+                @Override
+                public void onPictureTaken(byte[] bytes, Camera camera) {
+                    Log.i(TAG, "onPictureTaken: postView");
+                }
+            };
 
             // jpeg callback occurs when the compressed image is available
             mCamera.takePicture(shutterCallback, raw, postView, this);

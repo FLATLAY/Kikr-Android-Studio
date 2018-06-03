@@ -1,6 +1,7 @@
 package com.flatlay.activity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -47,7 +48,6 @@ import com.flatlaylib.service.res.RegisterUserResponse;
 import com.flatlaylib.utils.AlertUtils;
 import com.flatlaylib.utils.DeviceUtils;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.security.MessageDigest;
@@ -60,6 +60,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
     private final int REQUEST_CODE_FB_LOGIN = 1000;
     private final String DEFAULT_GENDER = "male";
     CallbackManager callbackManager;
+    String g;
     private Button mFacebookButton, mEmailButton, mLoginButton;
     private String social, mEmail, mProfilePic, mUsername, name, birthday, location, gender, id,
             profileLink, referred_username, referred_userprofilepic;
@@ -102,7 +103,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        isFromFacebook = true;
+                        isFromFacebook = true;/*
                         GraphRequest request = GraphRequest.newMeRequest(
                                 loginResult.getAccessToken(),
                                 new GraphRequest.GraphJSONObjectCallback() {
@@ -135,6 +136,67 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
                                 });
                         Bundle parameters = new Bundle();
                         parameters.putString("fields", "id,name,email,gender,birthday");
+                        request.setParameters(parameters);
+                        request.executeAsync();*/
+                        GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
+                                new GraphRequest.GraphJSONObjectCallback() {
+                                    @Override
+                                    public void onCompleted(JSONObject object, GraphResponse response) {
+                                        try {
+
+
+                                            Log.e("object", object.toString());
+                                            gender = object.getString("gender");
+                                            g = gender != null ? gender : DEFAULT_GENDER;
+                                            name = object.getString("name");
+
+                                            try {
+                                                mEmail = object.getString("email");
+                                            } catch (Exception e) {
+                                                mEmail = "";
+                                                e.printStackTrace();
+                                            }
+
+                                            try {
+                                                id = object.getString("id");
+                                            } catch (Exception e) {
+                                                id = "";
+                                                e.printStackTrace();
+
+                                            }
+
+
+                                            try {
+                                                birthday = object.getString("birthday");
+                                            } catch (Exception e) {
+                                                birthday = "";
+                                                e.printStackTrace();
+                                            }
+
+                                            try {
+                                                JSONObject jsonobject_location = object.getJSONObject("location");
+                                                location = jsonobject_location.getString("name");
+
+                                            } catch (Exception e) {
+                                                location = "";
+                                                e.printStackTrace();
+                                            }
+
+                                            mProfilePic = "https://graph.facebook.com/" + id + "/picture?type=large";
+
+                                        } catch (Exception e) {
+
+                                        }
+
+                                        UserPreference.getInstance().setEmail(mEmail);
+                                        UserPreference.getInstance().setProfilePic(mProfilePic);
+                                        UserPreference.getInstance().setmIsFacebookSignedIn(true);
+                                        registerViaFbSocial(id, g);
+                                    }
+                                });
+                        Bundle parameters = new Bundle();
+                        parameters.putString("fields", "id, name, email,gender,birthday,location");
+
                         request.setParameters(parameters);
                         request.executeAsync();
                     }
@@ -171,8 +233,8 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
                     AccessToken accessToken = AccessToken.getCurrentAccessToken();
                     boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-
-                    LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_location", "email", "user_birthday", "user_link"));;
+                    LoginManager.getInstance().setLoginBehavior(LoginBehavior.WEB_ONLY).logInWithReadPermissions(this, Arrays.asList("public_profile", "user_location", "email", "user_birthday", "user_link"));
+                    ;
                     loading.setVisibility(View.VISIBLE);
                     /*Intent i = new Intent(getActivity(), FbSignActivity.class);
                     i.putExtra("getFriendList", false);
@@ -383,8 +445,17 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
 
     private void showHome(String currentScreen) {
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences("first_login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        if (sharedpreferences.getBoolean("first", true)) {
+            startActivity(FollowCategoriesNewActivity.class);
+            editor.putBoolean("first", false);
+            editor.commit();
+        } else {
+            startActivity(HomeActivity.class);
 
-        startActivity(FollowCategoriesNewActivity.class);
+        }
+
     }
 
 

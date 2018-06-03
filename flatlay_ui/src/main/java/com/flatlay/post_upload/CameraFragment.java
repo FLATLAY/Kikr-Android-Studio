@@ -861,6 +861,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
 
         @Override
         protected void onPostExecute(Uri url) {
+            load.setVisibility(View.GONE);
             ((HomeActivity) getActivity()).startCropActivity(url);
             onStop();
             setSafeToTakePhoto(true);

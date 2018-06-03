@@ -20,19 +20,15 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.CardView;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +38,6 @@ import com.flatlay.GallerychacheKikr.ImageCache;
 import com.flatlay.GallerychacheKikr.ImageWorker;
 import com.flatlay.R;
 import com.flatlay.activity.HomeActivity;
-import com.flatlay.ui.ProgressBarDialog;
 import com.flatlay.utility.FontUtility;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -60,34 +55,13 @@ import java.util.Random;
 public class MediaGridFragment extends BaseFragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
 
-    private Uri picUri;
+    private static final String LOG_TAG = "MediaGridFragment";
+    private static final String IMAGE_CACHE_DIR = "thumbs";
+    static int folderposition;
     AdapterView.OnItemClickListener itemClickListener;
     List<String> list = new ArrayList<String>();
     Spinner mstatus;
-    private static final String LOG_TAG = "MediaGridFragment";
     List<String> categories = new ArrayList<String>();
-    // Variables related to Media items
-    private int imgCount; // number of images
-    private int vidCount; // number of videos
-    private Bitmap[] thumbnails;
-    private String[] imgDisplayNames;
-    private String[] imgSize;
-    private long[] thumbnailIds;
-    private String[] arrPath;
-    static int folderposition;
-    private ImageWorker imageWorker;
-
-    // Content Resolver
-
-    private ContentResolver mContentResolver;
-
-    private static final String IMAGE_CACHE_DIR = "thumbs";
-    // Views
-
-    private GridView gridView;
-
-    // Map and Hash initializations
-
     Map<Integer, String> mFolderBucket = new HashMap<Integer, String>();
     Map<Integer, Integer> mFolderBucketCount = new HashMap<Integer, Integer>() {
         @Override
@@ -100,7 +74,23 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
                 return result;
         }
     };
+    private Uri picUri;
+    // Variables related to Media items
+    private int imgCount; // number of images
+    private int vidCount; // number of videos
+    private Bitmap[] thumbnails;
+    private String[] imgDisplayNames;
+    private String[] imgSize;
 
+    // Content Resolver
+    private long[] thumbnailIds;
+    private String[] arrPath;
+    // Views
+    private ImageWorker imageWorker;
+
+    // Map and Hash initializations
+    private ContentResolver mContentResolver;
+    private GridView gridView;
     private Integer[] folderBucketIds;
 
     private FolderAdapter folderAdapter;
@@ -136,37 +126,13 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
             if (!checkPermission()) {
                 requestPermission();
             } else {
-                getRootFolders();
+                new LoadAsyncTask().execute();
             }
         } else {
-            getRootFolders();
+            new LoadAsyncTask().execute();
         }
 
-        for (Map.Entry m : mFolderBucket.entrySet()) {
 
-            String abhi = m.getValue().toString();
-            categories.add(abhi);
-        }
-        ArrayAdapter adapter3 =
-                new ArrayAdapter<String>(mContext, R.layout.myspinneritem, categories) {
-                    @Override
-                    public View getView(int position, View convertView, ViewGroup parent) {
-                        View view = super.getView(position, convertView, parent);
-                        ((TextView) view).setTypeface(FontUtility.setMontserratLight(mContext));
-                        return view;
-                    }
-
-                    public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                        View view = super.getDropDownView(position, convertView, parent);
-                        ((TextView) view).setTypeface(FontUtility.setMontserratLight(mContext));
-                        return view;
-                    }
-
-                };
-
-        adapter3.setDropDownViewResource(R.layout.myspinnerdropdown);
-        mstatus.setAdapter(adapter3);
-        mstatus.setOnItemSelectedListener(new GridViewListener());
 
         return v;
 
@@ -192,7 +158,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
 
     }
 
-
     private boolean checkPermission() {
 
         String permission = Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -207,7 +172,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
 
         }
     }
-
 
     private void requestPermission() {
 
@@ -235,45 +199,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-    private class GridViewListener implements AdapterView.OnItemSelectedListener {
-
-
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            getMediaInFolder(position);
-
-            imagesAdapter = new ImagesInFolderAdapter(getActivity(), getActivity().getContentResolver(), imgCount, vidCount, thumbnailIds, arrPath);
-            gridView.setAdapter(imagesAdapter);
-            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> arg0, View arg1, final int position,
-                                        long arg3) {
-                    Log.w(TAG, "startCropActivityForMediass()+");
-
-                    final RoundedImageView background_view = (RoundedImageView) arg1.findViewById(R.id.background_view);
-                    background_view.setImageResource(R.color.btn_green);
-                    Bitmap bmp = BitmapFactory.decodeFile(String.valueOf(arrPath[position]));
-                    picUri = resizeBitmapFitXY(bmp.getWidth(), bmp.getHeight(), bmp);
-                    new Handler().postDelayed(new Runnable() {
-                        public void run() {
-                            background_view.setImageResource(R.color.white);
-                        }
-                    }, 800);
-                    ((HomeActivity) mContext).startCropActivityForMedia(picUri);
-                }
-            });
-
-
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
-        }
-    }
-
 
     public Uri resizeBitmapFitXY(int width, int height, Bitmap bitmap) {
         try {
@@ -321,9 +246,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
         }
     }
 
-
-    //TODO   :  Start from here
-
     private void getRootFolders() {
 
 
@@ -361,7 +283,6 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
 
 
     }
-
 
     private void getMediaIdnName(Cursor imageCsr, Cursor videoCsr) {
 
@@ -421,7 +342,9 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
 
 
     }
-    //TODO   :  Step 2
+
+
+    //TODO   :  Start from here
 
     private void getMediaInFolder(int bucketFolderId) {
 
@@ -527,6 +450,93 @@ public class MediaGridFragment extends BaseFragment implements AdapterView.OnIte
             videocursor.close();
 
 
+    }
+
+    public class LoadAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            getRootFolders();
+
+            for (Map.Entry m : mFolderBucket.entrySet()) {
+
+                String abhi = m.getValue().toString();
+                categories.add(abhi);
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            //Toast.makeText(mContext, "PreExecute", Toast.LENGTH_SHORT).show();
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            ArrayAdapter adapter3 =
+                    new ArrayAdapter<String>(mContext, R.layout.myspinneritem, categories) {
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            View view = super.getView(position, convertView, parent);
+                            ((TextView) view).setTypeface(FontUtility.setMontserratLight(mContext));
+                            return view;
+                        }
+
+                        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                            View view = super.getDropDownView(position, convertView, parent);
+                            ((TextView) view).setTypeface(FontUtility.setMontserratLight(mContext));
+                            return view;
+                        }
+
+                    };
+
+            adapter3.setDropDownViewResource(R.layout.myspinnerdropdown);
+            mstatus.setAdapter(adapter3);
+            mstatus.setOnItemSelectedListener(new GridViewListener());
+            super.onPostExecute(aVoid);
+        }
+    }
+    //TODO   :  Step 2
+
+    private class GridViewListener implements AdapterView.OnItemSelectedListener {
+
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            getMediaInFolder(position);
+
+            imagesAdapter = new ImagesInFolderAdapter(getActivity(), getActivity().getContentResolver(), imgCount, vidCount, thumbnailIds, arrPath);
+            gridView.setAdapter(imagesAdapter);
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1, final int position,
+                                        long arg3) {
+                    Log.w(TAG, "startCropActivityForMediass()+");
+
+                    final RoundedImageView background_view = (RoundedImageView) arg1.findViewById(R.id.background_view);
+                    background_view.setImageResource(R.color.btn_green);
+                    Bitmap bmp = BitmapFactory.decodeFile(String.valueOf(arrPath[position]));
+                    picUri = resizeBitmapFitXY(bmp.getWidth(), bmp.getHeight(), bmp);
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            background_view.setImageResource(R.color.white);
+                        }
+                    }, 800);
+                    ((HomeActivity) mContext).startCropActivityForMedia(picUri);
+                }
+            });
+
+
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
     }
 
 //  TODO   :  Step 3

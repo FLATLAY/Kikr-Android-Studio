@@ -377,7 +377,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private void setActionBar() {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        viewHeader = inflater.inflate(R.layout.app_discover_header, null);
+        viewHeader = (View) inflater.inflate(R.layout.app_discover_header, (ViewGroup) null,false);
         crossarrow = (ImageView) findViewById(R.id.crossarrow);
         postUploadWithTag = (ImageView) viewHeader.findViewById(R.id.postUploadWithTag);
         mstatus = (Spinner) viewHeader.findViewById(R.id.mstatus);
@@ -1323,6 +1323,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     public Fragment getCurrentFragment(){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.commit();
         Fragment currentFragment = getSupportFragmentManager()
                 .findFragmentByTag(mFragmentStack.peek());
         return currentFragment;
@@ -1443,6 +1444,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             String fold = mFragmentStack.pop();
             Fragment f2 = getSupportFragmentManager().findFragmentByTag(fold);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.commit();
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentStack.peek());
             checkBackButton(fragment);
             checkRightButton(fragment);

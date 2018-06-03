@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.login.LoginBehavior;
+import com.facebook.login.LoginManager;
 import com.flatlay.BaseActivityWithVideo;
 import com.flatlay.BaseFragment;
 import com.flatlay.R;
@@ -74,6 +76,9 @@ public class ProfileChoiceFragment extends BaseFragment implements View.OnClickL
             case R.id.text5:
                 logoutUser();
                 UserPreference.getInstance().setUserID("");
+                LoginManager.getInstance().logOut();
+                LoginManager.getInstance().setLoginBehavior(LoginBehavior.WEB_ONLY);
+
                 startActivity(BaseActivityWithVideo.class);
                 mContext.finish();
                 break;

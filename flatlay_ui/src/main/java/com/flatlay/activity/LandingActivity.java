@@ -4,9 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +28,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.flatlay.BaseFragment;
@@ -45,6 +50,8 @@ import com.flatlaylib.utils.DeviceUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 public class LandingActivity extends BaseFragment implements OnClickListener, ServiceCallback {
@@ -60,6 +67,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
     private LinearLayout layoutReferred;
     private RoundImageView user_profile_image;
     private TextView user_profile_name, earn250;
+    private LinearLayout loading;
     private SharedPreferences userSettings, temp;
     private View mainView;
 
@@ -74,8 +82,22 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
         SharedPreferences.Editor editor = userSettings.edit();
         editor.putString("isSet", "False");
         editor.apply();
-        callbackManager = CallbackManager.Factory.create();
 
+        callbackManager = CallbackManager.Factory.create();
+        try {
+            PackageInfo info = getContext().getPackageManager().getPackageInfo(
+                    "com.flatlay",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
@@ -88,18 +110,20 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
                                     public void onCompleted(JSONObject object, GraphResponse response) {
                                         Log.v("LoginActivity", response.toString());
                                         try {
+
                                             System.out.println(object.toString());
                                             id = object.getString("id");
                                             mEmail = object.getString("email");
-                                            birthday = object.getString("birthday");
+                                            birthday = " ";
                                             mProfilePic = "https://graph.facebook.com/" + id + "/picture?type=large";
                                             name = object.getString("name");
                                             profileLink = " ";
                                             gender = object.getString("gender");
                                             String g = gender != null ? gender : DEFAULT_GENDER;
-                                            mUsername = object.getString("name");
-                                            location = object.getString("name");
+                                            mUsername = " ";
+                                            location = " ";
 
+                                            UserPreference.getInstance().setEmail(mEmail);
                                             UserPreference.getInstance().setProfilePic(mProfilePic);
                                             UserPreference.getInstance().setmIsFacebookSignedIn(true);
                                             registerViaFbSocial(id, g);
@@ -117,7 +141,6 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
                     @Override
                     public void onCancel() {
-                        // App code
                     }
 
                     @Override
@@ -148,11 +171,8 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
                     AccessToken accessToken = AccessToken.getCurrentAccessToken();
                     boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-
-                    if (!isLoggedIn)
-                        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_loaction","email", "user_birthday","user_link"));
-                    else
-                        startActivity(FollowCategoriesNewActivity.class);
+                    LoginManager.getInstance().setLoginBehavior(LoginBehavior.WEB_ONLY).logInWithReadPermissions(this, Arrays.asList("public_profile", "user_location", "email", "user_birthday", "user_link"));;
+                    loading.setVisibility(View.VISIBLE);
                     /*Intent i = new Intent(getActivity(), FbSignActivity.class);
                     i.putExtra("getFriendList", false);
                     i.putExtra("getProfilePic", false);
@@ -186,6 +206,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
         SharedPreferences.Editor editor = userSettings.edit();
         editor.putString("isSet", "False");
         editor.apply();
+        loading = (LinearLayout) mainView.findViewById(R.id.fb_load);
         mFacebookButton = (Button) mainView.findViewById(R.id.facebookButton);
         mEmailButton = (Button) mainView.findViewById(R.id.emailButton);
         layoutReferred = (LinearLayout) mainView.findViewById(R.id.layoutReferred);
@@ -321,6 +342,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
     public void handleOnFailure(ServiceException exception, Object object) {
         if (object != null) {
             RegisterUserResponse response = (RegisterUserResponse) object;
+            loading.setVisibility(View.GONE);
             if (response.getMessage().equals("userexist") && response.getId() != null) {
                 UserPreference.getInstance().setUserID(response.getId());
                 UserPreference.getInstance().setEmail(response.getEmail());
@@ -361,7 +383,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
     private void showHome(String currentScreen) {
 
-        startActivity(HomeActivity.class);
+        startActivity(FollowCategoriesNewActivity.class);
     }
 
 

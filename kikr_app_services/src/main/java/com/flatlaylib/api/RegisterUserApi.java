@@ -98,7 +98,7 @@ public class RegisterUserApi extends AbsService {
         comment.put("device_type", device_type);
         comment.put("email", email);
         comment.put("device_id", device_id);
-        comment.put("social_token", WebConstants.SOICIAL_TOKEN);
+        comment.put("social_token", WebConstants.SOCIAL_TOKEN);
 
         Map[] maps = new Map[]{comment};
         Gson gson = new Gson();

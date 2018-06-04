@@ -30,6 +30,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -136,7 +137,6 @@ import twitter4j.User;
 public class HomeActivity extends FragmentActivity implements OnClickListener, OnLoginCompleteListener {
     public static final String SOCIAL_NETWORK_TAG = "SocialIntegrationMain.SOCIAL_NETWORK_TAG";
     public final static String TAG = "HomeActivity";
-
     public static int SHARING_CODE = 64206;
     public static PDKClient pdkClient;
     public static Spinner mstatus;
@@ -149,6 +149,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private static ArrayList<Activity> homeActivtyList = new ArrayList<Activity>();
     public List<ProductFeedItem> list;
     public Stack<String> mFragmentStack;
+    ProgressBar feed;
     double localCount;
     Runnable runnable;
     // ================================= Context Menu==========================================
@@ -197,10 +198,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             homeActivtyList.add(this);
         }
         UserPreference.getInstance().setCurrentScreen(Screen.HomeScreen);
-
-        SharedPreferences sharedpreferences = getSharedPreferences("flatlay_video", Context.MODE_PRIVATE);
-        if (!sharedpreferences.getBoolean("download",false))
-        new VideoAsyncTask().execute();
+        feed = (ProgressBar) findViewById(R.id.feed_load);
 
         // Branch Init
         Branch.getInstance().initSession(new Branch.BranchReferralInitListener() {
@@ -231,7 +229,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             if (CommonUtility.isOnline(context))
                 updateScreen(Screen.HomeScreen);
         }
-        registerHomeReceiver();
+        new registerHomeReceiver(feed).execute();
 
         Tracker t = ((KikrApp) getApplication()).getTracker(TrackerName.APP_TRACKER);
         t.setScreenName("HomeActivity");
@@ -1872,8 +1870,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     }
 
-    //  cropping functions
-
     public void startCropActivityForMedia(@NonNull Uri uri) {
         Log.w(TAG, "startCropActivityForMedia()");
         mDestinationUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/temporary_holder.jpg"));
@@ -1886,6 +1882,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 .setOutputUri(mDestinationUri)
                 .start(context);
     }
+
+    //  cropping functions
 
     private UCrop basisConfig(@NonNull UCrop uCrop) {
 
@@ -2029,6 +2027,47 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         return app_installed;
     }
 
+    public class registerHomeReceiver extends AsyncTask<Void, Void, Void> {
+        ProgressBar f;
+
+        registerHomeReceiver(ProgressBar b) {
+            this.f = b;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            receiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    Handler handler = new Handler();
+                    Runnable runnable = new Runnable() {
+
+                        @Override
+                        public void run() {
+                            // TODO Auto-generated method stub
+                            loadFragment(new FragmentInspirationSection());
+                        }
+                    };
+                    handler.postDelayed(runnable, 100);
+                }
+            };
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(AppConstants.ACTION_GO_TO_HOME);
+            registerReceiver(receiver, filter);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            f.setVisibility(View.GONE);
+            SharedPreferences sharedpreferences = getSharedPreferences("flatlay_video", Context.MODE_PRIVATE);
+            if (!sharedpreferences.getBoolean("download", false))
+                new VideoAsyncTask().execute();
+
+            super.onPostExecute(aVoid);
+        }
+    }
+
     private class GetTwitterInfo extends AsyncTask<Void, Void, User> {
 
         @Override
@@ -2108,10 +2147,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                         + ((System.currentTimeMillis() - startTime) / 1000)
                         + " sec");
 
-            }catch (MalformedURLException e){
+            } catch (MalformedURLException e) {
                 e.printStackTrace();
-            }
-            catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             return null;

@@ -37,8 +37,7 @@
         <item name="android:typeface">serif</item>
     </style>
 
-    <style name="noaction" parent="Theme.AppCompat.Light.NoActionBar">
-        </style>
+    <style name="noaction" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
     <style name="textViewLabel">
         <item name="android:textColor">@color/black</item>
@@ -63,6 +62,7 @@
         <!-- inactive track color (30% transparency) -->
         <item name="android:colorForeground">@color/grey</item>
     </style>
+
     <style name="UploadSwitch" parent="Theme.AppCompat.Light">
         <!-- active thumb & track color (30% transparency) -->
         <item name="colorControlActivated">@color/btn_green</item>
@@ -72,12 +72,12 @@
         <item name="android:colorForeground">@color/grey</item>
     </style>
     <!--<style name="MyUploadSwitch" parent="Theme.AppCompat.Light">-->
-        <!--&lt;!&ndash; active thumb & track color (30% transparency) &ndash;&gt;-->
-        <!--&lt;!&ndash; inactive thumb color &ndash;&gt;-->
-        <!--<item name="android:thumb">@drawable/my_switch_thumb_selector</item>-->
-        <!--<item name="track">@drawable/my_switch_track_selector</item>-->
+    <!--&lt;!&ndash; active thumb & track color (30% transparency) &ndash;&gt;-->
+    <!--&lt;!&ndash; inactive thumb color &ndash;&gt;-->
+    <!--<item name="android:thumb">@drawable/my_switch_thumb_selector</item>-->
+    <!--<item name="track">@drawable/my_switch_track_selector</item>-->
 
-        <!--&lt;!&ndash; inactive track color (30% transparency) &ndash;&gt;-->
+    <!--&lt;!&ndash; inactive track color (30% transparency) &ndash;&gt;-->
     <!--</style>-->
     <style name="SettingSwitch" parent="Theme.AppCompat.Light">
         <!-- active thumb & track color (30% transparency) -->
@@ -142,6 +142,11 @@
         <item name="android:lineSpacingExtra">5dp</item>
         <item name="android:textSize">@dimen/large_text_size</item>
         <item name="android:textColor">@color/credittextcolor</item>
+    </style>
+
+    <style name="AppTheme1" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="android:colorPrimary">#000</item>
+        <item name="android:colorAccent">#000</item>
     </style>
 
     <style name="linearLayoutOrderScreen">

@@ -3,17 +3,25 @@
     android:id="@+id/parentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#40000000">
+    android:background="#40000000"
+    android:orientation="vertical">
 
 
-
-<RelativeLayout
+    <RelativeLayout
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imega"
+            android:src="@drawable/flatlayvideo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
         <VideoView
             android:id="@+id/vedio"
+            android:visibility="gone"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_alignParentBottom="true"
@@ -28,42 +36,41 @@
             android:alpha="0.91"
             android:background="@drawable/overlay" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/top_logo"
-        android:layout_centerInParent="true"
-        android:layout_weight="3"
-        android:orientation="vertical">
-
         <LinearLayout
+            android:id="@+id/top_logo"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="3"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/logoImage"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal|top"
-                android:src="@drawable/round_beta_flatlay_ic" />
-        </LinearLayout>
+                android:layout_height="50dp">
 
-        <LinearLayout
-            android:id="@+id/layout6"
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/logoImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal|top"
+                    android:src="@drawable/round_beta_flatlay_ic" />
+            </LinearLayout>
 
-            <ImageView
-                android:id="@+id/logoImageView"
+            <LinearLayout
+                android:id="@+id/layout6"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal|top"
-                android:src="@drawable/flatlay_text_white_transparent" />
-        </LinearLayout>
-    </LinearLayout>
+                android:layout_height="45dp">
 
+                <ImageView
+                    android:id="@+id/logoImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal|top"
+                    android:src="@drawable/flatlay_text_white_transparent" />
+            </LinearLayout>
+        </LinearLayout>
 
 
     </RelativeLayout>
@@ -73,8 +80,7 @@
         android:id="@+id/baseFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-    </FrameLayout>
+        android:orientation="vertical"></FrameLayout>
 
 
 </LinearLayout>

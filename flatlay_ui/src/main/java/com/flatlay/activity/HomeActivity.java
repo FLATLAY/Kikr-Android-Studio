@@ -1,51 +1,35 @@
 package com.flatlay.activity;
 
 import android.Manifest;
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-
-import com.flatlay.fragment.FragmentInspirationDetail;
-
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -55,17 +39,12 @@ import com.braintreepayments.api.Braintree;
 import com.flatlay.KikrApp;
 import com.flatlay.KikrApp.TrackerName;
 import com.flatlay.R;
-
 import com.flatlay.dialog.LogoutDialogWithTab;
-import com.flatlay.dialog.PostUploadTagDialog;
-
-import com.flatlay.fragment.FragmentDiscoverNew;
+import com.flatlay.fragment.FragmentInspirationDetail;
+import com.flatlay.fragment.FragmentInspirationSection;
 import com.flatlay.fragment.FragmentPostUploadTab;
 import com.flatlay.fragment.FragmentProfileView;
-import com.flatlay.fragment.FragmentInspirationSection;
 import com.flatlay.fragment.FragmentSettings;
-
-import com.flatlay.menu.ArcLayout;
 import com.flatlay.post_upload.CameraFragment;
 import com.flatlay.post_upload.FragmentPostUploadTag;
 import com.flatlay.post_upload.ProductSearchTagging;
@@ -120,8 +99,6 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.makeramen.roundedimageview.RoundedImageView;
 import com.pinterest.android.pdk.PDKCallback;
 import com.pinterest.android.pdk.PDKClient;
 import com.pinterest.android.pdk.PDKException;
@@ -130,24 +107,26 @@ import com.pinterest.android.pdk.Utils;
 import com.soundcloud.android.crop.Crop;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
-
-
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 import com.yalantis.ucrop.UCrop;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.net.URI;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
 import io.branch.referral.BranchShortLinkBuilder;
@@ -164,11 +143,23 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     public static TextView uploadphoto, menuBackTextView, postuploadtagbackTextView;
     public static ImageView photouploadnext, homeImageView, menuRightImageView, crossarrow, postUploadWithTag;
     public static TextView gallery, camera, instagram;
+    public static TextView menuTextCartCount;
+    public static ImageView menuSearchImageView;
+    public static ArrayList<Activity> activities = new ArrayList<Activity>();
+    private static ArrayList<Activity> homeActivtyList = new ArrayList<Activity>();
+    public List<ProductFeedItem> list;
+    public Stack<String> mFragmentStack;
+    double localCount;
+    Runnable runnable;
+    // ================================= Context Menu==========================================
+    float lastX = 0, lastY = 0;
+    View centarlView;
+    View centarlView2;
+    TextView lableTextView;
+    int menuIndex = 0;
     private FragmentActivity context, mActivity;
     private View viewHeader;
     private android.support.v7.app.ActionBar actionBar;
-    public static TextView menuTextCartCount;
-    public static ImageView menuSearchImageView;
     private LinearLayout menuSearchLayout, menuProfileLayout, menuConnectWithTwitterLayout,
             menuConnectWithFacebookLayout, menuKikrCreditsLayout, menuActivityLayout,
             kikerWalletLayout, kikrGuideLayout, menuMyFriendsLayout, menuInviteFriendsLayout,
@@ -179,9 +170,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             menuInterestsLayout;
     private ImageView menuMyFriendsLayoutImageView, menuProfileLayoutImageView,
             menuDealImageView, menuSettingsLayoutImageView;
-    public List<ProductFeedItem> list;
     private ArrayList<LinearLayout> layouts = new ArrayList<LinearLayout>();
-    public Stack<String> mFragmentStack;
     private Fragment mContent;
     private HomeActivity homeActivity;
     private int PAYPAL_REQUEST_CODE = 0, creditsCounter = 0;
@@ -190,8 +179,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private View twitterView, fbView;
     private ScrollView menuScrollView;
     private boolean isProfile = false, firstTime = false, isFirstTime, backPressedToExitOnce = false;
-    private static ArrayList<Activity> homeActivtyList = new ArrayList<Activity>();
-    public static ArrayList<Activity> activities = new ArrayList<Activity>();
     private double kikrCredit = 0;
     private List<TextView> textViews = new ArrayList<>();
     private TextView logoutTextView, supportTextView, settingsTextView, inviteTextView,
@@ -199,6 +186,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             kikrCreditTextView, viewProfileTextView, kikrGuideTextView, viewSearchTextView,
             totalCredits, txtShop, txtFeed, menuRightTextView;
     private FirebaseAnalytics mFirebaseAnalytics;
+    private Uri mDestinationUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -210,6 +198,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
         UserPreference.getInstance().setCurrentScreen(Screen.HomeScreen);
 
+        SharedPreferences sharedpreferences = getSharedPreferences("flatlay_video", Context.MODE_PRIVATE);
+        if (!sharedpreferences.getBoolean("download",false))
+        new VideoAsyncTask().execute();
 
         // Branch Init
         Branch.getInstance().initSession(new Branch.BranchReferralInitListener() {
@@ -303,9 +294,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         creditsApi.execute();
     }
 
-    double localCount;
-    Runnable runnable;
-
     protected void showKikrCredit() {
         totalCredits.setVisibility(View.VISIBLE);
         localCount = 0;
@@ -333,7 +321,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         setUpTextType();
         setClickListener();
     }
-
 
     private void addMenuLayouts() {
         layouts.add(menuConnectWithTwitterLayout);
@@ -377,7 +364,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     private void setActionBar() {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        viewHeader = (View) inflater.inflate(R.layout.app_discover_header, (ViewGroup) null,false);
+        viewHeader = (View) inflater.inflate(R.layout.app_discover_header, (ViewGroup) null, false);
         crossarrow = (ImageView) findViewById(R.id.crossarrow);
         postUploadWithTag = (ImageView) viewHeader.findViewById(R.id.postUploadWithTag);
         mstatus = (Spinner) viewHeader.findViewById(R.id.mstatus);
@@ -403,7 +390,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         menuSearchImageView.setOnClickListener(this);
         menuRightTextView.setOnClickListener(this);
     }
-
 
     public void showActionBar() {
         menuRightImageView.setVisibility(View.VISIBLE);
@@ -458,7 +444,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         i.putExtra("getProfilePic", false);
         startActivityForResult(i, AppConstants.REQUEST_CODE_FB_LOGIN);
     }
-
 
     private void openProfileHelpScreen() {
         if (HelpPreference.getInstance().getHelpSideMenu().equals("yes")) {
@@ -883,52 +868,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     }
 
-    private class GetTwitterInfo extends AsyncTask<Void, Void, User> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected User doInBackground(Void... params) {
-            return TwitterOAuthActivity.getUserInfo(context);
-        }
-
-        @Override
-        protected void onPostExecute(User user) {
-            super.onPostExecute(user);
-            System.out.println("Twitter id>>" + user);
-            if (user != null) {
-                getTwitterInfo(user);
-            } else {
-                AlertUtils.showToast(context, "Failed to connect with twitter. Please try again.");
-            }
-        }
-    }
-
-    private class GetTwitterFriends extends
-            AsyncTask<Void, Void, ArrayList<OauthItem>> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected ArrayList<OauthItem> doInBackground(Void... params) {
-            return TwitterOAuthActivity.getFollowerList(context);
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<OauthItem> result) {
-            super.onPostExecute(result);
-            System.out.println("Twitter friend list>>" + result);
-            showTwitterFriendList(result);
-        }
-
-    }
-
     private void connectWithTwitter(String userId, String description, String language, String location, String name, String profile_image_url, String screen_name, String status,
                                     String time_zone) {
 
@@ -1113,7 +1052,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         service.execute();
     }
 
-
     public void shareProduct(final Product product, final boolean isOther) {
         AlertUtils.showToast(context, "Please wait...");
         BranchShortLinkBuilder shortUrlBuilder = new BranchShortLinkBuilder(this)
@@ -1191,7 +1129,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         });
     }
 
-
     public void shareImage(final String imageUrl, final boolean isOther, final String shareimagename) {
         AlertUtils.showToast(context, "Please wait...");
         BranchShortLinkBuilder shortUrlBuilder = new BranchShortLinkBuilder(this)
@@ -1229,7 +1166,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             }
         });
     }
-
 
     public void shareProductCollection(final String collectionname) {
 
@@ -1321,7 +1257,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
     }
 
-    public Fragment getCurrentFragment(){
+    public Fragment getCurrentFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.commit();
         Fragment currentFragment = getSupportFragmentManager()
@@ -1334,7 +1270,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             Fragment currentFragment = getSupportFragmentManager()
                     .findFragmentByTag(mFragmentStack.peek());
-            if (mFragmentStack.size() > 0&&!(currentFragment instanceof FragmentInspirationSection)) {
+            if (mFragmentStack.size() > 0 && !(currentFragment instanceof FragmentInspirationSection)) {
                 if (currentFragment != null) {
 
                     transaction.hide(currentFragment);
@@ -1391,7 +1327,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             finish();
         }
     }
-
 
     @Override
     public void onBackPressed() {
@@ -1643,7 +1578,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
     }
 
-
     private void checkKikrWalletPin() {
 
 
@@ -1680,15 +1614,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
     public void setimage(Bitmap bitmap) {
 
     }
-
-    // ================================= Context Menu==========================================
-    float lastX = 0, lastY = 0;
-    View centarlView;
-    View centarlView2;
-    TextView lableTextView;
-
-    int menuIndex = 0;
-
 
     public void likeInspiration(final Product product, final UiUpdate uiUpdate) {
         Syso.info("123 like id: " + product.getLike_info().getLike_id()
@@ -1919,10 +1844,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
     }
 
-    //  cropping functions
-
-    private Uri mDestinationUri;
-
     public void startCropActivity(@NonNull Uri uri) {
         Log.w(TAG, "startCropActivity()");
 
@@ -1950,6 +1871,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 .start(context);
 
     }
+
+    //  cropping functions
 
     public void startCropActivityForMedia(@NonNull Uri uri) {
         Log.w(TAG, "startCropActivityForMedia()");
@@ -1979,7 +1902,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         return uCrop;
     }
 
-
     private UCrop advancedConfig(@NonNull UCrop uCrop) {
 
         UCrop.Options options = new UCrop.Options();
@@ -1991,7 +1913,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
 
         return uCrop.withOptions(options);
     }
-
 
     private void handleCropResult(@NonNull Intent result) {
 
@@ -2007,7 +1928,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         } else
             AlertUtils.showToast(HomeActivity.this, R.string.toast_cannot_retrieve_cropped_image);
     }
-
 
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
     private void handleCropError(@NonNull Intent result) {
@@ -2032,7 +1952,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
         */
     }
-
 
     public void onSavePin(String imageUrl, String boardId, String text, String linkUrl) {
 
@@ -2108,6 +2027,113 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
             app_installed = false;
         }
         return app_installed;
+    }
+
+    private class GetTwitterInfo extends AsyncTask<Void, Void, User> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected User doInBackground(Void... params) {
+            return TwitterOAuthActivity.getUserInfo(context);
+        }
+
+        @Override
+        protected void onPostExecute(User user) {
+            super.onPostExecute(user);
+            System.out.println("Twitter id>>" + user);
+            if (user != null) {
+                getTwitterInfo(user);
+            } else {
+                AlertUtils.showToast(context, "Failed to connect with twitter. Please try again.");
+            }
+        }
+    }
+
+    private class GetTwitterFriends extends
+            AsyncTask<Void, Void, ArrayList<OauthItem>> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected ArrayList<OauthItem> doInBackground(Void... params) {
+            return TwitterOAuthActivity.getFollowerList(context);
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<OauthItem> result) {
+            super.onPostExecute(result);
+            System.out.println("Twitter friend list>>" + result);
+            showTwitterFriendList(result);
+        }
+
+    }
+
+    public class VideoAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        private final int TIMEOUT_CONNECTION = 5000;//5sec
+        private final int TIMEOUT_SOCKET = 30000;//30sec
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            String imageURL = "https://drive.google.com/uc?export=download&id=139gxIRPKkl51_8oEFk-w4ZgujsaDWiXg";
+            try {
+
+                URL url = new URL(imageURL);
+                long startTime = System.currentTimeMillis();
+                Log.i(TAG, "image download beginning: " + imageURL);
+                URLConnection ucon = url.openConnection();
+                ucon.setReadTimeout(TIMEOUT_CONNECTION);
+                ucon.setConnectTimeout(TIMEOUT_SOCKET);
+                File file = new File(getCacheDir(), "Video.mp4");
+                InputStream is = ucon.getInputStream();
+                BufferedInputStream inStream = new BufferedInputStream(is, 1024 * 5);
+                FileOutputStream outStream = new FileOutputStream(file);
+                byte[] buff = new byte[5 * 1024];
+                int len;
+                while ((len = inStream.read(buff)) != -1) {
+                    outStream.write(buff, 0, len);
+                }
+
+                outStream.flush();
+                outStream.close();
+                inStream.close();
+                Log.i(TAG, "download completed in "
+                        + ((System.currentTimeMillis() - startTime) / 1000)
+                        + " sec");
+
+            }catch (MalformedURLException e){
+                e.printStackTrace();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            SharedPreferences sharedpreferences = getSharedPreferences("flatlay_video", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putBoolean("download", true);
+            editor.commit();
+            super.onPostExecute(aVoid);
+        }
+
+        @Override
+        protected void onCancelled() {
+            SharedPreferences sharedpreferences = getSharedPreferences("flatlay_video", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putBoolean("download", false);
+            editor.commit();
+            super.onCancelled();
+        }
     }
 
 }

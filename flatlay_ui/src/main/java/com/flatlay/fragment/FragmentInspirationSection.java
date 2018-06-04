@@ -209,6 +209,7 @@ public class FragmentInspirationSection extends BaseFragment implements View.OnC
         }
     }
 
+
     private void getInspirationFeedList() {
         isLoading = !isLoading;
         if (!isFirstTime) {

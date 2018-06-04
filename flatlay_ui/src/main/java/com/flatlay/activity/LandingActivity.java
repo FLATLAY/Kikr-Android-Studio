@@ -233,8 +233,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
                     AccessToken accessToken = AccessToken.getCurrentAccessToken();
                     boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-                    LoginManager.getInstance().setLoginBehavior(LoginBehavior.WEB_ONLY).logInWithReadPermissions(this, Arrays.asList("public_profile", "user_location", "email", "user_birthday", "user_link"));
-                    ;
+                    LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_location", "email", "user_birthday", "user_link"));
                     loading.setVisibility(View.VISIBLE);
                     /*Intent i = new Intent(getActivity(), FbSignActivity.class);
                     i.putExtra("getFriendList", false);

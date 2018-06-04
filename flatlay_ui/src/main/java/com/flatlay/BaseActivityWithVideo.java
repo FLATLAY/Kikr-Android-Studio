@@ -1,7 +1,9 @@
 package com.flatlay;
 
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,15 +13,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.VideoView;
 
 import com.facebook.FacebookSdk;
-import com.flatlay.activity.EditProfileActivity;
 import com.flatlay.activity.HomeActivity;
 import com.flatlay.activity.LandingActivity;
-import com.flatlay.activity.LoginActivity;
-import com.flatlay.activity.SignUpActivity;
-import com.flatlay.fragment.FragmentInspirationSection;
 import com.flatlay.utility.CommonUtility;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.utils.AlertUtils;
@@ -31,15 +30,16 @@ import java.util.Stack;
  */
 
 public class BaseActivityWithVideo extends BaseActivity {
-    protected VideoView vedio;
+    public static final String TAG = "BaseActivityWithVideo";
     public Stack<String> mFragmentStack;
+    public FragmentTransaction transaction = getSupportFragmentManager()
+            .beginTransaction();
+    protected VideoView vedio;
+    ImageView imageView;
     private Fragment mContent;
     private boolean backPressedToExitOnce = false;
     private String inspiration_id;
-    public static final String TAG = "BaseActivityWithVideo";
     private FragmentManager manager;
-    public FragmentTransaction transaction = getSupportFragmentManager()
-            .beginTransaction();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,19 +86,29 @@ public class BaseActivityWithVideo extends BaseActivity {
 
         findViewById(R.id.baseHeader).setVisibility(View.GONE);
         vedio = (VideoView) findViewById(R.id.vedio);
+        vedio.setVisibility(View.GONE);
+        imageView = (ImageView) findViewById(R.id.imega);
+        SharedPreferences sharedpreferences = getSharedPreferences("flatlay_video", Context.MODE_PRIVATE);
+
+        if (sharedpreferences.getBoolean("download", false)) {
+            vedio.setVisibility(View.VISIBLE);
+            videostart();
+        } else {
+
+        }
+
+
         Handler handler = new Handler();
         if (UserPreference.getInstance().getUserID().equals("")) {
             findViewById(R.id.top_logo).setVisibility(View.GONE);
             loadFragment(new LandingActivity());
-        }
-        else
-        {
+        } else {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     startActivity(HomeActivity.class);
                 }
-            },1500);
+            }, 1500);
         }
 
     }
@@ -199,7 +209,15 @@ public class BaseActivityWithVideo extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        videostart();
+        SharedPreferences sharedpreferences = getSharedPreferences("flatlay_video", Context.MODE_PRIVATE);
+
+        if (sharedpreferences.getBoolean("download", false)) {
+            vedio.setVisibility(View.VISIBLE);
+            videostart();
+        } else {
+            vedio.setVisibility(View.GONE);
+        }
+
     }
 
     public void videostart() {
@@ -212,8 +230,9 @@ public class BaseActivityWithVideo extends BaseActivity {
                     //need to be replaced by youtube
                 }
             });
-
-            String uriPath = "android.resource://com.flatlay/" + R.raw.flatlay_guide;
+            String uriPath;
+            uriPath = getCacheDir().getAbsolutePath() + "/Video.mp4";
+            System.out.println(uriPath);
             vedio.setVideoPath(uriPath);
             Uri uri = Uri.parse(uriPath);
             vedio.setVideoURI(uri);

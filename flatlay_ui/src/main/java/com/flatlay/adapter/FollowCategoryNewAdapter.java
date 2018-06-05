@@ -72,7 +72,7 @@ public class FollowCategoryNewAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup arg2) {
         final ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.adapter_follow_category_new, null);
+            convertView = inflater.inflate(R.layout.adapter_follow_category_new,arg2,false);
             viewHolder = new ViewHolder();
             viewHolder.load = (ProgressBar) convertView.findViewById(R.id.follow_load);
             viewHolder.categoryNameTextView = (TextView) convertView.findViewById(R.id.categoryNameTextView);

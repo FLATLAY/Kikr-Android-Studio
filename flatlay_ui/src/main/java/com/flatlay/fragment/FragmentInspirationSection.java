@@ -191,7 +191,7 @@ public class FragmentInspirationSection extends BaseFragment implements View.OnC
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.fragment_inspiration_section, null);
+        mainView = inflater.inflate(R.layout.fragment_inspiration_section, container,false);
         fragmentInspirationSection = this;
         return mainView;
     }

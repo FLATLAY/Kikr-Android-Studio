@@ -1,6 +1,5 @@
 package com.flatlay.post_upload;
 
-
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
@@ -110,6 +109,22 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         return new CameraFragment();
     }
 
+    public static Bitmap scaleBitmap(Bitmap bitmapToScale, float newWidth, float newHeight) {
+        if (bitmapToScale == null)
+            return null;
+        //get the original width and height
+        int width = bitmapToScale.getWidth();
+        int height = bitmapToScale.getHeight();
+        // create a matrix for the manipulation
+        Matrix matrix = new Matrix();
+
+        // resize the bit map
+        matrix.postScale(newWidth / width, newHeight / height);
+
+        // recreate the new Bitmap and set it back
+        return Bitmap.createBitmap(bitmapToScale, 0, 0, bitmapToScale.getWidth(), bitmapToScale.getHeight(), matrix, true);
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -136,7 +151,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.squarecamera__fragment_camera, container,false);
+        mainView = inflater.inflate(R.layout.squarecamera__fragment_camera, container, false);
 
         cameraFragment = this;
         return mainView;
@@ -610,7 +625,9 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
+        /////////////////change
+        mCamera.stopPreview();
+        mCamera.startPreview();
     }
 
     @Override
@@ -631,17 +648,13 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
 
         if (rotation != 0) {
             Bitmap oldBitmap = bitmap;
-
             Matrix matrix = new Matrix();
             matrix.postRotate(rotation);
-
             bitmap = Bitmap.createBitmap(
                     oldBitmap, 0, 0, oldBitmap.getWidth(), oldBitmap.getHeight(), matrix, false
             );
-
             oldBitmap.recycle();
         }
-
         return bitmap;
     }
 

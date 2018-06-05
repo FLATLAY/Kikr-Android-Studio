@@ -5,18 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.SwitchCompat;
 import android.text.Editable;
@@ -28,10 +21,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -40,29 +30,46 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
-import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.widget.ShareDialog;
+import com.flatlay.BaseFragment;
+import com.flatlay.R;
+import com.flatlay.activity.HomeActivity;
 import com.flatlay.dialog.ChooseCollectionDialog;
-import com.flatlay.fragment.FragmentDiscoverDetail;
+import com.flatlay.dialog.RedirectToPlayStore;
 import com.flatlay.fragment.FragmentInspirationSection;
 import com.flatlay.fragment.SearchProductFragment;
 import com.flatlay.ui.ProductUI;
 import com.flatlay.ui.ProgressBarDialog;
+import com.flatlay.ui.TagView;
+import com.flatlay.utility.AppConstants;
+import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
 import com.flatlay.utility.MyMaterialContentOverflow3;
+import com.flatlay.utility.PictureUtils;
 import com.flatlay.utility.PinterestUtility;
+import com.flatlaylib.api.AddCollectionApi;
+import com.flatlaylib.api.CollectionApi;
+import com.flatlaylib.api.EditInspirationApi;
+import com.flatlaylib.api.InspirationSectionApi;
 import com.flatlaylib.api.ProductBasedOnBrandApi;
 import com.flatlaylib.bean.CollectionList;
+import com.flatlaylib.bean.Inspiration;
+import com.flatlaylib.bean.Product;
+import com.flatlaylib.bean.TaggedItem;
+import com.flatlaylib.bean.TaggedProducts;
+import com.flatlaylib.db.UserPreference;
+import com.flatlaylib.service.ServiceCallback;
+import com.flatlaylib.service.ServiceException;
+import com.flatlaylib.service.res.CollectionApiRes;
+import com.flatlaylib.service.res.CommonRes;
+import com.flatlaylib.service.res.InspirationRes;
 import com.flatlaylib.service.res.ProductBasedOnBrandRes;
+import com.flatlaylib.utils.AlertUtils;
+import com.flatlaylib.utils.Constants;
+import com.flatlaylib.utils.Syso;
 import com.github.gorbin.asne.core.SocialNetwork;
 import com.github.gorbin.asne.core.SocialNetworkManager;
 import com.github.gorbin.asne.core.listener.OnLoginCompleteListener;
@@ -70,46 +77,6 @@ import com.github.gorbin.asne.core.listener.OnPostingCompleteListener;
 import com.github.gorbin.asne.facebook.FacebookSocialNetwork;
 import com.github.gorbin.asne.instagram.InstagramSocialNetwork;
 import com.github.gorbin.asne.twitter.TwitterSocialNetwork;
-import com.flatlay.BaseFragment;
-import com.flatlay.R;
-import com.flatlay.activity.HomeActivity;
-import com.flatlay.adapter.AutocompleteCustomArrayAdapter;
-import com.flatlay.chip.AutoSuggestProduct;
-import com.flatlay.chip.TagsEditText;
-import com.flatlay.dialog.RedirectToPlayStore;
-import com.flatlay.fragment.FragmentDiscoverNew;
-//import com.flatlay.fragment.FragmentInspirationImageTag;
-import com.flatlay.ui.CustomAutoCompleteView;
-import com.flatlay.ui.PostUploadCommentsUI;
-import com.flatlay.ui.TagView;
-import com.flatlay.utility.AppConstants;
-import com.flatlay.utility.CommonUtility;
-import com.flatlay.utility.PictureUtils;
-//import com.flatlay.utility.PinterestUtility;
-import com.flatlaylib.api.AddCollectionApi;
-import com.flatlaylib.api.CollectionApi;
-import com.flatlaylib.api.EditInspirationApi;
-import com.flatlaylib.api.InspirationSectionApi;
-import com.flatlaylib.api.MyProfileApi;
-import com.flatlaylib.bean.Inspiration;
-import com.flatlaylib.bean.InterestSection;
-import com.flatlaylib.bean.Product;
-import com.flatlaylib.bean.ProfileCollectionList;
-import com.flatlaylib.bean.SearchUser;
-import com.flatlaylib.bean.TaggedItem;
-import com.flatlaylib.bean.TaggedProducts;
-import com.flatlaylib.db.UserPreference;
-import com.flatlaylib.service.ServiceCallback;
-import com.flatlaylib.service.ServiceException;
-import com.flatlaylib.service.res.AddCollectionApiRes;
-import com.flatlaylib.service.res.CollectionApiRes;
-import com.flatlaylib.service.res.CommonRes;
-import com.flatlaylib.service.res.InspirationRes;
-import com.flatlaylib.service.res.MyProfileRes;
-import com.flatlaylib.utils.AlertUtils;
-import com.flatlaylib.utils.Constants;
-import com.flatlaylib.utils.StringUtils;
-import com.flatlaylib.utils.Syso;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.pinterest.android.pdk.PDKCallback;
 import com.pinterest.android.pdk.PDKClient;
@@ -120,18 +87,27 @@ import com.pinterest.android.pdk.Utils;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
-public class FragmentPostUploadTag extends BaseFragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, OnLoginCompleteListener, SocialNetworkManager.OnInitializationCompleteListener {
-    private ProgressBarDialog mProgressBarDialog;
+//import com.flatlay.fragment.FragmentInspirationImageTag;
+//import com.flatlay.utility.PinterestUtility;
 
+public class FragmentPostUploadTag extends BaseFragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, OnLoginCompleteListener, SocialNetworkManager.OnInitializationCompleteListener {
+    final static String TAG = "FragmentPostUploadTag";
+    public static SocialNetworkManager mSocialNetworkManager;
+    public static boolean isUploadWithoutTag = false;
+    static String SHARE_POST_LINK = "Find it @FLATLAY http://flat-lay.com/flatlay/";
+    LinearLayout post_load, existing_load;
+    CameraFragment cameraFragment;
+    String imageServerUri;
+    byte[] byteArray;
+    CollectionApi collectionApi;
+    Product currentProduct = new Product();
+    private ProgressBarDialog mProgressBarDialog;
     private TextView collectionName, newCollectionName, addProducts, post_without_tag_text, add_collection_text, button1, textOR, button2, new_collection_name, ins_text, fb_text, twitter_text, pinterest_text, post_text;
     private View mainView;
-    final static String TAG = "FragmentPostUploadTag";
     private Inspiration inspiration;
     private EditText nameYourCollection, description_text, search_tab_text;
     private RoundedImageView inspirationImage;
@@ -143,7 +119,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     private int networkId = 0;
     private RelativeLayout main_content, share_pin_layout, share_twi_layout, share_fb_layout, share_ins_layout;
     private ArrayList<Integer> networkidarray = new ArrayList<Integer>();
-    public static SocialNetworkManager mSocialNetworkManager;
     private SwitchCompat switchFacebook, switchTwitter, switchInstagram, switchPinterest;
     private MyMaterialContentOverflow3 overflow2;
     private SearchProductFragment searchProductFragment;
@@ -155,7 +130,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     private float x = 0, y = 0;
     private int productAddedCount = 0;
     private ArrayList<Product> addProductListNew = new ArrayList<>();
-    public static boolean isUploadWithoutTag = false;
     private boolean isAddProduct = false;
     private ArrayList<Product> addProductListNew1 = new ArrayList<>();
     private ArrayList<String> taggedProductIds = new ArrayList<>();
@@ -172,9 +146,12 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     private boolean isAdd = true;
     private int page = 0;
     private int index = 0;
-    CameraFragment cameraFragment;
     private List<CollectionList> collectionLists;
     private List<Product> products = new ArrayList<Product>();
+    private String description;
+    private boolean isUpdate = false;
+    private TaggedItem taggedItem = new TaggedItem();
+    private TaggedProducts taggedProducts = new TaggedProducts();
 
     public FragmentPostUploadTag(Inspiration inspiration, boolean isUpdate) {
         this.inspiration = inspiration;
@@ -202,7 +179,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         this.imageUrl = imageUrl;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.fragment_post_upload_tag, null);
@@ -228,7 +204,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                 break;
 
             case R.id.post_text:
-
+                post_text.setClickable(false);
                 validateInput();
                 break;
 
@@ -295,6 +271,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                         productInflaterLayout.removeAllViews();
                         products.clear();
                         initProducts();
+
                     }
                 });
                 break;
@@ -383,6 +360,8 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         collectionName.setTypeface(FontUtility.setMontserratLight(mContext));
         search_tab_text = (EditText) mainView.findViewById(R.id.search_tab_text);
         search_tab_text.setTypeface(FontUtility.setMontserratLight(mContext));
+        post_load = (LinearLayout) mainView.findViewById(R.id.post_load);
+        existing_load = (LinearLayout) mainView.findViewById(R.id.existing_load);
         overflow2 = (MyMaterialContentOverflow3) mainView.findViewById(R.id.overflow2);
         switchFacebook = (SwitchCompat) mainView.findViewById(R.id.switchfacebook);
         switchTwitter = (SwitchCompat) mainView.findViewById(R.id.switchtwitter);
@@ -409,6 +388,8 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         description_text = (EditText) mainView.findViewById(R.id.description_text);
         description_text.setTypeface(FontUtility.setMontserratLight(mContext));
         description_text.addTextChangedListener(watcher2);
+        post_load.setVisibility(View.GONE);
+        existing_load.setVisibility(View.GONE);
 
         main_content = (RelativeLayout) mainView.findViewById(R.id.main_content);
 
@@ -457,6 +438,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         post_text = (TextView) mainView.findViewById(R.id.post_text);
         post_text.setTypeface(FontUtility.setMontserratRegular(mContext));
         backIconLayout = (LinearLayout) mainView.findViewById(R.id.backIconLayout);
+        post_text.setClickable(true);
         cancel_layout1 = (LinearLayout) mainView.findViewById(R.id.cancel_layout1);
         description_text.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -610,10 +592,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         }
     }
 
-    private String description;
-    private boolean isUpdate = false;
-
-
     private void setTagInformation() {
         taggedItem.setSelectedItem(collection_id);
         taggedItem.setSelectedItemName(finalNewCollectionName);
@@ -659,6 +637,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                         }
                     } else {
                         Log.w(TAG, "Going in GetImage().execute(); **");
+                        post_load.setVisibility(View.VISIBLE);
                         new GetImage().execute();
                     }
                 }
@@ -697,7 +676,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         collectionApi.execute();
     }
 
-
     public void updateDescription() {
         try {
             final EditInspirationApi editPostApi = new EditInspirationApi(new ServiceCallback() {
@@ -732,9 +710,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
             Syso.info(ex.getMessage());
         }
     }
-
-    static String SHARE_POST_LINK = "Find it @FLATLAY http://flat-lay.com/flatlay/";
-    String imageServerUri;
 
     private void sharePost() {
 
@@ -781,7 +756,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         } else
             setShareClickable(true);
     }
-
 
     private void startProfile(final int networkId) {
         Log.w(TAG, "startProfile");
@@ -853,10 +827,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         }
     }
 
-    private TaggedItem taggedItem = new TaggedItem();
-    private TaggedProducts taggedProducts = new TaggedProducts();
-
-
     private void uploadInspiration(byte[] image) {
         Toast.makeText(mContext, "Uploading, you will be lead to main page", Toast.LENGTH_SHORT).show();
 
@@ -875,11 +845,16 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                             sharePost();
                             ((HomeActivity) mContext).mFragmentStack.clear();
                             ((HomeActivity) mContext).addFragment(new FragmentInspirationSection());
+                            post_load.setVisibility(View.GONE);
+                            post_text.setClickable(true);
+
                         }
                     }
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
+                        post_load.setVisibility(View.GONE);
+                        post_text.setClickable(true);
                         if (object != null) {
                             InspirationRes response = (InspirationRes) object;
                             AlertUtils.showToast(mContext, response.getMessage());
@@ -904,8 +879,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         }
 
     }
-
-    byte[] byteArray;
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -986,37 +959,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         switchInstagram.setClickable(isClickable);
         switchPinterest.setClickable(isClickable);
         switchTwitter.setClickable(isClickable);
-    }
-
-
-    private class GetImage extends AsyncTask<Void, Void, byte[]> {
-
-        @Override
-        protected void onPreExecute() {
-            Log.w(TAG, "GetImage() onPreExecute()");
-            super.onPreExecute();
-        }
-
-        @Override
-        protected byte[] doInBackground(Void... params) {
-
-            // TODO Auto-generated method stub
-            Log.w(TAG, "GetImage() doInBackground()");
-            if (isImage.equals("no")) {
-                return byteArray;
-            } else {
-                return PictureUtils.getByteArray2(bmp);
-            }
-
-        }
-
-        @Override
-        protected void onPostExecute(byte[] result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-            Log.w(TAG, "Going in uploadInspiration() 1");
-            uploadInspiration(result);
-        }
     }
 
     public void checkedSocialSharingLogin() {
@@ -1122,7 +1064,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     }
 
-
     private void getConfirmation() {
         Log.w(TAG, "getConfirmation()");
         final AlertDialog.Builder builder;
@@ -1155,17 +1096,12 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                 .setNegativeButton("No", dialogClickListener).show();
     }
 
-
     private void addProductToNewCollection(Product product) {
         Log.w(TAG, "addProductToNewCollection22()");
 
         addProductListNew1.add(product);
 
     }
-
-
-    CollectionApi collectionApi;
-
 
     private void addProductInCollection(String collection_id, Product product) {
 
@@ -1242,12 +1178,14 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
                             page++;
                             getProducts();
                         }
-
+                        existing_load.setVisibility(View.GONE);
                         addProducts.setText("Add Product");
                     }
 
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
+
+                        existing_load.setVisibility(View.GONE);
                     }
                 });
         productBasedOnBrandApi.getProductsBasedOnCollectionList
@@ -1264,56 +1202,6 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
         }
         return false;
     }
-
-    private class CollectionTextWatcher implements TextWatcher {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            if (validCollectionName()) {
-                cancel_layout1.setVisibility(View.GONE);
-                checkLayout.setVisibility(View.VISIBLE);
-                squareCheck.setVisibility(View.VISIBLE);
-                squareCheck.setImageResource(R.drawable.square_check);
-            } else {
-                checkLayout.setVisibility(View.GONE);
-                cancel_layout1.setVisibility(View.VISIBLE);
-            }
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-        }
-    }
-
-    private class DescriptionTextWatcher implements TextWatcher {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            String des = description_text.getText().toString().trim();
-            if (TextUtils.isEmpty(des)) {
-                post_text.setBackgroundResource(R.drawable.grey_corner_button);
-            } else {
-                post_text.setBackgroundResource(R.drawable.green_corner_button_post);
-            }
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-        }
-    }
-
-
-    Product currentProduct = new Product();
 
     public void getNewCollectionId() {
         final CollectionApi collectionApi = new CollectionApi(new ServiceCallback() {
@@ -1388,6 +1276,83 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
         productInflaterLayout.removeAllViews();
         productInflaterLayout.addView(new ProductUI(mContext, 200, 200, products, false).getView());
+    }
+
+    private class GetImage extends AsyncTask<Void, Void, byte[]> {
+
+        @Override
+        protected void onPreExecute() {
+            Log.w(TAG, "GetImage() onPreExecute()");
+            super.onPreExecute();
+        }
+
+        @Override
+        protected byte[] doInBackground(Void... params) {
+
+            // TODO Auto-generated method stub
+            Log.w(TAG, "GetImage() doInBackground()");
+            if (isImage.equals("no")) {
+                return byteArray;
+            } else {
+                return PictureUtils.getByteArray2(bmp);
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(byte[] result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            Log.w(TAG, "Going in uploadInspiration() 1");
+            uploadInspiration(result);
+        }
+    }
+
+    private class CollectionTextWatcher implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            if (validCollectionName()) {
+                cancel_layout1.setVisibility(View.GONE);
+                checkLayout.setVisibility(View.VISIBLE);
+                squareCheck.setVisibility(View.VISIBLE);
+                squareCheck.setImageResource(R.drawable.square_check);
+            } else {
+                checkLayout.setVisibility(View.GONE);
+                cancel_layout1.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    }
+
+    private class DescriptionTextWatcher implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String des = description_text.getText().toString().trim();
+            if (TextUtils.isEmpty(des)) {
+                post_text.setBackgroundResource(R.drawable.grey_corner_button);
+            } else {
+                post_text.setBackgroundResource(R.drawable.green_corner_button_post);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
     }
 
 }

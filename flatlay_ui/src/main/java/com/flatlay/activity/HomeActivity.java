@@ -250,11 +250,19 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         }
 
         if (getIntent().getStringExtra("profile_collection") != null) {
-            addFragment(new FragmentProfileView(getIntent().getStringExtra("profile_collection"), "no"));
+////////////change
+            Bundle args = new Bundle();
+            args.putString("key", getIntent().getStringExtra("profile_collection"));
+            args.putString("key1", "no");
+            FragmentProfileView f = new FragmentProfileView();
+            f.setArguments(args);
+            addFragment(f);
 
         }
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         isFirstTime = true;
+
+
     }
 
     @Override

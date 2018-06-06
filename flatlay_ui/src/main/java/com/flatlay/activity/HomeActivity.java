@@ -1270,10 +1270,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 .findFragmentByTag(mFragmentStack.peek());
         return currentFragment;
     }
+/*
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
     }
+*/
 
     public void myAddFragment(Fragment fragment) {
         try {
@@ -1287,13 +1289,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                 mFragmentStack.add(fragment.toString());
                 transaction.replace(R.id.frame_container_section_1, fragment, fragment.toString());
                 transaction.addToBackStack(fragment.toString());
-                transaction.commitAllowingStateLoss();
+                transaction.commit();
 
             } else {
                 mFragmentStack.add(fragment.toString());
                 transaction.replace(R.id.frame_container_section_1, fragment, fragment.toString());
                 transaction.addToBackStack(fragment.toString());
-                transaction.commitAllowingStateLoss();
+                transaction.commit();
             }
 
         } catch (Exception e) {

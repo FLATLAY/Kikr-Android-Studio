@@ -54,7 +54,7 @@ public class FragmentTrackOrder extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.fragment_track_order, null);
+        mainView = inflater.inflate(R.layout.fragment_track_order, container,false);
         return mainView;
     }
 

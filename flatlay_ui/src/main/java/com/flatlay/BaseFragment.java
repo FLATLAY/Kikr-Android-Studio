@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
 import com.flatlay.activity.HomeActivity;
@@ -158,16 +159,19 @@ public abstract class BaseFragment extends Fragment {
 
     public void showDataNotFound() {
         try {
-            LinearLayout layout = (LinearLayout) getView().findViewById(R.id.itemNotFound);
+            /*LinearLayout layout = (LinearLayout) getView().findViewById(R.id.itemNotFound);
             layout.setVisibility(View.VISIBLE);
             TextView textView = (TextView) getView().findViewById(R.id.noDataFoundTextView);
-            if (checkInternet()) {
+            */if (checkInternet()) {
                 Log.w("showdataNotFound()", "no_data_found");
-                textView.setText(getResources().getString(R.string.no_data_found));
+                Toast.makeText(mContext, "No Collections yet", Toast.LENGTH_SHORT).show();
+
+                //textView.setText(getResources().getString(R.string.no_data_found));
             } else {
                 Log.w("showdataNotFound()", "no_internet");
-                textView.setText(Html.fromHtml(getResources().getString(R.string.no_internet)));
-                Log.w("showdataNotFound()", "" + textView.getText().toString());
+                //textView.setText(Html.fromHtml(getResources().getString(R.string.no_internet)));
+                Toast.makeText(mContext, "No Internet", Toast.LENGTH_SHORT).show();
+                //Log.w("showdataNotFound()", "" + textView.getText().toString());
             }
 
         } catch (NullPointerException exception) {
@@ -191,23 +195,23 @@ public abstract class BaseFragment extends Fragment {
 
     public void hideDataNotFound() {
         try {
-            LinearLayout layout = (LinearLayout) getView().findViewById(R.id.itemNotFound);
-            layout.setVisibility(View.GONE);
+            /*LinearLayout layout = (LinearLayout) getView().findViewById(R.id.itemNotFound);
+            layout.setVisibility(View.GONE);*/
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
 
-    public TextView getDataNotFound() {
+    /*public TextView getDataNotFound() {
         try {
-            TextView textView = (TextView) getView().findViewById(R.id.noDataFoundTextView);
+            *//*TextView textView = (TextView) getView().findViewById(R.id.noDataFoundTextView);
             textView.setText(Html.fromHtml(getResources().getString(R.string.no_internet)));
-            return textView;
+            return textView;*//*
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
 
     public boolean checkInternet() {
         if (CommonUtility.isOnline(mContext)) {

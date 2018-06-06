@@ -1,13 +1,18 @@
 package com.flatlaylib.api;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.AbsService;
@@ -16,6 +21,7 @@ import com.flatlaylib.service.res.FeaturedTabApiRes;
 import com.flatlaylib.utils.Constants.WebConstants;
 import com.flatlaylib.utils.JsonUtils;
 import com.flatlaylib.utils.Syso;
+import com.google.gson.reflect.TypeToken;
 
 public class FeaturedTabApi extends AbsService {
 
@@ -105,7 +111,11 @@ public class FeaturedTabApi extends AbsService {
 //            }
 //            if (json != null)
 //                response = json.toString();
+
+            System.out.println(response);
+
             FeaturedTabApiRes featuredTabApiRes = JsonUtils.fromJson(response, FeaturedTabApiRes.class);
+
             if (featuredTabApiRes.getCode().equals(WebConstants.SUCCESS_CODE)) {
                 isValidResponse = true;
             }
@@ -117,5 +127,6 @@ public class FeaturedTabApi extends AbsService {
             Syso.error(e);
             isValidResponse = false;
         }
+
     }
 }

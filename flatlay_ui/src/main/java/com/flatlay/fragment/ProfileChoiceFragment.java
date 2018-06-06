@@ -43,7 +43,7 @@ public class ProfileChoiceFragment extends BaseFragment implements View.OnClickL
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.profile_choice_layout, null);
+        mainView = inflater.inflate(R.layout.profile_choice_layout, container,false);
         return mainView;
     }
 

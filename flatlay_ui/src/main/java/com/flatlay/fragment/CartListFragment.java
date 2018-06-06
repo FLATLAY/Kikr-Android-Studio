@@ -81,7 +81,7 @@ public class CartListFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.cart_list_fragment_layout, null);
+        mainView = inflater.inflate(R.layout.cart_list_fragment_layout, container,false);
         return mainView;
     }
 

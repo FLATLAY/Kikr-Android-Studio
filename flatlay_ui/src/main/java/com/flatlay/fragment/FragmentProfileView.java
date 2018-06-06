@@ -124,7 +124,7 @@ public class FragmentProfileView extends BaseFragment implements OnClickListener
 */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.fragment_profile, null);
+        mainView = inflater.inflate(R.layout.fragment_profile, container,false);
         fragmentProfileView = this;
         Log.w(TAG, "onCreateView");
         return mainView;

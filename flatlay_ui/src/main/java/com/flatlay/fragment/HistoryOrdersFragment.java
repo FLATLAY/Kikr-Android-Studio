@@ -24,7 +24,7 @@ public class HistoryOrdersFragment extends BaseFragment implements View.OnClickL
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.history_orders_layout, null);
+        mainView = inflater.inflate(R.layout.history_orders_layout, container,false);
         return mainView;
     }
 

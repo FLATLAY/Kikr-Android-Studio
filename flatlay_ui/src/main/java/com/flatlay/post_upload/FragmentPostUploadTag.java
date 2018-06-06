@@ -153,6 +153,8 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
     private TaggedItem taggedItem = new TaggedItem();
     private TaggedProducts taggedProducts = new TaggedProducts();
 
+    public FragmentPostUploadTag(){}
+
     public FragmentPostUploadTag(Inspiration inspiration, boolean isUpdate) {
         this.inspiration = inspiration;
         this.isUpdate = isUpdate;
@@ -181,7 +183,7 @@ public class FragmentPostUploadTag extends BaseFragment implements CompoundButto
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.fragment_post_upload_tag, null);
+        mainView = inflater.inflate(R.layout.fragment_post_upload_tag, container,false);
         Log.w(TAG, "FragmentPostUploadTag");
         fragmentPostUploadTag = this;
         if (cameraFragment != null) {

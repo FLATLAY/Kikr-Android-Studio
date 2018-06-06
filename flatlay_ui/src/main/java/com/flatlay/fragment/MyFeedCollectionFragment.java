@@ -87,7 +87,7 @@ public class MyFeedCollectionFragment extends BaseFragment implements View.OnCli
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.my_feed_collection, null);
+        mainView = inflater.inflate(R.layout.my_feed_collection, container,false);
         return mainView;
     }
 

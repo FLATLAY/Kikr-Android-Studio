@@ -56,7 +56,7 @@ public class CartAddressFragment extends BaseFragment implements View.OnClickLis
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.cart_address_layout, null);
+        mainView = inflater.inflate(R.layout.cart_address_layout, container,false);
         cartAddressFragment = this;
         return mainView;
     }

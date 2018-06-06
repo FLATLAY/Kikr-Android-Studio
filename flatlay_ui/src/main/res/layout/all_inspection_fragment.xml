@@ -101,4 +101,26 @@
             android:textColor="@color/black"
             android:visibility="visible" />
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/reloadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:visibility="gone"
+        android:clickable="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Reload?"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:visibility="visible" />
+    </RelativeLayout>
+
 </RelativeLayout>

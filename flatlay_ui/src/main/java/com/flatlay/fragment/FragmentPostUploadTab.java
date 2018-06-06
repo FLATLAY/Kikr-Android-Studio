@@ -74,7 +74,7 @@ public class FragmentPostUploadTab extends BaseFragment implements View.OnClickL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.e(TAG, "PostUploadTab");
-        mainView = inflater.inflate(R.layout.fragment_post_upload_main, null);
+        mainView = inflater.inflate(R.layout.fragment_post_upload_main, container,false);
         return mainView;
     }
 

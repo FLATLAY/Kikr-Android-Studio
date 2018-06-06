@@ -76,7 +76,7 @@ public class CartConfirmFragment extends BaseFragment implements View.OnClickLis
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.cart_confirm_layout, null);
+        mainView = inflater.inflate(R.layout.cart_confirm_layout, container,false);
         return mainView;
     }
 

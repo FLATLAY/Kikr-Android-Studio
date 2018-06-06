@@ -69,7 +69,7 @@ public class OtherFeedCollectionFragment extends BaseFragment implements View.On
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.other_feed_collection, null);
+        mainView = inflater.inflate(R.layout.other_feed_collection, container,false);
         return mainView;
     }
 

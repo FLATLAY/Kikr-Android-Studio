@@ -1271,6 +1271,10 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
         return currentFragment;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+    }
+
     public void myAddFragment(Fragment fragment) {
         try {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -1278,18 +1282,18 @@ public class HomeActivity extends FragmentActivity implements OnClickListener, O
                     .findFragmentByTag(mFragmentStack.peek());
             if (mFragmentStack.size() > 0 && !(currentFragment instanceof FragmentInspirationSection)) {
                 if (currentFragment != null) {
-
                     transaction.hide(currentFragment);
                 }
                 mFragmentStack.add(fragment.toString());
                 transaction.replace(R.id.frame_container_section_1, fragment, fragment.toString());
                 transaction.addToBackStack(fragment.toString());
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
+
             } else {
                 mFragmentStack.add(fragment.toString());
                 transaction.replace(R.id.frame_container_section_1, fragment, fragment.toString());
                 transaction.addToBackStack(fragment.toString());
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
             }
 
         } catch (Exception e) {

@@ -44,7 +44,7 @@ public class NotificationListFragment extends BaseFragment implements View.OnCli
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.notification_list_layout, null);
+        mainView = inflater.inflate(R.layout.notification_list_layout, container,false);
         return mainView;
     }
 

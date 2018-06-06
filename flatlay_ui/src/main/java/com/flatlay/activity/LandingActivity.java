@@ -1,7 +1,6 @@
 package com.flatlay.activity;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,7 +28,6 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.flatlay.BaseFragment;
@@ -39,7 +37,9 @@ import com.flatlay.utility.AppConstants;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
 import com.flatlaylib.api.ConnectWithFacebookApi;
+import com.flatlaylib.api.FbTwFriendsApi;
 import com.flatlaylib.api.RegisterUserApi;
+import com.flatlaylib.bean.FbUser;
 import com.flatlaylib.db.HelpPreference;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.ServiceCallback;
@@ -52,7 +52,10 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 public class LandingActivity extends BaseFragment implements OnClickListener, ServiceCallback {
     public final static String TAG = "LandingActivity";
@@ -71,6 +74,53 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
     private LinearLayout loading;
     private SharedPreferences userSettings, temp;
     private View mainView;
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.emailButton:
+                CommonUtility.hideSoftKeyboard(getActivity());
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.baseFrameLayout, new SignUpActivity(), null)
+                        .addToBackStack(null)
+                        .commit();
+                break;
+            case R.id.facebookButton:
+                if (checkInternet()) {
+                    isFromFacebook = true;
+                    social = UserPreference.FACEBOOK;
+/*
+                    AccessToken accessToken = AccessToken.getCurrentAccessToken();
+                    boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+                    LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_location", "email", "user_birthday", "user_link"));
+                */
+                    loading.setVisibility(View.VISIBLE);
+
+                    Intent i = new Intent(getActivity(), FbSignActivity.class);
+                    i.putExtra("getFriendList", false);
+                    i.putExtra("getProfilePic", false);
+                    startActivityForResult(i, REQUEST_CODE_FB_LOGIN);
+                }
+                break;
+            case R.id.loginButton:
+                CommonUtility.hideSoftKeyboard(getActivity());
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.baseFrameLayout, new LoginActivity(), null)
+                        .addToBackStack(null)
+                        .commit();
+                break;
+            case R.id.earn250:
+                CommonUtility.hideSoftKeyboard(getActivity());
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.baseFrameLayout, new IntroductionActivity(), null)
+                        .addToBackStack(null)
+                        .commit();
+                break;
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -213,53 +263,6 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
         return mainView;
     }
 
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.emailButton:
-                CommonUtility.hideSoftKeyboard(getActivity());
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.baseFrameLayout, new SignUpActivity(), null)
-                        .addToBackStack(null)
-                        .commit();
-                break;
-            case R.id.facebookButton:
-                if (checkInternet()) {
-                    isFromFacebook = true;
-                    social = UserPreference.FACEBOOK;
-
-
-                    AccessToken accessToken = AccessToken.getCurrentAccessToken();
-                    boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-                    LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_location", "email", "user_birthday", "user_link"));
-                    loading.setVisibility(View.VISIBLE);
-                    /*Intent i = new Intent(getActivity(), FbSignActivity.class);
-                    i.putExtra("getFriendList", false);
-                    i.putExtra("getProfilePic", false);
-                    startActivityForResult(i, REQUEST_CODE_FB_LOGIN);*/
-                }
-                break;
-            case R.id.loginButton:
-                CommonUtility.hideSoftKeyboard(getActivity());
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.baseFrameLayout, new LoginActivity(), null)
-                        .addToBackStack(null)
-                        .commit();
-                break;
-            case R.id.earn250:
-                CommonUtility.hideSoftKeyboard(getActivity());
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.baseFrameLayout, new IntroductionActivity(), null)
-                        .addToBackStack(null)
-                        .commit();
-                break;
-        }
-    }
-
     @Override
     public void initUI(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -317,51 +320,59 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
         earn250.setOnClickListener(this);
     }
 
+/*
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == AppConstants.REQUEST_CODE_FB_FRIEND_LIST) {
+            ArrayList<FbUser> fbUsers = (ArrayList<FbUser>) data.getSerializableExtra("friend_list");
+            System.out.println("123456789 " + fbUsers);
+            if (fbUsers != null && fbUsers.size() > 0)
+                uploadFbFriends(fbUsers);
+        }else{
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+  */
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    /*
-        @Override
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
-                isFromFacebook = true;
-                id = data.getStringExtra("id");
-                String email = data.getStringExtra("email");
-                String gender = data.getStringExtra("gender");
-                mUsername = data.getStringExtra("name");
-                mProfilePic = data.getStringExtra("profile_pic");
-                if (mProfilePic != null) {
-                    UserPreference.getInstance().setProfilePic(mProfilePic);
-                }
-                String g = gender != null ? gender : DEFAULT_GENDER;
-                mEmail = email;
-                name = data.getStringExtra("name");
-                birthday = data.getStringExtra("birthday");
-                location = data.getStringExtra("location");
-                profileLink = data.getStringExtra("profile_link");
-                UserPreference.getInstance().setmIsFacebookSignedIn(true);
-                registerViaFbSocial(id, g);
-            } else if (requestCode == AppConstants.REQUEST_CODE_FB_FRIEND_LIST) {
-                ArrayList<FbUser> fbUsers = (ArrayList<FbUser>) data.getSerializableExtra("friend_list");
-                System.out.println("123456789 " + fbUsers);
-                if (fbUsers != null && fbUsers.size() > 0)
-                    uploadFbFriends(fbUsers);
-                else {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("email", mEmail);
-                    bundle.putString("username", mUsername);
-                    bundle.putString("profilePic", mProfilePic);
-                    gotoFirstScreen(bundle);
-                }
+        if (requestCode == REQUEST_CODE_FB_LOGIN && resultCode == RESULT_OK) {
+            isFromFacebook = true;
+            id = data.getStringExtra("id");
+            String email = data.getStringExtra("email");
+            String gender = data.getStringExtra("gender");
+            mUsername = data.getStringExtra("name");
+            mProfilePic = data.getStringExtra("profile_pic");
+            if (mProfilePic != null) {
+                UserPreference.getInstance().setProfilePic(mProfilePic);
+            }
+            String g = gender != null ? gender : DEFAULT_GENDER;
+            mEmail = email;
+            name = data.getStringExtra("name");
+            birthday = data.getStringExtra("birthday");
+            location = data.getStringExtra("location");
+            profileLink = data.getStringExtra("profile_link");
+            UserPreference.getInstance().setmIsFacebookSignedIn(true);
+            registerViaFbSocial(id, g);
+        } else if (requestCode == AppConstants.REQUEST_CODE_FB_FRIEND_LIST) {
+            ArrayList<FbUser> fbUsers = (ArrayList<FbUser>) data.getSerializableExtra("friend_list");
+            System.out.println("123456789 " + fbUsers);
+            if (fbUsers != null && fbUsers.size() > 0)
+                uploadFbFriends(fbUsers);
+            else {
+                Bundle bundle = new Bundle();
+                bundle.putString("email", mEmail);
+                bundle.putString("username", mUsername);
+                bundle.putString("profilePic", mProfilePic);
+                gotoFirstScreen(bundle);
             }
         }
+    }
 
-    */
     private void registerViaFbSocial(String id, String g) {
         final RegisterUserApi service = new RegisterUserApi(this);
         service.registerViaFbSocial(mEmail, social, id, g, DeviceUtils.getPhoneModel(), CommonUtility.getDeviceTocken(getActivity()), "Dummy", "android", CommonUtility.getDeviceId(getActivity()));
@@ -444,7 +455,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
 
 
     private void showHome(String currentScreen) {
-        SharedPreferences sharedpreferences = getActivity().getSharedPreferences("first_login", Context.MODE_PRIVATE);
+      /*  SharedPreferences sharedpreferences = getActivity().getSharedPreferences("first_login", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         if (sharedpreferences.getBoolean("first", true)) {
             startActivity(FollowCategoriesNewActivity.class);
@@ -454,9 +465,19 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
             startActivity(HomeActivity.class);
 
         }
+      */
+        if (isLoggedIn())
+            startActivity(HomeActivity.class);
+        else
+            startActivity(FollowCategoriesNewActivity.class);
+
 
     }
 
+    public boolean isLoggedIn() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        return accessToken != null;
+    }
 
     private void connectWithFacebook(final String id, final String email, final String gender, final String name, final String username, final String birthday, final String profile_link, final String location) {
 
@@ -466,7 +487,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
                     @Override
                     public void handleOnSuccess(Object object) {
                         if (object != null) {
-                            //getFBFriendList();
+                            getFBFriendList();
                         } else {
                             AlertUtils.showToast(getActivity(), R.string.invalid_response);
                         }
@@ -475,7 +496,7 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
                     @Override
                     public void handleOnFailure(ServiceException exception, Object object) {
                         if (object != null) {
-                            //getFBFriendList();
+                            getFBFriendList();
                         }
                     }
                 });
@@ -483,49 +504,49 @@ public class LandingActivity extends BaseFragment implements OnClickListener, Se
         service.execute();
     }
 
-    /*
-        private void getFBFriendList() {
-            Intent i = new Intent(getActivity(), FbSignActivity.class);
-            i.putExtra("getFriendList", true);
-            i.putExtra("getProfilePic", false);
-            startActivityForResult(i, AppConstants.REQUEST_CODE_FB_FRIEND_LIST);
-        }
 
-        private void uploadFbFriends(final List<FbUser> fbusers) {
-            final FbTwFriendsApi service = new FbTwFriendsApi(
-                    new ServiceCallback() {
+    private void getFBFriendList() {
+        Intent i = new Intent(getActivity(), FbSignActivity.class);
+        i.putExtra("getFriendList", true);
+        i.putExtra("getProfilePic", false);
+        startActivityForResult(i, AppConstants.REQUEST_CODE_FB_FRIEND_LIST);
+    }
 
-                        @Override
-                        public void handleOnSuccess(Object object) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString("email", mEmail);
-                            bundle.putString("username", mUsername);
-                            bundle.putString("profilePic", mProfilePic);
-                            gotoFirstScreen(bundle);
-                        }
+    private void uploadFbFriends(final List<FbUser> fbusers) {
+        final FbTwFriendsApi service = new FbTwFriendsApi(
+                new ServiceCallback() {
 
-                        @Override
-                        public void handleOnFailure(ServiceException exception,
-                                                    Object object) {
-                            showDialog("Failed to upload Facebook friends", new Method() {
-                                public void execute() {
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("email", mEmail);
-                                    bundle.putString("username", mUsername);
-                                    bundle.putString("profilePic", mProfilePic);
-                                    gotoFirstScreen(bundle);
-                                }
-                            }, new Method() {
-                                public void execute() {
-                                    uploadFbFriends(fbusers);
-                                }
-                            });
-                        }
-                    });
-            service.addFacebookFriend(UserPreference.getInstance().getUserID(), fbusers);
-            service.execute();
-        }
-    */
+                    @Override
+                    public void handleOnSuccess(Object object) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("email", mEmail);
+                        bundle.putString("username", mUsername);
+                        bundle.putString("profilePic", mProfilePic);
+                        gotoFirstScreen(bundle);
+                    }
+
+                    @Override
+                    public void handleOnFailure(ServiceException exception,
+                                                Object object) {
+                        showDialog("Failed to upload Facebook friends", new Method() {
+                            public void execute() {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("email", mEmail);
+                                bundle.putString("username", mUsername);
+                                bundle.putString("profilePic", mProfilePic);
+                                gotoFirstScreen(bundle);
+                            }
+                        }, new Method() {
+                            public void execute() {
+                                uploadFbFriends(fbusers);
+                            }
+                        });
+                    }
+                });
+        service.addFacebookFriend(UserPreference.getInstance().getUserID(), fbusers);
+        service.execute();
+    }
+
     private void gotoFirstScreen(Bundle bundle) {
         startActivity(EmailActivity.class, bundle);
     }

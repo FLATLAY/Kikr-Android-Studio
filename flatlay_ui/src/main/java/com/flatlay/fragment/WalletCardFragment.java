@@ -53,7 +53,7 @@ public class WalletCardFragment extends BaseFragment implements View.OnClickList
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.wallet_card_layout, null);
+        mainView = inflater.inflate(R.layout.wallet_card_layout, container,false);
         return mainView;
     }
 

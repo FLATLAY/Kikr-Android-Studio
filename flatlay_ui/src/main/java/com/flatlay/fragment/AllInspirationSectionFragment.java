@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.flatlay.BaseFragment;
@@ -35,6 +37,7 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
     private View mainView;
     private ListView inspirationList;
     int page = 0;
+    RelativeLayout reload;
     boolean isFirstTimeFromMain = false;
     private String userId;
     private ListView inspirationlist;
@@ -54,7 +57,7 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.all_inspection_fragment, null);
+        mainView = inflater.inflate(R.layout.all_inspection_fragment, container,false);
         return mainView;
     }
 
@@ -71,6 +74,7 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
     @Override
     public void initUI(Bundle savedInstanceState) {
         inspirationlist = (ListView) mainView.findViewById(R.id.inspirationlist);
+        reload = (RelativeLayout) mainView.findViewById(R.id.reloadingLayout);
         loadingTextView = (TextView) mainView.findViewById(R.id.loadingTextView);
         loadingTextView.setTypeface(FontUtility.setMontserratLight(getActivity()));
     }
@@ -147,16 +151,25 @@ public class AllInspirationSectionFragment extends BaseFragment implements View.
 
     private void showReloadOption() {
         showDataNotFound();
-        TextView textView = getDataNotFound();
+        /*TextView textView = getDataNotFound();
         if (textView != null) {
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (checkInternet())
-                        getInspirationFeedList();
-                }
+        */
+
+        reload.setVisibility(View.VISIBLE);
+        reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (checkInternet())
+                    getInspirationFeedList();
+                reload.setVisibility(View.GONE);
+            }
+        });
+          /*      }
             });
-        }
+        }*/
     }
 
     private void getInspirationFeedList() {

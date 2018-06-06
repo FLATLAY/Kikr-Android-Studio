@@ -190,7 +190,7 @@ public class FragmentInspirationDetail extends BaseFragment implements OnClickLi
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.fragment_inspiration_detail, null);
+        mainView = inflater.inflate(R.layout.fragment_inspiration_detail, container,false);
         Log.w(TAG, "FragmentInspirationDetail");
         fragmentInspirationDetail = this;
         return mainView;

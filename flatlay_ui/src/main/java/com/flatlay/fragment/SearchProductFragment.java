@@ -1,7 +1,9 @@
 package com.flatlay.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -112,7 +114,7 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mainView = inflater.inflate(R.layout.search_fragment_layout, null);
+        mainView = inflater.inflate(R.layout.search_fragment_layout, container, false);
         return mainView;
     }
 
@@ -149,6 +151,19 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
                     highlight3.setVisibility(View.INVISIBLE);
                     indexSearch = 3;
                     UserPreference.getInstance().setSearchIndex(indexSearch);
+                }
+                break;
+            case R.id.invite_text:
+                try {
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setType("text/plain");
+                    i.putExtra(Intent.EXTRA_SUBJECT, "My application name");
+                    String sAux = "\nLet me recommend you this application\n\n";
+                    sAux = sAux + "https://play.google.com/store/apps/details?id=com.flatlay\n\n";
+                    i.putExtra(Intent.EXTRA_TEXT, sAux);
+                    startActivity(Intent.createChooser(i, "choose one"));
+                } catch(Exception e) {
+                    //e.toString();
                 }
                 break;
             case R.id.shop_text_layout:
@@ -586,6 +601,7 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem5, int visibleItemCount5, int totalItemCount5) {
+                Log.d(TAG, "onScroll: userlist");
                 SearchProductFragment.this.firstVisibleItem5 = firstVisibleItem5;
                 SearchProductFragment.this.visibleItemCount5 = visibleItemCount5;
                 SearchProductFragment.this.totalItemCount5 = totalItemCount5;
@@ -754,8 +770,10 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
                 if (overflow2.isOpen())
                     overflow2.setOpen();
                 user_list_isloding = !user_list_isloding;
+
                 FeaturedTabApiRes featuredTabApiRes = (FeaturedTabApiRes) object;
                 List<FeaturedTabData> list = featuredTabApiRes.getData();
+
                 if (list.size() < 7)
                     user_list_isloding = true;
                 interestList.addAll(list);

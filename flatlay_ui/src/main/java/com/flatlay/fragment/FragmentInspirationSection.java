@@ -145,6 +145,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FragmentInspirationSection extends BaseFragment implements View.OnClickListener, AdapterView.OnItemClickListener, ServiceCallback, MultiAutoCompleteTextView.OnEditorActionListener {
     private View mainView, loaderView, highlight4, highlight5, highlight6;
+    RelativeLayout reload;
     private ListView inspirationlist;
     private String inspiration_id, userId, user_id, original_text = "";
     private EditText searchText;
@@ -314,17 +315,25 @@ public class FragmentInspirationSection extends BaseFragment implements View.OnC
     }
 
     private void showReloadOption() {
-        showDataNotFound();
+        showDataNotFound();/*
         TextView textView = getDataNotFound();
         if (textView != null) {
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    if (((HomeActivity) mContext).checkInternet())
-                        getInspirationFeedList();
-                }
+                public void onClick(View v) {*/
+
+        reload.setVisibility(View.VISIBLE);
+        reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (((HomeActivity) mContext).checkInternet())
+                    getInspirationFeedList();
+                reload.setVisibility(View.GONE);
+            }
+        });
+            /*    }
             });
-        }
+        }*/
     }
 
     @Override
@@ -415,8 +424,6 @@ public class FragmentInspirationSection extends BaseFragment implements View.OnC
                 ((HomeActivity) mContext).myAddFragment(new CartListFragment(overflow2));
                 break;
 
-            case R.id.invite_text:
-                break;
             case R.id.image_upload_post:
                 bottomLayout.setBackgroundResource(R.drawable.topdrawer2);
                 image_upload_post.setVisibility(View.GONE);
@@ -728,6 +735,7 @@ public class FragmentInspirationSection extends BaseFragment implements View.OnC
         bb.setRepeatCount(0);
         bb.setFillAfter(true);
         bb.setDuration(400);
+        reload = (RelativeLayout) mainView.findViewById(R.id.reloadingLayout1);
         imm = (InputMethodManager) mContext.getSystemService(mContext.INPUT_METHOD_SERVICE);
         tab_layout1 = (RelativeLayout) mainView.findViewById(R.id.tabLayout1);
         tab_layout2 = (RelativeLayout) mainView.findViewById(R.id.tabLayout2);

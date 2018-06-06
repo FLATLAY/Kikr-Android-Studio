@@ -70,7 +70,7 @@ public class FragmentSettings extends BaseFragment implements OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.fragment_settings, null);
+        mainView = inflater.inflate(R.layout.fragment_settings, container,false);
         Log.w(TAG, "FragmentSettings");
         fragmentSettings = this;
         return mainView;

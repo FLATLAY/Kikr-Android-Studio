@@ -56,7 +56,7 @@ public class FragmentAllOrders extends BaseFragment implements View.OnClickListe
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.fragment_all_orders, null);
+        mainView = inflater.inflate(R.layout.fragment_all_orders, container,false);
         return mainView;
     }
 

@@ -47,7 +47,7 @@ public class WalletNewCardFragment extends BaseFragment implements View.OnClickL
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.wallet_new_card_layout, null);
+        mainView = inflater.inflate(R.layout.wallet_new_card_layout, container,false);
         return mainView;
     }
 

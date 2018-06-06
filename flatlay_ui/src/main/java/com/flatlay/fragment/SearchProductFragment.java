@@ -763,7 +763,7 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
         if (overflow2.isOpen())
             overflow2.setOpen();
         user_list_isloding = !user_list_isloding;
-        final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
+       /* final FeaturedTabApi listApi = new FeaturedTabApi(new ServiceCallback() {
             @Override
             public void handleOnSuccess(Object object) {
 
@@ -808,7 +808,7 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
             }
         });
         listApi.getFeaturedTabData(UserPreference.getInstance().getUserID(), String.valueOf(page4));
-        listApi.execute();
+        listApi.execute();*/
     }
 
     private void displaySearchPeopleResult() {

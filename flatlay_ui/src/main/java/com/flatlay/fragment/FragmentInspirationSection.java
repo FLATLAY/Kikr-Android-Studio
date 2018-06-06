@@ -789,6 +789,8 @@ public class FragmentInspirationSection extends BaseFragment implements View.OnC
                     searchText.setFocusable(true);
                     searchText.setFocusableInTouchMode(true);
                     searchText.requestFocus();
+                    searchProductFragment = new SearchProductFragment(overflow2, fragmentInspirationSection, "", true, 0);
+                    ((HomeActivity) mContext).myAddFragment(searchProductFragment);
                 }
                 if (!overflow2.isOpen()) {
                     if (searchProductFragment == null) {

@@ -12,7 +12,6 @@ public class JsonUtils {
 	}
 
 	public static <T> T fromJson(String jsonString, Class<T> classType) {
-
 		Gson gson = new GsonBuilder().create();
 		return gson.fromJson(jsonString, classType);
 	}

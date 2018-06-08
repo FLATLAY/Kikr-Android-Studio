@@ -97,18 +97,11 @@ public class BaseActivityWithVideo extends BaseActivity {
 
         }
 
-
-        Handler handler = new Handler();
         if (UserPreference.getInstance().getUserID().equals("")) {
             findViewById(R.id.top_logo).setVisibility(View.GONE);
             loadFragment(new LandingActivity());
         } else {
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startActivity(HomeActivity.class);
-                }
-            }, 1500);
+            startActivity(HomeActivity.class);
         }
 
     }

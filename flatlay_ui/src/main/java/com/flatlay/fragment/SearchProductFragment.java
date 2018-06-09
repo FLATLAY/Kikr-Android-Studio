@@ -776,8 +776,11 @@ public class SearchProductFragment extends BaseFragment implements View.OnClickL
 
                 if (list.size() < 7)
                     user_list_isloding = true;
+
                 interestList.addAll(list);
+
                 if (interestList.size() > 0 && isFirstTime_user_list) {
+
                     featuredTabAdapter = new FeaturedTabAdapter(mContext, interestList, new FeaturedTabAdapter.ListAdapterListener() {
                         @Override
                         public void onClickAtOKButton(int position) {

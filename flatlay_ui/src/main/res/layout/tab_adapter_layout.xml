@@ -17,6 +17,7 @@
             android:id="@+id/userImage"
             android:layout_width="30dp"
             android:layout_height="30dp"
+
             android:layout_alignParentLeft="true"
             app:civ_border_color="#6FE5CC"
             app:civ_border_width="1dp" />

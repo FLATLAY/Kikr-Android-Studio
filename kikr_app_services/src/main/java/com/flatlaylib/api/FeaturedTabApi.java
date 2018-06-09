@@ -110,7 +110,7 @@ public class FeaturedTabApi extends AbsService {
         //response = response.replace("null","\"null\"");
            response = response.replace("\"longproductdesc\":[]","\"longproductdesc\":\"null\"");
            response = response.replace("\"shortproductdesc\":[]","\"shortproductdesc\":\"null\"");
-           System.out.println(response);
+
         FeaturedTabApiRes featuredTabApiRes = JsonUtils.fromJson(response, FeaturedTabApiRes.class);
 
             if (featuredTabApiRes.getCode().equals(WebConstants.SUCCESS_CODE)) {

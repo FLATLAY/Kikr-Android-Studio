@@ -3,7 +3,6 @@ package com.flatlay.adapter;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,22 +17,11 @@ import com.flatlay.activity.HomeActivity;
 import com.flatlay.ui.FeaturedTabUi;
 import com.flatlay.utility.CommonUtility;
 import com.flatlay.utility.FontUtility;
-import com.flatlaylib.api.FollowUserApi;
-import com.flatlaylib.api.InspirationFeedApi;
 import com.flatlaylib.bean.FeaturedTabData;
-import com.flatlaylib.bean.Inspiration;
-import com.flatlaylib.bean.InterestSection;
 import com.flatlaylib.bean.UserData;
-import com.flatlaylib.db.UserPreference;
-import com.flatlaylib.service.ServiceCallback;
-import com.flatlaylib.service.ServiceException;
-import com.flatlaylib.service.res.FollowUserRes;
-import com.flatlaylib.service.res.InspirationFeedRes;
-import com.flatlaylib.utils.AlertUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -43,10 +31,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 
 public class FeaturedTabAdapter extends BaseAdapter {
+    final String TAG = "FeaturedTabAdapter";
     private FragmentActivity mContext;
     private LayoutInflater mInflater;
-    final String TAG = "FeaturedTabAdapter";
-
     private List<FeaturedTabData> data = new ArrayList<>();
     private ListAdapterListener mListener;
 
@@ -161,6 +148,10 @@ public class FeaturedTabAdapter extends BaseAdapter {
         return convertView;
     }
 
+    private void addFragment(Fragment fragment) {
+        ((HomeActivity) mContext).addFragment(fragment);
+    }
+
     public interface ListAdapterListener { // create an interface
 
         void onClickAtOKButton(int position);
@@ -172,10 +163,6 @@ public class FeaturedTabAdapter extends BaseAdapter {
         private ImageView follow_icon;
         private HorizontalScrollView scroll_view;
         private LinearLayout card_layout;
-    }
-
-    private void addFragment(Fragment fragment) {
-        ((HomeActivity) mContext).addFragment(fragment);
     }
 
 }

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.materialcontentoverflow:materialcontentoverflow-1.1.0">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/0a6fcdb474707837f7165f5ab4df566b970fde36/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/0a6fcdb474707837f7165f5ab4df566b970fde36/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/materialcontentoverflow-1.1.0.aar/8f7435f030fd4fca0edc520e7944ab76/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/materialcontentoverflow-1.1.0.aar/8f7435f030fd4fca0edc520e7944ab76/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

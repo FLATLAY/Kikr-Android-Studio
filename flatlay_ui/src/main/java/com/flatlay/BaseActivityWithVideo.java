@@ -93,8 +93,9 @@ public class BaseActivityWithVideo extends BaseActivity {
         if (sharedpreferences.getBoolean("download", false)) {
             vedio.setVisibility(View.VISIBLE);
             videostart();
-        } else {
-
+        }
+        else{
+            vedio.setVisibility(View.GONE);
         }
 
         if (UserPreference.getInstance().getUserID().equals("")) {

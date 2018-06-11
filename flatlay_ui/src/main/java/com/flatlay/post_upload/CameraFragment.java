@@ -885,7 +885,10 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         @Override
         protected void onPostExecute(Uri url) {
             load.setVisibility(View.GONE);
-            ((HomeActivity) getActivity()).startCropActivity(url);
+            if (url != null)
+                ((HomeActivity) getActivity()).startCropActivity(url);
+            else
+                Toast.makeText(mContext, "Process failed", Toast.LENGTH_SHORT).show();
             onStop();
             setSafeToTakePhoto(true);
 

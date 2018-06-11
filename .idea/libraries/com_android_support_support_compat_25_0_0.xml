@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="com.android.support:support-compat-25.0.0">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/45ebfade1008e7558b7262496fa790e78d05b8be/output/jars/libs/internal_impl-25.0.0.jar!/" />
-      <root url="jar://$USER_HOME$/.android/build-cache/45ebfade1008e7558b7262496fa790e78d05b8be/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/45ebfade1008e7558b7262496fa790e78d05b8be/output/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-compat-25.0.0.aar/2a94041f40bfbdbfb2da06a16901552c/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-compat-25.0.0.aar/2a94041f40bfbdbfb2da06a16901552c/jars/libs/internal_impl-25.0.0.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-compat-25.0.0.aar/2a94041f40bfbdbfb2da06a16901552c/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/extras/android/m2repository/com/android/support/support-compat/25.0.0/support-compat-25.0.0-javadoc.jar!/" />

@@ -1,16 +1,5 @@
 package com.flatlaylib.api;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.http.NameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
 import com.flatlaylib.bean.ProductRequiredOption;
 import com.flatlaylib.db.UserPreference;
 import com.flatlaylib.service.AbsService;
@@ -19,12 +8,23 @@ import com.flatlaylib.service.res.CartRes;
 import com.flatlaylib.utils.Constants.WebConstants;
 import com.flatlaylib.utils.JsonUtils;
 import com.flatlaylib.utils.Syso;
+import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
+
+import org.apache.http.NameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CartApi extends AbsService {
 
+    boolean isGetCartList = false;
     private String requestValue;
     private String requestType;
-    boolean isGetCartList = false;
 
     public CartApi(ServiceCallback serviceCallback) {
         super();
@@ -239,12 +239,16 @@ public class CartApi extends AbsService {
                 if (json != null)
                     response = json.toString();
             }
+
             CartRes userResponse = JsonUtils.fromJson(response, CartRes.class);
             if (userResponse.getCode().equals(WebConstants.SUCCESS_CODE)) {
                 isValidResponse = true;
             }
             serviceResponse = userResponse;
         } catch (JsonParseException e) {
+            Syso.error(e);
+            isValidResponse = false;
+        } catch (NullPointerException e) {
             Syso.error(e);
             isValidResponse = false;
         }

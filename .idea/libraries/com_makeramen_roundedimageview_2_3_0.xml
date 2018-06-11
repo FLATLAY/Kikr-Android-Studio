@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.makeramen:roundedimageview-2.3.0">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/e3cafa0efa10d101a41a27d274bf3248f058e1bf/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/e3cafa0efa10d101a41a27d274bf3248f058e1bf/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/roundedimageview-2.3.0.aar/65faf05df807d41cd3cff7398da94558/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/roundedimageview-2.3.0.aar/65faf05df807d41cd3cff7398da94558/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
